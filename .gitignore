@@ -67,3 +67,37 @@ vcpkg_installed/
 # test output & cache
 Testing/
 .cache/
+
+# cmake
+build
+build-*
+bin
+bins
+lib
+libs
+install
+
+# vscode
+.vscode
+
+# vs
+*.user
+out
+CMakeSettings.json
+.vs
+
+# vcpkg
+vcpkg
+vcpkg_installed
+tools/vcpkg
+
+# vim
+*.swo
+*.swp
+
+# macos
+.DS_Store
+
+# 3rd
+3rd/*
+!3rd/CMakeLists.txt
