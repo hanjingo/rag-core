@@ -1,17 +1,29 @@
 #include <iostream>
+#if CRASH_HANDLER_ENABLE == 1
 #include <hj/testing/crash.hpp>
+#endif
+
+#if TELEMETRY_ENABLE == 1
 #include <hj/testing/telemetry.hpp>
+#endif
+
+#if LIC_ENABLE == 1
 #include <hj/util/license.hpp>
+#endif
 
 // add your code here...
 #include <hj/log/log.hpp>
 #include <hj/os/env.h>
 #include <hj/os/options.hpp>
 #include <hj/os/signal.hpp>
+#include <hj/io/file.hpp>
 
 #include "err.h"
 #include "global.h"
 #include "util.h"
+#include "server.h"
+#include "conf.h"
+#include "db_mgr.h"
 
 int main(int argc, char *argv[])
 {
@@ -47,12 +59,32 @@ int main(int argc, char *argv[])
     // catch signals
     hj::sighandler::instance().sigcatch({SIGABRT, SIGTERM}, [](int sig) {});
 
-    // set log level
-#ifdef DEBUG
-    hj::log::logger::instance()->set_level(hj::log::level::debug);
-#else
-    hj::log::logger::instance()->set_level(hj::log::level::info);
-#endif
+    // init config
+    if(!conf::instance().init())
+    {
+        throw std::runtime_error("Failed to load config file");
+        return 0;
+    }
+
+    // log config
+    auto filename =
+        conf::instance().data().get<std::string>("log.filename", "default.log");
+    auto max_size  = MB(conf::instance().data().get<int>("log.max_size", 1));
+    auto max_files = conf::instance().data().get<int>("log.max_files", 1);
+    auto min_lvl   = conf::instance().data().get<int>("log.min_lvl", 0);
+    hj::log::logger::instance()->add_sink(
+        hj::log::logger::instance()->create_rotate_file_sink(filename,
+                                                             max_size,
+                                                             max_files,
+                                                             true));
+    hj::log::logger::instance()->set_level(
+        static_cast<hj::log::level>(min_lvl));
+    LOG_INFO("init log with filename:{}, max_size:{}, max_files:{}, min_lvl:{}",
+             filename,
+             max_size,
+             max_files,
+             min_lvl);
+    LOG_FLUSH();
 
     // add options parse support
     hj::options              opts;
@@ -76,7 +108,25 @@ int main(int argc, char *argv[])
 
     std::string subcmd  = opts.parse<std::string>(argc, argv, "subcmd");
     auto        content = opts.parse<std::string>(argc, argv, "content");
-    if(subcmd == "prompt")
+
+    // load config file
+    if(subcmd == "run")
+    {
+        // ./rag-core run
+        // init dbs
+        db_mgr::instance().init();
+
+        // run server
+        auto   addr = conf::instance().data().get<std::string>("server.addr");
+        server srv(addr);
+        LOG_DEBUG("starting server at {}", srv.address());
+        srv.start();
+        while(srv.is_running())
+        {
+            std::this_thread::sleep_for(std::chrono::seconds(1));
+        }
+        LOG_DEBUG("server stopped");
+    } else if(subcmd == "prompt")
     {
         // ./rag-core prompt "hello"
         LOG_DEBUG("prompt content:{}", content);
@@ -99,7 +149,7 @@ int main(int argc, char *argv[])
             LOG_ERROR("Error: unknown subcommand: {}, we expected one of these "
                       "subcommands: [{}]",
                       subcmd,
-                      "prompt, set, get");
+                      "run, prompt, set, get");
         });
         return 1;
     }

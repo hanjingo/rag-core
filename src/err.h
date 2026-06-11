@@ -5,16 +5,22 @@
 #include <hj/testing/error_handler.hpp>
 #include <hj/util/init.hpp>
 
+static constexpr int ERR_FAIL           = -1;
+static constexpr int OK                 = 0;
+static constexpr int ERR_INVALID_SUBCMD = 1;
+static constexpr int ERR_ARGC_TOO_LESS  = 2;
+
+static constexpr int ERR_DB_NOT_EXIST         = 100;
+static constexpr int ERR_DB_EXISTED           = 101;
+static constexpr int ERR_SQLITE_GET_CONN_FAIL = 102;
+static constexpr int ERR_SQLITE_EXEC_FAIL     = 103;
+
+
 static inline std::error_code error(const int   e,
                                     const char *category = "rag-core")
 {
     return hj::make_err(e, category);
 }
-
-#define ERR_FAIL -1
-#define OK 0
-#define ERR_INVALID_SUBCMD 1
-#define ERR_ARGC_TOO_LESS 2
 
 using err_t = std::error_code;
 

@@ -2,7 +2,7 @@
   "dependencies": [
     {
       "name": "hanjingo-high-jump",
-      "features": ["os", "log", "util", "testing", "net"]
+      "features": ["test", "bench", "crash", "telemetry", "log", "options", "grpc", "sqlite", "sync", "lic"]
     }
   ]
 }

@@ -1,0 +1,28 @@
+syntax = "proto3";
+package GrpcLibrary;
+
+service GrpcService {
+    rpc Query (QueryReq) returns (QueryResp) {}
+    rpc GetHistory (GetHistoryReq) returns (GetHistoryResp) {}
+}
+
+message History {
+    string datetime = 1;
+    string content = 2;
+}
+
+message QueryReq {
+    string content = 1;
+}
+
+message QueryResp {
+    string content = 1;
+}
+
+message GetHistoryReq {
+    int64 id = 1;
+}
+
+message GetHistoryResp {
+    repeated History history = 1;
+}

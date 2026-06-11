@@ -1,0 +1,53 @@
+#ifndef SERVER_H
+#define SERVER_H
+
+#include <hj/net/grpc.hpp>
+#include "api.grpc.pb.h"
+
+#include "db_mgr.h"
+
+using status_t = ::grpc::Status;
+using ctx_t    = ::grpc::ServerContext;
+
+class api_handler final : public GrpcLibrary::GrpcService::Service
+{
+  public:
+    static api_handler &instance()
+    {
+        static api_handler handler;
+        return handler;
+    }
+    status_t Query(ctx_t                         *ctx,
+                   const ::GrpcLibrary::QueryReq *req,
+                   ::GrpcLibrary::QueryResp      *resp) override;
+
+    status_t GetHistory(ctx_t                              *ctx,
+                        const ::GrpcLibrary::GetHistoryReq *req,
+                        ::GrpcLibrary::GetHistoryResp      *resp) override;
+};
+
+class server
+{
+  public:
+    server(const std::string &address)
+        : _srv{}
+        , _address(address){};
+    virtual ~server() { _srv.stop(); };
+
+    inline bool start()
+    {
+        return _srv.start(_address, &api_handler::instance());
+    };
+
+    inline void stop() { _srv.stop(); }
+
+    inline bool is_running() { return _srv.is_running(); }
+
+    inline std::string address() { return _address; }
+
+  private:
+    hj::grpc_server _srv;
+    std::string     _address;
+};
+
+#endif
