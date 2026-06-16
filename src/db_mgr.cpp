@@ -63,3 +63,17 @@ int db_mgr::query(query_ret         &outs,
 
     return ERR_DB_NOT_EXIST;
 }
+
+int64_t db_mgr::last_insert_id(const std::string &db_id,
+                               const std::string &table)
+{
+    for(const auto &e : _dbs)
+    {
+        if(e->id() != db_id)
+            continue;
+
+        return e->last_insert_id(table.c_str());
+    }
+
+    return -1;
+}

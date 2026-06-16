@@ -26,6 +26,16 @@ int sqlite::query(std::vector<std::vector<std::string>> &outs, const char *sql)
     return OK;
 }
 
+int64_t sqlite::last_insert_id(const char *table)
+{
+    int  ms   = 100;
+    auto conn = _pool.acquire(ms);
+    if(!conn || !conn->is_open())
+        return -1;
+
+    return conn->sequence(table);
+}
+
 sqlite::conn_ptr_t sqlite::_make_conn()
 {
     auto conn = std::make_shared<conn_t>();

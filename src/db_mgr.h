@@ -34,6 +34,7 @@ class db_mgr
     // for example: outs=[["name", "age"], [...], ...]
     int
     query(query_ret &outs, const std::string &db_id, const std::string &sql);
+    int64_t last_insert_id(const std::string &db_id, const std::string &table);
 
   private:
     std::vector<std::unique_ptr<db>> _dbs;

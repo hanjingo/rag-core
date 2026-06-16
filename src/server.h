@@ -21,9 +21,18 @@ class api_handler final : public GrpcLibrary::GrpcService::Service
                    const ::GrpcLibrary::QueryReq *req,
                    ::GrpcLibrary::QueryResp      *resp) override;
 
-    status_t GetHistory(ctx_t                              *ctx,
-                        const ::GrpcLibrary::GetHistoryReq *req,
-                        ::GrpcLibrary::GetHistoryResp      *resp) override;
+    status_t GetSession(ctx_t                              *ctx,
+                        const ::GrpcLibrary::GetSessionReq *req,
+                        ::GrpcLibrary::GetSessionResp      *resp) override;
+
+    status_t NewSession(ctx_t                              *ctx,
+                        const ::GrpcLibrary::NewSessionReq *req,
+                        ::GrpcLibrary::NewSessionResp      *resp) override;
+
+    status_t
+    ModifySessionTitle(ctx_t                                      *ctx,
+                       const ::GrpcLibrary::ModifySessionTitleReq *req,
+                       ::GrpcLibrary::ModifySessionTitleResp *resp) override;
 };
 
 class server
@@ -31,7 +40,7 @@ class server
   public:
     server(const std::string &address)
         : _srv{}
-        , _address(address){};
+        , _address(address) {};
     virtual ~server() { _srv.stop(); };
 
     inline bool start()

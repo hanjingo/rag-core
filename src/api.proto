@@ -3,26 +3,65 @@ package GrpcLibrary;
 
 service GrpcService {
     rpc Query (QueryReq) returns (QueryResp) {}
-    rpc GetHistory (GetHistoryReq) returns (GetHistoryResp) {}
+    rpc GetSession (GetSessionReq) returns (GetSessionResp) {}
+    rpc NewSession (NewSessionReq) returns (NewSessionResp) {}
+    rpc ModifySessionTitle (ModifySessionTitleReq) returns (ModifySessionTitleResp) {}
 }
 
-message History {
-    string datetime = 1;
-    string content = 2;
+message Session {
+    int64 id = 1;
+    int32 user_id = 2;
+    string title = 3;
+    string content = 4;
+    string timestamp = 5;
+    string vector_index = 6;
 }
 
 message QueryReq {
-    string content = 1;
+    int64 id = 1;
+    int32 user_id = 2;
+    string auth = 3;
+    string content = 4;
 }
 
 message QueryResp {
-    string content = 1;
+    int32 error_code = 1;
+    int64 id = 2;
+    string content = 3;
 }
 
-message GetHistoryReq {
+message GetSessionReq {
     int64 id = 1;
+    int32 user_id = 2;
+    string auth =3;
+    int32 limit = 4;
 }
 
-message GetHistoryResp {
-    repeated History history = 1;
+message GetSessionResp {
+    int32 error_code = 1;
+    repeated Session sessions = 2;
+}
+
+message NewSessionReq {
+    int32 user_id = 1;
+    string auth = 2;
+    string title = 3;
+}
+
+message NewSessionResp {
+    int32 error_code = 1;
+    Session session = 2;
+}
+
+message ModifySessionTitleReq {
+    int64 id = 1;
+    int32 user_id = 2;
+    string auth =3;
+    string title = 4;
+}
+
+message ModifySessionTitleResp {
+    int32 error_code = 1;
+    int64 id = 2;
+    string title = 3;
 }

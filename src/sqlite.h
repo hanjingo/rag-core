@@ -29,9 +29,11 @@ class sqlite : public db
 
     const std::string id() override { return _id; }
 
-    int         exec(const char *sql) override;
-    int         query(std::vector<std::vector<std::string>> &outs,
-                      const char                            *sql) override;
+    int     exec(const char *sql) override;
+    int     query(std::vector<std::vector<std::string>> &outs,
+                  const char                            *sql) override;
+    int64_t last_insert_id(const char *table) override;
+
     std::string get_last_error() { return _pool.acquire()->get_last_error(); }
 
   private:

@@ -24,7 +24,9 @@ namespace GrpcLibrary {
 
 static const char* GrpcService_method_names[] = {
   "/GrpcLibrary.GrpcService/Query",
-  "/GrpcLibrary.GrpcService/GetHistory",
+  "/GrpcLibrary.GrpcService/GetSession",
+  "/GrpcLibrary.GrpcService/NewSession",
+  "/GrpcLibrary.GrpcService/ModifySessionTitle",
 };
 
 std::unique_ptr< GrpcService::Stub> GrpcService::NewStub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, const ::grpc::StubOptions& options) {
@@ -35,7 +37,9 @@ std::unique_ptr< GrpcService::Stub> GrpcService::NewStub(const std::shared_ptr< 
 
 GrpcService::Stub::Stub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, const ::grpc::StubOptions& options)
   : channel_(channel), rpcmethod_Query_(GrpcService_method_names[0], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_GetHistory_(GrpcService_method_names[1], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_GetSession_(GrpcService_method_names[1], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_NewSession_(GrpcService_method_names[2], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_ModifySessionTitle_(GrpcService_method_names[3], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
   {}
 
 ::grpc::Status GrpcService::Stub::Query(::grpc::ClientContext* context, const ::GrpcLibrary::QueryReq& request, ::GrpcLibrary::QueryResp* response) {
@@ -61,25 +65,71 @@ void GrpcService::Stub::async::Query(::grpc::ClientContext* context, const ::Grp
   return result;
 }
 
-::grpc::Status GrpcService::Stub::GetHistory(::grpc::ClientContext* context, const ::GrpcLibrary::GetHistoryReq& request, ::GrpcLibrary::GetHistoryResp* response) {
-  return ::grpc::internal::BlockingUnaryCall< ::GrpcLibrary::GetHistoryReq, ::GrpcLibrary::GetHistoryResp, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_GetHistory_, context, request, response);
+::grpc::Status GrpcService::Stub::GetSession(::grpc::ClientContext* context, const ::GrpcLibrary::GetSessionReq& request, ::GrpcLibrary::GetSessionResp* response) {
+  return ::grpc::internal::BlockingUnaryCall< ::GrpcLibrary::GetSessionReq, ::GrpcLibrary::GetSessionResp, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_GetSession_, context, request, response);
 }
 
-void GrpcService::Stub::async::GetHistory(::grpc::ClientContext* context, const ::GrpcLibrary::GetHistoryReq* request, ::GrpcLibrary::GetHistoryResp* response, std::function<void(::grpc::Status)> f) {
-  ::grpc::internal::CallbackUnaryCall< ::GrpcLibrary::GetHistoryReq, ::GrpcLibrary::GetHistoryResp, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_GetHistory_, context, request, response, std::move(f));
+void GrpcService::Stub::async::GetSession(::grpc::ClientContext* context, const ::GrpcLibrary::GetSessionReq* request, ::GrpcLibrary::GetSessionResp* response, std::function<void(::grpc::Status)> f) {
+  ::grpc::internal::CallbackUnaryCall< ::GrpcLibrary::GetSessionReq, ::GrpcLibrary::GetSessionResp, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_GetSession_, context, request, response, std::move(f));
 }
 
-void GrpcService::Stub::async::GetHistory(::grpc::ClientContext* context, const ::GrpcLibrary::GetHistoryReq* request, ::GrpcLibrary::GetHistoryResp* response, ::grpc::ClientUnaryReactor* reactor) {
-  ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_GetHistory_, context, request, response, reactor);
+void GrpcService::Stub::async::GetSession(::grpc::ClientContext* context, const ::GrpcLibrary::GetSessionReq* request, ::GrpcLibrary::GetSessionResp* response, ::grpc::ClientUnaryReactor* reactor) {
+  ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_GetSession_, context, request, response, reactor);
 }
 
-::grpc::ClientAsyncResponseReader< ::GrpcLibrary::GetHistoryResp>* GrpcService::Stub::PrepareAsyncGetHistoryRaw(::grpc::ClientContext* context, const ::GrpcLibrary::GetHistoryReq& request, ::grpc::CompletionQueue* cq) {
-  return ::grpc::internal::ClientAsyncResponseReaderHelper::Create< ::GrpcLibrary::GetHistoryResp, ::GrpcLibrary::GetHistoryReq, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), cq, rpcmethod_GetHistory_, context, request);
+::grpc::ClientAsyncResponseReader< ::GrpcLibrary::GetSessionResp>* GrpcService::Stub::PrepareAsyncGetSessionRaw(::grpc::ClientContext* context, const ::GrpcLibrary::GetSessionReq& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncResponseReaderHelper::Create< ::GrpcLibrary::GetSessionResp, ::GrpcLibrary::GetSessionReq, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), cq, rpcmethod_GetSession_, context, request);
 }
 
-::grpc::ClientAsyncResponseReader< ::GrpcLibrary::GetHistoryResp>* GrpcService::Stub::AsyncGetHistoryRaw(::grpc::ClientContext* context, const ::GrpcLibrary::GetHistoryReq& request, ::grpc::CompletionQueue* cq) {
+::grpc::ClientAsyncResponseReader< ::GrpcLibrary::GetSessionResp>* GrpcService::Stub::AsyncGetSessionRaw(::grpc::ClientContext* context, const ::GrpcLibrary::GetSessionReq& request, ::grpc::CompletionQueue* cq) {
   auto* result =
-    this->PrepareAsyncGetHistoryRaw(context, request, cq);
+    this->PrepareAsyncGetSessionRaw(context, request, cq);
+  result->StartCall();
+  return result;
+}
+
+::grpc::Status GrpcService::Stub::NewSession(::grpc::ClientContext* context, const ::GrpcLibrary::NewSessionReq& request, ::GrpcLibrary::NewSessionResp* response) {
+  return ::grpc::internal::BlockingUnaryCall< ::GrpcLibrary::NewSessionReq, ::GrpcLibrary::NewSessionResp, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_NewSession_, context, request, response);
+}
+
+void GrpcService::Stub::async::NewSession(::grpc::ClientContext* context, const ::GrpcLibrary::NewSessionReq* request, ::GrpcLibrary::NewSessionResp* response, std::function<void(::grpc::Status)> f) {
+  ::grpc::internal::CallbackUnaryCall< ::GrpcLibrary::NewSessionReq, ::GrpcLibrary::NewSessionResp, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_NewSession_, context, request, response, std::move(f));
+}
+
+void GrpcService::Stub::async::NewSession(::grpc::ClientContext* context, const ::GrpcLibrary::NewSessionReq* request, ::GrpcLibrary::NewSessionResp* response, ::grpc::ClientUnaryReactor* reactor) {
+  ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_NewSession_, context, request, response, reactor);
+}
+
+::grpc::ClientAsyncResponseReader< ::GrpcLibrary::NewSessionResp>* GrpcService::Stub::PrepareAsyncNewSessionRaw(::grpc::ClientContext* context, const ::GrpcLibrary::NewSessionReq& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncResponseReaderHelper::Create< ::GrpcLibrary::NewSessionResp, ::GrpcLibrary::NewSessionReq, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), cq, rpcmethod_NewSession_, context, request);
+}
+
+::grpc::ClientAsyncResponseReader< ::GrpcLibrary::NewSessionResp>* GrpcService::Stub::AsyncNewSessionRaw(::grpc::ClientContext* context, const ::GrpcLibrary::NewSessionReq& request, ::grpc::CompletionQueue* cq) {
+  auto* result =
+    this->PrepareAsyncNewSessionRaw(context, request, cq);
+  result->StartCall();
+  return result;
+}
+
+::grpc::Status GrpcService::Stub::ModifySessionTitle(::grpc::ClientContext* context, const ::GrpcLibrary::ModifySessionTitleReq& request, ::GrpcLibrary::ModifySessionTitleResp* response) {
+  return ::grpc::internal::BlockingUnaryCall< ::GrpcLibrary::ModifySessionTitleReq, ::GrpcLibrary::ModifySessionTitleResp, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_ModifySessionTitle_, context, request, response);
+}
+
+void GrpcService::Stub::async::ModifySessionTitle(::grpc::ClientContext* context, const ::GrpcLibrary::ModifySessionTitleReq* request, ::GrpcLibrary::ModifySessionTitleResp* response, std::function<void(::grpc::Status)> f) {
+  ::grpc::internal::CallbackUnaryCall< ::GrpcLibrary::ModifySessionTitleReq, ::GrpcLibrary::ModifySessionTitleResp, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_ModifySessionTitle_, context, request, response, std::move(f));
+}
+
+void GrpcService::Stub::async::ModifySessionTitle(::grpc::ClientContext* context, const ::GrpcLibrary::ModifySessionTitleReq* request, ::GrpcLibrary::ModifySessionTitleResp* response, ::grpc::ClientUnaryReactor* reactor) {
+  ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_ModifySessionTitle_, context, request, response, reactor);
+}
+
+::grpc::ClientAsyncResponseReader< ::GrpcLibrary::ModifySessionTitleResp>* GrpcService::Stub::PrepareAsyncModifySessionTitleRaw(::grpc::ClientContext* context, const ::GrpcLibrary::ModifySessionTitleReq& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncResponseReaderHelper::Create< ::GrpcLibrary::ModifySessionTitleResp, ::GrpcLibrary::ModifySessionTitleReq, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), cq, rpcmethod_ModifySessionTitle_, context, request);
+}
+
+::grpc::ClientAsyncResponseReader< ::GrpcLibrary::ModifySessionTitleResp>* GrpcService::Stub::AsyncModifySessionTitleRaw(::grpc::ClientContext* context, const ::GrpcLibrary::ModifySessionTitleReq& request, ::grpc::CompletionQueue* cq) {
+  auto* result =
+    this->PrepareAsyncModifySessionTitleRaw(context, request, cq);
   result->StartCall();
   return result;
 }
@@ -98,12 +148,32 @@ GrpcService::Service::Service() {
   AddMethod(new ::grpc::internal::RpcServiceMethod(
       GrpcService_method_names[1],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
-      new ::grpc::internal::RpcMethodHandler< GrpcService::Service, ::GrpcLibrary::GetHistoryReq, ::GrpcLibrary::GetHistoryResp, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
+      new ::grpc::internal::RpcMethodHandler< GrpcService::Service, ::GrpcLibrary::GetSessionReq, ::GrpcLibrary::GetSessionResp, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
           [](GrpcService::Service* service,
              ::grpc::ServerContext* ctx,
-             const ::GrpcLibrary::GetHistoryReq* req,
-             ::GrpcLibrary::GetHistoryResp* resp) {
-               return service->GetHistory(ctx, req, resp);
+             const ::GrpcLibrary::GetSessionReq* req,
+             ::GrpcLibrary::GetSessionResp* resp) {
+               return service->GetSession(ctx, req, resp);
+             }, this)));
+  AddMethod(new ::grpc::internal::RpcServiceMethod(
+      GrpcService_method_names[2],
+      ::grpc::internal::RpcMethod::NORMAL_RPC,
+      new ::grpc::internal::RpcMethodHandler< GrpcService::Service, ::GrpcLibrary::NewSessionReq, ::GrpcLibrary::NewSessionResp, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
+          [](GrpcService::Service* service,
+             ::grpc::ServerContext* ctx,
+             const ::GrpcLibrary::NewSessionReq* req,
+             ::GrpcLibrary::NewSessionResp* resp) {
+               return service->NewSession(ctx, req, resp);
+             }, this)));
+  AddMethod(new ::grpc::internal::RpcServiceMethod(
+      GrpcService_method_names[3],
+      ::grpc::internal::RpcMethod::NORMAL_RPC,
+      new ::grpc::internal::RpcMethodHandler< GrpcService::Service, ::GrpcLibrary::ModifySessionTitleReq, ::GrpcLibrary::ModifySessionTitleResp, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
+          [](GrpcService::Service* service,
+             ::grpc::ServerContext* ctx,
+             const ::GrpcLibrary::ModifySessionTitleReq* req,
+             ::GrpcLibrary::ModifySessionTitleResp* resp) {
+               return service->ModifySessionTitle(ctx, req, resp);
              }, this)));
 }
 
@@ -117,7 +187,21 @@ GrpcService::Service::~Service() {
   return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
 }
 
-::grpc::Status GrpcService::Service::GetHistory(::grpc::ServerContext* context, const ::GrpcLibrary::GetHistoryReq* request, ::GrpcLibrary::GetHistoryResp* response) {
+::grpc::Status GrpcService::Service::GetSession(::grpc::ServerContext* context, const ::GrpcLibrary::GetSessionReq* request, ::GrpcLibrary::GetSessionResp* response) {
+  (void) context;
+  (void) request;
+  (void) response;
+  return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+}
+
+::grpc::Status GrpcService::Service::NewSession(::grpc::ServerContext* context, const ::GrpcLibrary::NewSessionReq* request, ::GrpcLibrary::NewSessionResp* response) {
+  (void) context;
+  (void) request;
+  (void) response;
+  return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+}
+
+::grpc::Status GrpcService::Service::ModifySessionTitle(::grpc::ServerContext* context, const ::GrpcLibrary::ModifySessionTitleReq* request, ::GrpcLibrary::ModifySessionTitleResp* response) {
   (void) context;
   (void) request;
   (void) response;
