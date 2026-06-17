@@ -43,11 +43,10 @@ status_t api_handler::GetSession(ctx_t                              *ctx,
 
     std::string sql;
     if(id > 0)
-        sql = hj::fmt(SQL_SELECT_BY_ID, id);
+        sql = hj::fmt(SQL_SELECT_SESSION_BY_ID, id) + " LIMIT 1;";
     else
-        sql = hj::fmt(SQL_SELECT_BY_USER_ID, user_id);
-    if(limit > 0)
-        sql += hj::fmt(" LIMIT {}", limit);
+        sql = hj::fmt(SQL_SELECT_SESSION_BY_USER_ID, user_id)
+              + hj::fmt(" LIMIT {};", std::to_string(limit));
 
     LOG_DEBUG("{}", sql);
     db_mgr::query_ret rows;
@@ -145,6 +144,89 @@ api_handler::ModifySessionTitle(ctx_t                                      *ctx,
         LOG_ERROR("Failed to update session for sql: {}", sql);
         LOG_FLUSH();
         return status_t::OK;
+    }
+
+    LOG_FLUSH();
+    return status_t::OK;
+}
+
+status_t api_handler::GetSkillInfo(ctx_t                                *ctx,
+                                   const ::GrpcLibrary::GetSkillInfoReq *req,
+                                   ::GrpcLibrary::GetSkillInfoResp      *resp)
+{
+    int64_t id    = req->id();
+    int     limit = req->limit();
+    limit         = limit < 0 || limit > 50 ? 50 : limit;
+    resp->set_error_code(OK);
+
+    std::string sql;
+    if(id < 0)
+        sql = SQL_SELECT_SKILL_INFO
+              + hj::fmt(" LIMIT {};", std::to_string(limit));
+    else
+        sql = hj::fmt(SQL_SELECT_SKILL_INFO_BY_ID, id) + " LIMIT 1;";
+
+    LOG_DEBUG("{}", sql);
+    db_mgr::query_ret rows;
+    if(db_mgr::instance().query(rows, "sqlite", sql) != OK)
+    {
+        resp->set_error_code(ERR_SQLITE_EXEC_FAIL);
+        LOG_ERROR("Failed to query skill info for sql: {}", sql);
+        LOG_FLUSH();
+        return status_t::OK;
+    }
+    for(const auto &row : rows)
+    {
+        auto item = resp->add_skills();
+        item->set_id(std::stoll(row[0]));
+        item->set_name(row[1]);
+        item->set_desc(row[2]);
+        item->set_publisher(row[3]);
+        item->set_version(row[4]);
+        item->set_timestamp(row[5]);
+        item->set_hash(row[6]);
+
+        LOG_DEBUG("GetSkillInfo id: {}, name: {}, desc: {}, publisher: {}, "
+                  "version: {}, timestamp: {}, hash: {}",
+                  item->id(),
+                  item->name(),
+                  item->desc(),
+                  item->publisher(),
+                  item->version(),
+                  item->timestamp(),
+                  item->hash());
+    }
+
+    LOG_FLUSH();
+    return status_t::OK;
+}
+
+status_t api_handler::Download(ctx_t                            *ctx,
+                               const ::GrpcLibrary::DownloadReq *req,
+                               ::GrpcLibrary::DownloadResp      *resp)
+{
+    std::string hash    = req->hash();
+    int         user_id = req->user_id();
+    std::string auth    = req->auth();
+    resp->set_error_code(OK);
+    resp->set_hash(hash);
+
+    // TODO check privilege
+
+    auto sql = hj::fmt(SQL_SELECT_FILE_BY_HASH, hash) + " LIMIT 1;";
+    LOG_DEBUG("{}", sql);
+    db_mgr::query_ret rows;
+    if(db_mgr::instance().query(rows, "sqlite", sql) != OK)
+    {
+        LOG_ERROR("Failed to query history for sql: {}", sql);
+        LOG_FLUSH();
+        return status_t::OK;
+    }
+    for(const auto &row : rows)
+    {
+        resp->set_addr(row[0]);
+        resp->set_size_kb(std::stoll(row[2]));
+        break;
     }
 
     LOG_FLUSH();

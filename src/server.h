@@ -33,6 +33,14 @@ class api_handler final : public GrpcLibrary::GrpcService::Service
     ModifySessionTitle(ctx_t                                      *ctx,
                        const ::GrpcLibrary::ModifySessionTitleReq *req,
                        ::GrpcLibrary::ModifySessionTitleResp *resp) override;
+
+    status_t GetSkillInfo(ctx_t                                *ctx,
+                          const ::GrpcLibrary::GetSkillInfoReq *req,
+                          ::GrpcLibrary::GetSkillInfoResp      *resp) override;
+
+    status_t Download(ctx_t                            *ctx,
+                      const ::GrpcLibrary::DownloadReq *req,
+                      ::GrpcLibrary::DownloadResp      *resp) override;
 };
 
 class server

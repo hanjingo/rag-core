@@ -6,6 +6,8 @@ service GrpcService {
     rpc GetSession (GetSessionReq) returns (GetSessionResp) {}
     rpc NewSession (NewSessionReq) returns (NewSessionResp) {}
     rpc ModifySessionTitle (ModifySessionTitleReq) returns (ModifySessionTitleResp) {}
+    rpc GetSkillInfo (GetSkillInfoReq) returns (GetSkillInfoResp) {}
+    rpc Download (DownloadReq) returns (DownloadResp) {}
 }
 
 message Session {
@@ -15,6 +17,16 @@ message Session {
     string content = 4;
     string timestamp = 5;
     string vector_index = 6;
+}
+
+message Skill {
+    int64 id = 1;
+    string name = 2;
+    string desc = 3;
+    string publisher = 4;
+    string version = 5;
+    string timestamp = 6;
+    string hash = 7;
 }
 
 message QueryReq {
@@ -64,4 +76,27 @@ message ModifySessionTitleResp {
     int32 error_code = 1;
     int64 id = 2;
     string title = 3;
+}
+
+message GetSkillInfoReq {
+    int64 id = 1;
+    int32 limit = 2;
+}
+
+message GetSkillInfoResp {
+    int32 error_code = 1;
+    repeated Skill skills = 2;
+}
+
+message DownloadReq {
+    string hash = 1;
+    int32 user_id = 2;
+    string auth = 3;
+}
+
+message DownloadResp {
+    int32 error_code = 1;
+    string hash = 2;
+    string addr = 3;
+    int64 size_kb = 4;
 }

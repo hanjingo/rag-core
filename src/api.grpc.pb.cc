@@ -27,6 +27,8 @@ static const char* GrpcService_method_names[] = {
   "/GrpcLibrary.GrpcService/GetSession",
   "/GrpcLibrary.GrpcService/NewSession",
   "/GrpcLibrary.GrpcService/ModifySessionTitle",
+  "/GrpcLibrary.GrpcService/GetSkillInfo",
+  "/GrpcLibrary.GrpcService/Download",
 };
 
 std::unique_ptr< GrpcService::Stub> GrpcService::NewStub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, const ::grpc::StubOptions& options) {
@@ -40,6 +42,8 @@ GrpcService::Stub::Stub(const std::shared_ptr< ::grpc::ChannelInterface>& channe
   , rpcmethod_GetSession_(GrpcService_method_names[1], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
   , rpcmethod_NewSession_(GrpcService_method_names[2], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
   , rpcmethod_ModifySessionTitle_(GrpcService_method_names[3], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_GetSkillInfo_(GrpcService_method_names[4], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_Download_(GrpcService_method_names[5], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
   {}
 
 ::grpc::Status GrpcService::Stub::Query(::grpc::ClientContext* context, const ::GrpcLibrary::QueryReq& request, ::GrpcLibrary::QueryResp* response) {
@@ -134,6 +138,52 @@ void GrpcService::Stub::async::ModifySessionTitle(::grpc::ClientContext* context
   return result;
 }
 
+::grpc::Status GrpcService::Stub::GetSkillInfo(::grpc::ClientContext* context, const ::GrpcLibrary::GetSkillInfoReq& request, ::GrpcLibrary::GetSkillInfoResp* response) {
+  return ::grpc::internal::BlockingUnaryCall< ::GrpcLibrary::GetSkillInfoReq, ::GrpcLibrary::GetSkillInfoResp, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_GetSkillInfo_, context, request, response);
+}
+
+void GrpcService::Stub::async::GetSkillInfo(::grpc::ClientContext* context, const ::GrpcLibrary::GetSkillInfoReq* request, ::GrpcLibrary::GetSkillInfoResp* response, std::function<void(::grpc::Status)> f) {
+  ::grpc::internal::CallbackUnaryCall< ::GrpcLibrary::GetSkillInfoReq, ::GrpcLibrary::GetSkillInfoResp, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_GetSkillInfo_, context, request, response, std::move(f));
+}
+
+void GrpcService::Stub::async::GetSkillInfo(::grpc::ClientContext* context, const ::GrpcLibrary::GetSkillInfoReq* request, ::GrpcLibrary::GetSkillInfoResp* response, ::grpc::ClientUnaryReactor* reactor) {
+  ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_GetSkillInfo_, context, request, response, reactor);
+}
+
+::grpc::ClientAsyncResponseReader< ::GrpcLibrary::GetSkillInfoResp>* GrpcService::Stub::PrepareAsyncGetSkillInfoRaw(::grpc::ClientContext* context, const ::GrpcLibrary::GetSkillInfoReq& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncResponseReaderHelper::Create< ::GrpcLibrary::GetSkillInfoResp, ::GrpcLibrary::GetSkillInfoReq, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), cq, rpcmethod_GetSkillInfo_, context, request);
+}
+
+::grpc::ClientAsyncResponseReader< ::GrpcLibrary::GetSkillInfoResp>* GrpcService::Stub::AsyncGetSkillInfoRaw(::grpc::ClientContext* context, const ::GrpcLibrary::GetSkillInfoReq& request, ::grpc::CompletionQueue* cq) {
+  auto* result =
+    this->PrepareAsyncGetSkillInfoRaw(context, request, cq);
+  result->StartCall();
+  return result;
+}
+
+::grpc::Status GrpcService::Stub::Download(::grpc::ClientContext* context, const ::GrpcLibrary::DownloadReq& request, ::GrpcLibrary::DownloadResp* response) {
+  return ::grpc::internal::BlockingUnaryCall< ::GrpcLibrary::DownloadReq, ::GrpcLibrary::DownloadResp, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_Download_, context, request, response);
+}
+
+void GrpcService::Stub::async::Download(::grpc::ClientContext* context, const ::GrpcLibrary::DownloadReq* request, ::GrpcLibrary::DownloadResp* response, std::function<void(::grpc::Status)> f) {
+  ::grpc::internal::CallbackUnaryCall< ::GrpcLibrary::DownloadReq, ::GrpcLibrary::DownloadResp, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_Download_, context, request, response, std::move(f));
+}
+
+void GrpcService::Stub::async::Download(::grpc::ClientContext* context, const ::GrpcLibrary::DownloadReq* request, ::GrpcLibrary::DownloadResp* response, ::grpc::ClientUnaryReactor* reactor) {
+  ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_Download_, context, request, response, reactor);
+}
+
+::grpc::ClientAsyncResponseReader< ::GrpcLibrary::DownloadResp>* GrpcService::Stub::PrepareAsyncDownloadRaw(::grpc::ClientContext* context, const ::GrpcLibrary::DownloadReq& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncResponseReaderHelper::Create< ::GrpcLibrary::DownloadResp, ::GrpcLibrary::DownloadReq, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), cq, rpcmethod_Download_, context, request);
+}
+
+::grpc::ClientAsyncResponseReader< ::GrpcLibrary::DownloadResp>* GrpcService::Stub::AsyncDownloadRaw(::grpc::ClientContext* context, const ::GrpcLibrary::DownloadReq& request, ::grpc::CompletionQueue* cq) {
+  auto* result =
+    this->PrepareAsyncDownloadRaw(context, request, cq);
+  result->StartCall();
+  return result;
+}
+
 GrpcService::Service::Service() {
   AddMethod(new ::grpc::internal::RpcServiceMethod(
       GrpcService_method_names[0],
@@ -175,6 +225,26 @@ GrpcService::Service::Service() {
              ::GrpcLibrary::ModifySessionTitleResp* resp) {
                return service->ModifySessionTitle(ctx, req, resp);
              }, this)));
+  AddMethod(new ::grpc::internal::RpcServiceMethod(
+      GrpcService_method_names[4],
+      ::grpc::internal::RpcMethod::NORMAL_RPC,
+      new ::grpc::internal::RpcMethodHandler< GrpcService::Service, ::GrpcLibrary::GetSkillInfoReq, ::GrpcLibrary::GetSkillInfoResp, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
+          [](GrpcService::Service* service,
+             ::grpc::ServerContext* ctx,
+             const ::GrpcLibrary::GetSkillInfoReq* req,
+             ::GrpcLibrary::GetSkillInfoResp* resp) {
+               return service->GetSkillInfo(ctx, req, resp);
+             }, this)));
+  AddMethod(new ::grpc::internal::RpcServiceMethod(
+      GrpcService_method_names[5],
+      ::grpc::internal::RpcMethod::NORMAL_RPC,
+      new ::grpc::internal::RpcMethodHandler< GrpcService::Service, ::GrpcLibrary::DownloadReq, ::GrpcLibrary::DownloadResp, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
+          [](GrpcService::Service* service,
+             ::grpc::ServerContext* ctx,
+             const ::GrpcLibrary::DownloadReq* req,
+             ::GrpcLibrary::DownloadResp* resp) {
+               return service->Download(ctx, req, resp);
+             }, this)));
 }
 
 GrpcService::Service::~Service() {
@@ -202,6 +272,20 @@ GrpcService::Service::~Service() {
 }
 
 ::grpc::Status GrpcService::Service::ModifySessionTitle(::grpc::ServerContext* context, const ::GrpcLibrary::ModifySessionTitleReq* request, ::GrpcLibrary::ModifySessionTitleResp* response) {
+  (void) context;
+  (void) request;
+  (void) response;
+  return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+}
+
+::grpc::Status GrpcService::Service::GetSkillInfo(::grpc::ServerContext* context, const ::GrpcLibrary::GetSkillInfoReq* request, ::GrpcLibrary::GetSkillInfoResp* response) {
+  (void) context;
+  (void) request;
+  (void) response;
+  return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+}
+
+::grpc::Status GrpcService::Service::Download(::grpc::ServerContext* context, const ::GrpcLibrary::DownloadReq* request, ::GrpcLibrary::DownloadResp* response) {
   (void) context;
   (void) request;
   (void) response;
