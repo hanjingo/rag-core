@@ -107,6 +107,62 @@ struct SessionDefaultTypeInternal {
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
     PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 SessionDefaultTypeInternal _Session_default_instance_;
 
+inline constexpr RegAccountResp::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : _cached_size_{0},
+        error_code_{0},
+        user_id_{0} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR RegAccountResp::RegAccountResp(::_pbi::ConstantInitialized)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(RegAccountResp_class_data_.base()),
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(),
+#endif  // PROTOBUF_CUSTOM_VTABLE
+      _impl_(::_pbi::ConstantInitialized()) {
+}
+struct RegAccountRespDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR RegAccountRespDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~RegAccountRespDefaultTypeInternal() {}
+  union {
+    RegAccountResp _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 RegAccountRespDefaultTypeInternal _RegAccountResp_default_instance_;
+
+inline constexpr RegAccountReq::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : _cached_size_{0},
+        account_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        passwd_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()) {}
+
+template <typename>
+PROTOBUF_CONSTEXPR RegAccountReq::RegAccountReq(::_pbi::ConstantInitialized)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(RegAccountReq_class_data_.base()),
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(),
+#endif  // PROTOBUF_CUSTOM_VTABLE
+      _impl_(::_pbi::ConstantInitialized()) {
+}
+struct RegAccountReqDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR RegAccountReqDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~RegAccountReqDefaultTypeInternal() {}
+  union {
+    RegAccountReq _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 RegAccountReqDefaultTypeInternal _RegAccountReq_default_instance_;
+
 inline constexpr QueryResp::Impl_::Impl_(
     ::_pbi::ConstantInitialized) noexcept
       : _cached_size_{0},
@@ -259,6 +315,119 @@ struct ModifySessionTitleReqDefaultTypeInternal {
 
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
     PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 ModifySessionTitleReqDefaultTypeInternal _ModifySessionTitleReq_default_instance_;
+
+inline constexpr LogoutResp::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : _cached_size_{0},
+        error_code_{0},
+        user_id_{0} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR LogoutResp::LogoutResp(::_pbi::ConstantInitialized)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(LogoutResp_class_data_.base()),
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(),
+#endif  // PROTOBUF_CUSTOM_VTABLE
+      _impl_(::_pbi::ConstantInitialized()) {
+}
+struct LogoutRespDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR LogoutRespDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~LogoutRespDefaultTypeInternal() {}
+  union {
+    LogoutResp _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 LogoutRespDefaultTypeInternal _LogoutResp_default_instance_;
+
+inline constexpr LogoutReq::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : _cached_size_{0},
+        auth_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        user_id_{0} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR LogoutReq::LogoutReq(::_pbi::ConstantInitialized)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(LogoutReq_class_data_.base()),
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(),
+#endif  // PROTOBUF_CUSTOM_VTABLE
+      _impl_(::_pbi::ConstantInitialized()) {
+}
+struct LogoutReqDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR LogoutReqDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~LogoutReqDefaultTypeInternal() {}
+  union {
+    LogoutReq _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 LogoutReqDefaultTypeInternal _LogoutReq_default_instance_;
+
+inline constexpr LoginResp::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : _cached_size_{0},
+        auth_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        error_code_{0},
+        user_id_{0} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR LoginResp::LoginResp(::_pbi::ConstantInitialized)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(LoginResp_class_data_.base()),
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(),
+#endif  // PROTOBUF_CUSTOM_VTABLE
+      _impl_(::_pbi::ConstantInitialized()) {
+}
+struct LoginRespDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR LoginRespDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~LoginRespDefaultTypeInternal() {}
+  union {
+    LoginResp _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 LoginRespDefaultTypeInternal _LoginResp_default_instance_;
+
+inline constexpr LoginReq::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : _cached_size_{0},
+        account_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        passwd_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()) {}
+
+template <typename>
+PROTOBUF_CONSTEXPR LoginReq::LoginReq(::_pbi::ConstantInitialized)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(LoginReq_class_data_.base()),
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(),
+#endif  // PROTOBUF_CUSTOM_VTABLE
+      _impl_(::_pbi::ConstantInitialized()) {
+}
+struct LoginReqDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR LoginReqDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~LoginReqDefaultTypeInternal() {}
+  union {
+    LoginReq _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 LoginReqDefaultTypeInternal _LoginReq_default_instance_;
 
 inline constexpr GetSkillInfoReq::Impl_::Impl_(
     ::_pbi::ConstantInitialized) noexcept
@@ -497,6 +666,50 @@ const ::uint32_t
         4,
         5,
         0x081, // bitmap
+        PROTOBUF_FIELD_OFFSET(::GrpcLibrary::LoginReq, _impl_._has_bits_),
+        5, // hasbit index offset
+        PROTOBUF_FIELD_OFFSET(::GrpcLibrary::LoginReq, _impl_.account_),
+        PROTOBUF_FIELD_OFFSET(::GrpcLibrary::LoginReq, _impl_.passwd_),
+        0,
+        1,
+        0x081, // bitmap
+        PROTOBUF_FIELD_OFFSET(::GrpcLibrary::LoginResp, _impl_._has_bits_),
+        6, // hasbit index offset
+        PROTOBUF_FIELD_OFFSET(::GrpcLibrary::LoginResp, _impl_.error_code_),
+        PROTOBUF_FIELD_OFFSET(::GrpcLibrary::LoginResp, _impl_.user_id_),
+        PROTOBUF_FIELD_OFFSET(::GrpcLibrary::LoginResp, _impl_.auth_),
+        1,
+        2,
+        0,
+        0x081, // bitmap
+        PROTOBUF_FIELD_OFFSET(::GrpcLibrary::LogoutReq, _impl_._has_bits_),
+        5, // hasbit index offset
+        PROTOBUF_FIELD_OFFSET(::GrpcLibrary::LogoutReq, _impl_.user_id_),
+        PROTOBUF_FIELD_OFFSET(::GrpcLibrary::LogoutReq, _impl_.auth_),
+        1,
+        0,
+        0x081, // bitmap
+        PROTOBUF_FIELD_OFFSET(::GrpcLibrary::LogoutResp, _impl_._has_bits_),
+        5, // hasbit index offset
+        PROTOBUF_FIELD_OFFSET(::GrpcLibrary::LogoutResp, _impl_.error_code_),
+        PROTOBUF_FIELD_OFFSET(::GrpcLibrary::LogoutResp, _impl_.user_id_),
+        0,
+        1,
+        0x081, // bitmap
+        PROTOBUF_FIELD_OFFSET(::GrpcLibrary::RegAccountReq, _impl_._has_bits_),
+        5, // hasbit index offset
+        PROTOBUF_FIELD_OFFSET(::GrpcLibrary::RegAccountReq, _impl_.account_),
+        PROTOBUF_FIELD_OFFSET(::GrpcLibrary::RegAccountReq, _impl_.passwd_),
+        0,
+        1,
+        0x081, // bitmap
+        PROTOBUF_FIELD_OFFSET(::GrpcLibrary::RegAccountResp, _impl_._has_bits_),
+        5, // hasbit index offset
+        PROTOBUF_FIELD_OFFSET(::GrpcLibrary::RegAccountResp, _impl_.error_code_),
+        PROTOBUF_FIELD_OFFSET(::GrpcLibrary::RegAccountResp, _impl_.user_id_),
+        0,
+        1,
+        0x081, // bitmap
         PROTOBUF_FIELD_OFFSET(::GrpcLibrary::QueryReq, _impl_._has_bits_),
         7, // hasbit index offset
         PROTOBUF_FIELD_OFFSET(::GrpcLibrary::QueryReq, _impl_.id_),
@@ -610,22 +823,34 @@ static const ::_pbi::MigrationSchema
     schemas[] ABSL_ATTRIBUTE_SECTION_VARIABLE(protodesc_cold) = {
         {0, sizeof(::GrpcLibrary::Session)},
         {15, sizeof(::GrpcLibrary::Skill)},
-        {32, sizeof(::GrpcLibrary::QueryReq)},
-        {43, sizeof(::GrpcLibrary::QueryResp)},
-        {52, sizeof(::GrpcLibrary::GetSessionReq)},
-        {63, sizeof(::GrpcLibrary::GetSessionResp)},
-        {70, sizeof(::GrpcLibrary::NewSessionReq)},
-        {79, sizeof(::GrpcLibrary::NewSessionResp)},
-        {86, sizeof(::GrpcLibrary::ModifySessionTitleReq)},
-        {97, sizeof(::GrpcLibrary::ModifySessionTitleResp)},
-        {106, sizeof(::GrpcLibrary::GetSkillInfoReq)},
-        {113, sizeof(::GrpcLibrary::GetSkillInfoResp)},
-        {120, sizeof(::GrpcLibrary::DownloadReq)},
-        {129, sizeof(::GrpcLibrary::DownloadResp)},
+        {32, sizeof(::GrpcLibrary::LoginReq)},
+        {39, sizeof(::GrpcLibrary::LoginResp)},
+        {48, sizeof(::GrpcLibrary::LogoutReq)},
+        {55, sizeof(::GrpcLibrary::LogoutResp)},
+        {62, sizeof(::GrpcLibrary::RegAccountReq)},
+        {69, sizeof(::GrpcLibrary::RegAccountResp)},
+        {76, sizeof(::GrpcLibrary::QueryReq)},
+        {87, sizeof(::GrpcLibrary::QueryResp)},
+        {96, sizeof(::GrpcLibrary::GetSessionReq)},
+        {107, sizeof(::GrpcLibrary::GetSessionResp)},
+        {114, sizeof(::GrpcLibrary::NewSessionReq)},
+        {123, sizeof(::GrpcLibrary::NewSessionResp)},
+        {130, sizeof(::GrpcLibrary::ModifySessionTitleReq)},
+        {141, sizeof(::GrpcLibrary::ModifySessionTitleResp)},
+        {150, sizeof(::GrpcLibrary::GetSkillInfoReq)},
+        {157, sizeof(::GrpcLibrary::GetSkillInfoResp)},
+        {164, sizeof(::GrpcLibrary::DownloadReq)},
+        {173, sizeof(::GrpcLibrary::DownloadResp)},
 };
 static const ::_pb::Message* PROTOBUF_NONNULL const file_default_instances[] = {
     &::GrpcLibrary::_Session_default_instance_._instance,
     &::GrpcLibrary::_Skill_default_instance_._instance,
+    &::GrpcLibrary::_LoginReq_default_instance_._instance,
+    &::GrpcLibrary::_LoginResp_default_instance_._instance,
+    &::GrpcLibrary::_LogoutReq_default_instance_._instance,
+    &::GrpcLibrary::_LogoutResp_default_instance_._instance,
+    &::GrpcLibrary::_RegAccountReq_default_instance_._instance,
+    &::GrpcLibrary::_RegAccountResp_default_instance_._instance,
     &::GrpcLibrary::_QueryReq_default_instance_._instance,
     &::GrpcLibrary::_QueryResp_default_instance_._instance,
     &::GrpcLibrary::_GetSessionReq_default_instance_._instance,
@@ -647,52 +872,64 @@ const char descriptor_table_protodef_src_2fapi_2eproto[] ABSL_ATTRIBUTE_SECTION_
     "\024\n\014vector_index\030\006 \001(\t\"t\n\005Skill\022\n\n\002id\030\001 \001"
     "(\003\022\014\n\004name\030\002 \001(\t\022\014\n\004desc\030\003 \001(\t\022\021\n\tpublis"
     "her\030\004 \001(\t\022\017\n\007version\030\005 \001(\t\022\021\n\ttimestamp\030"
-    "\006 \001(\t\022\014\n\004hash\030\007 \001(\t\"F\n\010QueryReq\022\n\n\002id\030\001 "
-    "\001(\003\022\017\n\007user_id\030\002 \001(\005\022\014\n\004auth\030\003 \001(\t\022\017\n\007co"
-    "ntent\030\004 \001(\t\"<\n\tQueryResp\022\022\n\nerror_code\030\001"
-    " \001(\005\022\n\n\002id\030\002 \001(\003\022\017\n\007content\030\003 \001(\t\"I\n\rGet"
-    "SessionReq\022\n\n\002id\030\001 \001(\003\022\017\n\007user_id\030\002 \001(\005\022"
-    "\014\n\004auth\030\003 \001(\t\022\r\n\005limit\030\004 \001(\005\"L\n\016GetSessi"
-    "onResp\022\022\n\nerror_code\030\001 \001(\005\022&\n\010sessions\030\002"
-    " \003(\0132\024.GrpcLibrary.Session\"=\n\rNewSession"
-    "Req\022\017\n\007user_id\030\001 \001(\005\022\014\n\004auth\030\002 \001(\t\022\r\n\005ti"
-    "tle\030\003 \001(\t\"K\n\016NewSessionResp\022\022\n\nerror_cod"
-    "e\030\001 \001(\005\022%\n\007session\030\002 \001(\0132\024.GrpcLibrary.S"
-    "ession\"Q\n\025ModifySessionTitleReq\022\n\n\002id\030\001 "
-    "\001(\003\022\017\n\007user_id\030\002 \001(\005\022\014\n\004auth\030\003 \001(\t\022\r\n\005ti"
-    "tle\030\004 \001(\t\"G\n\026ModifySessionTitleResp\022\022\n\ne"
-    "rror_code\030\001 \001(\005\022\n\n\002id\030\002 \001(\003\022\r\n\005title\030\003 \001"
-    "(\t\",\n\017GetSkillInfoReq\022\n\n\002id\030\001 \001(\003\022\r\n\005lim"
-    "it\030\002 \001(\005\"J\n\020GetSkillInfoResp\022\022\n\nerror_co"
-    "de\030\001 \001(\005\022\"\n\006skills\030\002 \003(\0132\022.GrpcLibrary.S"
-    "kill\":\n\013DownloadReq\022\014\n\004hash\030\001 \001(\t\022\017\n\007use"
-    "r_id\030\002 \001(\005\022\014\n\004auth\030\003 \001(\t\"O\n\014DownloadResp"
-    "\022\022\n\nerror_code\030\001 \001(\005\022\014\n\004hash\030\002 \001(\t\022\014\n\004ad"
-    "dr\030\003 \001(\t\022\017\n\007size_kb\030\004 \001(\0032\314\003\n\013GrpcServic"
-    "e\0228\n\005Query\022\025.GrpcLibrary.QueryReq\032\026.Grpc"
-    "Library.QueryResp\"\000\022G\n\nGetSession\022\032.Grpc"
-    "Library.GetSessionReq\032\033.GrpcLibrary.GetS"
-    "essionResp\"\000\022G\n\nNewSession\022\032.GrpcLibrary"
-    ".NewSessionReq\032\033.GrpcLibrary.NewSessionR"
-    "esp\"\000\022_\n\022ModifySessionTitle\022\".GrpcLibrar"
-    "y.ModifySessionTitleReq\032#.GrpcLibrary.Mo"
-    "difySessionTitleResp\"\000\022M\n\014GetSkillInfo\022\034"
-    ".GrpcLibrary.GetSkillInfoReq\032\035.GrpcLibra"
-    "ry.GetSkillInfoResp\"\000\022A\n\010Download\022\030.Grpc"
-    "Library.DownloadReq\032\031.GrpcLibrary.Downlo"
-    "adResp\"\000b\006proto3"
+    "\006 \001(\t\022\014\n\004hash\030\007 \001(\t\"+\n\010LoginReq\022\017\n\007accou"
+    "nt\030\001 \001(\t\022\016\n\006passwd\030\002 \001(\t\">\n\tLoginResp\022\022\n"
+    "\nerror_code\030\001 \001(\005\022\017\n\007user_id\030\002 \001(\005\022\014\n\004au"
+    "th\030\003 \001(\t\"*\n\tLogoutReq\022\017\n\007user_id\030\001 \001(\005\022\014"
+    "\n\004auth\030\002 \001(\t\"1\n\nLogoutResp\022\022\n\nerror_code"
+    "\030\001 \001(\005\022\017\n\007user_id\030\002 \001(\005\"0\n\rRegAccountReq"
+    "\022\017\n\007account\030\001 \001(\t\022\016\n\006passwd\030\002 \001(\t\"5\n\016Reg"
+    "AccountResp\022\022\n\nerror_code\030\001 \001(\005\022\017\n\007user_"
+    "id\030\002 \001(\005\"F\n\010QueryReq\022\n\n\002id\030\001 \001(\003\022\017\n\007user"
+    "_id\030\002 \001(\005\022\014\n\004auth\030\003 \001(\t\022\017\n\007content\030\004 \001(\t"
+    "\"<\n\tQueryResp\022\022\n\nerror_code\030\001 \001(\005\022\n\n\002id\030"
+    "\002 \001(\003\022\017\n\007content\030\003 \001(\t\"I\n\rGetSessionReq\022"
+    "\n\n\002id\030\001 \001(\003\022\017\n\007user_id\030\002 \001(\005\022\014\n\004auth\030\003 \001"
+    "(\t\022\r\n\005limit\030\004 \001(\005\"L\n\016GetSessionResp\022\022\n\ne"
+    "rror_code\030\001 \001(\005\022&\n\010sessions\030\002 \003(\0132\024.Grpc"
+    "Library.Session\"=\n\rNewSessionReq\022\017\n\007user"
+    "_id\030\001 \001(\005\022\014\n\004auth\030\002 \001(\t\022\r\n\005title\030\003 \001(\t\"K"
+    "\n\016NewSessionResp\022\022\n\nerror_code\030\001 \001(\005\022%\n\007"
+    "session\030\002 \001(\0132\024.GrpcLibrary.Session\"Q\n\025M"
+    "odifySessionTitleReq\022\n\n\002id\030\001 \001(\003\022\017\n\007user"
+    "_id\030\002 \001(\005\022\014\n\004auth\030\003 \001(\t\022\r\n\005title\030\004 \001(\t\"G"
+    "\n\026ModifySessionTitleResp\022\022\n\nerror_code\030\001"
+    " \001(\005\022\n\n\002id\030\002 \001(\003\022\r\n\005title\030\003 \001(\t\",\n\017GetSk"
+    "illInfoReq\022\n\n\002id\030\001 \001(\003\022\r\n\005limit\030\002 \001(\005\"J\n"
+    "\020GetSkillInfoResp\022\022\n\nerror_code\030\001 \001(\005\022\"\n"
+    "\006skills\030\002 \003(\0132\022.GrpcLibrary.Skill\":\n\013Dow"
+    "nloadReq\022\014\n\004hash\030\001 \001(\t\022\017\n\007user_id\030\002 \001(\005\022"
+    "\014\n\004auth\030\003 \001(\t\"O\n\014DownloadResp\022\022\n\nerror_c"
+    "ode\030\001 \001(\005\022\014\n\004hash\030\002 \001(\t\022\014\n\004addr\030\003 \001(\t\022\017\n"
+    "\007size_kb\030\004 \001(\0032\214\005\n\013GrpcService\0228\n\005Login\022"
+    "\025.GrpcLibrary.LoginReq\032\026.GrpcLibrary.Log"
+    "inResp\"\000\022;\n\006Logout\022\026.GrpcLibrary.LogoutR"
+    "eq\032\027.GrpcLibrary.LogoutResp\"\000\022G\n\nRegAcco"
+    "unt\022\032.GrpcLibrary.RegAccountReq\032\033.GrpcLi"
+    "brary.RegAccountResp\"\000\0228\n\005Query\022\025.GrpcLi"
+    "brary.QueryReq\032\026.GrpcLibrary.QueryResp\"\000"
+    "\022G\n\nGetSession\022\032.GrpcLibrary.GetSessionR"
+    "eq\032\033.GrpcLibrary.GetSessionResp\"\000\022G\n\nNew"
+    "Session\022\032.GrpcLibrary.NewSessionReq\032\033.Gr"
+    "pcLibrary.NewSessionResp\"\000\022_\n\022ModifySess"
+    "ionTitle\022\".GrpcLibrary.ModifySessionTitl"
+    "eReq\032#.GrpcLibrary.ModifySessionTitleRes"
+    "p\"\000\022M\n\014GetSkillInfo\022\034.GrpcLibrary.GetSki"
+    "llInfoReq\032\035.GrpcLibrary.GetSkillInfoResp"
+    "\"\000\022A\n\010Download\022\030.GrpcLibrary.DownloadReq"
+    "\032\031.GrpcLibrary.DownloadResp\"\000b\006proto3"
 };
 static ::absl::once_flag descriptor_table_src_2fapi_2eproto_once;
 PROTOBUF_CONSTINIT const ::_pbi::DescriptorTable descriptor_table_src_2fapi_2eproto = {
     false,
     false,
-    1576,
+    2077,
     descriptor_table_protodef_src_2fapi_2eproto,
     "src/api.proto",
     &descriptor_table_src_2fapi_2eproto_once,
     nullptr,
     0,
-    14,
+    20,
     schemas,
     file_default_instances,
     TableStruct_src_2fapi_2eproto::offsets,
@@ -1690,6 +1927,1898 @@ void Skill::InternalSwap(Skill* PROTOBUF_RESTRICT PROTOBUF_NONNULL other) {
 }
 
 ::google::protobuf::Metadata Skill::GetMetadata() const {
+  return ::google::protobuf::Message::GetMetadataImpl(GetClassData()->full());
+}
+// ===================================================================
+
+class LoginReq::_Internal {
+ public:
+  using HasBits =
+      decltype(::std::declval<LoginReq>()._impl_._has_bits_);
+  static constexpr ::int32_t kHasBitsOffset =
+      8 * PROTOBUF_FIELD_OFFSET(LoginReq, _impl_._has_bits_);
+};
+
+LoginReq::LoginReq(::google::protobuf::Arena* PROTOBUF_NULLABLE arena)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(arena, LoginReq_class_data_.base()) {
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(arena) {
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  SharedCtor(arena);
+  // @@protoc_insertion_point(arena_constructor:GrpcLibrary.LoginReq)
+}
+PROTOBUF_NDEBUG_INLINE LoginReq::Impl_::Impl_(
+    [[maybe_unused]] ::google::protobuf::internal::InternalVisibility visibility,
+    [[maybe_unused]] ::google::protobuf::Arena* PROTOBUF_NULLABLE arena, const Impl_& from,
+    [[maybe_unused]] const ::GrpcLibrary::LoginReq& from_msg)
+      : _has_bits_{from._has_bits_},
+        _cached_size_{0},
+        account_(arena, from.account_),
+        passwd_(arena, from.passwd_) {}
+
+LoginReq::LoginReq(
+    ::google::protobuf::Arena* PROTOBUF_NULLABLE arena,
+    const LoginReq& from)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(arena, LoginReq_class_data_.base()) {
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(arena) {
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  LoginReq* const _this = this;
+  (void)_this;
+  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
+      from._internal_metadata_);
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_, from);
+
+  // @@protoc_insertion_point(copy_constructor:GrpcLibrary.LoginReq)
+}
+PROTOBUF_NDEBUG_INLINE LoginReq::Impl_::Impl_(
+    [[maybe_unused]] ::google::protobuf::internal::InternalVisibility visibility,
+    [[maybe_unused]] ::google::protobuf::Arena* PROTOBUF_NULLABLE arena)
+      : _cached_size_{0},
+        account_(arena),
+        passwd_(arena) {}
+
+inline void LoginReq::SharedCtor(::_pb::Arena* PROTOBUF_NULLABLE arena) {
+  new (&_impl_) Impl_(internal_visibility(), arena);
+}
+LoginReq::~LoginReq() {
+  // @@protoc_insertion_point(destructor:GrpcLibrary.LoginReq)
+  SharedDtor(*this);
+}
+inline void LoginReq::SharedDtor(MessageLite& self) {
+  LoginReq& this_ = static_cast<LoginReq&>(self);
+  if constexpr (::_pbi::DebugHardenCheckHasBitConsistency()) {
+    this_.CheckHasBitConsistency();
+  }
+  this_._internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
+  ABSL_DCHECK(this_.GetArena() == nullptr);
+  this_._impl_.account_.Destroy();
+  this_._impl_.passwd_.Destroy();
+  this_._impl_.~Impl_();
+}
+
+inline void* PROTOBUF_NONNULL LoginReq::PlacementNew_(
+    const void* PROTOBUF_NONNULL, void* PROTOBUF_NONNULL mem,
+    ::google::protobuf::Arena* PROTOBUF_NULLABLE arena) {
+  return ::new (mem) LoginReq(arena);
+}
+constexpr auto LoginReq::InternalNewImpl_() {
+  return ::google::protobuf::internal::MessageCreator::CopyInit(sizeof(LoginReq),
+                                            alignof(LoginReq));
+}
+constexpr auto LoginReq::InternalGenerateClassData_() {
+  return ::google::protobuf::internal::ClassDataFull{
+      ::google::protobuf::internal::ClassData{
+          &_LoginReq_default_instance_._instance,
+          &_table_.header,
+          nullptr,  // OnDemandRegisterArenaDtor
+          nullptr,  // IsInitialized
+          &LoginReq::MergeImpl,
+          ::google::protobuf::Message::GetNewImpl<LoginReq>(),
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+          &LoginReq::SharedDtor,
+          ::google::protobuf::Message::GetClearImpl<LoginReq>(), &LoginReq::ByteSizeLong,
+              &LoginReq::_InternalSerialize,
+#endif  // PROTOBUF_CUSTOM_VTABLE
+          PROTOBUF_FIELD_OFFSET(LoginReq, _impl_._cached_size_),
+          false,
+      },
+      &LoginReq::kDescriptorMethods,
+      &descriptor_table_src_2fapi_2eproto,
+      nullptr,  // tracker
+  };
+}
+
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 const
+    ::google::protobuf::internal::ClassDataFull LoginReq_class_data_ =
+        LoginReq::InternalGenerateClassData_();
+
+PROTOBUF_ATTRIBUTE_WEAK const ::google::protobuf::internal::ClassData* PROTOBUF_NONNULL
+LoginReq::GetClassData() const {
+  ::google::protobuf::internal::PrefetchToLocalCache(&LoginReq_class_data_);
+  ::google::protobuf::internal::PrefetchToLocalCache(LoginReq_class_data_.tc_table);
+  return LoginReq_class_data_.base();
+}
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::_pbi::TcParseTable<1, 2, 0, 42, 2>
+LoginReq::_table_ = {
+  {
+    PROTOBUF_FIELD_OFFSET(LoginReq, _impl_._has_bits_),
+    0, // no _extensions_
+    2, 8,  // max_field_number, fast_idx_mask
+    offsetof(decltype(_table_), field_lookup_table),
+    4294967292,  // skipmap
+    offsetof(decltype(_table_), field_entries),
+    2,  // num_field_entries
+    0,  // num_aux_entries
+    offsetof(decltype(_table_), field_names),  // no aux_entries
+    LoginReq_class_data_.base(),
+    nullptr,  // post_loop_handler
+    ::_pbi::TcParser::GenericFallback,  // fallback
+    #ifdef PROTOBUF_PREFETCH_PARSE_TABLE
+    ::_pbi::TcParser::GetTable<::GrpcLibrary::LoginReq>(),  // to_prefetch
+    #endif  // PROTOBUF_PREFETCH_PARSE_TABLE
+  }, {{
+    // string passwd = 2;
+    {::_pbi::TcParser::FastUS1,
+     {18, 1, 0,
+      PROTOBUF_FIELD_OFFSET(LoginReq, _impl_.passwd_)}},
+    // string account = 1;
+    {::_pbi::TcParser::FastUS1,
+     {10, 0, 0,
+      PROTOBUF_FIELD_OFFSET(LoginReq, _impl_.account_)}},
+  }}, {{
+    65535, 65535
+  }}, {{
+    // string account = 1;
+    {PROTOBUF_FIELD_OFFSET(LoginReq, _impl_.account_), _Internal::kHasBitsOffset + 0, 0, (0 | ::_fl::kFcOptional | ::_fl::kUtf8String | ::_fl::kRepAString)},
+    // string passwd = 2;
+    {PROTOBUF_FIELD_OFFSET(LoginReq, _impl_.passwd_), _Internal::kHasBitsOffset + 1, 0, (0 | ::_fl::kFcOptional | ::_fl::kUtf8String | ::_fl::kRepAString)},
+  }},
+  // no aux_entries
+  {{
+    "\24\7\6\0\0\0\0\0"
+    "GrpcLibrary.LoginReq"
+    "account"
+    "passwd"
+  }},
+};
+PROTOBUF_NOINLINE void LoginReq::Clear() {
+// @@protoc_insertion_point(message_clear_start:GrpcLibrary.LoginReq)
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  ::uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  cached_has_bits = _impl_._has_bits_[0];
+  if (BatchCheckHasBit(cached_has_bits, 0x00000003U)) {
+    if (CheckHasBit(cached_has_bits, 0x00000001U)) {
+      _impl_.account_.ClearNonDefaultToEmpty();
+    }
+    if (CheckHasBit(cached_has_bits, 0x00000002U)) {
+      _impl_.passwd_.ClearNonDefaultToEmpty();
+    }
+  }
+  _impl_._has_bits_.Clear();
+  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
+}
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+::uint8_t* PROTOBUF_NONNULL LoginReq::_InternalSerialize(
+    const ::google::protobuf::MessageLite& base, ::uint8_t* PROTOBUF_NONNULL target,
+    ::google::protobuf::io::EpsCopyOutputStream* PROTOBUF_NONNULL stream) {
+  const LoginReq& this_ = static_cast<const LoginReq&>(base);
+#else   // PROTOBUF_CUSTOM_VTABLE
+::uint8_t* PROTOBUF_NONNULL LoginReq::_InternalSerialize(
+    ::uint8_t* PROTOBUF_NONNULL target,
+    ::google::protobuf::io::EpsCopyOutputStream* PROTOBUF_NONNULL stream) const {
+  const LoginReq& this_ = *this;
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  if constexpr (::_pbi::DebugHardenCheckHasBitConsistency()) {
+    this_.CheckHasBitConsistency();
+  }
+  // @@protoc_insertion_point(serialize_to_array_start:GrpcLibrary.LoginReq)
+  ::uint32_t cached_has_bits = 0;
+  (void)cached_has_bits;
+
+  cached_has_bits = this_._impl_._has_bits_[0];
+  // string account = 1;
+  if (CheckHasBit(cached_has_bits, 0x00000001U)) {
+    if (!this_._internal_account().empty()) {
+      const ::std::string& _s = this_._internal_account();
+      ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+          _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "GrpcLibrary.LoginReq.account");
+      target = stream->WriteStringMaybeAliased(1, _s, target);
+    }
+  }
+
+  // string passwd = 2;
+  if (CheckHasBit(cached_has_bits, 0x00000002U)) {
+    if (!this_._internal_passwd().empty()) {
+      const ::std::string& _s = this_._internal_passwd();
+      ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+          _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "GrpcLibrary.LoginReq.passwd");
+      target = stream->WriteStringMaybeAliased(2, _s, target);
+    }
+  }
+
+  if (ABSL_PREDICT_FALSE(this_._internal_metadata_.have_unknown_fields())) {
+    target =
+        ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+            this_._internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:GrpcLibrary.LoginReq)
+  return target;
+}
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+::size_t LoginReq::ByteSizeLong(const MessageLite& base) {
+  const LoginReq& this_ = static_cast<const LoginReq&>(base);
+#else   // PROTOBUF_CUSTOM_VTABLE
+::size_t LoginReq::ByteSizeLong() const {
+  const LoginReq& this_ = *this;
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  // @@protoc_insertion_point(message_byte_size_start:GrpcLibrary.LoginReq)
+  ::size_t total_size = 0;
+
+  ::uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void)cached_has_bits;
+
+  ::_pbi::Prefetch5LinesFrom7Lines(&this_);
+  cached_has_bits = this_._impl_._has_bits_[0];
+  if (BatchCheckHasBit(cached_has_bits, 0x00000003U)) {
+    // string account = 1;
+    if (CheckHasBit(cached_has_bits, 0x00000001U)) {
+      if (!this_._internal_account().empty()) {
+        total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
+                                        this_._internal_account());
+      }
+    }
+    // string passwd = 2;
+    if (CheckHasBit(cached_has_bits, 0x00000002U)) {
+      if (!this_._internal_passwd().empty()) {
+        total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
+                                        this_._internal_passwd());
+      }
+    }
+  }
+  return this_.MaybeComputeUnknownFieldsSize(total_size,
+                                             &this_._impl_._cached_size_);
+}
+
+void LoginReq::MergeImpl(::google::protobuf::MessageLite& to_msg,
+                            const ::google::protobuf::MessageLite& from_msg) {
+   auto* const _this =
+      static_cast<LoginReq*>(&to_msg);
+  auto& from = static_cast<const LoginReq&>(from_msg);
+  if constexpr (::_pbi::DebugHardenCheckHasBitConsistency()) {
+    from.CheckHasBitConsistency();
+  }
+  // @@protoc_insertion_point(class_specific_merge_from_start:GrpcLibrary.LoginReq)
+  ABSL_DCHECK_NE(&from, _this);
+  ::uint32_t cached_has_bits = 0;
+  (void)cached_has_bits;
+
+  cached_has_bits = from._impl_._has_bits_[0];
+  if (BatchCheckHasBit(cached_has_bits, 0x00000003U)) {
+    if (CheckHasBit(cached_has_bits, 0x00000001U)) {
+      if (!from._internal_account().empty()) {
+        _this->_internal_set_account(from._internal_account());
+      } else {
+        if (_this->_impl_.account_.IsDefault()) {
+          _this->_internal_set_account("");
+        }
+      }
+    }
+    if (CheckHasBit(cached_has_bits, 0x00000002U)) {
+      if (!from._internal_passwd().empty()) {
+        _this->_internal_set_passwd(from._internal_passwd());
+      } else {
+        if (_this->_impl_.passwd_.IsDefault()) {
+          _this->_internal_set_passwd("");
+        }
+      }
+    }
+  }
+  _this->_impl_._has_bits_[0] |= cached_has_bits;
+  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
+      from._internal_metadata_);
+}
+
+void LoginReq::CopyFrom(const LoginReq& from) {
+  // @@protoc_insertion_point(class_specific_copy_from_start:GrpcLibrary.LoginReq)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+
+void LoginReq::InternalSwap(LoginReq* PROTOBUF_RESTRICT PROTOBUF_NONNULL other) {
+  using ::std::swap;
+  auto* arena = GetArena();
+  ABSL_DCHECK_EQ(arena, other->GetArena());
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.account_, &other->_impl_.account_, arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.passwd_, &other->_impl_.passwd_, arena);
+}
+
+::google::protobuf::Metadata LoginReq::GetMetadata() const {
+  return ::google::protobuf::Message::GetMetadataImpl(GetClassData()->full());
+}
+// ===================================================================
+
+class LoginResp::_Internal {
+ public:
+  using HasBits =
+      decltype(::std::declval<LoginResp>()._impl_._has_bits_);
+  static constexpr ::int32_t kHasBitsOffset =
+      8 * PROTOBUF_FIELD_OFFSET(LoginResp, _impl_._has_bits_);
+};
+
+LoginResp::LoginResp(::google::protobuf::Arena* PROTOBUF_NULLABLE arena)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(arena, LoginResp_class_data_.base()) {
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(arena) {
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  SharedCtor(arena);
+  // @@protoc_insertion_point(arena_constructor:GrpcLibrary.LoginResp)
+}
+PROTOBUF_NDEBUG_INLINE LoginResp::Impl_::Impl_(
+    [[maybe_unused]] ::google::protobuf::internal::InternalVisibility visibility,
+    [[maybe_unused]] ::google::protobuf::Arena* PROTOBUF_NULLABLE arena, const Impl_& from,
+    [[maybe_unused]] const ::GrpcLibrary::LoginResp& from_msg)
+      : _has_bits_{from._has_bits_},
+        _cached_size_{0},
+        auth_(arena, from.auth_) {}
+
+LoginResp::LoginResp(
+    ::google::protobuf::Arena* PROTOBUF_NULLABLE arena,
+    const LoginResp& from)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(arena, LoginResp_class_data_.base()) {
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(arena) {
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  LoginResp* const _this = this;
+  (void)_this;
+  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
+      from._internal_metadata_);
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_, from);
+  ::memcpy(reinterpret_cast<char*>(&_impl_) +
+               offsetof(Impl_, error_code_),
+           reinterpret_cast<const char*>(&from._impl_) +
+               offsetof(Impl_, error_code_),
+           offsetof(Impl_, user_id_) -
+               offsetof(Impl_, error_code_) +
+               sizeof(Impl_::user_id_));
+
+  // @@protoc_insertion_point(copy_constructor:GrpcLibrary.LoginResp)
+}
+PROTOBUF_NDEBUG_INLINE LoginResp::Impl_::Impl_(
+    [[maybe_unused]] ::google::protobuf::internal::InternalVisibility visibility,
+    [[maybe_unused]] ::google::protobuf::Arena* PROTOBUF_NULLABLE arena)
+      : _cached_size_{0},
+        auth_(arena) {}
+
+inline void LoginResp::SharedCtor(::_pb::Arena* PROTOBUF_NULLABLE arena) {
+  new (&_impl_) Impl_(internal_visibility(), arena);
+  ::memset(reinterpret_cast<char*>(&_impl_) +
+               offsetof(Impl_, error_code_),
+           0,
+           offsetof(Impl_, user_id_) -
+               offsetof(Impl_, error_code_) +
+               sizeof(Impl_::user_id_));
+}
+LoginResp::~LoginResp() {
+  // @@protoc_insertion_point(destructor:GrpcLibrary.LoginResp)
+  SharedDtor(*this);
+}
+inline void LoginResp::SharedDtor(MessageLite& self) {
+  LoginResp& this_ = static_cast<LoginResp&>(self);
+  if constexpr (::_pbi::DebugHardenCheckHasBitConsistency()) {
+    this_.CheckHasBitConsistency();
+  }
+  this_._internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
+  ABSL_DCHECK(this_.GetArena() == nullptr);
+  this_._impl_.auth_.Destroy();
+  this_._impl_.~Impl_();
+}
+
+inline void* PROTOBUF_NONNULL LoginResp::PlacementNew_(
+    const void* PROTOBUF_NONNULL, void* PROTOBUF_NONNULL mem,
+    ::google::protobuf::Arena* PROTOBUF_NULLABLE arena) {
+  return ::new (mem) LoginResp(arena);
+}
+constexpr auto LoginResp::InternalNewImpl_() {
+  return ::google::protobuf::internal::MessageCreator::CopyInit(sizeof(LoginResp),
+                                            alignof(LoginResp));
+}
+constexpr auto LoginResp::InternalGenerateClassData_() {
+  return ::google::protobuf::internal::ClassDataFull{
+      ::google::protobuf::internal::ClassData{
+          &_LoginResp_default_instance_._instance,
+          &_table_.header,
+          nullptr,  // OnDemandRegisterArenaDtor
+          nullptr,  // IsInitialized
+          &LoginResp::MergeImpl,
+          ::google::protobuf::Message::GetNewImpl<LoginResp>(),
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+          &LoginResp::SharedDtor,
+          ::google::protobuf::Message::GetClearImpl<LoginResp>(), &LoginResp::ByteSizeLong,
+              &LoginResp::_InternalSerialize,
+#endif  // PROTOBUF_CUSTOM_VTABLE
+          PROTOBUF_FIELD_OFFSET(LoginResp, _impl_._cached_size_),
+          false,
+      },
+      &LoginResp::kDescriptorMethods,
+      &descriptor_table_src_2fapi_2eproto,
+      nullptr,  // tracker
+  };
+}
+
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 const
+    ::google::protobuf::internal::ClassDataFull LoginResp_class_data_ =
+        LoginResp::InternalGenerateClassData_();
+
+PROTOBUF_ATTRIBUTE_WEAK const ::google::protobuf::internal::ClassData* PROTOBUF_NONNULL
+LoginResp::GetClassData() const {
+  ::google::protobuf::internal::PrefetchToLocalCache(&LoginResp_class_data_);
+  ::google::protobuf::internal::PrefetchToLocalCache(LoginResp_class_data_.tc_table);
+  return LoginResp_class_data_.base();
+}
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::_pbi::TcParseTable<2, 3, 0, 34, 2>
+LoginResp::_table_ = {
+  {
+    PROTOBUF_FIELD_OFFSET(LoginResp, _impl_._has_bits_),
+    0, // no _extensions_
+    3, 24,  // max_field_number, fast_idx_mask
+    offsetof(decltype(_table_), field_lookup_table),
+    4294967288,  // skipmap
+    offsetof(decltype(_table_), field_entries),
+    3,  // num_field_entries
+    0,  // num_aux_entries
+    offsetof(decltype(_table_), field_names),  // no aux_entries
+    LoginResp_class_data_.base(),
+    nullptr,  // post_loop_handler
+    ::_pbi::TcParser::GenericFallback,  // fallback
+    #ifdef PROTOBUF_PREFETCH_PARSE_TABLE
+    ::_pbi::TcParser::GetTable<::GrpcLibrary::LoginResp>(),  // to_prefetch
+    #endif  // PROTOBUF_PREFETCH_PARSE_TABLE
+  }, {{
+    {::_pbi::TcParser::MiniParse, {}},
+    // int32 error_code = 1;
+    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(LoginResp, _impl_.error_code_), 1>(),
+     {8, 1, 0,
+      PROTOBUF_FIELD_OFFSET(LoginResp, _impl_.error_code_)}},
+    // int32 user_id = 2;
+    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(LoginResp, _impl_.user_id_), 2>(),
+     {16, 2, 0,
+      PROTOBUF_FIELD_OFFSET(LoginResp, _impl_.user_id_)}},
+    // string auth = 3;
+    {::_pbi::TcParser::FastUS1,
+     {26, 0, 0,
+      PROTOBUF_FIELD_OFFSET(LoginResp, _impl_.auth_)}},
+  }}, {{
+    65535, 65535
+  }}, {{
+    // int32 error_code = 1;
+    {PROTOBUF_FIELD_OFFSET(LoginResp, _impl_.error_code_), _Internal::kHasBitsOffset + 1, 0, (0 | ::_fl::kFcOptional | ::_fl::kInt32)},
+    // int32 user_id = 2;
+    {PROTOBUF_FIELD_OFFSET(LoginResp, _impl_.user_id_), _Internal::kHasBitsOffset + 2, 0, (0 | ::_fl::kFcOptional | ::_fl::kInt32)},
+    // string auth = 3;
+    {PROTOBUF_FIELD_OFFSET(LoginResp, _impl_.auth_), _Internal::kHasBitsOffset + 0, 0, (0 | ::_fl::kFcOptional | ::_fl::kUtf8String | ::_fl::kRepAString)},
+  }},
+  // no aux_entries
+  {{
+    "\25\0\0\4\0\0\0\0"
+    "GrpcLibrary.LoginResp"
+    "auth"
+  }},
+};
+PROTOBUF_NOINLINE void LoginResp::Clear() {
+// @@protoc_insertion_point(message_clear_start:GrpcLibrary.LoginResp)
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  ::uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  cached_has_bits = _impl_._has_bits_[0];
+  if (CheckHasBit(cached_has_bits, 0x00000001U)) {
+    _impl_.auth_.ClearNonDefaultToEmpty();
+  }
+  if (BatchCheckHasBit(cached_has_bits, 0x00000006U)) {
+    ::memset(&_impl_.error_code_, 0, static_cast<::size_t>(
+        reinterpret_cast<char*>(&_impl_.user_id_) -
+        reinterpret_cast<char*>(&_impl_.error_code_)) + sizeof(_impl_.user_id_));
+  }
+  _impl_._has_bits_.Clear();
+  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
+}
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+::uint8_t* PROTOBUF_NONNULL LoginResp::_InternalSerialize(
+    const ::google::protobuf::MessageLite& base, ::uint8_t* PROTOBUF_NONNULL target,
+    ::google::protobuf::io::EpsCopyOutputStream* PROTOBUF_NONNULL stream) {
+  const LoginResp& this_ = static_cast<const LoginResp&>(base);
+#else   // PROTOBUF_CUSTOM_VTABLE
+::uint8_t* PROTOBUF_NONNULL LoginResp::_InternalSerialize(
+    ::uint8_t* PROTOBUF_NONNULL target,
+    ::google::protobuf::io::EpsCopyOutputStream* PROTOBUF_NONNULL stream) const {
+  const LoginResp& this_ = *this;
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  if constexpr (::_pbi::DebugHardenCheckHasBitConsistency()) {
+    this_.CheckHasBitConsistency();
+  }
+  // @@protoc_insertion_point(serialize_to_array_start:GrpcLibrary.LoginResp)
+  ::uint32_t cached_has_bits = 0;
+  (void)cached_has_bits;
+
+  cached_has_bits = this_._impl_._has_bits_[0];
+  // int32 error_code = 1;
+  if (CheckHasBit(cached_has_bits, 0x00000002U)) {
+    if (this_._internal_error_code() != 0) {
+      target =
+          ::google::protobuf::internal::WireFormatLite::WriteInt32ToArrayWithField<1>(
+              stream, this_._internal_error_code(), target);
+    }
+  }
+
+  // int32 user_id = 2;
+  if (CheckHasBit(cached_has_bits, 0x00000004U)) {
+    if (this_._internal_user_id() != 0) {
+      target =
+          ::google::protobuf::internal::WireFormatLite::WriteInt32ToArrayWithField<2>(
+              stream, this_._internal_user_id(), target);
+    }
+  }
+
+  // string auth = 3;
+  if (CheckHasBit(cached_has_bits, 0x00000001U)) {
+    if (!this_._internal_auth().empty()) {
+      const ::std::string& _s = this_._internal_auth();
+      ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+          _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "GrpcLibrary.LoginResp.auth");
+      target = stream->WriteStringMaybeAliased(3, _s, target);
+    }
+  }
+
+  if (ABSL_PREDICT_FALSE(this_._internal_metadata_.have_unknown_fields())) {
+    target =
+        ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+            this_._internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:GrpcLibrary.LoginResp)
+  return target;
+}
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+::size_t LoginResp::ByteSizeLong(const MessageLite& base) {
+  const LoginResp& this_ = static_cast<const LoginResp&>(base);
+#else   // PROTOBUF_CUSTOM_VTABLE
+::size_t LoginResp::ByteSizeLong() const {
+  const LoginResp& this_ = *this;
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  // @@protoc_insertion_point(message_byte_size_start:GrpcLibrary.LoginResp)
+  ::size_t total_size = 0;
+
+  ::uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void)cached_has_bits;
+
+  ::_pbi::Prefetch5LinesFrom7Lines(&this_);
+  cached_has_bits = this_._impl_._has_bits_[0];
+  if (BatchCheckHasBit(cached_has_bits, 0x00000007U)) {
+    // string auth = 3;
+    if (CheckHasBit(cached_has_bits, 0x00000001U)) {
+      if (!this_._internal_auth().empty()) {
+        total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
+                                        this_._internal_auth());
+      }
+    }
+    // int32 error_code = 1;
+    if (CheckHasBit(cached_has_bits, 0x00000002U)) {
+      if (this_._internal_error_code() != 0) {
+        total_size += ::_pbi::WireFormatLite::Int32SizePlusOne(
+            this_._internal_error_code());
+      }
+    }
+    // int32 user_id = 2;
+    if (CheckHasBit(cached_has_bits, 0x00000004U)) {
+      if (this_._internal_user_id() != 0) {
+        total_size += ::_pbi::WireFormatLite::Int32SizePlusOne(
+            this_._internal_user_id());
+      }
+    }
+  }
+  return this_.MaybeComputeUnknownFieldsSize(total_size,
+                                             &this_._impl_._cached_size_);
+}
+
+void LoginResp::MergeImpl(::google::protobuf::MessageLite& to_msg,
+                            const ::google::protobuf::MessageLite& from_msg) {
+   auto* const _this =
+      static_cast<LoginResp*>(&to_msg);
+  auto& from = static_cast<const LoginResp&>(from_msg);
+  if constexpr (::_pbi::DebugHardenCheckHasBitConsistency()) {
+    from.CheckHasBitConsistency();
+  }
+  // @@protoc_insertion_point(class_specific_merge_from_start:GrpcLibrary.LoginResp)
+  ABSL_DCHECK_NE(&from, _this);
+  ::uint32_t cached_has_bits = 0;
+  (void)cached_has_bits;
+
+  cached_has_bits = from._impl_._has_bits_[0];
+  if (BatchCheckHasBit(cached_has_bits, 0x00000007U)) {
+    if (CheckHasBit(cached_has_bits, 0x00000001U)) {
+      if (!from._internal_auth().empty()) {
+        _this->_internal_set_auth(from._internal_auth());
+      } else {
+        if (_this->_impl_.auth_.IsDefault()) {
+          _this->_internal_set_auth("");
+        }
+      }
+    }
+    if (CheckHasBit(cached_has_bits, 0x00000002U)) {
+      if (from._internal_error_code() != 0) {
+        _this->_impl_.error_code_ = from._impl_.error_code_;
+      }
+    }
+    if (CheckHasBit(cached_has_bits, 0x00000004U)) {
+      if (from._internal_user_id() != 0) {
+        _this->_impl_.user_id_ = from._impl_.user_id_;
+      }
+    }
+  }
+  _this->_impl_._has_bits_[0] |= cached_has_bits;
+  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
+      from._internal_metadata_);
+}
+
+void LoginResp::CopyFrom(const LoginResp& from) {
+  // @@protoc_insertion_point(class_specific_copy_from_start:GrpcLibrary.LoginResp)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+
+void LoginResp::InternalSwap(LoginResp* PROTOBUF_RESTRICT PROTOBUF_NONNULL other) {
+  using ::std::swap;
+  auto* arena = GetArena();
+  ABSL_DCHECK_EQ(arena, other->GetArena());
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.auth_, &other->_impl_.auth_, arena);
+  ::google::protobuf::internal::memswap<
+      PROTOBUF_FIELD_OFFSET(LoginResp, _impl_.user_id_)
+      + sizeof(LoginResp::_impl_.user_id_)
+      - PROTOBUF_FIELD_OFFSET(LoginResp, _impl_.error_code_)>(
+          reinterpret_cast<char*>(&_impl_.error_code_),
+          reinterpret_cast<char*>(&other->_impl_.error_code_));
+}
+
+::google::protobuf::Metadata LoginResp::GetMetadata() const {
+  return ::google::protobuf::Message::GetMetadataImpl(GetClassData()->full());
+}
+// ===================================================================
+
+class LogoutReq::_Internal {
+ public:
+  using HasBits =
+      decltype(::std::declval<LogoutReq>()._impl_._has_bits_);
+  static constexpr ::int32_t kHasBitsOffset =
+      8 * PROTOBUF_FIELD_OFFSET(LogoutReq, _impl_._has_bits_);
+};
+
+LogoutReq::LogoutReq(::google::protobuf::Arena* PROTOBUF_NULLABLE arena)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(arena, LogoutReq_class_data_.base()) {
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(arena) {
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  SharedCtor(arena);
+  // @@protoc_insertion_point(arena_constructor:GrpcLibrary.LogoutReq)
+}
+PROTOBUF_NDEBUG_INLINE LogoutReq::Impl_::Impl_(
+    [[maybe_unused]] ::google::protobuf::internal::InternalVisibility visibility,
+    [[maybe_unused]] ::google::protobuf::Arena* PROTOBUF_NULLABLE arena, const Impl_& from,
+    [[maybe_unused]] const ::GrpcLibrary::LogoutReq& from_msg)
+      : _has_bits_{from._has_bits_},
+        _cached_size_{0},
+        auth_(arena, from.auth_) {}
+
+LogoutReq::LogoutReq(
+    ::google::protobuf::Arena* PROTOBUF_NULLABLE arena,
+    const LogoutReq& from)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(arena, LogoutReq_class_data_.base()) {
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(arena) {
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  LogoutReq* const _this = this;
+  (void)_this;
+  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
+      from._internal_metadata_);
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_, from);
+  _impl_.user_id_ = from._impl_.user_id_;
+
+  // @@protoc_insertion_point(copy_constructor:GrpcLibrary.LogoutReq)
+}
+PROTOBUF_NDEBUG_INLINE LogoutReq::Impl_::Impl_(
+    [[maybe_unused]] ::google::protobuf::internal::InternalVisibility visibility,
+    [[maybe_unused]] ::google::protobuf::Arena* PROTOBUF_NULLABLE arena)
+      : _cached_size_{0},
+        auth_(arena) {}
+
+inline void LogoutReq::SharedCtor(::_pb::Arena* PROTOBUF_NULLABLE arena) {
+  new (&_impl_) Impl_(internal_visibility(), arena);
+  _impl_.user_id_ = {};
+}
+LogoutReq::~LogoutReq() {
+  // @@protoc_insertion_point(destructor:GrpcLibrary.LogoutReq)
+  SharedDtor(*this);
+}
+inline void LogoutReq::SharedDtor(MessageLite& self) {
+  LogoutReq& this_ = static_cast<LogoutReq&>(self);
+  if constexpr (::_pbi::DebugHardenCheckHasBitConsistency()) {
+    this_.CheckHasBitConsistency();
+  }
+  this_._internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
+  ABSL_DCHECK(this_.GetArena() == nullptr);
+  this_._impl_.auth_.Destroy();
+  this_._impl_.~Impl_();
+}
+
+inline void* PROTOBUF_NONNULL LogoutReq::PlacementNew_(
+    const void* PROTOBUF_NONNULL, void* PROTOBUF_NONNULL mem,
+    ::google::protobuf::Arena* PROTOBUF_NULLABLE arena) {
+  return ::new (mem) LogoutReq(arena);
+}
+constexpr auto LogoutReq::InternalNewImpl_() {
+  return ::google::protobuf::internal::MessageCreator::CopyInit(sizeof(LogoutReq),
+                                            alignof(LogoutReq));
+}
+constexpr auto LogoutReq::InternalGenerateClassData_() {
+  return ::google::protobuf::internal::ClassDataFull{
+      ::google::protobuf::internal::ClassData{
+          &_LogoutReq_default_instance_._instance,
+          &_table_.header,
+          nullptr,  // OnDemandRegisterArenaDtor
+          nullptr,  // IsInitialized
+          &LogoutReq::MergeImpl,
+          ::google::protobuf::Message::GetNewImpl<LogoutReq>(),
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+          &LogoutReq::SharedDtor,
+          ::google::protobuf::Message::GetClearImpl<LogoutReq>(), &LogoutReq::ByteSizeLong,
+              &LogoutReq::_InternalSerialize,
+#endif  // PROTOBUF_CUSTOM_VTABLE
+          PROTOBUF_FIELD_OFFSET(LogoutReq, _impl_._cached_size_),
+          false,
+      },
+      &LogoutReq::kDescriptorMethods,
+      &descriptor_table_src_2fapi_2eproto,
+      nullptr,  // tracker
+  };
+}
+
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 const
+    ::google::protobuf::internal::ClassDataFull LogoutReq_class_data_ =
+        LogoutReq::InternalGenerateClassData_();
+
+PROTOBUF_ATTRIBUTE_WEAK const ::google::protobuf::internal::ClassData* PROTOBUF_NONNULL
+LogoutReq::GetClassData() const {
+  ::google::protobuf::internal::PrefetchToLocalCache(&LogoutReq_class_data_);
+  ::google::protobuf::internal::PrefetchToLocalCache(LogoutReq_class_data_.tc_table);
+  return LogoutReq_class_data_.base();
+}
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::_pbi::TcParseTable<1, 2, 0, 34, 2>
+LogoutReq::_table_ = {
+  {
+    PROTOBUF_FIELD_OFFSET(LogoutReq, _impl_._has_bits_),
+    0, // no _extensions_
+    2, 8,  // max_field_number, fast_idx_mask
+    offsetof(decltype(_table_), field_lookup_table),
+    4294967292,  // skipmap
+    offsetof(decltype(_table_), field_entries),
+    2,  // num_field_entries
+    0,  // num_aux_entries
+    offsetof(decltype(_table_), field_names),  // no aux_entries
+    LogoutReq_class_data_.base(),
+    nullptr,  // post_loop_handler
+    ::_pbi::TcParser::GenericFallback,  // fallback
+    #ifdef PROTOBUF_PREFETCH_PARSE_TABLE
+    ::_pbi::TcParser::GetTable<::GrpcLibrary::LogoutReq>(),  // to_prefetch
+    #endif  // PROTOBUF_PREFETCH_PARSE_TABLE
+  }, {{
+    // string auth = 2;
+    {::_pbi::TcParser::FastUS1,
+     {18, 0, 0,
+      PROTOBUF_FIELD_OFFSET(LogoutReq, _impl_.auth_)}},
+    // int32 user_id = 1;
+    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(LogoutReq, _impl_.user_id_), 1>(),
+     {8, 1, 0,
+      PROTOBUF_FIELD_OFFSET(LogoutReq, _impl_.user_id_)}},
+  }}, {{
+    65535, 65535
+  }}, {{
+    // int32 user_id = 1;
+    {PROTOBUF_FIELD_OFFSET(LogoutReq, _impl_.user_id_), _Internal::kHasBitsOffset + 1, 0, (0 | ::_fl::kFcOptional | ::_fl::kInt32)},
+    // string auth = 2;
+    {PROTOBUF_FIELD_OFFSET(LogoutReq, _impl_.auth_), _Internal::kHasBitsOffset + 0, 0, (0 | ::_fl::kFcOptional | ::_fl::kUtf8String | ::_fl::kRepAString)},
+  }},
+  // no aux_entries
+  {{
+    "\25\0\4\0\0\0\0\0"
+    "GrpcLibrary.LogoutReq"
+    "auth"
+  }},
+};
+PROTOBUF_NOINLINE void LogoutReq::Clear() {
+// @@protoc_insertion_point(message_clear_start:GrpcLibrary.LogoutReq)
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  ::uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  cached_has_bits = _impl_._has_bits_[0];
+  if (CheckHasBit(cached_has_bits, 0x00000001U)) {
+    _impl_.auth_.ClearNonDefaultToEmpty();
+  }
+  _impl_.user_id_ = 0;
+  _impl_._has_bits_.Clear();
+  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
+}
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+::uint8_t* PROTOBUF_NONNULL LogoutReq::_InternalSerialize(
+    const ::google::protobuf::MessageLite& base, ::uint8_t* PROTOBUF_NONNULL target,
+    ::google::protobuf::io::EpsCopyOutputStream* PROTOBUF_NONNULL stream) {
+  const LogoutReq& this_ = static_cast<const LogoutReq&>(base);
+#else   // PROTOBUF_CUSTOM_VTABLE
+::uint8_t* PROTOBUF_NONNULL LogoutReq::_InternalSerialize(
+    ::uint8_t* PROTOBUF_NONNULL target,
+    ::google::protobuf::io::EpsCopyOutputStream* PROTOBUF_NONNULL stream) const {
+  const LogoutReq& this_ = *this;
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  if constexpr (::_pbi::DebugHardenCheckHasBitConsistency()) {
+    this_.CheckHasBitConsistency();
+  }
+  // @@protoc_insertion_point(serialize_to_array_start:GrpcLibrary.LogoutReq)
+  ::uint32_t cached_has_bits = 0;
+  (void)cached_has_bits;
+
+  cached_has_bits = this_._impl_._has_bits_[0];
+  // int32 user_id = 1;
+  if (CheckHasBit(cached_has_bits, 0x00000002U)) {
+    if (this_._internal_user_id() != 0) {
+      target =
+          ::google::protobuf::internal::WireFormatLite::WriteInt32ToArrayWithField<1>(
+              stream, this_._internal_user_id(), target);
+    }
+  }
+
+  // string auth = 2;
+  if (CheckHasBit(cached_has_bits, 0x00000001U)) {
+    if (!this_._internal_auth().empty()) {
+      const ::std::string& _s = this_._internal_auth();
+      ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+          _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "GrpcLibrary.LogoutReq.auth");
+      target = stream->WriteStringMaybeAliased(2, _s, target);
+    }
+  }
+
+  if (ABSL_PREDICT_FALSE(this_._internal_metadata_.have_unknown_fields())) {
+    target =
+        ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+            this_._internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:GrpcLibrary.LogoutReq)
+  return target;
+}
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+::size_t LogoutReq::ByteSizeLong(const MessageLite& base) {
+  const LogoutReq& this_ = static_cast<const LogoutReq&>(base);
+#else   // PROTOBUF_CUSTOM_VTABLE
+::size_t LogoutReq::ByteSizeLong() const {
+  const LogoutReq& this_ = *this;
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  // @@protoc_insertion_point(message_byte_size_start:GrpcLibrary.LogoutReq)
+  ::size_t total_size = 0;
+
+  ::uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void)cached_has_bits;
+
+  ::_pbi::Prefetch5LinesFrom7Lines(&this_);
+  cached_has_bits = this_._impl_._has_bits_[0];
+  if (BatchCheckHasBit(cached_has_bits, 0x00000003U)) {
+    // string auth = 2;
+    if (CheckHasBit(cached_has_bits, 0x00000001U)) {
+      if (!this_._internal_auth().empty()) {
+        total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
+                                        this_._internal_auth());
+      }
+    }
+    // int32 user_id = 1;
+    if (CheckHasBit(cached_has_bits, 0x00000002U)) {
+      if (this_._internal_user_id() != 0) {
+        total_size += ::_pbi::WireFormatLite::Int32SizePlusOne(
+            this_._internal_user_id());
+      }
+    }
+  }
+  return this_.MaybeComputeUnknownFieldsSize(total_size,
+                                             &this_._impl_._cached_size_);
+}
+
+void LogoutReq::MergeImpl(::google::protobuf::MessageLite& to_msg,
+                            const ::google::protobuf::MessageLite& from_msg) {
+   auto* const _this =
+      static_cast<LogoutReq*>(&to_msg);
+  auto& from = static_cast<const LogoutReq&>(from_msg);
+  if constexpr (::_pbi::DebugHardenCheckHasBitConsistency()) {
+    from.CheckHasBitConsistency();
+  }
+  // @@protoc_insertion_point(class_specific_merge_from_start:GrpcLibrary.LogoutReq)
+  ABSL_DCHECK_NE(&from, _this);
+  ::uint32_t cached_has_bits = 0;
+  (void)cached_has_bits;
+
+  cached_has_bits = from._impl_._has_bits_[0];
+  if (BatchCheckHasBit(cached_has_bits, 0x00000003U)) {
+    if (CheckHasBit(cached_has_bits, 0x00000001U)) {
+      if (!from._internal_auth().empty()) {
+        _this->_internal_set_auth(from._internal_auth());
+      } else {
+        if (_this->_impl_.auth_.IsDefault()) {
+          _this->_internal_set_auth("");
+        }
+      }
+    }
+    if (CheckHasBit(cached_has_bits, 0x00000002U)) {
+      if (from._internal_user_id() != 0) {
+        _this->_impl_.user_id_ = from._impl_.user_id_;
+      }
+    }
+  }
+  _this->_impl_._has_bits_[0] |= cached_has_bits;
+  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
+      from._internal_metadata_);
+}
+
+void LogoutReq::CopyFrom(const LogoutReq& from) {
+  // @@protoc_insertion_point(class_specific_copy_from_start:GrpcLibrary.LogoutReq)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+
+void LogoutReq::InternalSwap(LogoutReq* PROTOBUF_RESTRICT PROTOBUF_NONNULL other) {
+  using ::std::swap;
+  auto* arena = GetArena();
+  ABSL_DCHECK_EQ(arena, other->GetArena());
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.auth_, &other->_impl_.auth_, arena);
+  swap(_impl_.user_id_, other->_impl_.user_id_);
+}
+
+::google::protobuf::Metadata LogoutReq::GetMetadata() const {
+  return ::google::protobuf::Message::GetMetadataImpl(GetClassData()->full());
+}
+// ===================================================================
+
+class LogoutResp::_Internal {
+ public:
+  using HasBits =
+      decltype(::std::declval<LogoutResp>()._impl_._has_bits_);
+  static constexpr ::int32_t kHasBitsOffset =
+      8 * PROTOBUF_FIELD_OFFSET(LogoutResp, _impl_._has_bits_);
+};
+
+LogoutResp::LogoutResp(::google::protobuf::Arena* PROTOBUF_NULLABLE arena)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(arena, LogoutResp_class_data_.base()) {
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(arena) {
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  SharedCtor(arena);
+  // @@protoc_insertion_point(arena_constructor:GrpcLibrary.LogoutResp)
+}
+LogoutResp::LogoutResp(
+    ::google::protobuf::Arena* PROTOBUF_NULLABLE arena, const LogoutResp& from)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(arena, LogoutResp_class_data_.base()),
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(arena),
+#endif  // PROTOBUF_CUSTOM_VTABLE
+      _impl_(from._impl_) {
+  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
+      from._internal_metadata_);
+}
+PROTOBUF_NDEBUG_INLINE LogoutResp::Impl_::Impl_(
+    [[maybe_unused]] ::google::protobuf::internal::InternalVisibility visibility,
+    [[maybe_unused]] ::google::protobuf::Arena* PROTOBUF_NULLABLE arena)
+      : _cached_size_{0} {}
+
+inline void LogoutResp::SharedCtor(::_pb::Arena* PROTOBUF_NULLABLE arena) {
+  new (&_impl_) Impl_(internal_visibility(), arena);
+  ::memset(reinterpret_cast<char*>(&_impl_) +
+               offsetof(Impl_, error_code_),
+           0,
+           offsetof(Impl_, user_id_) -
+               offsetof(Impl_, error_code_) +
+               sizeof(Impl_::user_id_));
+}
+LogoutResp::~LogoutResp() {
+  // @@protoc_insertion_point(destructor:GrpcLibrary.LogoutResp)
+  SharedDtor(*this);
+}
+inline void LogoutResp::SharedDtor(MessageLite& self) {
+  LogoutResp& this_ = static_cast<LogoutResp&>(self);
+  if constexpr (::_pbi::DebugHardenCheckHasBitConsistency()) {
+    this_.CheckHasBitConsistency();
+  }
+  this_._internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
+  ABSL_DCHECK(this_.GetArena() == nullptr);
+  this_._impl_.~Impl_();
+}
+
+inline void* PROTOBUF_NONNULL LogoutResp::PlacementNew_(
+    const void* PROTOBUF_NONNULL, void* PROTOBUF_NONNULL mem,
+    ::google::protobuf::Arena* PROTOBUF_NULLABLE arena) {
+  return ::new (mem) LogoutResp(arena);
+}
+constexpr auto LogoutResp::InternalNewImpl_() {
+  return ::google::protobuf::internal::MessageCreator::ZeroInit(sizeof(LogoutResp),
+                                            alignof(LogoutResp));
+}
+constexpr auto LogoutResp::InternalGenerateClassData_() {
+  return ::google::protobuf::internal::ClassDataFull{
+      ::google::protobuf::internal::ClassData{
+          &_LogoutResp_default_instance_._instance,
+          &_table_.header,
+          nullptr,  // OnDemandRegisterArenaDtor
+          nullptr,  // IsInitialized
+          &LogoutResp::MergeImpl,
+          ::google::protobuf::Message::GetNewImpl<LogoutResp>(),
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+          &LogoutResp::SharedDtor,
+          ::google::protobuf::Message::GetClearImpl<LogoutResp>(), &LogoutResp::ByteSizeLong,
+              &LogoutResp::_InternalSerialize,
+#endif  // PROTOBUF_CUSTOM_VTABLE
+          PROTOBUF_FIELD_OFFSET(LogoutResp, _impl_._cached_size_),
+          false,
+      },
+      &LogoutResp::kDescriptorMethods,
+      &descriptor_table_src_2fapi_2eproto,
+      nullptr,  // tracker
+  };
+}
+
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 const
+    ::google::protobuf::internal::ClassDataFull LogoutResp_class_data_ =
+        LogoutResp::InternalGenerateClassData_();
+
+PROTOBUF_ATTRIBUTE_WEAK const ::google::protobuf::internal::ClassData* PROTOBUF_NONNULL
+LogoutResp::GetClassData() const {
+  ::google::protobuf::internal::PrefetchToLocalCache(&LogoutResp_class_data_);
+  ::google::protobuf::internal::PrefetchToLocalCache(LogoutResp_class_data_.tc_table);
+  return LogoutResp_class_data_.base();
+}
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::_pbi::TcParseTable<1, 2, 0, 0, 2>
+LogoutResp::_table_ = {
+  {
+    PROTOBUF_FIELD_OFFSET(LogoutResp, _impl_._has_bits_),
+    0, // no _extensions_
+    2, 8,  // max_field_number, fast_idx_mask
+    offsetof(decltype(_table_), field_lookup_table),
+    4294967292,  // skipmap
+    offsetof(decltype(_table_), field_entries),
+    2,  // num_field_entries
+    0,  // num_aux_entries
+    offsetof(decltype(_table_), field_names),  // no aux_entries
+    LogoutResp_class_data_.base(),
+    nullptr,  // post_loop_handler
+    ::_pbi::TcParser::GenericFallback,  // fallback
+    #ifdef PROTOBUF_PREFETCH_PARSE_TABLE
+    ::_pbi::TcParser::GetTable<::GrpcLibrary::LogoutResp>(),  // to_prefetch
+    #endif  // PROTOBUF_PREFETCH_PARSE_TABLE
+  }, {{
+    // int32 user_id = 2;
+    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(LogoutResp, _impl_.user_id_), 1>(),
+     {16, 1, 0,
+      PROTOBUF_FIELD_OFFSET(LogoutResp, _impl_.user_id_)}},
+    // int32 error_code = 1;
+    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(LogoutResp, _impl_.error_code_), 0>(),
+     {8, 0, 0,
+      PROTOBUF_FIELD_OFFSET(LogoutResp, _impl_.error_code_)}},
+  }}, {{
+    65535, 65535
+  }}, {{
+    // int32 error_code = 1;
+    {PROTOBUF_FIELD_OFFSET(LogoutResp, _impl_.error_code_), _Internal::kHasBitsOffset + 0, 0, (0 | ::_fl::kFcOptional | ::_fl::kInt32)},
+    // int32 user_id = 2;
+    {PROTOBUF_FIELD_OFFSET(LogoutResp, _impl_.user_id_), _Internal::kHasBitsOffset + 1, 0, (0 | ::_fl::kFcOptional | ::_fl::kInt32)},
+  }},
+  // no aux_entries
+  {{
+  }},
+};
+PROTOBUF_NOINLINE void LogoutResp::Clear() {
+// @@protoc_insertion_point(message_clear_start:GrpcLibrary.LogoutResp)
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  ::uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  cached_has_bits = _impl_._has_bits_[0];
+  if (BatchCheckHasBit(cached_has_bits, 0x00000003U)) {
+    ::memset(&_impl_.error_code_, 0, static_cast<::size_t>(
+        reinterpret_cast<char*>(&_impl_.user_id_) -
+        reinterpret_cast<char*>(&_impl_.error_code_)) + sizeof(_impl_.user_id_));
+  }
+  _impl_._has_bits_.Clear();
+  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
+}
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+::uint8_t* PROTOBUF_NONNULL LogoutResp::_InternalSerialize(
+    const ::google::protobuf::MessageLite& base, ::uint8_t* PROTOBUF_NONNULL target,
+    ::google::protobuf::io::EpsCopyOutputStream* PROTOBUF_NONNULL stream) {
+  const LogoutResp& this_ = static_cast<const LogoutResp&>(base);
+#else   // PROTOBUF_CUSTOM_VTABLE
+::uint8_t* PROTOBUF_NONNULL LogoutResp::_InternalSerialize(
+    ::uint8_t* PROTOBUF_NONNULL target,
+    ::google::protobuf::io::EpsCopyOutputStream* PROTOBUF_NONNULL stream) const {
+  const LogoutResp& this_ = *this;
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  if constexpr (::_pbi::DebugHardenCheckHasBitConsistency()) {
+    this_.CheckHasBitConsistency();
+  }
+  // @@protoc_insertion_point(serialize_to_array_start:GrpcLibrary.LogoutResp)
+  ::uint32_t cached_has_bits = 0;
+  (void)cached_has_bits;
+
+  cached_has_bits = this_._impl_._has_bits_[0];
+  // int32 error_code = 1;
+  if (CheckHasBit(cached_has_bits, 0x00000001U)) {
+    if (this_._internal_error_code() != 0) {
+      target =
+          ::google::protobuf::internal::WireFormatLite::WriteInt32ToArrayWithField<1>(
+              stream, this_._internal_error_code(), target);
+    }
+  }
+
+  // int32 user_id = 2;
+  if (CheckHasBit(cached_has_bits, 0x00000002U)) {
+    if (this_._internal_user_id() != 0) {
+      target =
+          ::google::protobuf::internal::WireFormatLite::WriteInt32ToArrayWithField<2>(
+              stream, this_._internal_user_id(), target);
+    }
+  }
+
+  if (ABSL_PREDICT_FALSE(this_._internal_metadata_.have_unknown_fields())) {
+    target =
+        ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+            this_._internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:GrpcLibrary.LogoutResp)
+  return target;
+}
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+::size_t LogoutResp::ByteSizeLong(const MessageLite& base) {
+  const LogoutResp& this_ = static_cast<const LogoutResp&>(base);
+#else   // PROTOBUF_CUSTOM_VTABLE
+::size_t LogoutResp::ByteSizeLong() const {
+  const LogoutResp& this_ = *this;
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  // @@protoc_insertion_point(message_byte_size_start:GrpcLibrary.LogoutResp)
+  ::size_t total_size = 0;
+
+  ::uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void)cached_has_bits;
+
+  ::_pbi::Prefetch5LinesFrom7Lines(&this_);
+  cached_has_bits = this_._impl_._has_bits_[0];
+  if (BatchCheckHasBit(cached_has_bits, 0x00000003U)) {
+    // int32 error_code = 1;
+    if (CheckHasBit(cached_has_bits, 0x00000001U)) {
+      if (this_._internal_error_code() != 0) {
+        total_size += ::_pbi::WireFormatLite::Int32SizePlusOne(
+            this_._internal_error_code());
+      }
+    }
+    // int32 user_id = 2;
+    if (CheckHasBit(cached_has_bits, 0x00000002U)) {
+      if (this_._internal_user_id() != 0) {
+        total_size += ::_pbi::WireFormatLite::Int32SizePlusOne(
+            this_._internal_user_id());
+      }
+    }
+  }
+  return this_.MaybeComputeUnknownFieldsSize(total_size,
+                                             &this_._impl_._cached_size_);
+}
+
+void LogoutResp::MergeImpl(::google::protobuf::MessageLite& to_msg,
+                            const ::google::protobuf::MessageLite& from_msg) {
+   auto* const _this =
+      static_cast<LogoutResp*>(&to_msg);
+  auto& from = static_cast<const LogoutResp&>(from_msg);
+  if constexpr (::_pbi::DebugHardenCheckHasBitConsistency()) {
+    from.CheckHasBitConsistency();
+  }
+  // @@protoc_insertion_point(class_specific_merge_from_start:GrpcLibrary.LogoutResp)
+  ABSL_DCHECK_NE(&from, _this);
+  ::uint32_t cached_has_bits = 0;
+  (void)cached_has_bits;
+
+  cached_has_bits = from._impl_._has_bits_[0];
+  if (BatchCheckHasBit(cached_has_bits, 0x00000003U)) {
+    if (CheckHasBit(cached_has_bits, 0x00000001U)) {
+      if (from._internal_error_code() != 0) {
+        _this->_impl_.error_code_ = from._impl_.error_code_;
+      }
+    }
+    if (CheckHasBit(cached_has_bits, 0x00000002U)) {
+      if (from._internal_user_id() != 0) {
+        _this->_impl_.user_id_ = from._impl_.user_id_;
+      }
+    }
+  }
+  _this->_impl_._has_bits_[0] |= cached_has_bits;
+  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
+      from._internal_metadata_);
+}
+
+void LogoutResp::CopyFrom(const LogoutResp& from) {
+  // @@protoc_insertion_point(class_specific_copy_from_start:GrpcLibrary.LogoutResp)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+
+void LogoutResp::InternalSwap(LogoutResp* PROTOBUF_RESTRICT PROTOBUF_NONNULL other) {
+  using ::std::swap;
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
+  ::google::protobuf::internal::memswap<
+      PROTOBUF_FIELD_OFFSET(LogoutResp, _impl_.user_id_)
+      + sizeof(LogoutResp::_impl_.user_id_)
+      - PROTOBUF_FIELD_OFFSET(LogoutResp, _impl_.error_code_)>(
+          reinterpret_cast<char*>(&_impl_.error_code_),
+          reinterpret_cast<char*>(&other->_impl_.error_code_));
+}
+
+::google::protobuf::Metadata LogoutResp::GetMetadata() const {
+  return ::google::protobuf::Message::GetMetadataImpl(GetClassData()->full());
+}
+// ===================================================================
+
+class RegAccountReq::_Internal {
+ public:
+  using HasBits =
+      decltype(::std::declval<RegAccountReq>()._impl_._has_bits_);
+  static constexpr ::int32_t kHasBitsOffset =
+      8 * PROTOBUF_FIELD_OFFSET(RegAccountReq, _impl_._has_bits_);
+};
+
+RegAccountReq::RegAccountReq(::google::protobuf::Arena* PROTOBUF_NULLABLE arena)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(arena, RegAccountReq_class_data_.base()) {
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(arena) {
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  SharedCtor(arena);
+  // @@protoc_insertion_point(arena_constructor:GrpcLibrary.RegAccountReq)
+}
+PROTOBUF_NDEBUG_INLINE RegAccountReq::Impl_::Impl_(
+    [[maybe_unused]] ::google::protobuf::internal::InternalVisibility visibility,
+    [[maybe_unused]] ::google::protobuf::Arena* PROTOBUF_NULLABLE arena, const Impl_& from,
+    [[maybe_unused]] const ::GrpcLibrary::RegAccountReq& from_msg)
+      : _has_bits_{from._has_bits_},
+        _cached_size_{0},
+        account_(arena, from.account_),
+        passwd_(arena, from.passwd_) {}
+
+RegAccountReq::RegAccountReq(
+    ::google::protobuf::Arena* PROTOBUF_NULLABLE arena,
+    const RegAccountReq& from)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(arena, RegAccountReq_class_data_.base()) {
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(arena) {
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  RegAccountReq* const _this = this;
+  (void)_this;
+  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
+      from._internal_metadata_);
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_, from);
+
+  // @@protoc_insertion_point(copy_constructor:GrpcLibrary.RegAccountReq)
+}
+PROTOBUF_NDEBUG_INLINE RegAccountReq::Impl_::Impl_(
+    [[maybe_unused]] ::google::protobuf::internal::InternalVisibility visibility,
+    [[maybe_unused]] ::google::protobuf::Arena* PROTOBUF_NULLABLE arena)
+      : _cached_size_{0},
+        account_(arena),
+        passwd_(arena) {}
+
+inline void RegAccountReq::SharedCtor(::_pb::Arena* PROTOBUF_NULLABLE arena) {
+  new (&_impl_) Impl_(internal_visibility(), arena);
+}
+RegAccountReq::~RegAccountReq() {
+  // @@protoc_insertion_point(destructor:GrpcLibrary.RegAccountReq)
+  SharedDtor(*this);
+}
+inline void RegAccountReq::SharedDtor(MessageLite& self) {
+  RegAccountReq& this_ = static_cast<RegAccountReq&>(self);
+  if constexpr (::_pbi::DebugHardenCheckHasBitConsistency()) {
+    this_.CheckHasBitConsistency();
+  }
+  this_._internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
+  ABSL_DCHECK(this_.GetArena() == nullptr);
+  this_._impl_.account_.Destroy();
+  this_._impl_.passwd_.Destroy();
+  this_._impl_.~Impl_();
+}
+
+inline void* PROTOBUF_NONNULL RegAccountReq::PlacementNew_(
+    const void* PROTOBUF_NONNULL, void* PROTOBUF_NONNULL mem,
+    ::google::protobuf::Arena* PROTOBUF_NULLABLE arena) {
+  return ::new (mem) RegAccountReq(arena);
+}
+constexpr auto RegAccountReq::InternalNewImpl_() {
+  return ::google::protobuf::internal::MessageCreator::CopyInit(sizeof(RegAccountReq),
+                                            alignof(RegAccountReq));
+}
+constexpr auto RegAccountReq::InternalGenerateClassData_() {
+  return ::google::protobuf::internal::ClassDataFull{
+      ::google::protobuf::internal::ClassData{
+          &_RegAccountReq_default_instance_._instance,
+          &_table_.header,
+          nullptr,  // OnDemandRegisterArenaDtor
+          nullptr,  // IsInitialized
+          &RegAccountReq::MergeImpl,
+          ::google::protobuf::Message::GetNewImpl<RegAccountReq>(),
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+          &RegAccountReq::SharedDtor,
+          ::google::protobuf::Message::GetClearImpl<RegAccountReq>(), &RegAccountReq::ByteSizeLong,
+              &RegAccountReq::_InternalSerialize,
+#endif  // PROTOBUF_CUSTOM_VTABLE
+          PROTOBUF_FIELD_OFFSET(RegAccountReq, _impl_._cached_size_),
+          false,
+      },
+      &RegAccountReq::kDescriptorMethods,
+      &descriptor_table_src_2fapi_2eproto,
+      nullptr,  // tracker
+  };
+}
+
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 const
+    ::google::protobuf::internal::ClassDataFull RegAccountReq_class_data_ =
+        RegAccountReq::InternalGenerateClassData_();
+
+PROTOBUF_ATTRIBUTE_WEAK const ::google::protobuf::internal::ClassData* PROTOBUF_NONNULL
+RegAccountReq::GetClassData() const {
+  ::google::protobuf::internal::PrefetchToLocalCache(&RegAccountReq_class_data_);
+  ::google::protobuf::internal::PrefetchToLocalCache(RegAccountReq_class_data_.tc_table);
+  return RegAccountReq_class_data_.base();
+}
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::_pbi::TcParseTable<1, 2, 0, 47, 2>
+RegAccountReq::_table_ = {
+  {
+    PROTOBUF_FIELD_OFFSET(RegAccountReq, _impl_._has_bits_),
+    0, // no _extensions_
+    2, 8,  // max_field_number, fast_idx_mask
+    offsetof(decltype(_table_), field_lookup_table),
+    4294967292,  // skipmap
+    offsetof(decltype(_table_), field_entries),
+    2,  // num_field_entries
+    0,  // num_aux_entries
+    offsetof(decltype(_table_), field_names),  // no aux_entries
+    RegAccountReq_class_data_.base(),
+    nullptr,  // post_loop_handler
+    ::_pbi::TcParser::GenericFallback,  // fallback
+    #ifdef PROTOBUF_PREFETCH_PARSE_TABLE
+    ::_pbi::TcParser::GetTable<::GrpcLibrary::RegAccountReq>(),  // to_prefetch
+    #endif  // PROTOBUF_PREFETCH_PARSE_TABLE
+  }, {{
+    // string passwd = 2;
+    {::_pbi::TcParser::FastUS1,
+     {18, 1, 0,
+      PROTOBUF_FIELD_OFFSET(RegAccountReq, _impl_.passwd_)}},
+    // string account = 1;
+    {::_pbi::TcParser::FastUS1,
+     {10, 0, 0,
+      PROTOBUF_FIELD_OFFSET(RegAccountReq, _impl_.account_)}},
+  }}, {{
+    65535, 65535
+  }}, {{
+    // string account = 1;
+    {PROTOBUF_FIELD_OFFSET(RegAccountReq, _impl_.account_), _Internal::kHasBitsOffset + 0, 0, (0 | ::_fl::kFcOptional | ::_fl::kUtf8String | ::_fl::kRepAString)},
+    // string passwd = 2;
+    {PROTOBUF_FIELD_OFFSET(RegAccountReq, _impl_.passwd_), _Internal::kHasBitsOffset + 1, 0, (0 | ::_fl::kFcOptional | ::_fl::kUtf8String | ::_fl::kRepAString)},
+  }},
+  // no aux_entries
+  {{
+    "\31\7\6\0\0\0\0\0"
+    "GrpcLibrary.RegAccountReq"
+    "account"
+    "passwd"
+  }},
+};
+PROTOBUF_NOINLINE void RegAccountReq::Clear() {
+// @@protoc_insertion_point(message_clear_start:GrpcLibrary.RegAccountReq)
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  ::uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  cached_has_bits = _impl_._has_bits_[0];
+  if (BatchCheckHasBit(cached_has_bits, 0x00000003U)) {
+    if (CheckHasBit(cached_has_bits, 0x00000001U)) {
+      _impl_.account_.ClearNonDefaultToEmpty();
+    }
+    if (CheckHasBit(cached_has_bits, 0x00000002U)) {
+      _impl_.passwd_.ClearNonDefaultToEmpty();
+    }
+  }
+  _impl_._has_bits_.Clear();
+  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
+}
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+::uint8_t* PROTOBUF_NONNULL RegAccountReq::_InternalSerialize(
+    const ::google::protobuf::MessageLite& base, ::uint8_t* PROTOBUF_NONNULL target,
+    ::google::protobuf::io::EpsCopyOutputStream* PROTOBUF_NONNULL stream) {
+  const RegAccountReq& this_ = static_cast<const RegAccountReq&>(base);
+#else   // PROTOBUF_CUSTOM_VTABLE
+::uint8_t* PROTOBUF_NONNULL RegAccountReq::_InternalSerialize(
+    ::uint8_t* PROTOBUF_NONNULL target,
+    ::google::protobuf::io::EpsCopyOutputStream* PROTOBUF_NONNULL stream) const {
+  const RegAccountReq& this_ = *this;
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  if constexpr (::_pbi::DebugHardenCheckHasBitConsistency()) {
+    this_.CheckHasBitConsistency();
+  }
+  // @@protoc_insertion_point(serialize_to_array_start:GrpcLibrary.RegAccountReq)
+  ::uint32_t cached_has_bits = 0;
+  (void)cached_has_bits;
+
+  cached_has_bits = this_._impl_._has_bits_[0];
+  // string account = 1;
+  if (CheckHasBit(cached_has_bits, 0x00000001U)) {
+    if (!this_._internal_account().empty()) {
+      const ::std::string& _s = this_._internal_account();
+      ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+          _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "GrpcLibrary.RegAccountReq.account");
+      target = stream->WriteStringMaybeAliased(1, _s, target);
+    }
+  }
+
+  // string passwd = 2;
+  if (CheckHasBit(cached_has_bits, 0x00000002U)) {
+    if (!this_._internal_passwd().empty()) {
+      const ::std::string& _s = this_._internal_passwd();
+      ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+          _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "GrpcLibrary.RegAccountReq.passwd");
+      target = stream->WriteStringMaybeAliased(2, _s, target);
+    }
+  }
+
+  if (ABSL_PREDICT_FALSE(this_._internal_metadata_.have_unknown_fields())) {
+    target =
+        ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+            this_._internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:GrpcLibrary.RegAccountReq)
+  return target;
+}
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+::size_t RegAccountReq::ByteSizeLong(const MessageLite& base) {
+  const RegAccountReq& this_ = static_cast<const RegAccountReq&>(base);
+#else   // PROTOBUF_CUSTOM_VTABLE
+::size_t RegAccountReq::ByteSizeLong() const {
+  const RegAccountReq& this_ = *this;
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  // @@protoc_insertion_point(message_byte_size_start:GrpcLibrary.RegAccountReq)
+  ::size_t total_size = 0;
+
+  ::uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void)cached_has_bits;
+
+  ::_pbi::Prefetch5LinesFrom7Lines(&this_);
+  cached_has_bits = this_._impl_._has_bits_[0];
+  if (BatchCheckHasBit(cached_has_bits, 0x00000003U)) {
+    // string account = 1;
+    if (CheckHasBit(cached_has_bits, 0x00000001U)) {
+      if (!this_._internal_account().empty()) {
+        total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
+                                        this_._internal_account());
+      }
+    }
+    // string passwd = 2;
+    if (CheckHasBit(cached_has_bits, 0x00000002U)) {
+      if (!this_._internal_passwd().empty()) {
+        total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
+                                        this_._internal_passwd());
+      }
+    }
+  }
+  return this_.MaybeComputeUnknownFieldsSize(total_size,
+                                             &this_._impl_._cached_size_);
+}
+
+void RegAccountReq::MergeImpl(::google::protobuf::MessageLite& to_msg,
+                            const ::google::protobuf::MessageLite& from_msg) {
+   auto* const _this =
+      static_cast<RegAccountReq*>(&to_msg);
+  auto& from = static_cast<const RegAccountReq&>(from_msg);
+  if constexpr (::_pbi::DebugHardenCheckHasBitConsistency()) {
+    from.CheckHasBitConsistency();
+  }
+  // @@protoc_insertion_point(class_specific_merge_from_start:GrpcLibrary.RegAccountReq)
+  ABSL_DCHECK_NE(&from, _this);
+  ::uint32_t cached_has_bits = 0;
+  (void)cached_has_bits;
+
+  cached_has_bits = from._impl_._has_bits_[0];
+  if (BatchCheckHasBit(cached_has_bits, 0x00000003U)) {
+    if (CheckHasBit(cached_has_bits, 0x00000001U)) {
+      if (!from._internal_account().empty()) {
+        _this->_internal_set_account(from._internal_account());
+      } else {
+        if (_this->_impl_.account_.IsDefault()) {
+          _this->_internal_set_account("");
+        }
+      }
+    }
+    if (CheckHasBit(cached_has_bits, 0x00000002U)) {
+      if (!from._internal_passwd().empty()) {
+        _this->_internal_set_passwd(from._internal_passwd());
+      } else {
+        if (_this->_impl_.passwd_.IsDefault()) {
+          _this->_internal_set_passwd("");
+        }
+      }
+    }
+  }
+  _this->_impl_._has_bits_[0] |= cached_has_bits;
+  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
+      from._internal_metadata_);
+}
+
+void RegAccountReq::CopyFrom(const RegAccountReq& from) {
+  // @@protoc_insertion_point(class_specific_copy_from_start:GrpcLibrary.RegAccountReq)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+
+void RegAccountReq::InternalSwap(RegAccountReq* PROTOBUF_RESTRICT PROTOBUF_NONNULL other) {
+  using ::std::swap;
+  auto* arena = GetArena();
+  ABSL_DCHECK_EQ(arena, other->GetArena());
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.account_, &other->_impl_.account_, arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.passwd_, &other->_impl_.passwd_, arena);
+}
+
+::google::protobuf::Metadata RegAccountReq::GetMetadata() const {
+  return ::google::protobuf::Message::GetMetadataImpl(GetClassData()->full());
+}
+// ===================================================================
+
+class RegAccountResp::_Internal {
+ public:
+  using HasBits =
+      decltype(::std::declval<RegAccountResp>()._impl_._has_bits_);
+  static constexpr ::int32_t kHasBitsOffset =
+      8 * PROTOBUF_FIELD_OFFSET(RegAccountResp, _impl_._has_bits_);
+};
+
+RegAccountResp::RegAccountResp(::google::protobuf::Arena* PROTOBUF_NULLABLE arena)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(arena, RegAccountResp_class_data_.base()) {
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(arena) {
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  SharedCtor(arena);
+  // @@protoc_insertion_point(arena_constructor:GrpcLibrary.RegAccountResp)
+}
+RegAccountResp::RegAccountResp(
+    ::google::protobuf::Arena* PROTOBUF_NULLABLE arena, const RegAccountResp& from)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(arena, RegAccountResp_class_data_.base()),
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(arena),
+#endif  // PROTOBUF_CUSTOM_VTABLE
+      _impl_(from._impl_) {
+  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
+      from._internal_metadata_);
+}
+PROTOBUF_NDEBUG_INLINE RegAccountResp::Impl_::Impl_(
+    [[maybe_unused]] ::google::protobuf::internal::InternalVisibility visibility,
+    [[maybe_unused]] ::google::protobuf::Arena* PROTOBUF_NULLABLE arena)
+      : _cached_size_{0} {}
+
+inline void RegAccountResp::SharedCtor(::_pb::Arena* PROTOBUF_NULLABLE arena) {
+  new (&_impl_) Impl_(internal_visibility(), arena);
+  ::memset(reinterpret_cast<char*>(&_impl_) +
+               offsetof(Impl_, error_code_),
+           0,
+           offsetof(Impl_, user_id_) -
+               offsetof(Impl_, error_code_) +
+               sizeof(Impl_::user_id_));
+}
+RegAccountResp::~RegAccountResp() {
+  // @@protoc_insertion_point(destructor:GrpcLibrary.RegAccountResp)
+  SharedDtor(*this);
+}
+inline void RegAccountResp::SharedDtor(MessageLite& self) {
+  RegAccountResp& this_ = static_cast<RegAccountResp&>(self);
+  if constexpr (::_pbi::DebugHardenCheckHasBitConsistency()) {
+    this_.CheckHasBitConsistency();
+  }
+  this_._internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
+  ABSL_DCHECK(this_.GetArena() == nullptr);
+  this_._impl_.~Impl_();
+}
+
+inline void* PROTOBUF_NONNULL RegAccountResp::PlacementNew_(
+    const void* PROTOBUF_NONNULL, void* PROTOBUF_NONNULL mem,
+    ::google::protobuf::Arena* PROTOBUF_NULLABLE arena) {
+  return ::new (mem) RegAccountResp(arena);
+}
+constexpr auto RegAccountResp::InternalNewImpl_() {
+  return ::google::protobuf::internal::MessageCreator::ZeroInit(sizeof(RegAccountResp),
+                                            alignof(RegAccountResp));
+}
+constexpr auto RegAccountResp::InternalGenerateClassData_() {
+  return ::google::protobuf::internal::ClassDataFull{
+      ::google::protobuf::internal::ClassData{
+          &_RegAccountResp_default_instance_._instance,
+          &_table_.header,
+          nullptr,  // OnDemandRegisterArenaDtor
+          nullptr,  // IsInitialized
+          &RegAccountResp::MergeImpl,
+          ::google::protobuf::Message::GetNewImpl<RegAccountResp>(),
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+          &RegAccountResp::SharedDtor,
+          ::google::protobuf::Message::GetClearImpl<RegAccountResp>(), &RegAccountResp::ByteSizeLong,
+              &RegAccountResp::_InternalSerialize,
+#endif  // PROTOBUF_CUSTOM_VTABLE
+          PROTOBUF_FIELD_OFFSET(RegAccountResp, _impl_._cached_size_),
+          false,
+      },
+      &RegAccountResp::kDescriptorMethods,
+      &descriptor_table_src_2fapi_2eproto,
+      nullptr,  // tracker
+  };
+}
+
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 const
+    ::google::protobuf::internal::ClassDataFull RegAccountResp_class_data_ =
+        RegAccountResp::InternalGenerateClassData_();
+
+PROTOBUF_ATTRIBUTE_WEAK const ::google::protobuf::internal::ClassData* PROTOBUF_NONNULL
+RegAccountResp::GetClassData() const {
+  ::google::protobuf::internal::PrefetchToLocalCache(&RegAccountResp_class_data_);
+  ::google::protobuf::internal::PrefetchToLocalCache(RegAccountResp_class_data_.tc_table);
+  return RegAccountResp_class_data_.base();
+}
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::_pbi::TcParseTable<1, 2, 0, 0, 2>
+RegAccountResp::_table_ = {
+  {
+    PROTOBUF_FIELD_OFFSET(RegAccountResp, _impl_._has_bits_),
+    0, // no _extensions_
+    2, 8,  // max_field_number, fast_idx_mask
+    offsetof(decltype(_table_), field_lookup_table),
+    4294967292,  // skipmap
+    offsetof(decltype(_table_), field_entries),
+    2,  // num_field_entries
+    0,  // num_aux_entries
+    offsetof(decltype(_table_), field_names),  // no aux_entries
+    RegAccountResp_class_data_.base(),
+    nullptr,  // post_loop_handler
+    ::_pbi::TcParser::GenericFallback,  // fallback
+    #ifdef PROTOBUF_PREFETCH_PARSE_TABLE
+    ::_pbi::TcParser::GetTable<::GrpcLibrary::RegAccountResp>(),  // to_prefetch
+    #endif  // PROTOBUF_PREFETCH_PARSE_TABLE
+  }, {{
+    // int32 user_id = 2;
+    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(RegAccountResp, _impl_.user_id_), 1>(),
+     {16, 1, 0,
+      PROTOBUF_FIELD_OFFSET(RegAccountResp, _impl_.user_id_)}},
+    // int32 error_code = 1;
+    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(RegAccountResp, _impl_.error_code_), 0>(),
+     {8, 0, 0,
+      PROTOBUF_FIELD_OFFSET(RegAccountResp, _impl_.error_code_)}},
+  }}, {{
+    65535, 65535
+  }}, {{
+    // int32 error_code = 1;
+    {PROTOBUF_FIELD_OFFSET(RegAccountResp, _impl_.error_code_), _Internal::kHasBitsOffset + 0, 0, (0 | ::_fl::kFcOptional | ::_fl::kInt32)},
+    // int32 user_id = 2;
+    {PROTOBUF_FIELD_OFFSET(RegAccountResp, _impl_.user_id_), _Internal::kHasBitsOffset + 1, 0, (0 | ::_fl::kFcOptional | ::_fl::kInt32)},
+  }},
+  // no aux_entries
+  {{
+  }},
+};
+PROTOBUF_NOINLINE void RegAccountResp::Clear() {
+// @@protoc_insertion_point(message_clear_start:GrpcLibrary.RegAccountResp)
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  ::uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  cached_has_bits = _impl_._has_bits_[0];
+  if (BatchCheckHasBit(cached_has_bits, 0x00000003U)) {
+    ::memset(&_impl_.error_code_, 0, static_cast<::size_t>(
+        reinterpret_cast<char*>(&_impl_.user_id_) -
+        reinterpret_cast<char*>(&_impl_.error_code_)) + sizeof(_impl_.user_id_));
+  }
+  _impl_._has_bits_.Clear();
+  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
+}
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+::uint8_t* PROTOBUF_NONNULL RegAccountResp::_InternalSerialize(
+    const ::google::protobuf::MessageLite& base, ::uint8_t* PROTOBUF_NONNULL target,
+    ::google::protobuf::io::EpsCopyOutputStream* PROTOBUF_NONNULL stream) {
+  const RegAccountResp& this_ = static_cast<const RegAccountResp&>(base);
+#else   // PROTOBUF_CUSTOM_VTABLE
+::uint8_t* PROTOBUF_NONNULL RegAccountResp::_InternalSerialize(
+    ::uint8_t* PROTOBUF_NONNULL target,
+    ::google::protobuf::io::EpsCopyOutputStream* PROTOBUF_NONNULL stream) const {
+  const RegAccountResp& this_ = *this;
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  if constexpr (::_pbi::DebugHardenCheckHasBitConsistency()) {
+    this_.CheckHasBitConsistency();
+  }
+  // @@protoc_insertion_point(serialize_to_array_start:GrpcLibrary.RegAccountResp)
+  ::uint32_t cached_has_bits = 0;
+  (void)cached_has_bits;
+
+  cached_has_bits = this_._impl_._has_bits_[0];
+  // int32 error_code = 1;
+  if (CheckHasBit(cached_has_bits, 0x00000001U)) {
+    if (this_._internal_error_code() != 0) {
+      target =
+          ::google::protobuf::internal::WireFormatLite::WriteInt32ToArrayWithField<1>(
+              stream, this_._internal_error_code(), target);
+    }
+  }
+
+  // int32 user_id = 2;
+  if (CheckHasBit(cached_has_bits, 0x00000002U)) {
+    if (this_._internal_user_id() != 0) {
+      target =
+          ::google::protobuf::internal::WireFormatLite::WriteInt32ToArrayWithField<2>(
+              stream, this_._internal_user_id(), target);
+    }
+  }
+
+  if (ABSL_PREDICT_FALSE(this_._internal_metadata_.have_unknown_fields())) {
+    target =
+        ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+            this_._internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:GrpcLibrary.RegAccountResp)
+  return target;
+}
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+::size_t RegAccountResp::ByteSizeLong(const MessageLite& base) {
+  const RegAccountResp& this_ = static_cast<const RegAccountResp&>(base);
+#else   // PROTOBUF_CUSTOM_VTABLE
+::size_t RegAccountResp::ByteSizeLong() const {
+  const RegAccountResp& this_ = *this;
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  // @@protoc_insertion_point(message_byte_size_start:GrpcLibrary.RegAccountResp)
+  ::size_t total_size = 0;
+
+  ::uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void)cached_has_bits;
+
+  ::_pbi::Prefetch5LinesFrom7Lines(&this_);
+  cached_has_bits = this_._impl_._has_bits_[0];
+  if (BatchCheckHasBit(cached_has_bits, 0x00000003U)) {
+    // int32 error_code = 1;
+    if (CheckHasBit(cached_has_bits, 0x00000001U)) {
+      if (this_._internal_error_code() != 0) {
+        total_size += ::_pbi::WireFormatLite::Int32SizePlusOne(
+            this_._internal_error_code());
+      }
+    }
+    // int32 user_id = 2;
+    if (CheckHasBit(cached_has_bits, 0x00000002U)) {
+      if (this_._internal_user_id() != 0) {
+        total_size += ::_pbi::WireFormatLite::Int32SizePlusOne(
+            this_._internal_user_id());
+      }
+    }
+  }
+  return this_.MaybeComputeUnknownFieldsSize(total_size,
+                                             &this_._impl_._cached_size_);
+}
+
+void RegAccountResp::MergeImpl(::google::protobuf::MessageLite& to_msg,
+                            const ::google::protobuf::MessageLite& from_msg) {
+   auto* const _this =
+      static_cast<RegAccountResp*>(&to_msg);
+  auto& from = static_cast<const RegAccountResp&>(from_msg);
+  if constexpr (::_pbi::DebugHardenCheckHasBitConsistency()) {
+    from.CheckHasBitConsistency();
+  }
+  // @@protoc_insertion_point(class_specific_merge_from_start:GrpcLibrary.RegAccountResp)
+  ABSL_DCHECK_NE(&from, _this);
+  ::uint32_t cached_has_bits = 0;
+  (void)cached_has_bits;
+
+  cached_has_bits = from._impl_._has_bits_[0];
+  if (BatchCheckHasBit(cached_has_bits, 0x00000003U)) {
+    if (CheckHasBit(cached_has_bits, 0x00000001U)) {
+      if (from._internal_error_code() != 0) {
+        _this->_impl_.error_code_ = from._impl_.error_code_;
+      }
+    }
+    if (CheckHasBit(cached_has_bits, 0x00000002U)) {
+      if (from._internal_user_id() != 0) {
+        _this->_impl_.user_id_ = from._impl_.user_id_;
+      }
+    }
+  }
+  _this->_impl_._has_bits_[0] |= cached_has_bits;
+  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
+      from._internal_metadata_);
+}
+
+void RegAccountResp::CopyFrom(const RegAccountResp& from) {
+  // @@protoc_insertion_point(class_specific_copy_from_start:GrpcLibrary.RegAccountResp)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+
+void RegAccountResp::InternalSwap(RegAccountResp* PROTOBUF_RESTRICT PROTOBUF_NONNULL other) {
+  using ::std::swap;
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
+  ::google::protobuf::internal::memswap<
+      PROTOBUF_FIELD_OFFSET(RegAccountResp, _impl_.user_id_)
+      + sizeof(RegAccountResp::_impl_.user_id_)
+      - PROTOBUF_FIELD_OFFSET(RegAccountResp, _impl_.error_code_)>(
+          reinterpret_cast<char*>(&_impl_.error_code_),
+          reinterpret_cast<char*>(&other->_impl_.error_code_));
+}
+
+::google::protobuf::Metadata RegAccountResp::GetMetadata() const {
   return ::google::protobuf::Message::GetMetadataImpl(GetClassData()->full());
 }
 // ===================================================================

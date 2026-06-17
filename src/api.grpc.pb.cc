@@ -23,6 +23,9 @@
 namespace GrpcLibrary {
 
 static const char* GrpcService_method_names[] = {
+  "/GrpcLibrary.GrpcService/Login",
+  "/GrpcLibrary.GrpcService/Logout",
+  "/GrpcLibrary.GrpcService/RegAccount",
   "/GrpcLibrary.GrpcService/Query",
   "/GrpcLibrary.GrpcService/GetSession",
   "/GrpcLibrary.GrpcService/NewSession",
@@ -38,13 +41,85 @@ std::unique_ptr< GrpcService::Stub> GrpcService::NewStub(const std::shared_ptr< 
 }
 
 GrpcService::Stub::Stub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, const ::grpc::StubOptions& options)
-  : channel_(channel), rpcmethod_Query_(GrpcService_method_names[0], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_GetSession_(GrpcService_method_names[1], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_NewSession_(GrpcService_method_names[2], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_ModifySessionTitle_(GrpcService_method_names[3], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_GetSkillInfo_(GrpcService_method_names[4], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_Download_(GrpcService_method_names[5], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  : channel_(channel), rpcmethod_Login_(GrpcService_method_names[0], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_Logout_(GrpcService_method_names[1], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_RegAccount_(GrpcService_method_names[2], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_Query_(GrpcService_method_names[3], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_GetSession_(GrpcService_method_names[4], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_NewSession_(GrpcService_method_names[5], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_ModifySessionTitle_(GrpcService_method_names[6], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_GetSkillInfo_(GrpcService_method_names[7], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_Download_(GrpcService_method_names[8], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
   {}
+
+::grpc::Status GrpcService::Stub::Login(::grpc::ClientContext* context, const ::GrpcLibrary::LoginReq& request, ::GrpcLibrary::LoginResp* response) {
+  return ::grpc::internal::BlockingUnaryCall< ::GrpcLibrary::LoginReq, ::GrpcLibrary::LoginResp, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_Login_, context, request, response);
+}
+
+void GrpcService::Stub::async::Login(::grpc::ClientContext* context, const ::GrpcLibrary::LoginReq* request, ::GrpcLibrary::LoginResp* response, std::function<void(::grpc::Status)> f) {
+  ::grpc::internal::CallbackUnaryCall< ::GrpcLibrary::LoginReq, ::GrpcLibrary::LoginResp, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_Login_, context, request, response, std::move(f));
+}
+
+void GrpcService::Stub::async::Login(::grpc::ClientContext* context, const ::GrpcLibrary::LoginReq* request, ::GrpcLibrary::LoginResp* response, ::grpc::ClientUnaryReactor* reactor) {
+  ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_Login_, context, request, response, reactor);
+}
+
+::grpc::ClientAsyncResponseReader< ::GrpcLibrary::LoginResp>* GrpcService::Stub::PrepareAsyncLoginRaw(::grpc::ClientContext* context, const ::GrpcLibrary::LoginReq& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncResponseReaderHelper::Create< ::GrpcLibrary::LoginResp, ::GrpcLibrary::LoginReq, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), cq, rpcmethod_Login_, context, request);
+}
+
+::grpc::ClientAsyncResponseReader< ::GrpcLibrary::LoginResp>* GrpcService::Stub::AsyncLoginRaw(::grpc::ClientContext* context, const ::GrpcLibrary::LoginReq& request, ::grpc::CompletionQueue* cq) {
+  auto* result =
+    this->PrepareAsyncLoginRaw(context, request, cq);
+  result->StartCall();
+  return result;
+}
+
+::grpc::Status GrpcService::Stub::Logout(::grpc::ClientContext* context, const ::GrpcLibrary::LogoutReq& request, ::GrpcLibrary::LogoutResp* response) {
+  return ::grpc::internal::BlockingUnaryCall< ::GrpcLibrary::LogoutReq, ::GrpcLibrary::LogoutResp, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_Logout_, context, request, response);
+}
+
+void GrpcService::Stub::async::Logout(::grpc::ClientContext* context, const ::GrpcLibrary::LogoutReq* request, ::GrpcLibrary::LogoutResp* response, std::function<void(::grpc::Status)> f) {
+  ::grpc::internal::CallbackUnaryCall< ::GrpcLibrary::LogoutReq, ::GrpcLibrary::LogoutResp, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_Logout_, context, request, response, std::move(f));
+}
+
+void GrpcService::Stub::async::Logout(::grpc::ClientContext* context, const ::GrpcLibrary::LogoutReq* request, ::GrpcLibrary::LogoutResp* response, ::grpc::ClientUnaryReactor* reactor) {
+  ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_Logout_, context, request, response, reactor);
+}
+
+::grpc::ClientAsyncResponseReader< ::GrpcLibrary::LogoutResp>* GrpcService::Stub::PrepareAsyncLogoutRaw(::grpc::ClientContext* context, const ::GrpcLibrary::LogoutReq& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncResponseReaderHelper::Create< ::GrpcLibrary::LogoutResp, ::GrpcLibrary::LogoutReq, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), cq, rpcmethod_Logout_, context, request);
+}
+
+::grpc::ClientAsyncResponseReader< ::GrpcLibrary::LogoutResp>* GrpcService::Stub::AsyncLogoutRaw(::grpc::ClientContext* context, const ::GrpcLibrary::LogoutReq& request, ::grpc::CompletionQueue* cq) {
+  auto* result =
+    this->PrepareAsyncLogoutRaw(context, request, cq);
+  result->StartCall();
+  return result;
+}
+
+::grpc::Status GrpcService::Stub::RegAccount(::grpc::ClientContext* context, const ::GrpcLibrary::RegAccountReq& request, ::GrpcLibrary::RegAccountResp* response) {
+  return ::grpc::internal::BlockingUnaryCall< ::GrpcLibrary::RegAccountReq, ::GrpcLibrary::RegAccountResp, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_RegAccount_, context, request, response);
+}
+
+void GrpcService::Stub::async::RegAccount(::grpc::ClientContext* context, const ::GrpcLibrary::RegAccountReq* request, ::GrpcLibrary::RegAccountResp* response, std::function<void(::grpc::Status)> f) {
+  ::grpc::internal::CallbackUnaryCall< ::GrpcLibrary::RegAccountReq, ::GrpcLibrary::RegAccountResp, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_RegAccount_, context, request, response, std::move(f));
+}
+
+void GrpcService::Stub::async::RegAccount(::grpc::ClientContext* context, const ::GrpcLibrary::RegAccountReq* request, ::GrpcLibrary::RegAccountResp* response, ::grpc::ClientUnaryReactor* reactor) {
+  ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_RegAccount_, context, request, response, reactor);
+}
+
+::grpc::ClientAsyncResponseReader< ::GrpcLibrary::RegAccountResp>* GrpcService::Stub::PrepareAsyncRegAccountRaw(::grpc::ClientContext* context, const ::GrpcLibrary::RegAccountReq& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncResponseReaderHelper::Create< ::GrpcLibrary::RegAccountResp, ::GrpcLibrary::RegAccountReq, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), cq, rpcmethod_RegAccount_, context, request);
+}
+
+::grpc::ClientAsyncResponseReader< ::GrpcLibrary::RegAccountResp>* GrpcService::Stub::AsyncRegAccountRaw(::grpc::ClientContext* context, const ::GrpcLibrary::RegAccountReq& request, ::grpc::CompletionQueue* cq) {
+  auto* result =
+    this->PrepareAsyncRegAccountRaw(context, request, cq);
+  result->StartCall();
+  return result;
+}
 
 ::grpc::Status GrpcService::Stub::Query(::grpc::ClientContext* context, const ::GrpcLibrary::QueryReq& request, ::GrpcLibrary::QueryResp* response) {
   return ::grpc::internal::BlockingUnaryCall< ::GrpcLibrary::QueryReq, ::GrpcLibrary::QueryResp, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_Query_, context, request, response);
@@ -188,6 +263,36 @@ GrpcService::Service::Service() {
   AddMethod(new ::grpc::internal::RpcServiceMethod(
       GrpcService_method_names[0],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
+      new ::grpc::internal::RpcMethodHandler< GrpcService::Service, ::GrpcLibrary::LoginReq, ::GrpcLibrary::LoginResp, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
+          [](GrpcService::Service* service,
+             ::grpc::ServerContext* ctx,
+             const ::GrpcLibrary::LoginReq* req,
+             ::GrpcLibrary::LoginResp* resp) {
+               return service->Login(ctx, req, resp);
+             }, this)));
+  AddMethod(new ::grpc::internal::RpcServiceMethod(
+      GrpcService_method_names[1],
+      ::grpc::internal::RpcMethod::NORMAL_RPC,
+      new ::grpc::internal::RpcMethodHandler< GrpcService::Service, ::GrpcLibrary::LogoutReq, ::GrpcLibrary::LogoutResp, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
+          [](GrpcService::Service* service,
+             ::grpc::ServerContext* ctx,
+             const ::GrpcLibrary::LogoutReq* req,
+             ::GrpcLibrary::LogoutResp* resp) {
+               return service->Logout(ctx, req, resp);
+             }, this)));
+  AddMethod(new ::grpc::internal::RpcServiceMethod(
+      GrpcService_method_names[2],
+      ::grpc::internal::RpcMethod::NORMAL_RPC,
+      new ::grpc::internal::RpcMethodHandler< GrpcService::Service, ::GrpcLibrary::RegAccountReq, ::GrpcLibrary::RegAccountResp, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
+          [](GrpcService::Service* service,
+             ::grpc::ServerContext* ctx,
+             const ::GrpcLibrary::RegAccountReq* req,
+             ::GrpcLibrary::RegAccountResp* resp) {
+               return service->RegAccount(ctx, req, resp);
+             }, this)));
+  AddMethod(new ::grpc::internal::RpcServiceMethod(
+      GrpcService_method_names[3],
+      ::grpc::internal::RpcMethod::NORMAL_RPC,
       new ::grpc::internal::RpcMethodHandler< GrpcService::Service, ::GrpcLibrary::QueryReq, ::GrpcLibrary::QueryResp, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
           [](GrpcService::Service* service,
              ::grpc::ServerContext* ctx,
@@ -196,7 +301,7 @@ GrpcService::Service::Service() {
                return service->Query(ctx, req, resp);
              }, this)));
   AddMethod(new ::grpc::internal::RpcServiceMethod(
-      GrpcService_method_names[1],
+      GrpcService_method_names[4],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
       new ::grpc::internal::RpcMethodHandler< GrpcService::Service, ::GrpcLibrary::GetSessionReq, ::GrpcLibrary::GetSessionResp, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
           [](GrpcService::Service* service,
@@ -206,7 +311,7 @@ GrpcService::Service::Service() {
                return service->GetSession(ctx, req, resp);
              }, this)));
   AddMethod(new ::grpc::internal::RpcServiceMethod(
-      GrpcService_method_names[2],
+      GrpcService_method_names[5],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
       new ::grpc::internal::RpcMethodHandler< GrpcService::Service, ::GrpcLibrary::NewSessionReq, ::GrpcLibrary::NewSessionResp, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
           [](GrpcService::Service* service,
@@ -216,7 +321,7 @@ GrpcService::Service::Service() {
                return service->NewSession(ctx, req, resp);
              }, this)));
   AddMethod(new ::grpc::internal::RpcServiceMethod(
-      GrpcService_method_names[3],
+      GrpcService_method_names[6],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
       new ::grpc::internal::RpcMethodHandler< GrpcService::Service, ::GrpcLibrary::ModifySessionTitleReq, ::GrpcLibrary::ModifySessionTitleResp, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
           [](GrpcService::Service* service,
@@ -226,7 +331,7 @@ GrpcService::Service::Service() {
                return service->ModifySessionTitle(ctx, req, resp);
              }, this)));
   AddMethod(new ::grpc::internal::RpcServiceMethod(
-      GrpcService_method_names[4],
+      GrpcService_method_names[7],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
       new ::grpc::internal::RpcMethodHandler< GrpcService::Service, ::GrpcLibrary::GetSkillInfoReq, ::GrpcLibrary::GetSkillInfoResp, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
           [](GrpcService::Service* service,
@@ -236,7 +341,7 @@ GrpcService::Service::Service() {
                return service->GetSkillInfo(ctx, req, resp);
              }, this)));
   AddMethod(new ::grpc::internal::RpcServiceMethod(
-      GrpcService_method_names[5],
+      GrpcService_method_names[8],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
       new ::grpc::internal::RpcMethodHandler< GrpcService::Service, ::GrpcLibrary::DownloadReq, ::GrpcLibrary::DownloadResp, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
           [](GrpcService::Service* service,
@@ -248,6 +353,27 @@ GrpcService::Service::Service() {
 }
 
 GrpcService::Service::~Service() {
+}
+
+::grpc::Status GrpcService::Service::Login(::grpc::ServerContext* context, const ::GrpcLibrary::LoginReq* request, ::GrpcLibrary::LoginResp* response) {
+  (void) context;
+  (void) request;
+  (void) response;
+  return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+}
+
+::grpc::Status GrpcService::Service::Logout(::grpc::ServerContext* context, const ::GrpcLibrary::LogoutReq* request, ::GrpcLibrary::LogoutResp* response) {
+  (void) context;
+  (void) request;
+  (void) response;
+  return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+}
+
+::grpc::Status GrpcService::Service::RegAccount(::grpc::ServerContext* context, const ::GrpcLibrary::RegAccountReq* request, ::GrpcLibrary::RegAccountResp* response) {
+  (void) context;
+  (void) request;
+  (void) response;
+  return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
 }
 
 ::grpc::Status GrpcService::Service::Query(::grpc::ServerContext* context, const ::GrpcLibrary::QueryReq* request, ::GrpcLibrary::QueryResp* response) {

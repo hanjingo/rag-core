@@ -22,6 +22,14 @@ class db
 };
 
 // SQL TEMPLATE
+static constexpr const char *SQL_SELECT_USER_BY_ACCOUNT_PASSWD = R"(
+    SELECT id FROM user WHERE account = '{}' AND passwd = '{}'
+)";
+
+static constexpr const char *SQL_INSERT_USER = R"(
+    INSERT INTO user (account, passwd) VALUES ('{}', '{}')
+)";
+
 static constexpr const char *SQL_SELECT_SESSION_BY_ID = R"(
     SELECT id, user_id, title, content, timestamp, vector_index FROM session WHERE id = {}
 )";

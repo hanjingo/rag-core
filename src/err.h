@@ -9,11 +9,20 @@ static constexpr int ERR_FAIL           = -1;
 static constexpr int OK                 = 0;
 static constexpr int ERR_INVALID_SUBCMD = 1;
 static constexpr int ERR_ARGC_TOO_LESS  = 2;
+static constexpr int ACCOUNT_INVALID    = 3;
 
 static constexpr int ERR_DB_NOT_EXIST         = 100;
 static constexpr int ERR_DB_EXISTED           = 101;
 static constexpr int ERR_SQLITE_GET_CONN_FAIL = 102;
 static constexpr int ERR_SQLITE_EXEC_FAIL     = 103;
+
+static constexpr int AUTH_ERR_ISSUER_EXIST     = 200;
+static constexpr int AUTH_ERR_ISSUER_NOT_EXIST = 201;
+static constexpr int AUTH_ERR_ISSUE_FAIL       = 202;
+
+static constexpr int AUTH_ERR_VERIFIER_EXIST     = 300;
+static constexpr int AUTH_ERR_VERIFIER_NOT_EXIST = 301;
+static constexpr int AUTH_ERR_INVALID_LICENSE    = 302;
 
 
 static inline std::error_code error(const int   e,

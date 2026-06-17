@@ -17,6 +17,15 @@ class api_handler final : public GrpcLibrary::GrpcService::Service
         static api_handler handler;
         return handler;
     }
+    status_t Login(ctx_t                         *ctx,
+                   const ::GrpcLibrary::LoginReq *req,
+                   ::GrpcLibrary::LoginResp      *resp) override;
+    status_t Logout(ctx_t                          *ctx,
+                    const ::GrpcLibrary::LogoutReq *req,
+                    ::GrpcLibrary::LogoutResp      *resp) override;
+    status_t RegAccount(ctx_t                              *ctx,
+                        const ::GrpcLibrary::RegAccountReq *req,
+                        ::GrpcLibrary::RegAccountResp      *resp) override;
     status_t Query(ctx_t                         *ctx,
                    const ::GrpcLibrary::QueryReq *req,
                    ::GrpcLibrary::QueryResp      *resp) override;

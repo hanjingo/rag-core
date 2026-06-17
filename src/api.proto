@@ -2,6 +2,9 @@ syntax = "proto3";
 package GrpcLibrary;
 
 service GrpcService {
+    rpc Login (LoginReq) returns (LoginResp) {}
+    rpc Logout (LogoutReq) returns (LogoutResp) {}
+    rpc RegAccount (RegAccountReq) returns (RegAccountResp) {}
     rpc Query (QueryReq) returns (QueryResp) {}
     rpc GetSession (GetSessionReq) returns (GetSessionResp) {}
     rpc NewSession (NewSessionReq) returns (NewSessionResp) {}
@@ -27,6 +30,37 @@ message Skill {
     string version = 5;
     string timestamp = 6;
     string hash = 7;
+}
+
+message LoginReq {
+    string account = 1;
+    string passwd = 2;
+}
+
+message LoginResp {
+    int32 error_code = 1;
+    int32 user_id = 2;
+    string auth = 3;
+}
+
+message LogoutReq {
+    int32 user_id = 1;
+    string auth = 2;
+}
+
+message LogoutResp {
+    int32 error_code = 1;
+    int32 user_id = 2;
+}
+
+message RegAccountReq {
+    string account = 1;
+    string passwd = 2;
+}
+
+message RegAccountResp {
+    int32 error_code = 1;
+    int32 user_id = 2;
 }
 
 message QueryReq {

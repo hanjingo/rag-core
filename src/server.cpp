@@ -1,10 +1,102 @@
 #include "server.h"
 
-#include "conf.h"
-#include "db_mgr.h"
 #include <hj/log/log.hpp>
 #include <hj/encoding/fmt.hpp>
 #include <hj/time/date_time.hpp>
+
+#include "conf.h"
+#include "db_mgr.h"
+#include "auth.h"
+
+status_t api_handler::Login(ctx_t                         *ctx,
+                            const ::GrpcLibrary::LoginReq *req,
+                            ::GrpcLibrary::LoginResp      *resp)
+{
+    std::string account          = req->account();
+    std::string encrypted_passwd = req->passwd();
+    int         user_id          = -1;
+    resp->set_error_code(OK);
+
+    std::string sql =
+        hj::fmt(SQL_SELECT_USER_BY_ACCOUNT_PASSWD, account, encrypted_passwd)
+        + " LIMIT 1;";
+    LOG_DEBUG("{}", sql);
+    db_mgr::query_ret rows;
+    if(db_mgr::instance().query(rows, "sqlite", sql) != OK)
+    {
+        LOG_ERROR("Failed to authenticate account: {}, sql: {}", account, sql);
+        LOG_FLUSH();
+        resp->set_error_code(ACCOUNT_INVALID);
+        return status_t::OK;
+    }
+    for(const auto &row : rows)
+    {
+        user_id = std::stoi(row[0]);
+        break;
+    }
+
+    hj::license::token_t token;
+    if(OK
+       != issuer::instance().issue(token,
+                                   std::to_string(user_id),
+                                   conf::instance().issuer_leeway(),
+                                   {}))
+    {
+        resp->set_error_code(AUTH_ERR_ISSUE_FAIL);
+        LOG_ERROR("Failed to issue license for account: {}", account);
+        LOG_FLUSH();
+        return status_t::OK;
+    }
+
+    resp->set_user_id(user_id);
+    resp->set_auth(token);
+    return status_t::OK;
+}
+
+status_t api_handler::Logout(ctx_t                          *ctx,
+                             const ::GrpcLibrary::LogoutReq *req,
+                             ::GrpcLibrary::LogoutResp      *resp)
+{
+    int         user_id = -1;
+    std::string auth;
+    resp->set_error_code(OK);
+    bool success =
+        (verifier::instance().verify(auth, std::to_string(user_id), {}) == OK);
+    if(!success)
+    {
+        LOG_ERROR("Failed to verify auth for user_id: {}, auth: {}",
+                  user_id,
+                  auth);
+        LOG_FLUSH();
+        resp->set_error_code(ACCOUNT_INVALID);
+        return status_t::OK;
+    }
+    return status_t::OK;
+}
+
+status_t api_handler::RegAccount(ctx_t                              *ctx,
+                                 const ::GrpcLibrary::RegAccountReq *req,
+                                 ::GrpcLibrary::RegAccountResp      *resp)
+{
+    std::string account;
+    std::string encrypted_passwd;
+    bool        success = false;
+    resp->set_error_code(OK);
+
+    auto sql = hj::fmt(SQL_INSERT_USER, account, encrypted_passwd);
+    LOG_DEBUG("{}", sql);
+    if(db_mgr::instance().exec("sqlite", sql) != OK)
+    {
+        resp->set_error_code(ERR_SQLITE_EXEC_FAIL);
+        LOG_ERROR("Failed to insert user with sql: {}", sql);
+        LOG_FLUSH();
+        return status_t::OK;
+    }
+
+    auto id = db_mgr::instance().last_insert_id("sqlite", "user");
+    resp->set_user_id(id);
+    return status_t::OK;
+}
 
 status_t api_handler::Query(ctx_t                         *ctx,
                             const ::GrpcLibrary::QueryReq *req,
@@ -36,10 +128,6 @@ status_t api_handler::GetSession(ctx_t                              *ctx,
     int         limit   = req->limit();
     limit               = (limit < 0 || limit > 100) ? 100 : limit;
     resp->set_error_code(OK);
-
-#ifdef DEBUG
-    user_id = 1;
-#endif
 
     std::string sql;
     if(id > 0)
@@ -93,10 +181,6 @@ status_t api_handler::NewSession(ctx_t                              *ctx,
     std::string timestamp =
         hj::date_time::format(hj::date_time::now(), "%Y-%m-%d %H:%M:%S");
     std::string vector_index = "";
-
-#ifdef DEBUG
-    user_id = 1;
-#endif
 
     auto sql = hj::fmt(SQL_INSERT_SESSION, user_id, title, "", timestamp, "");
     LOG_DEBUG("{}", sql);

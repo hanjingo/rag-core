@@ -59,13 +59,6 @@ int main(int argc, char *argv[])
     // catch signals
     hj::sighandler::instance().sigcatch({SIGABRT, SIGTERM}, [](int sig) {});
 
-    // init config
-    if(!conf::instance().init())
-    {
-        throw std::runtime_error("Failed to load config file");
-        return 0;
-    }
-
     // log config
     auto filename =
         conf::instance().data().get<std::string>("log.filename", "default.log");
