@@ -17,15 +17,15 @@ status_t api_handler::Login(ctx_t                         *ctx,
     int         user_id          = -1;
     resp->set_error_code(OK);
 
-    std::string sql =
-        hj::fmt(SQL_SELECT_USER_BY_ACCOUNT_PASSWD, account, encrypted_passwd)
-        + " LIMIT 1;";
+    std::string sql = hj::fmt(SQL_SELECT_USER_ID_BY_USERNAME_PASSWD,
+                              account,
+                              encrypted_passwd)
+                      + " LIMIT 1;";
     LOG_DEBUG("{}", sql);
     db_mgr::query_ret rows;
     if(db_mgr::instance().query(rows, "sqlite", sql) != OK)
     {
         LOG_ERROR("Failed to authenticate account: {}, sql: {}", account, sql);
-        LOG_FLUSH();
         resp->set_error_code(ACCOUNT_INVALID);
         return status_t::OK;
     }
@@ -44,7 +44,6 @@ status_t api_handler::Login(ctx_t                         *ctx,
     {
         resp->set_error_code(AUTH_ERR_ISSUE_FAIL);
         LOG_ERROR("Failed to issue license for account: {}", account);
-        LOG_FLUSH();
         return status_t::OK;
     }
 
@@ -67,7 +66,6 @@ status_t api_handler::Logout(ctx_t                          *ctx,
         LOG_ERROR("Failed to verify auth for user_id: {}, auth: {}",
                   user_id,
                   auth);
-        LOG_FLUSH();
         resp->set_error_code(ACCOUNT_INVALID);
         return status_t::OK;
     }
@@ -89,7 +87,6 @@ status_t api_handler::RegAccount(ctx_t                              *ctx,
     {
         resp->set_error_code(ERR_SQLITE_EXEC_FAIL);
         LOG_ERROR("Failed to insert user with sql: {}", sql);
-        LOG_FLUSH();
         return status_t::OK;
     }
 
@@ -141,7 +138,6 @@ status_t api_handler::GetSession(ctx_t                              *ctx,
     if(db_mgr::instance().query(rows, "sqlite", sql) != OK)
     {
         LOG_ERROR("Failed to query history for sql: {}", sql);
-        LOG_FLUSH();
         return status_t::OK;
     }
     for(const auto &row : rows)
@@ -165,7 +161,6 @@ status_t api_handler::GetSession(ctx_t                              *ctx,
                   item->vector_index());
     }
 
-    LOG_FLUSH();
     return status_t::OK;
 }
 
@@ -188,7 +183,6 @@ status_t api_handler::NewSession(ctx_t                              *ctx,
     {
         resp->set_error_code(ERR_SQLITE_EXEC_FAIL);
         LOG_ERROR("Failed to insert session for sql: {}", sql);
-        LOG_FLUSH();
         return status_t::OK;
     }
 
@@ -201,7 +195,6 @@ status_t api_handler::NewSession(ctx_t                              *ctx,
     session->set_timestamp(timestamp);
     session->set_vector_index(vector_index);
 
-    LOG_FLUSH();
     return status_t::OK;
 }
 
@@ -226,11 +219,9 @@ api_handler::ModifySessionTitle(ctx_t                                      *ctx,
     {
         resp->set_error_code(ERR_SQLITE_EXEC_FAIL);
         LOG_ERROR("Failed to update session for sql: {}", sql);
-        LOG_FLUSH();
         return status_t::OK;
     }
 
-    LOG_FLUSH();
     return status_t::OK;
 }
 
@@ -256,7 +247,6 @@ status_t api_handler::GetSkillInfo(ctx_t                                *ctx,
     {
         resp->set_error_code(ERR_SQLITE_EXEC_FAIL);
         LOG_ERROR("Failed to query skill info for sql: {}", sql);
-        LOG_FLUSH();
         return status_t::OK;
     }
     for(const auto &row : rows)
@@ -281,7 +271,6 @@ status_t api_handler::GetSkillInfo(ctx_t                                *ctx,
                   item->hash());
     }
 
-    LOG_FLUSH();
     return status_t::OK;
 }
 
@@ -303,7 +292,6 @@ status_t api_handler::Download(ctx_t                            *ctx,
     if(db_mgr::instance().query(rows, "sqlite", sql) != OK)
     {
         LOG_ERROR("Failed to query history for sql: {}", sql);
-        LOG_FLUSH();
         return status_t::OK;
     }
     for(const auto &row : rows)
@@ -313,6 +301,5 @@ status_t api_handler::Download(ctx_t                            *ctx,
         break;
     }
 
-    LOG_FLUSH();
     return status_t::OK;
 }

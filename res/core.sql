@@ -13,7 +13,8 @@ CREATE TABLE IF NOT EXISTS session (
 CREATE TABLE IF NOT EXISTS user (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     username TEXT NOT NULL,
-    encrypted_passwd TEXT NOT NULL
+    encrypted_passwd TEXT NOT NULL,
+    privilege INTEGER DEFAULT 0
 );
 
 CREATE TABLE IF NOT EXISTS skill (
@@ -34,7 +35,7 @@ CREATE TABLE IF NOT EXISTS file (
     FOREIGN KEY (owner) REFERENCES user(id)
 );
 
-INSERT INTO user (username, encrypted_passwd) VALUES ('admin', 'admin');
+INSERT INTO user (username, encrypted_passwd, privilege) VALUES ('admin', 'admin', 1);
 
 INSERT INTO session (user_id, title, content, timestamp, vector_index) VALUES (
     1, 'x', 'HELLO WORLD', '2024-06-01 12:00:00', '');
@@ -42,7 +43,8 @@ INSERT INTO session (user_id, title, content, timestamp, vector_index) VALUES (
     1, 'xx', 'What is RAG?', '2024-06-01 12:00:01', '');
 
 INSERT INTO skill (name, desc, publisher, version, timestamp, hash) VALUES (
-    'skill1', 'A skill for testing1', 'admin', '0.0.1', '2026-06-01 12:00:00', 'hash1');
+    'chatbox', 'A skill for Chat, using qwen model, free for use it etc...', 'admin', 'v0.0.1', '2026-06-19 19:00:00', 
+    'sha256:1cef61acb5f0379c51bd723bfcac0152112a399f3bdbc8072bfae65b3986dc07');
 INSERT INTO skill (name, desc, publisher, version, timestamp, hash) VALUES (
     'skill2', 'A skill for testing2', 'admin', '0.0.1', '2026-06-01 12:00:01', 'hash2');
 INSERT INTO skill (name, desc, publisher, version, timestamp, hash) VALUES (
@@ -81,7 +83,8 @@ INSERT INTO skill (name, desc, publisher, version, timestamp, hash) VALUES (
     'skill19', 'A skill for testing19', 'admin', '0.0.1', '2026-06-01 12:00:00', 'hash19');
 
 INSERT INTO file (hash, addr, owner, size_kb) VALUES (
-    'hash1', 'http://example.com/file1.zip', 1, 100);
+    'sha256:1cef61acb5f0379c51bd723bfcac0152112a399f3bdbc8072bfae65b3986dc07', 
+    'https://github.com/hanjingo/rag-qt-chatbox/releases/download/v0.0.1/chatbox-windows-x64-v0.0.1.zip', 1, 35);
 INSERT INTO file (hash, addr, owner, size_kb) VALUES (
     'hash2', 'http://example.com/file2.zip', 1, 200);
 INSERT INTO file (hash, addr, owner, size_kb) VALUES (

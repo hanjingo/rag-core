@@ -65,6 +65,7 @@ int main(int argc, char *argv[])
     auto max_size  = MB(conf::instance().data().get<int>("log.max_size", 1));
     auto max_files = conf::instance().data().get<int>("log.max_files", 1);
     auto min_lvl   = conf::instance().data().get<int>("log.min_lvl", 0);
+    auto flush_on  = conf::instance().data().get<int>("log.flush_on", 0);
     hj::log::logger::instance()->add_sink(
         hj::log::logger::instance()->create_rotate_file_sink(filename,
                                                              max_size,
@@ -72,12 +73,15 @@ int main(int argc, char *argv[])
                                                              true));
     hj::log::logger::instance()->set_level(
         static_cast<hj::log::level>(min_lvl));
-    LOG_INFO("init log with filename:{}, max_size:{}, max_files:{}, min_lvl:{}",
+    hj::log::logger::instance()->flush_on(
+        static_cast<hj::log::level>(flush_on));
+    LOG_INFO("init log with filename:{}, max_size:{}, max_files:{}, "
+             "min_lvl:{}, flush_on:{}",
              filename,
              max_size,
              max_files,
-             min_lvl);
-    LOG_FLUSH();
+             min_lvl,
+             flush_on);
 
     // add options parse support
     hj::options              opts;

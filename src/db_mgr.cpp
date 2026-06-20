@@ -16,7 +16,6 @@ void db_mgr::init()
               id,
               path,
               capa);
-    LOG_FLUSH();
     return;
 }
 
