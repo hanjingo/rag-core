@@ -1,6 +1,7 @@
 #include "conf.h"
 
 #include <exception>
+#include <hj/util/string_util.hpp>
 
 conf::conf()
     : _cfg{}
@@ -80,4 +81,31 @@ std::vector<std::string> conf::verifier_keys()
     keys.push_back(_cfg.get<std::string>("verifier.encrypted_pub_key", ""));
     keys.push_back(_cfg.get<std::string>("verifier.encrypted_pri_key", ""));
     return keys;
+}
+
+std::unordered_map<std::string, std::string> conf::llm_files()
+{
+    auto             str = _cfg.get<std::string>("llm.llm_files", "");
+    std::string_view tag{";", 1};
+    auto             items = hj::string_util::split(str, tag);
+
+    std::string_view                             kv_tag{":", 1};
+    std::unordered_map<std::string, std::string> files;
+    for(const auto &item : items)
+    {
+        auto kv = hj::string_util::split(item, kv_tag);
+        if(kv.size() == 2)
+            files[kv[0]] = kv[1];
+    }
+    return files;
+}
+
+int conf::llm_ctx_window_sz()
+{
+    return _cfg.get<int>("llm.ctx_window_sz", 2048);
+}
+
+int conf::llm_num_threads()
+{
+    return _cfg.get<int>("llm.num_threads", 1);
 }

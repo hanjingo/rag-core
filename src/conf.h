@@ -31,6 +31,10 @@ class conf
     hj::license::sign_algo   verifier_algo();
     std::vector<std::string> verifier_keys();
 
+    std::unordered_map<std::string, std::string> llm_files();
+    int                                          llm_ctx_window_sz();
+    int                                          llm_num_threads();
+
   private:
     hj::ini _cfg;
 };

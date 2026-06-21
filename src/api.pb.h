@@ -583,7 +583,6 @@ class Session final : public ::google::protobuf::Message
     kTitleFieldNumber = 3,
     kContentFieldNumber = 4,
     kTimestampFieldNumber = 5,
-    kVectorIndexFieldNumber = 6,
     kIdFieldNumber = 1,
     kUserIdFieldNumber = 2,
   };
@@ -632,21 +631,6 @@ class Session final : public ::google::protobuf::Message
   ::std::string* PROTOBUF_NONNULL _internal_mutable_timestamp();
 
   public:
-  // string vector_index = 6;
-  void clear_vector_index() ;
-  const ::std::string& vector_index() const;
-  template <typename Arg_ = const ::std::string&, typename... Args_>
-  void set_vector_index(Arg_&& arg, Args_... args);
-  ::std::string* PROTOBUF_NONNULL mutable_vector_index();
-  [[nodiscard]] ::std::string* PROTOBUF_NULLABLE release_vector_index();
-  void set_allocated_vector_index(::std::string* PROTOBUF_NULLABLE value);
-
-  private:
-  const ::std::string& _internal_vector_index() const;
-  PROTOBUF_ALWAYS_INLINE void _internal_set_vector_index(const ::std::string& value);
-  ::std::string* PROTOBUF_NONNULL _internal_mutable_vector_index();
-
-  public:
   // int64 id = 1;
   void clear_id() ;
   ::int64_t id() const;
@@ -671,8 +655,8 @@ class Session final : public ::google::protobuf::Message
  private:
   class _Internal;
   friend class ::google::protobuf::internal::TcParser;
-  static const ::google::protobuf::internal::TcParseTable<3, 6,
-                                   0, 61,
+  static const ::google::protobuf::internal::TcParseTable<3, 5,
+                                   0, 49,
                                    2>
       _table_;
 
@@ -696,7 +680,6 @@ class Session final : public ::google::protobuf::Message
     ::google::protobuf::internal::ArenaStringPtr title_;
     ::google::protobuf::internal::ArenaStringPtr content_;
     ::google::protobuf::internal::ArenaStringPtr timestamp_;
-    ::google::protobuf::internal::ArenaStringPtr vector_index_;
     ::int64_t id_;
     ::int32_t user_id_;
     PROTOBUF_TSAN_DECLARE_MEMBER
@@ -1485,6 +1468,7 @@ class QueryReq final : public ::google::protobuf::Message
   enum : int {
     kAuthFieldNumber = 3,
     kContentFieldNumber = 4,
+    kModelFieldNumber = 5,
     kIdFieldNumber = 1,
     kUserIdFieldNumber = 2,
   };
@@ -1518,6 +1502,21 @@ class QueryReq final : public ::google::protobuf::Message
   ::std::string* PROTOBUF_NONNULL _internal_mutable_content();
 
   public:
+  // string model = 5;
+  void clear_model() ;
+  const ::std::string& model() const;
+  template <typename Arg_ = const ::std::string&, typename... Args_>
+  void set_model(Arg_&& arg, Args_... args);
+  ::std::string* PROTOBUF_NONNULL mutable_model();
+  [[nodiscard]] ::std::string* PROTOBUF_NULLABLE release_model();
+  void set_allocated_model(::std::string* PROTOBUF_NULLABLE value);
+
+  private:
+  const ::std::string& _internal_model() const;
+  PROTOBUF_ALWAYS_INLINE void _internal_set_model(const ::std::string& value);
+  ::std::string* PROTOBUF_NONNULL _internal_mutable_model();
+
+  public:
   // int64 id = 1;
   void clear_id() ;
   ::int64_t id() const;
@@ -1542,8 +1541,8 @@ class QueryReq final : public ::google::protobuf::Message
  private:
   class _Internal;
   friend class ::google::protobuf::internal::TcParser;
-  static const ::google::protobuf::internal::TcParseTable<2, 4,
-                                   0, 40,
+  static const ::google::protobuf::internal::TcParseTable<3, 5,
+                                   0, 45,
                                    2>
       _table_;
 
@@ -1566,6 +1565,7 @@ class QueryReq final : public ::google::protobuf::Message
     ::google::protobuf::internal::CachedSize _cached_size_;
     ::google::protobuf::internal::ArenaStringPtr auth_;
     ::google::protobuf::internal::ArenaStringPtr content_;
+    ::google::protobuf::internal::ArenaStringPtr model_;
     ::int64_t id_;
     ::int32_t user_id_;
     PROTOBUF_TSAN_DECLARE_MEMBER
@@ -1721,6 +1721,8 @@ class NewSessionReq final : public ::google::protobuf::Message
   enum : int {
     kAuthFieldNumber = 2,
     kTitleFieldNumber = 3,
+    kContentFieldNumber = 4,
+    kModelFieldNumber = 5,
     kUserIdFieldNumber = 1,
   };
   // string auth = 2;
@@ -1753,6 +1755,36 @@ class NewSessionReq final : public ::google::protobuf::Message
   ::std::string* PROTOBUF_NONNULL _internal_mutable_title();
 
   public:
+  // string content = 4;
+  void clear_content() ;
+  const ::std::string& content() const;
+  template <typename Arg_ = const ::std::string&, typename... Args_>
+  void set_content(Arg_&& arg, Args_... args);
+  ::std::string* PROTOBUF_NONNULL mutable_content();
+  [[nodiscard]] ::std::string* PROTOBUF_NULLABLE release_content();
+  void set_allocated_content(::std::string* PROTOBUF_NULLABLE value);
+
+  private:
+  const ::std::string& _internal_content() const;
+  PROTOBUF_ALWAYS_INLINE void _internal_set_content(const ::std::string& value);
+  ::std::string* PROTOBUF_NONNULL _internal_mutable_content();
+
+  public:
+  // string model = 5;
+  void clear_model() ;
+  const ::std::string& model() const;
+  template <typename Arg_ = const ::std::string&, typename... Args_>
+  void set_model(Arg_&& arg, Args_... args);
+  ::std::string* PROTOBUF_NONNULL mutable_model();
+  [[nodiscard]] ::std::string* PROTOBUF_NULLABLE release_model();
+  void set_allocated_model(::std::string* PROTOBUF_NULLABLE value);
+
+  private:
+  const ::std::string& _internal_model() const;
+  PROTOBUF_ALWAYS_INLINE void _internal_set_model(const ::std::string& value);
+  ::std::string* PROTOBUF_NONNULL _internal_mutable_model();
+
+  public:
   // int32 user_id = 1;
   void clear_user_id() ;
   ::int32_t user_id() const;
@@ -1767,8 +1799,8 @@ class NewSessionReq final : public ::google::protobuf::Message
  private:
   class _Internal;
   friend class ::google::protobuf::internal::TcParser;
-  static const ::google::protobuf::internal::TcParseTable<2, 3,
-                                   0, 43,
+  static const ::google::protobuf::internal::TcParseTable<3, 5,
+                                   0, 55,
                                    2>
       _table_;
 
@@ -1791,6 +1823,8 @@ class NewSessionReq final : public ::google::protobuf::Message
     ::google::protobuf::internal::CachedSize _cached_size_;
     ::google::protobuf::internal::ArenaStringPtr auth_;
     ::google::protobuf::internal::ArenaStringPtr title_;
+    ::google::protobuf::internal::ArenaStringPtr content_;
+    ::google::protobuf::internal::ArenaStringPtr model_;
     ::int32_t user_id_;
     PROTOBUF_TSAN_DECLARE_MEMBER
   };
@@ -2807,11 +2841,14 @@ class LoginResp final : public ::google::protobuf::Message
 
   // accessors -------------------------------------------------------
   enum : int {
-    kAuthFieldNumber = 3,
+    kAuthFieldNumber = 4,
+    kAccountFieldNumber = 5,
+    kLastLoginTimeFieldNumber = 6,
     kErrorCodeFieldNumber = 1,
     kUserIdFieldNumber = 2,
+    kPrivilegeFieldNumber = 3,
   };
-  // string auth = 3;
+  // string auth = 4;
   void clear_auth() ;
   const ::std::string& auth() const;
   template <typename Arg_ = const ::std::string&, typename... Args_>
@@ -2824,6 +2861,36 @@ class LoginResp final : public ::google::protobuf::Message
   const ::std::string& _internal_auth() const;
   PROTOBUF_ALWAYS_INLINE void _internal_set_auth(const ::std::string& value);
   ::std::string* PROTOBUF_NONNULL _internal_mutable_auth();
+
+  public:
+  // string account = 5;
+  void clear_account() ;
+  const ::std::string& account() const;
+  template <typename Arg_ = const ::std::string&, typename... Args_>
+  void set_account(Arg_&& arg, Args_... args);
+  ::std::string* PROTOBUF_NONNULL mutable_account();
+  [[nodiscard]] ::std::string* PROTOBUF_NULLABLE release_account();
+  void set_allocated_account(::std::string* PROTOBUF_NULLABLE value);
+
+  private:
+  const ::std::string& _internal_account() const;
+  PROTOBUF_ALWAYS_INLINE void _internal_set_account(const ::std::string& value);
+  ::std::string* PROTOBUF_NONNULL _internal_mutable_account();
+
+  public:
+  // string last_login_time = 6;
+  void clear_last_login_time() ;
+  const ::std::string& last_login_time() const;
+  template <typename Arg_ = const ::std::string&, typename... Args_>
+  void set_last_login_time(Arg_&& arg, Args_... args);
+  ::std::string* PROTOBUF_NONNULL mutable_last_login_time();
+  [[nodiscard]] ::std::string* PROTOBUF_NULLABLE release_last_login_time();
+  void set_allocated_last_login_time(::std::string* PROTOBUF_NULLABLE value);
+
+  private:
+  const ::std::string& _internal_last_login_time() const;
+  PROTOBUF_ALWAYS_INLINE void _internal_set_last_login_time(const ::std::string& value);
+  ::std::string* PROTOBUF_NONNULL _internal_mutable_last_login_time();
 
   public:
   // int32 error_code = 1;
@@ -2846,12 +2913,22 @@ class LoginResp final : public ::google::protobuf::Message
   void _internal_set_user_id(::int32_t value);
 
   public:
+  // int32 privilege = 3;
+  void clear_privilege() ;
+  ::int32_t privilege() const;
+  void set_privilege(::int32_t value);
+
+  private:
+  ::int32_t _internal_privilege() const;
+  void _internal_set_privilege(::int32_t value);
+
+  public:
   // @@protoc_insertion_point(class_scope:GrpcLibrary.LoginResp)
  private:
   class _Internal;
   friend class ::google::protobuf::internal::TcParser;
-  static const ::google::protobuf::internal::TcParseTable<2, 3,
-                                   0, 34,
+  static const ::google::protobuf::internal::TcParseTable<3, 6,
+                                   0, 56,
                                    2>
       _table_;
 
@@ -2873,8 +2950,11 @@ class LoginResp final : public ::google::protobuf::Message
     ::google::protobuf::internal::HasBits<1> _has_bits_;
     ::google::protobuf::internal::CachedSize _cached_size_;
     ::google::protobuf::internal::ArenaStringPtr auth_;
+    ::google::protobuf::internal::ArenaStringPtr account_;
+    ::google::protobuf::internal::ArenaStringPtr last_login_time_;
     ::int32_t error_code_;
     ::int32_t user_id_;
+    ::int32_t privilege_;
     PROTOBUF_TSAN_DECLARE_MEMBER
   };
   union { Impl_ _impl_; };
@@ -4634,7 +4714,7 @@ inline void Session::clear_id() {
   ::google::protobuf::internal::TSanWrite(&_impl_);
   _impl_.id_ = ::int64_t{0};
   ClearHasBit(_impl_._has_bits_[0],
-                  0x00000010U);
+                  0x00000008U);
 }
 inline ::int64_t Session::id() const {
   // @@protoc_insertion_point(field_get:GrpcLibrary.Session.id)
@@ -4642,7 +4722,7 @@ inline ::int64_t Session::id() const {
 }
 inline void Session::set_id(::int64_t value) {
   _internal_set_id(value);
-  SetHasBit(_impl_._has_bits_[0], 0x00000010U);
+  SetHasBit(_impl_._has_bits_[0], 0x00000008U);
   // @@protoc_insertion_point(field_set:GrpcLibrary.Session.id)
 }
 inline ::int64_t Session::_internal_id() const {
@@ -4659,7 +4739,7 @@ inline void Session::clear_user_id() {
   ::google::protobuf::internal::TSanWrite(&_impl_);
   _impl_.user_id_ = 0;
   ClearHasBit(_impl_._has_bits_[0],
-                  0x00000020U);
+                  0x00000010U);
 }
 inline ::int32_t Session::user_id() const {
   // @@protoc_insertion_point(field_get:GrpcLibrary.Session.user_id)
@@ -4667,7 +4747,7 @@ inline ::int32_t Session::user_id() const {
 }
 inline void Session::set_user_id(::int32_t value) {
   _internal_set_user_id(value);
-  SetHasBit(_impl_._has_bits_[0], 0x00000020U);
+  SetHasBit(_impl_._has_bits_[0], 0x00000010U);
   // @@protoc_insertion_point(field_set:GrpcLibrary.Session.user_id)
 }
 inline ::int32_t Session::_internal_user_id() const {
@@ -4872,71 +4952,6 @@ inline void Session::set_allocated_timestamp(::std::string* PROTOBUF_NULLABLE va
     _impl_.timestamp_.Set("", GetArena());
   }
   // @@protoc_insertion_point(field_set_allocated:GrpcLibrary.Session.timestamp)
-}
-
-// string vector_index = 6;
-inline void Session::clear_vector_index() {
-  ::google::protobuf::internal::TSanWrite(&_impl_);
-  _impl_.vector_index_.ClearToEmpty();
-  ClearHasBit(_impl_._has_bits_[0],
-                  0x00000008U);
-}
-inline const ::std::string& Session::vector_index() const
-    ABSL_ATTRIBUTE_LIFETIME_BOUND {
-  // @@protoc_insertion_point(field_get:GrpcLibrary.Session.vector_index)
-  return _internal_vector_index();
-}
-template <typename Arg_, typename... Args_>
-PROTOBUF_ALWAYS_INLINE void Session::set_vector_index(Arg_&& arg, Args_... args) {
-  ::google::protobuf::internal::TSanWrite(&_impl_);
-  SetHasBit(_impl_._has_bits_[0], 0x00000008U);
-  _impl_.vector_index_.Set(static_cast<Arg_&&>(arg), args..., GetArena());
-  // @@protoc_insertion_point(field_set:GrpcLibrary.Session.vector_index)
-}
-inline ::std::string* PROTOBUF_NONNULL Session::mutable_vector_index()
-    ABSL_ATTRIBUTE_LIFETIME_BOUND {
-  SetHasBit(_impl_._has_bits_[0], 0x00000008U);
-  ::std::string* _s = _internal_mutable_vector_index();
-  // @@protoc_insertion_point(field_mutable:GrpcLibrary.Session.vector_index)
-  return _s;
-}
-inline const ::std::string& Session::_internal_vector_index() const {
-  ::google::protobuf::internal::TSanRead(&_impl_);
-  return _impl_.vector_index_.Get();
-}
-inline void Session::_internal_set_vector_index(const ::std::string& value) {
-  ::google::protobuf::internal::TSanWrite(&_impl_);
-  _impl_.vector_index_.Set(value, GetArena());
-}
-inline ::std::string* PROTOBUF_NONNULL Session::_internal_mutable_vector_index() {
-  ::google::protobuf::internal::TSanWrite(&_impl_);
-  return _impl_.vector_index_.Mutable( GetArena());
-}
-inline ::std::string* PROTOBUF_NULLABLE Session::release_vector_index() {
-  ::google::protobuf::internal::TSanWrite(&_impl_);
-  // @@protoc_insertion_point(field_release:GrpcLibrary.Session.vector_index)
-  if (!CheckHasBit(_impl_._has_bits_[0], 0x00000008U)) {
-    return nullptr;
-  }
-  ClearHasBit(_impl_._has_bits_[0], 0x00000008U);
-  auto* released = _impl_.vector_index_.Release();
-  if (::google::protobuf::internal::DebugHardenForceCopyDefaultString()) {
-    _impl_.vector_index_.Set("", GetArena());
-  }
-  return released;
-}
-inline void Session::set_allocated_vector_index(::std::string* PROTOBUF_NULLABLE value) {
-  ::google::protobuf::internal::TSanWrite(&_impl_);
-  if (value != nullptr) {
-    SetHasBit(_impl_._has_bits_[0], 0x00000008U);
-  } else {
-    ClearHasBit(_impl_._has_bits_[0], 0x00000008U);
-  }
-  _impl_.vector_index_.SetAllocated(value, GetArena());
-  if (::google::protobuf::internal::DebugHardenForceCopyDefaultString() && _impl_.vector_index_.IsDefault()) {
-    _impl_.vector_index_.Set("", GetArena());
-  }
-  // @@protoc_insertion_point(field_set_allocated:GrpcLibrary.Session.vector_index)
 }
 
 // -------------------------------------------------------------------
@@ -5501,7 +5516,7 @@ inline void LoginResp::clear_error_code() {
   ::google::protobuf::internal::TSanWrite(&_impl_);
   _impl_.error_code_ = 0;
   ClearHasBit(_impl_._has_bits_[0],
-                  0x00000002U);
+                  0x00000008U);
 }
 inline ::int32_t LoginResp::error_code() const {
   // @@protoc_insertion_point(field_get:GrpcLibrary.LoginResp.error_code)
@@ -5509,7 +5524,7 @@ inline ::int32_t LoginResp::error_code() const {
 }
 inline void LoginResp::set_error_code(::int32_t value) {
   _internal_set_error_code(value);
-  SetHasBit(_impl_._has_bits_[0], 0x00000002U);
+  SetHasBit(_impl_._has_bits_[0], 0x00000008U);
   // @@protoc_insertion_point(field_set:GrpcLibrary.LoginResp.error_code)
 }
 inline ::int32_t LoginResp::_internal_error_code() const {
@@ -5526,7 +5541,7 @@ inline void LoginResp::clear_user_id() {
   ::google::protobuf::internal::TSanWrite(&_impl_);
   _impl_.user_id_ = 0;
   ClearHasBit(_impl_._has_bits_[0],
-                  0x00000004U);
+                  0x00000010U);
 }
 inline ::int32_t LoginResp::user_id() const {
   // @@protoc_insertion_point(field_get:GrpcLibrary.LoginResp.user_id)
@@ -5534,7 +5549,7 @@ inline ::int32_t LoginResp::user_id() const {
 }
 inline void LoginResp::set_user_id(::int32_t value) {
   _internal_set_user_id(value);
-  SetHasBit(_impl_._has_bits_[0], 0x00000004U);
+  SetHasBit(_impl_._has_bits_[0], 0x00000010U);
   // @@protoc_insertion_point(field_set:GrpcLibrary.LoginResp.user_id)
 }
 inline ::int32_t LoginResp::_internal_user_id() const {
@@ -5546,7 +5561,32 @@ inline void LoginResp::_internal_set_user_id(::int32_t value) {
   _impl_.user_id_ = value;
 }
 
-// string auth = 3;
+// int32 privilege = 3;
+inline void LoginResp::clear_privilege() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.privilege_ = 0;
+  ClearHasBit(_impl_._has_bits_[0],
+                  0x00000020U);
+}
+inline ::int32_t LoginResp::privilege() const {
+  // @@protoc_insertion_point(field_get:GrpcLibrary.LoginResp.privilege)
+  return _internal_privilege();
+}
+inline void LoginResp::set_privilege(::int32_t value) {
+  _internal_set_privilege(value);
+  SetHasBit(_impl_._has_bits_[0], 0x00000020U);
+  // @@protoc_insertion_point(field_set:GrpcLibrary.LoginResp.privilege)
+}
+inline ::int32_t LoginResp::_internal_privilege() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.privilege_;
+}
+inline void LoginResp::_internal_set_privilege(::int32_t value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.privilege_ = value;
+}
+
+// string auth = 4;
 inline void LoginResp::clear_auth() {
   ::google::protobuf::internal::TSanWrite(&_impl_);
   _impl_.auth_.ClearToEmpty();
@@ -5609,6 +5649,136 @@ inline void LoginResp::set_allocated_auth(::std::string* PROTOBUF_NULLABLE value
     _impl_.auth_.Set("", GetArena());
   }
   // @@protoc_insertion_point(field_set_allocated:GrpcLibrary.LoginResp.auth)
+}
+
+// string account = 5;
+inline void LoginResp::clear_account() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.account_.ClearToEmpty();
+  ClearHasBit(_impl_._has_bits_[0],
+                  0x00000002U);
+}
+inline const ::std::string& LoginResp::account() const
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_get:GrpcLibrary.LoginResp.account)
+  return _internal_account();
+}
+template <typename Arg_, typename... Args_>
+PROTOBUF_ALWAYS_INLINE void LoginResp::set_account(Arg_&& arg, Args_... args) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  SetHasBit(_impl_._has_bits_[0], 0x00000002U);
+  _impl_.account_.Set(static_cast<Arg_&&>(arg), args..., GetArena());
+  // @@protoc_insertion_point(field_set:GrpcLibrary.LoginResp.account)
+}
+inline ::std::string* PROTOBUF_NONNULL LoginResp::mutable_account()
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  SetHasBit(_impl_._has_bits_[0], 0x00000002U);
+  ::std::string* _s = _internal_mutable_account();
+  // @@protoc_insertion_point(field_mutable:GrpcLibrary.LoginResp.account)
+  return _s;
+}
+inline const ::std::string& LoginResp::_internal_account() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.account_.Get();
+}
+inline void LoginResp::_internal_set_account(const ::std::string& value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.account_.Set(value, GetArena());
+}
+inline ::std::string* PROTOBUF_NONNULL LoginResp::_internal_mutable_account() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  return _impl_.account_.Mutable( GetArena());
+}
+inline ::std::string* PROTOBUF_NULLABLE LoginResp::release_account() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  // @@protoc_insertion_point(field_release:GrpcLibrary.LoginResp.account)
+  if (!CheckHasBit(_impl_._has_bits_[0], 0x00000002U)) {
+    return nullptr;
+  }
+  ClearHasBit(_impl_._has_bits_[0], 0x00000002U);
+  auto* released = _impl_.account_.Release();
+  if (::google::protobuf::internal::DebugHardenForceCopyDefaultString()) {
+    _impl_.account_.Set("", GetArena());
+  }
+  return released;
+}
+inline void LoginResp::set_allocated_account(::std::string* PROTOBUF_NULLABLE value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  if (value != nullptr) {
+    SetHasBit(_impl_._has_bits_[0], 0x00000002U);
+  } else {
+    ClearHasBit(_impl_._has_bits_[0], 0x00000002U);
+  }
+  _impl_.account_.SetAllocated(value, GetArena());
+  if (::google::protobuf::internal::DebugHardenForceCopyDefaultString() && _impl_.account_.IsDefault()) {
+    _impl_.account_.Set("", GetArena());
+  }
+  // @@protoc_insertion_point(field_set_allocated:GrpcLibrary.LoginResp.account)
+}
+
+// string last_login_time = 6;
+inline void LoginResp::clear_last_login_time() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.last_login_time_.ClearToEmpty();
+  ClearHasBit(_impl_._has_bits_[0],
+                  0x00000004U);
+}
+inline const ::std::string& LoginResp::last_login_time() const
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_get:GrpcLibrary.LoginResp.last_login_time)
+  return _internal_last_login_time();
+}
+template <typename Arg_, typename... Args_>
+PROTOBUF_ALWAYS_INLINE void LoginResp::set_last_login_time(Arg_&& arg, Args_... args) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  SetHasBit(_impl_._has_bits_[0], 0x00000004U);
+  _impl_.last_login_time_.Set(static_cast<Arg_&&>(arg), args..., GetArena());
+  // @@protoc_insertion_point(field_set:GrpcLibrary.LoginResp.last_login_time)
+}
+inline ::std::string* PROTOBUF_NONNULL LoginResp::mutable_last_login_time()
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  SetHasBit(_impl_._has_bits_[0], 0x00000004U);
+  ::std::string* _s = _internal_mutable_last_login_time();
+  // @@protoc_insertion_point(field_mutable:GrpcLibrary.LoginResp.last_login_time)
+  return _s;
+}
+inline const ::std::string& LoginResp::_internal_last_login_time() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.last_login_time_.Get();
+}
+inline void LoginResp::_internal_set_last_login_time(const ::std::string& value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.last_login_time_.Set(value, GetArena());
+}
+inline ::std::string* PROTOBUF_NONNULL LoginResp::_internal_mutable_last_login_time() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  return _impl_.last_login_time_.Mutable( GetArena());
+}
+inline ::std::string* PROTOBUF_NULLABLE LoginResp::release_last_login_time() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  // @@protoc_insertion_point(field_release:GrpcLibrary.LoginResp.last_login_time)
+  if (!CheckHasBit(_impl_._has_bits_[0], 0x00000004U)) {
+    return nullptr;
+  }
+  ClearHasBit(_impl_._has_bits_[0], 0x00000004U);
+  auto* released = _impl_.last_login_time_.Release();
+  if (::google::protobuf::internal::DebugHardenForceCopyDefaultString()) {
+    _impl_.last_login_time_.Set("", GetArena());
+  }
+  return released;
+}
+inline void LoginResp::set_allocated_last_login_time(::std::string* PROTOBUF_NULLABLE value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  if (value != nullptr) {
+    SetHasBit(_impl_._has_bits_[0], 0x00000004U);
+  } else {
+    ClearHasBit(_impl_._has_bits_[0], 0x00000004U);
+  }
+  _impl_.last_login_time_.SetAllocated(value, GetArena());
+  if (::google::protobuf::internal::DebugHardenForceCopyDefaultString() && _impl_.last_login_time_.IsDefault()) {
+    _impl_.last_login_time_.Set("", GetArena());
+  }
+  // @@protoc_insertion_point(field_set_allocated:GrpcLibrary.LoginResp.last_login_time)
 }
 
 // -------------------------------------------------------------------
@@ -5956,7 +6126,7 @@ inline void QueryReq::clear_id() {
   ::google::protobuf::internal::TSanWrite(&_impl_);
   _impl_.id_ = ::int64_t{0};
   ClearHasBit(_impl_._has_bits_[0],
-                  0x00000004U);
+                  0x00000008U);
 }
 inline ::int64_t QueryReq::id() const {
   // @@protoc_insertion_point(field_get:GrpcLibrary.QueryReq.id)
@@ -5964,7 +6134,7 @@ inline ::int64_t QueryReq::id() const {
 }
 inline void QueryReq::set_id(::int64_t value) {
   _internal_set_id(value);
-  SetHasBit(_impl_._has_bits_[0], 0x00000004U);
+  SetHasBit(_impl_._has_bits_[0], 0x00000008U);
   // @@protoc_insertion_point(field_set:GrpcLibrary.QueryReq.id)
 }
 inline ::int64_t QueryReq::_internal_id() const {
@@ -5981,7 +6151,7 @@ inline void QueryReq::clear_user_id() {
   ::google::protobuf::internal::TSanWrite(&_impl_);
   _impl_.user_id_ = 0;
   ClearHasBit(_impl_._has_bits_[0],
-                  0x00000008U);
+                  0x00000010U);
 }
 inline ::int32_t QueryReq::user_id() const {
   // @@protoc_insertion_point(field_get:GrpcLibrary.QueryReq.user_id)
@@ -5989,7 +6159,7 @@ inline ::int32_t QueryReq::user_id() const {
 }
 inline void QueryReq::set_user_id(::int32_t value) {
   _internal_set_user_id(value);
-  SetHasBit(_impl_._has_bits_[0], 0x00000008U);
+  SetHasBit(_impl_._has_bits_[0], 0x00000010U);
   // @@protoc_insertion_point(field_set:GrpcLibrary.QueryReq.user_id)
 }
 inline ::int32_t QueryReq::_internal_user_id() const {
@@ -6129,6 +6299,71 @@ inline void QueryReq::set_allocated_content(::std::string* PROTOBUF_NULLABLE val
     _impl_.content_.Set("", GetArena());
   }
   // @@protoc_insertion_point(field_set_allocated:GrpcLibrary.QueryReq.content)
+}
+
+// string model = 5;
+inline void QueryReq::clear_model() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.model_.ClearToEmpty();
+  ClearHasBit(_impl_._has_bits_[0],
+                  0x00000004U);
+}
+inline const ::std::string& QueryReq::model() const
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_get:GrpcLibrary.QueryReq.model)
+  return _internal_model();
+}
+template <typename Arg_, typename... Args_>
+PROTOBUF_ALWAYS_INLINE void QueryReq::set_model(Arg_&& arg, Args_... args) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  SetHasBit(_impl_._has_bits_[0], 0x00000004U);
+  _impl_.model_.Set(static_cast<Arg_&&>(arg), args..., GetArena());
+  // @@protoc_insertion_point(field_set:GrpcLibrary.QueryReq.model)
+}
+inline ::std::string* PROTOBUF_NONNULL QueryReq::mutable_model()
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  SetHasBit(_impl_._has_bits_[0], 0x00000004U);
+  ::std::string* _s = _internal_mutable_model();
+  // @@protoc_insertion_point(field_mutable:GrpcLibrary.QueryReq.model)
+  return _s;
+}
+inline const ::std::string& QueryReq::_internal_model() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.model_.Get();
+}
+inline void QueryReq::_internal_set_model(const ::std::string& value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.model_.Set(value, GetArena());
+}
+inline ::std::string* PROTOBUF_NONNULL QueryReq::_internal_mutable_model() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  return _impl_.model_.Mutable( GetArena());
+}
+inline ::std::string* PROTOBUF_NULLABLE QueryReq::release_model() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  // @@protoc_insertion_point(field_release:GrpcLibrary.QueryReq.model)
+  if (!CheckHasBit(_impl_._has_bits_[0], 0x00000004U)) {
+    return nullptr;
+  }
+  ClearHasBit(_impl_._has_bits_[0], 0x00000004U);
+  auto* released = _impl_.model_.Release();
+  if (::google::protobuf::internal::DebugHardenForceCopyDefaultString()) {
+    _impl_.model_.Set("", GetArena());
+  }
+  return released;
+}
+inline void QueryReq::set_allocated_model(::std::string* PROTOBUF_NULLABLE value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  if (value != nullptr) {
+    SetHasBit(_impl_._has_bits_[0], 0x00000004U);
+  } else {
+    ClearHasBit(_impl_._has_bits_[0], 0x00000004U);
+  }
+  _impl_.model_.SetAllocated(value, GetArena());
+  if (::google::protobuf::internal::DebugHardenForceCopyDefaultString() && _impl_.model_.IsDefault()) {
+    _impl_.model_.Set("", GetArena());
+  }
+  // @@protoc_insertion_point(field_set_allocated:GrpcLibrary.QueryReq.model)
 }
 
 // -------------------------------------------------------------------
@@ -6488,7 +6723,7 @@ inline void NewSessionReq::clear_user_id() {
   ::google::protobuf::internal::TSanWrite(&_impl_);
   _impl_.user_id_ = 0;
   ClearHasBit(_impl_._has_bits_[0],
-                  0x00000004U);
+                  0x00000010U);
 }
 inline ::int32_t NewSessionReq::user_id() const {
   // @@protoc_insertion_point(field_get:GrpcLibrary.NewSessionReq.user_id)
@@ -6496,7 +6731,7 @@ inline ::int32_t NewSessionReq::user_id() const {
 }
 inline void NewSessionReq::set_user_id(::int32_t value) {
   _internal_set_user_id(value);
-  SetHasBit(_impl_._has_bits_[0], 0x00000004U);
+  SetHasBit(_impl_._has_bits_[0], 0x00000010U);
   // @@protoc_insertion_point(field_set:GrpcLibrary.NewSessionReq.user_id)
 }
 inline ::int32_t NewSessionReq::_internal_user_id() const {
@@ -6636,6 +6871,136 @@ inline void NewSessionReq::set_allocated_title(::std::string* PROTOBUF_NULLABLE 
     _impl_.title_.Set("", GetArena());
   }
   // @@protoc_insertion_point(field_set_allocated:GrpcLibrary.NewSessionReq.title)
+}
+
+// string content = 4;
+inline void NewSessionReq::clear_content() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.content_.ClearToEmpty();
+  ClearHasBit(_impl_._has_bits_[0],
+                  0x00000004U);
+}
+inline const ::std::string& NewSessionReq::content() const
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_get:GrpcLibrary.NewSessionReq.content)
+  return _internal_content();
+}
+template <typename Arg_, typename... Args_>
+PROTOBUF_ALWAYS_INLINE void NewSessionReq::set_content(Arg_&& arg, Args_... args) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  SetHasBit(_impl_._has_bits_[0], 0x00000004U);
+  _impl_.content_.Set(static_cast<Arg_&&>(arg), args..., GetArena());
+  // @@protoc_insertion_point(field_set:GrpcLibrary.NewSessionReq.content)
+}
+inline ::std::string* PROTOBUF_NONNULL NewSessionReq::mutable_content()
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  SetHasBit(_impl_._has_bits_[0], 0x00000004U);
+  ::std::string* _s = _internal_mutable_content();
+  // @@protoc_insertion_point(field_mutable:GrpcLibrary.NewSessionReq.content)
+  return _s;
+}
+inline const ::std::string& NewSessionReq::_internal_content() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.content_.Get();
+}
+inline void NewSessionReq::_internal_set_content(const ::std::string& value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.content_.Set(value, GetArena());
+}
+inline ::std::string* PROTOBUF_NONNULL NewSessionReq::_internal_mutable_content() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  return _impl_.content_.Mutable( GetArena());
+}
+inline ::std::string* PROTOBUF_NULLABLE NewSessionReq::release_content() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  // @@protoc_insertion_point(field_release:GrpcLibrary.NewSessionReq.content)
+  if (!CheckHasBit(_impl_._has_bits_[0], 0x00000004U)) {
+    return nullptr;
+  }
+  ClearHasBit(_impl_._has_bits_[0], 0x00000004U);
+  auto* released = _impl_.content_.Release();
+  if (::google::protobuf::internal::DebugHardenForceCopyDefaultString()) {
+    _impl_.content_.Set("", GetArena());
+  }
+  return released;
+}
+inline void NewSessionReq::set_allocated_content(::std::string* PROTOBUF_NULLABLE value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  if (value != nullptr) {
+    SetHasBit(_impl_._has_bits_[0], 0x00000004U);
+  } else {
+    ClearHasBit(_impl_._has_bits_[0], 0x00000004U);
+  }
+  _impl_.content_.SetAllocated(value, GetArena());
+  if (::google::protobuf::internal::DebugHardenForceCopyDefaultString() && _impl_.content_.IsDefault()) {
+    _impl_.content_.Set("", GetArena());
+  }
+  // @@protoc_insertion_point(field_set_allocated:GrpcLibrary.NewSessionReq.content)
+}
+
+// string model = 5;
+inline void NewSessionReq::clear_model() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.model_.ClearToEmpty();
+  ClearHasBit(_impl_._has_bits_[0],
+                  0x00000008U);
+}
+inline const ::std::string& NewSessionReq::model() const
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_get:GrpcLibrary.NewSessionReq.model)
+  return _internal_model();
+}
+template <typename Arg_, typename... Args_>
+PROTOBUF_ALWAYS_INLINE void NewSessionReq::set_model(Arg_&& arg, Args_... args) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  SetHasBit(_impl_._has_bits_[0], 0x00000008U);
+  _impl_.model_.Set(static_cast<Arg_&&>(arg), args..., GetArena());
+  // @@protoc_insertion_point(field_set:GrpcLibrary.NewSessionReq.model)
+}
+inline ::std::string* PROTOBUF_NONNULL NewSessionReq::mutable_model()
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  SetHasBit(_impl_._has_bits_[0], 0x00000008U);
+  ::std::string* _s = _internal_mutable_model();
+  // @@protoc_insertion_point(field_mutable:GrpcLibrary.NewSessionReq.model)
+  return _s;
+}
+inline const ::std::string& NewSessionReq::_internal_model() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.model_.Get();
+}
+inline void NewSessionReq::_internal_set_model(const ::std::string& value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.model_.Set(value, GetArena());
+}
+inline ::std::string* PROTOBUF_NONNULL NewSessionReq::_internal_mutable_model() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  return _impl_.model_.Mutable( GetArena());
+}
+inline ::std::string* PROTOBUF_NULLABLE NewSessionReq::release_model() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  // @@protoc_insertion_point(field_release:GrpcLibrary.NewSessionReq.model)
+  if (!CheckHasBit(_impl_._has_bits_[0], 0x00000008U)) {
+    return nullptr;
+  }
+  ClearHasBit(_impl_._has_bits_[0], 0x00000008U);
+  auto* released = _impl_.model_.Release();
+  if (::google::protobuf::internal::DebugHardenForceCopyDefaultString()) {
+    _impl_.model_.Set("", GetArena());
+  }
+  return released;
+}
+inline void NewSessionReq::set_allocated_model(::std::string* PROTOBUF_NULLABLE value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  if (value != nullptr) {
+    SetHasBit(_impl_._has_bits_[0], 0x00000008U);
+  } else {
+    ClearHasBit(_impl_._has_bits_[0], 0x00000008U);
+  }
+  _impl_.model_.SetAllocated(value, GetArena());
+  if (::google::protobuf::internal::DebugHardenForceCopyDefaultString() && _impl_.model_.IsDefault()) {
+    _impl_.model_.Set("", GetArena());
+  }
+  // @@protoc_insertion_point(field_set_allocated:GrpcLibrary.NewSessionReq.model)
 }
 
 // -------------------------------------------------------------------

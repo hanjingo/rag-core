@@ -24,6 +24,7 @@
 #include "server.h"
 #include "conf.h"
 #include "db_mgr.h"
+#include "llm.h"
 
 int main(int argc, char *argv[])
 {
@@ -112,6 +113,14 @@ int main(int argc, char *argv[])
         // ./rag-core run
         // init dbs
         db_mgr::instance().init();
+
+        // init models
+        auto files = conf::instance().llm_files();
+        LOG_DEBUG("init model files num: {}", files.size());
+        for(const auto &file : files)
+            LOG_DEBUG("init model name:file: {}:{}", file.first, file.second);
+        llm_mgr::instance().load(files);
+        LOG_DEBUG("init llm model finish");
 
         // run server
         auto   addr = conf::instance().data().get<std::string>("server.addr");

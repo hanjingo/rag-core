@@ -6,7 +6,7 @@ load_env("${CMAKE_CURRENT_SOURCE_DIR}/.env")
 
 # set project
 project(${PACKAGE_NAME} 
-    LANGUAGES CXX 
+    LANGUAGES C CXX 
     DESCRIPTION ${PACKAGE_DESCRIPTION_SUMMARY}
 )
 
@@ -43,6 +43,8 @@ endif()
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
+
+enable_language(CXX)
 
 # Build Type
 if (NOT CMAKE_BUILD_TYPE OR CMAKE_BUILD_TYPE STREQUAL "")
@@ -125,6 +127,9 @@ endif()
 # add vcpkg library
 find_package(hj REQUIRED)
 
+# Llama
+find_package(Llama REQUIRED)
+
 # source files
 include_directories(${CMAKE_CURRENT_SOURCE_DIR})
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/src)
@@ -137,6 +142,9 @@ add_executable(${PROJECT_NAME} ${SRC})
 set(LINK_LIBS 
     ${CMAKE_DL_LIBS} 
     ${hj_LIBRARIES}
+
+    # Llama
+    llama
 )
 if(WIN32)
     list(APPEND LINK_LIBS 

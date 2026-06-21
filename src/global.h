@@ -25,26 +25,29 @@ class db
 static constexpr const char *SQL_SELECT_USER_ID_BY_USERNAME_PASSWD =
     R"(SELECT id FROM user WHERE username = '{}' AND encrypted_passwd = '{}')";
 
+static constexpr const char *SQL_SELECT_USER_BY_USERNAME_PASSWD =
+    R"(SELECT id, username, encrypted_passwd, privilege FROM user WHERE username = '{}' AND encrypted_passwd = '{}')";
+
 static constexpr const char *SQL_INSERT_USER =
     R"(INSERT INTO user (username, encrypted_passwd, privilege) VALUES ('{}', '{}', '{}'))";
 
 static constexpr const char *SQL_SELECT_SESSION_BY_ID =
-    R"(SELECT id, user_id, title, content, timestamp, vector_index FROM session WHERE id = {})";
+    R"(SELECT id, user_id, title, content, timestamp FROM session WHERE id = {})";
 
 static constexpr const char *SQL_SELECT_SESSION_BY_USER_ID =
-    R"(SELECT id, user_id, title, content, timestamp, vector_index FROM session WHERE user_id = {})";
+    R"(SELECT id, user_id, title, content, timestamp FROM session WHERE user_id = {})";
 
 static constexpr const char *SQL_INSERT_SESSION =
-    R"(INSERT INTO session (user_id, title, content, timestamp, vector_index) VALUES ({}, '{}', '{}', '{}', {}))";
+    R"(INSERT INTO session (user_id, title, content, timestamp) VALUES ({}, '{}', '{}', '{}'))";
 
 static constexpr const char *SQL_UPDATE_SESSION_TITLE_BY_ID =
     R"(UPDATE session SET title = '{}' WHERE id = {})";
 
 static constexpr const char *SQL_SELECT_SKILL_INFO =
-    R"(SELECT id, name, desc, publisher, version, timestamp, hash FROM skill)";
+    R"(SELECT id, platform, name, desc, publisher, version, timestamp, hash FROM skill)";
 
 static constexpr const char *SQL_SELECT_SKILL_INFO_BY_ID =
-    R"(SELECT id, name, desc, publisher, version, timestamp, hash FROM skill WHERE id = {})";
+    R"(SELECT id, platform, name, desc, publisher, version, timestamp, hash FROM skill WHERE id = {})";
 
 static constexpr const char *SQL_SELECT_FILE_BY_HASH =
     R"(SELECT addr, owner, size_kb FROM file WHERE hash = '{}')";
