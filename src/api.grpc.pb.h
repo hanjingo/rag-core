@@ -85,6 +85,13 @@ class GrpcService final {
     std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::GrpcLibrary::ModifySessionTitleResp>> PrepareAsyncModifySessionTitle(::grpc::ClientContext* context, const ::GrpcLibrary::ModifySessionTitleReq& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::GrpcLibrary::ModifySessionTitleResp>>(PrepareAsyncModifySessionTitleRaw(context, request, cq));
     }
+    virtual ::grpc::Status DelSession(::grpc::ClientContext* context, const ::GrpcLibrary::DelSessionReq& request, ::GrpcLibrary::DelSessionResp* response) = 0;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::GrpcLibrary::DelSessionResp>> AsyncDelSession(::grpc::ClientContext* context, const ::GrpcLibrary::DelSessionReq& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::GrpcLibrary::DelSessionResp>>(AsyncDelSessionRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::GrpcLibrary::DelSessionResp>> PrepareAsyncDelSession(::grpc::ClientContext* context, const ::GrpcLibrary::DelSessionReq& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::GrpcLibrary::DelSessionResp>>(PrepareAsyncDelSessionRaw(context, request, cq));
+    }
     virtual ::grpc::Status GetModelInfo(::grpc::ClientContext* context, const ::GrpcLibrary::GetModelInfoReq& request, ::GrpcLibrary::GetModelInfoResp* response) = 0;
     std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::GrpcLibrary::GetModelInfoResp>> AsyncGetModelInfo(::grpc::ClientContext* context, const ::GrpcLibrary::GetModelInfoReq& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::GrpcLibrary::GetModelInfoResp>>(AsyncGetModelInfoRaw(context, request, cq));
@@ -130,6 +137,8 @@ class GrpcService final {
       virtual void NewSession(::grpc::ClientContext* context, const ::GrpcLibrary::NewSessionReq* request, ::GrpcLibrary::NewSessionResp* response, ::grpc::ClientUnaryReactor* reactor) = 0;
       virtual void ModifySessionTitle(::grpc::ClientContext* context, const ::GrpcLibrary::ModifySessionTitleReq* request, ::GrpcLibrary::ModifySessionTitleResp* response, std::function<void(::grpc::Status)>) = 0;
       virtual void ModifySessionTitle(::grpc::ClientContext* context, const ::GrpcLibrary::ModifySessionTitleReq* request, ::GrpcLibrary::ModifySessionTitleResp* response, ::grpc::ClientUnaryReactor* reactor) = 0;
+      virtual void DelSession(::grpc::ClientContext* context, const ::GrpcLibrary::DelSessionReq* request, ::GrpcLibrary::DelSessionResp* response, std::function<void(::grpc::Status)>) = 0;
+      virtual void DelSession(::grpc::ClientContext* context, const ::GrpcLibrary::DelSessionReq* request, ::GrpcLibrary::DelSessionResp* response, ::grpc::ClientUnaryReactor* reactor) = 0;
       virtual void GetModelInfo(::grpc::ClientContext* context, const ::GrpcLibrary::GetModelInfoReq* request, ::GrpcLibrary::GetModelInfoResp* response, std::function<void(::grpc::Status)>) = 0;
       virtual void GetModelInfo(::grpc::ClientContext* context, const ::GrpcLibrary::GetModelInfoReq* request, ::GrpcLibrary::GetModelInfoResp* response, ::grpc::ClientUnaryReactor* reactor) = 0;
       virtual void NewModelInfo(::grpc::ClientContext* context, const ::GrpcLibrary::NewModelInfoReq* request, ::GrpcLibrary::NewModelInfoResp* response, std::function<void(::grpc::Status)>) = 0;
@@ -157,6 +166,8 @@ class GrpcService final {
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::GrpcLibrary::NewSessionResp>* PrepareAsyncNewSessionRaw(::grpc::ClientContext* context, const ::GrpcLibrary::NewSessionReq& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::GrpcLibrary::ModifySessionTitleResp>* AsyncModifySessionTitleRaw(::grpc::ClientContext* context, const ::GrpcLibrary::ModifySessionTitleReq& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::GrpcLibrary::ModifySessionTitleResp>* PrepareAsyncModifySessionTitleRaw(::grpc::ClientContext* context, const ::GrpcLibrary::ModifySessionTitleReq& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::GrpcLibrary::DelSessionResp>* AsyncDelSessionRaw(::grpc::ClientContext* context, const ::GrpcLibrary::DelSessionReq& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::GrpcLibrary::DelSessionResp>* PrepareAsyncDelSessionRaw(::grpc::ClientContext* context, const ::GrpcLibrary::DelSessionReq& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::GrpcLibrary::GetModelInfoResp>* AsyncGetModelInfoRaw(::grpc::ClientContext* context, const ::GrpcLibrary::GetModelInfoReq& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::GrpcLibrary::GetModelInfoResp>* PrepareAsyncGetModelInfoRaw(::grpc::ClientContext* context, const ::GrpcLibrary::GetModelInfoReq& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::GrpcLibrary::NewModelInfoResp>* AsyncNewModelInfoRaw(::grpc::ClientContext* context, const ::GrpcLibrary::NewModelInfoReq& request, ::grpc::CompletionQueue* cq) = 0;
@@ -218,6 +229,13 @@ class GrpcService final {
     std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::GrpcLibrary::ModifySessionTitleResp>> PrepareAsyncModifySessionTitle(::grpc::ClientContext* context, const ::GrpcLibrary::ModifySessionTitleReq& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::GrpcLibrary::ModifySessionTitleResp>>(PrepareAsyncModifySessionTitleRaw(context, request, cq));
     }
+    ::grpc::Status DelSession(::grpc::ClientContext* context, const ::GrpcLibrary::DelSessionReq& request, ::GrpcLibrary::DelSessionResp* response) override;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::GrpcLibrary::DelSessionResp>> AsyncDelSession(::grpc::ClientContext* context, const ::GrpcLibrary::DelSessionReq& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::GrpcLibrary::DelSessionResp>>(AsyncDelSessionRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::GrpcLibrary::DelSessionResp>> PrepareAsyncDelSession(::grpc::ClientContext* context, const ::GrpcLibrary::DelSessionReq& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::GrpcLibrary::DelSessionResp>>(PrepareAsyncDelSessionRaw(context, request, cq));
+    }
     ::grpc::Status GetModelInfo(::grpc::ClientContext* context, const ::GrpcLibrary::GetModelInfoReq& request, ::GrpcLibrary::GetModelInfoResp* response) override;
     std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::GrpcLibrary::GetModelInfoResp>> AsyncGetModelInfo(::grpc::ClientContext* context, const ::GrpcLibrary::GetModelInfoReq& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::GrpcLibrary::GetModelInfoResp>>(AsyncGetModelInfoRaw(context, request, cq));
@@ -263,6 +281,8 @@ class GrpcService final {
       void NewSession(::grpc::ClientContext* context, const ::GrpcLibrary::NewSessionReq* request, ::GrpcLibrary::NewSessionResp* response, ::grpc::ClientUnaryReactor* reactor) override;
       void ModifySessionTitle(::grpc::ClientContext* context, const ::GrpcLibrary::ModifySessionTitleReq* request, ::GrpcLibrary::ModifySessionTitleResp* response, std::function<void(::grpc::Status)>) override;
       void ModifySessionTitle(::grpc::ClientContext* context, const ::GrpcLibrary::ModifySessionTitleReq* request, ::GrpcLibrary::ModifySessionTitleResp* response, ::grpc::ClientUnaryReactor* reactor) override;
+      void DelSession(::grpc::ClientContext* context, const ::GrpcLibrary::DelSessionReq* request, ::GrpcLibrary::DelSessionResp* response, std::function<void(::grpc::Status)>) override;
+      void DelSession(::grpc::ClientContext* context, const ::GrpcLibrary::DelSessionReq* request, ::GrpcLibrary::DelSessionResp* response, ::grpc::ClientUnaryReactor* reactor) override;
       void GetModelInfo(::grpc::ClientContext* context, const ::GrpcLibrary::GetModelInfoReq* request, ::GrpcLibrary::GetModelInfoResp* response, std::function<void(::grpc::Status)>) override;
       void GetModelInfo(::grpc::ClientContext* context, const ::GrpcLibrary::GetModelInfoReq* request, ::GrpcLibrary::GetModelInfoResp* response, ::grpc::ClientUnaryReactor* reactor) override;
       void NewModelInfo(::grpc::ClientContext* context, const ::GrpcLibrary::NewModelInfoReq* request, ::GrpcLibrary::NewModelInfoResp* response, std::function<void(::grpc::Status)>) override;
@@ -296,6 +316,8 @@ class GrpcService final {
     ::grpc::ClientAsyncResponseReader< ::GrpcLibrary::NewSessionResp>* PrepareAsyncNewSessionRaw(::grpc::ClientContext* context, const ::GrpcLibrary::NewSessionReq& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::GrpcLibrary::ModifySessionTitleResp>* AsyncModifySessionTitleRaw(::grpc::ClientContext* context, const ::GrpcLibrary::ModifySessionTitleReq& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::GrpcLibrary::ModifySessionTitleResp>* PrepareAsyncModifySessionTitleRaw(::grpc::ClientContext* context, const ::GrpcLibrary::ModifySessionTitleReq& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::GrpcLibrary::DelSessionResp>* AsyncDelSessionRaw(::grpc::ClientContext* context, const ::GrpcLibrary::DelSessionReq& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::GrpcLibrary::DelSessionResp>* PrepareAsyncDelSessionRaw(::grpc::ClientContext* context, const ::GrpcLibrary::DelSessionReq& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::GrpcLibrary::GetModelInfoResp>* AsyncGetModelInfoRaw(::grpc::ClientContext* context, const ::GrpcLibrary::GetModelInfoReq& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::GrpcLibrary::GetModelInfoResp>* PrepareAsyncGetModelInfoRaw(::grpc::ClientContext* context, const ::GrpcLibrary::GetModelInfoReq& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::GrpcLibrary::NewModelInfoResp>* AsyncNewModelInfoRaw(::grpc::ClientContext* context, const ::GrpcLibrary::NewModelInfoReq& request, ::grpc::CompletionQueue* cq) override;
@@ -311,6 +333,7 @@ class GrpcService final {
     const ::grpc::internal::RpcMethod rpcmethod_GetSession_;
     const ::grpc::internal::RpcMethod rpcmethod_NewSession_;
     const ::grpc::internal::RpcMethod rpcmethod_ModifySessionTitle_;
+    const ::grpc::internal::RpcMethod rpcmethod_DelSession_;
     const ::grpc::internal::RpcMethod rpcmethod_GetModelInfo_;
     const ::grpc::internal::RpcMethod rpcmethod_NewModelInfo_;
     const ::grpc::internal::RpcMethod rpcmethod_GetSkillInfo_;
@@ -329,6 +352,7 @@ class GrpcService final {
     virtual ::grpc::Status GetSession(::grpc::ServerContext* context, const ::GrpcLibrary::GetSessionReq* request, ::GrpcLibrary::GetSessionResp* response);
     virtual ::grpc::Status NewSession(::grpc::ServerContext* context, const ::GrpcLibrary::NewSessionReq* request, ::GrpcLibrary::NewSessionResp* response);
     virtual ::grpc::Status ModifySessionTitle(::grpc::ServerContext* context, const ::GrpcLibrary::ModifySessionTitleReq* request, ::GrpcLibrary::ModifySessionTitleResp* response);
+    virtual ::grpc::Status DelSession(::grpc::ServerContext* context, const ::GrpcLibrary::DelSessionReq* request, ::GrpcLibrary::DelSessionResp* response);
     virtual ::grpc::Status GetModelInfo(::grpc::ServerContext* context, const ::GrpcLibrary::GetModelInfoReq* request, ::GrpcLibrary::GetModelInfoResp* response);
     virtual ::grpc::Status NewModelInfo(::grpc::ServerContext* context, const ::GrpcLibrary::NewModelInfoReq* request, ::GrpcLibrary::NewModelInfoResp* response);
     virtual ::grpc::Status GetSkillInfo(::grpc::ServerContext* context, const ::GrpcLibrary::GetSkillInfoReq* request, ::GrpcLibrary::GetSkillInfoResp* response);
@@ -475,12 +499,32 @@ class GrpcService final {
     }
   };
   template <class BaseClass>
+  class WithAsyncMethod_DelSession : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithAsyncMethod_DelSession() {
+      ::grpc::Service::MarkMethodAsync(7);
+    }
+    ~WithAsyncMethod_DelSession() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status DelSession(::grpc::ServerContext* /*context*/, const ::GrpcLibrary::DelSessionReq* /*request*/, ::GrpcLibrary::DelSessionResp* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestDelSession(::grpc::ServerContext* context, ::GrpcLibrary::DelSessionReq* request, ::grpc::ServerAsyncResponseWriter< ::GrpcLibrary::DelSessionResp>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(7, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
   class WithAsyncMethod_GetModelInfo : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithAsyncMethod_GetModelInfo() {
-      ::grpc::Service::MarkMethodAsync(7);
+      ::grpc::Service::MarkMethodAsync(8);
     }
     ~WithAsyncMethod_GetModelInfo() override {
       BaseClassMustBeDerivedFromService(this);
@@ -491,7 +535,7 @@ class GrpcService final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestGetModelInfo(::grpc::ServerContext* context, ::GrpcLibrary::GetModelInfoReq* request, ::grpc::ServerAsyncResponseWriter< ::GrpcLibrary::GetModelInfoResp>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(7, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(8, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -500,7 +544,7 @@ class GrpcService final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithAsyncMethod_NewModelInfo() {
-      ::grpc::Service::MarkMethodAsync(8);
+      ::grpc::Service::MarkMethodAsync(9);
     }
     ~WithAsyncMethod_NewModelInfo() override {
       BaseClassMustBeDerivedFromService(this);
@@ -511,7 +555,7 @@ class GrpcService final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestNewModelInfo(::grpc::ServerContext* context, ::GrpcLibrary::NewModelInfoReq* request, ::grpc::ServerAsyncResponseWriter< ::GrpcLibrary::NewModelInfoResp>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(8, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(9, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -520,7 +564,7 @@ class GrpcService final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithAsyncMethod_GetSkillInfo() {
-      ::grpc::Service::MarkMethodAsync(9);
+      ::grpc::Service::MarkMethodAsync(10);
     }
     ~WithAsyncMethod_GetSkillInfo() override {
       BaseClassMustBeDerivedFromService(this);
@@ -531,7 +575,7 @@ class GrpcService final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestGetSkillInfo(::grpc::ServerContext* context, ::GrpcLibrary::GetSkillInfoReq* request, ::grpc::ServerAsyncResponseWriter< ::GrpcLibrary::GetSkillInfoResp>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(9, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(10, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -540,7 +584,7 @@ class GrpcService final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithAsyncMethod_Download() {
-      ::grpc::Service::MarkMethodAsync(10);
+      ::grpc::Service::MarkMethodAsync(11);
     }
     ~WithAsyncMethod_Download() override {
       BaseClassMustBeDerivedFromService(this);
@@ -551,10 +595,10 @@ class GrpcService final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestDownload(::grpc::ServerContext* context, ::GrpcLibrary::DownloadReq* request, ::grpc::ServerAsyncResponseWriter< ::GrpcLibrary::DownloadResp>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(10, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(11, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
-  typedef WithAsyncMethod_Login<WithAsyncMethod_Logout<WithAsyncMethod_RegAccount<WithAsyncMethod_Query<WithAsyncMethod_GetSession<WithAsyncMethod_NewSession<WithAsyncMethod_ModifySessionTitle<WithAsyncMethod_GetModelInfo<WithAsyncMethod_NewModelInfo<WithAsyncMethod_GetSkillInfo<WithAsyncMethod_Download<Service > > > > > > > > > > > AsyncService;
+  typedef WithAsyncMethod_Login<WithAsyncMethod_Logout<WithAsyncMethod_RegAccount<WithAsyncMethod_Query<WithAsyncMethod_GetSession<WithAsyncMethod_NewSession<WithAsyncMethod_ModifySessionTitle<WithAsyncMethod_DelSession<WithAsyncMethod_GetModelInfo<WithAsyncMethod_NewModelInfo<WithAsyncMethod_GetSkillInfo<WithAsyncMethod_Download<Service > > > > > > > > > > > > AsyncService;
   template <class BaseClass>
   class WithCallbackMethod_Login : public BaseClass {
    private:
@@ -745,18 +789,45 @@ class GrpcService final {
       ::grpc::CallbackServerContext* /*context*/, const ::GrpcLibrary::ModifySessionTitleReq* /*request*/, ::GrpcLibrary::ModifySessionTitleResp* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
+  class WithCallbackMethod_DelSession : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithCallbackMethod_DelSession() {
+      ::grpc::Service::MarkMethodCallback(7,
+          new ::grpc::internal::CallbackUnaryHandler< ::GrpcLibrary::DelSessionReq, ::GrpcLibrary::DelSessionResp>(
+            [this](
+                   ::grpc::CallbackServerContext* context, const ::GrpcLibrary::DelSessionReq* request, ::GrpcLibrary::DelSessionResp* response) { return this->DelSession(context, request, response); }));}
+    void SetMessageAllocatorFor_DelSession(
+        ::grpc::MessageAllocator< ::GrpcLibrary::DelSessionReq, ::GrpcLibrary::DelSessionResp>* allocator) {
+      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(7);
+      static_cast<::grpc::internal::CallbackUnaryHandler< ::GrpcLibrary::DelSessionReq, ::GrpcLibrary::DelSessionResp>*>(handler)
+              ->SetMessageAllocator(allocator);
+    }
+    ~WithCallbackMethod_DelSession() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status DelSession(::grpc::ServerContext* /*context*/, const ::GrpcLibrary::DelSessionReq* /*request*/, ::GrpcLibrary::DelSessionResp* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual ::grpc::ServerUnaryReactor* DelSession(
+      ::grpc::CallbackServerContext* /*context*/, const ::GrpcLibrary::DelSessionReq* /*request*/, ::GrpcLibrary::DelSessionResp* /*response*/)  { return nullptr; }
+  };
+  template <class BaseClass>
   class WithCallbackMethod_GetModelInfo : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithCallbackMethod_GetModelInfo() {
-      ::grpc::Service::MarkMethodCallback(7,
+      ::grpc::Service::MarkMethodCallback(8,
           new ::grpc::internal::CallbackUnaryHandler< ::GrpcLibrary::GetModelInfoReq, ::GrpcLibrary::GetModelInfoResp>(
             [this](
                    ::grpc::CallbackServerContext* context, const ::GrpcLibrary::GetModelInfoReq* request, ::GrpcLibrary::GetModelInfoResp* response) { return this->GetModelInfo(context, request, response); }));}
     void SetMessageAllocatorFor_GetModelInfo(
         ::grpc::MessageAllocator< ::GrpcLibrary::GetModelInfoReq, ::GrpcLibrary::GetModelInfoResp>* allocator) {
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(7);
+      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(8);
       static_cast<::grpc::internal::CallbackUnaryHandler< ::GrpcLibrary::GetModelInfoReq, ::GrpcLibrary::GetModelInfoResp>*>(handler)
               ->SetMessageAllocator(allocator);
     }
@@ -777,13 +848,13 @@ class GrpcService final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithCallbackMethod_NewModelInfo() {
-      ::grpc::Service::MarkMethodCallback(8,
+      ::grpc::Service::MarkMethodCallback(9,
           new ::grpc::internal::CallbackUnaryHandler< ::GrpcLibrary::NewModelInfoReq, ::GrpcLibrary::NewModelInfoResp>(
             [this](
                    ::grpc::CallbackServerContext* context, const ::GrpcLibrary::NewModelInfoReq* request, ::GrpcLibrary::NewModelInfoResp* response) { return this->NewModelInfo(context, request, response); }));}
     void SetMessageAllocatorFor_NewModelInfo(
         ::grpc::MessageAllocator< ::GrpcLibrary::NewModelInfoReq, ::GrpcLibrary::NewModelInfoResp>* allocator) {
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(8);
+      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(9);
       static_cast<::grpc::internal::CallbackUnaryHandler< ::GrpcLibrary::NewModelInfoReq, ::GrpcLibrary::NewModelInfoResp>*>(handler)
               ->SetMessageAllocator(allocator);
     }
@@ -804,13 +875,13 @@ class GrpcService final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithCallbackMethod_GetSkillInfo() {
-      ::grpc::Service::MarkMethodCallback(9,
+      ::grpc::Service::MarkMethodCallback(10,
           new ::grpc::internal::CallbackUnaryHandler< ::GrpcLibrary::GetSkillInfoReq, ::GrpcLibrary::GetSkillInfoResp>(
             [this](
                    ::grpc::CallbackServerContext* context, const ::GrpcLibrary::GetSkillInfoReq* request, ::GrpcLibrary::GetSkillInfoResp* response) { return this->GetSkillInfo(context, request, response); }));}
     void SetMessageAllocatorFor_GetSkillInfo(
         ::grpc::MessageAllocator< ::GrpcLibrary::GetSkillInfoReq, ::GrpcLibrary::GetSkillInfoResp>* allocator) {
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(9);
+      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(10);
       static_cast<::grpc::internal::CallbackUnaryHandler< ::GrpcLibrary::GetSkillInfoReq, ::GrpcLibrary::GetSkillInfoResp>*>(handler)
               ->SetMessageAllocator(allocator);
     }
@@ -831,13 +902,13 @@ class GrpcService final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithCallbackMethod_Download() {
-      ::grpc::Service::MarkMethodCallback(10,
+      ::grpc::Service::MarkMethodCallback(11,
           new ::grpc::internal::CallbackUnaryHandler< ::GrpcLibrary::DownloadReq, ::GrpcLibrary::DownloadResp>(
             [this](
                    ::grpc::CallbackServerContext* context, const ::GrpcLibrary::DownloadReq* request, ::GrpcLibrary::DownloadResp* response) { return this->Download(context, request, response); }));}
     void SetMessageAllocatorFor_Download(
         ::grpc::MessageAllocator< ::GrpcLibrary::DownloadReq, ::GrpcLibrary::DownloadResp>* allocator) {
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(10);
+      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(11);
       static_cast<::grpc::internal::CallbackUnaryHandler< ::GrpcLibrary::DownloadReq, ::GrpcLibrary::DownloadResp>*>(handler)
               ->SetMessageAllocator(allocator);
     }
@@ -852,7 +923,7 @@ class GrpcService final {
     virtual ::grpc::ServerUnaryReactor* Download(
       ::grpc::CallbackServerContext* /*context*/, const ::GrpcLibrary::DownloadReq* /*request*/, ::GrpcLibrary::DownloadResp* /*response*/)  { return nullptr; }
   };
-  typedef WithCallbackMethod_Login<WithCallbackMethod_Logout<WithCallbackMethod_RegAccount<WithCallbackMethod_Query<WithCallbackMethod_GetSession<WithCallbackMethod_NewSession<WithCallbackMethod_ModifySessionTitle<WithCallbackMethod_GetModelInfo<WithCallbackMethod_NewModelInfo<WithCallbackMethod_GetSkillInfo<WithCallbackMethod_Download<Service > > > > > > > > > > > CallbackService;
+  typedef WithCallbackMethod_Login<WithCallbackMethod_Logout<WithCallbackMethod_RegAccount<WithCallbackMethod_Query<WithCallbackMethod_GetSession<WithCallbackMethod_NewSession<WithCallbackMethod_ModifySessionTitle<WithCallbackMethod_DelSession<WithCallbackMethod_GetModelInfo<WithCallbackMethod_NewModelInfo<WithCallbackMethod_GetSkillInfo<WithCallbackMethod_Download<Service > > > > > > > > > > > > CallbackService;
   typedef CallbackService ExperimentalCallbackService;
   template <class BaseClass>
   class WithGenericMethod_Login : public BaseClass {
@@ -974,12 +1045,29 @@ class GrpcService final {
     }
   };
   template <class BaseClass>
+  class WithGenericMethod_DelSession : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithGenericMethod_DelSession() {
+      ::grpc::Service::MarkMethodGeneric(7);
+    }
+    ~WithGenericMethod_DelSession() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status DelSession(::grpc::ServerContext* /*context*/, const ::GrpcLibrary::DelSessionReq* /*request*/, ::GrpcLibrary::DelSessionResp* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+  };
+  template <class BaseClass>
   class WithGenericMethod_GetModelInfo : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithGenericMethod_GetModelInfo() {
-      ::grpc::Service::MarkMethodGeneric(7);
+      ::grpc::Service::MarkMethodGeneric(8);
     }
     ~WithGenericMethod_GetModelInfo() override {
       BaseClassMustBeDerivedFromService(this);
@@ -996,7 +1084,7 @@ class GrpcService final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithGenericMethod_NewModelInfo() {
-      ::grpc::Service::MarkMethodGeneric(8);
+      ::grpc::Service::MarkMethodGeneric(9);
     }
     ~WithGenericMethod_NewModelInfo() override {
       BaseClassMustBeDerivedFromService(this);
@@ -1013,7 +1101,7 @@ class GrpcService final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithGenericMethod_GetSkillInfo() {
-      ::grpc::Service::MarkMethodGeneric(9);
+      ::grpc::Service::MarkMethodGeneric(10);
     }
     ~WithGenericMethod_GetSkillInfo() override {
       BaseClassMustBeDerivedFromService(this);
@@ -1030,7 +1118,7 @@ class GrpcService final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithGenericMethod_Download() {
-      ::grpc::Service::MarkMethodGeneric(10);
+      ::grpc::Service::MarkMethodGeneric(11);
     }
     ~WithGenericMethod_Download() override {
       BaseClassMustBeDerivedFromService(this);
@@ -1182,12 +1270,32 @@ class GrpcService final {
     }
   };
   template <class BaseClass>
+  class WithRawMethod_DelSession : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithRawMethod_DelSession() {
+      ::grpc::Service::MarkMethodRaw(7);
+    }
+    ~WithRawMethod_DelSession() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status DelSession(::grpc::ServerContext* /*context*/, const ::GrpcLibrary::DelSessionReq* /*request*/, ::GrpcLibrary::DelSessionResp* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestDelSession(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(7, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
   class WithRawMethod_GetModelInfo : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithRawMethod_GetModelInfo() {
-      ::grpc::Service::MarkMethodRaw(7);
+      ::grpc::Service::MarkMethodRaw(8);
     }
     ~WithRawMethod_GetModelInfo() override {
       BaseClassMustBeDerivedFromService(this);
@@ -1198,7 +1306,7 @@ class GrpcService final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestGetModelInfo(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(7, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(8, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -1207,7 +1315,7 @@ class GrpcService final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithRawMethod_NewModelInfo() {
-      ::grpc::Service::MarkMethodRaw(8);
+      ::grpc::Service::MarkMethodRaw(9);
     }
     ~WithRawMethod_NewModelInfo() override {
       BaseClassMustBeDerivedFromService(this);
@@ -1218,7 +1326,7 @@ class GrpcService final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestNewModelInfo(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(8, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(9, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -1227,7 +1335,7 @@ class GrpcService final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithRawMethod_GetSkillInfo() {
-      ::grpc::Service::MarkMethodRaw(9);
+      ::grpc::Service::MarkMethodRaw(10);
     }
     ~WithRawMethod_GetSkillInfo() override {
       BaseClassMustBeDerivedFromService(this);
@@ -1238,7 +1346,7 @@ class GrpcService final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestGetSkillInfo(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(9, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(10, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -1247,7 +1355,7 @@ class GrpcService final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithRawMethod_Download() {
-      ::grpc::Service::MarkMethodRaw(10);
+      ::grpc::Service::MarkMethodRaw(11);
     }
     ~WithRawMethod_Download() override {
       BaseClassMustBeDerivedFromService(this);
@@ -1258,7 +1366,7 @@ class GrpcService final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestDownload(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(10, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(11, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -1416,12 +1524,34 @@ class GrpcService final {
       ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
+  class WithRawCallbackMethod_DelSession : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithRawCallbackMethod_DelSession() {
+      ::grpc::Service::MarkMethodRawCallback(7,
+          new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
+            [this](
+                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->DelSession(context, request, response); }));
+    }
+    ~WithRawCallbackMethod_DelSession() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status DelSession(::grpc::ServerContext* /*context*/, const ::GrpcLibrary::DelSessionReq* /*request*/, ::GrpcLibrary::DelSessionResp* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual ::grpc::ServerUnaryReactor* DelSession(
+      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
+  };
+  template <class BaseClass>
   class WithRawCallbackMethod_GetModelInfo : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithRawCallbackMethod_GetModelInfo() {
-      ::grpc::Service::MarkMethodRawCallback(7,
+      ::grpc::Service::MarkMethodRawCallback(8,
           new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
             [this](
                    ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->GetModelInfo(context, request, response); }));
@@ -1443,7 +1573,7 @@ class GrpcService final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithRawCallbackMethod_NewModelInfo() {
-      ::grpc::Service::MarkMethodRawCallback(8,
+      ::grpc::Service::MarkMethodRawCallback(9,
           new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
             [this](
                    ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->NewModelInfo(context, request, response); }));
@@ -1465,7 +1595,7 @@ class GrpcService final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithRawCallbackMethod_GetSkillInfo() {
-      ::grpc::Service::MarkMethodRawCallback(9,
+      ::grpc::Service::MarkMethodRawCallback(10,
           new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
             [this](
                    ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->GetSkillInfo(context, request, response); }));
@@ -1487,7 +1617,7 @@ class GrpcService final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithRawCallbackMethod_Download() {
-      ::grpc::Service::MarkMethodRawCallback(10,
+      ::grpc::Service::MarkMethodRawCallback(11,
           new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
             [this](
                    ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->Download(context, request, response); }));
@@ -1693,12 +1823,39 @@ class GrpcService final {
     virtual ::grpc::Status StreamedModifySessionTitle(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::GrpcLibrary::ModifySessionTitleReq,::GrpcLibrary::ModifySessionTitleResp>* server_unary_streamer) = 0;
   };
   template <class BaseClass>
+  class WithStreamedUnaryMethod_DelSession : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithStreamedUnaryMethod_DelSession() {
+      ::grpc::Service::MarkMethodStreamed(7,
+        new ::grpc::internal::StreamedUnaryHandler<
+          ::GrpcLibrary::DelSessionReq, ::GrpcLibrary::DelSessionResp>(
+            [this](::grpc::ServerContext* context,
+                   ::grpc::ServerUnaryStreamer<
+                     ::GrpcLibrary::DelSessionReq, ::GrpcLibrary::DelSessionResp>* streamer) {
+                       return this->StreamedDelSession(context,
+                         streamer);
+                  }));
+    }
+    ~WithStreamedUnaryMethod_DelSession() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable regular version of this method
+    ::grpc::Status DelSession(::grpc::ServerContext* /*context*/, const ::GrpcLibrary::DelSessionReq* /*request*/, ::GrpcLibrary::DelSessionResp* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    // replace default version of method with streamed unary
+    virtual ::grpc::Status StreamedDelSession(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::GrpcLibrary::DelSessionReq,::GrpcLibrary::DelSessionResp>* server_unary_streamer) = 0;
+  };
+  template <class BaseClass>
   class WithStreamedUnaryMethod_GetModelInfo : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithStreamedUnaryMethod_GetModelInfo() {
-      ::grpc::Service::MarkMethodStreamed(7,
+      ::grpc::Service::MarkMethodStreamed(8,
         new ::grpc::internal::StreamedUnaryHandler<
           ::GrpcLibrary::GetModelInfoReq, ::GrpcLibrary::GetModelInfoResp>(
             [this](::grpc::ServerContext* context,
@@ -1725,7 +1882,7 @@ class GrpcService final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithStreamedUnaryMethod_NewModelInfo() {
-      ::grpc::Service::MarkMethodStreamed(8,
+      ::grpc::Service::MarkMethodStreamed(9,
         new ::grpc::internal::StreamedUnaryHandler<
           ::GrpcLibrary::NewModelInfoReq, ::GrpcLibrary::NewModelInfoResp>(
             [this](::grpc::ServerContext* context,
@@ -1752,7 +1909,7 @@ class GrpcService final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithStreamedUnaryMethod_GetSkillInfo() {
-      ::grpc::Service::MarkMethodStreamed(9,
+      ::grpc::Service::MarkMethodStreamed(10,
         new ::grpc::internal::StreamedUnaryHandler<
           ::GrpcLibrary::GetSkillInfoReq, ::GrpcLibrary::GetSkillInfoResp>(
             [this](::grpc::ServerContext* context,
@@ -1779,7 +1936,7 @@ class GrpcService final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithStreamedUnaryMethod_Download() {
-      ::grpc::Service::MarkMethodStreamed(10,
+      ::grpc::Service::MarkMethodStreamed(11,
         new ::grpc::internal::StreamedUnaryHandler<
           ::GrpcLibrary::DownloadReq, ::GrpcLibrary::DownloadResp>(
             [this](::grpc::ServerContext* context,
@@ -1800,9 +1957,9 @@ class GrpcService final {
     // replace default version of method with streamed unary
     virtual ::grpc::Status StreamedDownload(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::GrpcLibrary::DownloadReq,::GrpcLibrary::DownloadResp>* server_unary_streamer) = 0;
   };
-  typedef WithStreamedUnaryMethod_Login<WithStreamedUnaryMethod_Logout<WithStreamedUnaryMethod_RegAccount<WithStreamedUnaryMethod_Query<WithStreamedUnaryMethod_GetSession<WithStreamedUnaryMethod_NewSession<WithStreamedUnaryMethod_ModifySessionTitle<WithStreamedUnaryMethod_GetModelInfo<WithStreamedUnaryMethod_NewModelInfo<WithStreamedUnaryMethod_GetSkillInfo<WithStreamedUnaryMethod_Download<Service > > > > > > > > > > > StreamedUnaryService;
+  typedef WithStreamedUnaryMethod_Login<WithStreamedUnaryMethod_Logout<WithStreamedUnaryMethod_RegAccount<WithStreamedUnaryMethod_Query<WithStreamedUnaryMethod_GetSession<WithStreamedUnaryMethod_NewSession<WithStreamedUnaryMethod_ModifySessionTitle<WithStreamedUnaryMethod_DelSession<WithStreamedUnaryMethod_GetModelInfo<WithStreamedUnaryMethod_NewModelInfo<WithStreamedUnaryMethod_GetSkillInfo<WithStreamedUnaryMethod_Download<Service > > > > > > > > > > > > StreamedUnaryService;
   typedef Service SplitStreamedService;
-  typedef WithStreamedUnaryMethod_Login<WithStreamedUnaryMethod_Logout<WithStreamedUnaryMethod_RegAccount<WithStreamedUnaryMethod_Query<WithStreamedUnaryMethod_GetSession<WithStreamedUnaryMethod_NewSession<WithStreamedUnaryMethod_ModifySessionTitle<WithStreamedUnaryMethod_GetModelInfo<WithStreamedUnaryMethod_NewModelInfo<WithStreamedUnaryMethod_GetSkillInfo<WithStreamedUnaryMethod_Download<Service > > > > > > > > > > > StreamedService;
+  typedef WithStreamedUnaryMethod_Login<WithStreamedUnaryMethod_Logout<WithStreamedUnaryMethod_RegAccount<WithStreamedUnaryMethod_Query<WithStreamedUnaryMethod_GetSession<WithStreamedUnaryMethod_NewSession<WithStreamedUnaryMethod_ModifySessionTitle<WithStreamedUnaryMethod_DelSession<WithStreamedUnaryMethod_GetModelInfo<WithStreamedUnaryMethod_NewModelInfo<WithStreamedUnaryMethod_GetSkillInfo<WithStreamedUnaryMethod_Download<Service > > > > > > > > > > > > StreamedService;
 };
 
 }  // namespace GrpcLibrary

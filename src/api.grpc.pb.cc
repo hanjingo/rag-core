@@ -30,6 +30,7 @@ static const char* GrpcService_method_names[] = {
   "/GrpcLibrary.GrpcService/GetSession",
   "/GrpcLibrary.GrpcService/NewSession",
   "/GrpcLibrary.GrpcService/ModifySessionTitle",
+  "/GrpcLibrary.GrpcService/DelSession",
   "/GrpcLibrary.GrpcService/GetModelInfo",
   "/GrpcLibrary.GrpcService/NewModelInfo",
   "/GrpcLibrary.GrpcService/GetSkillInfo",
@@ -50,10 +51,11 @@ GrpcService::Stub::Stub(const std::shared_ptr< ::grpc::ChannelInterface>& channe
   , rpcmethod_GetSession_(GrpcService_method_names[4], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
   , rpcmethod_NewSession_(GrpcService_method_names[5], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
   , rpcmethod_ModifySessionTitle_(GrpcService_method_names[6], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_GetModelInfo_(GrpcService_method_names[7], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_NewModelInfo_(GrpcService_method_names[8], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_GetSkillInfo_(GrpcService_method_names[9], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_Download_(GrpcService_method_names[10], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_DelSession_(GrpcService_method_names[7], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_GetModelInfo_(GrpcService_method_names[8], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_NewModelInfo_(GrpcService_method_names[9], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_GetSkillInfo_(GrpcService_method_names[10], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_Download_(GrpcService_method_names[11], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
   {}
 
 ::grpc::Status GrpcService::Stub::Login(::grpc::ClientContext* context, const ::GrpcLibrary::LoginReq& request, ::GrpcLibrary::LoginResp* response) {
@@ -213,6 +215,29 @@ void GrpcService::Stub::async::ModifySessionTitle(::grpc::ClientContext* context
 ::grpc::ClientAsyncResponseReader< ::GrpcLibrary::ModifySessionTitleResp>* GrpcService::Stub::AsyncModifySessionTitleRaw(::grpc::ClientContext* context, const ::GrpcLibrary::ModifySessionTitleReq& request, ::grpc::CompletionQueue* cq) {
   auto* result =
     this->PrepareAsyncModifySessionTitleRaw(context, request, cq);
+  result->StartCall();
+  return result;
+}
+
+::grpc::Status GrpcService::Stub::DelSession(::grpc::ClientContext* context, const ::GrpcLibrary::DelSessionReq& request, ::GrpcLibrary::DelSessionResp* response) {
+  return ::grpc::internal::BlockingUnaryCall< ::GrpcLibrary::DelSessionReq, ::GrpcLibrary::DelSessionResp, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_DelSession_, context, request, response);
+}
+
+void GrpcService::Stub::async::DelSession(::grpc::ClientContext* context, const ::GrpcLibrary::DelSessionReq* request, ::GrpcLibrary::DelSessionResp* response, std::function<void(::grpc::Status)> f) {
+  ::grpc::internal::CallbackUnaryCall< ::GrpcLibrary::DelSessionReq, ::GrpcLibrary::DelSessionResp, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_DelSession_, context, request, response, std::move(f));
+}
+
+void GrpcService::Stub::async::DelSession(::grpc::ClientContext* context, const ::GrpcLibrary::DelSessionReq* request, ::GrpcLibrary::DelSessionResp* response, ::grpc::ClientUnaryReactor* reactor) {
+  ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_DelSession_, context, request, response, reactor);
+}
+
+::grpc::ClientAsyncResponseReader< ::GrpcLibrary::DelSessionResp>* GrpcService::Stub::PrepareAsyncDelSessionRaw(::grpc::ClientContext* context, const ::GrpcLibrary::DelSessionReq& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncResponseReaderHelper::Create< ::GrpcLibrary::DelSessionResp, ::GrpcLibrary::DelSessionReq, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), cq, rpcmethod_DelSession_, context, request);
+}
+
+::grpc::ClientAsyncResponseReader< ::GrpcLibrary::DelSessionResp>* GrpcService::Stub::AsyncDelSessionRaw(::grpc::ClientContext* context, const ::GrpcLibrary::DelSessionReq& request, ::grpc::CompletionQueue* cq) {
+  auto* result =
+    this->PrepareAsyncDelSessionRaw(context, request, cq);
   result->StartCall();
   return result;
 }
@@ -383,6 +408,16 @@ GrpcService::Service::Service() {
   AddMethod(new ::grpc::internal::RpcServiceMethod(
       GrpcService_method_names[7],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
+      new ::grpc::internal::RpcMethodHandler< GrpcService::Service, ::GrpcLibrary::DelSessionReq, ::GrpcLibrary::DelSessionResp, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
+          [](GrpcService::Service* service,
+             ::grpc::ServerContext* ctx,
+             const ::GrpcLibrary::DelSessionReq* req,
+             ::GrpcLibrary::DelSessionResp* resp) {
+               return service->DelSession(ctx, req, resp);
+             }, this)));
+  AddMethod(new ::grpc::internal::RpcServiceMethod(
+      GrpcService_method_names[8],
+      ::grpc::internal::RpcMethod::NORMAL_RPC,
       new ::grpc::internal::RpcMethodHandler< GrpcService::Service, ::GrpcLibrary::GetModelInfoReq, ::GrpcLibrary::GetModelInfoResp, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
           [](GrpcService::Service* service,
              ::grpc::ServerContext* ctx,
@@ -391,7 +426,7 @@ GrpcService::Service::Service() {
                return service->GetModelInfo(ctx, req, resp);
              }, this)));
   AddMethod(new ::grpc::internal::RpcServiceMethod(
-      GrpcService_method_names[8],
+      GrpcService_method_names[9],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
       new ::grpc::internal::RpcMethodHandler< GrpcService::Service, ::GrpcLibrary::NewModelInfoReq, ::GrpcLibrary::NewModelInfoResp, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
           [](GrpcService::Service* service,
@@ -401,7 +436,7 @@ GrpcService::Service::Service() {
                return service->NewModelInfo(ctx, req, resp);
              }, this)));
   AddMethod(new ::grpc::internal::RpcServiceMethod(
-      GrpcService_method_names[9],
+      GrpcService_method_names[10],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
       new ::grpc::internal::RpcMethodHandler< GrpcService::Service, ::GrpcLibrary::GetSkillInfoReq, ::GrpcLibrary::GetSkillInfoResp, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
           [](GrpcService::Service* service,
@@ -411,7 +446,7 @@ GrpcService::Service::Service() {
                return service->GetSkillInfo(ctx, req, resp);
              }, this)));
   AddMethod(new ::grpc::internal::RpcServiceMethod(
-      GrpcService_method_names[10],
+      GrpcService_method_names[11],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
       new ::grpc::internal::RpcMethodHandler< GrpcService::Service, ::GrpcLibrary::DownloadReq, ::GrpcLibrary::DownloadResp, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
           [](GrpcService::Service* service,
@@ -468,6 +503,13 @@ GrpcService::Service::~Service() {
 }
 
 ::grpc::Status GrpcService::Service::ModifySessionTitle(::grpc::ServerContext* context, const ::GrpcLibrary::ModifySessionTitleReq* request, ::GrpcLibrary::ModifySessionTitleResp* response) {
+  (void) context;
+  (void) request;
+  (void) response;
+  return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+}
+
+::grpc::Status GrpcService::Service::DelSession(::grpc::ServerContext* context, const ::GrpcLibrary::DelSessionReq* request, ::GrpcLibrary::DelSessionResp* response) {
   (void) context;
   (void) request;
   (void) response;

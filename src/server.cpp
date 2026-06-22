@@ -317,6 +317,40 @@ api_handler::ModifySessionTitle(ctx_t                                      *ctx,
     return status_t::OK;
 }
 
+status_t api_handler::DelSession(ctx_t                              *ctx,
+                                 const ::GrpcLibrary::DelSessionReq *req,
+                                 ::GrpcLibrary::DelSessionResp      *resp)
+{
+    auto        ids     = req->ids();
+    int64_t     user_id = req->user_id();
+    std::string auth    = req->auth();
+    resp->set_error_code(ERR_FAIL);
+    LOG_DEBUG(
+        "Received DelSession request. ids.size(): {}, user_id: {}, auth: {}",
+        ids.size(),
+        user_id,
+        auth);
+
+    // TODO check privilege
+
+    for(auto id : ids)
+    {
+        auto sql = hj::fmt(SQL_DELETE_SESSION_BY_ID, id);
+        LOG_DEBUG("{}", sql);
+        if(db_mgr::instance().exec("sqlite", sql) != OK)
+        {
+            resp->set_error_code(ERR_SQLITE_EXEC_FAIL);
+            LOG_ERROR("Failed to delete session for sql: {}", sql);
+            return status_t::OK;
+        }
+
+        resp->add_ids(id);
+    }
+
+    resp->set_error_code(OK);
+    return status_t::OK;
+}
+
 status_t api_handler::GetModelInfo(ctx_t                                *ctx,
                                    const ::GrpcLibrary::GetModelInfoReq *req,
                                    ::GrpcLibrary::GetModelInfoResp      *resp)

@@ -53,6 +53,14 @@ extern "C" {
 extern const ::google::protobuf::internal::DescriptorTable descriptor_table_src_2fapi_2eproto;
 }  // extern "C"
 namespace GrpcLibrary {
+class DelSessionReq;
+struct DelSessionReqDefaultTypeInternal;
+extern DelSessionReqDefaultTypeInternal _DelSessionReq_default_instance_;
+extern const ::google::protobuf::internal::ClassDataFull DelSessionReq_class_data_;
+class DelSessionResp;
+struct DelSessionRespDefaultTypeInternal;
+extern DelSessionRespDefaultTypeInternal _DelSessionResp_default_instance_;
+extern const ::google::protobuf::internal::ClassDataFull DelSessionResp_class_data_;
 class DownloadReq;
 struct DownloadReqDefaultTypeInternal;
 extern DownloadReqDefaultTypeInternal _DownloadReq_default_instance_;
@@ -1910,7 +1918,7 @@ class NewModelInfoResp final : public ::google::protobuf::Message
     return *reinterpret_cast<const NewModelInfoResp*>(
         &_NewModelInfoResp_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 20;
+  static constexpr int kIndexInFileMessages = 22;
   friend void swap(NewModelInfoResp& a, NewModelInfoResp& b) { a.Swap(&b); }
   inline void Swap(NewModelInfoResp* PROTOBUF_NONNULL other) {
     if (other == this) return;
@@ -3769,7 +3777,7 @@ class GetSkillInfoReq final : public ::google::protobuf::Message
     return *reinterpret_cast<const GetSkillInfoReq*>(
         &_GetSkillInfoReq_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 21;
+  static constexpr int kIndexInFileMessages = 23;
   friend void swap(GetSkillInfoReq& a, GetSkillInfoReq& b) { a.Swap(&b); }
   inline void Swap(GetSkillInfoReq* PROTOBUF_NONNULL other) {
     if (other == this) return;
@@ -4207,7 +4215,7 @@ class GetModelInfoReq final : public ::google::protobuf::Message
     return *reinterpret_cast<const GetModelInfoReq*>(
         &_GetModelInfoReq_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 17;
+  static constexpr int kIndexInFileMessages = 19;
   friend void swap(GetModelInfoReq& a, GetModelInfoReq& b) { a.Swap(&b); }
   inline void Swap(GetModelInfoReq* PROTOBUF_NONNULL other) {
     if (other == this) return;
@@ -4443,7 +4451,7 @@ class DownloadResp final : public ::google::protobuf::Message
     return *reinterpret_cast<const DownloadResp*>(
         &_DownloadResp_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 24;
+  static constexpr int kIndexInFileMessages = 26;
   friend void swap(DownloadResp& a, DownloadResp& b) { a.Swap(&b); }
   inline void Swap(DownloadResp* PROTOBUF_NONNULL other) {
     if (other == this) return;
@@ -4679,7 +4687,7 @@ class DownloadReq final : public ::google::protobuf::Message
     return *reinterpret_cast<const DownloadReq*>(
         &_DownloadReq_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 23;
+  static constexpr int kIndexInFileMessages = 25;
   friend void swap(DownloadReq& a, DownloadReq& b) { a.Swap(&b); }
   inline void Swap(DownloadReq* PROTOBUF_NONNULL other) {
     if (other == this) return;
@@ -4846,6 +4854,445 @@ class DownloadReq final : public ::google::protobuf::Message
 };
 
 extern const ::google::protobuf::internal::ClassDataFull DownloadReq_class_data_;
+// -------------------------------------------------------------------
+
+class DelSessionResp final : public ::google::protobuf::Message
+/* @@protoc_insertion_point(class_definition:GrpcLibrary.DelSessionResp) */ {
+ public:
+  inline DelSessionResp() : DelSessionResp(nullptr) {}
+  ~DelSessionResp() PROTOBUF_FINAL;
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+  void operator delete(DelSessionResp* PROTOBUF_NONNULL msg, ::std::destroying_delete_t) {
+    SharedDtor(*msg);
+    ::google::protobuf::internal::SizedDelete(msg, sizeof(DelSessionResp));
+  }
+#endif
+
+  template <typename = void>
+  explicit PROTOBUF_CONSTEXPR DelSessionResp(::google::protobuf::internal::ConstantInitialized);
+
+  inline DelSessionResp(const DelSessionResp& from) : DelSessionResp(nullptr, from) {}
+  inline DelSessionResp(DelSessionResp&& from) noexcept
+      : DelSessionResp(nullptr, ::std::move(from)) {}
+  inline DelSessionResp& operator=(const DelSessionResp& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline DelSessionResp& operator=(DelSessionResp&& from) noexcept {
+    if (this == &from) return *this;
+    if (::google::protobuf::internal::CanMoveWithInternalSwap(GetArena(), from.GetArena())) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance);
+  }
+  inline ::google::protobuf::UnknownFieldSet* PROTOBUF_NONNULL mutable_unknown_fields()
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.mutable_unknown_fields<::google::protobuf::UnknownFieldSet>();
+  }
+
+  static const ::google::protobuf::Descriptor* PROTOBUF_NONNULL descriptor() {
+    return GetDescriptor();
+  }
+  static const ::google::protobuf::Descriptor* PROTOBUF_NONNULL GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::google::protobuf::Reflection* PROTOBUF_NONNULL GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const DelSessionResp& default_instance() {
+    return *reinterpret_cast<const DelSessionResp*>(
+        &_DelSessionResp_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages = 18;
+  friend void swap(DelSessionResp& a, DelSessionResp& b) { a.Swap(&b); }
+  inline void Swap(DelSessionResp* PROTOBUF_NONNULL other) {
+    if (other == this) return;
+    if (::google::protobuf::internal::CanUseInternalSwap(GetArena(), other->GetArena())) {
+      InternalSwap(other);
+    } else {
+      ::google::protobuf::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(DelSessionResp* PROTOBUF_NONNULL other) {
+    if (other == this) return;
+    ABSL_DCHECK(GetArena() == other->GetArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  DelSessionResp* PROTOBUF_NONNULL New(::google::protobuf::Arena* PROTOBUF_NULLABLE arena = nullptr) const {
+    return ::google::protobuf::Message::DefaultConstruct<DelSessionResp>(arena);
+  }
+  using ::google::protobuf::Message::CopyFrom;
+  void CopyFrom(const DelSessionResp& from);
+  using ::google::protobuf::Message::MergeFrom;
+  void MergeFrom(const DelSessionResp& from) { DelSessionResp::MergeImpl(*this, from); }
+
+  private:
+  static void MergeImpl(::google::protobuf::MessageLite& to_msg,
+                        const ::google::protobuf::MessageLite& from_msg);
+
+  public:
+  bool IsInitialized() const {
+    return true;
+  }
+  ABSL_ATTRIBUTE_REINITIALIZES void Clear() PROTOBUF_FINAL;
+  #if defined(PROTOBUF_CUSTOM_VTABLE)
+  private:
+  static ::size_t ByteSizeLong(const ::google::protobuf::MessageLite& msg);
+  static ::uint8_t* PROTOBUF_NONNULL _InternalSerialize(
+      const ::google::protobuf::MessageLite& msg, ::uint8_t* PROTOBUF_NONNULL target,
+      ::google::protobuf::io::EpsCopyOutputStream* PROTOBUF_NONNULL stream);
+
+  public:
+  ::size_t ByteSizeLong() const { return ByteSizeLong(*this); }
+  ::uint8_t* PROTOBUF_NONNULL _InternalSerialize(
+      ::uint8_t* PROTOBUF_NONNULL target,
+      ::google::protobuf::io::EpsCopyOutputStream* PROTOBUF_NONNULL stream) const {
+    return _InternalSerialize(*this, target, stream);
+  }
+  #else   // PROTOBUF_CUSTOM_VTABLE
+  ::size_t ByteSizeLong() const final;
+  ::uint8_t* PROTOBUF_NONNULL _InternalSerialize(
+      ::uint8_t* PROTOBUF_NONNULL target,
+      ::google::protobuf::io::EpsCopyOutputStream* PROTOBUF_NONNULL stream) const final;
+  #endif  // PROTOBUF_CUSTOM_VTABLE
+  int GetCachedSize() const { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::google::protobuf::Arena* PROTOBUF_NULLABLE arena);
+  static void SharedDtor(MessageLite& self);
+  void InternalSwap(DelSessionResp* PROTOBUF_NONNULL other);
+ private:
+  template <typename T>
+  friend ::absl::string_view(::google::protobuf::internal::GetAnyMessageName)();
+  static ::absl::string_view FullMessageName() { return "GrpcLibrary.DelSessionResp"; }
+
+  explicit DelSessionResp(::google::protobuf::Arena* PROTOBUF_NULLABLE arena);
+  DelSessionResp(::google::protobuf::Arena* PROTOBUF_NULLABLE arena, const DelSessionResp& from);
+  DelSessionResp(
+      ::google::protobuf::Arena* PROTOBUF_NULLABLE arena, DelSessionResp&& from) noexcept
+      : DelSessionResp(arena) {
+    *this = ::std::move(from);
+  }
+  const ::google::protobuf::internal::ClassData* PROTOBUF_NONNULL GetClassData() const PROTOBUF_FINAL;
+  static void* PROTOBUF_NONNULL PlacementNew_(
+      const void* PROTOBUF_NONNULL, void* PROTOBUF_NONNULL mem,
+      ::google::protobuf::Arena* PROTOBUF_NULLABLE arena);
+  static constexpr auto InternalNewImpl_();
+
+ public:
+  static constexpr auto InternalGenerateClassData_();
+
+  ::google::protobuf::Metadata GetMetadata() const;
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+  enum : int {
+    kIdsFieldNumber = 2,
+    kErrorCodeFieldNumber = 1,
+  };
+  // repeated int64 ids = 2;
+  int ids_size() const;
+  private:
+  int _internal_ids_size() const;
+
+  public:
+  void clear_ids() ;
+  ::int64_t ids(int index) const;
+  void set_ids(int index, ::int64_t value);
+  void add_ids(::int64_t value);
+  const ::google::protobuf::RepeatedField<::int64_t>& ids() const;
+  ::google::protobuf::RepeatedField<::int64_t>* PROTOBUF_NONNULL mutable_ids();
+
+  private:
+  const ::google::protobuf::RepeatedField<::int64_t>& _internal_ids() const;
+  ::google::protobuf::RepeatedField<::int64_t>* PROTOBUF_NONNULL _internal_mutable_ids();
+
+  public:
+  // int32 error_code = 1;
+  void clear_error_code() ;
+  ::int32_t error_code() const;
+  void set_error_code(::int32_t value);
+
+  private:
+  ::int32_t _internal_error_code() const;
+  void _internal_set_error_code(::int32_t value);
+
+  public:
+  // @@protoc_insertion_point(class_scope:GrpcLibrary.DelSessionResp)
+ private:
+  class _Internal;
+  friend class ::google::protobuf::internal::TcParser;
+  static const ::google::protobuf::internal::TcParseTable<1, 2,
+                                   0, 0,
+                                   2>
+      _table_;
+
+  friend class ::google::protobuf::MessageLite;
+  friend class ::google::protobuf::Arena;
+  template <typename T>
+  friend class ::google::protobuf::Arena::InternalHelper;
+  using InternalArenaConstructable_ = void;
+  using DestructorSkippable_ = void;
+  struct Impl_ {
+    inline explicit constexpr Impl_(::google::protobuf::internal::ConstantInitialized) noexcept;
+    inline explicit Impl_(
+        ::google::protobuf::internal::InternalVisibility visibility,
+        ::google::protobuf::Arena* PROTOBUF_NULLABLE arena);
+    inline explicit Impl_(
+        ::google::protobuf::internal::InternalVisibility visibility,
+        ::google::protobuf::Arena* PROTOBUF_NULLABLE arena, const Impl_& from,
+        const DelSessionResp& from_msg);
+    ::google::protobuf::internal::HasBits<1> _has_bits_;
+    ::google::protobuf::internal::CachedSize _cached_size_;
+    ::google::protobuf::RepeatedField<::int64_t> ids_;
+    ::google::protobuf::internal::CachedSize _ids_cached_byte_size_;
+    ::int32_t error_code_;
+    PROTOBUF_TSAN_DECLARE_MEMBER
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_src_2fapi_2eproto;
+};
+
+extern const ::google::protobuf::internal::ClassDataFull DelSessionResp_class_data_;
+// -------------------------------------------------------------------
+
+class DelSessionReq final : public ::google::protobuf::Message
+/* @@protoc_insertion_point(class_definition:GrpcLibrary.DelSessionReq) */ {
+ public:
+  inline DelSessionReq() : DelSessionReq(nullptr) {}
+  ~DelSessionReq() PROTOBUF_FINAL;
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+  void operator delete(DelSessionReq* PROTOBUF_NONNULL msg, ::std::destroying_delete_t) {
+    SharedDtor(*msg);
+    ::google::protobuf::internal::SizedDelete(msg, sizeof(DelSessionReq));
+  }
+#endif
+
+  template <typename = void>
+  explicit PROTOBUF_CONSTEXPR DelSessionReq(::google::protobuf::internal::ConstantInitialized);
+
+  inline DelSessionReq(const DelSessionReq& from) : DelSessionReq(nullptr, from) {}
+  inline DelSessionReq(DelSessionReq&& from) noexcept
+      : DelSessionReq(nullptr, ::std::move(from)) {}
+  inline DelSessionReq& operator=(const DelSessionReq& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline DelSessionReq& operator=(DelSessionReq&& from) noexcept {
+    if (this == &from) return *this;
+    if (::google::protobuf::internal::CanMoveWithInternalSwap(GetArena(), from.GetArena())) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance);
+  }
+  inline ::google::protobuf::UnknownFieldSet* PROTOBUF_NONNULL mutable_unknown_fields()
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.mutable_unknown_fields<::google::protobuf::UnknownFieldSet>();
+  }
+
+  static const ::google::protobuf::Descriptor* PROTOBUF_NONNULL descriptor() {
+    return GetDescriptor();
+  }
+  static const ::google::protobuf::Descriptor* PROTOBUF_NONNULL GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::google::protobuf::Reflection* PROTOBUF_NONNULL GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const DelSessionReq& default_instance() {
+    return *reinterpret_cast<const DelSessionReq*>(
+        &_DelSessionReq_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages = 17;
+  friend void swap(DelSessionReq& a, DelSessionReq& b) { a.Swap(&b); }
+  inline void Swap(DelSessionReq* PROTOBUF_NONNULL other) {
+    if (other == this) return;
+    if (::google::protobuf::internal::CanUseInternalSwap(GetArena(), other->GetArena())) {
+      InternalSwap(other);
+    } else {
+      ::google::protobuf::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(DelSessionReq* PROTOBUF_NONNULL other) {
+    if (other == this) return;
+    ABSL_DCHECK(GetArena() == other->GetArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  DelSessionReq* PROTOBUF_NONNULL New(::google::protobuf::Arena* PROTOBUF_NULLABLE arena = nullptr) const {
+    return ::google::protobuf::Message::DefaultConstruct<DelSessionReq>(arena);
+  }
+  using ::google::protobuf::Message::CopyFrom;
+  void CopyFrom(const DelSessionReq& from);
+  using ::google::protobuf::Message::MergeFrom;
+  void MergeFrom(const DelSessionReq& from) { DelSessionReq::MergeImpl(*this, from); }
+
+  private:
+  static void MergeImpl(::google::protobuf::MessageLite& to_msg,
+                        const ::google::protobuf::MessageLite& from_msg);
+
+  public:
+  bool IsInitialized() const {
+    return true;
+  }
+  ABSL_ATTRIBUTE_REINITIALIZES void Clear() PROTOBUF_FINAL;
+  #if defined(PROTOBUF_CUSTOM_VTABLE)
+  private:
+  static ::size_t ByteSizeLong(const ::google::protobuf::MessageLite& msg);
+  static ::uint8_t* PROTOBUF_NONNULL _InternalSerialize(
+      const ::google::protobuf::MessageLite& msg, ::uint8_t* PROTOBUF_NONNULL target,
+      ::google::protobuf::io::EpsCopyOutputStream* PROTOBUF_NONNULL stream);
+
+  public:
+  ::size_t ByteSizeLong() const { return ByteSizeLong(*this); }
+  ::uint8_t* PROTOBUF_NONNULL _InternalSerialize(
+      ::uint8_t* PROTOBUF_NONNULL target,
+      ::google::protobuf::io::EpsCopyOutputStream* PROTOBUF_NONNULL stream) const {
+    return _InternalSerialize(*this, target, stream);
+  }
+  #else   // PROTOBUF_CUSTOM_VTABLE
+  ::size_t ByteSizeLong() const final;
+  ::uint8_t* PROTOBUF_NONNULL _InternalSerialize(
+      ::uint8_t* PROTOBUF_NONNULL target,
+      ::google::protobuf::io::EpsCopyOutputStream* PROTOBUF_NONNULL stream) const final;
+  #endif  // PROTOBUF_CUSTOM_VTABLE
+  int GetCachedSize() const { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::google::protobuf::Arena* PROTOBUF_NULLABLE arena);
+  static void SharedDtor(MessageLite& self);
+  void InternalSwap(DelSessionReq* PROTOBUF_NONNULL other);
+ private:
+  template <typename T>
+  friend ::absl::string_view(::google::protobuf::internal::GetAnyMessageName)();
+  static ::absl::string_view FullMessageName() { return "GrpcLibrary.DelSessionReq"; }
+
+  explicit DelSessionReq(::google::protobuf::Arena* PROTOBUF_NULLABLE arena);
+  DelSessionReq(::google::protobuf::Arena* PROTOBUF_NULLABLE arena, const DelSessionReq& from);
+  DelSessionReq(
+      ::google::protobuf::Arena* PROTOBUF_NULLABLE arena, DelSessionReq&& from) noexcept
+      : DelSessionReq(arena) {
+    *this = ::std::move(from);
+  }
+  const ::google::protobuf::internal::ClassData* PROTOBUF_NONNULL GetClassData() const PROTOBUF_FINAL;
+  static void* PROTOBUF_NONNULL PlacementNew_(
+      const void* PROTOBUF_NONNULL, void* PROTOBUF_NONNULL mem,
+      ::google::protobuf::Arena* PROTOBUF_NULLABLE arena);
+  static constexpr auto InternalNewImpl_();
+
+ public:
+  static constexpr auto InternalGenerateClassData_();
+
+  ::google::protobuf::Metadata GetMetadata() const;
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+  enum : int {
+    kIdsFieldNumber = 3,
+    kAuthFieldNumber = 2,
+    kUserIdFieldNumber = 1,
+  };
+  // repeated int64 ids = 3;
+  int ids_size() const;
+  private:
+  int _internal_ids_size() const;
+
+  public:
+  void clear_ids() ;
+  ::int64_t ids(int index) const;
+  void set_ids(int index, ::int64_t value);
+  void add_ids(::int64_t value);
+  const ::google::protobuf::RepeatedField<::int64_t>& ids() const;
+  ::google::protobuf::RepeatedField<::int64_t>* PROTOBUF_NONNULL mutable_ids();
+
+  private:
+  const ::google::protobuf::RepeatedField<::int64_t>& _internal_ids() const;
+  ::google::protobuf::RepeatedField<::int64_t>* PROTOBUF_NONNULL _internal_mutable_ids();
+
+  public:
+  // string auth = 2;
+  void clear_auth() ;
+  const ::std::string& auth() const;
+  template <typename Arg_ = const ::std::string&, typename... Args_>
+  void set_auth(Arg_&& arg, Args_... args);
+  ::std::string* PROTOBUF_NONNULL mutable_auth();
+  [[nodiscard]] ::std::string* PROTOBUF_NULLABLE release_auth();
+  void set_allocated_auth(::std::string* PROTOBUF_NULLABLE value);
+
+  private:
+  const ::std::string& _internal_auth() const;
+  PROTOBUF_ALWAYS_INLINE void _internal_set_auth(const ::std::string& value);
+  ::std::string* PROTOBUF_NONNULL _internal_mutable_auth();
+
+  public:
+  // int64 user_id = 1;
+  void clear_user_id() ;
+  ::int64_t user_id() const;
+  void set_user_id(::int64_t value);
+
+  private:
+  ::int64_t _internal_user_id() const;
+  void _internal_set_user_id(::int64_t value);
+
+  public:
+  // @@protoc_insertion_point(class_scope:GrpcLibrary.DelSessionReq)
+ private:
+  class _Internal;
+  friend class ::google::protobuf::internal::TcParser;
+  static const ::google::protobuf::internal::TcParseTable<2, 3,
+                                   0, 38,
+                                   2>
+      _table_;
+
+  friend class ::google::protobuf::MessageLite;
+  friend class ::google::protobuf::Arena;
+  template <typename T>
+  friend class ::google::protobuf::Arena::InternalHelper;
+  using InternalArenaConstructable_ = void;
+  using DestructorSkippable_ = void;
+  struct Impl_ {
+    inline explicit constexpr Impl_(::google::protobuf::internal::ConstantInitialized) noexcept;
+    inline explicit Impl_(
+        ::google::protobuf::internal::InternalVisibility visibility,
+        ::google::protobuf::Arena* PROTOBUF_NULLABLE arena);
+    inline explicit Impl_(
+        ::google::protobuf::internal::InternalVisibility visibility,
+        ::google::protobuf::Arena* PROTOBUF_NULLABLE arena, const Impl_& from,
+        const DelSessionReq& from_msg);
+    ::google::protobuf::internal::HasBits<1> _has_bits_;
+    ::google::protobuf::internal::CachedSize _cached_size_;
+    ::google::protobuf::RepeatedField<::int64_t> ids_;
+    ::google::protobuf::internal::CachedSize _ids_cached_byte_size_;
+    ::google::protobuf::internal::ArenaStringPtr auth_;
+    ::int64_t user_id_;
+    PROTOBUF_TSAN_DECLARE_MEMBER
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_src_2fapi_2eproto;
+};
+
+extern const ::google::protobuf::internal::ClassDataFull DelSessionReq_class_data_;
 // -------------------------------------------------------------------
 
 class NewSessionResp final : public ::google::protobuf::Message
@@ -5110,7 +5557,7 @@ class NewModelInfoReq final : public ::google::protobuf::Message
     return *reinterpret_cast<const NewModelInfoReq*>(
         &_NewModelInfoReq_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 19;
+  static constexpr int kIndexInFileMessages = 21;
   friend void swap(NewModelInfoReq& a, NewModelInfoReq& b) { a.Swap(&b); }
   inline void Swap(NewModelInfoReq* PROTOBUF_NONNULL other) {
     if (other == this) return;
@@ -5336,7 +5783,7 @@ class GetSkillInfoResp final : public ::google::protobuf::Message
     return *reinterpret_cast<const GetSkillInfoResp*>(
         &_GetSkillInfoResp_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 22;
+  static constexpr int kIndexInFileMessages = 24;
   friend void swap(GetSkillInfoResp& a, GetSkillInfoResp& b) { a.Swap(&b); }
   inline void Swap(GetSkillInfoResp* PROTOBUF_NONNULL other) {
     if (other == this) return;
@@ -5754,7 +6201,7 @@ class GetModelInfoResp final : public ::google::protobuf::Message
     return *reinterpret_cast<const GetModelInfoResp*>(
         &_GetModelInfoResp_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 18;
+  static constexpr int kIndexInFileMessages = 20;
   friend void swap(GetModelInfoResp& a, GetModelInfoResp& b) { a.Swap(&b); }
   inline void Swap(GetModelInfoResp* PROTOBUF_NONNULL other) {
     if (other == this) return;
@@ -9090,6 +9537,229 @@ inline void ModifySessionTitleResp::set_allocated_title(::std::string* PROTOBUF_
     _impl_.title_.Set("", GetArena());
   }
   // @@protoc_insertion_point(field_set_allocated:GrpcLibrary.ModifySessionTitleResp.title)
+}
+
+// -------------------------------------------------------------------
+
+// DelSessionReq
+
+// int64 user_id = 1;
+inline void DelSessionReq::clear_user_id() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.user_id_ = ::int64_t{0};
+  ClearHasBit(_impl_._has_bits_[0],
+                  0x00000004U);
+}
+inline ::int64_t DelSessionReq::user_id() const {
+  // @@protoc_insertion_point(field_get:GrpcLibrary.DelSessionReq.user_id)
+  return _internal_user_id();
+}
+inline void DelSessionReq::set_user_id(::int64_t value) {
+  _internal_set_user_id(value);
+  SetHasBit(_impl_._has_bits_[0], 0x00000004U);
+  // @@protoc_insertion_point(field_set:GrpcLibrary.DelSessionReq.user_id)
+}
+inline ::int64_t DelSessionReq::_internal_user_id() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.user_id_;
+}
+inline void DelSessionReq::_internal_set_user_id(::int64_t value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.user_id_ = value;
+}
+
+// string auth = 2;
+inline void DelSessionReq::clear_auth() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.auth_.ClearToEmpty();
+  ClearHasBit(_impl_._has_bits_[0],
+                  0x00000002U);
+}
+inline const ::std::string& DelSessionReq::auth() const
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_get:GrpcLibrary.DelSessionReq.auth)
+  return _internal_auth();
+}
+template <typename Arg_, typename... Args_>
+PROTOBUF_ALWAYS_INLINE void DelSessionReq::set_auth(Arg_&& arg, Args_... args) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  SetHasBit(_impl_._has_bits_[0], 0x00000002U);
+  _impl_.auth_.Set(static_cast<Arg_&&>(arg), args..., GetArena());
+  // @@protoc_insertion_point(field_set:GrpcLibrary.DelSessionReq.auth)
+}
+inline ::std::string* PROTOBUF_NONNULL DelSessionReq::mutable_auth()
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  SetHasBit(_impl_._has_bits_[0], 0x00000002U);
+  ::std::string* _s = _internal_mutable_auth();
+  // @@protoc_insertion_point(field_mutable:GrpcLibrary.DelSessionReq.auth)
+  return _s;
+}
+inline const ::std::string& DelSessionReq::_internal_auth() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.auth_.Get();
+}
+inline void DelSessionReq::_internal_set_auth(const ::std::string& value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.auth_.Set(value, GetArena());
+}
+inline ::std::string* PROTOBUF_NONNULL DelSessionReq::_internal_mutable_auth() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  return _impl_.auth_.Mutable( GetArena());
+}
+inline ::std::string* PROTOBUF_NULLABLE DelSessionReq::release_auth() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  // @@protoc_insertion_point(field_release:GrpcLibrary.DelSessionReq.auth)
+  if (!CheckHasBit(_impl_._has_bits_[0], 0x00000002U)) {
+    return nullptr;
+  }
+  ClearHasBit(_impl_._has_bits_[0], 0x00000002U);
+  auto* released = _impl_.auth_.Release();
+  if (::google::protobuf::internal::DebugHardenForceCopyDefaultString()) {
+    _impl_.auth_.Set("", GetArena());
+  }
+  return released;
+}
+inline void DelSessionReq::set_allocated_auth(::std::string* PROTOBUF_NULLABLE value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  if (value != nullptr) {
+    SetHasBit(_impl_._has_bits_[0], 0x00000002U);
+  } else {
+    ClearHasBit(_impl_._has_bits_[0], 0x00000002U);
+  }
+  _impl_.auth_.SetAllocated(value, GetArena());
+  if (::google::protobuf::internal::DebugHardenForceCopyDefaultString() && _impl_.auth_.IsDefault()) {
+    _impl_.auth_.Set("", GetArena());
+  }
+  // @@protoc_insertion_point(field_set_allocated:GrpcLibrary.DelSessionReq.auth)
+}
+
+// repeated int64 ids = 3;
+inline int DelSessionReq::_internal_ids_size() const {
+  return _internal_ids().size();
+}
+inline int DelSessionReq::ids_size() const {
+  return _internal_ids_size();
+}
+inline void DelSessionReq::clear_ids() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.ids_.Clear();
+  ClearHasBitForRepeated(_impl_._has_bits_[0],
+                  0x00000001U);
+}
+inline ::int64_t DelSessionReq::ids(int index) const {
+  // @@protoc_insertion_point(field_get:GrpcLibrary.DelSessionReq.ids)
+  return _internal_ids().Get(index);
+}
+inline void DelSessionReq::set_ids(int index, ::int64_t value) {
+  _internal_mutable_ids()->Set(index, value);
+  // @@protoc_insertion_point(field_set:GrpcLibrary.DelSessionReq.ids)
+}
+inline void DelSessionReq::add_ids(::int64_t value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _internal_mutable_ids()->Add(value);
+  SetHasBitForRepeated(_impl_._has_bits_[0], 0x00000001U);
+  // @@protoc_insertion_point(field_add:GrpcLibrary.DelSessionReq.ids)
+}
+inline const ::google::protobuf::RepeatedField<::int64_t>& DelSessionReq::ids() const
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_list:GrpcLibrary.DelSessionReq.ids)
+  return _internal_ids();
+}
+inline ::google::protobuf::RepeatedField<::int64_t>* PROTOBUF_NONNULL DelSessionReq::mutable_ids()
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  SetHasBitForRepeated(_impl_._has_bits_[0], 0x00000001U);
+  // @@protoc_insertion_point(field_mutable_list:GrpcLibrary.DelSessionReq.ids)
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  return _internal_mutable_ids();
+}
+inline const ::google::protobuf::RepeatedField<::int64_t>&
+DelSessionReq::_internal_ids() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.ids_;
+}
+inline ::google::protobuf::RepeatedField<::int64_t>* PROTOBUF_NONNULL
+DelSessionReq::_internal_mutable_ids() {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return &_impl_.ids_;
+}
+
+// -------------------------------------------------------------------
+
+// DelSessionResp
+
+// int32 error_code = 1;
+inline void DelSessionResp::clear_error_code() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.error_code_ = 0;
+  ClearHasBit(_impl_._has_bits_[0],
+                  0x00000002U);
+}
+inline ::int32_t DelSessionResp::error_code() const {
+  // @@protoc_insertion_point(field_get:GrpcLibrary.DelSessionResp.error_code)
+  return _internal_error_code();
+}
+inline void DelSessionResp::set_error_code(::int32_t value) {
+  _internal_set_error_code(value);
+  SetHasBit(_impl_._has_bits_[0], 0x00000002U);
+  // @@protoc_insertion_point(field_set:GrpcLibrary.DelSessionResp.error_code)
+}
+inline ::int32_t DelSessionResp::_internal_error_code() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.error_code_;
+}
+inline void DelSessionResp::_internal_set_error_code(::int32_t value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.error_code_ = value;
+}
+
+// repeated int64 ids = 2;
+inline int DelSessionResp::_internal_ids_size() const {
+  return _internal_ids().size();
+}
+inline int DelSessionResp::ids_size() const {
+  return _internal_ids_size();
+}
+inline void DelSessionResp::clear_ids() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.ids_.Clear();
+  ClearHasBitForRepeated(_impl_._has_bits_[0],
+                  0x00000001U);
+}
+inline ::int64_t DelSessionResp::ids(int index) const {
+  // @@protoc_insertion_point(field_get:GrpcLibrary.DelSessionResp.ids)
+  return _internal_ids().Get(index);
+}
+inline void DelSessionResp::set_ids(int index, ::int64_t value) {
+  _internal_mutable_ids()->Set(index, value);
+  // @@protoc_insertion_point(field_set:GrpcLibrary.DelSessionResp.ids)
+}
+inline void DelSessionResp::add_ids(::int64_t value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _internal_mutable_ids()->Add(value);
+  SetHasBitForRepeated(_impl_._has_bits_[0], 0x00000001U);
+  // @@protoc_insertion_point(field_add:GrpcLibrary.DelSessionResp.ids)
+}
+inline const ::google::protobuf::RepeatedField<::int64_t>& DelSessionResp::ids() const
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_list:GrpcLibrary.DelSessionResp.ids)
+  return _internal_ids();
+}
+inline ::google::protobuf::RepeatedField<::int64_t>* PROTOBUF_NONNULL DelSessionResp::mutable_ids()
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  SetHasBitForRepeated(_impl_._has_bits_[0], 0x00000001U);
+  // @@protoc_insertion_point(field_mutable_list:GrpcLibrary.DelSessionResp.ids)
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  return _internal_mutable_ids();
+}
+inline const ::google::protobuf::RepeatedField<::int64_t>&
+DelSessionResp::_internal_ids() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.ids_;
+}
+inline ::google::protobuf::RepeatedField<::int64_t>* PROTOBUF_NONNULL
+DelSessionResp::_internal_mutable_ids() {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return &_impl_.ids_;
 }
 
 // -------------------------------------------------------------------

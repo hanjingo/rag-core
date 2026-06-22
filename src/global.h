@@ -43,6 +43,9 @@ static constexpr const char *SQL_INSERT_SESSION =
 static constexpr const char *SQL_UPDATE_SESSION_TITLE_BY_ID =
     R"(UPDATE session SET title = '{}' WHERE id = {})";
 
+static constexpr const char *SQL_DELETE_SESSION_BY_ID =
+    R"(DELETE FROM session WHERE id = {})";
+
 static constexpr const char *SQL_INSERT_MODEL =
     R"(INSERT INTO model (hash, name, publisher, timestamp, addr, capabilities, context_size, cost) VALUES ('{}', '{}', '{}', '{}', '{}', '{}', {}, {}))";
 
