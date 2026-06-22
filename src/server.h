@@ -43,6 +43,14 @@ class api_handler final : public GrpcLibrary::GrpcService::Service
                        const ::GrpcLibrary::ModifySessionTitleReq *req,
                        ::GrpcLibrary::ModifySessionTitleResp *resp) override;
 
+    status_t GetModelInfo(ctx_t                                *ctx,
+                          const ::GrpcLibrary::GetModelInfoReq *req,
+                          ::GrpcLibrary::GetModelInfoResp      *resp) override;
+
+    status_t NewModelInfo(ctx_t                                *ctx,
+                          const ::GrpcLibrary::NewModelInfoReq *req,
+                          ::GrpcLibrary::NewModelInfoResp      *resp) override;
+
     status_t GetSkillInfo(ctx_t                                *ctx,
                           const ::GrpcLibrary::GetSkillInfoReq *req,
                           ::GrpcLibrary::GetSkillInfoResp      *resp) override;

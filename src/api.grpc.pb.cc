@@ -30,6 +30,8 @@ static const char* GrpcService_method_names[] = {
   "/GrpcLibrary.GrpcService/GetSession",
   "/GrpcLibrary.GrpcService/NewSession",
   "/GrpcLibrary.GrpcService/ModifySessionTitle",
+  "/GrpcLibrary.GrpcService/GetModelInfo",
+  "/GrpcLibrary.GrpcService/NewModelInfo",
   "/GrpcLibrary.GrpcService/GetSkillInfo",
   "/GrpcLibrary.GrpcService/Download",
 };
@@ -48,8 +50,10 @@ GrpcService::Stub::Stub(const std::shared_ptr< ::grpc::ChannelInterface>& channe
   , rpcmethod_GetSession_(GrpcService_method_names[4], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
   , rpcmethod_NewSession_(GrpcService_method_names[5], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
   , rpcmethod_ModifySessionTitle_(GrpcService_method_names[6], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_GetSkillInfo_(GrpcService_method_names[7], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_Download_(GrpcService_method_names[8], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_GetModelInfo_(GrpcService_method_names[7], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_NewModelInfo_(GrpcService_method_names[8], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_GetSkillInfo_(GrpcService_method_names[9], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_Download_(GrpcService_method_names[10], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
   {}
 
 ::grpc::Status GrpcService::Stub::Login(::grpc::ClientContext* context, const ::GrpcLibrary::LoginReq& request, ::GrpcLibrary::LoginResp* response) {
@@ -213,6 +217,52 @@ void GrpcService::Stub::async::ModifySessionTitle(::grpc::ClientContext* context
   return result;
 }
 
+::grpc::Status GrpcService::Stub::GetModelInfo(::grpc::ClientContext* context, const ::GrpcLibrary::GetModelInfoReq& request, ::GrpcLibrary::GetModelInfoResp* response) {
+  return ::grpc::internal::BlockingUnaryCall< ::GrpcLibrary::GetModelInfoReq, ::GrpcLibrary::GetModelInfoResp, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_GetModelInfo_, context, request, response);
+}
+
+void GrpcService::Stub::async::GetModelInfo(::grpc::ClientContext* context, const ::GrpcLibrary::GetModelInfoReq* request, ::GrpcLibrary::GetModelInfoResp* response, std::function<void(::grpc::Status)> f) {
+  ::grpc::internal::CallbackUnaryCall< ::GrpcLibrary::GetModelInfoReq, ::GrpcLibrary::GetModelInfoResp, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_GetModelInfo_, context, request, response, std::move(f));
+}
+
+void GrpcService::Stub::async::GetModelInfo(::grpc::ClientContext* context, const ::GrpcLibrary::GetModelInfoReq* request, ::GrpcLibrary::GetModelInfoResp* response, ::grpc::ClientUnaryReactor* reactor) {
+  ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_GetModelInfo_, context, request, response, reactor);
+}
+
+::grpc::ClientAsyncResponseReader< ::GrpcLibrary::GetModelInfoResp>* GrpcService::Stub::PrepareAsyncGetModelInfoRaw(::grpc::ClientContext* context, const ::GrpcLibrary::GetModelInfoReq& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncResponseReaderHelper::Create< ::GrpcLibrary::GetModelInfoResp, ::GrpcLibrary::GetModelInfoReq, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), cq, rpcmethod_GetModelInfo_, context, request);
+}
+
+::grpc::ClientAsyncResponseReader< ::GrpcLibrary::GetModelInfoResp>* GrpcService::Stub::AsyncGetModelInfoRaw(::grpc::ClientContext* context, const ::GrpcLibrary::GetModelInfoReq& request, ::grpc::CompletionQueue* cq) {
+  auto* result =
+    this->PrepareAsyncGetModelInfoRaw(context, request, cq);
+  result->StartCall();
+  return result;
+}
+
+::grpc::Status GrpcService::Stub::NewModelInfo(::grpc::ClientContext* context, const ::GrpcLibrary::NewModelInfoReq& request, ::GrpcLibrary::NewModelInfoResp* response) {
+  return ::grpc::internal::BlockingUnaryCall< ::GrpcLibrary::NewModelInfoReq, ::GrpcLibrary::NewModelInfoResp, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_NewModelInfo_, context, request, response);
+}
+
+void GrpcService::Stub::async::NewModelInfo(::grpc::ClientContext* context, const ::GrpcLibrary::NewModelInfoReq* request, ::GrpcLibrary::NewModelInfoResp* response, std::function<void(::grpc::Status)> f) {
+  ::grpc::internal::CallbackUnaryCall< ::GrpcLibrary::NewModelInfoReq, ::GrpcLibrary::NewModelInfoResp, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_NewModelInfo_, context, request, response, std::move(f));
+}
+
+void GrpcService::Stub::async::NewModelInfo(::grpc::ClientContext* context, const ::GrpcLibrary::NewModelInfoReq* request, ::GrpcLibrary::NewModelInfoResp* response, ::grpc::ClientUnaryReactor* reactor) {
+  ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_NewModelInfo_, context, request, response, reactor);
+}
+
+::grpc::ClientAsyncResponseReader< ::GrpcLibrary::NewModelInfoResp>* GrpcService::Stub::PrepareAsyncNewModelInfoRaw(::grpc::ClientContext* context, const ::GrpcLibrary::NewModelInfoReq& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncResponseReaderHelper::Create< ::GrpcLibrary::NewModelInfoResp, ::GrpcLibrary::NewModelInfoReq, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), cq, rpcmethod_NewModelInfo_, context, request);
+}
+
+::grpc::ClientAsyncResponseReader< ::GrpcLibrary::NewModelInfoResp>* GrpcService::Stub::AsyncNewModelInfoRaw(::grpc::ClientContext* context, const ::GrpcLibrary::NewModelInfoReq& request, ::grpc::CompletionQueue* cq) {
+  auto* result =
+    this->PrepareAsyncNewModelInfoRaw(context, request, cq);
+  result->StartCall();
+  return result;
+}
+
 ::grpc::Status GrpcService::Stub::GetSkillInfo(::grpc::ClientContext* context, const ::GrpcLibrary::GetSkillInfoReq& request, ::GrpcLibrary::GetSkillInfoResp* response) {
   return ::grpc::internal::BlockingUnaryCall< ::GrpcLibrary::GetSkillInfoReq, ::GrpcLibrary::GetSkillInfoResp, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_GetSkillInfo_, context, request, response);
 }
@@ -333,6 +383,26 @@ GrpcService::Service::Service() {
   AddMethod(new ::grpc::internal::RpcServiceMethod(
       GrpcService_method_names[7],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
+      new ::grpc::internal::RpcMethodHandler< GrpcService::Service, ::GrpcLibrary::GetModelInfoReq, ::GrpcLibrary::GetModelInfoResp, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
+          [](GrpcService::Service* service,
+             ::grpc::ServerContext* ctx,
+             const ::GrpcLibrary::GetModelInfoReq* req,
+             ::GrpcLibrary::GetModelInfoResp* resp) {
+               return service->GetModelInfo(ctx, req, resp);
+             }, this)));
+  AddMethod(new ::grpc::internal::RpcServiceMethod(
+      GrpcService_method_names[8],
+      ::grpc::internal::RpcMethod::NORMAL_RPC,
+      new ::grpc::internal::RpcMethodHandler< GrpcService::Service, ::GrpcLibrary::NewModelInfoReq, ::GrpcLibrary::NewModelInfoResp, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
+          [](GrpcService::Service* service,
+             ::grpc::ServerContext* ctx,
+             const ::GrpcLibrary::NewModelInfoReq* req,
+             ::GrpcLibrary::NewModelInfoResp* resp) {
+               return service->NewModelInfo(ctx, req, resp);
+             }, this)));
+  AddMethod(new ::grpc::internal::RpcServiceMethod(
+      GrpcService_method_names[9],
+      ::grpc::internal::RpcMethod::NORMAL_RPC,
       new ::grpc::internal::RpcMethodHandler< GrpcService::Service, ::GrpcLibrary::GetSkillInfoReq, ::GrpcLibrary::GetSkillInfoResp, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
           [](GrpcService::Service* service,
              ::grpc::ServerContext* ctx,
@@ -341,7 +411,7 @@ GrpcService::Service::Service() {
                return service->GetSkillInfo(ctx, req, resp);
              }, this)));
   AddMethod(new ::grpc::internal::RpcServiceMethod(
-      GrpcService_method_names[8],
+      GrpcService_method_names[10],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
       new ::grpc::internal::RpcMethodHandler< GrpcService::Service, ::GrpcLibrary::DownloadReq, ::GrpcLibrary::DownloadResp, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
           [](GrpcService::Service* service,
@@ -398,6 +468,20 @@ GrpcService::Service::~Service() {
 }
 
 ::grpc::Status GrpcService::Service::ModifySessionTitle(::grpc::ServerContext* context, const ::GrpcLibrary::ModifySessionTitleReq* request, ::GrpcLibrary::ModifySessionTitleResp* response) {
+  (void) context;
+  (void) request;
+  (void) response;
+  return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+}
+
+::grpc::Status GrpcService::Service::GetModelInfo(::grpc::ServerContext* context, const ::GrpcLibrary::GetModelInfoReq* request, ::GrpcLibrary::GetModelInfoResp* response) {
+  (void) context;
+  (void) request;
+  (void) response;
+  return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+}
+
+::grpc::Status GrpcService::Service::NewModelInfo(::grpc::ServerContext* context, const ::GrpcLibrary::NewModelInfoReq* request, ::GrpcLibrary::NewModelInfoResp* response) {
   (void) context;
   (void) request;
   (void) response;

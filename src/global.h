@@ -43,6 +43,15 @@ static constexpr const char *SQL_INSERT_SESSION =
 static constexpr const char *SQL_UPDATE_SESSION_TITLE_BY_ID =
     R"(UPDATE session SET title = '{}' WHERE id = {})";
 
+static constexpr const char *SQL_INSERT_MODEL =
+    R"(INSERT INTO model (hash, name, publisher, timestamp, addr, capabilities, context_size, cost) VALUES ('{}', '{}', '{}', '{}', '{}', '{}', {}, {}))";
+
+static constexpr const char *SQL_SELECT_MODEL =
+    R"(SELECT hash, name, publisher, timestamp, addr, capabilities, context_size, cost FROM model)";
+
+static constexpr const char *SQL_SELECT_MODEL_BY_HASH =
+    R"(SELECT hash, name, publisher, timestamp, addr, capabilities, context_size, cost FROM model WHERE hash = '{}')";
+
 static constexpr const char *SQL_SELECT_SKILL_INFO =
     R"(SELECT id, platform, name, desc, publisher, version, timestamp, hash FROM skill)";
 

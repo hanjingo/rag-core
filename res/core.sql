@@ -16,6 +16,17 @@ CREATE TABLE IF NOT EXISTS user (
     privilege INTEGER DEFAULT 0
 );
 
+CREATE TABLE IF NOT EXISTS model (
+    hash TEXT PRIMARY KEY,
+    name TEXT NOT NULL,
+    publisher TEXT DEFAULT 'unknown',
+    timestamp DATETIME DEFAULT CURRENT_TIMESTAMP,
+    addr TEXT,
+    capabilities TEXT,
+    context_size INTEGER DEFAULT 0,
+    cost INTEGER DEFAULT 0
+);
+
 CREATE TABLE IF NOT EXISTS skill (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     platform INTEGER DEFAULT 0, -- 1: windows, 2: linux, 4: macos, 5: win+mac, ...
@@ -24,7 +35,7 @@ CREATE TABLE IF NOT EXISTS skill (
     publisher TEXT NOT NULL,
     version TEXT NOT NULL,
     timestamp DATETIME DEFAULT CURRENT_TIMESTAMP,
-    hash TEXT NOT NULL
+    hash TEXT UNIQUE NOT NULL
 );
 
 CREATE TABLE IF NOT EXISTS file (
@@ -36,6 +47,9 @@ CREATE TABLE IF NOT EXISTS file (
 );
 
 INSERT INTO user (username, encrypted_passwd, privilege) VALUES ('admin', 'admin', 1);
+
+INSERT INTO model (hash, name, publisher, timestamp, addr, capabilities, context_size, cost) VALUES (
+    'hash1', 'TinyStories-656K-Q3_K_M', 'unknown', '2024-06-01 12:00:01', './models/model2.gguf', 'chat', 4000, 0.003);
 
 INSERT INTO session (user_id, title, content, timestamp) VALUES (
     1, 'x', 'HELLO WORLD', '2024-06-01 12:00:00');

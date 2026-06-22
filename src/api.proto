@@ -9,6 +9,8 @@ service GrpcService {
     rpc GetSession (GetSessionReq) returns (GetSessionResp) {}
     rpc NewSession (NewSessionReq) returns (NewSessionResp) {}
     rpc ModifySessionTitle (ModifySessionTitleReq) returns (ModifySessionTitleResp) {}
+    rpc GetModelInfo (GetModelInfoReq) returns (GetModelInfoResp) {}
+    rpc NewModelInfo (NewModelInfoReq) returns (NewModelInfoResp) {}
     rpc GetSkillInfo (GetSkillInfoReq) returns (GetSkillInfoResp) {}
     rpc Download (DownloadReq) returns (DownloadResp) {}
 }
@@ -19,6 +21,17 @@ message Session {
     string title = 3;
     string content = 4;
     string timestamp = 5;
+}
+
+message Model {
+    string hash = 1;
+    string name = 2;
+    string publisher = 3;
+    string timestamp = 4;
+    string addr = 5;
+    string capabilities = 6;
+    int64 context_size = 7;
+    int32 cost = 8;
 }
 
 message Skill {
@@ -116,6 +129,29 @@ message ModifySessionTitleResp {
     int64 id = 2;
     string title = 3;
 }
+
+message GetModelInfoReq {
+    string hash = 1;
+    int32 user_id = 2;
+    string auth =3;
+    int32 limit = 4;
+}
+
+message GetModelInfoResp {
+    int32 error_code = 1;
+    repeated Model models = 2;
+}
+
+message NewModelInfoReq {
+    int32 user_id = 1;
+    string auth = 2;
+    repeated Model models = 3;
+}
+
+message NewModelInfoResp {
+    int32 error_code = 1;
+    repeated string hashs = 2;
+} 
 
 message GetSkillInfoReq {
     int64 id = 1;

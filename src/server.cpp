@@ -257,16 +257,17 @@ status_t api_handler::NewSession(ctx_t                              *ctx,
         auto params = llm_mgr::instance().create_ctx_params(
             conf::instance().llm_ctx_window_sz());
 
-        auto ec =
-            llm_mgr::instance().loop_query(model,
-                                           tokens,
-                                           params,
-                                           [&](std::string &pieces) -> bool {
-                                               // TODO check tokens' enough or not!
+        auto ec = llm_mgr::instance().loop_query(
+            model,
+            tokens,
+            params,
+            [&](std::string &pieces) -> bool {
+                // TODO check tokens' enough or not!
 
-                                               answer += pieces;
-                                               return LLM_CONTINUE;
-                                           });
+                LOG_DEBUG("llm generated pieces: {}", pieces);
+                answer += pieces;
+                return LLM_CONTINUE;
+            });
         session->set_content(answer);
         resp->set_error_code(ec);
         LOG_DEBUG("Session generated ec:{}, answer:{}", ec, answer);
@@ -307,6 +308,103 @@ api_handler::ModifySessionTitle(ctx_t                                      *ctx,
         resp->set_error_code(ERR_SQLITE_EXEC_FAIL);
         LOG_ERROR("Failed to update session for sql: {}", sql);
         return status_t::OK;
+    }
+
+    resp->set_error_code(OK);
+    return status_t::OK;
+}
+
+status_t api_handler::GetModelInfo(ctx_t                                *ctx,
+                                   const ::GrpcLibrary::GetModelInfoReq *req,
+                                   ::GrpcLibrary::GetModelInfoResp      *resp)
+{
+    resp->set_error_code(ERR_FAIL);
+    std::string hash    = req->hash();
+    int         user_id = req->user_id();
+    std::string auth    = req->auth();
+    int         limit   = req->limit();
+    limit               = (limit < 0 || limit > 100) ? 100 : limit;
+    LOG_DEBUG("Received GetModelInfo request. hash: {}, user_id: {}, auth: {}, "
+              "limit: {}",
+              hash,
+              user_id,
+              auth,
+              limit);
+
+    std::string sql;
+    if(hash.empty())
+        sql = SQL_SELECT_MODEL + hj::fmt(" LIMIT {};", std::to_string(limit));
+    else
+        sql = hj::fmt(SQL_SELECT_MODEL_BY_HASH, hash) + " LIMIT 1;";
+
+    LOG_DEBUG("{}", sql);
+    db_mgr::query_ret rows;
+    if(db_mgr::instance().query(rows, "sqlite", sql) != OK)
+    {
+        resp->set_error_code(ERR_SQLITE_EXEC_FAIL);
+        LOG_ERROR("Failed to query model info for sql: {}", sql);
+        return status_t::OK;
+    }
+    for(const auto row : rows)
+    {
+        auto item = resp->add_models();
+        item->set_hash(row[0]);
+        item->set_name(row[1]);
+        item->set_publisher(row[2]);
+        item->set_timestamp(row[3]);
+        item->set_addr(row[4]);
+        item->set_capabilities(row[5]);
+        item->set_context_size(std::stoll(row[6]));
+        item->set_cost(std::stod(row[7]));
+    }
+
+    resp->set_error_code(OK);
+    return status_t::OK;
+}
+
+status_t api_handler::NewModelInfo(ctx_t                                *ctx,
+                                   const ::GrpcLibrary::NewModelInfoReq *req,
+                                   ::GrpcLibrary::NewModelInfoResp      *resp)
+{
+    int32_t     user_id = req->user_id();
+    std::string auth    = req->auth();
+    auto        models  = req->models();
+    resp->set_error_code(ERR_FAIL);
+    LOG_DEBUG("Received NewModelInfo request. user_id: {}, auth: {}, models "
+              "count: {}",
+              user_id,
+              auth,
+              models.size());
+
+    // TODO check privilege
+
+    for(const auto &model : models)
+    {
+        std::string hash         = model.hash();
+        std::string name         = model.name();
+        std::string publisher    = model.publisher();
+        std::string timestamp    = model.timestamp();
+        std::string addr         = model.addr();
+        std::string capabilities = model.capabilities();
+        int64_t     context_size = model.context_size();
+        int         cost         = model.cost();
+        auto        sql          = hj::fmt(SQL_INSERT_MODEL,
+                                           hash,
+                                           name,
+                                           publisher,
+                                           timestamp,
+                                           addr,
+                                           capabilities,
+                                           context_size,
+                                           cost);
+        LOG_DEBUG("{}", sql);
+        if(db_mgr::instance().exec("sqlite", sql) != OK)
+        {
+            LOG_ERROR("Failed to insert model for sql: {}", sql);
+            continue;
+        }
+
+        resp->add_hashs(hash);
     }
 
     resp->set_error_code(OK);
