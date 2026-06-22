@@ -17,7 +17,7 @@ service GrpcService {
 
 message Session {
     int64 id = 1;
-    int32 user_id = 2;
+    int64 user_id = 2;
     string title = 3;
     string content = 4;
     string timestamp = 5;
@@ -35,13 +35,13 @@ message Model {
 }
 
 message Skill {
-    int64 id = 1;
+    string hash = 1;
     string name = 2;
     string desc = 3;
     string publisher = 4;
     string version = 5;
     string timestamp = 6;
-    string hash = 7;
+    int32 platform = 7;
 }
 
 message LoginReq {
@@ -51,7 +51,7 @@ message LoginReq {
 
 message LoginResp {
     int32 error_code = 1;
-    int32 user_id = 2;
+    int64 user_id = 2;
     int32 privilege = 3;
     string auth = 4;
     string account = 5;
@@ -59,13 +59,13 @@ message LoginResp {
 }
 
 message LogoutReq {
-    int32 user_id = 1;
+    int64 user_id = 1;
     string auth = 2;
 }
 
 message LogoutResp {
     int32 error_code = 1;
-    int32 user_id = 2;
+    int64 user_id = 2;
 }
 
 message RegAccountReq {
@@ -75,12 +75,12 @@ message RegAccountReq {
 
 message RegAccountResp {
     int32 error_code = 1;
-    int32 user_id = 2;
+    int64 user_id = 2;
 }
 
 message QueryReq {
     int64 id = 1;
-    int32 user_id = 2;
+    int64 user_id = 2;
     string auth = 3;
     string content = 4;
     string model = 5;
@@ -94,7 +94,7 @@ message QueryResp {
 
 message GetSessionReq {
     int64 id = 1;
-    int32 user_id = 2;
+    int64 user_id = 2;
     string auth =3;
     int32 limit = 4;
 }
@@ -105,7 +105,7 @@ message GetSessionResp {
 }
 
 message NewSessionReq {
-    int32 user_id = 1;
+    int64 user_id = 1;
     string auth = 2;
     string title = 3;
     string content = 4;
@@ -119,7 +119,7 @@ message NewSessionResp {
 
 message ModifySessionTitleReq {
     int64 id = 1;
-    int32 user_id = 2;
+    int64 user_id = 2;
     string auth =3;
     string title = 4;
 }
@@ -132,7 +132,7 @@ message ModifySessionTitleResp {
 
 message GetModelInfoReq {
     string hash = 1;
-    int32 user_id = 2;
+    int64 user_id = 2;
     string auth =3;
     int32 limit = 4;
 }
@@ -143,7 +143,7 @@ message GetModelInfoResp {
 }
 
 message NewModelInfoReq {
-    int32 user_id = 1;
+    int64 user_id = 1;
     string auth = 2;
     repeated Model models = 3;
 }
@@ -154,7 +154,7 @@ message NewModelInfoResp {
 } 
 
 message GetSkillInfoReq {
-    int64 id = 1;
+    string hash = 1;
     int32 limit = 2;
 }
 
@@ -165,7 +165,7 @@ message GetSkillInfoResp {
 
 message DownloadReq {
     string hash = 1;
-    int32 user_id = 2;
+    int64 user_id = 2;
     string auth = 3;
 }
 

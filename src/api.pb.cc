@@ -29,6 +29,9 @@ namespace GrpcLibrary {
 inline constexpr Skill::Impl_::Impl_(
     ::_pbi::ConstantInitialized) noexcept
       : _cached_size_{0},
+        hash_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
         name_(
             &::google::protobuf::internal::fixed_address_empty_string,
             ::_pbi::ConstantInitialized()),
@@ -44,10 +47,7 @@ inline constexpr Skill::Impl_::Impl_(
         timestamp_(
             &::google::protobuf::internal::fixed_address_empty_string,
             ::_pbi::ConstantInitialized()),
-        hash_(
-            &::google::protobuf::internal::fixed_address_empty_string,
-            ::_pbi::ConstantInitialized()),
-        id_{::int64_t{0}} {}
+        platform_{0} {}
 
 template <typename>
 PROTOBUF_CONSTEXPR Skill::Skill(::_pbi::ConstantInitialized)
@@ -82,7 +82,7 @@ inline constexpr Session::Impl_::Impl_(
             &::google::protobuf::internal::fixed_address_empty_string,
             ::_pbi::ConstantInitialized()),
         id_{::int64_t{0}},
-        user_id_{0} {}
+        user_id_{::int64_t{0}} {}
 
 template <typename>
 PROTOBUF_CONSTEXPR Session::Session(::_pbi::ConstantInitialized)
@@ -107,8 +107,8 @@ PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
 inline constexpr RegAccountResp::Impl_::Impl_(
     ::_pbi::ConstantInitialized) noexcept
       : _cached_size_{0},
-        error_code_{0},
-        user_id_{0} {}
+        user_id_{::int64_t{0}},
+        error_code_{0} {}
 
 template <typename>
 PROTOBUF_CONSTEXPR RegAccountResp::RegAccountResp(::_pbi::ConstantInitialized)
@@ -202,7 +202,7 @@ inline constexpr QueryReq::Impl_::Impl_(
             &::google::protobuf::internal::fixed_address_empty_string,
             ::_pbi::ConstantInitialized()),
         id_{::int64_t{0}},
-        user_id_{0} {}
+        user_id_{::int64_t{0}} {}
 
 template <typename>
 PROTOBUF_CONSTEXPR QueryReq::QueryReq(::_pbi::ConstantInitialized)
@@ -239,7 +239,7 @@ inline constexpr NewSessionReq::Impl_::Impl_(
         model_(
             &::google::protobuf::internal::fixed_address_empty_string,
             ::_pbi::ConstantInitialized()),
-        user_id_{0} {}
+        user_id_{::int64_t{0}} {}
 
 template <typename>
 PROTOBUF_CONSTEXPR NewSessionReq::NewSessionReq(::_pbi::ConstantInitialized)
@@ -326,7 +326,7 @@ inline constexpr ModifySessionTitleReq::Impl_::Impl_(
             &::google::protobuf::internal::fixed_address_empty_string,
             ::_pbi::ConstantInitialized()),
         id_{::int64_t{0}},
-        user_id_{0} {}
+        user_id_{::int64_t{0}} {}
 
 template <typename>
 PROTOBUF_CONSTEXPR ModifySessionTitleReq::ModifySessionTitleReq(::_pbi::ConstantInitialized)
@@ -395,8 +395,8 @@ PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
 inline constexpr LogoutResp::Impl_::Impl_(
     ::_pbi::ConstantInitialized) noexcept
       : _cached_size_{0},
-        error_code_{0},
-        user_id_{0} {}
+        user_id_{::int64_t{0}},
+        error_code_{0} {}
 
 template <typename>
 PROTOBUF_CONSTEXPR LogoutResp::LogoutResp(::_pbi::ConstantInitialized)
@@ -424,7 +424,7 @@ inline constexpr LogoutReq::Impl_::Impl_(
         auth_(
             &::google::protobuf::internal::fixed_address_empty_string,
             ::_pbi::ConstantInitialized()),
-        user_id_{0} {}
+        user_id_{::int64_t{0}} {}
 
 template <typename>
 PROTOBUF_CONSTEXPR LogoutReq::LogoutReq(::_pbi::ConstantInitialized)
@@ -458,8 +458,8 @@ inline constexpr LoginResp::Impl_::Impl_(
         last_login_time_(
             &::google::protobuf::internal::fixed_address_empty_string,
             ::_pbi::ConstantInitialized()),
+        user_id_{::int64_t{0}},
         error_code_{0},
-        user_id_{0},
         privilege_{0} {}
 
 template <typename>
@@ -515,7 +515,9 @@ PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
 inline constexpr GetSkillInfoReq::Impl_::Impl_(
     ::_pbi::ConstantInitialized) noexcept
       : _cached_size_{0},
-        id_{::int64_t{0}},
+        hash_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
         limit_{0} {}
 
 template <typename>
@@ -545,7 +547,7 @@ inline constexpr GetSessionReq::Impl_::Impl_(
             &::google::protobuf::internal::fixed_address_empty_string,
             ::_pbi::ConstantInitialized()),
         id_{::int64_t{0}},
-        user_id_{0},
+        user_id_{::int64_t{0}},
         limit_{0} {}
 
 template <typename>
@@ -577,7 +579,7 @@ inline constexpr GetModelInfoReq::Impl_::Impl_(
         auth_(
             &::google::protobuf::internal::fixed_address_empty_string,
             ::_pbi::ConstantInitialized()),
-        user_id_{0},
+        user_id_{::int64_t{0}},
         limit_{0} {}
 
 template <typename>
@@ -641,7 +643,7 @@ inline constexpr DownloadReq::Impl_::Impl_(
         auth_(
             &::google::protobuf::internal::fixed_address_empty_string,
             ::_pbi::ConstantInitialized()),
-        user_id_{0} {}
+        user_id_{::int64_t{0}} {}
 
 template <typename>
 PROTOBUF_CONSTEXPR DownloadReq::DownloadReq(::_pbi::ConstantInitialized)
@@ -696,7 +698,7 @@ inline constexpr NewModelInfoReq::Impl_::Impl_(
         auth_(
             &::google::protobuf::internal::fixed_address_empty_string,
             ::_pbi::ConstantInitialized()),
-        user_id_{0} {}
+        user_id_{::int64_t{0}} {}
 
 template <typename>
 PROTOBUF_CONSTEXPR NewModelInfoReq::NewModelInfoReq(::_pbi::ConstantInitialized)
@@ -838,20 +840,20 @@ const ::uint32_t
         0x081, // bitmap
         PROTOBUF_FIELD_OFFSET(::GrpcLibrary::Skill, _impl_._has_bits_),
         10, // hasbit index offset
-        PROTOBUF_FIELD_OFFSET(::GrpcLibrary::Skill, _impl_.id_),
+        PROTOBUF_FIELD_OFFSET(::GrpcLibrary::Skill, _impl_.hash_),
         PROTOBUF_FIELD_OFFSET(::GrpcLibrary::Skill, _impl_.name_),
         PROTOBUF_FIELD_OFFSET(::GrpcLibrary::Skill, _impl_.desc_),
         PROTOBUF_FIELD_OFFSET(::GrpcLibrary::Skill, _impl_.publisher_),
         PROTOBUF_FIELD_OFFSET(::GrpcLibrary::Skill, _impl_.version_),
         PROTOBUF_FIELD_OFFSET(::GrpcLibrary::Skill, _impl_.timestamp_),
-        PROTOBUF_FIELD_OFFSET(::GrpcLibrary::Skill, _impl_.hash_),
-        6,
+        PROTOBUF_FIELD_OFFSET(::GrpcLibrary::Skill, _impl_.platform_),
         0,
         1,
         2,
         3,
         4,
         5,
+        6,
         0x081, // bitmap
         PROTOBUF_FIELD_OFFSET(::GrpcLibrary::LoginReq, _impl_._has_bits_),
         5, // hasbit index offset
@@ -868,8 +870,8 @@ const ::uint32_t
         PROTOBUF_FIELD_OFFSET(::GrpcLibrary::LoginResp, _impl_.auth_),
         PROTOBUF_FIELD_OFFSET(::GrpcLibrary::LoginResp, _impl_.account_),
         PROTOBUF_FIELD_OFFSET(::GrpcLibrary::LoginResp, _impl_.last_login_time_),
-        3,
         4,
+        3,
         5,
         0,
         1,
@@ -886,8 +888,8 @@ const ::uint32_t
         5, // hasbit index offset
         PROTOBUF_FIELD_OFFSET(::GrpcLibrary::LogoutResp, _impl_.error_code_),
         PROTOBUF_FIELD_OFFSET(::GrpcLibrary::LogoutResp, _impl_.user_id_),
-        0,
         1,
+        0,
         0x081, // bitmap
         PROTOBUF_FIELD_OFFSET(::GrpcLibrary::RegAccountReq, _impl_._has_bits_),
         5, // hasbit index offset
@@ -900,8 +902,8 @@ const ::uint32_t
         5, // hasbit index offset
         PROTOBUF_FIELD_OFFSET(::GrpcLibrary::RegAccountResp, _impl_.error_code_),
         PROTOBUF_FIELD_OFFSET(::GrpcLibrary::RegAccountResp, _impl_.user_id_),
-        0,
         1,
+        0,
         0x081, // bitmap
         PROTOBUF_FIELD_OFFSET(::GrpcLibrary::QueryReq, _impl_._has_bits_),
         8, // hasbit index offset
@@ -1019,7 +1021,7 @@ const ::uint32_t
         0x081, // bitmap
         PROTOBUF_FIELD_OFFSET(::GrpcLibrary::GetSkillInfoReq, _impl_._has_bits_),
         5, // hasbit index offset
-        PROTOBUF_FIELD_OFFSET(::GrpcLibrary::GetSkillInfoReq, _impl_.id_),
+        PROTOBUF_FIELD_OFFSET(::GrpcLibrary::GetSkillInfoReq, _impl_.hash_),
         PROTOBUF_FIELD_OFFSET(::GrpcLibrary::GetSkillInfoReq, _impl_.limit_),
         0,
         1,
@@ -1110,81 +1112,81 @@ static const ::_pb::Message* PROTOBUF_NONNULL const file_default_instances[] = {
 const char descriptor_table_protodef_src_2fapi_2eproto[] ABSL_ATTRIBUTE_SECTION_VARIABLE(
     protodesc_cold) = {
     "\n\rsrc/api.proto\022\013GrpcLibrary\"Y\n\007Session\022"
-    "\n\n\002id\030\001 \001(\003\022\017\n\007user_id\030\002 \001(\005\022\r\n\005title\030\003 "
+    "\n\n\002id\030\001 \001(\003\022\017\n\007user_id\030\002 \001(\003\022\r\n\005title\030\003 "
     "\001(\t\022\017\n\007content\030\004 \001(\t\022\021\n\ttimestamp\030\005 \001(\t\""
     "\221\001\n\005Model\022\014\n\004hash\030\001 \001(\t\022\014\n\004name\030\002 \001(\t\022\021\n"
     "\tpublisher\030\003 \001(\t\022\021\n\ttimestamp\030\004 \001(\t\022\014\n\004a"
     "ddr\030\005 \001(\t\022\024\n\014capabilities\030\006 \001(\t\022\024\n\014conte"
-    "xt_size\030\007 \001(\003\022\014\n\004cost\030\010 \001(\005\"t\n\005Skill\022\n\n\002"
-    "id\030\001 \001(\003\022\014\n\004name\030\002 \001(\t\022\014\n\004desc\030\003 \001(\t\022\021\n\t"
-    "publisher\030\004 \001(\t\022\017\n\007version\030\005 \001(\t\022\021\n\ttime"
-    "stamp\030\006 \001(\t\022\014\n\004hash\030\007 \001(\t\"+\n\010LoginReq\022\017\n"
-    "\007account\030\001 \001(\t\022\016\n\006passwd\030\002 \001(\t\"{\n\tLoginR"
-    "esp\022\022\n\nerror_code\030\001 \001(\005\022\017\n\007user_id\030\002 \001(\005"
-    "\022\021\n\tprivilege\030\003 \001(\005\022\014\n\004auth\030\004 \001(\t\022\017\n\007acc"
-    "ount\030\005 \001(\t\022\027\n\017last_login_time\030\006 \001(\t\"*\n\tL"
-    "ogoutReq\022\017\n\007user_id\030\001 \001(\005\022\014\n\004auth\030\002 \001(\t\""
-    "1\n\nLogoutResp\022\022\n\nerror_code\030\001 \001(\005\022\017\n\007use"
-    "r_id\030\002 \001(\005\"0\n\rRegAccountReq\022\017\n\007account\030\001"
-    " \001(\t\022\016\n\006passwd\030\002 \001(\t\"5\n\016RegAccountResp\022\022"
-    "\n\nerror_code\030\001 \001(\005\022\017\n\007user_id\030\002 \001(\005\"U\n\010Q"
-    "ueryReq\022\n\n\002id\030\001 \001(\003\022\017\n\007user_id\030\002 \001(\005\022\014\n\004"
-    "auth\030\003 \001(\t\022\017\n\007content\030\004 \001(\t\022\r\n\005model\030\005 \001"
-    "(\t\"<\n\tQueryResp\022\022\n\nerror_code\030\001 \001(\005\022\n\n\002i"
-    "d\030\002 \001(\003\022\017\n\007content\030\003 \001(\t\"I\n\rGetSessionRe"
-    "q\022\n\n\002id\030\001 \001(\003\022\017\n\007user_id\030\002 \001(\005\022\014\n\004auth\030\003"
-    " \001(\t\022\r\n\005limit\030\004 \001(\005\"L\n\016GetSessionResp\022\022\n"
-    "\nerror_code\030\001 \001(\005\022&\n\010sessions\030\002 \003(\0132\024.Gr"
-    "pcLibrary.Session\"]\n\rNewSessionReq\022\017\n\007us"
-    "er_id\030\001 \001(\005\022\014\n\004auth\030\002 \001(\t\022\r\n\005title\030\003 \001(\t"
-    "\022\017\n\007content\030\004 \001(\t\022\r\n\005model\030\005 \001(\t\"K\n\016NewS"
-    "essionResp\022\022\n\nerror_code\030\001 \001(\005\022%\n\007sessio"
-    "n\030\002 \001(\0132\024.GrpcLibrary.Session\"Q\n\025ModifyS"
-    "essionTitleReq\022\n\n\002id\030\001 \001(\003\022\017\n\007user_id\030\002 "
-    "\001(\005\022\014\n\004auth\030\003 \001(\t\022\r\n\005title\030\004 \001(\t\"G\n\026Modi"
-    "fySessionTitleResp\022\022\n\nerror_code\030\001 \001(\005\022\n"
-    "\n\002id\030\002 \001(\003\022\r\n\005title\030\003 \001(\t\"M\n\017GetModelInf"
-    "oReq\022\014\n\004hash\030\001 \001(\t\022\017\n\007user_id\030\002 \001(\005\022\014\n\004a"
-    "uth\030\003 \001(\t\022\r\n\005limit\030\004 \001(\005\"J\n\020GetModelInfo"
-    "Resp\022\022\n\nerror_code\030\001 \001(\005\022\"\n\006models\030\002 \003(\013"
-    "2\022.GrpcLibrary.Model\"T\n\017NewModelInfoReq\022"
-    "\017\n\007user_id\030\001 \001(\005\022\014\n\004auth\030\002 \001(\t\022\"\n\006models"
-    "\030\003 \003(\0132\022.GrpcLibrary.Model\"5\n\020NewModelIn"
-    "foResp\022\022\n\nerror_code\030\001 \001(\005\022\r\n\005hashs\030\002 \003("
-    "\t\",\n\017GetSkillInfoReq\022\n\n\002id\030\001 \001(\003\022\r\n\005limi"
-    "t\030\002 \001(\005\"J\n\020GetSkillInfoResp\022\022\n\nerror_cod"
-    "e\030\001 \001(\005\022\"\n\006skills\030\002 \003(\0132\022.GrpcLibrary.Sk"
-    "ill\":\n\013DownloadReq\022\014\n\004hash\030\001 \001(\t\022\017\n\007user"
-    "_id\030\002 \001(\005\022\014\n\004auth\030\003 \001(\t\"O\n\014DownloadResp\022"
-    "\022\n\nerror_code\030\001 \001(\005\022\014\n\004hash\030\002 \001(\t\022\014\n\004add"
-    "r\030\003 \001(\t\022\017\n\007size_kb\030\004 \001(\0032\252\006\n\013GrpcService"
-    "\0228\n\005Login\022\025.GrpcLibrary.LoginReq\032\026.GrpcL"
-    "ibrary.LoginResp\"\000\022;\n\006Logout\022\026.GrpcLibra"
-    "ry.LogoutReq\032\027.GrpcLibrary.LogoutResp\"\000\022"
-    "G\n\nRegAccount\022\032.GrpcLibrary.RegAccountRe"
-    "q\032\033.GrpcLibrary.RegAccountResp\"\000\0228\n\005Quer"
-    "y\022\025.GrpcLibrary.QueryReq\032\026.GrpcLibrary.Q"
-    "ueryResp\"\000\022G\n\nGetSession\022\032.GrpcLibrary.G"
-    "etSessionReq\032\033.GrpcLibrary.GetSessionRes"
-    "p\"\000\022G\n\nNewSession\022\032.GrpcLibrary.NewSessi"
-    "onReq\032\033.GrpcLibrary.NewSessionResp\"\000\022_\n\022"
-    "ModifySessionTitle\022\".GrpcLibrary.ModifyS"
-    "essionTitleReq\032#.GrpcLibrary.ModifySessi"
-    "onTitleResp\"\000\022M\n\014GetModelInfo\022\034.GrpcLibr"
-    "ary.GetModelInfoReq\032\035.GrpcLibrary.GetMod"
-    "elInfoResp\"\000\022M\n\014NewModelInfo\022\034.GrpcLibra"
-    "ry.NewModelInfoReq\032\035.GrpcLibrary.NewMode"
-    "lInfoResp\"\000\022M\n\014GetSkillInfo\022\034.GrpcLibrar"
-    "y.GetSkillInfoReq\032\035.GrpcLibrary.GetSkill"
-    "InfoResp\"\000\022A\n\010Download\022\030.GrpcLibrary.Dow"
-    "nloadReq\032\031.GrpcLibrary.DownloadResp\"\000b\006p"
-    "roto3"
+    "xt_size\030\007 \001(\003\022\014\n\004cost\030\010 \001(\005\"z\n\005Skill\022\014\n\004"
+    "hash\030\001 \001(\t\022\014\n\004name\030\002 \001(\t\022\014\n\004desc\030\003 \001(\t\022\021"
+    "\n\tpublisher\030\004 \001(\t\022\017\n\007version\030\005 \001(\t\022\021\n\tti"
+    "mestamp\030\006 \001(\t\022\020\n\010platform\030\007 \001(\005\"+\n\010Login"
+    "Req\022\017\n\007account\030\001 \001(\t\022\016\n\006passwd\030\002 \001(\t\"{\n\t"
+    "LoginResp\022\022\n\nerror_code\030\001 \001(\005\022\017\n\007user_id"
+    "\030\002 \001(\003\022\021\n\tprivilege\030\003 \001(\005\022\014\n\004auth\030\004 \001(\t\022"
+    "\017\n\007account\030\005 \001(\t\022\027\n\017last_login_time\030\006 \001("
+    "\t\"*\n\tLogoutReq\022\017\n\007user_id\030\001 \001(\003\022\014\n\004auth\030"
+    "\002 \001(\t\"1\n\nLogoutResp\022\022\n\nerror_code\030\001 \001(\005\022"
+    "\017\n\007user_id\030\002 \001(\003\"0\n\rRegAccountReq\022\017\n\007acc"
+    "ount\030\001 \001(\t\022\016\n\006passwd\030\002 \001(\t\"5\n\016RegAccount"
+    "Resp\022\022\n\nerror_code\030\001 \001(\005\022\017\n\007user_id\030\002 \001("
+    "\003\"U\n\010QueryReq\022\n\n\002id\030\001 \001(\003\022\017\n\007user_id\030\002 \001"
+    "(\003\022\014\n\004auth\030\003 \001(\t\022\017\n\007content\030\004 \001(\t\022\r\n\005mod"
+    "el\030\005 \001(\t\"<\n\tQueryResp\022\022\n\nerror_code\030\001 \001("
+    "\005\022\n\n\002id\030\002 \001(\003\022\017\n\007content\030\003 \001(\t\"I\n\rGetSes"
+    "sionReq\022\n\n\002id\030\001 \001(\003\022\017\n\007user_id\030\002 \001(\003\022\014\n\004"
+    "auth\030\003 \001(\t\022\r\n\005limit\030\004 \001(\005\"L\n\016GetSessionR"
+    "esp\022\022\n\nerror_code\030\001 \001(\005\022&\n\010sessions\030\002 \003("
+    "\0132\024.GrpcLibrary.Session\"]\n\rNewSessionReq"
+    "\022\017\n\007user_id\030\001 \001(\003\022\014\n\004auth\030\002 \001(\t\022\r\n\005title"
+    "\030\003 \001(\t\022\017\n\007content\030\004 \001(\t\022\r\n\005model\030\005 \001(\t\"K"
+    "\n\016NewSessionResp\022\022\n\nerror_code\030\001 \001(\005\022%\n\007"
+    "session\030\002 \001(\0132\024.GrpcLibrary.Session\"Q\n\025M"
+    "odifySessionTitleReq\022\n\n\002id\030\001 \001(\003\022\017\n\007user"
+    "_id\030\002 \001(\003\022\014\n\004auth\030\003 \001(\t\022\r\n\005title\030\004 \001(\t\"G"
+    "\n\026ModifySessionTitleResp\022\022\n\nerror_code\030\001"
+    " \001(\005\022\n\n\002id\030\002 \001(\003\022\r\n\005title\030\003 \001(\t\"M\n\017GetMo"
+    "delInfoReq\022\014\n\004hash\030\001 \001(\t\022\017\n\007user_id\030\002 \001("
+    "\003\022\014\n\004auth\030\003 \001(\t\022\r\n\005limit\030\004 \001(\005\"J\n\020GetMod"
+    "elInfoResp\022\022\n\nerror_code\030\001 \001(\005\022\"\n\006models"
+    "\030\002 \003(\0132\022.GrpcLibrary.Model\"T\n\017NewModelIn"
+    "foReq\022\017\n\007user_id\030\001 \001(\003\022\014\n\004auth\030\002 \001(\t\022\"\n\006"
+    "models\030\003 \003(\0132\022.GrpcLibrary.Model\"5\n\020NewM"
+    "odelInfoResp\022\022\n\nerror_code\030\001 \001(\005\022\r\n\005hash"
+    "s\030\002 \003(\t\".\n\017GetSkillInfoReq\022\014\n\004hash\030\001 \001(\t"
+    "\022\r\n\005limit\030\002 \001(\005\"J\n\020GetSkillInfoResp\022\022\n\ne"
+    "rror_code\030\001 \001(\005\022\"\n\006skills\030\002 \003(\0132\022.GrpcLi"
+    "brary.Skill\":\n\013DownloadReq\022\014\n\004hash\030\001 \001(\t"
+    "\022\017\n\007user_id\030\002 \001(\003\022\014\n\004auth\030\003 \001(\t\"O\n\014Downl"
+    "oadResp\022\022\n\nerror_code\030\001 \001(\005\022\014\n\004hash\030\002 \001("
+    "\t\022\014\n\004addr\030\003 \001(\t\022\017\n\007size_kb\030\004 \001(\0032\252\006\n\013Grp"
+    "cService\0228\n\005Login\022\025.GrpcLibrary.LoginReq"
+    "\032\026.GrpcLibrary.LoginResp\"\000\022;\n\006Logout\022\026.G"
+    "rpcLibrary.LogoutReq\032\027.GrpcLibrary.Logou"
+    "tResp\"\000\022G\n\nRegAccount\022\032.GrpcLibrary.RegA"
+    "ccountReq\032\033.GrpcLibrary.RegAccountResp\"\000"
+    "\0228\n\005Query\022\025.GrpcLibrary.QueryReq\032\026.GrpcL"
+    "ibrary.QueryResp\"\000\022G\n\nGetSession\022\032.GrpcL"
+    "ibrary.GetSessionReq\032\033.GrpcLibrary.GetSe"
+    "ssionResp\"\000\022G\n\nNewSession\022\032.GrpcLibrary."
+    "NewSessionReq\032\033.GrpcLibrary.NewSessionRe"
+    "sp\"\000\022_\n\022ModifySessionTitle\022\".GrpcLibrary"
+    ".ModifySessionTitleReq\032#.GrpcLibrary.Mod"
+    "ifySessionTitleResp\"\000\022M\n\014GetModelInfo\022\034."
+    "GrpcLibrary.GetModelInfoReq\032\035.GrpcLibrar"
+    "y.GetModelInfoResp\"\000\022M\n\014NewModelInfo\022\034.G"
+    "rpcLibrary.NewModelInfoReq\032\035.GrpcLibrary"
+    ".NewModelInfoResp\"\000\022M\n\014GetSkillInfo\022\034.Gr"
+    "pcLibrary.GetSkillInfoReq\032\035.GrpcLibrary."
+    "GetSkillInfoResp\"\000\022A\n\010Download\022\030.GrpcLib"
+    "rary.DownloadReq\032\031.GrpcLibrary.DownloadR"
+    "esp\"\000b\006proto3"
 };
 static ::absl::once_flag descriptor_table_src_2fapi_2eproto_once;
 PROTOBUF_CONSTINIT const ::_pbi::DescriptorTable descriptor_table_src_2fapi_2eproto = {
     false,
     false,
-    2765,
+    2773,
     descriptor_table_protodef_src_2fapi_2eproto,
     "src/api.proto",
     &descriptor_table_src_2fapi_2eproto_once,
@@ -1351,8 +1353,8 @@ Session::_table_ = {
     {::_pbi::TcParser::SingularVarintNoZag1<::uint64_t, offsetof(Session, _impl_.id_), 3>(),
      {8, 3, 0,
       PROTOBUF_FIELD_OFFSET(Session, _impl_.id_)}},
-    // int32 user_id = 2;
-    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(Session, _impl_.user_id_), 4>(),
+    // int64 user_id = 2;
+    {::_pbi::TcParser::SingularVarintNoZag1<::uint64_t, offsetof(Session, _impl_.user_id_), 4>(),
      {16, 4, 0,
       PROTOBUF_FIELD_OFFSET(Session, _impl_.user_id_)}},
     // string title = 3;
@@ -1374,8 +1376,8 @@ Session::_table_ = {
   }}, {{
     // int64 id = 1;
     {PROTOBUF_FIELD_OFFSET(Session, _impl_.id_), _Internal::kHasBitsOffset + 3, 0, (0 | ::_fl::kFcOptional | ::_fl::kInt64)},
-    // int32 user_id = 2;
-    {PROTOBUF_FIELD_OFFSET(Session, _impl_.user_id_), _Internal::kHasBitsOffset + 4, 0, (0 | ::_fl::kFcOptional | ::_fl::kInt32)},
+    // int64 user_id = 2;
+    {PROTOBUF_FIELD_OFFSET(Session, _impl_.user_id_), _Internal::kHasBitsOffset + 4, 0, (0 | ::_fl::kFcOptional | ::_fl::kInt64)},
     // string title = 3;
     {PROTOBUF_FIELD_OFFSET(Session, _impl_.title_), _Internal::kHasBitsOffset + 0, 0, (0 | ::_fl::kFcOptional | ::_fl::kUtf8String | ::_fl::kRepAString)},
     // string content = 4;
@@ -1448,11 +1450,11 @@ PROTOBUF_NOINLINE void Session::Clear() {
     }
   }
 
-  // int32 user_id = 2;
+  // int64 user_id = 2;
   if (CheckHasBit(cached_has_bits, 0x00000010U)) {
     if (this_._internal_user_id() != 0) {
       target =
-          ::google::protobuf::internal::WireFormatLite::WriteInt32ToArrayWithField<2>(
+          ::google::protobuf::internal::WireFormatLite::WriteInt64ToArrayWithField<2>(
               stream, this_._internal_user_id(), target);
     }
   }
@@ -1541,10 +1543,10 @@ PROTOBUF_NOINLINE void Session::Clear() {
             this_._internal_id());
       }
     }
-    // int32 user_id = 2;
+    // int64 user_id = 2;
     if (CheckHasBit(cached_has_bits, 0x00000010U)) {
       if (this_._internal_user_id() != 0) {
-        total_size += ::_pbi::WireFormatLite::Int32SizePlusOne(
+        total_size += ::_pbi::WireFormatLite::Int64SizePlusOne(
             this_._internal_user_id());
       }
     }
@@ -2222,12 +2224,12 @@ PROTOBUF_NDEBUG_INLINE Skill::Impl_::Impl_(
     [[maybe_unused]] const ::GrpcLibrary::Skill& from_msg)
       : _has_bits_{from._has_bits_},
         _cached_size_{0},
+        hash_(arena, from.hash_),
         name_(arena, from.name_),
         desc_(arena, from.desc_),
         publisher_(arena, from.publisher_),
         version_(arena, from.version_),
-        timestamp_(arena, from.timestamp_),
-        hash_(arena, from.hash_) {}
+        timestamp_(arena, from.timestamp_) {}
 
 Skill::Skill(
     ::google::protobuf::Arena* PROTOBUF_NULLABLE arena,
@@ -2242,7 +2244,7 @@ Skill::Skill(
   _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
       from._internal_metadata_);
   new (&_impl_) Impl_(internal_visibility(), arena, from._impl_, from);
-  _impl_.id_ = from._impl_.id_;
+  _impl_.platform_ = from._impl_.platform_;
 
   // @@protoc_insertion_point(copy_constructor:GrpcLibrary.Skill)
 }
@@ -2250,16 +2252,16 @@ PROTOBUF_NDEBUG_INLINE Skill::Impl_::Impl_(
     [[maybe_unused]] ::google::protobuf::internal::InternalVisibility visibility,
     [[maybe_unused]] ::google::protobuf::Arena* PROTOBUF_NULLABLE arena)
       : _cached_size_{0},
+        hash_(arena),
         name_(arena),
         desc_(arena),
         publisher_(arena),
         version_(arena),
-        timestamp_(arena),
-        hash_(arena) {}
+        timestamp_(arena) {}
 
 inline void Skill::SharedCtor(::_pb::Arena* PROTOBUF_NULLABLE arena) {
   new (&_impl_) Impl_(internal_visibility(), arena);
-  _impl_.id_ = {};
+  _impl_.platform_ = {};
 }
 Skill::~Skill() {
   // @@protoc_insertion_point(destructor:GrpcLibrary.Skill)
@@ -2272,12 +2274,12 @@ inline void Skill::SharedDtor(MessageLite& self) {
   }
   this_._internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
   ABSL_DCHECK(this_.GetArena() == nullptr);
+  this_._impl_.hash_.Destroy();
   this_._impl_.name_.Destroy();
   this_._impl_.desc_.Destroy();
   this_._impl_.publisher_.Destroy();
   this_._impl_.version_.Destroy();
   this_._impl_.timestamp_.Destroy();
-  this_._impl_.hash_.Destroy();
   this_._impl_.~Impl_();
 }
 
@@ -2344,62 +2346,62 @@ Skill::_table_ = {
     #endif  // PROTOBUF_PREFETCH_PARSE_TABLE
   }, {{
     {::_pbi::TcParser::MiniParse, {}},
-    // int64 id = 1;
-    {::_pbi::TcParser::SingularVarintNoZag1<::uint64_t, offsetof(Skill, _impl_.id_), 6>(),
-     {8, 6, 0,
-      PROTOBUF_FIELD_OFFSET(Skill, _impl_.id_)}},
+    // string hash = 1;
+    {::_pbi::TcParser::FastUS1,
+     {10, 0, 0,
+      PROTOBUF_FIELD_OFFSET(Skill, _impl_.hash_)}},
     // string name = 2;
     {::_pbi::TcParser::FastUS1,
-     {18, 0, 0,
+     {18, 1, 0,
       PROTOBUF_FIELD_OFFSET(Skill, _impl_.name_)}},
     // string desc = 3;
     {::_pbi::TcParser::FastUS1,
-     {26, 1, 0,
+     {26, 2, 0,
       PROTOBUF_FIELD_OFFSET(Skill, _impl_.desc_)}},
     // string publisher = 4;
     {::_pbi::TcParser::FastUS1,
-     {34, 2, 0,
+     {34, 3, 0,
       PROTOBUF_FIELD_OFFSET(Skill, _impl_.publisher_)}},
     // string version = 5;
     {::_pbi::TcParser::FastUS1,
-     {42, 3, 0,
+     {42, 4, 0,
       PROTOBUF_FIELD_OFFSET(Skill, _impl_.version_)}},
     // string timestamp = 6;
     {::_pbi::TcParser::FastUS1,
-     {50, 4, 0,
+     {50, 5, 0,
       PROTOBUF_FIELD_OFFSET(Skill, _impl_.timestamp_)}},
-    // string hash = 7;
-    {::_pbi::TcParser::FastUS1,
-     {58, 5, 0,
-      PROTOBUF_FIELD_OFFSET(Skill, _impl_.hash_)}},
+    // int32 platform = 7;
+    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(Skill, _impl_.platform_), 6>(),
+     {56, 6, 0,
+      PROTOBUF_FIELD_OFFSET(Skill, _impl_.platform_)}},
   }}, {{
     65535, 65535
   }}, {{
-    // int64 id = 1;
-    {PROTOBUF_FIELD_OFFSET(Skill, _impl_.id_), _Internal::kHasBitsOffset + 6, 0, (0 | ::_fl::kFcOptional | ::_fl::kInt64)},
+    // string hash = 1;
+    {PROTOBUF_FIELD_OFFSET(Skill, _impl_.hash_), _Internal::kHasBitsOffset + 0, 0, (0 | ::_fl::kFcOptional | ::_fl::kUtf8String | ::_fl::kRepAString)},
     // string name = 2;
-    {PROTOBUF_FIELD_OFFSET(Skill, _impl_.name_), _Internal::kHasBitsOffset + 0, 0, (0 | ::_fl::kFcOptional | ::_fl::kUtf8String | ::_fl::kRepAString)},
+    {PROTOBUF_FIELD_OFFSET(Skill, _impl_.name_), _Internal::kHasBitsOffset + 1, 0, (0 | ::_fl::kFcOptional | ::_fl::kUtf8String | ::_fl::kRepAString)},
     // string desc = 3;
-    {PROTOBUF_FIELD_OFFSET(Skill, _impl_.desc_), _Internal::kHasBitsOffset + 1, 0, (0 | ::_fl::kFcOptional | ::_fl::kUtf8String | ::_fl::kRepAString)},
+    {PROTOBUF_FIELD_OFFSET(Skill, _impl_.desc_), _Internal::kHasBitsOffset + 2, 0, (0 | ::_fl::kFcOptional | ::_fl::kUtf8String | ::_fl::kRepAString)},
     // string publisher = 4;
-    {PROTOBUF_FIELD_OFFSET(Skill, _impl_.publisher_), _Internal::kHasBitsOffset + 2, 0, (0 | ::_fl::kFcOptional | ::_fl::kUtf8String | ::_fl::kRepAString)},
+    {PROTOBUF_FIELD_OFFSET(Skill, _impl_.publisher_), _Internal::kHasBitsOffset + 3, 0, (0 | ::_fl::kFcOptional | ::_fl::kUtf8String | ::_fl::kRepAString)},
     // string version = 5;
-    {PROTOBUF_FIELD_OFFSET(Skill, _impl_.version_), _Internal::kHasBitsOffset + 3, 0, (0 | ::_fl::kFcOptional | ::_fl::kUtf8String | ::_fl::kRepAString)},
+    {PROTOBUF_FIELD_OFFSET(Skill, _impl_.version_), _Internal::kHasBitsOffset + 4, 0, (0 | ::_fl::kFcOptional | ::_fl::kUtf8String | ::_fl::kRepAString)},
     // string timestamp = 6;
-    {PROTOBUF_FIELD_OFFSET(Skill, _impl_.timestamp_), _Internal::kHasBitsOffset + 4, 0, (0 | ::_fl::kFcOptional | ::_fl::kUtf8String | ::_fl::kRepAString)},
-    // string hash = 7;
-    {PROTOBUF_FIELD_OFFSET(Skill, _impl_.hash_), _Internal::kHasBitsOffset + 5, 0, (0 | ::_fl::kFcOptional | ::_fl::kUtf8String | ::_fl::kRepAString)},
+    {PROTOBUF_FIELD_OFFSET(Skill, _impl_.timestamp_), _Internal::kHasBitsOffset + 5, 0, (0 | ::_fl::kFcOptional | ::_fl::kUtf8String | ::_fl::kRepAString)},
+    // int32 platform = 7;
+    {PROTOBUF_FIELD_OFFSET(Skill, _impl_.platform_), _Internal::kHasBitsOffset + 6, 0, (0 | ::_fl::kFcOptional | ::_fl::kInt32)},
   }},
   // no aux_entries
   {{
-    "\21\0\4\4\11\7\11\4"
+    "\21\4\4\4\11\7\11\0"
     "GrpcLibrary.Skill"
+    "hash"
     "name"
     "desc"
     "publisher"
     "version"
     "timestamp"
-    "hash"
   }},
 };
 PROTOBUF_NOINLINE void Skill::Clear() {
@@ -2412,25 +2414,25 @@ PROTOBUF_NOINLINE void Skill::Clear() {
   cached_has_bits = _impl_._has_bits_[0];
   if (BatchCheckHasBit(cached_has_bits, 0x0000003fU)) {
     if (CheckHasBit(cached_has_bits, 0x00000001U)) {
-      _impl_.name_.ClearNonDefaultToEmpty();
-    }
-    if (CheckHasBit(cached_has_bits, 0x00000002U)) {
-      _impl_.desc_.ClearNonDefaultToEmpty();
-    }
-    if (CheckHasBit(cached_has_bits, 0x00000004U)) {
-      _impl_.publisher_.ClearNonDefaultToEmpty();
-    }
-    if (CheckHasBit(cached_has_bits, 0x00000008U)) {
-      _impl_.version_.ClearNonDefaultToEmpty();
-    }
-    if (CheckHasBit(cached_has_bits, 0x00000010U)) {
-      _impl_.timestamp_.ClearNonDefaultToEmpty();
-    }
-    if (CheckHasBit(cached_has_bits, 0x00000020U)) {
       _impl_.hash_.ClearNonDefaultToEmpty();
     }
+    if (CheckHasBit(cached_has_bits, 0x00000002U)) {
+      _impl_.name_.ClearNonDefaultToEmpty();
+    }
+    if (CheckHasBit(cached_has_bits, 0x00000004U)) {
+      _impl_.desc_.ClearNonDefaultToEmpty();
+    }
+    if (CheckHasBit(cached_has_bits, 0x00000008U)) {
+      _impl_.publisher_.ClearNonDefaultToEmpty();
+    }
+    if (CheckHasBit(cached_has_bits, 0x00000010U)) {
+      _impl_.version_.ClearNonDefaultToEmpty();
+    }
+    if (CheckHasBit(cached_has_bits, 0x00000020U)) {
+      _impl_.timestamp_.ClearNonDefaultToEmpty();
+    }
   }
-  _impl_.id_ = ::int64_t{0};
+  _impl_.platform_ = 0;
   _impl_._has_bits_.Clear();
   _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
 }
@@ -2454,17 +2456,18 @@ PROTOBUF_NOINLINE void Skill::Clear() {
   (void)cached_has_bits;
 
   cached_has_bits = this_._impl_._has_bits_[0];
-  // int64 id = 1;
-  if (CheckHasBit(cached_has_bits, 0x00000040U)) {
-    if (this_._internal_id() != 0) {
-      target =
-          ::google::protobuf::internal::WireFormatLite::WriteInt64ToArrayWithField<1>(
-              stream, this_._internal_id(), target);
+  // string hash = 1;
+  if (CheckHasBit(cached_has_bits, 0x00000001U)) {
+    if (!this_._internal_hash().empty()) {
+      const ::std::string& _s = this_._internal_hash();
+      ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+          _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "GrpcLibrary.Skill.hash");
+      target = stream->WriteStringMaybeAliased(1, _s, target);
     }
   }
 
   // string name = 2;
-  if (CheckHasBit(cached_has_bits, 0x00000001U)) {
+  if (CheckHasBit(cached_has_bits, 0x00000002U)) {
     if (!this_._internal_name().empty()) {
       const ::std::string& _s = this_._internal_name();
       ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
@@ -2474,7 +2477,7 @@ PROTOBUF_NOINLINE void Skill::Clear() {
   }
 
   // string desc = 3;
-  if (CheckHasBit(cached_has_bits, 0x00000002U)) {
+  if (CheckHasBit(cached_has_bits, 0x00000004U)) {
     if (!this_._internal_desc().empty()) {
       const ::std::string& _s = this_._internal_desc();
       ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
@@ -2484,7 +2487,7 @@ PROTOBUF_NOINLINE void Skill::Clear() {
   }
 
   // string publisher = 4;
-  if (CheckHasBit(cached_has_bits, 0x00000004U)) {
+  if (CheckHasBit(cached_has_bits, 0x00000008U)) {
     if (!this_._internal_publisher().empty()) {
       const ::std::string& _s = this_._internal_publisher();
       ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
@@ -2494,7 +2497,7 @@ PROTOBUF_NOINLINE void Skill::Clear() {
   }
 
   // string version = 5;
-  if (CheckHasBit(cached_has_bits, 0x00000008U)) {
+  if (CheckHasBit(cached_has_bits, 0x00000010U)) {
     if (!this_._internal_version().empty()) {
       const ::std::string& _s = this_._internal_version();
       ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
@@ -2504,7 +2507,7 @@ PROTOBUF_NOINLINE void Skill::Clear() {
   }
 
   // string timestamp = 6;
-  if (CheckHasBit(cached_has_bits, 0x00000010U)) {
+  if (CheckHasBit(cached_has_bits, 0x00000020U)) {
     if (!this_._internal_timestamp().empty()) {
       const ::std::string& _s = this_._internal_timestamp();
       ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
@@ -2513,13 +2516,12 @@ PROTOBUF_NOINLINE void Skill::Clear() {
     }
   }
 
-  // string hash = 7;
-  if (CheckHasBit(cached_has_bits, 0x00000020U)) {
-    if (!this_._internal_hash().empty()) {
-      const ::std::string& _s = this_._internal_hash();
-      ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-          _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "GrpcLibrary.Skill.hash");
-      target = stream->WriteStringMaybeAliased(7, _s, target);
+  // int32 platform = 7;
+  if (CheckHasBit(cached_has_bits, 0x00000040U)) {
+    if (this_._internal_platform() != 0) {
+      target =
+          ::google::protobuf::internal::WireFormatLite::WriteInt32ToArrayWithField<7>(
+              stream, this_._internal_platform(), target);
     }
   }
 
@@ -2549,53 +2551,53 @@ PROTOBUF_NOINLINE void Skill::Clear() {
   ::_pbi::Prefetch5LinesFrom7Lines(&this_);
   cached_has_bits = this_._impl_._has_bits_[0];
   if (BatchCheckHasBit(cached_has_bits, 0x0000007fU)) {
-    // string name = 2;
+    // string hash = 1;
     if (CheckHasBit(cached_has_bits, 0x00000001U)) {
+      if (!this_._internal_hash().empty()) {
+        total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
+                                        this_._internal_hash());
+      }
+    }
+    // string name = 2;
+    if (CheckHasBit(cached_has_bits, 0x00000002U)) {
       if (!this_._internal_name().empty()) {
         total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
                                         this_._internal_name());
       }
     }
     // string desc = 3;
-    if (CheckHasBit(cached_has_bits, 0x00000002U)) {
+    if (CheckHasBit(cached_has_bits, 0x00000004U)) {
       if (!this_._internal_desc().empty()) {
         total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
                                         this_._internal_desc());
       }
     }
     // string publisher = 4;
-    if (CheckHasBit(cached_has_bits, 0x00000004U)) {
+    if (CheckHasBit(cached_has_bits, 0x00000008U)) {
       if (!this_._internal_publisher().empty()) {
         total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
                                         this_._internal_publisher());
       }
     }
     // string version = 5;
-    if (CheckHasBit(cached_has_bits, 0x00000008U)) {
+    if (CheckHasBit(cached_has_bits, 0x00000010U)) {
       if (!this_._internal_version().empty()) {
         total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
                                         this_._internal_version());
       }
     }
     // string timestamp = 6;
-    if (CheckHasBit(cached_has_bits, 0x00000010U)) {
+    if (CheckHasBit(cached_has_bits, 0x00000020U)) {
       if (!this_._internal_timestamp().empty()) {
         total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
                                         this_._internal_timestamp());
       }
     }
-    // string hash = 7;
-    if (CheckHasBit(cached_has_bits, 0x00000020U)) {
-      if (!this_._internal_hash().empty()) {
-        total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
-                                        this_._internal_hash());
-      }
-    }
-    // int64 id = 1;
+    // int32 platform = 7;
     if (CheckHasBit(cached_has_bits, 0x00000040U)) {
-      if (this_._internal_id() != 0) {
-        total_size += ::_pbi::WireFormatLite::Int64SizePlusOne(
-            this_._internal_id());
+      if (this_._internal_platform() != 0) {
+        total_size += ::_pbi::WireFormatLite::Int32SizePlusOne(
+            this_._internal_platform());
       }
     }
   }
@@ -2619,51 +2621,6 @@ void Skill::MergeImpl(::google::protobuf::MessageLite& to_msg,
   cached_has_bits = from._impl_._has_bits_[0];
   if (BatchCheckHasBit(cached_has_bits, 0x0000007fU)) {
     if (CheckHasBit(cached_has_bits, 0x00000001U)) {
-      if (!from._internal_name().empty()) {
-        _this->_internal_set_name(from._internal_name());
-      } else {
-        if (_this->_impl_.name_.IsDefault()) {
-          _this->_internal_set_name("");
-        }
-      }
-    }
-    if (CheckHasBit(cached_has_bits, 0x00000002U)) {
-      if (!from._internal_desc().empty()) {
-        _this->_internal_set_desc(from._internal_desc());
-      } else {
-        if (_this->_impl_.desc_.IsDefault()) {
-          _this->_internal_set_desc("");
-        }
-      }
-    }
-    if (CheckHasBit(cached_has_bits, 0x00000004U)) {
-      if (!from._internal_publisher().empty()) {
-        _this->_internal_set_publisher(from._internal_publisher());
-      } else {
-        if (_this->_impl_.publisher_.IsDefault()) {
-          _this->_internal_set_publisher("");
-        }
-      }
-    }
-    if (CheckHasBit(cached_has_bits, 0x00000008U)) {
-      if (!from._internal_version().empty()) {
-        _this->_internal_set_version(from._internal_version());
-      } else {
-        if (_this->_impl_.version_.IsDefault()) {
-          _this->_internal_set_version("");
-        }
-      }
-    }
-    if (CheckHasBit(cached_has_bits, 0x00000010U)) {
-      if (!from._internal_timestamp().empty()) {
-        _this->_internal_set_timestamp(from._internal_timestamp());
-      } else {
-        if (_this->_impl_.timestamp_.IsDefault()) {
-          _this->_internal_set_timestamp("");
-        }
-      }
-    }
-    if (CheckHasBit(cached_has_bits, 0x00000020U)) {
       if (!from._internal_hash().empty()) {
         _this->_internal_set_hash(from._internal_hash());
       } else {
@@ -2672,9 +2629,54 @@ void Skill::MergeImpl(::google::protobuf::MessageLite& to_msg,
         }
       }
     }
+    if (CheckHasBit(cached_has_bits, 0x00000002U)) {
+      if (!from._internal_name().empty()) {
+        _this->_internal_set_name(from._internal_name());
+      } else {
+        if (_this->_impl_.name_.IsDefault()) {
+          _this->_internal_set_name("");
+        }
+      }
+    }
+    if (CheckHasBit(cached_has_bits, 0x00000004U)) {
+      if (!from._internal_desc().empty()) {
+        _this->_internal_set_desc(from._internal_desc());
+      } else {
+        if (_this->_impl_.desc_.IsDefault()) {
+          _this->_internal_set_desc("");
+        }
+      }
+    }
+    if (CheckHasBit(cached_has_bits, 0x00000008U)) {
+      if (!from._internal_publisher().empty()) {
+        _this->_internal_set_publisher(from._internal_publisher());
+      } else {
+        if (_this->_impl_.publisher_.IsDefault()) {
+          _this->_internal_set_publisher("");
+        }
+      }
+    }
+    if (CheckHasBit(cached_has_bits, 0x00000010U)) {
+      if (!from._internal_version().empty()) {
+        _this->_internal_set_version(from._internal_version());
+      } else {
+        if (_this->_impl_.version_.IsDefault()) {
+          _this->_internal_set_version("");
+        }
+      }
+    }
+    if (CheckHasBit(cached_has_bits, 0x00000020U)) {
+      if (!from._internal_timestamp().empty()) {
+        _this->_internal_set_timestamp(from._internal_timestamp());
+      } else {
+        if (_this->_impl_.timestamp_.IsDefault()) {
+          _this->_internal_set_timestamp("");
+        }
+      }
+    }
     if (CheckHasBit(cached_has_bits, 0x00000040U)) {
-      if (from._internal_id() != 0) {
-        _this->_impl_.id_ = from._impl_.id_;
+      if (from._internal_platform() != 0) {
+        _this->_impl_.platform_ = from._impl_.platform_;
       }
     }
   }
@@ -2697,13 +2699,13 @@ void Skill::InternalSwap(Skill* PROTOBUF_RESTRICT PROTOBUF_NONNULL other) {
   ABSL_DCHECK_EQ(arena, other->GetArena());
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.hash_, &other->_impl_.hash_, arena);
   ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.name_, &other->_impl_.name_, arena);
   ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.desc_, &other->_impl_.desc_, arena);
   ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.publisher_, &other->_impl_.publisher_, arena);
   ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.version_, &other->_impl_.version_, arena);
   ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.timestamp_, &other->_impl_.timestamp_, arena);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.hash_, &other->_impl_.hash_, arena);
-  swap(_impl_.id_, other->_impl_.id_);
+  swap(_impl_.platform_, other->_impl_.platform_);
 }
 
 ::google::protobuf::Metadata Skill::GetMetadata() const {
@@ -3072,11 +3074,11 @@ LoginResp::LoginResp(
       from._internal_metadata_);
   new (&_impl_) Impl_(internal_visibility(), arena, from._impl_, from);
   ::memcpy(reinterpret_cast<char*>(&_impl_) +
-               offsetof(Impl_, error_code_),
+               offsetof(Impl_, user_id_),
            reinterpret_cast<const char*>(&from._impl_) +
-               offsetof(Impl_, error_code_),
+               offsetof(Impl_, user_id_),
            offsetof(Impl_, privilege_) -
-               offsetof(Impl_, error_code_) +
+               offsetof(Impl_, user_id_) +
                sizeof(Impl_::privilege_));
 
   // @@protoc_insertion_point(copy_constructor:GrpcLibrary.LoginResp)
@@ -3092,10 +3094,10 @@ PROTOBUF_NDEBUG_INLINE LoginResp::Impl_::Impl_(
 inline void LoginResp::SharedCtor(::_pb::Arena* PROTOBUF_NULLABLE arena) {
   new (&_impl_) Impl_(internal_visibility(), arena);
   ::memset(reinterpret_cast<char*>(&_impl_) +
-               offsetof(Impl_, error_code_),
+               offsetof(Impl_, user_id_),
            0,
            offsetof(Impl_, privilege_) -
-               offsetof(Impl_, error_code_) +
+               offsetof(Impl_, user_id_) +
                sizeof(Impl_::privilege_));
 }
 LoginResp::~LoginResp() {
@@ -3179,12 +3181,12 @@ LoginResp::_table_ = {
   }, {{
     {::_pbi::TcParser::MiniParse, {}},
     // int32 error_code = 1;
-    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(LoginResp, _impl_.error_code_), 3>(),
-     {8, 3, 0,
+    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(LoginResp, _impl_.error_code_), 4>(),
+     {8, 4, 0,
       PROTOBUF_FIELD_OFFSET(LoginResp, _impl_.error_code_)}},
-    // int32 user_id = 2;
-    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(LoginResp, _impl_.user_id_), 4>(),
-     {16, 4, 0,
+    // int64 user_id = 2;
+    {::_pbi::TcParser::SingularVarintNoZag1<::uint64_t, offsetof(LoginResp, _impl_.user_id_), 3>(),
+     {16, 3, 0,
       PROTOBUF_FIELD_OFFSET(LoginResp, _impl_.user_id_)}},
     // int32 privilege = 3;
     {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(LoginResp, _impl_.privilege_), 5>(),
@@ -3207,9 +3209,9 @@ LoginResp::_table_ = {
     65535, 65535
   }}, {{
     // int32 error_code = 1;
-    {PROTOBUF_FIELD_OFFSET(LoginResp, _impl_.error_code_), _Internal::kHasBitsOffset + 3, 0, (0 | ::_fl::kFcOptional | ::_fl::kInt32)},
-    // int32 user_id = 2;
-    {PROTOBUF_FIELD_OFFSET(LoginResp, _impl_.user_id_), _Internal::kHasBitsOffset + 4, 0, (0 | ::_fl::kFcOptional | ::_fl::kInt32)},
+    {PROTOBUF_FIELD_OFFSET(LoginResp, _impl_.error_code_), _Internal::kHasBitsOffset + 4, 0, (0 | ::_fl::kFcOptional | ::_fl::kInt32)},
+    // int64 user_id = 2;
+    {PROTOBUF_FIELD_OFFSET(LoginResp, _impl_.user_id_), _Internal::kHasBitsOffset + 3, 0, (0 | ::_fl::kFcOptional | ::_fl::kInt64)},
     // int32 privilege = 3;
     {PROTOBUF_FIELD_OFFSET(LoginResp, _impl_.privilege_), _Internal::kHasBitsOffset + 5, 0, (0 | ::_fl::kFcOptional | ::_fl::kInt32)},
     // string auth = 4;
@@ -3248,9 +3250,9 @@ PROTOBUF_NOINLINE void LoginResp::Clear() {
     }
   }
   if (BatchCheckHasBit(cached_has_bits, 0x00000038U)) {
-    ::memset(&_impl_.error_code_, 0, static_cast<::size_t>(
+    ::memset(&_impl_.user_id_, 0, static_cast<::size_t>(
         reinterpret_cast<char*>(&_impl_.privilege_) -
-        reinterpret_cast<char*>(&_impl_.error_code_)) + sizeof(_impl_.privilege_));
+        reinterpret_cast<char*>(&_impl_.user_id_)) + sizeof(_impl_.privilege_));
   }
   _impl_._has_bits_.Clear();
   _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
@@ -3276,7 +3278,7 @@ PROTOBUF_NOINLINE void LoginResp::Clear() {
 
   cached_has_bits = this_._impl_._has_bits_[0];
   // int32 error_code = 1;
-  if (CheckHasBit(cached_has_bits, 0x00000008U)) {
+  if (CheckHasBit(cached_has_bits, 0x00000010U)) {
     if (this_._internal_error_code() != 0) {
       target =
           ::google::protobuf::internal::WireFormatLite::WriteInt32ToArrayWithField<1>(
@@ -3284,11 +3286,11 @@ PROTOBUF_NOINLINE void LoginResp::Clear() {
     }
   }
 
-  // int32 user_id = 2;
-  if (CheckHasBit(cached_has_bits, 0x00000010U)) {
+  // int64 user_id = 2;
+  if (CheckHasBit(cached_has_bits, 0x00000008U)) {
     if (this_._internal_user_id() != 0) {
       target =
-          ::google::protobuf::internal::WireFormatLite::WriteInt32ToArrayWithField<2>(
+          ::google::protobuf::internal::WireFormatLite::WriteInt64ToArrayWithField<2>(
               stream, this_._internal_user_id(), target);
     }
   }
@@ -3379,18 +3381,18 @@ PROTOBUF_NOINLINE void LoginResp::Clear() {
                                         this_._internal_last_login_time());
       }
     }
-    // int32 error_code = 1;
+    // int64 user_id = 2;
     if (CheckHasBit(cached_has_bits, 0x00000008U)) {
+      if (this_._internal_user_id() != 0) {
+        total_size += ::_pbi::WireFormatLite::Int64SizePlusOne(
+            this_._internal_user_id());
+      }
+    }
+    // int32 error_code = 1;
+    if (CheckHasBit(cached_has_bits, 0x00000010U)) {
       if (this_._internal_error_code() != 0) {
         total_size += ::_pbi::WireFormatLite::Int32SizePlusOne(
             this_._internal_error_code());
-      }
-    }
-    // int32 user_id = 2;
-    if (CheckHasBit(cached_has_bits, 0x00000010U)) {
-      if (this_._internal_user_id() != 0) {
-        total_size += ::_pbi::WireFormatLite::Int32SizePlusOne(
-            this_._internal_user_id());
       }
     }
     // int32 privilege = 3;
@@ -3448,13 +3450,13 @@ void LoginResp::MergeImpl(::google::protobuf::MessageLite& to_msg,
       }
     }
     if (CheckHasBit(cached_has_bits, 0x00000008U)) {
-      if (from._internal_error_code() != 0) {
-        _this->_impl_.error_code_ = from._impl_.error_code_;
+      if (from._internal_user_id() != 0) {
+        _this->_impl_.user_id_ = from._impl_.user_id_;
       }
     }
     if (CheckHasBit(cached_has_bits, 0x00000010U)) {
-      if (from._internal_user_id() != 0) {
-        _this->_impl_.user_id_ = from._impl_.user_id_;
+      if (from._internal_error_code() != 0) {
+        _this->_impl_.error_code_ = from._impl_.error_code_;
       }
     }
     if (CheckHasBit(cached_has_bits, 0x00000020U)) {
@@ -3488,9 +3490,9 @@ void LoginResp::InternalSwap(LoginResp* PROTOBUF_RESTRICT PROTOBUF_NONNULL other
   ::google::protobuf::internal::memswap<
       PROTOBUF_FIELD_OFFSET(LoginResp, _impl_.privilege_)
       + sizeof(LoginResp::_impl_.privilege_)
-      - PROTOBUF_FIELD_OFFSET(LoginResp, _impl_.error_code_)>(
-          reinterpret_cast<char*>(&_impl_.error_code_),
-          reinterpret_cast<char*>(&other->_impl_.error_code_));
+      - PROTOBUF_FIELD_OFFSET(LoginResp, _impl_.user_id_)>(
+          reinterpret_cast<char*>(&_impl_.user_id_),
+          reinterpret_cast<char*>(&other->_impl_.user_id_));
 }
 
 ::google::protobuf::Metadata LoginResp::GetMetadata() const {
@@ -3631,15 +3633,15 @@ LogoutReq::_table_ = {
     {::_pbi::TcParser::FastUS1,
      {18, 0, 0,
       PROTOBUF_FIELD_OFFSET(LogoutReq, _impl_.auth_)}},
-    // int32 user_id = 1;
-    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(LogoutReq, _impl_.user_id_), 1>(),
+    // int64 user_id = 1;
+    {::_pbi::TcParser::SingularVarintNoZag1<::uint64_t, offsetof(LogoutReq, _impl_.user_id_), 1>(),
      {8, 1, 0,
       PROTOBUF_FIELD_OFFSET(LogoutReq, _impl_.user_id_)}},
   }}, {{
     65535, 65535
   }}, {{
-    // int32 user_id = 1;
-    {PROTOBUF_FIELD_OFFSET(LogoutReq, _impl_.user_id_), _Internal::kHasBitsOffset + 1, 0, (0 | ::_fl::kFcOptional | ::_fl::kInt32)},
+    // int64 user_id = 1;
+    {PROTOBUF_FIELD_OFFSET(LogoutReq, _impl_.user_id_), _Internal::kHasBitsOffset + 1, 0, (0 | ::_fl::kFcOptional | ::_fl::kInt64)},
     // string auth = 2;
     {PROTOBUF_FIELD_OFFSET(LogoutReq, _impl_.auth_), _Internal::kHasBitsOffset + 0, 0, (0 | ::_fl::kFcOptional | ::_fl::kUtf8String | ::_fl::kRepAString)},
   }},
@@ -3661,7 +3663,7 @@ PROTOBUF_NOINLINE void LogoutReq::Clear() {
   if (CheckHasBit(cached_has_bits, 0x00000001U)) {
     _impl_.auth_.ClearNonDefaultToEmpty();
   }
-  _impl_.user_id_ = 0;
+  _impl_.user_id_ = ::int64_t{0};
   _impl_._has_bits_.Clear();
   _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
 }
@@ -3685,11 +3687,11 @@ PROTOBUF_NOINLINE void LogoutReq::Clear() {
   (void)cached_has_bits;
 
   cached_has_bits = this_._impl_._has_bits_[0];
-  // int32 user_id = 1;
+  // int64 user_id = 1;
   if (CheckHasBit(cached_has_bits, 0x00000002U)) {
     if (this_._internal_user_id() != 0) {
       target =
-          ::google::protobuf::internal::WireFormatLite::WriteInt32ToArrayWithField<1>(
+          ::google::protobuf::internal::WireFormatLite::WriteInt64ToArrayWithField<1>(
               stream, this_._internal_user_id(), target);
     }
   }
@@ -3737,10 +3739,10 @@ PROTOBUF_NOINLINE void LogoutReq::Clear() {
                                         this_._internal_auth());
       }
     }
-    // int32 user_id = 1;
+    // int64 user_id = 1;
     if (CheckHasBit(cached_has_bits, 0x00000002U)) {
       if (this_._internal_user_id() != 0) {
-        total_size += ::_pbi::WireFormatLite::Int32SizePlusOne(
+        total_size += ::_pbi::WireFormatLite::Int64SizePlusOne(
             this_._internal_user_id());
       }
     }
@@ -3843,11 +3845,11 @@ PROTOBUF_NDEBUG_INLINE LogoutResp::Impl_::Impl_(
 inline void LogoutResp::SharedCtor(::_pb::Arena* PROTOBUF_NULLABLE arena) {
   new (&_impl_) Impl_(internal_visibility(), arena);
   ::memset(reinterpret_cast<char*>(&_impl_) +
-               offsetof(Impl_, error_code_),
+               offsetof(Impl_, user_id_),
            0,
-           offsetof(Impl_, user_id_) -
-               offsetof(Impl_, error_code_) +
-               sizeof(Impl_::user_id_));
+           offsetof(Impl_, error_code_) -
+               offsetof(Impl_, user_id_) +
+               sizeof(Impl_::error_code_));
 }
 LogoutResp::~LogoutResp() {
   // @@protoc_insertion_point(destructor:GrpcLibrary.LogoutResp)
@@ -3925,21 +3927,21 @@ LogoutResp::_table_ = {
     ::_pbi::TcParser::GetTable<::GrpcLibrary::LogoutResp>(),  // to_prefetch
     #endif  // PROTOBUF_PREFETCH_PARSE_TABLE
   }, {{
-    // int32 user_id = 2;
-    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(LogoutResp, _impl_.user_id_), 1>(),
-     {16, 1, 0,
+    // int64 user_id = 2;
+    {::_pbi::TcParser::SingularVarintNoZag1<::uint64_t, offsetof(LogoutResp, _impl_.user_id_), 0>(),
+     {16, 0, 0,
       PROTOBUF_FIELD_OFFSET(LogoutResp, _impl_.user_id_)}},
     // int32 error_code = 1;
-    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(LogoutResp, _impl_.error_code_), 0>(),
-     {8, 0, 0,
+    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(LogoutResp, _impl_.error_code_), 1>(),
+     {8, 1, 0,
       PROTOBUF_FIELD_OFFSET(LogoutResp, _impl_.error_code_)}},
   }}, {{
     65535, 65535
   }}, {{
     // int32 error_code = 1;
-    {PROTOBUF_FIELD_OFFSET(LogoutResp, _impl_.error_code_), _Internal::kHasBitsOffset + 0, 0, (0 | ::_fl::kFcOptional | ::_fl::kInt32)},
-    // int32 user_id = 2;
-    {PROTOBUF_FIELD_OFFSET(LogoutResp, _impl_.user_id_), _Internal::kHasBitsOffset + 1, 0, (0 | ::_fl::kFcOptional | ::_fl::kInt32)},
+    {PROTOBUF_FIELD_OFFSET(LogoutResp, _impl_.error_code_), _Internal::kHasBitsOffset + 1, 0, (0 | ::_fl::kFcOptional | ::_fl::kInt32)},
+    // int64 user_id = 2;
+    {PROTOBUF_FIELD_OFFSET(LogoutResp, _impl_.user_id_), _Internal::kHasBitsOffset + 0, 0, (0 | ::_fl::kFcOptional | ::_fl::kInt64)},
   }},
   // no aux_entries
   {{
@@ -3954,9 +3956,9 @@ PROTOBUF_NOINLINE void LogoutResp::Clear() {
 
   cached_has_bits = _impl_._has_bits_[0];
   if (BatchCheckHasBit(cached_has_bits, 0x00000003U)) {
-    ::memset(&_impl_.error_code_, 0, static_cast<::size_t>(
-        reinterpret_cast<char*>(&_impl_.user_id_) -
-        reinterpret_cast<char*>(&_impl_.error_code_)) + sizeof(_impl_.user_id_));
+    ::memset(&_impl_.user_id_, 0, static_cast<::size_t>(
+        reinterpret_cast<char*>(&_impl_.error_code_) -
+        reinterpret_cast<char*>(&_impl_.user_id_)) + sizeof(_impl_.error_code_));
   }
   _impl_._has_bits_.Clear();
   _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
@@ -3982,7 +3984,7 @@ PROTOBUF_NOINLINE void LogoutResp::Clear() {
 
   cached_has_bits = this_._impl_._has_bits_[0];
   // int32 error_code = 1;
-  if (CheckHasBit(cached_has_bits, 0x00000001U)) {
+  if (CheckHasBit(cached_has_bits, 0x00000002U)) {
     if (this_._internal_error_code() != 0) {
       target =
           ::google::protobuf::internal::WireFormatLite::WriteInt32ToArrayWithField<1>(
@@ -3990,11 +3992,11 @@ PROTOBUF_NOINLINE void LogoutResp::Clear() {
     }
   }
 
-  // int32 user_id = 2;
-  if (CheckHasBit(cached_has_bits, 0x00000002U)) {
+  // int64 user_id = 2;
+  if (CheckHasBit(cached_has_bits, 0x00000001U)) {
     if (this_._internal_user_id() != 0) {
       target =
-          ::google::protobuf::internal::WireFormatLite::WriteInt32ToArrayWithField<2>(
+          ::google::protobuf::internal::WireFormatLite::WriteInt64ToArrayWithField<2>(
               stream, this_._internal_user_id(), target);
     }
   }
@@ -4025,18 +4027,18 @@ PROTOBUF_NOINLINE void LogoutResp::Clear() {
   ::_pbi::Prefetch5LinesFrom7Lines(&this_);
   cached_has_bits = this_._impl_._has_bits_[0];
   if (BatchCheckHasBit(cached_has_bits, 0x00000003U)) {
-    // int32 error_code = 1;
+    // int64 user_id = 2;
     if (CheckHasBit(cached_has_bits, 0x00000001U)) {
+      if (this_._internal_user_id() != 0) {
+        total_size += ::_pbi::WireFormatLite::Int64SizePlusOne(
+            this_._internal_user_id());
+      }
+    }
+    // int32 error_code = 1;
+    if (CheckHasBit(cached_has_bits, 0x00000002U)) {
       if (this_._internal_error_code() != 0) {
         total_size += ::_pbi::WireFormatLite::Int32SizePlusOne(
             this_._internal_error_code());
-      }
-    }
-    // int32 user_id = 2;
-    if (CheckHasBit(cached_has_bits, 0x00000002U)) {
-      if (this_._internal_user_id() != 0) {
-        total_size += ::_pbi::WireFormatLite::Int32SizePlusOne(
-            this_._internal_user_id());
       }
     }
   }
@@ -4060,13 +4062,13 @@ void LogoutResp::MergeImpl(::google::protobuf::MessageLite& to_msg,
   cached_has_bits = from._impl_._has_bits_[0];
   if (BatchCheckHasBit(cached_has_bits, 0x00000003U)) {
     if (CheckHasBit(cached_has_bits, 0x00000001U)) {
-      if (from._internal_error_code() != 0) {
-        _this->_impl_.error_code_ = from._impl_.error_code_;
+      if (from._internal_user_id() != 0) {
+        _this->_impl_.user_id_ = from._impl_.user_id_;
       }
     }
     if (CheckHasBit(cached_has_bits, 0x00000002U)) {
-      if (from._internal_user_id() != 0) {
-        _this->_impl_.user_id_ = from._impl_.user_id_;
+      if (from._internal_error_code() != 0) {
+        _this->_impl_.error_code_ = from._impl_.error_code_;
       }
     }
   }
@@ -4088,11 +4090,11 @@ void LogoutResp::InternalSwap(LogoutResp* PROTOBUF_RESTRICT PROTOBUF_NONNULL oth
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
   ::google::protobuf::internal::memswap<
-      PROTOBUF_FIELD_OFFSET(LogoutResp, _impl_.user_id_)
-      + sizeof(LogoutResp::_impl_.user_id_)
-      - PROTOBUF_FIELD_OFFSET(LogoutResp, _impl_.error_code_)>(
-          reinterpret_cast<char*>(&_impl_.error_code_),
-          reinterpret_cast<char*>(&other->_impl_.error_code_));
+      PROTOBUF_FIELD_OFFSET(LogoutResp, _impl_.error_code_)
+      + sizeof(LogoutResp::_impl_.error_code_)
+      - PROTOBUF_FIELD_OFFSET(LogoutResp, _impl_.user_id_)>(
+          reinterpret_cast<char*>(&_impl_.user_id_),
+          reinterpret_cast<char*>(&other->_impl_.user_id_));
 }
 
 ::google::protobuf::Metadata LogoutResp::GetMetadata() const {
@@ -4456,11 +4458,11 @@ PROTOBUF_NDEBUG_INLINE RegAccountResp::Impl_::Impl_(
 inline void RegAccountResp::SharedCtor(::_pb::Arena* PROTOBUF_NULLABLE arena) {
   new (&_impl_) Impl_(internal_visibility(), arena);
   ::memset(reinterpret_cast<char*>(&_impl_) +
-               offsetof(Impl_, error_code_),
+               offsetof(Impl_, user_id_),
            0,
-           offsetof(Impl_, user_id_) -
-               offsetof(Impl_, error_code_) +
-               sizeof(Impl_::user_id_));
+           offsetof(Impl_, error_code_) -
+               offsetof(Impl_, user_id_) +
+               sizeof(Impl_::error_code_));
 }
 RegAccountResp::~RegAccountResp() {
   // @@protoc_insertion_point(destructor:GrpcLibrary.RegAccountResp)
@@ -4538,21 +4540,21 @@ RegAccountResp::_table_ = {
     ::_pbi::TcParser::GetTable<::GrpcLibrary::RegAccountResp>(),  // to_prefetch
     #endif  // PROTOBUF_PREFETCH_PARSE_TABLE
   }, {{
-    // int32 user_id = 2;
-    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(RegAccountResp, _impl_.user_id_), 1>(),
-     {16, 1, 0,
+    // int64 user_id = 2;
+    {::_pbi::TcParser::SingularVarintNoZag1<::uint64_t, offsetof(RegAccountResp, _impl_.user_id_), 0>(),
+     {16, 0, 0,
       PROTOBUF_FIELD_OFFSET(RegAccountResp, _impl_.user_id_)}},
     // int32 error_code = 1;
-    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(RegAccountResp, _impl_.error_code_), 0>(),
-     {8, 0, 0,
+    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(RegAccountResp, _impl_.error_code_), 1>(),
+     {8, 1, 0,
       PROTOBUF_FIELD_OFFSET(RegAccountResp, _impl_.error_code_)}},
   }}, {{
     65535, 65535
   }}, {{
     // int32 error_code = 1;
-    {PROTOBUF_FIELD_OFFSET(RegAccountResp, _impl_.error_code_), _Internal::kHasBitsOffset + 0, 0, (0 | ::_fl::kFcOptional | ::_fl::kInt32)},
-    // int32 user_id = 2;
-    {PROTOBUF_FIELD_OFFSET(RegAccountResp, _impl_.user_id_), _Internal::kHasBitsOffset + 1, 0, (0 | ::_fl::kFcOptional | ::_fl::kInt32)},
+    {PROTOBUF_FIELD_OFFSET(RegAccountResp, _impl_.error_code_), _Internal::kHasBitsOffset + 1, 0, (0 | ::_fl::kFcOptional | ::_fl::kInt32)},
+    // int64 user_id = 2;
+    {PROTOBUF_FIELD_OFFSET(RegAccountResp, _impl_.user_id_), _Internal::kHasBitsOffset + 0, 0, (0 | ::_fl::kFcOptional | ::_fl::kInt64)},
   }},
   // no aux_entries
   {{
@@ -4567,9 +4569,9 @@ PROTOBUF_NOINLINE void RegAccountResp::Clear() {
 
   cached_has_bits = _impl_._has_bits_[0];
   if (BatchCheckHasBit(cached_has_bits, 0x00000003U)) {
-    ::memset(&_impl_.error_code_, 0, static_cast<::size_t>(
-        reinterpret_cast<char*>(&_impl_.user_id_) -
-        reinterpret_cast<char*>(&_impl_.error_code_)) + sizeof(_impl_.user_id_));
+    ::memset(&_impl_.user_id_, 0, static_cast<::size_t>(
+        reinterpret_cast<char*>(&_impl_.error_code_) -
+        reinterpret_cast<char*>(&_impl_.user_id_)) + sizeof(_impl_.error_code_));
   }
   _impl_._has_bits_.Clear();
   _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
@@ -4595,7 +4597,7 @@ PROTOBUF_NOINLINE void RegAccountResp::Clear() {
 
   cached_has_bits = this_._impl_._has_bits_[0];
   // int32 error_code = 1;
-  if (CheckHasBit(cached_has_bits, 0x00000001U)) {
+  if (CheckHasBit(cached_has_bits, 0x00000002U)) {
     if (this_._internal_error_code() != 0) {
       target =
           ::google::protobuf::internal::WireFormatLite::WriteInt32ToArrayWithField<1>(
@@ -4603,11 +4605,11 @@ PROTOBUF_NOINLINE void RegAccountResp::Clear() {
     }
   }
 
-  // int32 user_id = 2;
-  if (CheckHasBit(cached_has_bits, 0x00000002U)) {
+  // int64 user_id = 2;
+  if (CheckHasBit(cached_has_bits, 0x00000001U)) {
     if (this_._internal_user_id() != 0) {
       target =
-          ::google::protobuf::internal::WireFormatLite::WriteInt32ToArrayWithField<2>(
+          ::google::protobuf::internal::WireFormatLite::WriteInt64ToArrayWithField<2>(
               stream, this_._internal_user_id(), target);
     }
   }
@@ -4638,18 +4640,18 @@ PROTOBUF_NOINLINE void RegAccountResp::Clear() {
   ::_pbi::Prefetch5LinesFrom7Lines(&this_);
   cached_has_bits = this_._impl_._has_bits_[0];
   if (BatchCheckHasBit(cached_has_bits, 0x00000003U)) {
-    // int32 error_code = 1;
+    // int64 user_id = 2;
     if (CheckHasBit(cached_has_bits, 0x00000001U)) {
+      if (this_._internal_user_id() != 0) {
+        total_size += ::_pbi::WireFormatLite::Int64SizePlusOne(
+            this_._internal_user_id());
+      }
+    }
+    // int32 error_code = 1;
+    if (CheckHasBit(cached_has_bits, 0x00000002U)) {
       if (this_._internal_error_code() != 0) {
         total_size += ::_pbi::WireFormatLite::Int32SizePlusOne(
             this_._internal_error_code());
-      }
-    }
-    // int32 user_id = 2;
-    if (CheckHasBit(cached_has_bits, 0x00000002U)) {
-      if (this_._internal_user_id() != 0) {
-        total_size += ::_pbi::WireFormatLite::Int32SizePlusOne(
-            this_._internal_user_id());
       }
     }
   }
@@ -4673,13 +4675,13 @@ void RegAccountResp::MergeImpl(::google::protobuf::MessageLite& to_msg,
   cached_has_bits = from._impl_._has_bits_[0];
   if (BatchCheckHasBit(cached_has_bits, 0x00000003U)) {
     if (CheckHasBit(cached_has_bits, 0x00000001U)) {
-      if (from._internal_error_code() != 0) {
-        _this->_impl_.error_code_ = from._impl_.error_code_;
+      if (from._internal_user_id() != 0) {
+        _this->_impl_.user_id_ = from._impl_.user_id_;
       }
     }
     if (CheckHasBit(cached_has_bits, 0x00000002U)) {
-      if (from._internal_user_id() != 0) {
-        _this->_impl_.user_id_ = from._impl_.user_id_;
+      if (from._internal_error_code() != 0) {
+        _this->_impl_.error_code_ = from._impl_.error_code_;
       }
     }
   }
@@ -4701,11 +4703,11 @@ void RegAccountResp::InternalSwap(RegAccountResp* PROTOBUF_RESTRICT PROTOBUF_NON
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
   ::google::protobuf::internal::memswap<
-      PROTOBUF_FIELD_OFFSET(RegAccountResp, _impl_.user_id_)
-      + sizeof(RegAccountResp::_impl_.user_id_)
-      - PROTOBUF_FIELD_OFFSET(RegAccountResp, _impl_.error_code_)>(
-          reinterpret_cast<char*>(&_impl_.error_code_),
-          reinterpret_cast<char*>(&other->_impl_.error_code_));
+      PROTOBUF_FIELD_OFFSET(RegAccountResp, _impl_.error_code_)
+      + sizeof(RegAccountResp::_impl_.error_code_)
+      - PROTOBUF_FIELD_OFFSET(RegAccountResp, _impl_.user_id_)>(
+          reinterpret_cast<char*>(&_impl_.user_id_),
+          reinterpret_cast<char*>(&other->_impl_.user_id_));
 }
 
 ::google::protobuf::Metadata RegAccountResp::GetMetadata() const {
@@ -4864,8 +4866,8 @@ QueryReq::_table_ = {
     {::_pbi::TcParser::SingularVarintNoZag1<::uint64_t, offsetof(QueryReq, _impl_.id_), 3>(),
      {8, 3, 0,
       PROTOBUF_FIELD_OFFSET(QueryReq, _impl_.id_)}},
-    // int32 user_id = 2;
-    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(QueryReq, _impl_.user_id_), 4>(),
+    // int64 user_id = 2;
+    {::_pbi::TcParser::SingularVarintNoZag1<::uint64_t, offsetof(QueryReq, _impl_.user_id_), 4>(),
      {16, 4, 0,
       PROTOBUF_FIELD_OFFSET(QueryReq, _impl_.user_id_)}},
     // string auth = 3;
@@ -4887,8 +4889,8 @@ QueryReq::_table_ = {
   }}, {{
     // int64 id = 1;
     {PROTOBUF_FIELD_OFFSET(QueryReq, _impl_.id_), _Internal::kHasBitsOffset + 3, 0, (0 | ::_fl::kFcOptional | ::_fl::kInt64)},
-    // int32 user_id = 2;
-    {PROTOBUF_FIELD_OFFSET(QueryReq, _impl_.user_id_), _Internal::kHasBitsOffset + 4, 0, (0 | ::_fl::kFcOptional | ::_fl::kInt32)},
+    // int64 user_id = 2;
+    {PROTOBUF_FIELD_OFFSET(QueryReq, _impl_.user_id_), _Internal::kHasBitsOffset + 4, 0, (0 | ::_fl::kFcOptional | ::_fl::kInt64)},
     // string auth = 3;
     {PROTOBUF_FIELD_OFFSET(QueryReq, _impl_.auth_), _Internal::kHasBitsOffset + 0, 0, (0 | ::_fl::kFcOptional | ::_fl::kUtf8String | ::_fl::kRepAString)},
     // string content = 4;
@@ -4961,11 +4963,11 @@ PROTOBUF_NOINLINE void QueryReq::Clear() {
     }
   }
 
-  // int32 user_id = 2;
+  // int64 user_id = 2;
   if (CheckHasBit(cached_has_bits, 0x00000010U)) {
     if (this_._internal_user_id() != 0) {
       target =
-          ::google::protobuf::internal::WireFormatLite::WriteInt32ToArrayWithField<2>(
+          ::google::protobuf::internal::WireFormatLite::WriteInt64ToArrayWithField<2>(
               stream, this_._internal_user_id(), target);
     }
   }
@@ -5054,10 +5056,10 @@ PROTOBUF_NOINLINE void QueryReq::Clear() {
             this_._internal_id());
       }
     }
-    // int32 user_id = 2;
+    // int64 user_id = 2;
     if (CheckHasBit(cached_has_bits, 0x00000010U)) {
       if (this_._internal_user_id() != 0) {
-        total_size += ::_pbi::WireFormatLite::Int32SizePlusOne(
+        total_size += ::_pbi::WireFormatLite::Int64SizePlusOne(
             this_._internal_user_id());
       }
     }
@@ -5659,8 +5661,8 @@ GetSessionReq::_table_ = {
     {::_pbi::TcParser::SingularVarintNoZag1<::uint64_t, offsetof(GetSessionReq, _impl_.id_), 1>(),
      {8, 1, 0,
       PROTOBUF_FIELD_OFFSET(GetSessionReq, _impl_.id_)}},
-    // int32 user_id = 2;
-    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(GetSessionReq, _impl_.user_id_), 2>(),
+    // int64 user_id = 2;
+    {::_pbi::TcParser::SingularVarintNoZag1<::uint64_t, offsetof(GetSessionReq, _impl_.user_id_), 2>(),
      {16, 2, 0,
       PROTOBUF_FIELD_OFFSET(GetSessionReq, _impl_.user_id_)}},
     // string auth = 3;
@@ -5672,8 +5674,8 @@ GetSessionReq::_table_ = {
   }}, {{
     // int64 id = 1;
     {PROTOBUF_FIELD_OFFSET(GetSessionReq, _impl_.id_), _Internal::kHasBitsOffset + 1, 0, (0 | ::_fl::kFcOptional | ::_fl::kInt64)},
-    // int32 user_id = 2;
-    {PROTOBUF_FIELD_OFFSET(GetSessionReq, _impl_.user_id_), _Internal::kHasBitsOffset + 2, 0, (0 | ::_fl::kFcOptional | ::_fl::kInt32)},
+    // int64 user_id = 2;
+    {PROTOBUF_FIELD_OFFSET(GetSessionReq, _impl_.user_id_), _Internal::kHasBitsOffset + 2, 0, (0 | ::_fl::kFcOptional | ::_fl::kInt64)},
     // string auth = 3;
     {PROTOBUF_FIELD_OFFSET(GetSessionReq, _impl_.auth_), _Internal::kHasBitsOffset + 0, 0, (0 | ::_fl::kFcOptional | ::_fl::kUtf8String | ::_fl::kRepAString)},
     // int32 limit = 4;
@@ -5734,11 +5736,11 @@ PROTOBUF_NOINLINE void GetSessionReq::Clear() {
     }
   }
 
-  // int32 user_id = 2;
+  // int64 user_id = 2;
   if (CheckHasBit(cached_has_bits, 0x00000004U)) {
     if (this_._internal_user_id() != 0) {
       target =
-          ::google::protobuf::internal::WireFormatLite::WriteInt32ToArrayWithField<2>(
+          ::google::protobuf::internal::WireFormatLite::WriteInt64ToArrayWithField<2>(
               stream, this_._internal_user_id(), target);
     }
   }
@@ -5802,10 +5804,10 @@ PROTOBUF_NOINLINE void GetSessionReq::Clear() {
             this_._internal_id());
       }
     }
-    // int32 user_id = 2;
+    // int64 user_id = 2;
     if (CheckHasBit(cached_has_bits, 0x00000004U)) {
       if (this_._internal_user_id() != 0) {
-        total_size += ::_pbi::WireFormatLite::Int32SizePlusOne(
+        total_size += ::_pbi::WireFormatLite::Int64SizePlusOne(
             this_._internal_user_id());
       }
     }
@@ -6350,8 +6352,8 @@ NewSessionReq::_table_ = {
     #endif  // PROTOBUF_PREFETCH_PARSE_TABLE
   }, {{
     {::_pbi::TcParser::MiniParse, {}},
-    // int32 user_id = 1;
-    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(NewSessionReq, _impl_.user_id_), 4>(),
+    // int64 user_id = 1;
+    {::_pbi::TcParser::SingularVarintNoZag1<::uint64_t, offsetof(NewSessionReq, _impl_.user_id_), 4>(),
      {8, 4, 0,
       PROTOBUF_FIELD_OFFSET(NewSessionReq, _impl_.user_id_)}},
     // string auth = 2;
@@ -6375,8 +6377,8 @@ NewSessionReq::_table_ = {
   }}, {{
     65535, 65535
   }}, {{
-    // int32 user_id = 1;
-    {PROTOBUF_FIELD_OFFSET(NewSessionReq, _impl_.user_id_), _Internal::kHasBitsOffset + 4, 0, (0 | ::_fl::kFcOptional | ::_fl::kInt32)},
+    // int64 user_id = 1;
+    {PROTOBUF_FIELD_OFFSET(NewSessionReq, _impl_.user_id_), _Internal::kHasBitsOffset + 4, 0, (0 | ::_fl::kFcOptional | ::_fl::kInt64)},
     // string auth = 2;
     {PROTOBUF_FIELD_OFFSET(NewSessionReq, _impl_.auth_), _Internal::kHasBitsOffset + 0, 0, (0 | ::_fl::kFcOptional | ::_fl::kUtf8String | ::_fl::kRepAString)},
     // string title = 3;
@@ -6418,7 +6420,7 @@ PROTOBUF_NOINLINE void NewSessionReq::Clear() {
       _impl_.model_.ClearNonDefaultToEmpty();
     }
   }
-  _impl_.user_id_ = 0;
+  _impl_.user_id_ = ::int64_t{0};
   _impl_._has_bits_.Clear();
   _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
 }
@@ -6442,11 +6444,11 @@ PROTOBUF_NOINLINE void NewSessionReq::Clear() {
   (void)cached_has_bits;
 
   cached_has_bits = this_._impl_._has_bits_[0];
-  // int32 user_id = 1;
+  // int64 user_id = 1;
   if (CheckHasBit(cached_has_bits, 0x00000010U)) {
     if (this_._internal_user_id() != 0) {
       target =
-          ::google::protobuf::internal::WireFormatLite::WriteInt32ToArrayWithField<1>(
+          ::google::protobuf::internal::WireFormatLite::WriteInt64ToArrayWithField<1>(
               stream, this_._internal_user_id(), target);
     }
   }
@@ -6545,10 +6547,10 @@ PROTOBUF_NOINLINE void NewSessionReq::Clear() {
                                         this_._internal_model());
       }
     }
-    // int32 user_id = 1;
+    // int64 user_id = 1;
     if (CheckHasBit(cached_has_bits, 0x00000010U)) {
       if (this_._internal_user_id() != 0) {
-        total_size += ::_pbi::WireFormatLite::Int32SizePlusOne(
+        total_size += ::_pbi::WireFormatLite::Int64SizePlusOne(
             this_._internal_user_id());
       }
     }
@@ -7109,8 +7111,8 @@ ModifySessionTitleReq::_table_ = {
     {::_pbi::TcParser::SingularVarintNoZag1<::uint64_t, offsetof(ModifySessionTitleReq, _impl_.id_), 2>(),
      {8, 2, 0,
       PROTOBUF_FIELD_OFFSET(ModifySessionTitleReq, _impl_.id_)}},
-    // int32 user_id = 2;
-    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(ModifySessionTitleReq, _impl_.user_id_), 3>(),
+    // int64 user_id = 2;
+    {::_pbi::TcParser::SingularVarintNoZag1<::uint64_t, offsetof(ModifySessionTitleReq, _impl_.user_id_), 3>(),
      {16, 3, 0,
       PROTOBUF_FIELD_OFFSET(ModifySessionTitleReq, _impl_.user_id_)}},
     // string auth = 3;
@@ -7122,8 +7124,8 @@ ModifySessionTitleReq::_table_ = {
   }}, {{
     // int64 id = 1;
     {PROTOBUF_FIELD_OFFSET(ModifySessionTitleReq, _impl_.id_), _Internal::kHasBitsOffset + 2, 0, (0 | ::_fl::kFcOptional | ::_fl::kInt64)},
-    // int32 user_id = 2;
-    {PROTOBUF_FIELD_OFFSET(ModifySessionTitleReq, _impl_.user_id_), _Internal::kHasBitsOffset + 3, 0, (0 | ::_fl::kFcOptional | ::_fl::kInt32)},
+    // int64 user_id = 2;
+    {PROTOBUF_FIELD_OFFSET(ModifySessionTitleReq, _impl_.user_id_), _Internal::kHasBitsOffset + 3, 0, (0 | ::_fl::kFcOptional | ::_fl::kInt64)},
     // string auth = 3;
     {PROTOBUF_FIELD_OFFSET(ModifySessionTitleReq, _impl_.auth_), _Internal::kHasBitsOffset + 0, 0, (0 | ::_fl::kFcOptional | ::_fl::kUtf8String | ::_fl::kRepAString)},
     // string title = 4;
@@ -7190,11 +7192,11 @@ PROTOBUF_NOINLINE void ModifySessionTitleReq::Clear() {
     }
   }
 
-  // int32 user_id = 2;
+  // int64 user_id = 2;
   if (CheckHasBit(cached_has_bits, 0x00000008U)) {
     if (this_._internal_user_id() != 0) {
       target =
-          ::google::protobuf::internal::WireFormatLite::WriteInt32ToArrayWithField<2>(
+          ::google::protobuf::internal::WireFormatLite::WriteInt64ToArrayWithField<2>(
               stream, this_._internal_user_id(), target);
     }
   }
@@ -7266,10 +7268,10 @@ PROTOBUF_NOINLINE void ModifySessionTitleReq::Clear() {
             this_._internal_id());
       }
     }
-    // int32 user_id = 2;
+    // int64 user_id = 2;
     if (CheckHasBit(cached_has_bits, 0x00000008U)) {
       if (this_._internal_user_id() != 0) {
-        total_size += ::_pbi::WireFormatLite::Int32SizePlusOne(
+        total_size += ::_pbi::WireFormatLite::Int64SizePlusOne(
             this_._internal_user_id());
       }
     }
@@ -7864,8 +7866,8 @@ GetModelInfoReq::_table_ = {
     {::_pbi::TcParser::FastUS1,
      {10, 0, 0,
       PROTOBUF_FIELD_OFFSET(GetModelInfoReq, _impl_.hash_)}},
-    // int32 user_id = 2;
-    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(GetModelInfoReq, _impl_.user_id_), 2>(),
+    // int64 user_id = 2;
+    {::_pbi::TcParser::SingularVarintNoZag1<::uint64_t, offsetof(GetModelInfoReq, _impl_.user_id_), 2>(),
      {16, 2, 0,
       PROTOBUF_FIELD_OFFSET(GetModelInfoReq, _impl_.user_id_)}},
     // string auth = 3;
@@ -7877,8 +7879,8 @@ GetModelInfoReq::_table_ = {
   }}, {{
     // string hash = 1;
     {PROTOBUF_FIELD_OFFSET(GetModelInfoReq, _impl_.hash_), _Internal::kHasBitsOffset + 0, 0, (0 | ::_fl::kFcOptional | ::_fl::kUtf8String | ::_fl::kRepAString)},
-    // int32 user_id = 2;
-    {PROTOBUF_FIELD_OFFSET(GetModelInfoReq, _impl_.user_id_), _Internal::kHasBitsOffset + 2, 0, (0 | ::_fl::kFcOptional | ::_fl::kInt32)},
+    // int64 user_id = 2;
+    {PROTOBUF_FIELD_OFFSET(GetModelInfoReq, _impl_.user_id_), _Internal::kHasBitsOffset + 2, 0, (0 | ::_fl::kFcOptional | ::_fl::kInt64)},
     // string auth = 3;
     {PROTOBUF_FIELD_OFFSET(GetModelInfoReq, _impl_.auth_), _Internal::kHasBitsOffset + 1, 0, (0 | ::_fl::kFcOptional | ::_fl::kUtf8String | ::_fl::kRepAString)},
     // int32 limit = 4;
@@ -7946,11 +7948,11 @@ PROTOBUF_NOINLINE void GetModelInfoReq::Clear() {
     }
   }
 
-  // int32 user_id = 2;
+  // int64 user_id = 2;
   if (CheckHasBit(cached_has_bits, 0x00000004U)) {
     if (this_._internal_user_id() != 0) {
       target =
-          ::google::protobuf::internal::WireFormatLite::WriteInt32ToArrayWithField<2>(
+          ::google::protobuf::internal::WireFormatLite::WriteInt64ToArrayWithField<2>(
               stream, this_._internal_user_id(), target);
     }
   }
@@ -8014,10 +8016,10 @@ PROTOBUF_NOINLINE void GetModelInfoReq::Clear() {
                                         this_._internal_auth());
       }
     }
-    // int32 user_id = 2;
+    // int64 user_id = 2;
     if (CheckHasBit(cached_has_bits, 0x00000004U)) {
       if (this_._internal_user_id() != 0) {
-        total_size += ::_pbi::WireFormatLite::Int32SizePlusOne(
+        total_size += ::_pbi::WireFormatLite::Int64SizePlusOne(
             this_._internal_user_id());
       }
     }
@@ -8572,8 +8574,8 @@ NewModelInfoReq::_table_ = {
     #endif  // PROTOBUF_PREFETCH_PARSE_TABLE
   }, {{
     {::_pbi::TcParser::MiniParse, {}},
-    // int32 user_id = 1;
-    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(NewModelInfoReq, _impl_.user_id_), 2>(),
+    // int64 user_id = 1;
+    {::_pbi::TcParser::SingularVarintNoZag1<::uint64_t, offsetof(NewModelInfoReq, _impl_.user_id_), 2>(),
      {8, 2, 0,
       PROTOBUF_FIELD_OFFSET(NewModelInfoReq, _impl_.user_id_)}},
     // string auth = 2;
@@ -8587,8 +8589,8 @@ NewModelInfoReq::_table_ = {
   }}, {{
     65535, 65535
   }}, {{
-    // int32 user_id = 1;
-    {PROTOBUF_FIELD_OFFSET(NewModelInfoReq, _impl_.user_id_), _Internal::kHasBitsOffset + 2, 0, (0 | ::_fl::kFcOptional | ::_fl::kInt32)},
+    // int64 user_id = 1;
+    {PROTOBUF_FIELD_OFFSET(NewModelInfoReq, _impl_.user_id_), _Internal::kHasBitsOffset + 2, 0, (0 | ::_fl::kFcOptional | ::_fl::kInt64)},
     // string auth = 2;
     {PROTOBUF_FIELD_OFFSET(NewModelInfoReq, _impl_.auth_), _Internal::kHasBitsOffset + 1, 0, (0 | ::_fl::kFcOptional | ::_fl::kUtf8String | ::_fl::kRepAString)},
     // repeated .GrpcLibrary.Model models = 3;
@@ -8619,7 +8621,7 @@ PROTOBUF_NOINLINE void NewModelInfoReq::Clear() {
       _impl_.auth_.ClearNonDefaultToEmpty();
     }
   }
-  _impl_.user_id_ = 0;
+  _impl_.user_id_ = ::int64_t{0};
   _impl_._has_bits_.Clear();
   _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
 }
@@ -8643,11 +8645,11 @@ PROTOBUF_NOINLINE void NewModelInfoReq::Clear() {
   (void)cached_has_bits;
 
   cached_has_bits = this_._impl_._has_bits_[0];
-  // int32 user_id = 1;
+  // int64 user_id = 1;
   if (CheckHasBit(cached_has_bits, 0x00000004U)) {
     if (this_._internal_user_id() != 0) {
       target =
-          ::google::protobuf::internal::WireFormatLite::WriteInt32ToArrayWithField<1>(
+          ::google::protobuf::internal::WireFormatLite::WriteInt64ToArrayWithField<1>(
               stream, this_._internal_user_id(), target);
     }
   }
@@ -8715,10 +8717,10 @@ PROTOBUF_NOINLINE void NewModelInfoReq::Clear() {
                                         this_._internal_auth());
       }
     }
-    // int32 user_id = 1;
+    // int64 user_id = 1;
     if (CheckHasBit(cached_has_bits, 0x00000004U)) {
       if (this_._internal_user_id() != 0) {
-        total_size += ::_pbi::WireFormatLite::Int32SizePlusOne(
+        total_size += ::_pbi::WireFormatLite::Int64SizePlusOne(
             this_._internal_user_id());
       }
     }
@@ -9126,30 +9128,40 @@ GetSkillInfoReq::GetSkillInfoReq(::google::protobuf::Arena* PROTOBUF_NULLABLE ar
   SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:GrpcLibrary.GetSkillInfoReq)
 }
+PROTOBUF_NDEBUG_INLINE GetSkillInfoReq::Impl_::Impl_(
+    [[maybe_unused]] ::google::protobuf::internal::InternalVisibility visibility,
+    [[maybe_unused]] ::google::protobuf::Arena* PROTOBUF_NULLABLE arena, const Impl_& from,
+    [[maybe_unused]] const ::GrpcLibrary::GetSkillInfoReq& from_msg)
+      : _has_bits_{from._has_bits_},
+        _cached_size_{0},
+        hash_(arena, from.hash_) {}
+
 GetSkillInfoReq::GetSkillInfoReq(
-    ::google::protobuf::Arena* PROTOBUF_NULLABLE arena, const GetSkillInfoReq& from)
+    ::google::protobuf::Arena* PROTOBUF_NULLABLE arena,
+    const GetSkillInfoReq& from)
 #if defined(PROTOBUF_CUSTOM_VTABLE)
-    : ::google::protobuf::Message(arena, GetSkillInfoReq_class_data_.base()),
+    : ::google::protobuf::Message(arena, GetSkillInfoReq_class_data_.base()) {
 #else   // PROTOBUF_CUSTOM_VTABLE
-    : ::google::protobuf::Message(arena),
+    : ::google::protobuf::Message(arena) {
 #endif  // PROTOBUF_CUSTOM_VTABLE
-      _impl_(from._impl_) {
+  GetSkillInfoReq* const _this = this;
+  (void)_this;
   _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
       from._internal_metadata_);
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_, from);
+  _impl_.limit_ = from._impl_.limit_;
+
+  // @@protoc_insertion_point(copy_constructor:GrpcLibrary.GetSkillInfoReq)
 }
 PROTOBUF_NDEBUG_INLINE GetSkillInfoReq::Impl_::Impl_(
     [[maybe_unused]] ::google::protobuf::internal::InternalVisibility visibility,
     [[maybe_unused]] ::google::protobuf::Arena* PROTOBUF_NULLABLE arena)
-      : _cached_size_{0} {}
+      : _cached_size_{0},
+        hash_(arena) {}
 
 inline void GetSkillInfoReq::SharedCtor(::_pb::Arena* PROTOBUF_NULLABLE arena) {
   new (&_impl_) Impl_(internal_visibility(), arena);
-  ::memset(reinterpret_cast<char*>(&_impl_) +
-               offsetof(Impl_, id_),
-           0,
-           offsetof(Impl_, limit_) -
-               offsetof(Impl_, id_) +
-               sizeof(Impl_::limit_));
+  _impl_.limit_ = {};
 }
 GetSkillInfoReq::~GetSkillInfoReq() {
   // @@protoc_insertion_point(destructor:GrpcLibrary.GetSkillInfoReq)
@@ -9162,6 +9174,7 @@ inline void GetSkillInfoReq::SharedDtor(MessageLite& self) {
   }
   this_._internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
   ABSL_DCHECK(this_.GetArena() == nullptr);
+  this_._impl_.hash_.Destroy();
   this_._impl_.~Impl_();
 }
 
@@ -9171,7 +9184,7 @@ inline void* PROTOBUF_NONNULL GetSkillInfoReq::PlacementNew_(
   return ::new (mem) GetSkillInfoReq(arena);
 }
 constexpr auto GetSkillInfoReq::InternalNewImpl_() {
-  return ::google::protobuf::internal::MessageCreator::ZeroInit(sizeof(GetSkillInfoReq),
+  return ::google::protobuf::internal::MessageCreator::CopyInit(sizeof(GetSkillInfoReq),
                                             alignof(GetSkillInfoReq));
 }
 constexpr auto GetSkillInfoReq::InternalGenerateClassData_() {
@@ -9208,7 +9221,7 @@ GetSkillInfoReq::GetClassData() const {
   return GetSkillInfoReq_class_data_.base();
 }
 PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
-const ::_pbi::TcParseTable<1, 2, 0, 0, 2>
+const ::_pbi::TcParseTable<1, 2, 0, 40, 2>
 GetSkillInfoReq::_table_ = {
   {
     PROTOBUF_FIELD_OFFSET(GetSkillInfoReq, _impl_._has_bits_),
@@ -9231,20 +9244,23 @@ GetSkillInfoReq::_table_ = {
     {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(GetSkillInfoReq, _impl_.limit_), 1>(),
      {16, 1, 0,
       PROTOBUF_FIELD_OFFSET(GetSkillInfoReq, _impl_.limit_)}},
-    // int64 id = 1;
-    {::_pbi::TcParser::SingularVarintNoZag1<::uint64_t, offsetof(GetSkillInfoReq, _impl_.id_), 0>(),
-     {8, 0, 0,
-      PROTOBUF_FIELD_OFFSET(GetSkillInfoReq, _impl_.id_)}},
+    // string hash = 1;
+    {::_pbi::TcParser::FastUS1,
+     {10, 0, 0,
+      PROTOBUF_FIELD_OFFSET(GetSkillInfoReq, _impl_.hash_)}},
   }}, {{
     65535, 65535
   }}, {{
-    // int64 id = 1;
-    {PROTOBUF_FIELD_OFFSET(GetSkillInfoReq, _impl_.id_), _Internal::kHasBitsOffset + 0, 0, (0 | ::_fl::kFcOptional | ::_fl::kInt64)},
+    // string hash = 1;
+    {PROTOBUF_FIELD_OFFSET(GetSkillInfoReq, _impl_.hash_), _Internal::kHasBitsOffset + 0, 0, (0 | ::_fl::kFcOptional | ::_fl::kUtf8String | ::_fl::kRepAString)},
     // int32 limit = 2;
     {PROTOBUF_FIELD_OFFSET(GetSkillInfoReq, _impl_.limit_), _Internal::kHasBitsOffset + 1, 0, (0 | ::_fl::kFcOptional | ::_fl::kInt32)},
   }},
   // no aux_entries
   {{
+    "\33\4\0\0\0\0\0\0"
+    "GrpcLibrary.GetSkillInfoReq"
+    "hash"
   }},
 };
 PROTOBUF_NOINLINE void GetSkillInfoReq::Clear() {
@@ -9255,11 +9271,10 @@ PROTOBUF_NOINLINE void GetSkillInfoReq::Clear() {
   (void) cached_has_bits;
 
   cached_has_bits = _impl_._has_bits_[0];
-  if (BatchCheckHasBit(cached_has_bits, 0x00000003U)) {
-    ::memset(&_impl_.id_, 0, static_cast<::size_t>(
-        reinterpret_cast<char*>(&_impl_.limit_) -
-        reinterpret_cast<char*>(&_impl_.id_)) + sizeof(_impl_.limit_));
+  if (CheckHasBit(cached_has_bits, 0x00000001U)) {
+    _impl_.hash_.ClearNonDefaultToEmpty();
   }
+  _impl_.limit_ = 0;
   _impl_._has_bits_.Clear();
   _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
 }
@@ -9283,12 +9298,13 @@ PROTOBUF_NOINLINE void GetSkillInfoReq::Clear() {
   (void)cached_has_bits;
 
   cached_has_bits = this_._impl_._has_bits_[0];
-  // int64 id = 1;
+  // string hash = 1;
   if (CheckHasBit(cached_has_bits, 0x00000001U)) {
-    if (this_._internal_id() != 0) {
-      target =
-          ::google::protobuf::internal::WireFormatLite::WriteInt64ToArrayWithField<1>(
-              stream, this_._internal_id(), target);
+    if (!this_._internal_hash().empty()) {
+      const ::std::string& _s = this_._internal_hash();
+      ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+          _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "GrpcLibrary.GetSkillInfoReq.hash");
+      target = stream->WriteStringMaybeAliased(1, _s, target);
     }
   }
 
@@ -9327,11 +9343,11 @@ PROTOBUF_NOINLINE void GetSkillInfoReq::Clear() {
   ::_pbi::Prefetch5LinesFrom7Lines(&this_);
   cached_has_bits = this_._impl_._has_bits_[0];
   if (BatchCheckHasBit(cached_has_bits, 0x00000003U)) {
-    // int64 id = 1;
+    // string hash = 1;
     if (CheckHasBit(cached_has_bits, 0x00000001U)) {
-      if (this_._internal_id() != 0) {
-        total_size += ::_pbi::WireFormatLite::Int64SizePlusOne(
-            this_._internal_id());
+      if (!this_._internal_hash().empty()) {
+        total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
+                                        this_._internal_hash());
       }
     }
     // int32 limit = 2;
@@ -9362,8 +9378,12 @@ void GetSkillInfoReq::MergeImpl(::google::protobuf::MessageLite& to_msg,
   cached_has_bits = from._impl_._has_bits_[0];
   if (BatchCheckHasBit(cached_has_bits, 0x00000003U)) {
     if (CheckHasBit(cached_has_bits, 0x00000001U)) {
-      if (from._internal_id() != 0) {
-        _this->_impl_.id_ = from._impl_.id_;
+      if (!from._internal_hash().empty()) {
+        _this->_internal_set_hash(from._internal_hash());
+      } else {
+        if (_this->_impl_.hash_.IsDefault()) {
+          _this->_internal_set_hash("");
+        }
       }
     }
     if (CheckHasBit(cached_has_bits, 0x00000002U)) {
@@ -9387,14 +9407,12 @@ void GetSkillInfoReq::CopyFrom(const GetSkillInfoReq& from) {
 
 void GetSkillInfoReq::InternalSwap(GetSkillInfoReq* PROTOBUF_RESTRICT PROTOBUF_NONNULL other) {
   using ::std::swap;
+  auto* arena = GetArena();
+  ABSL_DCHECK_EQ(arena, other->GetArena());
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
-  ::google::protobuf::internal::memswap<
-      PROTOBUF_FIELD_OFFSET(GetSkillInfoReq, _impl_.limit_)
-      + sizeof(GetSkillInfoReq::_impl_.limit_)
-      - PROTOBUF_FIELD_OFFSET(GetSkillInfoReq, _impl_.id_)>(
-          reinterpret_cast<char*>(&_impl_.id_),
-          reinterpret_cast<char*>(&other->_impl_.id_));
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.hash_, &other->_impl_.hash_, arena);
+  swap(_impl_.limit_, other->_impl_.limit_);
 }
 
 ::google::protobuf::Metadata GetSkillInfoReq::GetMetadata() const {
@@ -9856,8 +9874,8 @@ DownloadReq::_table_ = {
     {::_pbi::TcParser::FastUS1,
      {10, 0, 0,
       PROTOBUF_FIELD_OFFSET(DownloadReq, _impl_.hash_)}},
-    // int32 user_id = 2;
-    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(DownloadReq, _impl_.user_id_), 2>(),
+    // int64 user_id = 2;
+    {::_pbi::TcParser::SingularVarintNoZag1<::uint64_t, offsetof(DownloadReq, _impl_.user_id_), 2>(),
      {16, 2, 0,
       PROTOBUF_FIELD_OFFSET(DownloadReq, _impl_.user_id_)}},
     // string auth = 3;
@@ -9869,8 +9887,8 @@ DownloadReq::_table_ = {
   }}, {{
     // string hash = 1;
     {PROTOBUF_FIELD_OFFSET(DownloadReq, _impl_.hash_), _Internal::kHasBitsOffset + 0, 0, (0 | ::_fl::kFcOptional | ::_fl::kUtf8String | ::_fl::kRepAString)},
-    // int32 user_id = 2;
-    {PROTOBUF_FIELD_OFFSET(DownloadReq, _impl_.user_id_), _Internal::kHasBitsOffset + 2, 0, (0 | ::_fl::kFcOptional | ::_fl::kInt32)},
+    // int64 user_id = 2;
+    {PROTOBUF_FIELD_OFFSET(DownloadReq, _impl_.user_id_), _Internal::kHasBitsOffset + 2, 0, (0 | ::_fl::kFcOptional | ::_fl::kInt64)},
     // string auth = 3;
     {PROTOBUF_FIELD_OFFSET(DownloadReq, _impl_.auth_), _Internal::kHasBitsOffset + 1, 0, (0 | ::_fl::kFcOptional | ::_fl::kUtf8String | ::_fl::kRepAString)},
   }},
@@ -9898,7 +9916,7 @@ PROTOBUF_NOINLINE void DownloadReq::Clear() {
       _impl_.auth_.ClearNonDefaultToEmpty();
     }
   }
-  _impl_.user_id_ = 0;
+  _impl_.user_id_ = ::int64_t{0};
   _impl_._has_bits_.Clear();
   _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
 }
@@ -9932,11 +9950,11 @@ PROTOBUF_NOINLINE void DownloadReq::Clear() {
     }
   }
 
-  // int32 user_id = 2;
+  // int64 user_id = 2;
   if (CheckHasBit(cached_has_bits, 0x00000004U)) {
     if (this_._internal_user_id() != 0) {
       target =
-          ::google::protobuf::internal::WireFormatLite::WriteInt32ToArrayWithField<2>(
+          ::google::protobuf::internal::WireFormatLite::WriteInt64ToArrayWithField<2>(
               stream, this_._internal_user_id(), target);
     }
   }
@@ -9991,10 +10009,10 @@ PROTOBUF_NOINLINE void DownloadReq::Clear() {
                                         this_._internal_auth());
       }
     }
-    // int32 user_id = 2;
+    // int64 user_id = 2;
     if (CheckHasBit(cached_has_bits, 0x00000004U)) {
       if (this_._internal_user_id() != 0) {
-        total_size += ::_pbi::WireFormatLite::Int32SizePlusOne(
+        total_size += ::_pbi::WireFormatLite::Int64SizePlusOne(
             this_._internal_user_id());
       }
     }

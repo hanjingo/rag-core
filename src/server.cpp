@@ -3,6 +3,7 @@
 #include <hj/log/log.hpp>
 #include <hj/encoding/fmt.hpp>
 #include <hj/time/date_time.hpp>
+#include <hj/algo/uuid.hpp>
 
 #include "conf.h"
 #include "db_mgr.h"
@@ -16,7 +17,7 @@ status_t api_handler::Login(ctx_t                         *ctx,
 {
     std::string account          = req->account();
     std::string encrypted_passwd = req->passwd();
-    int         user_id          = -1;
+    int64_t     user_id          = -1;
     int         privilege        = -1;
     resp->set_error_code(ERR_FAIL);
     LOG_DEBUG("Received Login request. account: {}, passwd: {}",
@@ -36,7 +37,7 @@ status_t api_handler::Login(ctx_t                         *ctx,
     }
     for(const auto row : rows)
     {
-        user_id   = std::stoi(row[0]);
+        user_id   = std::stoll(row[0]);
         privilege = std::stoi(row[3]);
         break;
     }
@@ -67,7 +68,7 @@ status_t api_handler::Logout(ctx_t                          *ctx,
                              const ::GrpcLibrary::LogoutReq *req,
                              ::GrpcLibrary::LogoutResp      *resp)
 {
-    int         user_id = -1;
+    int64_t     user_id = -1;
     std::string auth;
     resp->set_error_code(ERR_FAIL);
     LOG_DEBUG("Received Logout request. user_id: {}, auth: {}", user_id, auth);
@@ -91,15 +92,17 @@ status_t api_handler::RegAccount(ctx_t                              *ctx,
                                  const ::GrpcLibrary::RegAccountReq *req,
                                  ::GrpcLibrary::RegAccountResp      *resp)
 {
-    std::string account;
-    std::string encrypted_passwd;
-    bool        success = false;
+    std::string account          = req->account();
+    std::string encrypted_passwd = req->passwd();
     resp->set_error_code(ERR_FAIL);
     LOG_DEBUG("Received RegAccount request. account: {}, passwd: {}",
               account,
               encrypted_passwd);
 
-    auto sql = hj::fmt(SQL_INSERT_USER, account, encrypted_passwd);
+    const uint64_t id        = hj::uuid::gen_u64();
+    const int      privilege = 0; // default privilege for new account
+    auto           sql =
+        hj::fmt(SQL_INSERT_USER, id, account, encrypted_passwd, privilege);
     LOG_DEBUG("{}", sql);
     if(db_mgr::instance().exec("sqlite", sql) != OK)
     {
@@ -108,7 +111,6 @@ status_t api_handler::RegAccount(ctx_t                              *ctx,
         return status_t::OK;
     }
 
-    auto id = db_mgr::instance().last_insert_id("sqlite", "user");
     resp->set_user_id(id);
     resp->set_error_code(OK);
     return status_t::OK;
@@ -119,7 +121,7 @@ status_t api_handler::Query(ctx_t                         *ctx,
                             ::GrpcLibrary::QueryResp      *resp)
 {
     int64_t     id      = req->id();
-    int32_t     user_id = req->user_id();
+    int64_t     user_id = req->user_id();
     std::string auth    = req->auth();
     std::string content = req->content();
     std::string model   = req->model();
@@ -163,7 +165,7 @@ status_t api_handler::GetSession(ctx_t                              *ctx,
                                  ::GrpcLibrary::GetSessionResp      *resp)
 {
     int64_t     id      = req->id();
-    int         user_id = req->user_id();
+    int64_t     user_id = req->user_id();
     std::string auth    = req->auth();
     int         limit   = req->limit();
     limit               = (limit < 0 || limit > 100) ? 100 : limit;
@@ -194,7 +196,7 @@ status_t api_handler::GetSession(ctx_t                              *ctx,
     {
         auto item = resp->add_sessions();
         item->set_id(std::stoll(row[0]));
-        item->set_user_id(std::stoi(row[1]));
+        item->set_user_id(std::stoll(row[1]));
         item->set_title(row[2]);
         item->set_content(row[3]);
         item->set_timestamp(row[4]);
@@ -217,7 +219,7 @@ status_t api_handler::NewSession(ctx_t                              *ctx,
                                  ::GrpcLibrary::NewSessionResp      *resp)
 {
     resp->set_error_code(ERR_FAIL);
-    int         user_id = req->user_id();
+    int64_t     user_id = req->user_id();
     std::string auth    = req->auth();
     std::string title   = req->title();
     std::string content = req->content();
@@ -233,7 +235,9 @@ status_t api_handler::NewSession(ctx_t                              *ctx,
               content,
               model);
 
-    auto sql = hj::fmt(SQL_INSERT_SESSION, user_id, title, content, timestamp);
+    int64_t id = hj::uuid::gen_u64();
+    auto    sql =
+        hj::fmt(SQL_INSERT_SESSION, id, user_id, title, content, timestamp);
     LOG_DEBUG("{}", sql);
     if(db_mgr::instance().exec("sqlite", sql) != OK)
     {
@@ -242,7 +246,6 @@ status_t api_handler::NewSession(ctx_t                              *ctx,
         return status_t::OK;
     }
 
-    auto id      = db_mgr::instance().last_insert_id("sqlite", "session");
     auto session = resp->mutable_session();
     session->set_id(id);
     session->set_user_id(user_id);
@@ -284,8 +287,8 @@ api_handler::ModifySessionTitle(ctx_t                                      *ctx,
                                 const ::GrpcLibrary::ModifySessionTitleReq *req,
                                 ::GrpcLibrary::ModifySessionTitleResp *resp)
 {
-    int64_t     id      = req->user_id();
-    int         user_id = req->user_id();
+    int64_t     id      = req->id();
+    int64_t     user_id = req->user_id();
     std::string auth    = req->auth();
     std::string title   = req->title();
     resp->set_error_code(ERR_FAIL);
@@ -320,7 +323,7 @@ status_t api_handler::GetModelInfo(ctx_t                                *ctx,
 {
     resp->set_error_code(ERR_FAIL);
     std::string hash    = req->hash();
-    int         user_id = req->user_id();
+    int64_t     user_id = req->user_id();
     std::string auth    = req->auth();
     int         limit   = req->limit();
     limit               = (limit < 0 || limit > 100) ? 100 : limit;
@@ -366,7 +369,7 @@ status_t api_handler::NewModelInfo(ctx_t                                *ctx,
                                    const ::GrpcLibrary::NewModelInfoReq *req,
                                    ::GrpcLibrary::NewModelInfoResp      *resp)
 {
-    int32_t     user_id = req->user_id();
+    int64_t     user_id = req->user_id();
     std::string auth    = req->auth();
     auto        models  = req->models();
     resp->set_error_code(ERR_FAIL);
@@ -415,18 +418,20 @@ status_t api_handler::GetSkillInfo(ctx_t                                *ctx,
                                    const ::GrpcLibrary::GetSkillInfoReq *req,
                                    ::GrpcLibrary::GetSkillInfoResp      *resp)
 {
-    int64_t id    = req->id();
-    int     limit = req->limit();
-    limit         = limit < 0 || limit > 50 ? 50 : limit;
+    std::string hash  = req->hash();
+    int         limit = req->limit();
+    limit             = limit < 0 || limit > 50 ? 50 : limit;
     resp->set_error_code(ERR_FAIL);
-    LOG_DEBUG("Received GetSkillInfo request. id: {}, limit: {}", id, limit);
+    LOG_DEBUG("Received GetSkillInfo request. hash: {}, limit: {}",
+              hash,
+              limit);
 
     std::string sql;
-    if(id < 0)
+    if(hash.empty())
         sql = SQL_SELECT_SKILL_INFO
               + hj::fmt(" LIMIT {};", std::to_string(limit));
     else
-        sql = hj::fmt(SQL_SELECT_SKILL_INFO_BY_ID, id) + " LIMIT 1;";
+        sql = hj::fmt(SQL_SELECT_SKILL_INFO_BY_HASH, hash) + " LIMIT 1;";
 
     LOG_DEBUG("{}", sql);
     db_mgr::query_ret rows;
@@ -439,24 +444,23 @@ status_t api_handler::GetSkillInfo(ctx_t                                *ctx,
     for(const auto row : rows)
     {
         auto item = resp->add_skills();
-        item->set_id(std::stoll(row[0]));
-        // platform
+        item->set_hash(row[0]);
+        item->set_platform(std::stoi(row[1]));
         item->set_name(row[2]);
         item->set_desc(row[3]);
         item->set_publisher(row[4]);
         item->set_version(row[5]);
         item->set_timestamp(row[6]);
-        item->set_hash(row[7]);
 
-        LOG_DEBUG("GetSkillInfo id: {}, name: {}, desc: {}, publisher: {}, "
-                  "version: {}, timestamp: {}, hash: {}",
-                  item->id(),
+        LOG_DEBUG("GetSkillInfo hash: {}, platform: {}, name: {}, desc: {}",
+                  ", publisher: {}, version: {}, timestamp: {}",
+                  item->hash(),
+                  item->platform(),
                   item->name(),
                   item->desc(),
                   item->publisher(),
                   item->version(),
-                  item->timestamp(),
-                  item->hash());
+                  item->timestamp());
     }
 
     resp->set_error_code(OK);
@@ -468,7 +472,7 @@ status_t api_handler::Download(ctx_t                            *ctx,
                                ::GrpcLibrary::DownloadResp      *resp)
 {
     std::string hash    = req->hash();
-    int         user_id = req->user_id();
+    int64_t     user_id = req->user_id();
     std::string auth    = req->auth();
     resp->set_error_code(ERR_FAIL);
     resp->set_hash(hash);
