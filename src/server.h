@@ -30,6 +30,10 @@ class api_handler final : public GrpcLibrary::GrpcService::Service
                    const ::GrpcLibrary::QueryReq *req,
                    ::GrpcLibrary::QueryResp      *resp) override;
 
+    status_t GetMessageInfo(ctx_t                                  *ctx,
+                            const ::GrpcLibrary::GetMessageInfoReq *req,
+                            ::GrpcLibrary::GetMessageInfoResp *resp) override;
+
     status_t GetSession(ctx_t                              *ctx,
                         const ::GrpcLibrary::GetSessionReq *req,
                         ::GrpcLibrary::GetSessionResp      *resp) override;

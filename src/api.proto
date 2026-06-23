@@ -6,6 +6,7 @@ service GrpcService {
     rpc Logout (LogoutReq) returns (LogoutResp) {}
     rpc RegAccount (RegAccountReq) returns (RegAccountResp) {}
     rpc Query (QueryReq) returns (QueryResp) {}
+    rpc GetMessageInfo (GetMessageInfoReq) returns (GetMessageInfoResp) {}
     rpc GetSession (GetSessionReq) returns (GetSessionResp) {}
     rpc NewSession (NewSessionReq) returns (NewSessionResp) {}
     rpc ModifySessionTitle (ModifySessionTitleReq) returns (ModifySessionTitleResp) {}
@@ -20,8 +21,7 @@ message Session {
     int64 id = 1;
     int64 user_id = 2;
     string title = 3;
-    string content = 4;
-    string timestamp = 5;
+    string timestamp = 4;
 }
 
 message Model {
@@ -43,6 +43,15 @@ message Skill {
     string version = 5;
     string timestamp = 6;
     int32 platform = 7;
+}
+
+message MessageInfo {
+    int64 id = 1;
+    int64 session_id = 2;
+    string role = 3;
+    string content = 4;
+    int64 prev_message_id = 5;
+    string timestamp = 6;
 }
 
 message LoginReq {
@@ -91,6 +100,19 @@ message QueryResp {
     int32 error_code = 1;
     int64 id = 2;
     string content = 3;
+}
+
+message GetMessageInfoReq {
+    int64 id = 1;
+    int64 session_id = 2;
+    int32 limit = 3;
+    int64 user_id = 4;
+    string auth = 5;
+}
+
+message GetMessageInfoResp {
+    int32 error_code = 1;
+    repeated MessageInfo messages = 2;
 }
 
 message GetSessionReq {

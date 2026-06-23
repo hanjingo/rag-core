@@ -19,6 +19,11 @@ hj::ini conf::data()
     return _cfg;
 }
 
+int conf::sqlite_msg_limit()
+{
+    return _cfg.get<int>("sqlite.msg_limit", 1000);
+}
+
 std::string conf::issuer_id()
 {
     return _cfg.get<std::string>("issuer.id", "default");

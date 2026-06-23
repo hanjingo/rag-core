@@ -29,7 +29,7 @@ status_t api_handler::Login(ctx_t                         *ctx,
         + " LIMIT 1;";
     LOG_DEBUG("{}", sql);
     db_mgr::query_ret rows;
-    if(db_mgr::instance().query(rows, "sqlite", sql) != OK)
+    if(db_mgr::instance().query(rows, DB_SQLITE, sql) != OK)
     {
         LOG_ERROR("Failed to authenticate account: {}, sql: {}", account, sql);
         resp->set_error_code(ACCOUNT_INVALID);
@@ -104,7 +104,7 @@ status_t api_handler::RegAccount(ctx_t                              *ctx,
     auto           sql =
         hj::fmt(SQL_INSERT_USER, id, account, encrypted_passwd, privilege);
     LOG_DEBUG("{}", sql);
-    if(db_mgr::instance().exec("sqlite", sql) != OK)
+    if(db_mgr::instance().exec(DB_SQLITE, sql) != OK)
     {
         resp->set_error_code(ERR_SQLITE_EXEC_FAIL);
         LOG_ERROR("Failed to insert user with sql: {}", sql);
@@ -120,30 +120,41 @@ status_t api_handler::Query(ctx_t                         *ctx,
                             const ::GrpcLibrary::QueryReq *req,
                             ::GrpcLibrary::QueryResp      *resp)
 {
-    int64_t     id      = req->id();
-    int64_t     user_id = req->user_id();
-    std::string auth    = req->auth();
-    std::string content = req->content();
-    std::string model   = req->model();
+    int64_t     session_id = req->id();
+    int64_t     user_id    = req->user_id();
+    std::string auth       = req->auth();
+    std::string content    = req->content();
+    std::string model      = req->model();
     resp->set_error_code(ERR_FAIL);
-    resp->set_id(id);
-    LOG_DEBUG(
-        "Query request id: {}, user_id: {}, auth: {}, content: {}, model: {}",
-        id,
-        user_id,
-        auth,
-        content,
-        model);
-
-    // TODO check privilege && token count
-
-    LOG_DEBUG("Received Query request. id: {}, user_id: {}, auth: {}, content: "
+    resp->set_id(session_id);
+    LOG_DEBUG("Query request session_id: {}, user_id: {}, auth: {}, content: "
               "{}, model: {}",
-              id,
+              session_id,
               user_id,
               auth,
               content,
               model);
+
+    // TODO check privilege && token count
+
+    // save query record
+    auto msg_id = hj::uuid::gen_u64();
+    auto now = hj::date_time::format(hj::date_time::now(), "%Y-%m-%d %H:%M:%S");
+    auto sql = hj::fmt(SQL_INSERT_MESSAGE,
+                       msg_id,
+                       session_id,
+                       ROLE_USER,
+                       content,
+                       NONE_MSG_ID,
+                       now);
+    if(db_mgr::instance().exec(DB_SQLITE, sql) != OK)
+    {
+        resp->set_error_code(ERR_SQLITE_EXEC_FAIL);
+        LOG_ERROR("Failed to insert message for sql: {}", sql);
+        return status_t::OK;
+    }
+
+    // answer query
     auto tokens = llm_mgr::instance().tokenize(model, content, true, true);
     auto params = llm_mgr::instance().create_ctx_params(
         conf::instance().llm_ctx_window_sz());
@@ -156,7 +167,88 @@ status_t api_handler::Query(ctx_t                         *ctx,
                       resp->set_content(output);
                       return false;
                   });
+
+    // save answer record
+    msg_id = hj::uuid::gen_u64();
+    now    = hj::date_time::format(hj::date_time::now(), "%Y-%m-%d %H:%M:%S");
+    sql    = hj::fmt(SQL_INSERT_MESSAGE,
+                     msg_id,
+                     session_id,
+                     ROLE_ASSISTANT,
+                     resp->content(),
+                     NONE_MSG_ID,
+                     now);
+    if(db_mgr::instance().exec(DB_SQLITE, sql) != OK)
+    {
+        resp->set_error_code(ERR_SQLITE_EXEC_FAIL);
+        LOG_ERROR("Failed to insert message for sql: {}", sql);
+        return status_t::OK;
+    }
+
     resp->set_error_code(ec);
+    return status_t::OK;
+}
+
+status_t
+api_handler::GetMessageInfo(ctx_t                                  *ctx,
+                            const ::GrpcLibrary::GetMessageInfoReq *req,
+                            ::GrpcLibrary::GetMessageInfoResp      *resp)
+{
+    int64_t     id         = req->id();
+    int64_t     session_id = req->session_id();
+    int32_t     limit      = req->limit();
+    int64_t     user_id    = req->user_id();
+    std::string auth       = req->auth();
+
+    if(limit < 0 || limit > conf::instance().sqlite_msg_limit())
+        limit = conf::instance().sqlite_msg_limit();
+    resp->set_error_code(ERR_FAIL);
+    LOG_DEBUG(
+        "Received GetMessage request. id: {}, session_id: {}, user_id: {}",
+        ", auth: {}, limit: {}",
+        id,
+        session_id,
+        user_id,
+        auth,
+        limit);
+
+    std::string sql;
+    if(id != -1)
+        sql = hj::fmt(SQL_SELECT_MESSAGE_BY_ID, id);
+    else
+        sql = hj::fmt(SQL_SELECT_MESSAGE_BY_SESSION_ID, session_id);
+    sql += hj::fmt(" LIMIT {};", std::to_string(limit));
+
+    LOG_DEBUG("{}", sql);
+    db_mgr::query_ret rows;
+    if(db_mgr::instance().query(rows, DB_SQLITE, sql) != OK)
+    {
+        LOG_ERROR("Failed to query message for sql: {}", sql);
+        resp->set_error_code(ERR_SQLITE_EXEC_FAIL);
+        return status_t::OK;
+    }
+    for(const auto row : rows)
+    {
+        LOG_DEBUG("I AM HERE1");
+        auto item = resp->add_messages();
+        item->set_id(row[0].empty() ? -1 : std::stoll(row[0]));
+        item->set_session_id(row[1].empty() ? -1 : std::stoll(row[1]));
+        item->set_role(row[2]);
+        item->set_content(row[3]);
+        item->set_prev_message_id(row[4].empty() ? -1 : std::stoll(row[4]));
+        item->set_timestamp(row[5]);
+
+        LOG_DEBUG("GetMessage id: {}, session_id: {}, role: {}, content: {}, "
+                  "prev_message_id: {}, timestamp: {}",
+                  item->id(),
+                  item->session_id(),
+                  item->role(),
+                  item->content(),
+                  item->prev_message_id(),
+                  item->timestamp());
+    }
+
+    resp->set_error_code(OK);
     return status_t::OK;
 }
 
@@ -186,7 +278,7 @@ status_t api_handler::GetSession(ctx_t                              *ctx,
 
     LOG_DEBUG("{}", sql);
     db_mgr::query_ret rows;
-    if(db_mgr::instance().query(rows, "sqlite", sql) != OK)
+    if(db_mgr::instance().query(rows, DB_SQLITE, sql) != OK)
     {
         LOG_ERROR("Failed to query history for sql: {}", sql);
         resp->set_error_code(ERR_SQLITE_EXEC_FAIL);
@@ -198,15 +290,12 @@ status_t api_handler::GetSession(ctx_t                              *ctx,
         item->set_id(std::stoll(row[0]));
         item->set_user_id(std::stoll(row[1]));
         item->set_title(row[2]);
-        item->set_content(row[3]);
-        item->set_timestamp(row[4]);
+        item->set_timestamp(row[3]);
 
-        LOG_DEBUG("GetSession id: {}, user_id: {}, title: {}, content: {}, "
-                  "timestamp: {}",
+        LOG_DEBUG("GetSession id: {}, user_id: {}, title: {}, timestamp: {}",
                   item->id(),
                   item->user_id(),
                   item->title(),
-                  item->content(),
                   item->timestamp());
     }
 
@@ -235,11 +324,10 @@ status_t api_handler::NewSession(ctx_t                              *ctx,
               content,
               model);
 
-    int64_t id = hj::uuid::gen_u64();
-    auto    sql =
-        hj::fmt(SQL_INSERT_SESSION, id, user_id, title, content, timestamp);
+    int64_t id  = hj::uuid::gen_u64();
+    auto    sql = hj::fmt(SQL_INSERT_SESSION, id, user_id, title, timestamp);
     LOG_DEBUG("{}", sql);
-    if(db_mgr::instance().exec("sqlite", sql) != OK)
+    if(db_mgr::instance().exec(DB_SQLITE, sql) != OK)
     {
         resp->set_error_code(ERR_SQLITE_EXEC_FAIL);
         LOG_ERROR("Failed to insert session for sql: {}", sql);
@@ -252,32 +340,7 @@ status_t api_handler::NewSession(ctx_t                              *ctx,
     session->set_title(title);
     session->set_timestamp(timestamp);
 
-    // if content not null, ask llm to generate answer and update session
-    if(content.size() > 0 && model.size() > 0)
-    {
-        LOG_DEBUG("Received NewSession request with content not null, ask llm");
-        auto tokens = llm_mgr::instance().tokenize(model, content, true, true);
-        auto params = llm_mgr::instance().create_ctx_params(
-            conf::instance().llm_ctx_window_sz());
-
-        auto ec = llm_mgr::instance().loop_query(
-            model,
-            tokens,
-            params,
-            [&](std::string &pieces) -> bool {
-                // TODO check tokens' enough or not!
-
-                LOG_DEBUG("llm generated pieces: {}", pieces);
-                answer += pieces;
-                return LLM_CONTINUE;
-            });
-        session->set_content(answer);
-        resp->set_error_code(ec);
-        LOG_DEBUG("Session generated ec:{}, answer:{}", ec, answer);
-        return status_t::OK;
-    }
-
-    //LOG_DEBUG("Session created without content or model, return directly");
+    LOG_DEBUG("Session created without content or model, return directly");
     resp->set_error_code(OK);
     return status_t::OK;
 }
@@ -306,7 +369,7 @@ api_handler::ModifySessionTitle(ctx_t                                      *ctx,
 
     auto sql = hj::fmt(SQL_UPDATE_SESSION_TITLE_BY_ID, title, id);
     LOG_DEBUG("{}", sql);
-    if(db_mgr::instance().exec("sqlite", sql) != OK)
+    if(db_mgr::instance().exec(DB_SQLITE, sql) != OK)
     {
         resp->set_error_code(ERR_SQLITE_EXEC_FAIL);
         LOG_ERROR("Failed to update session for sql: {}", sql);
@@ -337,10 +400,20 @@ status_t api_handler::DelSession(ctx_t                              *ctx,
     {
         auto sql = hj::fmt(SQL_DELETE_SESSION_BY_ID, id);
         LOG_DEBUG("{}", sql);
-        if(db_mgr::instance().exec("sqlite", sql) != OK)
+        if(db_mgr::instance().exec(DB_SQLITE, sql) != OK)
         {
             resp->set_error_code(ERR_SQLITE_EXEC_FAIL);
             LOG_ERROR("Failed to delete session for sql: {}", sql);
+            return status_t::OK;
+        }
+
+        // delete all relative message
+        sql = hj::fmt(SQL_DELETE_MESSAGE_BY_SESSION_ID, id);
+        LOG_DEBUG("{}", sql);
+        if(db_mgr::instance().exec(DB_SQLITE, sql) != OK)
+        {
+            resp->set_error_code(ERR_SQLITE_EXEC_FAIL);
+            LOG_ERROR("Failed to delete messages for sql: {}", sql);
             return status_t::OK;
         }
 
@@ -376,7 +449,7 @@ status_t api_handler::GetModelInfo(ctx_t                                *ctx,
 
     LOG_DEBUG("{}", sql);
     db_mgr::query_ret rows;
-    if(db_mgr::instance().query(rows, "sqlite", sql) != OK)
+    if(db_mgr::instance().query(rows, DB_SQLITE, sql) != OK)
     {
         resp->set_error_code(ERR_SQLITE_EXEC_FAIL);
         LOG_ERROR("Failed to query model info for sql: {}", sql);
@@ -435,7 +508,7 @@ status_t api_handler::NewModelInfo(ctx_t                                *ctx,
                                            context_size,
                                            cost);
         LOG_DEBUG("{}", sql);
-        if(db_mgr::instance().exec("sqlite", sql) != OK)
+        if(db_mgr::instance().exec(DB_SQLITE, sql) != OK)
         {
             LOG_ERROR("Failed to insert model for sql: {}", sql);
             continue;
@@ -469,7 +542,7 @@ status_t api_handler::GetSkillInfo(ctx_t                                *ctx,
 
     LOG_DEBUG("{}", sql);
     db_mgr::query_ret rows;
-    if(db_mgr::instance().query(rows, "sqlite", sql) != OK)
+    if(db_mgr::instance().query(rows, DB_SQLITE, sql) != OK)
     {
         resp->set_error_code(ERR_SQLITE_EXEC_FAIL);
         LOG_ERROR("Failed to query skill info for sql: {}", sql);
@@ -520,7 +593,7 @@ status_t api_handler::Download(ctx_t                            *ctx,
     auto sql = hj::fmt(SQL_SELECT_FILE_BY_HASH, hash) + " LIMIT 1;";
     LOG_DEBUG("{}", sql);
     db_mgr::query_ret rows;
-    if(db_mgr::instance().query(rows, "sqlite", sql) != OK)
+    if(db_mgr::instance().query(rows, DB_SQLITE, sql) != OK)
     {
         LOG_ERROR("Failed to query history for sql: {}", sql);
         return status_t::OK;

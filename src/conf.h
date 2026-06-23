@@ -21,6 +21,8 @@ class conf
 
     hj::ini data();
 
+    int sqlite_msg_limit();
+
     std::string              issuer_id();
     hj::license::sign_algo   issuer_algo();
     std::vector<std::string> issuer_keys();

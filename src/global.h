@@ -21,6 +21,15 @@ class db
     virtual int64_t           last_insert_id(const char *table) = 0;
 };
 
+// const params
+static constexpr const char *DB_SQLITE = "sqlite";
+
+static constexpr const char *ROLE_USER      = "user";
+static constexpr const char *ROLE_ASSISTANT = "assistant";
+static constexpr const char *ROLE_SYSTEM    = "system";
+
+static constexpr int64_t NONE_MSG_ID = 0;
+
 // SQL TEMPLATE
 static constexpr const char *SQL_SELECT_USER_ID_BY_USERNAME_PASSWD =
     R"(SELECT id FROM user WHERE username = '{}' AND encrypted_passwd = '{}')";
@@ -31,14 +40,26 @@ static constexpr const char *SQL_SELECT_USER_BY_USERNAME_PASSWD =
 static constexpr const char *SQL_INSERT_USER =
     R"(INSERT INTO user (id, username, encrypted_passwd, privilege) VALUES ({}, '{}', '{}', {}))";
 
+static constexpr const char *SQL_SELECT_MESSAGE_BY_ID =
+    R"(SELECT id, session_id, role, content, prev_message_id, timestamp FROM message WHERE id = {} ORDER BY timestamp DESC)";
+
+static constexpr const char *SQL_SELECT_MESSAGE_BY_SESSION_ID =
+    R"(SELECT id, session_id, role, content, prev_message_id, timestamp FROM message WHERE session_id = {} ORDER BY timestamp DESC)";
+
+static constexpr const char *SQL_INSERT_MESSAGE =
+    R"(INSERT INTO message (id, session_id, role, content, prev_message_id, timestamp) VALUES ({}, {}, '{}', '{}', {}, '{}'))";
+
+static constexpr const char *SQL_DELETE_MESSAGE_BY_SESSION_ID =
+    R"(DELETE FROM message WHERE session_id = {})";
+
 static constexpr const char *SQL_SELECT_SESSION_BY_ID =
-    R"(SELECT id, user_id, title, content, timestamp FROM session WHERE id = {})";
+    R"(SELECT id, user_id, title, timestamp FROM session WHERE id = {})";
 
 static constexpr const char *SQL_SELECT_SESSION_BY_USER_ID =
-    R"(SELECT id, user_id, title, content, timestamp FROM session WHERE user_id = {})";
+    R"(SELECT id, user_id, title, timestamp FROM session WHERE user_id = {})";
 
 static constexpr const char *SQL_INSERT_SESSION =
-    R"(INSERT INTO session (id, user_id, title, content, timestamp) VALUES ({}, {}, '{}', '{}', '{}'))";
+    R"(INSERT INTO session (id, user_id, title, timestamp) VALUES ({}, {}, '{}', '{}'))";
 
 static constexpr const char *SQL_UPDATE_SESSION_TITLE_BY_ID =
     R"(UPDATE session SET title = '{}' WHERE id = {})";

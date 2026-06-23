@@ -4,9 +4,26 @@ CREATE TABLE IF NOT EXISTS session (
     id BIGINT PRIMARY KEY,
     user_id BIGINT NOT NULL,
     title TEXT NOT NULL,
-    content TEXT,
     timestamp DATETIME DEFAULT CURRENT_TIMESTAMP,
+
     FOREIGN KEY (user_id) REFERENCES user(id)
+);
+
+CREATE TABLE IF NOT EXISTS message (
+    id BIGINT PRIMARY KEY,
+    session_id BIGINT NOT NULL,
+    role TEXT NOT NULL CHECK(role IN ('system', 'user', 'assistant')),
+    content TEXT NOT NULL,
+    prev_message_id BIGINT DEFAULT NULL, -- for threading message, NULL means no parent
+    timestamp DATETIME DEFAULT CURRENT_TIMESTAMP,
+
+    FOREIGN KEY (session_id) 
+        REFERENCES session(id) 
+        ON DELETE CASCADE,
+
+    FOREIGN KEY (prev_message_id) 
+        REFERENCES message(id) 
+        ON DELETE SET NULL
 );
 
 CREATE TABLE IF NOT EXISTS user (
@@ -50,10 +67,19 @@ INSERT INTO user (id, username, encrypted_passwd, privilege) VALUES (1, 'admin',
 INSERT INTO model (hash, name, publisher, timestamp, addr, capabilities, context_size, cost) VALUES (
     'hash1', 'TinyStories-656K-Q3_K_M', 'unknown', '2024-06-01 12:00:01', './models/TinyStories-656K-Q3_K_M.gguf', 'chat', 4000, 0.003);
 
-INSERT INTO session (id, user_id, title, content, timestamp) VALUES (
-    1, 1, 'x', 'HELLO WORLD', '2024-06-01 12:00:00');
-INSERT INTO session (id, user_id, title, content, timestamp) VALUES (
-    2, 1, 'xx', 'What is RAG?', '2024-06-01 12:00:01');
+INSERT INTO session (id, user_id, title, timestamp) VALUES (
+    1, 1, 'x', '2024-06-01 12:00:00');
+INSERT INTO session (id, user_id, title, timestamp) VALUES (
+    2, 1, 'xx', '2024-06-01 12:00:01');
+
+INSERT INTO message (id, session_id, role, content, prev_message_id, timestamp) VALUES (
+    1, 1, 'user', 'Question Test1', NULL, '2026-06-01 12:00:00');
+INSERT INTO message (id, session_id, role, content, prev_message_id, timestamp) VALUES (
+    2, 1, 'assistant', 'Answer Test1', 1, '2026-06-01 12:00:01');
+INSERT INTO message (id, session_id, role, content, prev_message_id, timestamp) VALUES (
+    3, 1, 'user', 'Question Test2', NULL, '2026-06-01 12:00:02');
+INSERT INTO message (id, session_id, role, content, prev_message_id, timestamp) VALUES (
+    4, 1, 'assistant', 'Answer Test2', 3, '2026-06-01 12:00:03');
 
 INSERT INTO skill (hash, name, platform, desc, publisher, version, timestamp) VALUES (
     'sha256:4b6acc7d6edb5c71620adc9cc3def5b4f3e5b0beca27f9476edd066190ac02f5', 'chatbox', 1, 
