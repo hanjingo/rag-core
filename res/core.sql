@@ -28,7 +28,7 @@ CREATE TABLE IF NOT EXISTS message (
 
 CREATE TABLE IF NOT EXISTS user (
     id BIGINT PRIMARY KEY,
-    username TEXT NOT NULL,
+    username TEXT NOT NULL UNIQUE,
     encrypted_passwd TEXT NOT NULL,
     privilege INTEGER DEFAULT 0 -- 0: normal user, 1: admin, ...
 );
