@@ -91,8 +91,8 @@ INSERT INTO skill (hash, name, platform, desc, publisher, version, timestamp) VA
     'sha256:c82c0465c9c6d0e0cfdd51fd440d341ef60d892330fbcce880dc28fcf9f776a8', 'ielts-writer', 1, 
     'A skill for IELTS Writer Guide', 'admin', '0.0.1', '2026-06-21 12:00:00');
 INSERT INTO skill (hash, name, platform, desc, publisher, version, timestamp) VALUES (
-    'hash8', 'skill8', 1, 
-    'A skill for testing8', 'admin', '0.0.1', '2026-06-01 12:00:00');
+    'sha256:8637d9bf081dd37aaec97cc46cb7426585ab2cd056b291c0b72ed2102661a9c3', 'stock', 1, 
+    'A skill for Stock trade', 'admin', '0.0.1', '2026-06-24 12:00:00');
 INSERT INTO skill (hash, name, platform, desc, publisher, version, timestamp) VALUES (
     'hash9', 'skill9', 1, 
     'A skill for testing9', 'admin', '0.0.1', '2026-06-01 12:00:00');
@@ -137,7 +137,8 @@ INSERT INTO file (hash, addr, owner, size_kb) VALUES (
     'sha256:c82c0465c9c6d0e0cfdd51fd440d341ef60d892330fbcce880dc28fcf9f776a8', 
     'https://github.com/hanjingo/rag-qt-ielts-writer/releases/download/v0.0.1%231/ielts-writer-windows-x64-v0.0.1.1.zip', 1, 49);
 INSERT INTO file (hash, addr, owner, size_kb) VALUES (
-    'hash4', 'http://example.com/file4.zip', 1, 100);
+    'sha256:8637d9bf081dd37aaec97cc46cb7426585ab2cd056b291c0b72ed2102661a9c3', 
+    'https://github.com/hanjingo/rag-qt-stock/releases/download/v0.0.1/stock-windows-x64-v0.0.1.zip', 1, 45);
 INSERT INTO file (hash, addr, owner, size_kb) VALUES (
     'hash5', 'http://example.com/file5.zip', 1, 100);
 INSERT INTO file (hash, addr, owner, size_kb) VALUES (
