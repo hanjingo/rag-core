@@ -160,7 +160,8 @@ api_handler::Query(ctx_t                                        *ctx,
     auto tokens = llm_mgr::instance().tokenize(model, content, true, true);
     auto params = llm_mgr::instance().create_ctx_params(
         conf::instance().llm_ctx_window_sz());
-    auto ec = llm_mgr::instance().loop_query(
+    std::string answer;
+    auto        ec = llm_mgr::instance().loop_query(
         model,
         tokens,
         params,
@@ -169,6 +170,7 @@ api_handler::Query(ctx_t                                        *ctx,
             if(output.empty())
                 return true;
 
+            answer += output;
             resp.set_error_code(OK);
             resp.set_content(output);
             resp.set_is_finished(false);
@@ -195,7 +197,7 @@ api_handler::Query(ctx_t                                        *ctx,
                      msg_id,
                      session_id,
                      ROLE_ASSISTANT,
-                     resp.content(),
+                     answer,
                      NONE_MSG_ID,
                      now);
     if(db_mgr::instance().exec(DB_SQLITE, sql) != OK)
@@ -251,7 +253,6 @@ api_handler::GetMessageInfo(ctx_t                                  *ctx,
     }
     for(const auto row : rows)
     {
-        LOG_DEBUG("I AM HERE1");
         auto item = resp->add_messages();
         item->set_id(row[0].empty() ? -1 : std::stoll(row[0]));
         item->set_session_id(row[1].empty() ? -1 : std::stoll(row[1]));
