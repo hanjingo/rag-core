@@ -116,17 +116,19 @@ status_t api_handler::RegAccount(ctx_t                              *ctx,
     return status_t::OK;
 }
 
-status_t api_handler::Query(ctx_t                         *ctx,
-                            const ::GrpcLibrary::QueryReq *req,
-                            ::GrpcLibrary::QueryResp      *resp)
+status_t
+api_handler::Query(ctx_t                                        *ctx,
+                   const ::GrpcLibrary::QueryReq                *req,
+                   grpc::ServerWriter<::GrpcLibrary::QueryResp> *writer)
 {
-    int64_t     session_id = req->id();
-    int64_t     user_id    = req->user_id();
-    std::string auth       = req->auth();
-    std::string content    = req->content();
-    std::string model      = req->model();
-    resp->set_error_code(ERR_FAIL);
-    resp->set_id(session_id);
+    int64_t                  session_id = req->id();
+    int64_t                  user_id    = req->user_id();
+    std::string              auth       = req->auth();
+    std::string              content    = req->content();
+    std::string              model      = req->model();
+    ::GrpcLibrary::QueryResp resp;
+    resp.set_error_code(ERR_FAIL);
+    resp.set_id(session_id);
     LOG_DEBUG("Query request session_id: {}, user_id: {}, auth: {}, content: "
               "{}, model: {}",
               session_id,
@@ -149,7 +151,7 @@ status_t api_handler::Query(ctx_t                         *ctx,
                        now);
     if(db_mgr::instance().exec(DB_SQLITE, sql) != OK)
     {
-        resp->set_error_code(ERR_SQLITE_EXEC_FAIL);
+        resp.set_error_code(ERR_SQLITE_EXEC_FAIL);
         LOG_ERROR("Failed to insert message for sql: {}", sql);
         return status_t::OK;
     }
@@ -158,16 +160,34 @@ status_t api_handler::Query(ctx_t                         *ctx,
     auto tokens = llm_mgr::instance().tokenize(model, content, true, true);
     auto params = llm_mgr::instance().create_ctx_params(
         conf::instance().llm_ctx_window_sz());
-    auto ec = llm_mgr::instance()
-                  .loop_query(model, tokens, params, [&](std::string &output) {
-                      LOG_DEBUG("llm generated output: {}", output);
-                      if(output.empty())
-                          return true;
+    auto ec = llm_mgr::instance().loop_query(
+        model,
+        tokens,
+        params,
+        [&](std::string &output) -> bool {
+            LOG_DEBUG("llm generated output: {}", output);
+            if(output.empty())
+                return true;
 
-                      resp->set_content(output);
-                      return false;
-                  });
+            resp.set_error_code(OK);
+            resp.set_content(output);
+            resp.set_is_finished(false);
+            if(!writer->Write(resp))
+            {
+                LOG_ERROR(
+                    "Failed to write response for session_id: {}, user_id: {}, "
+                    "auth: {}, content: {}, model: {}, Disconnected!",
+                    session_id,
+                    user_id,
+                    auth,
+                    content,
+                    model);
+                return false;
+            }
+            return true;
+        });
 
+    resp.set_is_finished(true);
     // save answer record
     msg_id = hj::uuid::gen_u64();
     now    = hj::date_time::format(hj::date_time::now(), "%Y-%m-%d %H:%M:%S");
@@ -175,17 +195,19 @@ status_t api_handler::Query(ctx_t                         *ctx,
                      msg_id,
                      session_id,
                      ROLE_ASSISTANT,
-                     resp->content(),
+                     resp.content(),
                      NONE_MSG_ID,
                      now);
     if(db_mgr::instance().exec(DB_SQLITE, sql) != OK)
     {
-        resp->set_error_code(ERR_SQLITE_EXEC_FAIL);
+        resp.set_error_code(ERR_SQLITE_EXEC_FAIL);
+        writer->Write(resp);
         LOG_ERROR("Failed to insert message for sql: {}", sql);
         return status_t::OK;
     }
 
-    resp->set_error_code(ec);
+    resp.set_error_code(ec);
+    writer->Write(resp);
     return status_t::OK;
 }
 

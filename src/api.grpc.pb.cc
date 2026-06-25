@@ -48,7 +48,7 @@ GrpcService::Stub::Stub(const std::shared_ptr< ::grpc::ChannelInterface>& channe
   : channel_(channel), rpcmethod_Login_(GrpcService_method_names[0], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
   , rpcmethod_Logout_(GrpcService_method_names[1], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
   , rpcmethod_RegAccount_(GrpcService_method_names[2], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_Query_(GrpcService_method_names[3], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_Query_(GrpcService_method_names[3], options.suffix_for_stats(),::grpc::internal::RpcMethod::SERVER_STREAMING, channel)
   , rpcmethod_GetMessageInfo_(GrpcService_method_names[4], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
   , rpcmethod_GetSession_(GrpcService_method_names[5], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
   , rpcmethod_NewSession_(GrpcService_method_names[6], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
@@ -129,27 +129,20 @@ void GrpcService::Stub::async::RegAccount(::grpc::ClientContext* context, const 
   return result;
 }
 
-::grpc::Status GrpcService::Stub::Query(::grpc::ClientContext* context, const ::GrpcLibrary::QueryReq& request, ::GrpcLibrary::QueryResp* response) {
-  return ::grpc::internal::BlockingUnaryCall< ::GrpcLibrary::QueryReq, ::GrpcLibrary::QueryResp, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_Query_, context, request, response);
+::grpc::ClientReader< ::GrpcLibrary::QueryResp>* GrpcService::Stub::QueryRaw(::grpc::ClientContext* context, const ::GrpcLibrary::QueryReq& request) {
+  return ::grpc::internal::ClientReaderFactory< ::GrpcLibrary::QueryResp>::Create(channel_.get(), rpcmethod_Query_, context, request);
 }
 
-void GrpcService::Stub::async::Query(::grpc::ClientContext* context, const ::GrpcLibrary::QueryReq* request, ::GrpcLibrary::QueryResp* response, std::function<void(::grpc::Status)> f) {
-  ::grpc::internal::CallbackUnaryCall< ::GrpcLibrary::QueryReq, ::GrpcLibrary::QueryResp, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_Query_, context, request, response, std::move(f));
+void GrpcService::Stub::async::Query(::grpc::ClientContext* context, const ::GrpcLibrary::QueryReq* request, ::grpc::ClientReadReactor< ::GrpcLibrary::QueryResp>* reactor) {
+  ::grpc::internal::ClientCallbackReaderFactory< ::GrpcLibrary::QueryResp>::Create(stub_->channel_.get(), stub_->rpcmethod_Query_, context, request, reactor);
 }
 
-void GrpcService::Stub::async::Query(::grpc::ClientContext* context, const ::GrpcLibrary::QueryReq* request, ::GrpcLibrary::QueryResp* response, ::grpc::ClientUnaryReactor* reactor) {
-  ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_Query_, context, request, response, reactor);
+::grpc::ClientAsyncReader< ::GrpcLibrary::QueryResp>* GrpcService::Stub::AsyncQueryRaw(::grpc::ClientContext* context, const ::GrpcLibrary::QueryReq& request, ::grpc::CompletionQueue* cq, void* tag) {
+  return ::grpc::internal::ClientAsyncReaderFactory< ::GrpcLibrary::QueryResp>::Create(channel_.get(), cq, rpcmethod_Query_, context, request, true, tag);
 }
 
-::grpc::ClientAsyncResponseReader< ::GrpcLibrary::QueryResp>* GrpcService::Stub::PrepareAsyncQueryRaw(::grpc::ClientContext* context, const ::GrpcLibrary::QueryReq& request, ::grpc::CompletionQueue* cq) {
-  return ::grpc::internal::ClientAsyncResponseReaderHelper::Create< ::GrpcLibrary::QueryResp, ::GrpcLibrary::QueryReq, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), cq, rpcmethod_Query_, context, request);
-}
-
-::grpc::ClientAsyncResponseReader< ::GrpcLibrary::QueryResp>* GrpcService::Stub::AsyncQueryRaw(::grpc::ClientContext* context, const ::GrpcLibrary::QueryReq& request, ::grpc::CompletionQueue* cq) {
-  auto* result =
-    this->PrepareAsyncQueryRaw(context, request, cq);
-  result->StartCall();
-  return result;
+::grpc::ClientAsyncReader< ::GrpcLibrary::QueryResp>* GrpcService::Stub::PrepareAsyncQueryRaw(::grpc::ClientContext* context, const ::GrpcLibrary::QueryReq& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncReaderFactory< ::GrpcLibrary::QueryResp>::Create(channel_.get(), cq, rpcmethod_Query_, context, request, false, nullptr);
 }
 
 ::grpc::Status GrpcService::Stub::GetMessageInfo(::grpc::ClientContext* context, const ::GrpcLibrary::GetMessageInfoReq& request, ::GrpcLibrary::GetMessageInfoResp* response) {
@@ -392,13 +385,13 @@ GrpcService::Service::Service() {
              }, this)));
   AddMethod(new ::grpc::internal::RpcServiceMethod(
       GrpcService_method_names[3],
-      ::grpc::internal::RpcMethod::NORMAL_RPC,
-      new ::grpc::internal::RpcMethodHandler< GrpcService::Service, ::GrpcLibrary::QueryReq, ::GrpcLibrary::QueryResp, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
+      ::grpc::internal::RpcMethod::SERVER_STREAMING,
+      new ::grpc::internal::ServerStreamingHandler< GrpcService::Service, ::GrpcLibrary::QueryReq, ::GrpcLibrary::QueryResp>(
           [](GrpcService::Service* service,
              ::grpc::ServerContext* ctx,
              const ::GrpcLibrary::QueryReq* req,
-             ::GrpcLibrary::QueryResp* resp) {
-               return service->Query(ctx, req, resp);
+             ::grpc::ServerWriter<::GrpcLibrary::QueryResp>* writer) {
+               return service->Query(ctx, req, writer);
              }, this)));
   AddMethod(new ::grpc::internal::RpcServiceMethod(
       GrpcService_method_names[4],
@@ -516,10 +509,10 @@ GrpcService::Service::~Service() {
   return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
 }
 
-::grpc::Status GrpcService::Service::Query(::grpc::ServerContext* context, const ::GrpcLibrary::QueryReq* request, ::GrpcLibrary::QueryResp* response) {
+::grpc::Status GrpcService::Service::Query(::grpc::ServerContext* context, const ::GrpcLibrary::QueryReq* request, ::grpc::ServerWriter< ::GrpcLibrary::QueryResp>* writer) {
   (void) context;
   (void) request;
-  (void) response;
+  (void) writer;
   return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
 }
 

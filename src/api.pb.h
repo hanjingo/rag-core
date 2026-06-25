@@ -1273,6 +1273,7 @@ class QueryResp final : public ::google::protobuf::Message
     kContentFieldNumber = 3,
     kIdFieldNumber = 2,
     kErrorCodeFieldNumber = 1,
+    kIsFinishedFieldNumber = 4,
   };
   // string content = 3;
   void clear_content() ;
@@ -1309,11 +1310,21 @@ class QueryResp final : public ::google::protobuf::Message
   void _internal_set_error_code(::int32_t value);
 
   public:
+  // bool is_finished = 4;
+  void clear_is_finished() ;
+  bool is_finished() const;
+  void set_is_finished(bool value);
+
+  private:
+  bool _internal_is_finished() const;
+  void _internal_set_is_finished(bool value);
+
+  public:
   // @@protoc_insertion_point(class_scope:GrpcLibrary.QueryResp)
  private:
   class _Internal;
   friend class ::google::protobuf::internal::TcParser;
-  static const ::google::protobuf::internal::TcParseTable<2, 3,
+  static const ::google::protobuf::internal::TcParseTable<2, 4,
                                    0, 37,
                                    2>
       _table_;
@@ -1338,6 +1349,7 @@ class QueryResp final : public ::google::protobuf::Message
     ::google::protobuf::internal::ArenaStringPtr content_;
     ::int64_t id_;
     ::int32_t error_code_;
+    bool is_finished_;
     PROTOBUF_TSAN_DECLARE_MEMBER
   };
   union { Impl_ _impl_; };
@@ -9509,6 +9521,31 @@ inline void QueryResp::set_allocated_content(::std::string* PROTOBUF_NULLABLE va
     _impl_.content_.Set("", GetArena());
   }
   // @@protoc_insertion_point(field_set_allocated:GrpcLibrary.QueryResp.content)
+}
+
+// bool is_finished = 4;
+inline void QueryResp::clear_is_finished() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.is_finished_ = false;
+  ClearHasBit(_impl_._has_bits_[0],
+                  0x00000008U);
+}
+inline bool QueryResp::is_finished() const {
+  // @@protoc_insertion_point(field_get:GrpcLibrary.QueryResp.is_finished)
+  return _internal_is_finished();
+}
+inline void QueryResp::set_is_finished(bool value) {
+  _internal_set_is_finished(value);
+  SetHasBit(_impl_._has_bits_[0], 0x00000008U);
+  // @@protoc_insertion_point(field_set:GrpcLibrary.QueryResp.is_finished)
+}
+inline bool QueryResp::_internal_is_finished() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.is_finished_;
+}
+inline void QueryResp::_internal_set_is_finished(bool value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.is_finished_ = value;
 }
 
 // -------------------------------------------------------------------

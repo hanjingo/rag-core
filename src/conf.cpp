@@ -107,7 +107,7 @@ std::unordered_map<std::string, std::string> conf::llm_files()
 
 int conf::llm_ctx_window_sz()
 {
-    return _cfg.get<int>("llm.ctx_window_sz", 2048);
+    return _cfg.get<int>("llm.ctx_window_sz", 4096);
 }
 
 int conf::llm_num_threads()

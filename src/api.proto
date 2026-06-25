@@ -5,7 +5,7 @@ service GrpcService {
     rpc Login (LoginReq) returns (LoginResp) {}
     rpc Logout (LogoutReq) returns (LogoutResp) {}
     rpc RegAccount (RegAccountReq) returns (RegAccountResp) {}
-    rpc Query (QueryReq) returns (QueryResp) {}
+    rpc Query (QueryReq) returns (stream QueryResp) {}
     rpc GetMessageInfo (GetMessageInfoReq) returns (GetMessageInfoResp) {}
     rpc GetSession (GetSessionReq) returns (GetSessionResp) {}
     rpc NewSession (NewSessionReq) returns (NewSessionResp) {}
@@ -100,6 +100,7 @@ message QueryResp {
     int32 error_code = 1;
     int64 id = 2;
     string content = 3;
+    bool is_finished = 4;
 }
 
 message GetMessageInfoReq {

@@ -164,7 +164,8 @@ inline constexpr QueryResp::Impl_::Impl_(
             &::google::protobuf::internal::fixed_address_empty_string,
             ::_pbi::ConstantInitialized()),
         id_{::int64_t{0}},
-        error_code_{0} {}
+        error_code_{0},
+        is_finished_{false} {}
 
 template <typename>
 PROTOBUF_CONSTEXPR QueryResp::QueryResp(::_pbi::ConstantInitialized)
@@ -1079,13 +1080,15 @@ const ::uint32_t
         2,
         0x081, // bitmap
         PROTOBUF_FIELD_OFFSET(::GrpcLibrary::QueryResp, _impl_._has_bits_),
-        6, // hasbit index offset
+        7, // hasbit index offset
         PROTOBUF_FIELD_OFFSET(::GrpcLibrary::QueryResp, _impl_.error_code_),
         PROTOBUF_FIELD_OFFSET(::GrpcLibrary::QueryResp, _impl_.id_),
         PROTOBUF_FIELD_OFFSET(::GrpcLibrary::QueryResp, _impl_.content_),
+        PROTOBUF_FIELD_OFFSET(::GrpcLibrary::QueryResp, _impl_.is_finished_),
         2,
         1,
         0,
+        3,
         0x081, // bitmap
         PROTOBUF_FIELD_OFFSET(::GrpcLibrary::GetMessageInfoReq, _impl_._has_bits_),
         8, // hasbit index offset
@@ -1264,24 +1267,24 @@ static const ::_pbi::MigrationSchema
         {105, sizeof(::GrpcLibrary::RegAccountResp)},
         {112, sizeof(::GrpcLibrary::QueryReq)},
         {125, sizeof(::GrpcLibrary::QueryResp)},
-        {134, sizeof(::GrpcLibrary::GetMessageInfoReq)},
-        {147, sizeof(::GrpcLibrary::GetMessageInfoResp)},
-        {154, sizeof(::GrpcLibrary::GetSessionReq)},
-        {165, sizeof(::GrpcLibrary::GetSessionResp)},
-        {172, sizeof(::GrpcLibrary::NewSessionReq)},
-        {185, sizeof(::GrpcLibrary::NewSessionResp)},
-        {192, sizeof(::GrpcLibrary::ModifySessionTitleReq)},
-        {203, sizeof(::GrpcLibrary::ModifySessionTitleResp)},
-        {212, sizeof(::GrpcLibrary::DelSessionReq)},
-        {221, sizeof(::GrpcLibrary::DelSessionResp)},
-        {228, sizeof(::GrpcLibrary::GetModelInfoReq)},
-        {239, sizeof(::GrpcLibrary::GetModelInfoResp)},
-        {246, sizeof(::GrpcLibrary::NewModelInfoReq)},
-        {255, sizeof(::GrpcLibrary::NewModelInfoResp)},
-        {262, sizeof(::GrpcLibrary::GetSkillInfoReq)},
-        {269, sizeof(::GrpcLibrary::GetSkillInfoResp)},
-        {276, sizeof(::GrpcLibrary::DownloadReq)},
-        {285, sizeof(::GrpcLibrary::DownloadResp)},
+        {136, sizeof(::GrpcLibrary::GetMessageInfoReq)},
+        {149, sizeof(::GrpcLibrary::GetMessageInfoResp)},
+        {156, sizeof(::GrpcLibrary::GetSessionReq)},
+        {167, sizeof(::GrpcLibrary::GetSessionResp)},
+        {174, sizeof(::GrpcLibrary::NewSessionReq)},
+        {187, sizeof(::GrpcLibrary::NewSessionResp)},
+        {194, sizeof(::GrpcLibrary::ModifySessionTitleReq)},
+        {205, sizeof(::GrpcLibrary::ModifySessionTitleResp)},
+        {214, sizeof(::GrpcLibrary::DelSessionReq)},
+        {223, sizeof(::GrpcLibrary::DelSessionResp)},
+        {230, sizeof(::GrpcLibrary::GetModelInfoReq)},
+        {241, sizeof(::GrpcLibrary::GetModelInfoResp)},
+        {248, sizeof(::GrpcLibrary::NewModelInfoReq)},
+        {257, sizeof(::GrpcLibrary::NewModelInfoResp)},
+        {264, sizeof(::GrpcLibrary::GetSkillInfoReq)},
+        {271, sizeof(::GrpcLibrary::GetSkillInfoResp)},
+        {278, sizeof(::GrpcLibrary::DownloadReq)},
+        {287, sizeof(::GrpcLibrary::DownloadResp)},
 };
 static const ::_pb::Message* PROTOBUF_NONNULL const file_default_instances[] = {
     &::GrpcLibrary::_Session_default_instance_._instance,
@@ -1340,73 +1343,73 @@ const char descriptor_table_protodef_src_2fapi_2eproto[] ABSL_ATTRIBUTE_SECTION_
     "asswd\030\002 \001(\t\"5\n\016RegAccountResp\022\022\n\nerror_c"
     "ode\030\001 \001(\005\022\017\n\007user_id\030\002 \001(\003\"U\n\010QueryReq\022\n"
     "\n\002id\030\001 \001(\003\022\017\n\007user_id\030\002 \001(\003\022\014\n\004auth\030\003 \001("
-    "\t\022\017\n\007content\030\004 \001(\t\022\r\n\005model\030\005 \001(\t\"<\n\tQue"
+    "\t\022\017\n\007content\030\004 \001(\t\022\r\n\005model\030\005 \001(\t\"Q\n\tQue"
     "ryResp\022\022\n\nerror_code\030\001 \001(\005\022\n\n\002id\030\002 \001(\003\022\017"
-    "\n\007content\030\003 \001(\t\"a\n\021GetMessageInfoReq\022\n\n\002"
-    "id\030\001 \001(\003\022\022\n\nsession_id\030\002 \001(\003\022\r\n\005limit\030\003 "
-    "\001(\005\022\017\n\007user_id\030\004 \001(\003\022\014\n\004auth\030\005 \001(\t\"T\n\022Ge"
-    "tMessageInfoResp\022\022\n\nerror_code\030\001 \001(\005\022*\n\010"
-    "messages\030\002 \003(\0132\030.GrpcLibrary.MessageInfo"
-    "\"I\n\rGetSessionReq\022\n\n\002id\030\001 \001(\003\022\017\n\007user_id"
-    "\030\002 \001(\003\022\014\n\004auth\030\003 \001(\t\022\r\n\005limit\030\004 \001(\005\"L\n\016G"
-    "etSessionResp\022\022\n\nerror_code\030\001 \001(\005\022&\n\010ses"
-    "sions\030\002 \003(\0132\024.GrpcLibrary.Session\"]\n\rNew"
-    "SessionReq\022\017\n\007user_id\030\001 \001(\003\022\014\n\004auth\030\002 \001("
-    "\t\022\r\n\005title\030\003 \001(\t\022\017\n\007content\030\004 \001(\t\022\r\n\005mod"
-    "el\030\005 \001(\t\"K\n\016NewSessionResp\022\022\n\nerror_code"
-    "\030\001 \001(\005\022%\n\007session\030\002 \001(\0132\024.GrpcLibrary.Se"
-    "ssion\"Q\n\025ModifySessionTitleReq\022\n\n\002id\030\001 \001"
-    "(\003\022\017\n\007user_id\030\002 \001(\003\022\014\n\004auth\030\003 \001(\t\022\r\n\005tit"
-    "le\030\004 \001(\t\"G\n\026ModifySessionTitleResp\022\022\n\ner"
-    "ror_code\030\001 \001(\005\022\n\n\002id\030\002 \001(\003\022\r\n\005title\030\003 \001("
-    "\t\";\n\rDelSessionReq\022\017\n\007user_id\030\001 \001(\003\022\014\n\004a"
-    "uth\030\002 \001(\t\022\013\n\003ids\030\003 \003(\003\"1\n\016DelSessionResp"
-    "\022\022\n\nerror_code\030\001 \001(\005\022\013\n\003ids\030\002 \003(\003\"M\n\017Get"
-    "ModelInfoReq\022\014\n\004hash\030\001 \001(\t\022\017\n\007user_id\030\002 "
-    "\001(\003\022\014\n\004auth\030\003 \001(\t\022\r\n\005limit\030\004 \001(\005\"J\n\020GetM"
-    "odelInfoResp\022\022\n\nerror_code\030\001 \001(\005\022\"\n\006mode"
-    "ls\030\002 \003(\0132\022.GrpcLibrary.Model\"T\n\017NewModel"
-    "InfoReq\022\017\n\007user_id\030\001 \001(\003\022\014\n\004auth\030\002 \001(\t\022\""
-    "\n\006models\030\003 \003(\0132\022.GrpcLibrary.Model\"5\n\020Ne"
-    "wModelInfoResp\022\022\n\nerror_code\030\001 \001(\005\022\r\n\005ha"
-    "shs\030\002 \003(\t\".\n\017GetSkillInfoReq\022\014\n\004hash\030\001 \001"
-    "(\t\022\r\n\005limit\030\002 \001(\005\"J\n\020GetSkillInfoResp\022\022\n"
-    "\nerror_code\030\001 \001(\005\022\"\n\006skills\030\002 \003(\0132\022.Grpc"
-    "Library.Skill\":\n\013DownloadReq\022\014\n\004hash\030\001 \001"
-    "(\t\022\017\n\007user_id\030\002 \001(\003\022\014\n\004auth\030\003 \001(\t\"O\n\014Dow"
-    "nloadResp\022\022\n\nerror_code\030\001 \001(\005\022\014\n\004hash\030\002 "
-    "\001(\t\022\014\n\004addr\030\003 \001(\t\022\017\n\007size_kb\030\004 \001(\0032\310\007\n\013G"
-    "rpcService\0228\n\005Login\022\025.GrpcLibrary.LoginR"
-    "eq\032\026.GrpcLibrary.LoginResp\"\000\022;\n\006Logout\022\026"
-    ".GrpcLibrary.LogoutReq\032\027.GrpcLibrary.Log"
-    "outResp\"\000\022G\n\nRegAccount\022\032.GrpcLibrary.Re"
-    "gAccountReq\032\033.GrpcLibrary.RegAccountResp"
-    "\"\000\0228\n\005Query\022\025.GrpcLibrary.QueryReq\032\026.Grp"
-    "cLibrary.QueryResp\"\000\022S\n\016GetMessageInfo\022\036"
-    ".GrpcLibrary.GetMessageInfoReq\032\037.GrpcLib"
-    "rary.GetMessageInfoResp\"\000\022G\n\nGetSession\022"
-    "\032.GrpcLibrary.GetSessionReq\032\033.GrpcLibrar"
-    "y.GetSessionResp\"\000\022G\n\nNewSession\022\032.GrpcL"
-    "ibrary.NewSessionReq\032\033.GrpcLibrary.NewSe"
-    "ssionResp\"\000\022_\n\022ModifySessionTitle\022\".Grpc"
-    "Library.ModifySessionTitleReq\032#.GrpcLibr"
-    "ary.ModifySessionTitleResp\"\000\022G\n\nDelSessi"
-    "on\022\032.GrpcLibrary.DelSessionReq\032\033.GrpcLib"
-    "rary.DelSessionResp\"\000\022M\n\014GetModelInfo\022\034."
-    "GrpcLibrary.GetModelInfoReq\032\035.GrpcLibrar"
-    "y.GetModelInfoResp\"\000\022M\n\014NewModelInfo\022\034.G"
-    "rpcLibrary.NewModelInfoReq\032\035.GrpcLibrary"
-    ".NewModelInfoResp\"\000\022M\n\014GetSkillInfo\022\034.Gr"
-    "pcLibrary.GetSkillInfoReq\032\035.GrpcLibrary."
-    "GetSkillInfoResp\"\000\022A\n\010Download\022\030.GrpcLib"
-    "rary.DownloadReq\032\031.GrpcLibrary.DownloadR"
-    "esp\"\000b\006proto3"
+    "\n\007content\030\003 \001(\t\022\023\n\013is_finished\030\004 \001(\010\"a\n\021"
+    "GetMessageInfoReq\022\n\n\002id\030\001 \001(\003\022\022\n\nsession"
+    "_id\030\002 \001(\003\022\r\n\005limit\030\003 \001(\005\022\017\n\007user_id\030\004 \001("
+    "\003\022\014\n\004auth\030\005 \001(\t\"T\n\022GetMessageInfoResp\022\022\n"
+    "\nerror_code\030\001 \001(\005\022*\n\010messages\030\002 \003(\0132\030.Gr"
+    "pcLibrary.MessageInfo\"I\n\rGetSessionReq\022\n"
+    "\n\002id\030\001 \001(\003\022\017\n\007user_id\030\002 \001(\003\022\014\n\004auth\030\003 \001("
+    "\t\022\r\n\005limit\030\004 \001(\005\"L\n\016GetSessionResp\022\022\n\ner"
+    "ror_code\030\001 \001(\005\022&\n\010sessions\030\002 \003(\0132\024.GrpcL"
+    "ibrary.Session\"]\n\rNewSessionReq\022\017\n\007user_"
+    "id\030\001 \001(\003\022\014\n\004auth\030\002 \001(\t\022\r\n\005title\030\003 \001(\t\022\017\n"
+    "\007content\030\004 \001(\t\022\r\n\005model\030\005 \001(\t\"K\n\016NewSess"
+    "ionResp\022\022\n\nerror_code\030\001 \001(\005\022%\n\007session\030\002"
+    " \001(\0132\024.GrpcLibrary.Session\"Q\n\025ModifySess"
+    "ionTitleReq\022\n\n\002id\030\001 \001(\003\022\017\n\007user_id\030\002 \001(\003"
+    "\022\014\n\004auth\030\003 \001(\t\022\r\n\005title\030\004 \001(\t\"G\n\026ModifyS"
+    "essionTitleResp\022\022\n\nerror_code\030\001 \001(\005\022\n\n\002i"
+    "d\030\002 \001(\003\022\r\n\005title\030\003 \001(\t\";\n\rDelSessionReq\022"
+    "\017\n\007user_id\030\001 \001(\003\022\014\n\004auth\030\002 \001(\t\022\013\n\003ids\030\003 "
+    "\003(\003\"1\n\016DelSessionResp\022\022\n\nerror_code\030\001 \001("
+    "\005\022\013\n\003ids\030\002 \003(\003\"M\n\017GetModelInfoReq\022\014\n\004has"
+    "h\030\001 \001(\t\022\017\n\007user_id\030\002 \001(\003\022\014\n\004auth\030\003 \001(\t\022\r"
+    "\n\005limit\030\004 \001(\005\"J\n\020GetModelInfoResp\022\022\n\nerr"
+    "or_code\030\001 \001(\005\022\"\n\006models\030\002 \003(\0132\022.GrpcLibr"
+    "ary.Model\"T\n\017NewModelInfoReq\022\017\n\007user_id\030"
+    "\001 \001(\003\022\014\n\004auth\030\002 \001(\t\022\"\n\006models\030\003 \003(\0132\022.Gr"
+    "pcLibrary.Model\"5\n\020NewModelInfoResp\022\022\n\ne"
+    "rror_code\030\001 \001(\005\022\r\n\005hashs\030\002 \003(\t\".\n\017GetSki"
+    "llInfoReq\022\014\n\004hash\030\001 \001(\t\022\r\n\005limit\030\002 \001(\005\"J"
+    "\n\020GetSkillInfoResp\022\022\n\nerror_code\030\001 \001(\005\022\""
+    "\n\006skills\030\002 \003(\0132\022.GrpcLibrary.Skill\":\n\013Do"
+    "wnloadReq\022\014\n\004hash\030\001 \001(\t\022\017\n\007user_id\030\002 \001(\003"
+    "\022\014\n\004auth\030\003 \001(\t\"O\n\014DownloadResp\022\022\n\nerror_"
+    "code\030\001 \001(\005\022\014\n\004hash\030\002 \001(\t\022\014\n\004addr\030\003 \001(\t\022\017"
+    "\n\007size_kb\030\004 \001(\0032\312\007\n\013GrpcService\0228\n\005Login"
+    "\022\025.GrpcLibrary.LoginReq\032\026.GrpcLibrary.Lo"
+    "ginResp\"\000\022;\n\006Logout\022\026.GrpcLibrary.Logout"
+    "Req\032\027.GrpcLibrary.LogoutResp\"\000\022G\n\nRegAcc"
+    "ount\022\032.GrpcLibrary.RegAccountReq\032\033.GrpcL"
+    "ibrary.RegAccountResp\"\000\022:\n\005Query\022\025.GrpcL"
+    "ibrary.QueryReq\032\026.GrpcLibrary.QueryResp\""
+    "\0000\001\022S\n\016GetMessageInfo\022\036.GrpcLibrary.GetM"
+    "essageInfoReq\032\037.GrpcLibrary.GetMessageIn"
+    "foResp\"\000\022G\n\nGetSession\022\032.GrpcLibrary.Get"
+    "SessionReq\032\033.GrpcLibrary.GetSessionResp\""
+    "\000\022G\n\nNewSession\022\032.GrpcLibrary.NewSession"
+    "Req\032\033.GrpcLibrary.NewSessionResp\"\000\022_\n\022Mo"
+    "difySessionTitle\022\".GrpcLibrary.ModifySes"
+    "sionTitleReq\032#.GrpcLibrary.ModifySession"
+    "TitleResp\"\000\022G\n\nDelSession\022\032.GrpcLibrary."
+    "DelSessionReq\032\033.GrpcLibrary.DelSessionRe"
+    "sp\"\000\022M\n\014GetModelInfo\022\034.GrpcLibrary.GetMo"
+    "delInfoReq\032\035.GrpcLibrary.GetModelInfoRes"
+    "p\"\000\022M\n\014NewModelInfo\022\034.GrpcLibrary.NewMod"
+    "elInfoReq\032\035.GrpcLibrary.NewModelInfoResp"
+    "\"\000\022M\n\014GetSkillInfo\022\034.GrpcLibrary.GetSkil"
+    "lInfoReq\032\035.GrpcLibrary.GetSkillInfoResp\""
+    "\000\022A\n\010Download\022\030.GrpcLibrary.DownloadReq\032"
+    "\031.GrpcLibrary.DownloadResp\"\000b\006proto3"
 };
 static ::absl::once_flag descriptor_table_src_2fapi_2eproto_once;
 PROTOBUF_CONSTINIT const ::_pbi::DescriptorTable descriptor_table_src_2fapi_2eproto = {
     false,
     false,
-    3333,
+    3356,
     descriptor_table_protodef_src_2fapi_2eproto,
     "src/api.proto",
     &descriptor_table_src_2fapi_2eproto_once,
@@ -5842,9 +5845,9 @@ QueryResp::QueryResp(
                offsetof(Impl_, id_),
            reinterpret_cast<const char*>(&from._impl_) +
                offsetof(Impl_, id_),
-           offsetof(Impl_, error_code_) -
+           offsetof(Impl_, is_finished_) -
                offsetof(Impl_, id_) +
-               sizeof(Impl_::error_code_));
+               sizeof(Impl_::is_finished_));
 
   // @@protoc_insertion_point(copy_constructor:GrpcLibrary.QueryResp)
 }
@@ -5859,9 +5862,9 @@ inline void QueryResp::SharedCtor(::_pb::Arena* PROTOBUF_NULLABLE arena) {
   ::memset(reinterpret_cast<char*>(&_impl_) +
                offsetof(Impl_, id_),
            0,
-           offsetof(Impl_, error_code_) -
+           offsetof(Impl_, is_finished_) -
                offsetof(Impl_, id_) +
-               sizeof(Impl_::error_code_));
+               sizeof(Impl_::is_finished_));
 }
 QueryResp::~QueryResp() {
   // @@protoc_insertion_point(destructor:GrpcLibrary.QueryResp)
@@ -5921,16 +5924,16 @@ QueryResp::GetClassData() const {
   return QueryResp_class_data_.base();
 }
 PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
-const ::_pbi::TcParseTable<2, 3, 0, 37, 2>
+const ::_pbi::TcParseTable<2, 4, 0, 37, 2>
 QueryResp::_table_ = {
   {
     PROTOBUF_FIELD_OFFSET(QueryResp, _impl_._has_bits_),
     0, // no _extensions_
-    3, 24,  // max_field_number, fast_idx_mask
+    4, 24,  // max_field_number, fast_idx_mask
     offsetof(decltype(_table_), field_lookup_table),
-    4294967288,  // skipmap
+    4294967280,  // skipmap
     offsetof(decltype(_table_), field_entries),
-    3,  // num_field_entries
+    4,  // num_field_entries
     0,  // num_aux_entries
     offsetof(decltype(_table_), field_names),  // no aux_entries
     QueryResp_class_data_.base(),
@@ -5940,7 +5943,10 @@ QueryResp::_table_ = {
     ::_pbi::TcParser::GetTable<::GrpcLibrary::QueryResp>(),  // to_prefetch
     #endif  // PROTOBUF_PREFETCH_PARSE_TABLE
   }, {{
-    {::_pbi::TcParser::MiniParse, {}},
+    // bool is_finished = 4;
+    {::_pbi::TcParser::SingularVarintNoZag1<bool, offsetof(QueryResp, _impl_.is_finished_), 3>(),
+     {32, 3, 0,
+      PROTOBUF_FIELD_OFFSET(QueryResp, _impl_.is_finished_)}},
     // int32 error_code = 1;
     {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(QueryResp, _impl_.error_code_), 2>(),
      {8, 2, 0,
@@ -5962,6 +5968,8 @@ QueryResp::_table_ = {
     {PROTOBUF_FIELD_OFFSET(QueryResp, _impl_.id_), _Internal::kHasBitsOffset + 1, 0, (0 | ::_fl::kFcOptional | ::_fl::kInt64)},
     // string content = 3;
     {PROTOBUF_FIELD_OFFSET(QueryResp, _impl_.content_), _Internal::kHasBitsOffset + 0, 0, (0 | ::_fl::kFcOptional | ::_fl::kUtf8String | ::_fl::kRepAString)},
+    // bool is_finished = 4;
+    {PROTOBUF_FIELD_OFFSET(QueryResp, _impl_.is_finished_), _Internal::kHasBitsOffset + 3, 0, (0 | ::_fl::kFcOptional | ::_fl::kBool)},
   }},
   // no aux_entries
   {{
@@ -5981,10 +5989,10 @@ PROTOBUF_NOINLINE void QueryResp::Clear() {
   if (CheckHasBit(cached_has_bits, 0x00000001U)) {
     _impl_.content_.ClearNonDefaultToEmpty();
   }
-  if (BatchCheckHasBit(cached_has_bits, 0x00000006U)) {
+  if (BatchCheckHasBit(cached_has_bits, 0x0000000eU)) {
     ::memset(&_impl_.id_, 0, static_cast<::size_t>(
-        reinterpret_cast<char*>(&_impl_.error_code_) -
-        reinterpret_cast<char*>(&_impl_.id_)) + sizeof(_impl_.error_code_));
+        reinterpret_cast<char*>(&_impl_.is_finished_) -
+        reinterpret_cast<char*>(&_impl_.id_)) + sizeof(_impl_.is_finished_));
   }
   _impl_._has_bits_.Clear();
   _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
@@ -6037,6 +6045,15 @@ PROTOBUF_NOINLINE void QueryResp::Clear() {
     }
   }
 
+  // bool is_finished = 4;
+  if (CheckHasBit(cached_has_bits, 0x00000008U)) {
+    if (this_._internal_is_finished() != 0) {
+      target = stream->EnsureSpace(target);
+      target = ::_pbi::WireFormatLite::WriteBoolToArray(
+          4, this_._internal_is_finished(), target);
+    }
+  }
+
   if (ABSL_PREDICT_FALSE(this_._internal_metadata_.have_unknown_fields())) {
     target =
         ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
@@ -6062,7 +6079,7 @@ PROTOBUF_NOINLINE void QueryResp::Clear() {
 
   ::_pbi::Prefetch5LinesFrom7Lines(&this_);
   cached_has_bits = this_._impl_._has_bits_[0];
-  if (BatchCheckHasBit(cached_has_bits, 0x00000007U)) {
+  if (BatchCheckHasBit(cached_has_bits, 0x0000000fU)) {
     // string content = 3;
     if (CheckHasBit(cached_has_bits, 0x00000001U)) {
       if (!this_._internal_content().empty()) {
@@ -6084,6 +6101,12 @@ PROTOBUF_NOINLINE void QueryResp::Clear() {
             this_._internal_error_code());
       }
     }
+    // bool is_finished = 4;
+    if (CheckHasBit(cached_has_bits, 0x00000008U)) {
+      if (this_._internal_is_finished() != 0) {
+        total_size += 2;
+      }
+    }
   }
   return this_.MaybeComputeUnknownFieldsSize(total_size,
                                              &this_._impl_._cached_size_);
@@ -6103,7 +6126,7 @@ void QueryResp::MergeImpl(::google::protobuf::MessageLite& to_msg,
   (void)cached_has_bits;
 
   cached_has_bits = from._impl_._has_bits_[0];
-  if (BatchCheckHasBit(cached_has_bits, 0x00000007U)) {
+  if (BatchCheckHasBit(cached_has_bits, 0x0000000fU)) {
     if (CheckHasBit(cached_has_bits, 0x00000001U)) {
       if (!from._internal_content().empty()) {
         _this->_internal_set_content(from._internal_content());
@@ -6121,6 +6144,11 @@ void QueryResp::MergeImpl(::google::protobuf::MessageLite& to_msg,
     if (CheckHasBit(cached_has_bits, 0x00000004U)) {
       if (from._internal_error_code() != 0) {
         _this->_impl_.error_code_ = from._impl_.error_code_;
+      }
+    }
+    if (CheckHasBit(cached_has_bits, 0x00000008U)) {
+      if (from._internal_is_finished() != 0) {
+        _this->_impl_.is_finished_ = from._impl_.is_finished_;
       }
     }
   }
@@ -6145,8 +6173,8 @@ void QueryResp::InternalSwap(QueryResp* PROTOBUF_RESTRICT PROTOBUF_NONNULL other
   swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
   ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.content_, &other->_impl_.content_, arena);
   ::google::protobuf::internal::memswap<
-      PROTOBUF_FIELD_OFFSET(QueryResp, _impl_.error_code_)
-      + sizeof(QueryResp::_impl_.error_code_)
+      PROTOBUF_FIELD_OFFSET(QueryResp, _impl_.is_finished_)
+      + sizeof(QueryResp::_impl_.is_finished_)
       - PROTOBUF_FIELD_OFFSET(QueryResp, _impl_.id_)>(
           reinterpret_cast<char*>(&_impl_.id_),
           reinterpret_cast<char*>(&other->_impl_.id_));

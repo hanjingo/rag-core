@@ -26,9 +26,10 @@ class api_handler final : public GrpcLibrary::GrpcService::Service
     status_t RegAccount(ctx_t                              *ctx,
                         const ::GrpcLibrary::RegAccountReq *req,
                         ::GrpcLibrary::RegAccountResp      *resp) override;
-    status_t Query(ctx_t                         *ctx,
-                   const ::GrpcLibrary::QueryReq *req,
-                   ::GrpcLibrary::QueryResp      *resp) override;
+    status_t
+    Query(ctx_t                                        *ctx,
+          const ::GrpcLibrary::QueryReq                *req,
+          grpc::ServerWriter<::GrpcLibrary::QueryResp> *writer) override;
 
     status_t GetMessageInfo(ctx_t                                  *ctx,
                             const ::GrpcLibrary::GetMessageInfoReq *req,
