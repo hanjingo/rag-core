@@ -61,12 +61,11 @@ int main(int argc, char *argv[])
     hj::sighandler::instance().sigcatch({SIGABRT, SIGTERM}, [](int sig) {});
 
     // log config
-    auto filename =
-        conf::instance().data().get<std::string>("log.filename", "default.log");
-    auto max_size  = MB(conf::instance().data().get<int>("log.max_size", 1));
-    auto max_files = conf::instance().data().get<int>("log.max_files", 1);
-    auto min_lvl   = conf::instance().data().get<int>("log.min_lvl", 0);
-    auto flush_on  = conf::instance().data().get<int>("log.flush_on", 0);
+    auto filename  = conf::instance().log_filename();
+    auto max_size  = MB(conf::instance().log_max_size());
+    auto max_files = conf::instance().log_max_files();
+    auto min_lvl   = conf::instance().log_min_lvl();
+    auto flush_on  = conf::instance().log_flush_on();
     hj::log::logger::instance()->add_sink(
         hj::log::logger::instance()->create_rotate_file_sink(filename,
                                                              max_size,
@@ -115,15 +114,19 @@ int main(int argc, char *argv[])
         db_mgr::instance().init();
 
         // init models
-        auto files = conf::instance().llm_files();
-        LOG_DEBUG("init model files num: {}", files.size());
-        for(const auto &file : files)
-            LOG_DEBUG("init model name:file: {}:{}", file.first, file.second);
-        llm_mgr::instance().load(files);
+        auto models = conf::instance().llm_models();
+        LOG_DEBUG("init model config num: {}", models.size());
+        for(const auto &model : models)
+            LOG_DEBUG("init model name:file: {}:{} with n_gpu_layers:{}",
+                      model.first,
+                      model.second.path,
+                      model.second.n_gpu_layers);
+
+        llm_mgr::instance().load(models);
         LOG_DEBUG("init llm model finish");
 
         // run server
-        auto   addr = conf::instance().data().get<std::string>("server.addr");
+        auto   addr = conf::instance().server_addr();
         server srv(addr);
         LOG_DEBUG("starting server at {}", srv.address());
         srv.start();

@@ -4,7 +4,7 @@ RAG Core Component
 macOS / Linux:
 
 ```bash
-cmake -S . -B build -DCMAKE_TOOLCHAIN_FILE=$VCPKG_ROOT/scripts/buildsystems/vcpkg.cmake -DBUILD_TEST=ON -DBUILD_BENCH=ON
+cmake -S . -B build -DCMAKE_TOOLCHAIN_FILE=$VCPKG_ROOT/scripts/buildsystems/vcpkg.cmake -DBUILD_TEST=ON -DBUILD_BENCH=ON # -DGGML_CUDA=ON # if you have NVIDIA GPU, enable this
 cmake --build build
 ctest --test-dir build
 ```
@@ -13,7 +13,7 @@ Windows (PowerShell):
 
 ```powershell
 # from project root
-cmake -S . -B build -G "Visual Studio 17 2022" -DCMAKE_TOOLCHAIN_FILE="$env:VCPKG_ROOT/scripts/buildsystems/vcpkg.cmake" -DBUILD_TEST=ON -DBUILD_BENCH=ON
+cmake -S . -B build -G "Visual Studio 17 2022" -DCMAKE_TOOLCHAIN_FILE="$env:VCPKG_ROOT/scripts/buildsystems/vcpkg.cmake" -DBUILD_TEST=ON -DBUILD_BENCH=ON # -DGGML_CUDA=ON # if you have NVIDIA GPU, enable this
 cmake --build build --config Debug
 cmake --build build --target tests --config Debug
 ```

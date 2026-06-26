@@ -7,10 +7,9 @@ void db_mgr::init()
 {
     _dbs.clear();
 
-    auto id = conf::instance().data().get<std::string>("sqlite.id", "default");
-    auto path =
-        conf::instance().data().get<std::string>("sqlite.path", "./default.db");
-    auto capa = conf::instance().data().get<std::size_t>("sqlite.capa", 1);
+    auto id   = conf::instance().sqlite_id();
+    auto path = conf::instance().sqlite_path();
+    auto capa = conf::instance().sqlite_pool();
     add(std::make_unique<sqlite>(id.c_str(), path.c_str(), capa));
     LOG_DEBUG("Initialized db_mgr with sqlite db, id:{}, path:{}, capa:{}",
               id,

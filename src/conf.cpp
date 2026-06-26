@@ -19,19 +19,64 @@ hj::ini conf::data()
     return _cfg;
 }
 
+int conf::log_min_lvl()
+{
+    return _cfg.get<int>("log/min_lvl", 0);
+}
+
+int conf::log_flush_on()
+{
+    return _cfg.get<int>("log/flush_on", 0);
+}
+
+std::string conf::log_filename()
+{
+    return _cfg.get<std::string>("log/filename", "default.log");
+}
+
+int conf::log_max_size()
+{
+    return _cfg.get<int>("log/max_size", 1); // MB
+}
+
+int conf::log_max_files()
+{
+    return _cfg.get<int>("log/max_files", 5);
+}
+
+std::string conf::server_addr()
+{
+    return _cfg.get<std::string>("server/addr", "");
+}
+
+std::string conf::sqlite_id()
+{
+    return _cfg.get<std::string>("sqlite/id", "default");
+}
+
+std::string conf::sqlite_path()
+{
+    return _cfg.get<std::string>("sqlite/path", "default.db");
+}
+
+int conf::sqlite_pool()
+{
+    return _cfg.get<int>("sqlite/pool", 5);
+}
+
 int conf::sqlite_msg_limit()
 {
-    return _cfg.get<int>("sqlite.msg_limit", 1000);
+    return _cfg.get<int>("sqlite/msg_limit", 1000);
 }
 
 std::string conf::issuer_id()
 {
-    return _cfg.get<std::string>("issuer.id", "default");
+    return _cfg.get<std::string>("issuer/id", "default");
 }
 
 hj::license::sign_algo conf::issuer_algo()
 {
-    int algo = _cfg.get<int>("issuer.algo", 0);
+    int algo = _cfg.get<int>("issuer/algo", 0);
     switch(algo)
     {
         case 1:
@@ -44,31 +89,31 @@ hj::license::sign_algo conf::issuer_algo()
 std::vector<std::string> conf::issuer_keys()
 {
     std::vector<std::string> keys;
-    keys.push_back(_cfg.get<std::string>("issuer.pub_key", ""));
-    keys.push_back(_cfg.get<std::string>("issuer.pri_key", ""));
-    keys.push_back(_cfg.get<std::string>("issuer.encrypted_pub_key", ""));
-    keys.push_back(_cfg.get<std::string>("issuer.encrypted_pri_key", ""));
+    keys.push_back(_cfg.get<std::string>("issuer/pub_key", ""));
+    keys.push_back(_cfg.get<std::string>("issuer/pri_key", ""));
+    keys.push_back(_cfg.get<std::string>("issuer/encrypted_pub_key", ""));
+    keys.push_back(_cfg.get<std::string>("issuer/encrypted_pri_key", ""));
     return keys;
 }
 
 int conf::issuer_valid_times()
 {
-    return _cfg.get<int>("issuer.valid_times", 1000);
+    return _cfg.get<int>("issuer/valid_times", 1000);
 }
 
 int conf::issuer_leeway()
 {
-    return _cfg.get<int>("issuer.leeway", 1);
+    return _cfg.get<int>("issuer/leeway", 1);
 }
 
 std::string conf::verifier_id()
 {
-    return _cfg.get<std::string>("verifier.id", "default");
+    return _cfg.get<std::string>("verifier/id", "default");
 }
 
 hj::license::sign_algo conf::verifier_algo()
 {
-    int algo = _cfg.get<int>("verifier.algo", 0);
+    int algo = _cfg.get<int>("verifier/algo", 0);
     switch(algo)
     {
         case 1:
@@ -81,36 +126,43 @@ hj::license::sign_algo conf::verifier_algo()
 std::vector<std::string> conf::verifier_keys()
 {
     std::vector<std::string> keys;
-    keys.push_back(_cfg.get<std::string>("verifier.pub_key", ""));
-    keys.push_back(_cfg.get<std::string>("verifier.pri_key", ""));
-    keys.push_back(_cfg.get<std::string>("verifier.encrypted_pub_key", ""));
-    keys.push_back(_cfg.get<std::string>("verifier.encrypted_pri_key", ""));
+    keys.push_back(_cfg.get<std::string>("verifier/pub_key", ""));
+    keys.push_back(_cfg.get<std::string>("verifier/pri_key", ""));
+    keys.push_back(_cfg.get<std::string>("verifier/encrypted_pub_key", ""));
+    keys.push_back(_cfg.get<std::string>("verifier/encrypted_pri_key", ""));
     return keys;
 }
 
-std::unordered_map<std::string, std::string> conf::llm_files()
+std::unordered_map<std::string, conf::model_config> conf::llm_models()
 {
-    auto             str = _cfg.get<std::string>("llm.llm_files", "");
+    auto             str = _cfg.get<std::string>("llm/models", "");
     std::string_view tag{";", 1};
     auto             items = hj::string_util::split(str, tag);
-
-    std::string_view                             kv_tag{":", 1};
-    std::unordered_map<std::string, std::string> files;
+    std::unordered_map<std::string, conf::model_config> confs;
     for(const auto &item : items)
     {
-        auto kv = hj::string_util::split(item, kv_tag);
-        if(kv.size() == 2)
-            files[kv[0]] = kv[1];
+        model_config config;
+        config.path         = _cfg.get<std::string>(item + "/path", "");
+        config.n_gpu_layers = _cfg.get<int>(item + "/n_gpu_layers", -2);
+        if(config.path.empty() || config.n_gpu_layers < -1)
+        {
+            std::cerr << "config model: " << item << ", path: " << config.path
+                      << ", n_gpu_layers: " << config.n_gpu_layers
+                      << " INVALID!!!" << std::endl;
+            continue;
+        }
+
+        confs[item] = config;
     }
-    return files;
+    return confs;
 }
 
 int conf::llm_ctx_window_sz()
 {
-    return _cfg.get<int>("llm.ctx_window_sz", 4096);
+    return _cfg.get<int>("llm/ctx_window_sz", 4096);
 }
 
 int conf::llm_num_threads()
 {
-    return _cfg.get<int>("llm.num_threads", 1);
+    return _cfg.get<int>("llm/num_threads", 1);
 }

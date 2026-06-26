@@ -1,7 +1,6 @@
 #include "llm.h"
 
 #include "err.h"
-#include "conf.h"
 
 #include <hj/log/log.hpp>
 
@@ -18,9 +17,9 @@ llm_mgr::~llm_mgr()
 }
 
 void llm_mgr::load(
-    const std::unordered_map<std::string, std::string> &model_paths)
+    const std::unordered_map<std::string, conf::model_config> &model_configs)
 {
-    for(auto &kv : model_paths)
+    for(auto &kv : model_configs)
     {
         if(_llms.find(kv.first) != _llms.end())
         {
@@ -28,16 +27,23 @@ void llm_mgr::load(
             continue;
         }
 
-        auto model = std::make_unique<hj::llama::model>(kv.second.c_str());
+        auto params         = hj::llama::model::default_params();
+        params.n_gpu_layers = kv.second.n_gpu_layers;
+        auto model =
+            std::make_unique<hj::llama::model>(kv.second.path.c_str(), params);
         if(model->data() == nullptr)
         {
             LOG_ERROR("Failed to load model {} from file {}, skip",
                       kv.first,
-                      kv.second);
+                      kv.second.path);
             continue;
         }
 
         _llms[kv.first] = std::move(model);
+        LOG_INFO("Loaded model {} from file {} with {} GPU layers",
+                 kv.first,
+                 kv.second.path,
+                 kv.second.n_gpu_layers);
     }
 }
 
@@ -56,9 +62,16 @@ std::vector<hj::llama::token_t> llm_mgr::tokenize(const std::string &model,
 hj::llama::context_params_t
 llm_mgr::create_ctx_params(const size_t ctx_window_sz)
 {
-    auto ctx  = hj::llama::context::default_params();
-    ctx.n_ctx = conf::instance().llm_ctx_window_sz();
-    return ctx;
+    auto params  = hj::llama::context::default_params();
+    params.n_ctx = ctx_window_sz;
+    return params;
+}
+
+hj::llama::model_params_t llm_mgr::create_model_params(const int n_gpu_layers)
+{
+    auto params         = hj::llama::model::default_params();
+    params.n_gpu_layers = n_gpu_layers;
+    return params;
 }
 
 int llm_mgr::loop_query(

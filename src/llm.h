@@ -8,6 +8,8 @@
 #include <hj/ai/llama.hpp>
 #include <hj/sync/thread_pool.hpp>
 
+#include "conf.h"
+
 #ifndef LLM_TOKEN_PIECE_BUF_SZ
 #define LLM_TOKEN_PIECE_BUF_SZ 128
 #endif
@@ -27,7 +29,8 @@ class llm_mgr
         return inst;
     }
 
-    void load(const std::unordered_map<std::string, std::string> &model_paths);
+    void load(const std::unordered_map<std::string, conf::model_config>
+                  &model_configs);
 
     std::vector<hj::llama::token_t> tokenize(const std::string &model,
                                              const std::string &text,
@@ -35,6 +38,8 @@ class llm_mgr
                                              const bool         parse_special);
 
     hj::llama::context_params_t create_ctx_params(const size_t ctx_window_sz);
+
+    hj::llama::model_params_t create_model_params(const int n_gpu_layers);
 
     int loop_query(const std::string                               &model_id,
                    std::vector<hj::llama::token_t>                 &tokens,

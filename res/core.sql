@@ -4,7 +4,7 @@ CREATE TABLE IF NOT EXISTS session (
     id BIGINT PRIMARY KEY,
     user_id BIGINT NOT NULL,
     title TEXT NOT NULL,
-    timestamp DATETIME DEFAULT CURRENT_TIMESTAMP,
+    timestamp BIGINT, -- use integer is a better choice
 
     FOREIGN KEY (user_id) REFERENCES user(id)
 );
@@ -15,7 +15,7 @@ CREATE TABLE IF NOT EXISTS message (
     role TEXT NOT NULL CHECK(role IN ('system', 'user', 'assistant')),
     content TEXT NOT NULL,
     prev_message_id BIGINT DEFAULT NULL, -- for threading message, NULL means no parent
-    timestamp DATETIME DEFAULT CURRENT_TIMESTAMP,
+    timestamp BIGINT,
 
     FOREIGN KEY (session_id) 
         REFERENCES session(id) 
@@ -37,7 +37,7 @@ CREATE TABLE IF NOT EXISTS model (
     hash TEXT PRIMARY KEY,
     name TEXT NOT NULL,
     publisher TEXT DEFAULT 'unknown',
-    timestamp DATETIME DEFAULT CURRENT_TIMESTAMP,
+    timestamp BIGINT,
     addr TEXT,
     capabilities TEXT,
     context_size INTEGER DEFAULT 0,
@@ -51,7 +51,7 @@ CREATE TABLE IF NOT EXISTS skill (
     desc TEXT,
     publisher TEXT NOT NULL,
     version TEXT NOT NULL,
-    timestamp DATETIME DEFAULT CURRENT_TIMESTAMP
+    timestamp BIGINT
 );
 
 CREATE TABLE IF NOT EXISTS file (
@@ -65,67 +65,71 @@ CREATE TABLE IF NOT EXISTS file (
 INSERT INTO user (id, username, encrypted_passwd, privilege) VALUES (1, 'admin', 'admin', 1);
 
 INSERT INTO model (hash, name, publisher, timestamp, addr, capabilities, context_size, cost) VALUES (
-    'hash1', 'TinyStories-656K-Q3_K_M', 'unknown', '2024-06-01 12:00:01', './models/TinyStories-656K-Q3_K_M.gguf', 'chat', 4000, 0.003);
+    'hash1', 'TinyStories-656K-Q3_K_M', 'unknown', 0, './models/TinyStories-656K-Q3_K_M.gguf', 'chat', 4000, 0.003);
+INSERT INTO model (hash, name, publisher, timestamp, addr, capabilities, context_size, cost) VALUES (
+    'hash2', 'Qwen3-8B-Q8_0', 'unknown', 0, './models/Qwen3-8B-Q8_0.gguf', 'chat', 4000, 0.003);
+INSERT INTO model (hash, name, publisher, timestamp, addr, capabilities, context_size, cost) VALUES (
+    'hash3', 'Qwen3-Embedding-0.6B-Q8_0', 'unknown', 0, './models/Qwen3-Embedding-0.6B-Q8_0.gguf', 'chat', 4000, 0.003);
 
 INSERT INTO session (id, user_id, title, timestamp) VALUES (
-    1, 1, 'x', '2024-06-01 12:00:00');
+    1, 1, 'x', 0);
 INSERT INTO session (id, user_id, title, timestamp) VALUES (
-    2, 1, 'xx', '2024-06-01 12:00:01');
+    2, 1, 'xx', 1);
 
 INSERT INTO message (id, session_id, role, content, prev_message_id, timestamp) VALUES (
-    1, 1, 'user', 'Question Test1', NULL, '2026-06-01 12:00:00');
+    1, 1, 'user', 'Question Test1', NULL, 0);
 INSERT INTO message (id, session_id, role, content, prev_message_id, timestamp) VALUES (
-    2, 1, 'assistant', 'Answer Test1', 1, '2026-06-01 12:00:01');
+    2, 1, 'assistant', 'Answer Test1', 1, 1);
 INSERT INTO message (id, session_id, role, content, prev_message_id, timestamp) VALUES (
-    3, 1, 'user', 'Question Test2', NULL, '2026-06-01 12:00:02');
+    3, 1, 'user', 'Question Test2', NULL, 2);
 INSERT INTO message (id, session_id, role, content, prev_message_id, timestamp) VALUES (
-    4, 1, 'assistant', 'Answer Test2', 3, '2026-06-01 12:00:03');
+    4, 1, 'assistant', 'Answer Test2', 3, 3);
 
 INSERT INTO skill (hash, name, platform, desc, publisher, version, timestamp) VALUES (
     'sha256:4b6acc7d6edb5c71620adc9cc3def5b4f3e5b0beca27f9476edd066190ac02f5', 'chatbox', 1, 
-    'A skill for Chat, using llm model, free for use it etc...', 'admin', '0.0.1', '2026-06-21 19:00:00');
+    'A skill for Chat, using llm model, free for use it etc...', 'admin', '0.0.1', 0);
 INSERT INTO skill (hash, name, platform, desc, publisher, version, timestamp) VALUES (
     'sha256:607396c3c0d48ddef72125d7a7a25d447961a0c19112ecf629e5eb1e25f89b52', 'grammar', 1, 
-    'A skill for english grammar checking', 'admin', '0.0.1', '2026-06-21 12:00:01');
+    'A skill for english grammar checking', 'admin', '0.0.1', 1);
 INSERT INTO skill (hash, name, platform, desc, publisher, version, timestamp) VALUES (
     'sha256:c82c0465c9c6d0e0cfdd51fd440d341ef60d892330fbcce880dc28fcf9f776a8', 'ielts-writer', 1, 
-    'A skill for IELTS Writer Guide', 'admin', '0.0.1', '2026-06-21 12:00:00');
+    'A skill for IELTS Writer Guide', 'admin', '0.0.1', 2);
 INSERT INTO skill (hash, name, platform, desc, publisher, version, timestamp) VALUES (
     'sha256:8637d9bf081dd37aaec97cc46cb7426585ab2cd056b291c0b72ed2102661a9c3', 'stock', 1, 
-    'A skill for Stock trade', 'admin', '0.0.1', '2026-06-24 12:00:00');
+    'A skill for Stock trade', 'admin', '0.0.1', 3);
 INSERT INTO skill (hash, name, platform, desc, publisher, version, timestamp) VALUES (
     'hash9', 'skill9', 1, 
-    'A skill for testing9', 'admin', '0.0.1', '2026-06-01 12:00:00');
+    'A skill for testing9', 'admin', '0.0.1', 4);
 INSERT INTO skill (hash, name, platform, desc, publisher, version, timestamp) VALUES (
     'hash10', 'skill10', 1, 
-    'A skill for testing10', 'admin', '0.0.1', '2026-06-01 12:00:00');
+    'A skill for testing10', 'admin', '0.0.1', 5);
 INSERT INTO skill (hash, name, platform, desc, publisher, version, timestamp) VALUES (
     'hash11', 'skill11', 1, 
-    'A skill for testing11', 'admin', '0.0.1', '2026-06-01 12:00:00');
+    'A skill for testing11', 'admin', '0.0.1', 6);
 INSERT INTO skill (hash, name, platform, desc, publisher, version, timestamp) VALUES (
     'hash12', 'skill12', 1, 
-    'A skill for testing12', 'admin', '0.0.1', '2026-06-01 12:00:00');
+    'A skill for testing12', 'admin', '0.0.1', 7);
 INSERT INTO skill (hash, name, platform, desc, publisher, version, timestamp) VALUES (
     'hash13', 'skill13', 1, 
-    'A skill for testing13', 'admin', '0.0.1', '2026-06-01 12:00:00');
+    'A skill for testing13', 'admin', '0.0.1', 8);
 INSERT INTO skill (hash, name, platform, desc, publisher, version, timestamp) VALUES (
     'hash14', 'skill14', 1, 
-    'A skill for testing14', 'admin', '0.0.1', '2026-06-01 12:00:00');
+    'A skill for testing14', 'admin', '0.0.1', 9);
 INSERT INTO skill (hash, name, platform, desc, publisher, version, timestamp) VALUES (
     'hash15', 'skill15', 1, 
-    'A skill for testing15', 'admin', '0.0.1', '2026-06-01 12:00:00');
+    'A skill for testing15', 'admin', '0.0.1', 10);
 INSERT INTO skill (hash, name, platform, desc, publisher, version, timestamp) VALUES (
     'hash16', 'skill16', 1, 
-    'A skill for testing16', 'admin', '0.0.1', '2026-06-01 12:00:00');
+    'A skill for testing16', 'admin', '0.0.1', 11);
 INSERT INTO skill (hash, name, platform,  desc, publisher, version, timestamp) VALUES (
     'hash17', 'skill17', 1, 
-    'A skill for testing17', 'admin', '0.0.1', '2026-06-01 12:00:00');
+    'A skill for testing17', 'admin', '0.0.1', 12);
 INSERT INTO skill (hash, name, platform, desc, publisher, version, timestamp) VALUES (
     'hash18', 'skill18', 1, 
-    'A skill for testing18', 'admin', '0.0.1', '2026-06-01 12:00:00');
+    'A skill for testing18', 'admin', '0.0.1', 13);
 INSERT INTO skill (hash, name, platform, desc, publisher, version, timestamp) VALUES (
     'hash19', 'skill19', 1, 
-    'A skill for testing19', 'admin', '0.0.1', '2026-06-01 12:00:00');
+    'A skill for testing19', 'admin', '0.0.1', 14);
 
 INSERT INTO file (hash, addr, owner, size_kb) VALUES (
     'sha256:4b6acc7d6edb5c71620adc9cc3def5b4f3e5b0beca27f9476edd066190ac02f5', 

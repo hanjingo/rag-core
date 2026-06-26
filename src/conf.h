@@ -10,6 +10,13 @@
 class conf
 {
   public:
+    struct model_config
+    {
+        std::string path;
+        int         n_gpu_layers;
+    };
+
+  public:
     conf();
     ~conf();
 
@@ -21,7 +28,19 @@ class conf
 
     hj::ini data();
 
-    int sqlite_msg_limit();
+    int         log_min_lvl();
+    int         log_flush_on();
+    std::string log_filename();
+    int         log_max_size();
+    int         log_max_files();
+
+    std::string server_addr();
+
+    std::string sqlite_id();
+    std::string sqlite_path();
+    int         sqlite_pool();
+    int         sqlite_msg_limit();
+
 
     std::string              issuer_id();
     hj::license::sign_algo   issuer_algo();
@@ -33,9 +52,9 @@ class conf
     hj::license::sign_algo   verifier_algo();
     std::vector<std::string> verifier_keys();
 
-    std::unordered_map<std::string, std::string> llm_files();
-    int                                          llm_ctx_window_sz();
-    int                                          llm_num_threads();
+    std::unordered_map<std::string, model_config> llm_models();
+    int                                           llm_ctx_window_sz();
+    int                                           llm_num_threads();
 
   private:
     hj::ini _cfg;

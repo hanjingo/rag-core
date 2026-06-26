@@ -4,12 +4,10 @@
       "name": "hanjingo-high-jump",
       "features": ["test", "bench", "crash", "telemetry", "log", "options", "grpc", "sqlite", "sync", "lic"]
     },
-    "llama-cpp"
-  ],
-  "overrides": [
     {
-      "name": "llama-cpp",
-      "version": "9030#0"
-    }
+      "name": "ggml",
+      "features": [ "cuda" ]
+    },
+    "llama-cpp"
   ]
 }
