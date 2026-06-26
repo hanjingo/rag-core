@@ -21,9 +21,9 @@ void llm_mgr::load(
 {
     for(auto &kv : model_configs)
     {
-        if(_llms.find(kv.first) != _llms.end())
+        if(_llms.find(kv.second.id) != _llms.end())
         {
-            LOG_ERROR("Model {} already loaded, skip", kv.first);
+            LOG_ERROR("Model {} already loaded, skip", kv.second.id);
             continue;
         }
 
@@ -34,14 +34,14 @@ void llm_mgr::load(
         if(model->data() == nullptr)
         {
             LOG_ERROR("Failed to load model {} from file {}, skip",
-                      kv.first,
+                      kv.second.id,
                       kv.second.path);
             continue;
         }
 
-        _llms[kv.first] = std::move(model);
+        _llms[kv.second.id] = std::move(model);
         LOG_INFO("Loaded model {} from file {} with {} GPU layers",
-                 kv.first,
+                 kv.second.id,
                  kv.second.path,
                  kv.second.n_gpu_layers);
     }

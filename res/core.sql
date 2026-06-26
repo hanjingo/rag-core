@@ -33,17 +33,6 @@ CREATE TABLE IF NOT EXISTS user (
     privilege INTEGER DEFAULT 0 -- 0: normal user, 1: admin, ...
 );
 
-CREATE TABLE IF NOT EXISTS model (
-    hash TEXT PRIMARY KEY,
-    name TEXT NOT NULL,
-    publisher TEXT DEFAULT 'unknown',
-    timestamp BIGINT,
-    addr TEXT,
-    capabilities TEXT,
-    context_size INTEGER DEFAULT 0,
-    cost INTEGER DEFAULT 0
-);
-
 CREATE TABLE IF NOT EXISTS skill (
     hash TEXT PRIMARY KEY,
     platform INTEGER DEFAULT 0, -- 1: windows, 2: linux, 4: macos, 5: win+mac, ...
@@ -63,13 +52,6 @@ CREATE TABLE IF NOT EXISTS file (
 );
 
 INSERT INTO user (id, username, encrypted_passwd, privilege) VALUES (1, 'admin', 'admin', 1);
-
-INSERT INTO model (hash, name, publisher, timestamp, addr, capabilities, context_size, cost) VALUES (
-    'hash1', 'TinyStories-656K-Q3_K_M', 'unknown', 0, './models/TinyStories-656K-Q3_K_M.gguf', 'chat', 4000, 0.003);
-INSERT INTO model (hash, name, publisher, timestamp, addr, capabilities, context_size, cost) VALUES (
-    'hash2', 'Qwen3-8B-Q8_0', 'unknown', 0, './models/Qwen3-8B-Q8_0.gguf', 'chat', 4000, 0.003);
-INSERT INTO model (hash, name, publisher, timestamp, addr, capabilities, context_size, cost) VALUES (
-    'hash3', 'Qwen3-Embedding-0.6B-Q8_0', 'unknown', 0, './models/Qwen3-Embedding-0.6B-Q8_0.gguf', 'chat', 4000, 0.003);
 
 INSERT INTO session (id, user_id, title, timestamp) VALUES (
     1, 1, 'x', 0);

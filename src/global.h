@@ -70,15 +70,6 @@ static constexpr const char *SQL_UPDATE_SESSION_TITLE_BY_ID =
 static constexpr const char *SQL_DELETE_SESSION_BY_ID =
     R"(DELETE FROM session WHERE id = %lld)";
 
-static constexpr const char *SQL_INSERT_MODEL =
-    R"(INSERT INTO model (hash, name, publisher, timestamp, addr, capabilities, context_size, cost) VALUES (%Q, %Q, %Q, %lld, %Q, %Q, %d, %d))";
-
-static constexpr const char *SQL_SELECT_MODEL =
-    R"(SELECT hash, name, publisher, timestamp, addr, capabilities, context_size, cost FROM model)";
-
-static constexpr const char *SQL_SELECT_MODEL_BY_HASH =
-    R"(SELECT hash, name, publisher, timestamp, addr, capabilities, context_size, cost FROM model WHERE hash = %Q)";
-
 static constexpr const char *SQL_SELECT_SKILL_INFO =
     R"(SELECT hash, platform, name, desc, publisher, version, timestamp FROM skill)";
 

@@ -142,11 +142,13 @@ std::unordered_map<std::string, conf::model_config> conf::llm_models()
     for(const auto &item : items)
     {
         model_config config;
+        config.id           = _cfg.get<std::string>(item + "/id", "");
         config.path         = _cfg.get<std::string>(item + "/path", "");
         config.n_gpu_layers = _cfg.get<int>(item + "/n_gpu_layers", -2);
-        if(config.path.empty() || config.n_gpu_layers < -1)
+        if(config.id.empty() || config.path.empty() || config.n_gpu_layers < -1)
         {
-            std::cerr << "config model: " << item << ", path: " << config.path
+            std::cerr << "config model: " << item << ", id: " << config.id
+                      << ", path: " << config.path
                       << ", n_gpu_layers: " << config.n_gpu_layers
                       << " INVALID!!!" << std::endl;
             continue;

@@ -12,6 +12,7 @@ class conf
   public:
     struct model_config
     {
+        std::string id;
         std::string path;
         int         n_gpu_layers;
     };
