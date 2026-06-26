@@ -3,11 +3,15 @@
 #include <exception>
 #include <hj/util/string_util.hpp>
 
+#include <hj/log/logger.hpp>
+
 conf::conf()
     : _cfg{}
 {
     if(!_cfg.read_file("./core.ini"))
         throw std::runtime_error("Failed to read config file: core.ini");
+
+    _init();
 }
 
 conf::~conf()
@@ -133,30 +137,12 @@ std::vector<std::string> conf::verifier_keys()
     return keys;
 }
 
-std::unordered_map<std::string, conf::model_config> conf::llm_models()
+int conf::llm_model_max_repeats(const std::string &model_id)
 {
-    auto             str = _cfg.get<std::string>("llm/models", "");
-    std::string_view tag{";", 1};
-    auto             items = hj::string_util::split(str, tag);
-    std::unordered_map<std::string, conf::model_config> confs;
-    for(const auto &item : items)
-    {
-        model_config config;
-        config.id           = _cfg.get<std::string>(item + "/id", "");
-        config.path         = _cfg.get<std::string>(item + "/path", "");
-        config.n_gpu_layers = _cfg.get<int>(item + "/n_gpu_layers", -2);
-        if(config.id.empty() || config.path.empty() || config.n_gpu_layers < -1)
-        {
-            std::cerr << "config model: " << item << ", id: " << config.id
-                      << ", path: " << config.path
-                      << ", n_gpu_layers: " << config.n_gpu_layers
-                      << " INVALID!!!" << std::endl;
-            continue;
-        }
+    if(_models.find(model_id) == _models.end())
+        return -1;
 
-        confs[item] = config;
-    }
-    return confs;
+    return _models[model_id].max_repeats;
 }
 
 int conf::llm_ctx_window_sz()
@@ -167,4 +153,36 @@ int conf::llm_ctx_window_sz()
 int conf::llm_num_threads()
 {
     return _cfg.get<int>("llm/num_threads", 1);
+}
+
+std::unordered_map<std::string, conf::model_config> conf::llm_models()
+{
+    return _models;
+}
+
+void conf::_init()
+{
+    auto             str = _cfg.get<std::string>("llm/models", "");
+    std::string_view tag{";", 1};
+    auto             items = hj::string_util::split(str, tag);
+    _models.clear();
+    for(const auto &item : items)
+    {
+        model_config config;
+        config.id           = _cfg.get<std::string>(item + "/id", "");
+        config.path         = _cfg.get<std::string>(item + "/path", "");
+        config.n_gpu_layers = _cfg.get<int>(item + "/n_gpu_layers", -2);
+        config.max_repeats  = _cfg.get<int>(item + "/max_repeats", -1);
+        if(config.id.empty() || config.path.empty() || config.n_gpu_layers < -1)
+        {
+            std::cerr << "config model: " << item << ", id: " << config.id
+                      << ", path: " << config.path
+                      << ", n_gpu_layers: " << config.n_gpu_layers
+                      << ", max_repeats: " << config.max_repeats
+                      << " INVALID!!!" << std::endl;
+            continue;
+        }
+
+        _models[config.id] = config;
+    }
 }

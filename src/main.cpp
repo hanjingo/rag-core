@@ -117,10 +117,12 @@ int main(int argc, char *argv[])
         auto models = conf::instance().llm_models();
         LOG_DEBUG("init model config num: {}", models.size());
         for(const auto &model : models)
-            LOG_DEBUG("init model id:{}, path:{}, n_gpu_layers:{}",
-                      model.second.id,
-                      model.second.path,
-                      model.second.n_gpu_layers);
+            LOG_DEBUG(
+                "init model id:{}, path:{}, n_gpu_layers:{}, max_repeats: {}",
+                model.second.id,
+                model.second.path,
+                model.second.n_gpu_layers,
+                model.second.max_repeats);
 
         llm_mgr::instance().load(models);
         LOG_DEBUG("init llm model finish");

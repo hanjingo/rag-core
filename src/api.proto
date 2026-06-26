@@ -81,6 +81,7 @@ message QueryReq {
     string auth = 3;
     string content = 4;
     string model = 5;
+    string pipeline = 6;
 }
 
 message QueryResp {

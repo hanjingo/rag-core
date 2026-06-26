@@ -15,6 +15,7 @@ class conf
         std::string id;
         std::string path;
         int         n_gpu_layers;
+        int         max_repeats;
     };
 
   public:
@@ -54,11 +55,17 @@ class conf
     std::vector<std::string> verifier_keys();
 
     std::unordered_map<std::string, model_config> llm_models();
-    int                                           llm_ctx_window_sz();
-    int                                           llm_num_threads();
+    int llm_model_max_repeats(const std::string &model_id);
+    int llm_ctx_window_sz();
+    int llm_num_threads();
+
+  private:
+    void _init();
 
   private:
     hj::ini _cfg;
+
+    std::unordered_map<std::string, conf::model_config> _models;
 };
 
 #endif

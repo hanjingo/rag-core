@@ -10,6 +10,8 @@
 #include "auth.h"
 #include "account_mgr.h"
 #include "llm.h"
+#include "router.h"
+#include "watch_dog.h"
 
 status_t api_handler::Login(ctx_t                         *ctx,
                             const ::GrpcLibrary::LoginReq *req,
@@ -125,21 +127,23 @@ api_handler::Query(ctx_t                                        *ctx,
                    const ::GrpcLibrary::QueryReq                *req,
                    grpc::ServerWriter<::GrpcLibrary::QueryResp> *writer)
 {
-    int64_t                  session_id = req->id();
-    int64_t                  user_id    = req->user_id();
-    std::string              auth       = req->auth();
-    std::string              content    = req->content();
-    std::string              model      = req->model();
+    int64_t     session_id = req->id();
+    int64_t     user_id    = req->user_id();
+    std::string auth       = req->auth();
+    std::string content    = req->content();
+    std::string model      = req->model();
+    std::string pipeline   = req->pipeline(); // local, remote, hybrid
     ::GrpcLibrary::QueryResp resp;
     resp.set_error_code(ERR_FAIL);
     resp.set_id(session_id);
     LOG_DEBUG("Query request session_id: {}, user_id: {}, auth: {}, content: "
-              "{}, model: {}",
+              "{}, model: {}, pipeline: {}",
               session_id,
               user_id,
               auth,
               content,
-              model);
+              model,
+              pipeline);
 
     // TODO check privilege && token count
 
@@ -165,7 +169,10 @@ api_handler::Query(ctx_t                                        *ctx,
     auto params = llm_mgr::instance().create_ctx_params(
         conf::instance().llm_ctx_window_sz());
     std::string answer;
-    auto        ec = llm_mgr::instance().loop_query(
+    auto        max_repeates = conf::instance().llm_model_max_repeats(model);
+    watch_dog   dog{max_repeates};
+    LOG_INFO("INIT watch dog with max_repeates:{}", max_repeates);
+    auto ec = llm_mgr::instance().loop_query(
         model,
         tokens,
         params,
@@ -173,6 +180,18 @@ api_handler::Query(ctx_t                                        *ctx,
             LOG_DEBUG("llm generated output: {}", output);
             if(output.empty())
                 return true;
+
+            if(!dog.watch(output))
+            {
+                LOG_WARN("dog watch output:{} with too many repeated times, "
+                         "stop query!",
+                         output);
+                resp.set_error_code(OK);
+                resp.set_content(output);
+                resp.set_is_finished(true);
+                writer->Write(resp);
+                return false;
+            }
 
             answer += output;
             resp.set_error_code(OK);

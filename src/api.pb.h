@@ -1484,6 +1484,7 @@ class QueryReq final : public ::google::protobuf::Message
     kAuthFieldNumber = 3,
     kContentFieldNumber = 4,
     kModelFieldNumber = 5,
+    kPipelineFieldNumber = 6,
     kIdFieldNumber = 1,
     kUserIdFieldNumber = 2,
   };
@@ -1532,6 +1533,21 @@ class QueryReq final : public ::google::protobuf::Message
   ::std::string* PROTOBUF_NONNULL _internal_mutable_model();
 
   public:
+  // string pipeline = 6;
+  void clear_pipeline() ;
+  const ::std::string& pipeline() const;
+  template <typename Arg_ = const ::std::string&, typename... Args_>
+  void set_pipeline(Arg_&& arg, Args_... args);
+  ::std::string* PROTOBUF_NONNULL mutable_pipeline();
+  [[nodiscard]] ::std::string* PROTOBUF_NULLABLE release_pipeline();
+  void set_allocated_pipeline(::std::string* PROTOBUF_NULLABLE value);
+
+  private:
+  const ::std::string& _internal_pipeline() const;
+  PROTOBUF_ALWAYS_INLINE void _internal_set_pipeline(const ::std::string& value);
+  ::std::string* PROTOBUF_NONNULL _internal_mutable_pipeline();
+
+  public:
   // int64 id = 1;
   void clear_id() ;
   ::int64_t id() const;
@@ -1556,8 +1572,8 @@ class QueryReq final : public ::google::protobuf::Message
  private:
   class _Internal;
   friend class ::google::protobuf::internal::TcParser;
-  static const ::google::protobuf::internal::TcParseTable<3, 5,
-                                   0, 45,
+  static const ::google::protobuf::internal::TcParseTable<3, 6,
+                                   0, 53,
                                    2>
       _table_;
 
@@ -1581,6 +1597,7 @@ class QueryReq final : public ::google::protobuf::Message
     ::google::protobuf::internal::ArenaStringPtr auth_;
     ::google::protobuf::internal::ArenaStringPtr content_;
     ::google::protobuf::internal::ArenaStringPtr model_;
+    ::google::protobuf::internal::ArenaStringPtr pipeline_;
     ::int64_t id_;
     ::int64_t user_id_;
     PROTOBUF_TSAN_DECLARE_MEMBER
@@ -7511,7 +7528,7 @@ inline void QueryReq::clear_id() {
   ::google::protobuf::internal::TSanWrite(&_impl_);
   _impl_.id_ = ::int64_t{0};
   ClearHasBit(_impl_._has_bits_[0],
-                  0x00000008U);
+                  0x00000010U);
 }
 inline ::int64_t QueryReq::id() const {
   // @@protoc_insertion_point(field_get:GrpcLibrary.QueryReq.id)
@@ -7519,7 +7536,7 @@ inline ::int64_t QueryReq::id() const {
 }
 inline void QueryReq::set_id(::int64_t value) {
   _internal_set_id(value);
-  SetHasBit(_impl_._has_bits_[0], 0x00000008U);
+  SetHasBit(_impl_._has_bits_[0], 0x00000010U);
   // @@protoc_insertion_point(field_set:GrpcLibrary.QueryReq.id)
 }
 inline ::int64_t QueryReq::_internal_id() const {
@@ -7536,7 +7553,7 @@ inline void QueryReq::clear_user_id() {
   ::google::protobuf::internal::TSanWrite(&_impl_);
   _impl_.user_id_ = ::int64_t{0};
   ClearHasBit(_impl_._has_bits_[0],
-                  0x00000010U);
+                  0x00000020U);
 }
 inline ::int64_t QueryReq::user_id() const {
   // @@protoc_insertion_point(field_get:GrpcLibrary.QueryReq.user_id)
@@ -7544,7 +7561,7 @@ inline ::int64_t QueryReq::user_id() const {
 }
 inline void QueryReq::set_user_id(::int64_t value) {
   _internal_set_user_id(value);
-  SetHasBit(_impl_._has_bits_[0], 0x00000010U);
+  SetHasBit(_impl_._has_bits_[0], 0x00000020U);
   // @@protoc_insertion_point(field_set:GrpcLibrary.QueryReq.user_id)
 }
 inline ::int64_t QueryReq::_internal_user_id() const {
@@ -7749,6 +7766,71 @@ inline void QueryReq::set_allocated_model(::std::string* PROTOBUF_NULLABLE value
     _impl_.model_.Set("", GetArena());
   }
   // @@protoc_insertion_point(field_set_allocated:GrpcLibrary.QueryReq.model)
+}
+
+// string pipeline = 6;
+inline void QueryReq::clear_pipeline() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.pipeline_.ClearToEmpty();
+  ClearHasBit(_impl_._has_bits_[0],
+                  0x00000008U);
+}
+inline const ::std::string& QueryReq::pipeline() const
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_get:GrpcLibrary.QueryReq.pipeline)
+  return _internal_pipeline();
+}
+template <typename Arg_, typename... Args_>
+PROTOBUF_ALWAYS_INLINE void QueryReq::set_pipeline(Arg_&& arg, Args_... args) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  SetHasBit(_impl_._has_bits_[0], 0x00000008U);
+  _impl_.pipeline_.Set(static_cast<Arg_&&>(arg), args..., GetArena());
+  // @@protoc_insertion_point(field_set:GrpcLibrary.QueryReq.pipeline)
+}
+inline ::std::string* PROTOBUF_NONNULL QueryReq::mutable_pipeline()
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  SetHasBit(_impl_._has_bits_[0], 0x00000008U);
+  ::std::string* _s = _internal_mutable_pipeline();
+  // @@protoc_insertion_point(field_mutable:GrpcLibrary.QueryReq.pipeline)
+  return _s;
+}
+inline const ::std::string& QueryReq::_internal_pipeline() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.pipeline_.Get();
+}
+inline void QueryReq::_internal_set_pipeline(const ::std::string& value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.pipeline_.Set(value, GetArena());
+}
+inline ::std::string* PROTOBUF_NONNULL QueryReq::_internal_mutable_pipeline() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  return _impl_.pipeline_.Mutable( GetArena());
+}
+inline ::std::string* PROTOBUF_NULLABLE QueryReq::release_pipeline() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  // @@protoc_insertion_point(field_release:GrpcLibrary.QueryReq.pipeline)
+  if (!CheckHasBit(_impl_._has_bits_[0], 0x00000008U)) {
+    return nullptr;
+  }
+  ClearHasBit(_impl_._has_bits_[0], 0x00000008U);
+  auto* released = _impl_.pipeline_.Release();
+  if (::google::protobuf::internal::DebugHardenForceCopyDefaultString()) {
+    _impl_.pipeline_.Set("", GetArena());
+  }
+  return released;
+}
+inline void QueryReq::set_allocated_pipeline(::std::string* PROTOBUF_NULLABLE value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  if (value != nullptr) {
+    SetHasBit(_impl_._has_bits_[0], 0x00000008U);
+  } else {
+    ClearHasBit(_impl_._has_bits_[0], 0x00000008U);
+  }
+  _impl_.pipeline_.SetAllocated(value, GetArena());
+  if (::google::protobuf::internal::DebugHardenForceCopyDefaultString() && _impl_.pipeline_.IsDefault()) {
+    _impl_.pipeline_.Set("", GetArena());
+  }
+  // @@protoc_insertion_point(field_set_allocated:GrpcLibrary.QueryReq.pipeline)
 }
 
 // -------------------------------------------------------------------
