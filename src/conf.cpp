@@ -147,12 +147,9 @@ std::vector<std::string> conf::verifier_keys()
     return keys;
 }
 
-int conf::llm_model_max_repeats(const std::string &model_id)
+int conf::llm_max_repeats()
 {
-    if(_models.find(model_id) == _models.end())
-        return -1;
-
-    return _models[model_id].max_repeats;
+    return _cfg.get<int>("llm/max_repeats", 5);
 }
 
 int conf::llm_ctx_window_sz()
@@ -181,15 +178,28 @@ void conf::_init()
         model_config config;
         config.id           = _cfg.get<std::string>(item + "/id", "");
         config.path         = _cfg.get<std::string>(item + "/path", "");
-        config.n_gpu_layers = _cfg.get<int>(item + "/n_gpu_layers", -2);
-        config.max_repeats  = _cfg.get<int>(item + "/max_repeats", -1);
-        if(config.id.empty() || config.path.empty() || config.n_gpu_layers < -1)
+        config.n_gpu_layers = _cfg.get<int>(item + "/n_gpu_layers", -1);
+        config.split_mode   = static_cast<llama_split_mode>(
+            _cfg.get<int>(item + "/split_mode", 1));
+        config.main_gpu      = _cfg.get<int>(item + "/main_gpu", 0);
+        config.vocab_only    = _cfg.get<int>(item + "/vocab_only", 0) == 1;
+        config.use_mmap      = _cfg.get<int>(item + "/use_mmap", 1) == 1;
+        config.use_direct_io = _cfg.get<int>(item + "/use_direct_io", 0) == 1;
+        config.use_mlock     = _cfg.get<int>(item + "/use_mlock", 0) == 1;
+        config.check_tensors = _cfg.get<int>(item + "/check_tensors", 0) == 1;
+        config.use_extra_bufts =
+            _cfg.get<int>(item + "/use_extra_bufts", 1) == 1;
+        config.no_host  = _cfg.get<int>(item + "/no_host", 0) == 1;
+        config.no_alloc = _cfg.get<int>(item + "/no_alloc", 0) == 1;
+
+        if(config.id.empty() || config.path.empty() || config.n_gpu_layers < -1
+           || config.main_gpu < 0)
         {
             std::cerr << "config model: " << item << ", id: " << config.id
                       << ", path: " << config.path
                       << ", n_gpu_layers: " << config.n_gpu_layers
-                      << ", max_repeats: " << config.max_repeats
-                      << " INVALID!!!" << std::endl;
+                      << ", main_gpu: " << config.main_gpu << " INVALID!!!"
+                      << std::endl;
             continue;
         }
 

@@ -26,10 +26,11 @@ static constexpr int AUTH_ERR_INVALID_LICENSE    = 302;
 
 static constexpr int LLM_ERR_MODEL_NOT_EXIST       = 400;
 static constexpr int LLM_ERR_MODEL_LOAD_FAIL       = 401;
-static constexpr int LLM_ERR_MODEL_TOKENIZE_FAIL   = 402;
-static constexpr int LLM_ERR_MODEL_QUERY_FAIL      = 403;
-static constexpr int LLM_ERR_MODEL_CREATE_CTX_FAIL = 404;
-static constexpr int LLM_ERR_MODEL_CTX_DECODE_FAIL = 405;
+static constexpr int LLM_ERR_MODEL_ALREADY_LOADED  = 402;
+static constexpr int LLM_ERR_MODEL_TOKENIZE_FAIL   = 403;
+static constexpr int LLM_ERR_MODEL_QUERY_FAIL      = 404;
+static constexpr int LLM_ERR_MODEL_CREATE_CTX_FAIL = 405;
+static constexpr int LLM_ERR_MODEL_CTX_DECODE_FAIL = 406;
 
 static constexpr int LLM_ERR_REPEAT_TOO_MANY_TIMES = 500;
 

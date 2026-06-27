@@ -72,8 +72,17 @@ void QueryReactor::_process()
     auto tokens = llm_mgr::instance().tokenize(_model, _content, true, true);
     auto params = llm_mgr::instance().create_ctx_params(
         conf::instance().llm_ctx_window_sz());
-    auto      max_repeates = conf::instance().llm_model_max_repeats(_model);
+    auto      max_repeates = conf::instance().llm_max_repeats();
     watch_dog dog{max_repeates};
+    LOG_DEBUG("QueryReactor::_process: session_id: {}, user_id: {}, auth: {}, "
+              "content: {}, model: {}, tokens size: {}, max_repeats: {}",
+              _session_id,
+              _user_id,
+              _auth,
+              _content,
+              _model,
+              tokens.size(),
+              max_repeates);
     auto ec = llm_mgr::instance().loop_query(_model,
                                              tokens,
                                              params,

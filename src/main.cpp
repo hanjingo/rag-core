@@ -117,14 +117,38 @@ int main(int argc, char *argv[])
         auto models = conf::instance().llm_models();
         LOG_DEBUG("init model config num: {}", models.size());
         for(const auto &model : models)
-            LOG_DEBUG(
-                "init model id:{}, path:{}, n_gpu_layers:{}, max_repeats: {}",
-                model.second.id,
-                model.second.path,
-                model.second.n_gpu_layers,
-                model.second.max_repeats);
-
-        llm_mgr::instance().load(models);
+        {
+            auto param            = llm_mgr::instance().create_model_params();
+            param.n_gpu_layers    = model.second.n_gpu_layers;
+            param.split_mode      = model.second.split_mode;
+            param.main_gpu        = model.second.main_gpu;
+            param.vocab_only      = model.second.vocab_only;
+            param.use_mmap        = model.second.use_mmap;
+            param.use_direct_io   = model.second.use_direct_io;
+            param.use_mlock       = model.second.use_mlock;
+            param.check_tensors   = model.second.check_tensors;
+            param.use_extra_bufts = model.second.use_extra_bufts;
+            param.no_host         = model.second.no_host;
+            param.no_alloc        = model.second.no_alloc;
+            llm_mgr::instance().load(model.second.id, model.second.path, param);
+            LOG_DEBUG("init model id:{}, path:{}, n_gpu_layers:{}, "
+                      "split_mode:{}, main_gpu:{}, vocab_only:{}, use_mmap:{}, "
+                      "use_direct_io:{}, use_mlock:{}, check_tensors:{}, "
+                      "use_extra_bufts:{}, no_host:{}, no_alloc:{}",
+                      model.second.id,
+                      model.second.path,
+                      param.n_gpu_layers,
+                      static_cast<int>(param.split_mode),
+                      param.main_gpu,
+                      param.vocab_only,
+                      param.use_mmap,
+                      param.use_direct_io,
+                      param.use_mlock,
+                      param.check_tensors,
+                      param.use_extra_bufts,
+                      param.no_host,
+                      param.no_alloc);
+        }
         LOG_DEBUG("init llm model finish");
 
         // run server

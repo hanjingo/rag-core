@@ -6,16 +6,26 @@
 
 #include <hj/encoding/ini.hpp>
 #include <hj/util/license.hpp>
+#include <hj/ai/llama.hpp>
 
 class conf
 {
   public:
     struct model_config
     {
-        std::string id;
-        std::string path;
-        int         n_gpu_layers;
-        int         max_repeats;
+        std::string      id;
+        std::string      path;
+        int              n_gpu_layers;
+        llama_split_mode split_mode;
+        int              main_gpu;
+        bool             vocab_only;
+        bool             use_mmap;
+        bool             use_direct_io;
+        bool             use_mlock;
+        bool             check_tensors;
+        bool             use_extra_bufts;
+        bool             no_host;
+        bool             no_alloc;
     };
 
   public:
@@ -36,7 +46,7 @@ class conf
     int         log_max_size();
     int         log_max_files();
 
-    size_t sync_write_queue_size();
+    size_t        sync_write_queue_size();
     unsigned long sync_thread_pool_size();
 
     std::string server_addr();
@@ -58,9 +68,9 @@ class conf
     std::vector<std::string> verifier_keys();
 
     std::unordered_map<std::string, model_config> llm_models();
-    int llm_model_max_repeats(const std::string &model_id);
-    int llm_ctx_window_sz();
-    int llm_num_threads();
+    int                                           llm_max_repeats();
+    int                                           llm_ctx_window_sz();
+    int                                           llm_num_threads();
 
   private:
     void _init();

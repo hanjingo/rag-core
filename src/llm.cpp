@@ -16,35 +16,30 @@ llm_mgr::~llm_mgr()
     hj::llama::backend_free();
 }
 
-void llm_mgr::load(
-    const std::unordered_map<std::string, conf::model_config> &model_configs)
+int llm_mgr::load(const std::string               &model_id,
+                  const std::string               &model_path,
+                  const hj::llama::model_params_t &model_config)
 {
-    for(auto &kv : model_configs)
+    if(_llms.find(model_id) != _llms.end())
     {
-        if(_llms.find(kv.second.id) != _llms.end())
-        {
-            LOG_ERROR("Model {} already loaded, skip", kv.second.id);
-            continue;
-        }
-
-        auto params         = hj::llama::model::default_params();
-        params.n_gpu_layers = kv.second.n_gpu_layers;
-        auto model =
-            std::make_unique<hj::llama::model>(kv.second.path.c_str(), params);
-        if(model->data() == nullptr)
-        {
-            LOG_ERROR("Failed to load model {} from file {}, skip",
-                      kv.second.id,
-                      kv.second.path);
-            continue;
-        }
-
-        _llms[kv.second.id] = std::move(model);
-        LOG_INFO("Loaded model {} from file {} with {} GPU layers",
-                 kv.second.id,
-                 kv.second.path,
-                 kv.second.n_gpu_layers);
+        LOG_ERROR("Model {} already loaded, skip", model_id);
+        return LLM_ERR_MODEL_ALREADY_LOADED;
     }
+
+    auto model =
+        std::make_unique<hj::llama::model>(model_path.c_str(), model_config);
+    if(model->data() == nullptr)
+    {
+        LOG_ERROR("Failed to load model {} from file {}", model_id, model_path);
+        return LLM_ERR_MODEL_LOAD_FAIL;
+    }
+
+    _llms[model_id] = std::move(model);
+    LOG_INFO("Loaded model {} from file {} with {} GPU layers",
+             model_id,
+             model_path,
+             model_config.n_gpu_layers);
+    return OK;
 }
 
 std::vector<hj::llama::token_t> llm_mgr::tokenize(const std::string &model,
@@ -67,10 +62,9 @@ llm_mgr::create_ctx_params(const size_t ctx_window_sz)
     return params;
 }
 
-hj::llama::model_params_t llm_mgr::create_model_params(const int n_gpu_layers)
+hj::llama::model_params_t llm_mgr::create_model_params()
 {
     auto params         = hj::llama::model::default_params();
-    params.n_gpu_layers = n_gpu_layers;
     return params;
 }
 
