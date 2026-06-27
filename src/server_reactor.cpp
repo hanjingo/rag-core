@@ -25,6 +25,18 @@ QueryReactor::QueryReactor(grpc::CallbackServerContext   *ctx,
     _content    = req->content();
     _model      = req->model();
 
+    _sampling_repetition_penalty = req->sampling().repetition_penalty();
+    _sampling_temperature        = req->sampling().temperature();
+    _sampling_top_p              = req->sampling().top_p();
+    _sampling_top_k              = req->sampling().top_k();
+    _sampling_min_p              = req->sampling().min_p();
+
+    _ctx_window_sz  = req->ctx().window_size();
+    _ctx_stop_words = req->ctx().stop_words();
+    _ctx_window_sz  = (_ctx_window_sz > 128)
+                          ? _ctx_window_sz
+                          : conf::instance().llm_ctx_window_sz();
+
     thread_pool::instance().enqueue([this]() { this->_process(); });
 }
 
@@ -70,8 +82,20 @@ void QueryReactor::_process()
     }
 
     auto tokens = llm_mgr::instance().tokenize(_model, _content, true, true);
-    auto params = llm_mgr::instance().create_ctx_params(
-        conf::instance().llm_ctx_window_sz());
+    auto params = llm_mgr::instance().create_ctx_params();
+    // text context, 0 = from model
+    params.n_ctx = _ctx_window_sz;
+    // // logical maximum batch size that can be submitted to llama_decode
+    // params.n_batch;
+    // //  physical maximum batch size
+    // params.n_ubatch;
+    // // max number of sequences (i.e. distinct states for recurrent models)
+    // params.n_seq_max;
+    // // number of threads to use for generation
+    // params.n_threads;
+    // // number of threads to use for batch processing
+    // params.n_threads_batch;
+
     auto      max_repeates = conf::instance().llm_max_repeats();
     watch_dog dog{max_repeates};
     LOG_DEBUG("QueryReactor::_process: session_id: {}, user_id: {}, auth: {}, "

@@ -44,7 +44,7 @@ class llm_mgr
                                              const bool         add_special,
                                              const bool         parse_special);
 
-    hj::llama::context_params_t create_ctx_params(const size_t ctx_window_sz);
+    hj::llama::context_params_t create_ctx_params();
 
     hj::llama::model_params_t create_model_params();
 

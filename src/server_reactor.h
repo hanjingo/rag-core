@@ -42,6 +42,19 @@ class QueryReactor : public grpc::ServerWriteReactor<::GrpcLibrary::QueryResp>
     std::string _auth;
     std::string _content;
     std::string _model;
+
+    // sampling params
+    float _sampling_repetition_penalty;
+    float _sampling_temperature;
+    float _sampling_top_p;
+    float _sampling_top_k;
+    float _sampling_min_p;
+
+    // context params
+    int32_t     _ctx_window_sz;
+    std::string _ctx_stop_words;
+
+    // resp
     std::string _answer;
 };
 

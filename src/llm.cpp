@@ -54,17 +54,15 @@ std::vector<hj::llama::token_t> llm_mgr::tokenize(const std::string &model,
     return it->second->tokenize(text, add_special, parse_special);
 }
 
-hj::llama::context_params_t
-llm_mgr::create_ctx_params(const size_t ctx_window_sz)
+hj::llama::context_params_t llm_mgr::create_ctx_params()
 {
-    auto params  = hj::llama::context::default_params();
-    params.n_ctx = ctx_window_sz;
+    auto params = hj::llama::context::default_params();
     return params;
 }
 
 hj::llama::model_params_t llm_mgr::create_model_params()
 {
-    auto params         = hj::llama::model::default_params();
+    auto params = hj::llama::model::default_params();
     return params;
 }
 
