@@ -48,6 +48,16 @@ int conf::log_max_files()
     return _cfg.get<int>("log/max_files", 5);
 }
 
+size_t conf::sync_write_queue_size()
+{
+    return _cfg.get<size_t>("sync/write_queue_size", 1);
+}
+
+unsigned long conf::sync_thread_pool_size()
+{
+    return _cfg.get<unsigned long>("sync/thread_pool_size", 1);
+}
+
 std::string conf::server_addr()
 {
     return _cfg.get<std::string>("server/addr", "");

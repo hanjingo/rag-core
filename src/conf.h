@@ -36,6 +36,9 @@ class conf
     int         log_max_size();
     int         log_max_files();
 
+    size_t sync_write_queue_size();
+    unsigned long sync_thread_pool_size();
+
     std::string server_addr();
 
     std::string sqlite_id();

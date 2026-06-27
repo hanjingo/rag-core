@@ -13,14 +13,15 @@
 #include "router.h"
 #include "watch_dog.h"
 
-status_t api_handler::Login(ctx_t                         *ctx,
-                            const ::GrpcLibrary::LoginReq *req,
-                            ::GrpcLibrary::LoginResp      *resp)
+reactor_t *api_handler::Login(ctx_t                         *ctx,
+                              const ::GrpcLibrary::LoginReq *req,
+                              ::GrpcLibrary::LoginResp      *resp)
 {
     std::string account          = req->account();
     std::string encrypted_passwd = req->passwd();
     int64_t     user_id          = -1;
     int         privilege        = -1;
+    auto       *reactor          = ctx->DefaultReactor();
     resp->set_error_code(ERR_FAIL);
     LOG_DEBUG("Received Login request. account: {}, passwd: {}",
               account,
@@ -36,7 +37,9 @@ status_t api_handler::Login(ctx_t                         *ctx,
     {
         LOG_ERROR("Failed to authenticate account: {}, sql: {}", account, sql);
         resp->set_error_code(ACCOUNT_INVALID);
-        return status_t::OK;
+
+        reactor->Finish(status_t::OK);
+        return reactor;
     }
     for(const auto row : rows)
     {
@@ -52,9 +55,11 @@ status_t api_handler::Login(ctx_t                         *ctx,
                                    conf::instance().issuer_leeway(),
                                    {}))
     {
-        resp->set_error_code(AUTH_ERR_ISSUE_FAIL);
         LOG_ERROR("Failed to issue license for account: {}", account);
-        return status_t::OK;
+        resp->set_error_code(AUTH_ERR_ISSUE_FAIL);
+
+        reactor->Finish(status_t::OK);
+        return reactor;
     }
 
     resp->set_error_code(OK);
@@ -64,15 +69,18 @@ status_t api_handler::Login(ctx_t                         *ctx,
     resp->set_account(account);
     resp->set_last_login_time(
         hj::date_time::format(hj::date_time::now(), TIME_FORMAT));
-    return status_t::OK;
+
+    reactor->Finish(status_t::OK);
+    return reactor;
 }
 
-status_t api_handler::Logout(ctx_t                          *ctx,
-                             const ::GrpcLibrary::LogoutReq *req,
-                             ::GrpcLibrary::LogoutResp      *resp)
+reactor_t *api_handler::Logout(ctx_t                          *ctx,
+                               const ::GrpcLibrary::LogoutReq *req,
+                               ::GrpcLibrary::LogoutResp      *resp)
 {
-    int64_t     user_id = -1;
-    std::string auth;
+    int64_t     user_id = req->user_id();
+    std::string auth    = req->auth();
+    auto       *reactor = ctx->DefaultReactor();
     resp->set_error_code(ERR_FAIL);
     LOG_DEBUG("Received Logout request. user_id: {}, auth: {}", user_id, auth);
 
@@ -84,19 +92,24 @@ status_t api_handler::Logout(ctx_t                          *ctx,
                   user_id,
                   auth);
         resp->set_error_code(ACCOUNT_INVALID);
-        return status_t::OK;
+
+        reactor->Finish(status_t::OK);
+        return reactor;
     }
 
     resp->set_error_code(OK);
-    return status_t::OK;
+
+    reactor->Finish(status_t::OK);
+    return reactor;
 }
 
-status_t api_handler::RegAccount(ctx_t                              *ctx,
-                                 const ::GrpcLibrary::RegAccountReq *req,
-                                 ::GrpcLibrary::RegAccountResp      *resp)
+reactor_t *api_handler::RegAccount(ctx_t                              *ctx,
+                                   const ::GrpcLibrary::RegAccountReq *req,
+                                   ::GrpcLibrary::RegAccountResp      *resp)
 {
     std::string account          = req->account();
     std::string encrypted_passwd = req->passwd();
+    auto       *reactor          = ctx->DefaultReactor();
     resp->set_error_code(ERR_FAIL);
     LOG_DEBUG("Received RegAccount request. account: {}, passwd: {}",
               account,
@@ -114,129 +127,31 @@ status_t api_handler::RegAccount(ctx_t                              *ctx,
     {
         resp->set_error_code(ERR_SQLITE_EXEC_FAIL);
         LOG_ERROR("Failed to insert user with sql: {}", sql);
-        return status_t::OK;
+
+        reactor->Finish(status_t::OK);
+        return reactor;
     }
 
     resp->set_user_id(id);
     resp->set_error_code(OK);
-    return status_t::OK;
+
+    reactor->Finish(status_t::OK);
+    return reactor;
 }
 
-status_t
-api_handler::Query(ctx_t                                        *ctx,
-                   const ::GrpcLibrary::QueryReq                *req,
-                   grpc::ServerWriter<::GrpcLibrary::QueryResp> *writer)
+grpc::ServerWriteReactor<::GrpcLibrary::QueryResp> *
+api_handler::Query(grpc::CallbackServerContext   *ctx,
+                   const ::GrpcLibrary::QueryReq *req)
 {
-    int64_t     session_id = req->id();
-    int64_t     user_id    = req->user_id();
-    std::string auth       = req->auth();
-    std::string content    = req->content();
-    std::string model      = req->model();
-    std::string pipeline   = req->pipeline(); // local, remote, hybrid
-    ::GrpcLibrary::QueryResp resp;
-    resp.set_error_code(ERR_FAIL);
-    resp.set_id(session_id);
-    LOG_DEBUG("Query request session_id: {}, user_id: {}, auth: {}, content: "
-              "{}, model: {}, pipeline: {}",
-              session_id,
-              user_id,
-              auth,
-              content,
-              model,
-              pipeline);
+    LOG_INFO(
+        "Received Async Callback Query request. session_id: {}, user_id: {}",
+        req->id(),
+        req->user_id());
 
-    // TODO check privilege && token count
-
-    // save query record
-    int64_t msg_id = static_cast<int64_t>(hj::uuid::gen_u64());
-    auto    now    = hj::date_time::now().ms_since_epoch();
-    auto    sql    = hj::sqlite::mprintf(SQL_INSERT_MESSAGE,
-                                         msg_id,
-                                         session_id,
-                                         ROLE_USER,
-                                         content.c_str(),
-                                         NONE_MSG_ID,
-                                         now);
-    if(db_mgr::instance().exec(DB_SQLITE, sql) != OK)
-    {
-        resp.set_error_code(ERR_SQLITE_EXEC_FAIL);
-        LOG_ERROR("Failed to insert message for sql: {}", sql);
-        return status_t::OK;
-    }
-
-    // answer query
-    auto tokens = llm_mgr::instance().tokenize(model, content, true, true);
-    auto params = llm_mgr::instance().create_ctx_params(
-        conf::instance().llm_ctx_window_sz());
-    std::string answer;
-    auto        max_repeates = conf::instance().llm_model_max_repeats(model);
-    watch_dog   dog{max_repeates};
-    LOG_INFO("INIT watch dog with max_repeates:{}", max_repeates);
-    auto ec = llm_mgr::instance().loop_query(
-        model,
-        tokens,
-        params,
-        [&](std::string &output) -> bool {
-            LOG_DEBUG("llm generated output: {}", output);
-            if(output.empty())
-                return true;
-
-            if(!dog.watch(output))
-            {
-                LOG_WARN("dog watch output:{} with too many repeated times, "
-                         "stop query!",
-                         output);
-                resp.set_error_code(OK);
-                resp.set_content(output);
-                resp.set_is_finished(true);
-                writer->Write(resp);
-                return false;
-            }
-
-            answer += output;
-            resp.set_error_code(OK);
-            resp.set_content(output);
-            resp.set_is_finished(false);
-            if(!writer->Write(resp))
-            {
-                LOG_ERROR(
-                    "Failed to write response for session_id: {}, user_id: {}, "
-                    "auth: {}, content: {}, model: {}, Disconnected!",
-                    session_id,
-                    user_id,
-                    auth,
-                    content,
-                    model);
-                return false;
-            }
-            return true;
-        });
-
-    resp.set_is_finished(true);
-    // save answer record
-    msg_id = static_cast<int64_t>(hj::uuid::gen_u64());
-    now    = hj::date_time::now().ms_since_epoch();
-    sql    = hj::sqlite::mprintf(SQL_INSERT_MESSAGE,
-                                 msg_id,
-                                 session_id,
-                                 ROLE_ASSISTANT,
-                                 answer.c_str(),
-                                 NONE_MSG_ID,
-                                 now);
-    if(db_mgr::instance().exec(DB_SQLITE, sql) != OK)
-    {
-        resp.set_error_code(ERR_SQLITE_EXEC_FAIL);
-        writer->Write(resp);
-        LOG_ERROR("Failed to insert message for sql: {}", sql);
-        return status_t::OK;
-    }
-
-    resp.set_error_code(ec);
-    writer->Write(resp);
-    return status_t::OK;
+    return new QueryReactor(ctx, req);
 }
 
-status_t
+reactor_t *
 api_handler::GetMessageInfo(ctx_t                                  *ctx,
                             const ::GrpcLibrary::GetMessageInfoReq *req,
                             ::GrpcLibrary::GetMessageInfoResp      *resp)
@@ -246,6 +161,7 @@ api_handler::GetMessageInfo(ctx_t                                  *ctx,
     int32_t     limit      = req->limit();
     int64_t     user_id    = req->user_id();
     std::string auth       = req->auth();
+    auto       *reactor    = ctx->DefaultReactor();
 
     if(limit < 0 || limit > conf::instance().sqlite_msg_limit())
         limit = conf::instance().sqlite_msg_limit();
@@ -272,7 +188,9 @@ api_handler::GetMessageInfo(ctx_t                                  *ctx,
     {
         LOG_ERROR("Failed to query message for sql: {}", sql);
         resp->set_error_code(ERR_SQLITE_EXEC_FAIL);
-        return status_t::OK;
+
+        reactor->Finish(status_t::OK);
+        return reactor;
     }
     for(const auto row : rows)
     {
@@ -298,18 +216,20 @@ api_handler::GetMessageInfo(ctx_t                                  *ctx,
     }
 
     resp->set_error_code(OK);
-    return status_t::OK;
+    reactor->Finish(status_t::OK);
+    return reactor;
 }
 
-status_t api_handler::GetSession(ctx_t                              *ctx,
-                                 const ::GrpcLibrary::GetSessionReq *req,
-                                 ::GrpcLibrary::GetSessionResp      *resp)
+reactor_t *api_handler::GetSession(ctx_t                              *ctx,
+                                   const ::GrpcLibrary::GetSessionReq *req,
+                                   ::GrpcLibrary::GetSessionResp      *resp)
 {
     int64_t     id      = req->id();
     int64_t     user_id = req->user_id();
     std::string auth    = req->auth();
     int         limit   = req->limit();
     limit               = (limit < 0 || limit > 100) ? 100 : limit;
+    auto *reactor       = ctx->DefaultReactor();
     resp->set_error_code(ERR_FAIL);
     LOG_DEBUG(
         "Received GetSession request. id: {}, user_id: {}, auth: {}, limit: {}",
@@ -331,7 +251,10 @@ status_t api_handler::GetSession(ctx_t                              *ctx,
     {
         LOG_ERROR("Failed to query history for sql: {}", sql);
         resp->set_error_code(ERR_SQLITE_EXEC_FAIL);
-        return status_t::OK;
+
+        // return status_t::OK;
+        reactor->Finish(status_t::OK);
+        return reactor;
     }
     for(const auto row : rows)
     {
@@ -353,12 +276,14 @@ status_t api_handler::GetSession(ctx_t                              *ctx,
     }
 
     resp->set_error_code(OK);
-    return status_t::OK;
+    // return status_t::OK;
+    reactor->Finish(status_t::OK);
+    return reactor;
 }
 
-status_t api_handler::NewSession(ctx_t                              *ctx,
-                                 const ::GrpcLibrary::NewSessionReq *req,
-                                 ::GrpcLibrary::NewSessionResp      *resp)
+reactor_t *api_handler::NewSession(ctx_t                              *ctx,
+                                   const ::GrpcLibrary::NewSessionReq *req,
+                                   ::GrpcLibrary::NewSessionResp      *resp)
 {
     resp->set_error_code(ERR_FAIL);
     int64_t     user_id = req->user_id();
@@ -366,6 +291,7 @@ status_t api_handler::NewSession(ctx_t                              *ctx,
     std::string title   = req->title();
     std::string content = req->content();
     std::string model   = req->model();
+    auto       *reactor = ctx->DefaultReactor();
     std::string answer;
     long long   ms = hj::date_time::now().ms_since_epoch();
     LOG_DEBUG("Received NewSession request. user_id: {}, auth: {}, title: {}, "
@@ -384,7 +310,9 @@ status_t api_handler::NewSession(ctx_t                              *ctx,
     {
         resp->set_error_code(ERR_SQLITE_EXEC_FAIL);
         LOG_ERROR("Failed to insert session for sql: {}", sql);
-        return status_t::OK;
+
+        reactor->Finish(status_t::OK);
+        return reactor;
     }
 
     auto session = resp->mutable_session();
@@ -397,10 +325,12 @@ status_t api_handler::NewSession(ctx_t                              *ctx,
 
     LOG_DEBUG("Session created without content or model, return directly");
     resp->set_error_code(OK);
-    return status_t::OK;
+
+    reactor->Finish(status_t::OK);
+    return reactor;
 }
 
-status_t
+reactor_t *
 api_handler::ModifySessionTitle(ctx_t                                      *ctx,
                                 const ::GrpcLibrary::ModifySessionTitleReq *req,
                                 ::GrpcLibrary::ModifySessionTitleResp *resp)
@@ -409,6 +339,8 @@ api_handler::ModifySessionTitle(ctx_t                                      *ctx,
     int64_t     user_id = req->user_id();
     std::string auth    = req->auth();
     std::string title   = req->title();
+    auto       *reactor = ctx->DefaultReactor();
+
     resp->set_error_code(ERR_FAIL);
     resp->set_id(id);
     resp->set_title(title);
@@ -429,20 +361,25 @@ api_handler::ModifySessionTitle(ctx_t                                      *ctx,
     {
         resp->set_error_code(ERR_SQLITE_EXEC_FAIL);
         LOG_ERROR("Failed to update session for sql: {}", sql);
-        return status_t::OK;
+
+        reactor->Finish(status_t::OK);
+        return reactor;
     }
 
     resp->set_error_code(OK);
-    return status_t::OK;
+
+    reactor->Finish(status_t::OK);
+    return reactor;
 }
 
-status_t api_handler::DelSession(ctx_t                              *ctx,
-                                 const ::GrpcLibrary::DelSessionReq *req,
-                                 ::GrpcLibrary::DelSessionResp      *resp)
+reactor_t *api_handler::DelSession(ctx_t                              *ctx,
+                                   const ::GrpcLibrary::DelSessionReq *req,
+                                   ::GrpcLibrary::DelSessionResp      *resp)
 {
     auto        ids     = req->ids();
     int64_t     user_id = req->user_id();
     std::string auth    = req->auth();
+    auto       *reactor = ctx->DefaultReactor();
     resp->set_error_code(ERR_FAIL);
     LOG_DEBUG(
         "Received DelSession request. ids.size(): {}, user_id: {}, auth: {}",
@@ -460,7 +397,9 @@ status_t api_handler::DelSession(ctx_t                              *ctx,
         {
             resp->set_error_code(ERR_SQLITE_EXEC_FAIL);
             LOG_ERROR("Failed to delete session for sql: {}", sql);
-            return status_t::OK;
+
+            reactor->Finish(status_t::OK);
+            return reactor;
         }
 
         // delete all relative message
@@ -470,23 +409,28 @@ status_t api_handler::DelSession(ctx_t                              *ctx,
         {
             resp->set_error_code(ERR_SQLITE_EXEC_FAIL);
             LOG_ERROR("Failed to delete messages for sql: {}", sql);
-            return status_t::OK;
+
+            reactor->Finish(status_t::OK);
+            return reactor;
         }
 
         resp->add_ids(id);
     }
 
     resp->set_error_code(OK);
-    return status_t::OK;
+
+    reactor->Finish(status_t::OK);
+    return reactor;
 }
 
-status_t api_handler::GetSkillInfo(ctx_t                                *ctx,
-                                   const ::GrpcLibrary::GetSkillInfoReq *req,
-                                   ::GrpcLibrary::GetSkillInfoResp      *resp)
+reactor_t *api_handler::GetSkillInfo(ctx_t                                *ctx,
+                                     const ::GrpcLibrary::GetSkillInfoReq *req,
+                                     ::GrpcLibrary::GetSkillInfoResp      *resp)
 {
     std::string hash  = req->hash();
     int         limit = req->limit();
     limit             = limit < 0 || limit > 50 ? 50 : limit;
+    auto *reactor     = ctx->DefaultReactor();
     resp->set_error_code(ERR_FAIL);
     LOG_DEBUG("Received GetSkillInfo request. hash: {}, limit: {}",
               hash,
@@ -505,7 +449,9 @@ status_t api_handler::GetSkillInfo(ctx_t                                *ctx,
     {
         resp->set_error_code(ERR_SQLITE_EXEC_FAIL);
         LOG_ERROR("Failed to query skill info for sql: {}", sql);
-        return status_t::OK;
+
+        reactor->Finish(status_t::OK);
+        return reactor;
     }
     for(const auto row : rows)
     {
@@ -533,16 +479,19 @@ status_t api_handler::GetSkillInfo(ctx_t                                *ctx,
     }
 
     resp->set_error_code(OK);
-    return status_t::OK;
+
+    reactor->Finish(status_t::OK);
+    return reactor;
 }
 
-status_t api_handler::Download(ctx_t                            *ctx,
-                               const ::GrpcLibrary::DownloadReq *req,
-                               ::GrpcLibrary::DownloadResp      *resp)
+reactor_t *api_handler::Download(ctx_t                            *ctx,
+                                 const ::GrpcLibrary::DownloadReq *req,
+                                 ::GrpcLibrary::DownloadResp      *resp)
 {
     std::string hash    = req->hash();
     int64_t     user_id = req->user_id();
     std::string auth    = req->auth();
+    auto       *reactor = ctx->DefaultReactor();
     resp->set_error_code(ERR_FAIL);
     resp->set_hash(hash);
     LOG_DEBUG("Received Download request. hash: {}, user_id: {}, auth: {}",
@@ -559,7 +508,9 @@ status_t api_handler::Download(ctx_t                            *ctx,
     if(db_mgr::instance().query(rows, DB_SQLITE, sql) != OK)
     {
         LOG_ERROR("Failed to query history for sql: {}", sql);
-        return status_t::OK;
+
+        reactor->Finish(status_t::OK);
+        return reactor;
     }
     for(const auto row : rows)
     {
@@ -569,5 +520,7 @@ status_t api_handler::Download(ctx_t                            *ctx,
     }
 
     resp->set_error_code(OK);
-    return status_t::OK;
+
+    reactor->Finish(status_t::OK);
+    return reactor;
 }
