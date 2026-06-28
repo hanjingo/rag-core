@@ -24,6 +24,8 @@ class QueryReactor : public grpc::ServerWriteReactor<::GrpcLibrary::QueryResp>
 
     void OnCancel() override { _is_cancelled.store(true); }
 
+    void Stop();
+
   private:
     void _process();
 

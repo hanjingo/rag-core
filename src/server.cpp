@@ -12,6 +12,7 @@
 #include "llm.h"
 #include "router.h"
 #include "watch_dog.h"
+#include "reactor_mgr.h"
 
 reactor_t *api_handler::Heartbeat(ctx_t                     *ctx,
                                   const ::GrpcLibrary::Ping *req,
@@ -147,6 +148,43 @@ reactor_t *api_handler::RegAccount(ctx_t                              *ctx,
     resp->set_user_id(id);
     resp->set_error_code(OK);
 
+    reactor->Finish(status_t::OK);
+    return reactor;
+}
+
+reactor_t *api_handler::StopAnswer(ctx_t                              *ctx,
+                                   const ::GrpcLibrary::StopAnswerReq *req,
+                                   ::GrpcLibrary::StopAnswerResp      *resp)
+{
+    auto session_id = req->session_id();
+    auto user_id    = req->user_id();
+    auto auth       = req->auth();
+    LOG_DEBUG(
+        "Received StopAnswer request. session_id: {}, user_id: {}, auth: {}",
+        session_id,
+        user_id,
+        auth);
+
+    auto *reactor = ctx->DefaultReactor();
+    resp->set_error_code(OK);
+
+    bool stopped = query_reactor_mgr::instance().stop_query(session_id);
+    if(!stopped)
+    {
+        LOG_WARN("No active query found for session_id: {}", session_id);
+        resp->set_error_code(ERR_STOP_FAIL);
+    } else
+    {
+        LOG_DEBUG("Successfully stopped query for session_id: {}", session_id);
+        resp->set_error_code(OK);
+    }
+
+    LOG_DEBUG("StopAnswer request processed for session_id: {}, user_id: {}, "
+              "auth: {}",
+              session_id,
+              user_id,
+              auth);
+    resp->set_session_id(session_id);
     reactor->Finish(status_t::OK);
     return reactor;
 }

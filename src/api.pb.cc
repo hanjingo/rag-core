@@ -26,6 +26,61 @@ namespace _pbi = ::google::protobuf::internal;
 namespace _fl = ::google::protobuf::internal::field_layout;
 namespace GrpcLibrary {
 
+inline constexpr StopAnswerResp::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : _cached_size_{0},
+        session_id_{::int64_t{0}},
+        error_code_{0} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR StopAnswerResp::StopAnswerResp(::_pbi::ConstantInitialized)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(StopAnswerResp_class_data_.base()),
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(),
+#endif  // PROTOBUF_CUSTOM_VTABLE
+      _impl_(::_pbi::ConstantInitialized()) {
+}
+struct StopAnswerRespDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR StopAnswerRespDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~StopAnswerRespDefaultTypeInternal() {}
+  union {
+    StopAnswerResp _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 StopAnswerRespDefaultTypeInternal _StopAnswerResp_default_instance_;
+
+inline constexpr StopAnswerReq::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : _cached_size_{0},
+        auth_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        session_id_{::int64_t{0}},
+        user_id_{::int64_t{0}} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR StopAnswerReq::StopAnswerReq(::_pbi::ConstantInitialized)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(StopAnswerReq_class_data_.base()),
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(),
+#endif  // PROTOBUF_CUSTOM_VTABLE
+      _impl_(::_pbi::ConstantInitialized()) {
+}
+struct StopAnswerReqDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR StopAnswerReqDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~StopAnswerReqDefaultTypeInternal() {}
+  union {
+    StopAnswerReq _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 StopAnswerReqDefaultTypeInternal _StopAnswerReq_default_instance_;
+
 inline constexpr Skill::Impl_::Impl_(
     ::_pbi::ConstantInitialized) noexcept
       : _cached_size_{0},
@@ -1062,6 +1117,22 @@ const ::uint32_t
         0,
         3,
         0x081, // bitmap
+        PROTOBUF_FIELD_OFFSET(::GrpcLibrary::StopAnswerReq, _impl_._has_bits_),
+        6, // hasbit index offset
+        PROTOBUF_FIELD_OFFSET(::GrpcLibrary::StopAnswerReq, _impl_.session_id_),
+        PROTOBUF_FIELD_OFFSET(::GrpcLibrary::StopAnswerReq, _impl_.user_id_),
+        PROTOBUF_FIELD_OFFSET(::GrpcLibrary::StopAnswerReq, _impl_.auth_),
+        1,
+        2,
+        0,
+        0x081, // bitmap
+        PROTOBUF_FIELD_OFFSET(::GrpcLibrary::StopAnswerResp, _impl_._has_bits_),
+        5, // hasbit index offset
+        PROTOBUF_FIELD_OFFSET(::GrpcLibrary::StopAnswerResp, _impl_.error_code_),
+        PROTOBUF_FIELD_OFFSET(::GrpcLibrary::StopAnswerResp, _impl_.session_id_),
+        1,
+        0,
+        0x081, // bitmap
         PROTOBUF_FIELD_OFFSET(::GrpcLibrary::GetMessageInfoReq, _impl_._has_bits_),
         8, // hasbit index offset
         PROTOBUF_FIELD_OFFSET(::GrpcLibrary::GetMessageInfoReq, _impl_.id_),
@@ -1208,20 +1279,22 @@ static const ::_pbi::MigrationSchema
         {116, sizeof(::GrpcLibrary::RegAccountResp)},
         {123, sizeof(::GrpcLibrary::QueryReq)},
         {142, sizeof(::GrpcLibrary::QueryResp)},
-        {153, sizeof(::GrpcLibrary::GetMessageInfoReq)},
-        {166, sizeof(::GrpcLibrary::GetMessageInfoResp)},
-        {173, sizeof(::GrpcLibrary::GetSessionReq)},
-        {184, sizeof(::GrpcLibrary::GetSessionResp)},
-        {191, sizeof(::GrpcLibrary::NewSessionReq)},
-        {204, sizeof(::GrpcLibrary::NewSessionResp)},
-        {211, sizeof(::GrpcLibrary::ModifySessionTitleReq)},
-        {222, sizeof(::GrpcLibrary::ModifySessionTitleResp)},
-        {231, sizeof(::GrpcLibrary::DelSessionReq)},
-        {240, sizeof(::GrpcLibrary::DelSessionResp)},
-        {247, sizeof(::GrpcLibrary::GetSkillInfoReq)},
-        {254, sizeof(::GrpcLibrary::GetSkillInfoResp)},
-        {261, sizeof(::GrpcLibrary::DownloadReq)},
-        {270, sizeof(::GrpcLibrary::DownloadResp)},
+        {153, sizeof(::GrpcLibrary::StopAnswerReq)},
+        {162, sizeof(::GrpcLibrary::StopAnswerResp)},
+        {169, sizeof(::GrpcLibrary::GetMessageInfoReq)},
+        {182, sizeof(::GrpcLibrary::GetMessageInfoResp)},
+        {189, sizeof(::GrpcLibrary::GetSessionReq)},
+        {200, sizeof(::GrpcLibrary::GetSessionResp)},
+        {207, sizeof(::GrpcLibrary::NewSessionReq)},
+        {220, sizeof(::GrpcLibrary::NewSessionResp)},
+        {227, sizeof(::GrpcLibrary::ModifySessionTitleReq)},
+        {238, sizeof(::GrpcLibrary::ModifySessionTitleResp)},
+        {247, sizeof(::GrpcLibrary::DelSessionReq)},
+        {256, sizeof(::GrpcLibrary::DelSessionResp)},
+        {263, sizeof(::GrpcLibrary::GetSkillInfoReq)},
+        {270, sizeof(::GrpcLibrary::GetSkillInfoResp)},
+        {277, sizeof(::GrpcLibrary::DownloadReq)},
+        {286, sizeof(::GrpcLibrary::DownloadResp)},
 };
 static const ::_pb::Message* PROTOBUF_NONNULL const file_default_instances[] = {
     &::GrpcLibrary::_Session_default_instance_._instance,
@@ -1239,6 +1312,8 @@ static const ::_pb::Message* PROTOBUF_NONNULL const file_default_instances[] = {
     &::GrpcLibrary::_RegAccountResp_default_instance_._instance,
     &::GrpcLibrary::_QueryReq_default_instance_._instance,
     &::GrpcLibrary::_QueryResp_default_instance_._instance,
+    &::GrpcLibrary::_StopAnswerReq_default_instance_._instance,
+    &::GrpcLibrary::_StopAnswerResp_default_instance_._instance,
     &::GrpcLibrary::_GetMessageInfoReq_default_instance_._instance,
     &::GrpcLibrary::_GetMessageInfoResp_default_instance_._instance,
     &::GrpcLibrary::_GetSessionReq_default_instance_._instance,
@@ -1286,67 +1361,72 @@ const char descriptor_table_protodef_src_2fapi_2eproto[] ABSL_ATTRIBUTE_SECTION_
     "amplingParam\022&\n\003ctx\030\010 \001(\0132\031.GrpcLibrary."
     "ContextParam\"Q\n\tQueryResp\022\022\n\nerror_code\030"
     "\001 \001(\005\022\n\n\002id\030\002 \001(\003\022\017\n\007content\030\003 \001(\t\022\023\n\013is"
-    "_finished\030\004 \001(\010\"a\n\021GetMessageInfoReq\022\n\n\002"
-    "id\030\001 \001(\003\022\022\n\nsession_id\030\002 \001(\003\022\r\n\005limit\030\003 "
-    "\001(\005\022\017\n\007user_id\030\004 \001(\003\022\014\n\004auth\030\005 \001(\t\"T\n\022Ge"
-    "tMessageInfoResp\022\022\n\nerror_code\030\001 \001(\005\022*\n\010"
-    "messages\030\002 \003(\0132\030.GrpcLibrary.MessageInfo"
-    "\"I\n\rGetSessionReq\022\n\n\002id\030\001 \001(\003\022\017\n\007user_id"
-    "\030\002 \001(\003\022\014\n\004auth\030\003 \001(\t\022\r\n\005limit\030\004 \001(\005\"L\n\016G"
-    "etSessionResp\022\022\n\nerror_code\030\001 \001(\005\022&\n\010ses"
-    "sions\030\002 \003(\0132\024.GrpcLibrary.Session\"]\n\rNew"
-    "SessionReq\022\017\n\007user_id\030\001 \001(\003\022\014\n\004auth\030\002 \001("
-    "\t\022\r\n\005title\030\003 \001(\t\022\017\n\007content\030\004 \001(\t\022\r\n\005mod"
-    "el\030\005 \001(\t\"K\n\016NewSessionResp\022\022\n\nerror_code"
-    "\030\001 \001(\005\022%\n\007session\030\002 \001(\0132\024.GrpcLibrary.Se"
-    "ssion\"Q\n\025ModifySessionTitleReq\022\n\n\002id\030\001 \001"
-    "(\003\022\017\n\007user_id\030\002 \001(\003\022\014\n\004auth\030\003 \001(\t\022\r\n\005tit"
-    "le\030\004 \001(\t\"G\n\026ModifySessionTitleResp\022\022\n\ner"
-    "ror_code\030\001 \001(\005\022\n\n\002id\030\002 \001(\003\022\r\n\005title\030\003 \001("
-    "\t\";\n\rDelSessionReq\022\017\n\007user_id\030\001 \001(\003\022\014\n\004a"
-    "uth\030\002 \001(\t\022\013\n\003ids\030\003 \003(\003\"1\n\016DelSessionResp"
-    "\022\022\n\nerror_code\030\001 \001(\005\022\013\n\003ids\030\002 \003(\003\".\n\017Get"
-    "SkillInfoReq\022\014\n\004hash\030\001 \001(\t\022\r\n\005limit\030\002 \001("
-    "\005\"J\n\020GetSkillInfoResp\022\022\n\nerror_code\030\001 \001("
-    "\005\022\"\n\006skills\030\002 \003(\0132\022.GrpcLibrary.Skill\":\n"
-    "\013DownloadReq\022\014\n\004hash\030\001 \001(\t\022\017\n\007user_id\030\002 "
-    "\001(\003\022\014\n\004auth\030\003 \001(\t\"O\n\014DownloadResp\022\022\n\nerr"
-    "or_code\030\001 \001(\005\022\014\n\004hash\030\002 \001(\t\022\014\n\004addr\030\003 \001("
-    "\t\022\017\n\007size_kb\030\004 \001(\0032\341\006\n\013GrpcService\0223\n\tHe"
-    "artbeat\022\021.GrpcLibrary.Ping\032\021.GrpcLibrary"
-    ".Pong\"\000\0228\n\005Login\022\025.GrpcLibrary.LoginReq\032"
-    "\026.GrpcLibrary.LoginResp\"\000\022;\n\006Logout\022\026.Gr"
-    "pcLibrary.LogoutReq\032\027.GrpcLibrary.Logout"
-    "Resp\"\000\022G\n\nRegAccount\022\032.GrpcLibrary.RegAc"
-    "countReq\032\033.GrpcLibrary.RegAccountResp\"\000\022"
-    ":\n\005Query\022\025.GrpcLibrary.QueryReq\032\026.GrpcLi"
-    "brary.QueryResp\"\0000\001\022S\n\016GetMessageInfo\022\036."
-    "GrpcLibrary.GetMessageInfoReq\032\037.GrpcLibr"
-    "ary.GetMessageInfoResp\"\000\022G\n\nGetSession\022\032"
-    ".GrpcLibrary.GetSessionReq\032\033.GrpcLibrary"
-    ".GetSessionResp\"\000\022G\n\nNewSession\022\032.GrpcLi"
-    "brary.NewSessionReq\032\033.GrpcLibrary.NewSes"
-    "sionResp\"\000\022_\n\022ModifySessionTitle\022\".GrpcL"
-    "ibrary.ModifySessionTitleReq\032#.GrpcLibra"
-    "ry.ModifySessionTitleResp\"\000\022G\n\nDelSessio"
-    "n\022\032.GrpcLibrary.DelSessionReq\032\033.GrpcLibr"
-    "ary.DelSessionResp\"\000\022M\n\014GetSkillInfo\022\034.G"
-    "rpcLibrary.GetSkillInfoReq\032\035.GrpcLibrary"
-    ".GetSkillInfoResp\"\000\022A\n\010Download\022\030.GrpcLi"
-    "brary.DownloadReq\032\031.GrpcLibrary.Download"
-    "Resp\"\000b\006proto3"
+    "_finished\030\004 \001(\010\"B\n\rStopAnswerReq\022\022\n\nsess"
+    "ion_id\030\001 \001(\003\022\017\n\007user_id\030\002 \001(\003\022\014\n\004auth\030\003 "
+    "\001(\t\"8\n\016StopAnswerResp\022\022\n\nerror_code\030\001 \001("
+    "\005\022\022\n\nsession_id\030\002 \001(\003\"a\n\021GetMessageInfoR"
+    "eq\022\n\n\002id\030\001 \001(\003\022\022\n\nsession_id\030\002 \001(\003\022\r\n\005li"
+    "mit\030\003 \001(\005\022\017\n\007user_id\030\004 \001(\003\022\014\n\004auth\030\005 \001(\t"
+    "\"T\n\022GetMessageInfoResp\022\022\n\nerror_code\030\001 \001"
+    "(\005\022*\n\010messages\030\002 \003(\0132\030.GrpcLibrary.Messa"
+    "geInfo\"I\n\rGetSessionReq\022\n\n\002id\030\001 \001(\003\022\017\n\007u"
+    "ser_id\030\002 \001(\003\022\014\n\004auth\030\003 \001(\t\022\r\n\005limit\030\004 \001("
+    "\005\"L\n\016GetSessionResp\022\022\n\nerror_code\030\001 \001(\005\022"
+    "&\n\010sessions\030\002 \003(\0132\024.GrpcLibrary.Session\""
+    "]\n\rNewSessionReq\022\017\n\007user_id\030\001 \001(\003\022\014\n\004aut"
+    "h\030\002 \001(\t\022\r\n\005title\030\003 \001(\t\022\017\n\007content\030\004 \001(\t\022"
+    "\r\n\005model\030\005 \001(\t\"K\n\016NewSessionResp\022\022\n\nerro"
+    "r_code\030\001 \001(\005\022%\n\007session\030\002 \001(\0132\024.GrpcLibr"
+    "ary.Session\"Q\n\025ModifySessionTitleReq\022\n\n\002"
+    "id\030\001 \001(\003\022\017\n\007user_id\030\002 \001(\003\022\014\n\004auth\030\003 \001(\t\022"
+    "\r\n\005title\030\004 \001(\t\"G\n\026ModifySessionTitleResp"
+    "\022\022\n\nerror_code\030\001 \001(\005\022\n\n\002id\030\002 \001(\003\022\r\n\005titl"
+    "e\030\003 \001(\t\";\n\rDelSessionReq\022\017\n\007user_id\030\001 \001("
+    "\003\022\014\n\004auth\030\002 \001(\t\022\013\n\003ids\030\003 \003(\003\"1\n\016DelSessi"
+    "onResp\022\022\n\nerror_code\030\001 \001(\005\022\013\n\003ids\030\002 \003(\003\""
+    ".\n\017GetSkillInfoReq\022\014\n\004hash\030\001 \001(\t\022\r\n\005limi"
+    "t\030\002 \001(\005\"J\n\020GetSkillInfoResp\022\022\n\nerror_cod"
+    "e\030\001 \001(\005\022\"\n\006skills\030\002 \003(\0132\022.GrpcLibrary.Sk"
+    "ill\":\n\013DownloadReq\022\014\n\004hash\030\001 \001(\t\022\017\n\007user"
+    "_id\030\002 \001(\003\022\014\n\004auth\030\003 \001(\t\"O\n\014DownloadResp\022"
+    "\022\n\nerror_code\030\001 \001(\005\022\014\n\004hash\030\002 \001(\t\022\014\n\004add"
+    "r\030\003 \001(\t\022\017\n\007size_kb\030\004 \001(\0032\252\007\n\013GrpcService"
+    "\0223\n\tHeartbeat\022\021.GrpcLibrary.Ping\032\021.GrpcL"
+    "ibrary.Pong\"\000\0228\n\005Login\022\025.GrpcLibrary.Log"
+    "inReq\032\026.GrpcLibrary.LoginResp\"\000\022;\n\006Logou"
+    "t\022\026.GrpcLibrary.LogoutReq\032\027.GrpcLibrary."
+    "LogoutResp\"\000\022G\n\nRegAccount\022\032.GrpcLibrary"
+    ".RegAccountReq\032\033.GrpcLibrary.RegAccountR"
+    "esp\"\000\022:\n\005Query\022\025.GrpcLibrary.QueryReq\032\026."
+    "GrpcLibrary.QueryResp\"\0000\001\022G\n\nStopAnswer\022"
+    "\032.GrpcLibrary.StopAnswerReq\032\033.GrpcLibrar"
+    "y.StopAnswerResp\"\000\022S\n\016GetMessageInfo\022\036.G"
+    "rpcLibrary.GetMessageInfoReq\032\037.GrpcLibra"
+    "ry.GetMessageInfoResp\"\000\022G\n\nGetSession\022\032."
+    "GrpcLibrary.GetSessionReq\032\033.GrpcLibrary."
+    "GetSessionResp\"\000\022G\n\nNewSession\022\032.GrpcLib"
+    "rary.NewSessionReq\032\033.GrpcLibrary.NewSess"
+    "ionResp\"\000\022_\n\022ModifySessionTitle\022\".GrpcLi"
+    "brary.ModifySessionTitleReq\032#.GrpcLibrar"
+    "y.ModifySessionTitleResp\"\000\022G\n\nDelSession"
+    "\022\032.GrpcLibrary.DelSessionReq\032\033.GrpcLibra"
+    "ry.DelSessionResp\"\000\022M\n\014GetSkillInfo\022\034.Gr"
+    "pcLibrary.GetSkillInfoReq\032\035.GrpcLibrary."
+    "GetSkillInfoResp\"\000\022A\n\010Download\022\030.GrpcLib"
+    "rary.DownloadReq\032\031.GrpcLibrary.DownloadR"
+    "esp\"\000b\006proto3"
 };
 static ::absl::once_flag descriptor_table_src_2fapi_2eproto_once;
 PROTOBUF_CONSTINIT const ::_pbi::DescriptorTable descriptor_table_src_2fapi_2eproto = {
     false,
     false,
-    3134,
+    3333,
     descriptor_table_protodef_src_2fapi_2eproto,
     "src/api.proto",
     &descriptor_table_src_2fapi_2eproto_once,
     nullptr,
     0,
-    29,
+    31,
     schemas,
     file_default_instances,
     TableStruct_src_2fapi_2eproto::offsets,
@@ -6841,6 +6921,656 @@ void QueryResp::InternalSwap(QueryResp* PROTOBUF_RESTRICT PROTOBUF_NONNULL other
 }
 
 ::google::protobuf::Metadata QueryResp::GetMetadata() const {
+  return ::google::protobuf::Message::GetMetadataImpl(GetClassData()->full());
+}
+// ===================================================================
+
+class StopAnswerReq::_Internal {
+ public:
+  using HasBits =
+      decltype(::std::declval<StopAnswerReq>()._impl_._has_bits_);
+  static constexpr ::int32_t kHasBitsOffset =
+      8 * PROTOBUF_FIELD_OFFSET(StopAnswerReq, _impl_._has_bits_);
+};
+
+StopAnswerReq::StopAnswerReq(::google::protobuf::Arena* PROTOBUF_NULLABLE arena)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(arena, StopAnswerReq_class_data_.base()) {
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(arena) {
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  SharedCtor(arena);
+  // @@protoc_insertion_point(arena_constructor:GrpcLibrary.StopAnswerReq)
+}
+PROTOBUF_NDEBUG_INLINE StopAnswerReq::Impl_::Impl_(
+    [[maybe_unused]] ::google::protobuf::internal::InternalVisibility visibility,
+    [[maybe_unused]] ::google::protobuf::Arena* PROTOBUF_NULLABLE arena, const Impl_& from,
+    [[maybe_unused]] const ::GrpcLibrary::StopAnswerReq& from_msg)
+      : _has_bits_{from._has_bits_},
+        _cached_size_{0},
+        auth_(arena, from.auth_) {}
+
+StopAnswerReq::StopAnswerReq(
+    ::google::protobuf::Arena* PROTOBUF_NULLABLE arena,
+    const StopAnswerReq& from)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(arena, StopAnswerReq_class_data_.base()) {
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(arena) {
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  StopAnswerReq* const _this = this;
+  (void)_this;
+  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
+      from._internal_metadata_);
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_, from);
+  ::memcpy(reinterpret_cast<char*>(&_impl_) +
+               offsetof(Impl_, session_id_),
+           reinterpret_cast<const char*>(&from._impl_) +
+               offsetof(Impl_, session_id_),
+           offsetof(Impl_, user_id_) -
+               offsetof(Impl_, session_id_) +
+               sizeof(Impl_::user_id_));
+
+  // @@protoc_insertion_point(copy_constructor:GrpcLibrary.StopAnswerReq)
+}
+PROTOBUF_NDEBUG_INLINE StopAnswerReq::Impl_::Impl_(
+    [[maybe_unused]] ::google::protobuf::internal::InternalVisibility visibility,
+    [[maybe_unused]] ::google::protobuf::Arena* PROTOBUF_NULLABLE arena)
+      : _cached_size_{0},
+        auth_(arena) {}
+
+inline void StopAnswerReq::SharedCtor(::_pb::Arena* PROTOBUF_NULLABLE arena) {
+  new (&_impl_) Impl_(internal_visibility(), arena);
+  ::memset(reinterpret_cast<char*>(&_impl_) +
+               offsetof(Impl_, session_id_),
+           0,
+           offsetof(Impl_, user_id_) -
+               offsetof(Impl_, session_id_) +
+               sizeof(Impl_::user_id_));
+}
+StopAnswerReq::~StopAnswerReq() {
+  // @@protoc_insertion_point(destructor:GrpcLibrary.StopAnswerReq)
+  SharedDtor(*this);
+}
+inline void StopAnswerReq::SharedDtor(MessageLite& self) {
+  StopAnswerReq& this_ = static_cast<StopAnswerReq&>(self);
+  if constexpr (::_pbi::DebugHardenCheckHasBitConsistency()) {
+    this_.CheckHasBitConsistency();
+  }
+  this_._internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
+  ABSL_DCHECK(this_.GetArena() == nullptr);
+  this_._impl_.auth_.Destroy();
+  this_._impl_.~Impl_();
+}
+
+inline void* PROTOBUF_NONNULL StopAnswerReq::PlacementNew_(
+    const void* PROTOBUF_NONNULL, void* PROTOBUF_NONNULL mem,
+    ::google::protobuf::Arena* PROTOBUF_NULLABLE arena) {
+  return ::new (mem) StopAnswerReq(arena);
+}
+constexpr auto StopAnswerReq::InternalNewImpl_() {
+  return ::google::protobuf::internal::MessageCreator::CopyInit(sizeof(StopAnswerReq),
+                                            alignof(StopAnswerReq));
+}
+constexpr auto StopAnswerReq::InternalGenerateClassData_() {
+  return ::google::protobuf::internal::ClassDataFull{
+      ::google::protobuf::internal::ClassData{
+          &_StopAnswerReq_default_instance_._instance,
+          &_table_.header,
+          nullptr,  // OnDemandRegisterArenaDtor
+          nullptr,  // IsInitialized
+          &StopAnswerReq::MergeImpl,
+          ::google::protobuf::Message::GetNewImpl<StopAnswerReq>(),
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+          &StopAnswerReq::SharedDtor,
+          ::google::protobuf::Message::GetClearImpl<StopAnswerReq>(), &StopAnswerReq::ByteSizeLong,
+              &StopAnswerReq::_InternalSerialize,
+#endif  // PROTOBUF_CUSTOM_VTABLE
+          PROTOBUF_FIELD_OFFSET(StopAnswerReq, _impl_._cached_size_),
+          false,
+      },
+      &StopAnswerReq::kDescriptorMethods,
+      &descriptor_table_src_2fapi_2eproto,
+      nullptr,  // tracker
+  };
+}
+
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 const
+    ::google::protobuf::internal::ClassDataFull StopAnswerReq_class_data_ =
+        StopAnswerReq::InternalGenerateClassData_();
+
+PROTOBUF_ATTRIBUTE_WEAK const ::google::protobuf::internal::ClassData* PROTOBUF_NONNULL
+StopAnswerReq::GetClassData() const {
+  ::google::protobuf::internal::PrefetchToLocalCache(&StopAnswerReq_class_data_);
+  ::google::protobuf::internal::PrefetchToLocalCache(StopAnswerReq_class_data_.tc_table);
+  return StopAnswerReq_class_data_.base();
+}
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::_pbi::TcParseTable<2, 3, 0, 38, 2>
+StopAnswerReq::_table_ = {
+  {
+    PROTOBUF_FIELD_OFFSET(StopAnswerReq, _impl_._has_bits_),
+    0, // no _extensions_
+    3, 24,  // max_field_number, fast_idx_mask
+    offsetof(decltype(_table_), field_lookup_table),
+    4294967288,  // skipmap
+    offsetof(decltype(_table_), field_entries),
+    3,  // num_field_entries
+    0,  // num_aux_entries
+    offsetof(decltype(_table_), field_names),  // no aux_entries
+    StopAnswerReq_class_data_.base(),
+    nullptr,  // post_loop_handler
+    ::_pbi::TcParser::GenericFallback,  // fallback
+    #ifdef PROTOBUF_PREFETCH_PARSE_TABLE
+    ::_pbi::TcParser::GetTable<::GrpcLibrary::StopAnswerReq>(),  // to_prefetch
+    #endif  // PROTOBUF_PREFETCH_PARSE_TABLE
+  }, {{
+    {::_pbi::TcParser::MiniParse, {}},
+    // int64 session_id = 1;
+    {::_pbi::TcParser::SingularVarintNoZag1<::uint64_t, offsetof(StopAnswerReq, _impl_.session_id_), 1>(),
+     {8, 1, 0,
+      PROTOBUF_FIELD_OFFSET(StopAnswerReq, _impl_.session_id_)}},
+    // int64 user_id = 2;
+    {::_pbi::TcParser::SingularVarintNoZag1<::uint64_t, offsetof(StopAnswerReq, _impl_.user_id_), 2>(),
+     {16, 2, 0,
+      PROTOBUF_FIELD_OFFSET(StopAnswerReq, _impl_.user_id_)}},
+    // string auth = 3;
+    {::_pbi::TcParser::FastUS1,
+     {26, 0, 0,
+      PROTOBUF_FIELD_OFFSET(StopAnswerReq, _impl_.auth_)}},
+  }}, {{
+    65535, 65535
+  }}, {{
+    // int64 session_id = 1;
+    {PROTOBUF_FIELD_OFFSET(StopAnswerReq, _impl_.session_id_), _Internal::kHasBitsOffset + 1, 0, (0 | ::_fl::kFcOptional | ::_fl::kInt64)},
+    // int64 user_id = 2;
+    {PROTOBUF_FIELD_OFFSET(StopAnswerReq, _impl_.user_id_), _Internal::kHasBitsOffset + 2, 0, (0 | ::_fl::kFcOptional | ::_fl::kInt64)},
+    // string auth = 3;
+    {PROTOBUF_FIELD_OFFSET(StopAnswerReq, _impl_.auth_), _Internal::kHasBitsOffset + 0, 0, (0 | ::_fl::kFcOptional | ::_fl::kUtf8String | ::_fl::kRepAString)},
+  }},
+  // no aux_entries
+  {{
+    "\31\0\0\4\0\0\0\0"
+    "GrpcLibrary.StopAnswerReq"
+    "auth"
+  }},
+};
+PROTOBUF_NOINLINE void StopAnswerReq::Clear() {
+// @@protoc_insertion_point(message_clear_start:GrpcLibrary.StopAnswerReq)
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  ::uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  cached_has_bits = _impl_._has_bits_[0];
+  if (CheckHasBit(cached_has_bits, 0x00000001U)) {
+    _impl_.auth_.ClearNonDefaultToEmpty();
+  }
+  if (BatchCheckHasBit(cached_has_bits, 0x00000006U)) {
+    ::memset(&_impl_.session_id_, 0, static_cast<::size_t>(
+        reinterpret_cast<char*>(&_impl_.user_id_) -
+        reinterpret_cast<char*>(&_impl_.session_id_)) + sizeof(_impl_.user_id_));
+  }
+  _impl_._has_bits_.Clear();
+  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
+}
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+::uint8_t* PROTOBUF_NONNULL StopAnswerReq::_InternalSerialize(
+    const ::google::protobuf::MessageLite& base, ::uint8_t* PROTOBUF_NONNULL target,
+    ::google::protobuf::io::EpsCopyOutputStream* PROTOBUF_NONNULL stream) {
+  const StopAnswerReq& this_ = static_cast<const StopAnswerReq&>(base);
+#else   // PROTOBUF_CUSTOM_VTABLE
+::uint8_t* PROTOBUF_NONNULL StopAnswerReq::_InternalSerialize(
+    ::uint8_t* PROTOBUF_NONNULL target,
+    ::google::protobuf::io::EpsCopyOutputStream* PROTOBUF_NONNULL stream) const {
+  const StopAnswerReq& this_ = *this;
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  if constexpr (::_pbi::DebugHardenCheckHasBitConsistency()) {
+    this_.CheckHasBitConsistency();
+  }
+  // @@protoc_insertion_point(serialize_to_array_start:GrpcLibrary.StopAnswerReq)
+  ::uint32_t cached_has_bits = 0;
+  (void)cached_has_bits;
+
+  cached_has_bits = this_._impl_._has_bits_[0];
+  // int64 session_id = 1;
+  if (CheckHasBit(cached_has_bits, 0x00000002U)) {
+    if (this_._internal_session_id() != 0) {
+      target =
+          ::google::protobuf::internal::WireFormatLite::WriteInt64ToArrayWithField<1>(
+              stream, this_._internal_session_id(), target);
+    }
+  }
+
+  // int64 user_id = 2;
+  if (CheckHasBit(cached_has_bits, 0x00000004U)) {
+    if (this_._internal_user_id() != 0) {
+      target =
+          ::google::protobuf::internal::WireFormatLite::WriteInt64ToArrayWithField<2>(
+              stream, this_._internal_user_id(), target);
+    }
+  }
+
+  // string auth = 3;
+  if (CheckHasBit(cached_has_bits, 0x00000001U)) {
+    if (!this_._internal_auth().empty()) {
+      const ::std::string& _s = this_._internal_auth();
+      ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+          _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "GrpcLibrary.StopAnswerReq.auth");
+      target = stream->WriteStringMaybeAliased(3, _s, target);
+    }
+  }
+
+  if (ABSL_PREDICT_FALSE(this_._internal_metadata_.have_unknown_fields())) {
+    target =
+        ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+            this_._internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:GrpcLibrary.StopAnswerReq)
+  return target;
+}
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+::size_t StopAnswerReq::ByteSizeLong(const MessageLite& base) {
+  const StopAnswerReq& this_ = static_cast<const StopAnswerReq&>(base);
+#else   // PROTOBUF_CUSTOM_VTABLE
+::size_t StopAnswerReq::ByteSizeLong() const {
+  const StopAnswerReq& this_ = *this;
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  // @@protoc_insertion_point(message_byte_size_start:GrpcLibrary.StopAnswerReq)
+  ::size_t total_size = 0;
+
+  ::uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void)cached_has_bits;
+
+  ::_pbi::Prefetch5LinesFrom7Lines(&this_);
+  cached_has_bits = this_._impl_._has_bits_[0];
+  if (BatchCheckHasBit(cached_has_bits, 0x00000007U)) {
+    // string auth = 3;
+    if (CheckHasBit(cached_has_bits, 0x00000001U)) {
+      if (!this_._internal_auth().empty()) {
+        total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
+                                        this_._internal_auth());
+      }
+    }
+    // int64 session_id = 1;
+    if (CheckHasBit(cached_has_bits, 0x00000002U)) {
+      if (this_._internal_session_id() != 0) {
+        total_size += ::_pbi::WireFormatLite::Int64SizePlusOne(
+            this_._internal_session_id());
+      }
+    }
+    // int64 user_id = 2;
+    if (CheckHasBit(cached_has_bits, 0x00000004U)) {
+      if (this_._internal_user_id() != 0) {
+        total_size += ::_pbi::WireFormatLite::Int64SizePlusOne(
+            this_._internal_user_id());
+      }
+    }
+  }
+  return this_.MaybeComputeUnknownFieldsSize(total_size,
+                                             &this_._impl_._cached_size_);
+}
+
+void StopAnswerReq::MergeImpl(::google::protobuf::MessageLite& to_msg,
+                            const ::google::protobuf::MessageLite& from_msg) {
+   auto* const _this =
+      static_cast<StopAnswerReq*>(&to_msg);
+  auto& from = static_cast<const StopAnswerReq&>(from_msg);
+  if constexpr (::_pbi::DebugHardenCheckHasBitConsistency()) {
+    from.CheckHasBitConsistency();
+  }
+  // @@protoc_insertion_point(class_specific_merge_from_start:GrpcLibrary.StopAnswerReq)
+  ABSL_DCHECK_NE(&from, _this);
+  ::uint32_t cached_has_bits = 0;
+  (void)cached_has_bits;
+
+  cached_has_bits = from._impl_._has_bits_[0];
+  if (BatchCheckHasBit(cached_has_bits, 0x00000007U)) {
+    if (CheckHasBit(cached_has_bits, 0x00000001U)) {
+      if (!from._internal_auth().empty()) {
+        _this->_internal_set_auth(from._internal_auth());
+      } else {
+        if (_this->_impl_.auth_.IsDefault()) {
+          _this->_internal_set_auth("");
+        }
+      }
+    }
+    if (CheckHasBit(cached_has_bits, 0x00000002U)) {
+      if (from._internal_session_id() != 0) {
+        _this->_impl_.session_id_ = from._impl_.session_id_;
+      }
+    }
+    if (CheckHasBit(cached_has_bits, 0x00000004U)) {
+      if (from._internal_user_id() != 0) {
+        _this->_impl_.user_id_ = from._impl_.user_id_;
+      }
+    }
+  }
+  _this->_impl_._has_bits_[0] |= cached_has_bits;
+  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
+      from._internal_metadata_);
+}
+
+void StopAnswerReq::CopyFrom(const StopAnswerReq& from) {
+  // @@protoc_insertion_point(class_specific_copy_from_start:GrpcLibrary.StopAnswerReq)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+
+void StopAnswerReq::InternalSwap(StopAnswerReq* PROTOBUF_RESTRICT PROTOBUF_NONNULL other) {
+  using ::std::swap;
+  auto* arena = GetArena();
+  ABSL_DCHECK_EQ(arena, other->GetArena());
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.auth_, &other->_impl_.auth_, arena);
+  ::google::protobuf::internal::memswap<
+      PROTOBUF_FIELD_OFFSET(StopAnswerReq, _impl_.user_id_)
+      + sizeof(StopAnswerReq::_impl_.user_id_)
+      - PROTOBUF_FIELD_OFFSET(StopAnswerReq, _impl_.session_id_)>(
+          reinterpret_cast<char*>(&_impl_.session_id_),
+          reinterpret_cast<char*>(&other->_impl_.session_id_));
+}
+
+::google::protobuf::Metadata StopAnswerReq::GetMetadata() const {
+  return ::google::protobuf::Message::GetMetadataImpl(GetClassData()->full());
+}
+// ===================================================================
+
+class StopAnswerResp::_Internal {
+ public:
+  using HasBits =
+      decltype(::std::declval<StopAnswerResp>()._impl_._has_bits_);
+  static constexpr ::int32_t kHasBitsOffset =
+      8 * PROTOBUF_FIELD_OFFSET(StopAnswerResp, _impl_._has_bits_);
+};
+
+StopAnswerResp::StopAnswerResp(::google::protobuf::Arena* PROTOBUF_NULLABLE arena)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(arena, StopAnswerResp_class_data_.base()) {
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(arena) {
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  SharedCtor(arena);
+  // @@protoc_insertion_point(arena_constructor:GrpcLibrary.StopAnswerResp)
+}
+StopAnswerResp::StopAnswerResp(
+    ::google::protobuf::Arena* PROTOBUF_NULLABLE arena, const StopAnswerResp& from)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(arena, StopAnswerResp_class_data_.base()),
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(arena),
+#endif  // PROTOBUF_CUSTOM_VTABLE
+      _impl_(from._impl_) {
+  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
+      from._internal_metadata_);
+}
+PROTOBUF_NDEBUG_INLINE StopAnswerResp::Impl_::Impl_(
+    [[maybe_unused]] ::google::protobuf::internal::InternalVisibility visibility,
+    [[maybe_unused]] ::google::protobuf::Arena* PROTOBUF_NULLABLE arena)
+      : _cached_size_{0} {}
+
+inline void StopAnswerResp::SharedCtor(::_pb::Arena* PROTOBUF_NULLABLE arena) {
+  new (&_impl_) Impl_(internal_visibility(), arena);
+  ::memset(reinterpret_cast<char*>(&_impl_) +
+               offsetof(Impl_, session_id_),
+           0,
+           offsetof(Impl_, error_code_) -
+               offsetof(Impl_, session_id_) +
+               sizeof(Impl_::error_code_));
+}
+StopAnswerResp::~StopAnswerResp() {
+  // @@protoc_insertion_point(destructor:GrpcLibrary.StopAnswerResp)
+  SharedDtor(*this);
+}
+inline void StopAnswerResp::SharedDtor(MessageLite& self) {
+  StopAnswerResp& this_ = static_cast<StopAnswerResp&>(self);
+  if constexpr (::_pbi::DebugHardenCheckHasBitConsistency()) {
+    this_.CheckHasBitConsistency();
+  }
+  this_._internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
+  ABSL_DCHECK(this_.GetArena() == nullptr);
+  this_._impl_.~Impl_();
+}
+
+inline void* PROTOBUF_NONNULL StopAnswerResp::PlacementNew_(
+    const void* PROTOBUF_NONNULL, void* PROTOBUF_NONNULL mem,
+    ::google::protobuf::Arena* PROTOBUF_NULLABLE arena) {
+  return ::new (mem) StopAnswerResp(arena);
+}
+constexpr auto StopAnswerResp::InternalNewImpl_() {
+  return ::google::protobuf::internal::MessageCreator::ZeroInit(sizeof(StopAnswerResp),
+                                            alignof(StopAnswerResp));
+}
+constexpr auto StopAnswerResp::InternalGenerateClassData_() {
+  return ::google::protobuf::internal::ClassDataFull{
+      ::google::protobuf::internal::ClassData{
+          &_StopAnswerResp_default_instance_._instance,
+          &_table_.header,
+          nullptr,  // OnDemandRegisterArenaDtor
+          nullptr,  // IsInitialized
+          &StopAnswerResp::MergeImpl,
+          ::google::protobuf::Message::GetNewImpl<StopAnswerResp>(),
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+          &StopAnswerResp::SharedDtor,
+          ::google::protobuf::Message::GetClearImpl<StopAnswerResp>(), &StopAnswerResp::ByteSizeLong,
+              &StopAnswerResp::_InternalSerialize,
+#endif  // PROTOBUF_CUSTOM_VTABLE
+          PROTOBUF_FIELD_OFFSET(StopAnswerResp, _impl_._cached_size_),
+          false,
+      },
+      &StopAnswerResp::kDescriptorMethods,
+      &descriptor_table_src_2fapi_2eproto,
+      nullptr,  // tracker
+  };
+}
+
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 const
+    ::google::protobuf::internal::ClassDataFull StopAnswerResp_class_data_ =
+        StopAnswerResp::InternalGenerateClassData_();
+
+PROTOBUF_ATTRIBUTE_WEAK const ::google::protobuf::internal::ClassData* PROTOBUF_NONNULL
+StopAnswerResp::GetClassData() const {
+  ::google::protobuf::internal::PrefetchToLocalCache(&StopAnswerResp_class_data_);
+  ::google::protobuf::internal::PrefetchToLocalCache(StopAnswerResp_class_data_.tc_table);
+  return StopAnswerResp_class_data_.base();
+}
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::_pbi::TcParseTable<1, 2, 0, 0, 2>
+StopAnswerResp::_table_ = {
+  {
+    PROTOBUF_FIELD_OFFSET(StopAnswerResp, _impl_._has_bits_),
+    0, // no _extensions_
+    2, 8,  // max_field_number, fast_idx_mask
+    offsetof(decltype(_table_), field_lookup_table),
+    4294967292,  // skipmap
+    offsetof(decltype(_table_), field_entries),
+    2,  // num_field_entries
+    0,  // num_aux_entries
+    offsetof(decltype(_table_), field_names),  // no aux_entries
+    StopAnswerResp_class_data_.base(),
+    nullptr,  // post_loop_handler
+    ::_pbi::TcParser::GenericFallback,  // fallback
+    #ifdef PROTOBUF_PREFETCH_PARSE_TABLE
+    ::_pbi::TcParser::GetTable<::GrpcLibrary::StopAnswerResp>(),  // to_prefetch
+    #endif  // PROTOBUF_PREFETCH_PARSE_TABLE
+  }, {{
+    // int64 session_id = 2;
+    {::_pbi::TcParser::SingularVarintNoZag1<::uint64_t, offsetof(StopAnswerResp, _impl_.session_id_), 0>(),
+     {16, 0, 0,
+      PROTOBUF_FIELD_OFFSET(StopAnswerResp, _impl_.session_id_)}},
+    // int32 error_code = 1;
+    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(StopAnswerResp, _impl_.error_code_), 1>(),
+     {8, 1, 0,
+      PROTOBUF_FIELD_OFFSET(StopAnswerResp, _impl_.error_code_)}},
+  }}, {{
+    65535, 65535
+  }}, {{
+    // int32 error_code = 1;
+    {PROTOBUF_FIELD_OFFSET(StopAnswerResp, _impl_.error_code_), _Internal::kHasBitsOffset + 1, 0, (0 | ::_fl::kFcOptional | ::_fl::kInt32)},
+    // int64 session_id = 2;
+    {PROTOBUF_FIELD_OFFSET(StopAnswerResp, _impl_.session_id_), _Internal::kHasBitsOffset + 0, 0, (0 | ::_fl::kFcOptional | ::_fl::kInt64)},
+  }},
+  // no aux_entries
+  {{
+  }},
+};
+PROTOBUF_NOINLINE void StopAnswerResp::Clear() {
+// @@protoc_insertion_point(message_clear_start:GrpcLibrary.StopAnswerResp)
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  ::uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  cached_has_bits = _impl_._has_bits_[0];
+  if (BatchCheckHasBit(cached_has_bits, 0x00000003U)) {
+    ::memset(&_impl_.session_id_, 0, static_cast<::size_t>(
+        reinterpret_cast<char*>(&_impl_.error_code_) -
+        reinterpret_cast<char*>(&_impl_.session_id_)) + sizeof(_impl_.error_code_));
+  }
+  _impl_._has_bits_.Clear();
+  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
+}
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+::uint8_t* PROTOBUF_NONNULL StopAnswerResp::_InternalSerialize(
+    const ::google::protobuf::MessageLite& base, ::uint8_t* PROTOBUF_NONNULL target,
+    ::google::protobuf::io::EpsCopyOutputStream* PROTOBUF_NONNULL stream) {
+  const StopAnswerResp& this_ = static_cast<const StopAnswerResp&>(base);
+#else   // PROTOBUF_CUSTOM_VTABLE
+::uint8_t* PROTOBUF_NONNULL StopAnswerResp::_InternalSerialize(
+    ::uint8_t* PROTOBUF_NONNULL target,
+    ::google::protobuf::io::EpsCopyOutputStream* PROTOBUF_NONNULL stream) const {
+  const StopAnswerResp& this_ = *this;
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  if constexpr (::_pbi::DebugHardenCheckHasBitConsistency()) {
+    this_.CheckHasBitConsistency();
+  }
+  // @@protoc_insertion_point(serialize_to_array_start:GrpcLibrary.StopAnswerResp)
+  ::uint32_t cached_has_bits = 0;
+  (void)cached_has_bits;
+
+  cached_has_bits = this_._impl_._has_bits_[0];
+  // int32 error_code = 1;
+  if (CheckHasBit(cached_has_bits, 0x00000002U)) {
+    if (this_._internal_error_code() != 0) {
+      target =
+          ::google::protobuf::internal::WireFormatLite::WriteInt32ToArrayWithField<1>(
+              stream, this_._internal_error_code(), target);
+    }
+  }
+
+  // int64 session_id = 2;
+  if (CheckHasBit(cached_has_bits, 0x00000001U)) {
+    if (this_._internal_session_id() != 0) {
+      target =
+          ::google::protobuf::internal::WireFormatLite::WriteInt64ToArrayWithField<2>(
+              stream, this_._internal_session_id(), target);
+    }
+  }
+
+  if (ABSL_PREDICT_FALSE(this_._internal_metadata_.have_unknown_fields())) {
+    target =
+        ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+            this_._internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:GrpcLibrary.StopAnswerResp)
+  return target;
+}
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+::size_t StopAnswerResp::ByteSizeLong(const MessageLite& base) {
+  const StopAnswerResp& this_ = static_cast<const StopAnswerResp&>(base);
+#else   // PROTOBUF_CUSTOM_VTABLE
+::size_t StopAnswerResp::ByteSizeLong() const {
+  const StopAnswerResp& this_ = *this;
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  // @@protoc_insertion_point(message_byte_size_start:GrpcLibrary.StopAnswerResp)
+  ::size_t total_size = 0;
+
+  ::uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void)cached_has_bits;
+
+  ::_pbi::Prefetch5LinesFrom7Lines(&this_);
+  cached_has_bits = this_._impl_._has_bits_[0];
+  if (BatchCheckHasBit(cached_has_bits, 0x00000003U)) {
+    // int64 session_id = 2;
+    if (CheckHasBit(cached_has_bits, 0x00000001U)) {
+      if (this_._internal_session_id() != 0) {
+        total_size += ::_pbi::WireFormatLite::Int64SizePlusOne(
+            this_._internal_session_id());
+      }
+    }
+    // int32 error_code = 1;
+    if (CheckHasBit(cached_has_bits, 0x00000002U)) {
+      if (this_._internal_error_code() != 0) {
+        total_size += ::_pbi::WireFormatLite::Int32SizePlusOne(
+            this_._internal_error_code());
+      }
+    }
+  }
+  return this_.MaybeComputeUnknownFieldsSize(total_size,
+                                             &this_._impl_._cached_size_);
+}
+
+void StopAnswerResp::MergeImpl(::google::protobuf::MessageLite& to_msg,
+                            const ::google::protobuf::MessageLite& from_msg) {
+   auto* const _this =
+      static_cast<StopAnswerResp*>(&to_msg);
+  auto& from = static_cast<const StopAnswerResp&>(from_msg);
+  if constexpr (::_pbi::DebugHardenCheckHasBitConsistency()) {
+    from.CheckHasBitConsistency();
+  }
+  // @@protoc_insertion_point(class_specific_merge_from_start:GrpcLibrary.StopAnswerResp)
+  ABSL_DCHECK_NE(&from, _this);
+  ::uint32_t cached_has_bits = 0;
+  (void)cached_has_bits;
+
+  cached_has_bits = from._impl_._has_bits_[0];
+  if (BatchCheckHasBit(cached_has_bits, 0x00000003U)) {
+    if (CheckHasBit(cached_has_bits, 0x00000001U)) {
+      if (from._internal_session_id() != 0) {
+        _this->_impl_.session_id_ = from._impl_.session_id_;
+      }
+    }
+    if (CheckHasBit(cached_has_bits, 0x00000002U)) {
+      if (from._internal_error_code() != 0) {
+        _this->_impl_.error_code_ = from._impl_.error_code_;
+      }
+    }
+  }
+  _this->_impl_._has_bits_[0] |= cached_has_bits;
+  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
+      from._internal_metadata_);
+}
+
+void StopAnswerResp::CopyFrom(const StopAnswerResp& from) {
+  // @@protoc_insertion_point(class_specific_copy_from_start:GrpcLibrary.StopAnswerResp)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+
+void StopAnswerResp::InternalSwap(StopAnswerResp* PROTOBUF_RESTRICT PROTOBUF_NONNULL other) {
+  using ::std::swap;
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
+  ::google::protobuf::internal::memswap<
+      PROTOBUF_FIELD_OFFSET(StopAnswerResp, _impl_.error_code_)
+      + sizeof(StopAnswerResp::_impl_.error_code_)
+      - PROTOBUF_FIELD_OFFSET(StopAnswerResp, _impl_.session_id_)>(
+          reinterpret_cast<char*>(&_impl_.session_id_),
+          reinterpret_cast<char*>(&other->_impl_.session_id_));
+}
+
+::google::protobuf::Metadata StopAnswerResp::GetMetadata() const {
   return ::google::protobuf::Message::GetMetadataImpl(GetClassData()->full());
 }
 // ===================================================================

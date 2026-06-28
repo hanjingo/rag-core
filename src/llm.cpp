@@ -113,7 +113,10 @@ int llm_mgr::loop_query(
 
         // Check for End of Generation (EOG/EOS) tokens
         if(model->token_is_eog(next_token))
+        {
+            LOG_DEBUG("End of Generation token encountered, stopping query");
             break;
+        }
 
         // Convert token to piece/string and print it
         char buf[LLM_TOKEN_PIECE_BUF_SZ];

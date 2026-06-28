@@ -65,6 +65,10 @@ class api_handler final : public GrpcLibrary::GrpcService::CallbackService
                         const ::GrpcLibrary::DownloadReq *req,
                         ::GrpcLibrary::DownloadResp      *resp) override;
 
+    reactor_t *StopAnswer(ctx_t                              *ctx,
+                          const ::GrpcLibrary::StopAnswerReq *req,
+                          ::GrpcLibrary::StopAnswerResp      *resp) override;
+
     grpc::ServerWriteReactor<::GrpcLibrary::QueryResp> *
     Query(grpc::CallbackServerContext   *ctx,
           const ::GrpcLibrary::QueryReq *req) override;

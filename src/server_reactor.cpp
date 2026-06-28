@@ -13,6 +13,7 @@
 #include "router.h"
 #include "watch_dog.h"
 #include "sync.h"
+#include "reactor_mgr.h"
 
 QueryReactor::QueryReactor(grpc::CallbackServerContext   *ctx,
                            const ::GrpcLibrary::QueryReq *req)
@@ -37,11 +38,13 @@ QueryReactor::QueryReactor(grpc::CallbackServerContext   *ctx,
                           ? _ctx_window_sz
                           : conf::instance().llm_ctx_window_sz();
 
+    query_reactor_mgr::instance().register_query(_session_id, this);
     thread_pool::instance().enqueue([this]() { this->_process(); });
 }
 
 QueryReactor::~QueryReactor()
 {
+    query_reactor_mgr::instance().unregister_query(_session_id);
 }
 
 void QueryReactor::OnWriteDone(bool ok)
@@ -60,7 +63,31 @@ void QueryReactor::OnWriteDone(bool ok)
 
 void QueryReactor::OnDone()
 {
+    // store the answer to DB
+    auto msg_id = static_cast<int64_t>(hj::uuid::gen_u64());
+    auto now    = hj::date_time::now().ms_since_epoch();
+    auto sql    = hj::sqlite::mprintf(SQL_INSERT_MESSAGE,
+                                      msg_id,
+                                      _session_id,
+                                      ROLE_ASSISTANT,
+                                      _answer.c_str(),
+                                      NONE_MSG_ID,
+                                      now);
+    if(db_mgr::instance().exec(DB_SQLITE, sql) != OK)
+    {
+        LOG_ERROR("Failed to insert assistant message for session_id: {}",
+                  _session_id);
+        _send("", true, ERR_SQLITE_EXEC_FAIL);
+        return;
+    }
+
     delete this;
+}
+
+void QueryReactor::Stop()
+{
+    LOG_INFO("Query {} was stopped by user", _session_id);
+    _is_cancelled.store(true);
 }
 
 void QueryReactor::_process()
@@ -106,49 +133,57 @@ void QueryReactor::_process()
               _model,
               tokens.size(),
               max_repeates);
-    auto ec = llm_mgr::instance().loop_query(_model,
-                                             tokens,
-                                             params,
-                                             [&](std::string &output) -> bool {
-                                                 // 1. if disconnect, stop
-                                                 // 2. if write too much repeat words (bug), stop
-                                                 // 3. ...
-                                                 if(_is_cancelled.load())
-                                                     return false;
+    auto ec = llm_mgr::instance().loop_query(
+        _model,
+        tokens,
+        params,
+        [&](std::string &output) -> bool {
+            // 1. if disconnect, stop
+            // 2. if write too much repeat words (bug), stop
+            // 3. if client stop answer, stop
+            // 4. ...
+            if(_is_cancelled.load())
+            {
+                LOG_DEBUG("is_cancelled.load() is true, stop query");
+                // send final words
+                _send("", true, QUERY_CANCELLED);
+                Finish(grpc::Status(grpc::StatusCode::CANCELLED,
+                                    "Cancelled by user"));
+                return false;
+            }
 
-                                                 if(output.empty())
-                                                     return true;
+            if(output.empty())
+                return true;
 
-                                                 if(!dog.watch(output))
-                                                 {
-                                                     _send(output, true, OK);
-                                                     return false;
-                                                 }
+            if(!dog.watch(output))
+            {
+                LOG_DEBUG("dog.watch() is false, stop query");
+                _send(output, true, OK);
+                return false;
+            }
 
-                                                 _answer += output;
-                                                 _send(output, false, OK);
-                                                 return true;
-                                             });
+            LOG_DEBUG("QueryReactor::_process: session_id: {}, user_id: {}, "
+                      "content: {}, model: {}, "
+                      "output size: {}, answer size: {}",
+                      _session_id,
+                      _user_id,
+                      _content,
+                      _model,
+                      output.size(),
+                      _answer.size());
+            _answer += output;
+            _send(output, false, OK);
+            return true;
+        });
 
     if(_is_cancelled.load())
-        return;
-
-    msg_id = static_cast<int64_t>(hj::uuid::gen_u64());
-    now    = hj::date_time::now().ms_since_epoch();
-    sql    = hj::sqlite::mprintf(SQL_INSERT_MESSAGE,
-                                 msg_id,
-                                 _session_id,
-                                 ROLE_ASSISTANT,
-                                 _answer.c_str(),
-                                 NONE_MSG_ID,
-                                 now);
-    if(db_mgr::instance().exec(DB_SQLITE, sql) != OK)
     {
-        _send("", true, ERR_SQLITE_EXEC_FAIL);
+        LOG_INFO("Query {} was cancelled", _session_id);
         return;
     }
 
     // send final words
+    LOG_INFO("Query {} finished with error code {}", _session_id, ec);
     _send("", true, ec);
     Finish(grpc::Status::OK);
 }
@@ -179,5 +214,14 @@ void QueryReactor::_push()
     while(_w_queue.try_dequeue(resp))
     {
         StartWrite(&resp);
+        LOG_DEBUG("QueryReactor::_push: session_id: {}, user_id: {}, auth: {}, "
+                  "content: {}, model: {}, is_finished: {}, error_code: {}",
+                  _session_id,
+                  _user_id,
+                  _auth,
+                  resp.content(),
+                  _model,
+                  resp.is_finished(),
+                  resp.error_code());
     }
 }

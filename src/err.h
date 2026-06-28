@@ -10,6 +10,8 @@ static constexpr int OK                 = 0;
 static constexpr int ERR_INVALID_SUBCMD = 1;
 static constexpr int ERR_ARGC_TOO_LESS  = 2;
 static constexpr int ACCOUNT_INVALID    = 3;
+static constexpr int ERR_STOP_FAIL      = 4;
+static constexpr int QUERY_CANCELLED    = 5;
 
 static constexpr int ERR_DB_NOT_EXIST         = 100;
 static constexpr int ERR_DB_EXISTED           = 101;
