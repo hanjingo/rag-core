@@ -42,7 +42,6 @@ QueryReactor::QueryReactor(grpc::CallbackServerContext   *ctx,
 
 QueryReactor::~QueryReactor()
 {
-    _push();
 }
 
 void QueryReactor::OnWriteDone(bool ok)

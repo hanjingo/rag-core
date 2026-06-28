@@ -20,6 +20,10 @@ class api_handler final : public GrpcLibrary::GrpcService::CallbackService
         return handler;
     }
 
+    reactor_t *Heartbeat(ctx_t                     *ctx,
+                         const ::GrpcLibrary::Ping *req,
+                         ::GrpcLibrary::Pong       *resp) override;
+
     reactor_t *Login(ctx_t                         *ctx,
                      const ::GrpcLibrary::LoginReq *req,
                      ::GrpcLibrary::LoginResp      *resp) override;

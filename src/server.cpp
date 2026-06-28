@@ -13,6 +13,18 @@
 #include "router.h"
 #include "watch_dog.h"
 
+reactor_t *api_handler::Heartbeat(ctx_t                     *ctx,
+                                  const ::GrpcLibrary::Ping *req,
+                                  ::GrpcLibrary::Pong       *resp)
+{
+    int64_t timestamp = req->timestamp();
+    LOG_DEBUG("Received Heartbeat request. timestamp: {}", timestamp);
+    resp->set_timestamp(timestamp);
+    auto *reactor = ctx->DefaultReactor();
+    reactor->Finish(status_t::OK);
+    return reactor;
+}
+
 reactor_t *api_handler::Login(ctx_t                         *ctx,
                               const ::GrpcLibrary::LoginReq *req,
                               ::GrpcLibrary::LoginResp      *resp)

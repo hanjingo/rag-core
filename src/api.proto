@@ -2,6 +2,7 @@ syntax = "proto3";
 package GrpcLibrary;
 
 service GrpcService {
+    rpc Heartbeat (Ping) returns (Pong) {}
     rpc Login (LoginReq) returns (LoginResp) {}
     rpc Logout (LogoutReq) returns (LogoutResp) {}
     rpc RegAccount (RegAccountReq) returns (RegAccountResp) {}
@@ -52,6 +53,14 @@ message SamplingParam {
 message ContextParam {
     int32 window_size = 1;
     string stop_words = 2;
+}
+
+message Ping {
+    int64 timestamp = 1;
+}
+
+message Pong {
+    int64 timestamp = 1;
 }
 
 message LoginReq {

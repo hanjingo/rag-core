@@ -131,36 +131,37 @@ int main(int argc, char *argv[])
             param.no_host         = model.second.no_host;
             param.no_alloc        = model.second.no_alloc;
             llm_mgr::instance().load(model.second.id, model.second.path, param);
-            LOG_DEBUG("init model id:{}, path:{}, n_gpu_layers:{}, "
-                      "split_mode:{}, main_gpu:{}, vocab_only:{}, use_mmap:{}, "
-                      "use_direct_io:{}, use_mlock:{}, check_tensors:{}, "
-                      "use_extra_bufts:{}, no_host:{}, no_alloc:{}",
-                      model.second.id,
-                      model.second.path,
-                      param.n_gpu_layers,
-                      static_cast<int>(param.split_mode),
-                      param.main_gpu,
-                      param.vocab_only,
-                      param.use_mmap,
-                      param.use_direct_io,
-                      param.use_mlock,
-                      param.check_tensors,
-                      param.use_extra_bufts,
-                      param.no_host,
-                      param.no_alloc);
+            LOG_INFO("init model id:{}, path:{}, n_gpu_layers:{}, "
+                     "split_mode:{}, main_gpu:{}, vocab_only:{}, use_mmap:{}, "
+                     "use_direct_io:{}, use_mlock:{}, check_tensors:{}, "
+                     "use_extra_bufts:{}, no_host:{}, no_alloc:{}",
+                     model.second.id,
+                     model.second.path,
+                     param.n_gpu_layers,
+                     static_cast<int>(param.split_mode),
+                     param.main_gpu,
+                     param.vocab_only,
+                     param.use_mmap,
+                     param.use_direct_io,
+                     param.use_mlock,
+                     param.check_tensors,
+                     param.use_extra_bufts,
+                     param.no_host,
+                     param.no_alloc);
         }
-        LOG_DEBUG("init llm model finish");
+        LOG_INFO("init llm model finish");
 
         // run server
         auto   addr = conf::instance().server_addr();
         server srv(addr);
-        LOG_DEBUG("starting server at {}", srv.address());
+        LOG_INFO("init core service finish");
+        LOG_INFO("starting server at {}", srv.address());
         srv.start();
         while(srv.is_running())
         {
             std::this_thread::sleep_for(std::chrono::seconds(1));
         }
-        LOG_DEBUG("server stopped");
+        LOG_INFO("server stopped");
     } else if(subcmd == "prompt")
     {
         // ./rag-core prompt "hello"
