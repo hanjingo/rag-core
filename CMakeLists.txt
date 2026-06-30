@@ -127,8 +127,7 @@ endif()
 # add vcpkg library
 find_package(hj REQUIRED)
 
-# Llama
-find_package(Llama REQUIRED)
+find_package(whisper REQUIRED)
 
 # source files
 include_directories(${CMAKE_CURRENT_SOURCE_DIR})
@@ -143,8 +142,7 @@ set(LINK_LIBS
     ${CMAKE_DL_LIBS} 
     ${hj_LIBRARIES}
 
-    # Llama
-    llama
+    whisper
 )
 if(WIN32)
     list(APPEND LINK_LIBS 

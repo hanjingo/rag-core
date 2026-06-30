@@ -73,16 +73,25 @@ int llm_mgr::loop_query(
     const std::function<bool(std::string &output)> &callback)
 {
     if(_llms.find(model_id) == _llms.end())
+    {
+        LOG_ERROR("Model {} not found", model_id);
         return LLM_ERR_MODEL_NOT_EXIST;
+    }
 
     // create context
     auto model = _llms.find(model_id)->second.get();
     if(model->data() == nullptr)
+    {
+        LOG_ERROR("Model {} data is null", model_id);
         return LLM_ERR_MODEL_NOT_EXIST;
+    }
 
     hj::llama::context ctx{model, ctx_params};
     if(ctx.data() == nullptr)
+    {
+        LOG_ERROR("Failed to create context for model {}", model_id);
         return LLM_ERR_MODEL_CREATE_CTX_FAIL;
+    }
 
     // import prompt
     auto batch = hj::llama::batch_get_one(tokens);

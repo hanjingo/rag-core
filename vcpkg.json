@@ -2,12 +2,15 @@
   "dependencies": [
     {
       "name": "hanjingo-high-jump",
-      "features": ["test", "bench", "crash", "telemetry", "log", "options", "grpc", "sqlite", "sync", "lic"]
+      "features": ["test", "bench", "crash", "telemetry", "log", "options", "grpc", "sqlite", "sync", "lic", "llama"]
     },
     {
       "name": "ggml",
       "features": [ "cuda" ]
     },
-    "llama-cpp"
+    {
+      "name": "whisper-cpp",
+      "features": [ "cuda" ]
+    }
   ]
 }
