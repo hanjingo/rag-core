@@ -124,16 +124,7 @@ void QueryReactor::_process()
 
     auto      max_repeates = conf::instance().llm_max_repeats();
     watch_dog dog{max_repeates};
-    LOG_DEBUG("QueryReactor::_process: session_id: {}, user_id: {}, auth: {}, "
-              "content: {}, model: {}, tokens size: {}, max_repeats: {}",
-              _session_id,
-              _user_id,
-              _auth,
-              _content,
-              _model,
-              tokens.size(),
-              max_repeates);
-    auto ec = llm_mgr::instance().loop_query(
+    auto      ec = llm_mgr::instance().loop_query(
         _model,
         tokens,
         params,
@@ -146,9 +137,8 @@ void QueryReactor::_process()
             {
                 LOG_DEBUG("is_cancelled.load() is true, stop query");
                 // send final words
-                _send("", true, QUERY_CANCELLED);
-                Finish(grpc::Status(grpc::StatusCode::CANCELLED,
-                                    "Cancelled by user"));
+                _send(output, true, OK);
+                Finish(grpc::Status::OK);
                 return false;
             }
 
@@ -162,15 +152,6 @@ void QueryReactor::_process()
                 return false;
             }
 
-            LOG_DEBUG("QueryReactor::_process: session_id: {}, user_id: {}, "
-                      "content: {}, model: {}, "
-                      "output size: {}, answer size: {}",
-                      _session_id,
-                      _user_id,
-                      _content,
-                      _model,
-                      output.size(),
-                      _answer.size());
             _answer += output;
             _send(output, false, OK);
             return true;
@@ -204,12 +185,6 @@ void QueryReactor::_send(const std::string &text,
 
 void QueryReactor::_push()
 {
-    if(_is_cancelled.load())
-    {
-        // Finish(grpc::Status::CANCELLED);
-        return;
-    }
-
     ::GrpcLibrary::QueryResp resp;
     while(_w_queue.try_dequeue(resp))
     {

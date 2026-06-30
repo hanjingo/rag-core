@@ -93,7 +93,12 @@ int llm_mgr::loop_query(
     do
     {
         if(ctx.decode(batch) != 0)
+        {
+            LOG_ERROR("Decode failed! batch.n_tokens: {}, tokens.size: {}",
+                      batch.n_tokens,
+                      tokens.size());
             return LLM_ERR_MODEL_CTX_DECODE_FAIL;
+        }
 
         // Sample the next token (Greedy sampling used here for simplicity)
         auto               logits     = ctx.get_logits_ith(batch.n_tokens - 1);
