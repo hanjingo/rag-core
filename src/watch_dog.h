@@ -2,7 +2,7 @@
 #define WATCH_DOG_H
 
 #include <string>
-#include <unordered_map>
+#include <set>
 
 class watch_dog
 {
@@ -16,8 +16,9 @@ class watch_dog
     bool watch(const std::string &output);
 
   private:
-    int                                      _max_repeats;
-    std::unordered_map<std::string, int64_t> _repeats;
+    int                   _max_repeats  = 3;
+    int                   _repeat_count = 0;
+    std::set<std::string> _recent_outputs;
 };
 
 

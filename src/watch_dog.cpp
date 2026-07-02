@@ -2,10 +2,16 @@
 
 bool watch_dog::watch(const std::string &output)
 {
-    // if(output.empty())
-    //     return true;
+    // if(_recent_outputs.find(output) != _recent_outputs.end())
+    // {
+    //     _repeat_count++;
+    // } else
+    // {
+    //     _recent_outputs.insert(output);
+    //     _repeat_count = 0;
+    // }
 
-    // _repeats[output]++;
-    // return _max_repeats == -1 || _repeats[output] < _max_repeats;
+    // return _repeat_count < _max_repeats;
+
     return true;
 }

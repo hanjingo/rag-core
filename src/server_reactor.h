@@ -36,6 +36,7 @@ class QueryReactor : public grpc::ServerWriteReactor<::GrpcLibrary::QueryResp>
   private:
     grpc::CallbackServerContext          *_ctx;
     std::atomic<bool>                     _is_cancelled{false};
+    std::atomic<bool>                     _is_writing{false};
     hj::channel<::GrpcLibrary::QueryResp> _w_queue;
 
     // params

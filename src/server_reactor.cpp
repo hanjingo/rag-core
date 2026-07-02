@@ -49,6 +49,8 @@ QueryReactor::~QueryReactor()
 
 void QueryReactor::OnWriteDone(bool ok)
 {
+    _is_writing.store(false);
+
     if(!ok)
     {
         LOG_ERROR("Write failed or client disconnected for session_id: {}",
@@ -88,6 +90,8 @@ void QueryReactor::Stop()
 {
     LOG_INFO("Query {} was stopped by user", _session_id);
     _is_cancelled.store(true);
+
+    // clear the queue
 }
 
 void QueryReactor::_process()
@@ -185,9 +189,13 @@ void QueryReactor::_send(const std::string &text,
 
 void QueryReactor::_push()
 {
+    if(_is_writing.load())
+        return;
+
     ::GrpcLibrary::QueryResp resp;
     while(_w_queue.try_dequeue(resp))
     {
+        _is_writing.store(true);
         StartWrite(&resp);
         LOG_DEBUG("QueryReactor::_push: session_id: {}, user_id: {}, auth: {}, "
                   "content: {}, model: {}, is_finished: {}, error_code: {}",
