@@ -54,6 +54,31 @@ message SamplingParam {
 message ContextParam {
     int32 window_size = 1;
     string stop_words = 2;
+
+    int32 n_ctx = 3;
+    int32 n_batch = 4;
+    int32 n_ubatch = 5;
+    int32 n_seq_max = 6;
+    int32 n_threads = 7;
+    int32 n_threads_batch = 8;
+
+    float rope_freq_base = 9;
+    float rope_freq_scale = 10;
+    float yarn_ext_factor = 11;
+    float yarn_attn_factor = 12;
+    float yarn_beta_fast = 13;
+    float yarn_beta_slow = 14;
+    int32 yarn_orig_ctx = 15;
+    float defrag_thold = 16;
+
+    bool embeddings = 17;
+    bool offload_kqv = 18;
+    bool no_perf = 19;
+    bool op_offload = 20;
+    bool swa_full = 21;
+    bool kv_unified = 22;
+
+    string prompt = 23;
 }
 
 message Ping {

@@ -790,7 +790,30 @@ inline constexpr ContextParam::Impl_::Impl_(
         stop_words_(
             &::google::protobuf::internal::fixed_address_empty_string,
             ::_pbi::ConstantInitialized()),
-        window_size_{0} {}
+        prompt_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        window_size_{0},
+        n_ctx_{0},
+        n_batch_{0},
+        n_ubatch_{0},
+        n_seq_max_{0},
+        n_threads_{0},
+        n_threads_batch_{0},
+        rope_freq_base_{0},
+        rope_freq_scale_{0},
+        yarn_ext_factor_{0},
+        yarn_attn_factor_{0},
+        yarn_beta_fast_{0},
+        yarn_beta_slow_{0},
+        yarn_orig_ctx_{0},
+        defrag_thold_{0},
+        embeddings_{false},
+        offload_kqv_{false},
+        no_perf_{false},
+        op_offload_{false},
+        swa_full_{false},
+        kv_unified_{false} {}
 
 template <typename>
 PROTOBUF_CONSTEXPR ContextParam::ContextParam(::_pbi::ConstantInitialized)
@@ -1021,11 +1044,53 @@ const ::uint32_t
         4,
         0x081, // bitmap
         PROTOBUF_FIELD_OFFSET(::GrpcLibrary::ContextParam, _impl_._has_bits_),
-        5, // hasbit index offset
+        26, // hasbit index offset
         PROTOBUF_FIELD_OFFSET(::GrpcLibrary::ContextParam, _impl_.window_size_),
         PROTOBUF_FIELD_OFFSET(::GrpcLibrary::ContextParam, _impl_.stop_words_),
-        1,
+        PROTOBUF_FIELD_OFFSET(::GrpcLibrary::ContextParam, _impl_.n_ctx_),
+        PROTOBUF_FIELD_OFFSET(::GrpcLibrary::ContextParam, _impl_.n_batch_),
+        PROTOBUF_FIELD_OFFSET(::GrpcLibrary::ContextParam, _impl_.n_ubatch_),
+        PROTOBUF_FIELD_OFFSET(::GrpcLibrary::ContextParam, _impl_.n_seq_max_),
+        PROTOBUF_FIELD_OFFSET(::GrpcLibrary::ContextParam, _impl_.n_threads_),
+        PROTOBUF_FIELD_OFFSET(::GrpcLibrary::ContextParam, _impl_.n_threads_batch_),
+        PROTOBUF_FIELD_OFFSET(::GrpcLibrary::ContextParam, _impl_.rope_freq_base_),
+        PROTOBUF_FIELD_OFFSET(::GrpcLibrary::ContextParam, _impl_.rope_freq_scale_),
+        PROTOBUF_FIELD_OFFSET(::GrpcLibrary::ContextParam, _impl_.yarn_ext_factor_),
+        PROTOBUF_FIELD_OFFSET(::GrpcLibrary::ContextParam, _impl_.yarn_attn_factor_),
+        PROTOBUF_FIELD_OFFSET(::GrpcLibrary::ContextParam, _impl_.yarn_beta_fast_),
+        PROTOBUF_FIELD_OFFSET(::GrpcLibrary::ContextParam, _impl_.yarn_beta_slow_),
+        PROTOBUF_FIELD_OFFSET(::GrpcLibrary::ContextParam, _impl_.yarn_orig_ctx_),
+        PROTOBUF_FIELD_OFFSET(::GrpcLibrary::ContextParam, _impl_.defrag_thold_),
+        PROTOBUF_FIELD_OFFSET(::GrpcLibrary::ContextParam, _impl_.embeddings_),
+        PROTOBUF_FIELD_OFFSET(::GrpcLibrary::ContextParam, _impl_.offload_kqv_),
+        PROTOBUF_FIELD_OFFSET(::GrpcLibrary::ContextParam, _impl_.no_perf_),
+        PROTOBUF_FIELD_OFFSET(::GrpcLibrary::ContextParam, _impl_.op_offload_),
+        PROTOBUF_FIELD_OFFSET(::GrpcLibrary::ContextParam, _impl_.swa_full_),
+        PROTOBUF_FIELD_OFFSET(::GrpcLibrary::ContextParam, _impl_.kv_unified_),
+        PROTOBUF_FIELD_OFFSET(::GrpcLibrary::ContextParam, _impl_.prompt_),
+        2,
         0,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        1,
         0x081, // bitmap
         PROTOBUF_FIELD_OFFSET(::GrpcLibrary::Ping, _impl_._has_bits_),
         4, // hasbit index offset
@@ -1269,32 +1334,32 @@ static const ::_pbi::MigrationSchema
         {28, sizeof(::GrpcLibrary::MessageInfo)},
         {43, sizeof(::GrpcLibrary::SamplingParam)},
         {56, sizeof(::GrpcLibrary::ContextParam)},
-        {63, sizeof(::GrpcLibrary::Ping)},
-        {68, sizeof(::GrpcLibrary::Pong)},
-        {73, sizeof(::GrpcLibrary::LoginReq)},
-        {80, sizeof(::GrpcLibrary::LoginResp)},
-        {95, sizeof(::GrpcLibrary::LogoutReq)},
-        {102, sizeof(::GrpcLibrary::LogoutResp)},
-        {109, sizeof(::GrpcLibrary::RegAccountReq)},
-        {116, sizeof(::GrpcLibrary::RegAccountResp)},
-        {123, sizeof(::GrpcLibrary::QueryReq)},
-        {142, sizeof(::GrpcLibrary::QueryResp)},
-        {153, sizeof(::GrpcLibrary::StopAnswerReq)},
-        {162, sizeof(::GrpcLibrary::StopAnswerResp)},
-        {169, sizeof(::GrpcLibrary::GetMessageInfoReq)},
-        {182, sizeof(::GrpcLibrary::GetMessageInfoResp)},
-        {189, sizeof(::GrpcLibrary::GetSessionReq)},
-        {200, sizeof(::GrpcLibrary::GetSessionResp)},
-        {207, sizeof(::GrpcLibrary::NewSessionReq)},
-        {220, sizeof(::GrpcLibrary::NewSessionResp)},
-        {227, sizeof(::GrpcLibrary::ModifySessionTitleReq)},
-        {238, sizeof(::GrpcLibrary::ModifySessionTitleResp)},
-        {247, sizeof(::GrpcLibrary::DelSessionReq)},
-        {256, sizeof(::GrpcLibrary::DelSessionResp)},
-        {263, sizeof(::GrpcLibrary::GetSkillInfoReq)},
-        {270, sizeof(::GrpcLibrary::GetSkillInfoResp)},
-        {277, sizeof(::GrpcLibrary::DownloadReq)},
-        {286, sizeof(::GrpcLibrary::DownloadResp)},
+        {105, sizeof(::GrpcLibrary::Ping)},
+        {110, sizeof(::GrpcLibrary::Pong)},
+        {115, sizeof(::GrpcLibrary::LoginReq)},
+        {122, sizeof(::GrpcLibrary::LoginResp)},
+        {137, sizeof(::GrpcLibrary::LogoutReq)},
+        {144, sizeof(::GrpcLibrary::LogoutResp)},
+        {151, sizeof(::GrpcLibrary::RegAccountReq)},
+        {158, sizeof(::GrpcLibrary::RegAccountResp)},
+        {165, sizeof(::GrpcLibrary::QueryReq)},
+        {184, sizeof(::GrpcLibrary::QueryResp)},
+        {195, sizeof(::GrpcLibrary::StopAnswerReq)},
+        {204, sizeof(::GrpcLibrary::StopAnswerResp)},
+        {211, sizeof(::GrpcLibrary::GetMessageInfoReq)},
+        {224, sizeof(::GrpcLibrary::GetMessageInfoResp)},
+        {231, sizeof(::GrpcLibrary::GetSessionReq)},
+        {242, sizeof(::GrpcLibrary::GetSessionResp)},
+        {249, sizeof(::GrpcLibrary::NewSessionReq)},
+        {262, sizeof(::GrpcLibrary::NewSessionResp)},
+        {269, sizeof(::GrpcLibrary::ModifySessionTitleReq)},
+        {280, sizeof(::GrpcLibrary::ModifySessionTitleResp)},
+        {289, sizeof(::GrpcLibrary::DelSessionReq)},
+        {298, sizeof(::GrpcLibrary::DelSessionResp)},
+        {305, sizeof(::GrpcLibrary::GetSkillInfoReq)},
+        {312, sizeof(::GrpcLibrary::GetSkillInfoResp)},
+        {319, sizeof(::GrpcLibrary::DownloadReq)},
+        {328, sizeof(::GrpcLibrary::DownloadResp)},
 };
 static const ::_pb::Message* PROTOBUF_NONNULL const file_default_instances[] = {
     &::GrpcLibrary::_Session_default_instance_._instance,
@@ -1342,85 +1407,96 @@ const char descriptor_table_protodef_src_2fapi_2eproto[] ABSL_ATTRIBUTE_SECTION_
     "_id\030\005 \001(\003\022\021\n\ttimestamp\030\006 \001(\t\"m\n\rSampling"
     "Param\022\032\n\022repetition_penalty\030\001 \001(\002\022\023\n\013tem"
     "perature\030\002 \001(\002\022\r\n\005top_k\030\003 \001(\002\022\r\n\005top_p\030\004"
-    " \001(\002\022\r\n\005min_p\030\005 \001(\002\"7\n\014ContextParam\022\023\n\013w"
-    "indow_size\030\001 \001(\005\022\022\n\nstop_words\030\002 \001(\t\"\031\n\004"
-    "Ping\022\021\n\ttimestamp\030\001 \001(\003\"\031\n\004Pong\022\021\n\ttimes"
-    "tamp\030\001 \001(\003\"+\n\010LoginReq\022\017\n\007account\030\001 \001(\t\022"
-    "\016\n\006passwd\030\002 \001(\t\"{\n\tLoginResp\022\022\n\nerror_co"
-    "de\030\001 \001(\005\022\017\n\007user_id\030\002 \001(\003\022\021\n\tprivilege\030\003"
-    " \001(\005\022\014\n\004auth\030\004 \001(\t\022\017\n\007account\030\005 \001(\t\022\027\n\017l"
-    "ast_login_time\030\006 \001(\t\"*\n\tLogoutReq\022\017\n\007use"
-    "r_id\030\001 \001(\003\022\014\n\004auth\030\002 \001(\t\"1\n\nLogoutResp\022\022"
-    "\n\nerror_code\030\001 \001(\005\022\017\n\007user_id\030\002 \001(\003\"0\n\rR"
-    "egAccountReq\022\017\n\007account\030\001 \001(\t\022\016\n\006passwd\030"
-    "\002 \001(\t\"5\n\016RegAccountResp\022\022\n\nerror_code\030\001 "
-    "\001(\005\022\017\n\007user_id\030\002 \001(\003\"\275\001\n\010QueryReq\022\n\n\002id\030"
-    "\001 \001(\003\022\017\n\007user_id\030\002 \001(\003\022\014\n\004auth\030\003 \001(\t\022\017\n\007"
-    "content\030\004 \001(\t\022\r\n\005model\030\005 \001(\t\022\020\n\010pipeline"
-    "\030\006 \001(\t\022,\n\010sampling\030\007 \001(\0132\032.GrpcLibrary.S"
-    "amplingParam\022&\n\003ctx\030\010 \001(\0132\031.GrpcLibrary."
-    "ContextParam\"Q\n\tQueryResp\022\022\n\nerror_code\030"
-    "\001 \001(\005\022\n\n\002id\030\002 \001(\003\022\017\n\007content\030\003 \001(\t\022\023\n\013is"
-    "_finished\030\004 \001(\010\"B\n\rStopAnswerReq\022\022\n\nsess"
-    "ion_id\030\001 \001(\003\022\017\n\007user_id\030\002 \001(\003\022\014\n\004auth\030\003 "
-    "\001(\t\"8\n\016StopAnswerResp\022\022\n\nerror_code\030\001 \001("
-    "\005\022\022\n\nsession_id\030\002 \001(\003\"a\n\021GetMessageInfoR"
-    "eq\022\n\n\002id\030\001 \001(\003\022\022\n\nsession_id\030\002 \001(\003\022\r\n\005li"
-    "mit\030\003 \001(\005\022\017\n\007user_id\030\004 \001(\003\022\014\n\004auth\030\005 \001(\t"
-    "\"T\n\022GetMessageInfoResp\022\022\n\nerror_code\030\001 \001"
-    "(\005\022*\n\010messages\030\002 \003(\0132\030.GrpcLibrary.Messa"
-    "geInfo\"I\n\rGetSessionReq\022\n\n\002id\030\001 \001(\003\022\017\n\007u"
-    "ser_id\030\002 \001(\003\022\014\n\004auth\030\003 \001(\t\022\r\n\005limit\030\004 \001("
-    "\005\"L\n\016GetSessionResp\022\022\n\nerror_code\030\001 \001(\005\022"
-    "&\n\010sessions\030\002 \003(\0132\024.GrpcLibrary.Session\""
-    "]\n\rNewSessionReq\022\017\n\007user_id\030\001 \001(\003\022\014\n\004aut"
-    "h\030\002 \001(\t\022\r\n\005title\030\003 \001(\t\022\017\n\007content\030\004 \001(\t\022"
-    "\r\n\005model\030\005 \001(\t\"K\n\016NewSessionResp\022\022\n\nerro"
-    "r_code\030\001 \001(\005\022%\n\007session\030\002 \001(\0132\024.GrpcLibr"
-    "ary.Session\"Q\n\025ModifySessionTitleReq\022\n\n\002"
-    "id\030\001 \001(\003\022\017\n\007user_id\030\002 \001(\003\022\014\n\004auth\030\003 \001(\t\022"
-    "\r\n\005title\030\004 \001(\t\"G\n\026ModifySessionTitleResp"
-    "\022\022\n\nerror_code\030\001 \001(\005\022\n\n\002id\030\002 \001(\003\022\r\n\005titl"
-    "e\030\003 \001(\t\";\n\rDelSessionReq\022\017\n\007user_id\030\001 \001("
-    "\003\022\014\n\004auth\030\002 \001(\t\022\013\n\003ids\030\003 \003(\003\"1\n\016DelSessi"
-    "onResp\022\022\n\nerror_code\030\001 \001(\005\022\013\n\003ids\030\002 \003(\003\""
-    ".\n\017GetSkillInfoReq\022\014\n\004hash\030\001 \001(\t\022\r\n\005limi"
-    "t\030\002 \001(\005\"J\n\020GetSkillInfoResp\022\022\n\nerror_cod"
-    "e\030\001 \001(\005\022\"\n\006skills\030\002 \003(\0132\022.GrpcLibrary.Sk"
-    "ill\":\n\013DownloadReq\022\014\n\004hash\030\001 \001(\t\022\017\n\007user"
-    "_id\030\002 \001(\003\022\014\n\004auth\030\003 \001(\t\"O\n\014DownloadResp\022"
-    "\022\n\nerror_code\030\001 \001(\005\022\014\n\004hash\030\002 \001(\t\022\014\n\004add"
-    "r\030\003 \001(\t\022\017\n\007size_kb\030\004 \001(\0032\252\007\n\013GrpcService"
-    "\0223\n\tHeartbeat\022\021.GrpcLibrary.Ping\032\021.GrpcL"
-    "ibrary.Pong\"\000\0228\n\005Login\022\025.GrpcLibrary.Log"
-    "inReq\032\026.GrpcLibrary.LoginResp\"\000\022;\n\006Logou"
-    "t\022\026.GrpcLibrary.LogoutReq\032\027.GrpcLibrary."
-    "LogoutResp\"\000\022G\n\nRegAccount\022\032.GrpcLibrary"
-    ".RegAccountReq\032\033.GrpcLibrary.RegAccountR"
-    "esp\"\000\022:\n\005Query\022\025.GrpcLibrary.QueryReq\032\026."
-    "GrpcLibrary.QueryResp\"\0000\001\022G\n\nStopAnswer\022"
-    "\032.GrpcLibrary.StopAnswerReq\032\033.GrpcLibrar"
-    "y.StopAnswerResp\"\000\022S\n\016GetMessageInfo\022\036.G"
-    "rpcLibrary.GetMessageInfoReq\032\037.GrpcLibra"
-    "ry.GetMessageInfoResp\"\000\022G\n\nGetSession\022\032."
-    "GrpcLibrary.GetSessionReq\032\033.GrpcLibrary."
-    "GetSessionResp\"\000\022G\n\nNewSession\022\032.GrpcLib"
-    "rary.NewSessionReq\032\033.GrpcLibrary.NewSess"
-    "ionResp\"\000\022_\n\022ModifySessionTitle\022\".GrpcLi"
-    "brary.ModifySessionTitleReq\032#.GrpcLibrar"
-    "y.ModifySessionTitleResp\"\000\022G\n\nDelSession"
-    "\022\032.GrpcLibrary.DelSessionReq\032\033.GrpcLibra"
-    "ry.DelSessionResp\"\000\022M\n\014GetSkillInfo\022\034.Gr"
-    "pcLibrary.GetSkillInfoReq\032\035.GrpcLibrary."
-    "GetSkillInfoResp\"\000\022A\n\010Download\022\030.GrpcLib"
-    "rary.DownloadReq\032\031.GrpcLibrary.DownloadR"
-    "esp\"\000b\006proto3"
+    " \001(\002\022\r\n\005min_p\030\005 \001(\002\"\355\003\n\014ContextParam\022\023\n\013"
+    "window_size\030\001 \001(\005\022\022\n\nstop_words\030\002 \001(\t\022\r\n"
+    "\005n_ctx\030\003 \001(\005\022\017\n\007n_batch\030\004 \001(\005\022\020\n\010n_ubatc"
+    "h\030\005 \001(\005\022\021\n\tn_seq_max\030\006 \001(\005\022\021\n\tn_threads\030"
+    "\007 \001(\005\022\027\n\017n_threads_batch\030\010 \001(\005\022\026\n\016rope_f"
+    "req_base\030\t \001(\002\022\027\n\017rope_freq_scale\030\n \001(\002\022"
+    "\027\n\017yarn_ext_factor\030\013 \001(\002\022\030\n\020yarn_attn_fa"
+    "ctor\030\014 \001(\002\022\026\n\016yarn_beta_fast\030\r \001(\002\022\026\n\016ya"
+    "rn_beta_slow\030\016 \001(\002\022\025\n\ryarn_orig_ctx\030\017 \001("
+    "\005\022\024\n\014defrag_thold\030\020 \001(\002\022\022\n\nembeddings\030\021 "
+    "\001(\010\022\023\n\013offload_kqv\030\022 \001(\010\022\017\n\007no_perf\030\023 \001("
+    "\010\022\022\n\nop_offload\030\024 \001(\010\022\020\n\010swa_full\030\025 \001(\010\022"
+    "\022\n\nkv_unified\030\026 \001(\010\022\016\n\006prompt\030\027 \001(\t\"\031\n\004P"
+    "ing\022\021\n\ttimestamp\030\001 \001(\003\"\031\n\004Pong\022\021\n\ttimest"
+    "amp\030\001 \001(\003\"+\n\010LoginReq\022\017\n\007account\030\001 \001(\t\022\016"
+    "\n\006passwd\030\002 \001(\t\"{\n\tLoginResp\022\022\n\nerror_cod"
+    "e\030\001 \001(\005\022\017\n\007user_id\030\002 \001(\003\022\021\n\tprivilege\030\003 "
+    "\001(\005\022\014\n\004auth\030\004 \001(\t\022\017\n\007account\030\005 \001(\t\022\027\n\017la"
+    "st_login_time\030\006 \001(\t\"*\n\tLogoutReq\022\017\n\007user"
+    "_id\030\001 \001(\003\022\014\n\004auth\030\002 \001(\t\"1\n\nLogoutResp\022\022\n"
+    "\nerror_code\030\001 \001(\005\022\017\n\007user_id\030\002 \001(\003\"0\n\rRe"
+    "gAccountReq\022\017\n\007account\030\001 \001(\t\022\016\n\006passwd\030\002"
+    " \001(\t\"5\n\016RegAccountResp\022\022\n\nerror_code\030\001 \001"
+    "(\005\022\017\n\007user_id\030\002 \001(\003\"\275\001\n\010QueryReq\022\n\n\002id\030\001"
+    " \001(\003\022\017\n\007user_id\030\002 \001(\003\022\014\n\004auth\030\003 \001(\t\022\017\n\007c"
+    "ontent\030\004 \001(\t\022\r\n\005model\030\005 \001(\t\022\020\n\010pipeline\030"
+    "\006 \001(\t\022,\n\010sampling\030\007 \001(\0132\032.GrpcLibrary.Sa"
+    "mplingParam\022&\n\003ctx\030\010 \001(\0132\031.GrpcLibrary.C"
+    "ontextParam\"Q\n\tQueryResp\022\022\n\nerror_code\030\001"
+    " \001(\005\022\n\n\002id\030\002 \001(\003\022\017\n\007content\030\003 \001(\t\022\023\n\013is_"
+    "finished\030\004 \001(\010\"B\n\rStopAnswerReq\022\022\n\nsessi"
+    "on_id\030\001 \001(\003\022\017\n\007user_id\030\002 \001(\003\022\014\n\004auth\030\003 \001"
+    "(\t\"8\n\016StopAnswerResp\022\022\n\nerror_code\030\001 \001(\005"
+    "\022\022\n\nsession_id\030\002 \001(\003\"a\n\021GetMessageInfoRe"
+    "q\022\n\n\002id\030\001 \001(\003\022\022\n\nsession_id\030\002 \001(\003\022\r\n\005lim"
+    "it\030\003 \001(\005\022\017\n\007user_id\030\004 \001(\003\022\014\n\004auth\030\005 \001(\t\""
+    "T\n\022GetMessageInfoResp\022\022\n\nerror_code\030\001 \001("
+    "\005\022*\n\010messages\030\002 \003(\0132\030.GrpcLibrary.Messag"
+    "eInfo\"I\n\rGetSessionReq\022\n\n\002id\030\001 \001(\003\022\017\n\007us"
+    "er_id\030\002 \001(\003\022\014\n\004auth\030\003 \001(\t\022\r\n\005limit\030\004 \001(\005"
+    "\"L\n\016GetSessionResp\022\022\n\nerror_code\030\001 \001(\005\022&"
+    "\n\010sessions\030\002 \003(\0132\024.GrpcLibrary.Session\"]"
+    "\n\rNewSessionReq\022\017\n\007user_id\030\001 \001(\003\022\014\n\004auth"
+    "\030\002 \001(\t\022\r\n\005title\030\003 \001(\t\022\017\n\007content\030\004 \001(\t\022\r"
+    "\n\005model\030\005 \001(\t\"K\n\016NewSessionResp\022\022\n\nerror"
+    "_code\030\001 \001(\005\022%\n\007session\030\002 \001(\0132\024.GrpcLibra"
+    "ry.Session\"Q\n\025ModifySessionTitleReq\022\n\n\002i"
+    "d\030\001 \001(\003\022\017\n\007user_id\030\002 \001(\003\022\014\n\004auth\030\003 \001(\t\022\r"
+    "\n\005title\030\004 \001(\t\"G\n\026ModifySessionTitleResp\022"
+    "\022\n\nerror_code\030\001 \001(\005\022\n\n\002id\030\002 \001(\003\022\r\n\005title"
+    "\030\003 \001(\t\";\n\rDelSessionReq\022\017\n\007user_id\030\001 \001(\003"
+    "\022\014\n\004auth\030\002 \001(\t\022\013\n\003ids\030\003 \003(\003\"1\n\016DelSessio"
+    "nResp\022\022\n\nerror_code\030\001 \001(\005\022\013\n\003ids\030\002 \003(\003\"."
+    "\n\017GetSkillInfoReq\022\014\n\004hash\030\001 \001(\t\022\r\n\005limit"
+    "\030\002 \001(\005\"J\n\020GetSkillInfoResp\022\022\n\nerror_code"
+    "\030\001 \001(\005\022\"\n\006skills\030\002 \003(\0132\022.GrpcLibrary.Ski"
+    "ll\":\n\013DownloadReq\022\014\n\004hash\030\001 \001(\t\022\017\n\007user_"
+    "id\030\002 \001(\003\022\014\n\004auth\030\003 \001(\t\"O\n\014DownloadResp\022\022"
+    "\n\nerror_code\030\001 \001(\005\022\014\n\004hash\030\002 \001(\t\022\014\n\004addr"
+    "\030\003 \001(\t\022\017\n\007size_kb\030\004 \001(\0032\252\007\n\013GrpcService\022"
+    "3\n\tHeartbeat\022\021.GrpcLibrary.Ping\032\021.GrpcLi"
+    "brary.Pong\"\000\0228\n\005Login\022\025.GrpcLibrary.Logi"
+    "nReq\032\026.GrpcLibrary.LoginResp\"\000\022;\n\006Logout"
+    "\022\026.GrpcLibrary.LogoutReq\032\027.GrpcLibrary.L"
+    "ogoutResp\"\000\022G\n\nRegAccount\022\032.GrpcLibrary."
+    "RegAccountReq\032\033.GrpcLibrary.RegAccountRe"
+    "sp\"\000\022:\n\005Query\022\025.GrpcLibrary.QueryReq\032\026.G"
+    "rpcLibrary.QueryResp\"\0000\001\022G\n\nStopAnswer\022\032"
+    ".GrpcLibrary.StopAnswerReq\032\033.GrpcLibrary"
+    ".StopAnswerResp\"\000\022S\n\016GetMessageInfo\022\036.Gr"
+    "pcLibrary.GetMessageInfoReq\032\037.GrpcLibrar"
+    "y.GetMessageInfoResp\"\000\022G\n\nGetSession\022\032.G"
+    "rpcLibrary.GetSessionReq\032\033.GrpcLibrary.G"
+    "etSessionResp\"\000\022G\n\nNewSession\022\032.GrpcLibr"
+    "ary.NewSessionReq\032\033.GrpcLibrary.NewSessi"
+    "onResp\"\000\022_\n\022ModifySessionTitle\022\".GrpcLib"
+    "rary.ModifySessionTitleReq\032#.GrpcLibrary"
+    ".ModifySessionTitleResp\"\000\022G\n\nDelSession\022"
+    "\032.GrpcLibrary.DelSessionReq\032\033.GrpcLibrar"
+    "y.DelSessionResp\"\000\022M\n\014GetSkillInfo\022\034.Grp"
+    "cLibrary.GetSkillInfoReq\032\035.GrpcLibrary.G"
+    "etSkillInfoResp\"\000\022A\n\010Download\022\030.GrpcLibr"
+    "ary.DownloadReq\032\031.GrpcLibrary.DownloadRe"
+    "sp\"\000b\006proto3"
 };
 static ::absl::once_flag descriptor_table_src_2fapi_2eproto_once;
 PROTOBUF_CONSTINIT const ::_pbi::DescriptorTable descriptor_table_src_2fapi_2eproto = {
     false,
     false,
-    3333,
+    3772,
     descriptor_table_protodef_src_2fapi_2eproto,
     "src/api.proto",
     &descriptor_table_src_2fapi_2eproto_once,
@@ -3208,7 +3284,8 @@ PROTOBUF_NDEBUG_INLINE ContextParam::Impl_::Impl_(
     [[maybe_unused]] const ::GrpcLibrary::ContextParam& from_msg)
       : _has_bits_{from._has_bits_},
         _cached_size_{0},
-        stop_words_(arena, from.stop_words_) {}
+        stop_words_(arena, from.stop_words_),
+        prompt_(arena, from.prompt_) {}
 
 ContextParam::ContextParam(
     ::google::protobuf::Arena* PROTOBUF_NULLABLE arena,
@@ -3223,7 +3300,13 @@ ContextParam::ContextParam(
   _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
       from._internal_metadata_);
   new (&_impl_) Impl_(internal_visibility(), arena, from._impl_, from);
-  _impl_.window_size_ = from._impl_.window_size_;
+  ::memcpy(reinterpret_cast<char*>(&_impl_) +
+               offsetof(Impl_, window_size_),
+           reinterpret_cast<const char*>(&from._impl_) +
+               offsetof(Impl_, window_size_),
+           offsetof(Impl_, kv_unified_) -
+               offsetof(Impl_, window_size_) +
+               sizeof(Impl_::kv_unified_));
 
   // @@protoc_insertion_point(copy_constructor:GrpcLibrary.ContextParam)
 }
@@ -3231,11 +3314,17 @@ PROTOBUF_NDEBUG_INLINE ContextParam::Impl_::Impl_(
     [[maybe_unused]] ::google::protobuf::internal::InternalVisibility visibility,
     [[maybe_unused]] ::google::protobuf::Arena* PROTOBUF_NULLABLE arena)
       : _cached_size_{0},
-        stop_words_(arena) {}
+        stop_words_(arena),
+        prompt_(arena) {}
 
 inline void ContextParam::SharedCtor(::_pb::Arena* PROTOBUF_NULLABLE arena) {
   new (&_impl_) Impl_(internal_visibility(), arena);
-  _impl_.window_size_ = {};
+  ::memset(reinterpret_cast<char*>(&_impl_) +
+               offsetof(Impl_, window_size_),
+           0,
+           offsetof(Impl_, kv_unified_) -
+               offsetof(Impl_, window_size_) +
+               sizeof(Impl_::kv_unified_));
 }
 ContextParam::~ContextParam() {
   // @@protoc_insertion_point(destructor:GrpcLibrary.ContextParam)
@@ -3249,6 +3338,7 @@ inline void ContextParam::SharedDtor(MessageLite& self) {
   this_._internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
   ABSL_DCHECK(this_.GetArena() == nullptr);
   this_._impl_.stop_words_.Destroy();
+  this_._impl_.prompt_.Destroy();
   this_._impl_.~Impl_();
 }
 
@@ -3295,16 +3385,16 @@ ContextParam::GetClassData() const {
   return ContextParam_class_data_.base();
 }
 PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
-const ::_pbi::TcParseTable<1, 2, 0, 43, 2>
+const ::_pbi::TcParseTable<5, 23, 0, 65, 2>
 ContextParam::_table_ = {
   {
     PROTOBUF_FIELD_OFFSET(ContextParam, _impl_._has_bits_),
     0, // no _extensions_
-    2, 8,  // max_field_number, fast_idx_mask
+    23, 248,  // max_field_number, fast_idx_mask
     offsetof(decltype(_table_), field_lookup_table),
-    4294967292,  // skipmap
+    4286578688,  // skipmap
     offsetof(decltype(_table_), field_entries),
-    2,  // num_field_entries
+    23,  // num_field_entries
     0,  // num_aux_entries
     offsetof(decltype(_table_), field_names),  // no aux_entries
     ContextParam_class_data_.base(),
@@ -3314,27 +3404,163 @@ ContextParam::_table_ = {
     ::_pbi::TcParser::GetTable<::GrpcLibrary::ContextParam>(),  // to_prefetch
     #endif  // PROTOBUF_PREFETCH_PARSE_TABLE
   }, {{
+    {::_pbi::TcParser::MiniParse, {}},
+    // int32 window_size = 1;
+    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(ContextParam, _impl_.window_size_), 2>(),
+     {8, 2, 0,
+      PROTOBUF_FIELD_OFFSET(ContextParam, _impl_.window_size_)}},
     // string stop_words = 2;
     {::_pbi::TcParser::FastUS1,
      {18, 0, 0,
       PROTOBUF_FIELD_OFFSET(ContextParam, _impl_.stop_words_)}},
-    // int32 window_size = 1;
-    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(ContextParam, _impl_.window_size_), 1>(),
-     {8, 1, 0,
-      PROTOBUF_FIELD_OFFSET(ContextParam, _impl_.window_size_)}},
+    // int32 n_ctx = 3;
+    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(ContextParam, _impl_.n_ctx_), 3>(),
+     {24, 3, 0,
+      PROTOBUF_FIELD_OFFSET(ContextParam, _impl_.n_ctx_)}},
+    // int32 n_batch = 4;
+    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(ContextParam, _impl_.n_batch_), 4>(),
+     {32, 4, 0,
+      PROTOBUF_FIELD_OFFSET(ContextParam, _impl_.n_batch_)}},
+    // int32 n_ubatch = 5;
+    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(ContextParam, _impl_.n_ubatch_), 5>(),
+     {40, 5, 0,
+      PROTOBUF_FIELD_OFFSET(ContextParam, _impl_.n_ubatch_)}},
+    // int32 n_seq_max = 6;
+    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(ContextParam, _impl_.n_seq_max_), 6>(),
+     {48, 6, 0,
+      PROTOBUF_FIELD_OFFSET(ContextParam, _impl_.n_seq_max_)}},
+    // int32 n_threads = 7;
+    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(ContextParam, _impl_.n_threads_), 7>(),
+     {56, 7, 0,
+      PROTOBUF_FIELD_OFFSET(ContextParam, _impl_.n_threads_)}},
+    // int32 n_threads_batch = 8;
+    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(ContextParam, _impl_.n_threads_batch_), 8>(),
+     {64, 8, 0,
+      PROTOBUF_FIELD_OFFSET(ContextParam, _impl_.n_threads_batch_)}},
+    // float rope_freq_base = 9;
+    {::_pbi::TcParser::FastF32S1,
+     {77, 9, 0,
+      PROTOBUF_FIELD_OFFSET(ContextParam, _impl_.rope_freq_base_)}},
+    // float rope_freq_scale = 10;
+    {::_pbi::TcParser::FastF32S1,
+     {85, 10, 0,
+      PROTOBUF_FIELD_OFFSET(ContextParam, _impl_.rope_freq_scale_)}},
+    // float yarn_ext_factor = 11;
+    {::_pbi::TcParser::FastF32S1,
+     {93, 11, 0,
+      PROTOBUF_FIELD_OFFSET(ContextParam, _impl_.yarn_ext_factor_)}},
+    // float yarn_attn_factor = 12;
+    {::_pbi::TcParser::FastF32S1,
+     {101, 12, 0,
+      PROTOBUF_FIELD_OFFSET(ContextParam, _impl_.yarn_attn_factor_)}},
+    // float yarn_beta_fast = 13;
+    {::_pbi::TcParser::FastF32S1,
+     {109, 13, 0,
+      PROTOBUF_FIELD_OFFSET(ContextParam, _impl_.yarn_beta_fast_)}},
+    // float yarn_beta_slow = 14;
+    {::_pbi::TcParser::FastF32S1,
+     {117, 14, 0,
+      PROTOBUF_FIELD_OFFSET(ContextParam, _impl_.yarn_beta_slow_)}},
+    // int32 yarn_orig_ctx = 15;
+    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(ContextParam, _impl_.yarn_orig_ctx_), 15>(),
+     {120, 15, 0,
+      PROTOBUF_FIELD_OFFSET(ContextParam, _impl_.yarn_orig_ctx_)}},
+    // float defrag_thold = 16;
+    {::_pbi::TcParser::FastF32S2,
+     {389, 16, 0,
+      PROTOBUF_FIELD_OFFSET(ContextParam, _impl_.defrag_thold_)}},
+    // bool embeddings = 17;
+    {::_pbi::TcParser::FastV8S2,
+     {392, 17, 0,
+      PROTOBUF_FIELD_OFFSET(ContextParam, _impl_.embeddings_)}},
+    // bool offload_kqv = 18;
+    {::_pbi::TcParser::FastV8S2,
+     {400, 18, 0,
+      PROTOBUF_FIELD_OFFSET(ContextParam, _impl_.offload_kqv_)}},
+    // bool no_perf = 19;
+    {::_pbi::TcParser::FastV8S2,
+     {408, 19, 0,
+      PROTOBUF_FIELD_OFFSET(ContextParam, _impl_.no_perf_)}},
+    // bool op_offload = 20;
+    {::_pbi::TcParser::FastV8S2,
+     {416, 20, 0,
+      PROTOBUF_FIELD_OFFSET(ContextParam, _impl_.op_offload_)}},
+    // bool swa_full = 21;
+    {::_pbi::TcParser::FastV8S2,
+     {424, 21, 0,
+      PROTOBUF_FIELD_OFFSET(ContextParam, _impl_.swa_full_)}},
+    // bool kv_unified = 22;
+    {::_pbi::TcParser::FastV8S2,
+     {432, 22, 0,
+      PROTOBUF_FIELD_OFFSET(ContextParam, _impl_.kv_unified_)}},
+    // string prompt = 23;
+    {::_pbi::TcParser::FastUS2,
+     {442, 1, 0,
+      PROTOBUF_FIELD_OFFSET(ContextParam, _impl_.prompt_)}},
+    {::_pbi::TcParser::MiniParse, {}},
+    {::_pbi::TcParser::MiniParse, {}},
+    {::_pbi::TcParser::MiniParse, {}},
+    {::_pbi::TcParser::MiniParse, {}},
+    {::_pbi::TcParser::MiniParse, {}},
+    {::_pbi::TcParser::MiniParse, {}},
+    {::_pbi::TcParser::MiniParse, {}},
+    {::_pbi::TcParser::MiniParse, {}},
   }}, {{
     65535, 65535
   }}, {{
     // int32 window_size = 1;
-    {PROTOBUF_FIELD_OFFSET(ContextParam, _impl_.window_size_), _Internal::kHasBitsOffset + 1, 0, (0 | ::_fl::kFcOptional | ::_fl::kInt32)},
+    {PROTOBUF_FIELD_OFFSET(ContextParam, _impl_.window_size_), _Internal::kHasBitsOffset + 2, 0, (0 | ::_fl::kFcOptional | ::_fl::kInt32)},
     // string stop_words = 2;
     {PROTOBUF_FIELD_OFFSET(ContextParam, _impl_.stop_words_), _Internal::kHasBitsOffset + 0, 0, (0 | ::_fl::kFcOptional | ::_fl::kUtf8String | ::_fl::kRepAString)},
+    // int32 n_ctx = 3;
+    {PROTOBUF_FIELD_OFFSET(ContextParam, _impl_.n_ctx_), _Internal::kHasBitsOffset + 3, 0, (0 | ::_fl::kFcOptional | ::_fl::kInt32)},
+    // int32 n_batch = 4;
+    {PROTOBUF_FIELD_OFFSET(ContextParam, _impl_.n_batch_), _Internal::kHasBitsOffset + 4, 0, (0 | ::_fl::kFcOptional | ::_fl::kInt32)},
+    // int32 n_ubatch = 5;
+    {PROTOBUF_FIELD_OFFSET(ContextParam, _impl_.n_ubatch_), _Internal::kHasBitsOffset + 5, 0, (0 | ::_fl::kFcOptional | ::_fl::kInt32)},
+    // int32 n_seq_max = 6;
+    {PROTOBUF_FIELD_OFFSET(ContextParam, _impl_.n_seq_max_), _Internal::kHasBitsOffset + 6, 0, (0 | ::_fl::kFcOptional | ::_fl::kInt32)},
+    // int32 n_threads = 7;
+    {PROTOBUF_FIELD_OFFSET(ContextParam, _impl_.n_threads_), _Internal::kHasBitsOffset + 7, 0, (0 | ::_fl::kFcOptional | ::_fl::kInt32)},
+    // int32 n_threads_batch = 8;
+    {PROTOBUF_FIELD_OFFSET(ContextParam, _impl_.n_threads_batch_), _Internal::kHasBitsOffset + 8, 0, (0 | ::_fl::kFcOptional | ::_fl::kInt32)},
+    // float rope_freq_base = 9;
+    {PROTOBUF_FIELD_OFFSET(ContextParam, _impl_.rope_freq_base_), _Internal::kHasBitsOffset + 9, 0, (0 | ::_fl::kFcOptional | ::_fl::kFloat)},
+    // float rope_freq_scale = 10;
+    {PROTOBUF_FIELD_OFFSET(ContextParam, _impl_.rope_freq_scale_), _Internal::kHasBitsOffset + 10, 0, (0 | ::_fl::kFcOptional | ::_fl::kFloat)},
+    // float yarn_ext_factor = 11;
+    {PROTOBUF_FIELD_OFFSET(ContextParam, _impl_.yarn_ext_factor_), _Internal::kHasBitsOffset + 11, 0, (0 | ::_fl::kFcOptional | ::_fl::kFloat)},
+    // float yarn_attn_factor = 12;
+    {PROTOBUF_FIELD_OFFSET(ContextParam, _impl_.yarn_attn_factor_), _Internal::kHasBitsOffset + 12, 0, (0 | ::_fl::kFcOptional | ::_fl::kFloat)},
+    // float yarn_beta_fast = 13;
+    {PROTOBUF_FIELD_OFFSET(ContextParam, _impl_.yarn_beta_fast_), _Internal::kHasBitsOffset + 13, 0, (0 | ::_fl::kFcOptional | ::_fl::kFloat)},
+    // float yarn_beta_slow = 14;
+    {PROTOBUF_FIELD_OFFSET(ContextParam, _impl_.yarn_beta_slow_), _Internal::kHasBitsOffset + 14, 0, (0 | ::_fl::kFcOptional | ::_fl::kFloat)},
+    // int32 yarn_orig_ctx = 15;
+    {PROTOBUF_FIELD_OFFSET(ContextParam, _impl_.yarn_orig_ctx_), _Internal::kHasBitsOffset + 15, 0, (0 | ::_fl::kFcOptional | ::_fl::kInt32)},
+    // float defrag_thold = 16;
+    {PROTOBUF_FIELD_OFFSET(ContextParam, _impl_.defrag_thold_), _Internal::kHasBitsOffset + 16, 0, (0 | ::_fl::kFcOptional | ::_fl::kFloat)},
+    // bool embeddings = 17;
+    {PROTOBUF_FIELD_OFFSET(ContextParam, _impl_.embeddings_), _Internal::kHasBitsOffset + 17, 0, (0 | ::_fl::kFcOptional | ::_fl::kBool)},
+    // bool offload_kqv = 18;
+    {PROTOBUF_FIELD_OFFSET(ContextParam, _impl_.offload_kqv_), _Internal::kHasBitsOffset + 18, 0, (0 | ::_fl::kFcOptional | ::_fl::kBool)},
+    // bool no_perf = 19;
+    {PROTOBUF_FIELD_OFFSET(ContextParam, _impl_.no_perf_), _Internal::kHasBitsOffset + 19, 0, (0 | ::_fl::kFcOptional | ::_fl::kBool)},
+    // bool op_offload = 20;
+    {PROTOBUF_FIELD_OFFSET(ContextParam, _impl_.op_offload_), _Internal::kHasBitsOffset + 20, 0, (0 | ::_fl::kFcOptional | ::_fl::kBool)},
+    // bool swa_full = 21;
+    {PROTOBUF_FIELD_OFFSET(ContextParam, _impl_.swa_full_), _Internal::kHasBitsOffset + 21, 0, (0 | ::_fl::kFcOptional | ::_fl::kBool)},
+    // bool kv_unified = 22;
+    {PROTOBUF_FIELD_OFFSET(ContextParam, _impl_.kv_unified_), _Internal::kHasBitsOffset + 22, 0, (0 | ::_fl::kFcOptional | ::_fl::kBool)},
+    // string prompt = 23;
+    {PROTOBUF_FIELD_OFFSET(ContextParam, _impl_.prompt_), _Internal::kHasBitsOffset + 1, 0, (0 | ::_fl::kFcOptional | ::_fl::kUtf8String | ::_fl::kRepAString)},
   }},
   // no aux_entries
   {{
-    "\30\0\12\0\0\0\0\0"
+    "\30\0\12\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\6"
     "GrpcLibrary.ContextParam"
     "stop_words"
+    "prompt"
   }},
 };
 PROTOBUF_NOINLINE void ContextParam::Clear() {
@@ -3345,10 +3571,29 @@ PROTOBUF_NOINLINE void ContextParam::Clear() {
   (void) cached_has_bits;
 
   cached_has_bits = _impl_._has_bits_[0];
-  if (CheckHasBit(cached_has_bits, 0x00000001U)) {
-    _impl_.stop_words_.ClearNonDefaultToEmpty();
+  if (BatchCheckHasBit(cached_has_bits, 0x00000003U)) {
+    if (CheckHasBit(cached_has_bits, 0x00000001U)) {
+      _impl_.stop_words_.ClearNonDefaultToEmpty();
+    }
+    if (CheckHasBit(cached_has_bits, 0x00000002U)) {
+      _impl_.prompt_.ClearNonDefaultToEmpty();
+    }
   }
-  _impl_.window_size_ = 0;
+  if (BatchCheckHasBit(cached_has_bits, 0x000000fcU)) {
+    ::memset(&_impl_.window_size_, 0, static_cast<::size_t>(
+        reinterpret_cast<char*>(&_impl_.n_threads_) -
+        reinterpret_cast<char*>(&_impl_.window_size_)) + sizeof(_impl_.n_threads_));
+  }
+  if (BatchCheckHasBit(cached_has_bits, 0x0000ff00U)) {
+    ::memset(&_impl_.n_threads_batch_, 0, static_cast<::size_t>(
+        reinterpret_cast<char*>(&_impl_.yarn_orig_ctx_) -
+        reinterpret_cast<char*>(&_impl_.n_threads_batch_)) + sizeof(_impl_.yarn_orig_ctx_));
+  }
+  if (BatchCheckHasBit(cached_has_bits, 0x007f0000U)) {
+    ::memset(&_impl_.defrag_thold_, 0, static_cast<::size_t>(
+        reinterpret_cast<char*>(&_impl_.kv_unified_) -
+        reinterpret_cast<char*>(&_impl_.defrag_thold_)) + sizeof(_impl_.kv_unified_));
+  }
   _impl_._has_bits_.Clear();
   _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
 }
@@ -3373,7 +3618,7 @@ PROTOBUF_NOINLINE void ContextParam::Clear() {
 
   cached_has_bits = this_._impl_._has_bits_[0];
   // int32 window_size = 1;
-  if (CheckHasBit(cached_has_bits, 0x00000002U)) {
+  if (CheckHasBit(cached_has_bits, 0x00000004U)) {
     if (this_._internal_window_size() != 0) {
       target =
           ::google::protobuf::internal::WireFormatLite::WriteInt32ToArrayWithField<1>(
@@ -3388,6 +3633,196 @@ PROTOBUF_NOINLINE void ContextParam::Clear() {
       ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
           _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "GrpcLibrary.ContextParam.stop_words");
       target = stream->WriteStringMaybeAliased(2, _s, target);
+    }
+  }
+
+  // int32 n_ctx = 3;
+  if (CheckHasBit(cached_has_bits, 0x00000008U)) {
+    if (this_._internal_n_ctx() != 0) {
+      target =
+          ::google::protobuf::internal::WireFormatLite::WriteInt32ToArrayWithField<3>(
+              stream, this_._internal_n_ctx(), target);
+    }
+  }
+
+  // int32 n_batch = 4;
+  if (CheckHasBit(cached_has_bits, 0x00000010U)) {
+    if (this_._internal_n_batch() != 0) {
+      target =
+          ::google::protobuf::internal::WireFormatLite::WriteInt32ToArrayWithField<4>(
+              stream, this_._internal_n_batch(), target);
+    }
+  }
+
+  // int32 n_ubatch = 5;
+  if (CheckHasBit(cached_has_bits, 0x00000020U)) {
+    if (this_._internal_n_ubatch() != 0) {
+      target =
+          ::google::protobuf::internal::WireFormatLite::WriteInt32ToArrayWithField<5>(
+              stream, this_._internal_n_ubatch(), target);
+    }
+  }
+
+  // int32 n_seq_max = 6;
+  if (CheckHasBit(cached_has_bits, 0x00000040U)) {
+    if (this_._internal_n_seq_max() != 0) {
+      target =
+          ::google::protobuf::internal::WireFormatLite::WriteInt32ToArrayWithField<6>(
+              stream, this_._internal_n_seq_max(), target);
+    }
+  }
+
+  // int32 n_threads = 7;
+  if (CheckHasBit(cached_has_bits, 0x00000080U)) {
+    if (this_._internal_n_threads() != 0) {
+      target =
+          ::google::protobuf::internal::WireFormatLite::WriteInt32ToArrayWithField<7>(
+              stream, this_._internal_n_threads(), target);
+    }
+  }
+
+  // int32 n_threads_batch = 8;
+  if (CheckHasBit(cached_has_bits, 0x00000100U)) {
+    if (this_._internal_n_threads_batch() != 0) {
+      target =
+          ::google::protobuf::internal::WireFormatLite::WriteInt32ToArrayWithField<8>(
+              stream, this_._internal_n_threads_batch(), target);
+    }
+  }
+
+  // float rope_freq_base = 9;
+  if (CheckHasBit(cached_has_bits, 0x00000200U)) {
+    if (::absl::bit_cast<::uint32_t>(this_._internal_rope_freq_base()) != 0) {
+      target = stream->EnsureSpace(target);
+      target = ::_pbi::WireFormatLite::WriteFloatToArray(
+          9, this_._internal_rope_freq_base(), target);
+    }
+  }
+
+  // float rope_freq_scale = 10;
+  if (CheckHasBit(cached_has_bits, 0x00000400U)) {
+    if (::absl::bit_cast<::uint32_t>(this_._internal_rope_freq_scale()) != 0) {
+      target = stream->EnsureSpace(target);
+      target = ::_pbi::WireFormatLite::WriteFloatToArray(
+          10, this_._internal_rope_freq_scale(), target);
+    }
+  }
+
+  // float yarn_ext_factor = 11;
+  if (CheckHasBit(cached_has_bits, 0x00000800U)) {
+    if (::absl::bit_cast<::uint32_t>(this_._internal_yarn_ext_factor()) != 0) {
+      target = stream->EnsureSpace(target);
+      target = ::_pbi::WireFormatLite::WriteFloatToArray(
+          11, this_._internal_yarn_ext_factor(), target);
+    }
+  }
+
+  // float yarn_attn_factor = 12;
+  if (CheckHasBit(cached_has_bits, 0x00001000U)) {
+    if (::absl::bit_cast<::uint32_t>(this_._internal_yarn_attn_factor()) != 0) {
+      target = stream->EnsureSpace(target);
+      target = ::_pbi::WireFormatLite::WriteFloatToArray(
+          12, this_._internal_yarn_attn_factor(), target);
+    }
+  }
+
+  // float yarn_beta_fast = 13;
+  if (CheckHasBit(cached_has_bits, 0x00002000U)) {
+    if (::absl::bit_cast<::uint32_t>(this_._internal_yarn_beta_fast()) != 0) {
+      target = stream->EnsureSpace(target);
+      target = ::_pbi::WireFormatLite::WriteFloatToArray(
+          13, this_._internal_yarn_beta_fast(), target);
+    }
+  }
+
+  // float yarn_beta_slow = 14;
+  if (CheckHasBit(cached_has_bits, 0x00004000U)) {
+    if (::absl::bit_cast<::uint32_t>(this_._internal_yarn_beta_slow()) != 0) {
+      target = stream->EnsureSpace(target);
+      target = ::_pbi::WireFormatLite::WriteFloatToArray(
+          14, this_._internal_yarn_beta_slow(), target);
+    }
+  }
+
+  // int32 yarn_orig_ctx = 15;
+  if (CheckHasBit(cached_has_bits, 0x00008000U)) {
+    if (this_._internal_yarn_orig_ctx() != 0) {
+      target =
+          ::google::protobuf::internal::WireFormatLite::WriteInt32ToArrayWithField<15>(
+              stream, this_._internal_yarn_orig_ctx(), target);
+    }
+  }
+
+  // float defrag_thold = 16;
+  if (CheckHasBit(cached_has_bits, 0x00010000U)) {
+    if (::absl::bit_cast<::uint32_t>(this_._internal_defrag_thold()) != 0) {
+      target = stream->EnsureSpace(target);
+      target = ::_pbi::WireFormatLite::WriteFloatToArray(
+          16, this_._internal_defrag_thold(), target);
+    }
+  }
+
+  // bool embeddings = 17;
+  if (CheckHasBit(cached_has_bits, 0x00020000U)) {
+    if (this_._internal_embeddings() != 0) {
+      target = stream->EnsureSpace(target);
+      target = ::_pbi::WireFormatLite::WriteBoolToArray(
+          17, this_._internal_embeddings(), target);
+    }
+  }
+
+  // bool offload_kqv = 18;
+  if (CheckHasBit(cached_has_bits, 0x00040000U)) {
+    if (this_._internal_offload_kqv() != 0) {
+      target = stream->EnsureSpace(target);
+      target = ::_pbi::WireFormatLite::WriteBoolToArray(
+          18, this_._internal_offload_kqv(), target);
+    }
+  }
+
+  // bool no_perf = 19;
+  if (CheckHasBit(cached_has_bits, 0x00080000U)) {
+    if (this_._internal_no_perf() != 0) {
+      target = stream->EnsureSpace(target);
+      target = ::_pbi::WireFormatLite::WriteBoolToArray(
+          19, this_._internal_no_perf(), target);
+    }
+  }
+
+  // bool op_offload = 20;
+  if (CheckHasBit(cached_has_bits, 0x00100000U)) {
+    if (this_._internal_op_offload() != 0) {
+      target = stream->EnsureSpace(target);
+      target = ::_pbi::WireFormatLite::WriteBoolToArray(
+          20, this_._internal_op_offload(), target);
+    }
+  }
+
+  // bool swa_full = 21;
+  if (CheckHasBit(cached_has_bits, 0x00200000U)) {
+    if (this_._internal_swa_full() != 0) {
+      target = stream->EnsureSpace(target);
+      target = ::_pbi::WireFormatLite::WriteBoolToArray(
+          21, this_._internal_swa_full(), target);
+    }
+  }
+
+  // bool kv_unified = 22;
+  if (CheckHasBit(cached_has_bits, 0x00400000U)) {
+    if (this_._internal_kv_unified() != 0) {
+      target = stream->EnsureSpace(target);
+      target = ::_pbi::WireFormatLite::WriteBoolToArray(
+          22, this_._internal_kv_unified(), target);
+    }
+  }
+
+  // string prompt = 23;
+  if (CheckHasBit(cached_has_bits, 0x00000002U)) {
+    if (!this_._internal_prompt().empty()) {
+      const ::std::string& _s = this_._internal_prompt();
+      ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+          _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "GrpcLibrary.ContextParam.prompt");
+      target = stream->WriteStringMaybeAliased(23, _s, target);
     }
   }
 
@@ -3416,7 +3851,7 @@ PROTOBUF_NOINLINE void ContextParam::Clear() {
 
   ::_pbi::Prefetch5LinesFrom7Lines(&this_);
   cached_has_bits = this_._impl_._has_bits_[0];
-  if (BatchCheckHasBit(cached_has_bits, 0x00000003U)) {
+  if (BatchCheckHasBit(cached_has_bits, 0x000000ffU)) {
     // string stop_words = 2;
     if (CheckHasBit(cached_has_bits, 0x00000001U)) {
       if (!this_._internal_stop_words().empty()) {
@@ -3424,11 +3859,149 @@ PROTOBUF_NOINLINE void ContextParam::Clear() {
                                         this_._internal_stop_words());
       }
     }
-    // int32 window_size = 1;
+    // string prompt = 23;
     if (CheckHasBit(cached_has_bits, 0x00000002U)) {
+      if (!this_._internal_prompt().empty()) {
+        total_size += 2 + ::google::protobuf::internal::WireFormatLite::StringSize(
+                                        this_._internal_prompt());
+      }
+    }
+    // int32 window_size = 1;
+    if (CheckHasBit(cached_has_bits, 0x00000004U)) {
       if (this_._internal_window_size() != 0) {
         total_size += ::_pbi::WireFormatLite::Int32SizePlusOne(
             this_._internal_window_size());
+      }
+    }
+    // int32 n_ctx = 3;
+    if (CheckHasBit(cached_has_bits, 0x00000008U)) {
+      if (this_._internal_n_ctx() != 0) {
+        total_size += ::_pbi::WireFormatLite::Int32SizePlusOne(
+            this_._internal_n_ctx());
+      }
+    }
+    // int32 n_batch = 4;
+    if (CheckHasBit(cached_has_bits, 0x00000010U)) {
+      if (this_._internal_n_batch() != 0) {
+        total_size += ::_pbi::WireFormatLite::Int32SizePlusOne(
+            this_._internal_n_batch());
+      }
+    }
+    // int32 n_ubatch = 5;
+    if (CheckHasBit(cached_has_bits, 0x00000020U)) {
+      if (this_._internal_n_ubatch() != 0) {
+        total_size += ::_pbi::WireFormatLite::Int32SizePlusOne(
+            this_._internal_n_ubatch());
+      }
+    }
+    // int32 n_seq_max = 6;
+    if (CheckHasBit(cached_has_bits, 0x00000040U)) {
+      if (this_._internal_n_seq_max() != 0) {
+        total_size += ::_pbi::WireFormatLite::Int32SizePlusOne(
+            this_._internal_n_seq_max());
+      }
+    }
+    // int32 n_threads = 7;
+    if (CheckHasBit(cached_has_bits, 0x00000080U)) {
+      if (this_._internal_n_threads() != 0) {
+        total_size += ::_pbi::WireFormatLite::Int32SizePlusOne(
+            this_._internal_n_threads());
+      }
+    }
+  }
+  if (BatchCheckHasBit(cached_has_bits, 0x0000ff00U)) {
+    // int32 n_threads_batch = 8;
+    if (CheckHasBit(cached_has_bits, 0x00000100U)) {
+      if (this_._internal_n_threads_batch() != 0) {
+        total_size += ::_pbi::WireFormatLite::Int32SizePlusOne(
+            this_._internal_n_threads_batch());
+      }
+    }
+    // float rope_freq_base = 9;
+    if (CheckHasBit(cached_has_bits, 0x00000200U)) {
+      if (::absl::bit_cast<::uint32_t>(this_._internal_rope_freq_base()) != 0) {
+        total_size += 5;
+      }
+    }
+    // float rope_freq_scale = 10;
+    if (CheckHasBit(cached_has_bits, 0x00000400U)) {
+      if (::absl::bit_cast<::uint32_t>(this_._internal_rope_freq_scale()) != 0) {
+        total_size += 5;
+      }
+    }
+    // float yarn_ext_factor = 11;
+    if (CheckHasBit(cached_has_bits, 0x00000800U)) {
+      if (::absl::bit_cast<::uint32_t>(this_._internal_yarn_ext_factor()) != 0) {
+        total_size += 5;
+      }
+    }
+    // float yarn_attn_factor = 12;
+    if (CheckHasBit(cached_has_bits, 0x00001000U)) {
+      if (::absl::bit_cast<::uint32_t>(this_._internal_yarn_attn_factor()) != 0) {
+        total_size += 5;
+      }
+    }
+    // float yarn_beta_fast = 13;
+    if (CheckHasBit(cached_has_bits, 0x00002000U)) {
+      if (::absl::bit_cast<::uint32_t>(this_._internal_yarn_beta_fast()) != 0) {
+        total_size += 5;
+      }
+    }
+    // float yarn_beta_slow = 14;
+    if (CheckHasBit(cached_has_bits, 0x00004000U)) {
+      if (::absl::bit_cast<::uint32_t>(this_._internal_yarn_beta_slow()) != 0) {
+        total_size += 5;
+      }
+    }
+    // int32 yarn_orig_ctx = 15;
+    if (CheckHasBit(cached_has_bits, 0x00008000U)) {
+      if (this_._internal_yarn_orig_ctx() != 0) {
+        total_size += ::_pbi::WireFormatLite::Int32SizePlusOne(
+            this_._internal_yarn_orig_ctx());
+      }
+    }
+  }
+  if (BatchCheckHasBit(cached_has_bits, 0x007f0000U)) {
+    // float defrag_thold = 16;
+    if (CheckHasBit(cached_has_bits, 0x00010000U)) {
+      if (::absl::bit_cast<::uint32_t>(this_._internal_defrag_thold()) != 0) {
+        total_size += 6;
+      }
+    }
+    // bool embeddings = 17;
+    if (CheckHasBit(cached_has_bits, 0x00020000U)) {
+      if (this_._internal_embeddings() != 0) {
+        total_size += 3;
+      }
+    }
+    // bool offload_kqv = 18;
+    if (CheckHasBit(cached_has_bits, 0x00040000U)) {
+      if (this_._internal_offload_kqv() != 0) {
+        total_size += 3;
+      }
+    }
+    // bool no_perf = 19;
+    if (CheckHasBit(cached_has_bits, 0x00080000U)) {
+      if (this_._internal_no_perf() != 0) {
+        total_size += 3;
+      }
+    }
+    // bool op_offload = 20;
+    if (CheckHasBit(cached_has_bits, 0x00100000U)) {
+      if (this_._internal_op_offload() != 0) {
+        total_size += 3;
+      }
+    }
+    // bool swa_full = 21;
+    if (CheckHasBit(cached_has_bits, 0x00200000U)) {
+      if (this_._internal_swa_full() != 0) {
+        total_size += 3;
+      }
+    }
+    // bool kv_unified = 22;
+    if (CheckHasBit(cached_has_bits, 0x00400000U)) {
+      if (this_._internal_kv_unified() != 0) {
+        total_size += 3;
       }
     }
   }
@@ -3450,7 +4023,7 @@ void ContextParam::MergeImpl(::google::protobuf::MessageLite& to_msg,
   (void)cached_has_bits;
 
   cached_has_bits = from._impl_._has_bits_[0];
-  if (BatchCheckHasBit(cached_has_bits, 0x00000003U)) {
+  if (BatchCheckHasBit(cached_has_bits, 0x000000ffU)) {
     if (CheckHasBit(cached_has_bits, 0x00000001U)) {
       if (!from._internal_stop_words().empty()) {
         _this->_internal_set_stop_words(from._internal_stop_words());
@@ -3461,8 +4034,121 @@ void ContextParam::MergeImpl(::google::protobuf::MessageLite& to_msg,
       }
     }
     if (CheckHasBit(cached_has_bits, 0x00000002U)) {
+      if (!from._internal_prompt().empty()) {
+        _this->_internal_set_prompt(from._internal_prompt());
+      } else {
+        if (_this->_impl_.prompt_.IsDefault()) {
+          _this->_internal_set_prompt("");
+        }
+      }
+    }
+    if (CheckHasBit(cached_has_bits, 0x00000004U)) {
       if (from._internal_window_size() != 0) {
         _this->_impl_.window_size_ = from._impl_.window_size_;
+      }
+    }
+    if (CheckHasBit(cached_has_bits, 0x00000008U)) {
+      if (from._internal_n_ctx() != 0) {
+        _this->_impl_.n_ctx_ = from._impl_.n_ctx_;
+      }
+    }
+    if (CheckHasBit(cached_has_bits, 0x00000010U)) {
+      if (from._internal_n_batch() != 0) {
+        _this->_impl_.n_batch_ = from._impl_.n_batch_;
+      }
+    }
+    if (CheckHasBit(cached_has_bits, 0x00000020U)) {
+      if (from._internal_n_ubatch() != 0) {
+        _this->_impl_.n_ubatch_ = from._impl_.n_ubatch_;
+      }
+    }
+    if (CheckHasBit(cached_has_bits, 0x00000040U)) {
+      if (from._internal_n_seq_max() != 0) {
+        _this->_impl_.n_seq_max_ = from._impl_.n_seq_max_;
+      }
+    }
+    if (CheckHasBit(cached_has_bits, 0x00000080U)) {
+      if (from._internal_n_threads() != 0) {
+        _this->_impl_.n_threads_ = from._impl_.n_threads_;
+      }
+    }
+  }
+  if (BatchCheckHasBit(cached_has_bits, 0x0000ff00U)) {
+    if (CheckHasBit(cached_has_bits, 0x00000100U)) {
+      if (from._internal_n_threads_batch() != 0) {
+        _this->_impl_.n_threads_batch_ = from._impl_.n_threads_batch_;
+      }
+    }
+    if (CheckHasBit(cached_has_bits, 0x00000200U)) {
+      if (::absl::bit_cast<::uint32_t>(from._internal_rope_freq_base()) != 0) {
+        _this->_impl_.rope_freq_base_ = from._impl_.rope_freq_base_;
+      }
+    }
+    if (CheckHasBit(cached_has_bits, 0x00000400U)) {
+      if (::absl::bit_cast<::uint32_t>(from._internal_rope_freq_scale()) != 0) {
+        _this->_impl_.rope_freq_scale_ = from._impl_.rope_freq_scale_;
+      }
+    }
+    if (CheckHasBit(cached_has_bits, 0x00000800U)) {
+      if (::absl::bit_cast<::uint32_t>(from._internal_yarn_ext_factor()) != 0) {
+        _this->_impl_.yarn_ext_factor_ = from._impl_.yarn_ext_factor_;
+      }
+    }
+    if (CheckHasBit(cached_has_bits, 0x00001000U)) {
+      if (::absl::bit_cast<::uint32_t>(from._internal_yarn_attn_factor()) != 0) {
+        _this->_impl_.yarn_attn_factor_ = from._impl_.yarn_attn_factor_;
+      }
+    }
+    if (CheckHasBit(cached_has_bits, 0x00002000U)) {
+      if (::absl::bit_cast<::uint32_t>(from._internal_yarn_beta_fast()) != 0) {
+        _this->_impl_.yarn_beta_fast_ = from._impl_.yarn_beta_fast_;
+      }
+    }
+    if (CheckHasBit(cached_has_bits, 0x00004000U)) {
+      if (::absl::bit_cast<::uint32_t>(from._internal_yarn_beta_slow()) != 0) {
+        _this->_impl_.yarn_beta_slow_ = from._impl_.yarn_beta_slow_;
+      }
+    }
+    if (CheckHasBit(cached_has_bits, 0x00008000U)) {
+      if (from._internal_yarn_orig_ctx() != 0) {
+        _this->_impl_.yarn_orig_ctx_ = from._impl_.yarn_orig_ctx_;
+      }
+    }
+  }
+  if (BatchCheckHasBit(cached_has_bits, 0x007f0000U)) {
+    if (CheckHasBit(cached_has_bits, 0x00010000U)) {
+      if (::absl::bit_cast<::uint32_t>(from._internal_defrag_thold()) != 0) {
+        _this->_impl_.defrag_thold_ = from._impl_.defrag_thold_;
+      }
+    }
+    if (CheckHasBit(cached_has_bits, 0x00020000U)) {
+      if (from._internal_embeddings() != 0) {
+        _this->_impl_.embeddings_ = from._impl_.embeddings_;
+      }
+    }
+    if (CheckHasBit(cached_has_bits, 0x00040000U)) {
+      if (from._internal_offload_kqv() != 0) {
+        _this->_impl_.offload_kqv_ = from._impl_.offload_kqv_;
+      }
+    }
+    if (CheckHasBit(cached_has_bits, 0x00080000U)) {
+      if (from._internal_no_perf() != 0) {
+        _this->_impl_.no_perf_ = from._impl_.no_perf_;
+      }
+    }
+    if (CheckHasBit(cached_has_bits, 0x00100000U)) {
+      if (from._internal_op_offload() != 0) {
+        _this->_impl_.op_offload_ = from._impl_.op_offload_;
+      }
+    }
+    if (CheckHasBit(cached_has_bits, 0x00200000U)) {
+      if (from._internal_swa_full() != 0) {
+        _this->_impl_.swa_full_ = from._impl_.swa_full_;
+      }
+    }
+    if (CheckHasBit(cached_has_bits, 0x00400000U)) {
+      if (from._internal_kv_unified() != 0) {
+        _this->_impl_.kv_unified_ = from._impl_.kv_unified_;
       }
     }
   }
@@ -3486,7 +4172,13 @@ void ContextParam::InternalSwap(ContextParam* PROTOBUF_RESTRICT PROTOBUF_NONNULL
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
   ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.stop_words_, &other->_impl_.stop_words_, arena);
-  swap(_impl_.window_size_, other->_impl_.window_size_);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.prompt_, &other->_impl_.prompt_, arena);
+  ::google::protobuf::internal::memswap<
+      PROTOBUF_FIELD_OFFSET(ContextParam, _impl_.kv_unified_)
+      + sizeof(ContextParam::_impl_.kv_unified_)
+      - PROTOBUF_FIELD_OFFSET(ContextParam, _impl_.window_size_)>(
+          reinterpret_cast<char*>(&_impl_.window_size_),
+          reinterpret_cast<char*>(&other->_impl_.window_size_));
 }
 
 ::google::protobuf::Metadata ContextParam::GetMetadata() const {

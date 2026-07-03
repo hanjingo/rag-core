@@ -5989,7 +5989,28 @@ class ContextParam final : public ::google::protobuf::Message
   // accessors -------------------------------------------------------
   enum : int {
     kStopWordsFieldNumber = 2,
+    kPromptFieldNumber = 23,
     kWindowSizeFieldNumber = 1,
+    kNCtxFieldNumber = 3,
+    kNBatchFieldNumber = 4,
+    kNUbatchFieldNumber = 5,
+    kNSeqMaxFieldNumber = 6,
+    kNThreadsFieldNumber = 7,
+    kNThreadsBatchFieldNumber = 8,
+    kRopeFreqBaseFieldNumber = 9,
+    kRopeFreqScaleFieldNumber = 10,
+    kYarnExtFactorFieldNumber = 11,
+    kYarnAttnFactorFieldNumber = 12,
+    kYarnBetaFastFieldNumber = 13,
+    kYarnBetaSlowFieldNumber = 14,
+    kYarnOrigCtxFieldNumber = 15,
+    kDefragTholdFieldNumber = 16,
+    kEmbeddingsFieldNumber = 17,
+    kOffloadKqvFieldNumber = 18,
+    kNoPerfFieldNumber = 19,
+    kOpOffloadFieldNumber = 20,
+    kSwaFullFieldNumber = 21,
+    kKvUnifiedFieldNumber = 22,
   };
   // string stop_words = 2;
   void clear_stop_words() ;
@@ -6006,6 +6027,21 @@ class ContextParam final : public ::google::protobuf::Message
   ::std::string* PROTOBUF_NONNULL _internal_mutable_stop_words();
 
   public:
+  // string prompt = 23;
+  void clear_prompt() ;
+  const ::std::string& prompt() const;
+  template <typename Arg_ = const ::std::string&, typename... Args_>
+  void set_prompt(Arg_&& arg, Args_... args);
+  ::std::string* PROTOBUF_NONNULL mutable_prompt();
+  [[nodiscard]] ::std::string* PROTOBUF_NULLABLE release_prompt();
+  void set_allocated_prompt(::std::string* PROTOBUF_NULLABLE value);
+
+  private:
+  const ::std::string& _internal_prompt() const;
+  PROTOBUF_ALWAYS_INLINE void _internal_set_prompt(const ::std::string& value);
+  ::std::string* PROTOBUF_NONNULL _internal_mutable_prompt();
+
+  public:
   // int32 window_size = 1;
   void clear_window_size() ;
   ::int32_t window_size() const;
@@ -6016,12 +6052,212 @@ class ContextParam final : public ::google::protobuf::Message
   void _internal_set_window_size(::int32_t value);
 
   public:
+  // int32 n_ctx = 3;
+  void clear_n_ctx() ;
+  ::int32_t n_ctx() const;
+  void set_n_ctx(::int32_t value);
+
+  private:
+  ::int32_t _internal_n_ctx() const;
+  void _internal_set_n_ctx(::int32_t value);
+
+  public:
+  // int32 n_batch = 4;
+  void clear_n_batch() ;
+  ::int32_t n_batch() const;
+  void set_n_batch(::int32_t value);
+
+  private:
+  ::int32_t _internal_n_batch() const;
+  void _internal_set_n_batch(::int32_t value);
+
+  public:
+  // int32 n_ubatch = 5;
+  void clear_n_ubatch() ;
+  ::int32_t n_ubatch() const;
+  void set_n_ubatch(::int32_t value);
+
+  private:
+  ::int32_t _internal_n_ubatch() const;
+  void _internal_set_n_ubatch(::int32_t value);
+
+  public:
+  // int32 n_seq_max = 6;
+  void clear_n_seq_max() ;
+  ::int32_t n_seq_max() const;
+  void set_n_seq_max(::int32_t value);
+
+  private:
+  ::int32_t _internal_n_seq_max() const;
+  void _internal_set_n_seq_max(::int32_t value);
+
+  public:
+  // int32 n_threads = 7;
+  void clear_n_threads() ;
+  ::int32_t n_threads() const;
+  void set_n_threads(::int32_t value);
+
+  private:
+  ::int32_t _internal_n_threads() const;
+  void _internal_set_n_threads(::int32_t value);
+
+  public:
+  // int32 n_threads_batch = 8;
+  void clear_n_threads_batch() ;
+  ::int32_t n_threads_batch() const;
+  void set_n_threads_batch(::int32_t value);
+
+  private:
+  ::int32_t _internal_n_threads_batch() const;
+  void _internal_set_n_threads_batch(::int32_t value);
+
+  public:
+  // float rope_freq_base = 9;
+  void clear_rope_freq_base() ;
+  float rope_freq_base() const;
+  void set_rope_freq_base(float value);
+
+  private:
+  float _internal_rope_freq_base() const;
+  void _internal_set_rope_freq_base(float value);
+
+  public:
+  // float rope_freq_scale = 10;
+  void clear_rope_freq_scale() ;
+  float rope_freq_scale() const;
+  void set_rope_freq_scale(float value);
+
+  private:
+  float _internal_rope_freq_scale() const;
+  void _internal_set_rope_freq_scale(float value);
+
+  public:
+  // float yarn_ext_factor = 11;
+  void clear_yarn_ext_factor() ;
+  float yarn_ext_factor() const;
+  void set_yarn_ext_factor(float value);
+
+  private:
+  float _internal_yarn_ext_factor() const;
+  void _internal_set_yarn_ext_factor(float value);
+
+  public:
+  // float yarn_attn_factor = 12;
+  void clear_yarn_attn_factor() ;
+  float yarn_attn_factor() const;
+  void set_yarn_attn_factor(float value);
+
+  private:
+  float _internal_yarn_attn_factor() const;
+  void _internal_set_yarn_attn_factor(float value);
+
+  public:
+  // float yarn_beta_fast = 13;
+  void clear_yarn_beta_fast() ;
+  float yarn_beta_fast() const;
+  void set_yarn_beta_fast(float value);
+
+  private:
+  float _internal_yarn_beta_fast() const;
+  void _internal_set_yarn_beta_fast(float value);
+
+  public:
+  // float yarn_beta_slow = 14;
+  void clear_yarn_beta_slow() ;
+  float yarn_beta_slow() const;
+  void set_yarn_beta_slow(float value);
+
+  private:
+  float _internal_yarn_beta_slow() const;
+  void _internal_set_yarn_beta_slow(float value);
+
+  public:
+  // int32 yarn_orig_ctx = 15;
+  void clear_yarn_orig_ctx() ;
+  ::int32_t yarn_orig_ctx() const;
+  void set_yarn_orig_ctx(::int32_t value);
+
+  private:
+  ::int32_t _internal_yarn_orig_ctx() const;
+  void _internal_set_yarn_orig_ctx(::int32_t value);
+
+  public:
+  // float defrag_thold = 16;
+  void clear_defrag_thold() ;
+  float defrag_thold() const;
+  void set_defrag_thold(float value);
+
+  private:
+  float _internal_defrag_thold() const;
+  void _internal_set_defrag_thold(float value);
+
+  public:
+  // bool embeddings = 17;
+  void clear_embeddings() ;
+  bool embeddings() const;
+  void set_embeddings(bool value);
+
+  private:
+  bool _internal_embeddings() const;
+  void _internal_set_embeddings(bool value);
+
+  public:
+  // bool offload_kqv = 18;
+  void clear_offload_kqv() ;
+  bool offload_kqv() const;
+  void set_offload_kqv(bool value);
+
+  private:
+  bool _internal_offload_kqv() const;
+  void _internal_set_offload_kqv(bool value);
+
+  public:
+  // bool no_perf = 19;
+  void clear_no_perf() ;
+  bool no_perf() const;
+  void set_no_perf(bool value);
+
+  private:
+  bool _internal_no_perf() const;
+  void _internal_set_no_perf(bool value);
+
+  public:
+  // bool op_offload = 20;
+  void clear_op_offload() ;
+  bool op_offload() const;
+  void set_op_offload(bool value);
+
+  private:
+  bool _internal_op_offload() const;
+  void _internal_set_op_offload(bool value);
+
+  public:
+  // bool swa_full = 21;
+  void clear_swa_full() ;
+  bool swa_full() const;
+  void set_swa_full(bool value);
+
+  private:
+  bool _internal_swa_full() const;
+  void _internal_set_swa_full(bool value);
+
+  public:
+  // bool kv_unified = 22;
+  void clear_kv_unified() ;
+  bool kv_unified() const;
+  void set_kv_unified(bool value);
+
+  private:
+  bool _internal_kv_unified() const;
+  void _internal_set_kv_unified(bool value);
+
+  public:
   // @@protoc_insertion_point(class_scope:GrpcLibrary.ContextParam)
  private:
   class _Internal;
   friend class ::google::protobuf::internal::TcParser;
-  static const ::google::protobuf::internal::TcParseTable<1, 2,
-                                   0, 43,
+  static const ::google::protobuf::internal::TcParseTable<5, 23,
+                                   0, 65,
                                    2>
       _table_;
 
@@ -6043,7 +6279,28 @@ class ContextParam final : public ::google::protobuf::Message
     ::google::protobuf::internal::HasBits<1> _has_bits_;
     ::google::protobuf::internal::CachedSize _cached_size_;
     ::google::protobuf::internal::ArenaStringPtr stop_words_;
+    ::google::protobuf::internal::ArenaStringPtr prompt_;
     ::int32_t window_size_;
+    ::int32_t n_ctx_;
+    ::int32_t n_batch_;
+    ::int32_t n_ubatch_;
+    ::int32_t n_seq_max_;
+    ::int32_t n_threads_;
+    ::int32_t n_threads_batch_;
+    float rope_freq_base_;
+    float rope_freq_scale_;
+    float yarn_ext_factor_;
+    float yarn_attn_factor_;
+    float yarn_beta_fast_;
+    float yarn_beta_slow_;
+    ::int32_t yarn_orig_ctx_;
+    float defrag_thold_;
+    bool embeddings_;
+    bool offload_kqv_;
+    bool no_perf_;
+    bool op_offload_;
+    bool swa_full_;
+    bool kv_unified_;
     PROTOBUF_TSAN_DECLARE_MEMBER
   };
   union { Impl_ _impl_; };
@@ -8217,7 +8474,7 @@ inline void ContextParam::clear_window_size() {
   ::google::protobuf::internal::TSanWrite(&_impl_);
   _impl_.window_size_ = 0;
   ClearHasBit(_impl_._has_bits_[0],
-                  0x00000002U);
+                  0x00000004U);
 }
 inline ::int32_t ContextParam::window_size() const {
   // @@protoc_insertion_point(field_get:GrpcLibrary.ContextParam.window_size)
@@ -8225,7 +8482,7 @@ inline ::int32_t ContextParam::window_size() const {
 }
 inline void ContextParam::set_window_size(::int32_t value) {
   _internal_set_window_size(value);
-  SetHasBit(_impl_._has_bits_[0], 0x00000002U);
+  SetHasBit(_impl_._has_bits_[0], 0x00000004U);
   // @@protoc_insertion_point(field_set:GrpcLibrary.ContextParam.window_size)
 }
 inline ::int32_t ContextParam::_internal_window_size() const {
@@ -8300,6 +8557,571 @@ inline void ContextParam::set_allocated_stop_words(::std::string* PROTOBUF_NULLA
     _impl_.stop_words_.Set("", GetArena());
   }
   // @@protoc_insertion_point(field_set_allocated:GrpcLibrary.ContextParam.stop_words)
+}
+
+// int32 n_ctx = 3;
+inline void ContextParam::clear_n_ctx() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.n_ctx_ = 0;
+  ClearHasBit(_impl_._has_bits_[0],
+                  0x00000008U);
+}
+inline ::int32_t ContextParam::n_ctx() const {
+  // @@protoc_insertion_point(field_get:GrpcLibrary.ContextParam.n_ctx)
+  return _internal_n_ctx();
+}
+inline void ContextParam::set_n_ctx(::int32_t value) {
+  _internal_set_n_ctx(value);
+  SetHasBit(_impl_._has_bits_[0], 0x00000008U);
+  // @@protoc_insertion_point(field_set:GrpcLibrary.ContextParam.n_ctx)
+}
+inline ::int32_t ContextParam::_internal_n_ctx() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.n_ctx_;
+}
+inline void ContextParam::_internal_set_n_ctx(::int32_t value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.n_ctx_ = value;
+}
+
+// int32 n_batch = 4;
+inline void ContextParam::clear_n_batch() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.n_batch_ = 0;
+  ClearHasBit(_impl_._has_bits_[0],
+                  0x00000010U);
+}
+inline ::int32_t ContextParam::n_batch() const {
+  // @@protoc_insertion_point(field_get:GrpcLibrary.ContextParam.n_batch)
+  return _internal_n_batch();
+}
+inline void ContextParam::set_n_batch(::int32_t value) {
+  _internal_set_n_batch(value);
+  SetHasBit(_impl_._has_bits_[0], 0x00000010U);
+  // @@protoc_insertion_point(field_set:GrpcLibrary.ContextParam.n_batch)
+}
+inline ::int32_t ContextParam::_internal_n_batch() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.n_batch_;
+}
+inline void ContextParam::_internal_set_n_batch(::int32_t value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.n_batch_ = value;
+}
+
+// int32 n_ubatch = 5;
+inline void ContextParam::clear_n_ubatch() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.n_ubatch_ = 0;
+  ClearHasBit(_impl_._has_bits_[0],
+                  0x00000020U);
+}
+inline ::int32_t ContextParam::n_ubatch() const {
+  // @@protoc_insertion_point(field_get:GrpcLibrary.ContextParam.n_ubatch)
+  return _internal_n_ubatch();
+}
+inline void ContextParam::set_n_ubatch(::int32_t value) {
+  _internal_set_n_ubatch(value);
+  SetHasBit(_impl_._has_bits_[0], 0x00000020U);
+  // @@protoc_insertion_point(field_set:GrpcLibrary.ContextParam.n_ubatch)
+}
+inline ::int32_t ContextParam::_internal_n_ubatch() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.n_ubatch_;
+}
+inline void ContextParam::_internal_set_n_ubatch(::int32_t value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.n_ubatch_ = value;
+}
+
+// int32 n_seq_max = 6;
+inline void ContextParam::clear_n_seq_max() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.n_seq_max_ = 0;
+  ClearHasBit(_impl_._has_bits_[0],
+                  0x00000040U);
+}
+inline ::int32_t ContextParam::n_seq_max() const {
+  // @@protoc_insertion_point(field_get:GrpcLibrary.ContextParam.n_seq_max)
+  return _internal_n_seq_max();
+}
+inline void ContextParam::set_n_seq_max(::int32_t value) {
+  _internal_set_n_seq_max(value);
+  SetHasBit(_impl_._has_bits_[0], 0x00000040U);
+  // @@protoc_insertion_point(field_set:GrpcLibrary.ContextParam.n_seq_max)
+}
+inline ::int32_t ContextParam::_internal_n_seq_max() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.n_seq_max_;
+}
+inline void ContextParam::_internal_set_n_seq_max(::int32_t value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.n_seq_max_ = value;
+}
+
+// int32 n_threads = 7;
+inline void ContextParam::clear_n_threads() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.n_threads_ = 0;
+  ClearHasBit(_impl_._has_bits_[0],
+                  0x00000080U);
+}
+inline ::int32_t ContextParam::n_threads() const {
+  // @@protoc_insertion_point(field_get:GrpcLibrary.ContextParam.n_threads)
+  return _internal_n_threads();
+}
+inline void ContextParam::set_n_threads(::int32_t value) {
+  _internal_set_n_threads(value);
+  SetHasBit(_impl_._has_bits_[0], 0x00000080U);
+  // @@protoc_insertion_point(field_set:GrpcLibrary.ContextParam.n_threads)
+}
+inline ::int32_t ContextParam::_internal_n_threads() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.n_threads_;
+}
+inline void ContextParam::_internal_set_n_threads(::int32_t value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.n_threads_ = value;
+}
+
+// int32 n_threads_batch = 8;
+inline void ContextParam::clear_n_threads_batch() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.n_threads_batch_ = 0;
+  ClearHasBit(_impl_._has_bits_[0],
+                  0x00000100U);
+}
+inline ::int32_t ContextParam::n_threads_batch() const {
+  // @@protoc_insertion_point(field_get:GrpcLibrary.ContextParam.n_threads_batch)
+  return _internal_n_threads_batch();
+}
+inline void ContextParam::set_n_threads_batch(::int32_t value) {
+  _internal_set_n_threads_batch(value);
+  SetHasBit(_impl_._has_bits_[0], 0x00000100U);
+  // @@protoc_insertion_point(field_set:GrpcLibrary.ContextParam.n_threads_batch)
+}
+inline ::int32_t ContextParam::_internal_n_threads_batch() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.n_threads_batch_;
+}
+inline void ContextParam::_internal_set_n_threads_batch(::int32_t value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.n_threads_batch_ = value;
+}
+
+// float rope_freq_base = 9;
+inline void ContextParam::clear_rope_freq_base() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.rope_freq_base_ = 0;
+  ClearHasBit(_impl_._has_bits_[0],
+                  0x00000200U);
+}
+inline float ContextParam::rope_freq_base() const {
+  // @@protoc_insertion_point(field_get:GrpcLibrary.ContextParam.rope_freq_base)
+  return _internal_rope_freq_base();
+}
+inline void ContextParam::set_rope_freq_base(float value) {
+  _internal_set_rope_freq_base(value);
+  SetHasBit(_impl_._has_bits_[0], 0x00000200U);
+  // @@protoc_insertion_point(field_set:GrpcLibrary.ContextParam.rope_freq_base)
+}
+inline float ContextParam::_internal_rope_freq_base() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.rope_freq_base_;
+}
+inline void ContextParam::_internal_set_rope_freq_base(float value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.rope_freq_base_ = value;
+}
+
+// float rope_freq_scale = 10;
+inline void ContextParam::clear_rope_freq_scale() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.rope_freq_scale_ = 0;
+  ClearHasBit(_impl_._has_bits_[0],
+                  0x00000400U);
+}
+inline float ContextParam::rope_freq_scale() const {
+  // @@protoc_insertion_point(field_get:GrpcLibrary.ContextParam.rope_freq_scale)
+  return _internal_rope_freq_scale();
+}
+inline void ContextParam::set_rope_freq_scale(float value) {
+  _internal_set_rope_freq_scale(value);
+  SetHasBit(_impl_._has_bits_[0], 0x00000400U);
+  // @@protoc_insertion_point(field_set:GrpcLibrary.ContextParam.rope_freq_scale)
+}
+inline float ContextParam::_internal_rope_freq_scale() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.rope_freq_scale_;
+}
+inline void ContextParam::_internal_set_rope_freq_scale(float value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.rope_freq_scale_ = value;
+}
+
+// float yarn_ext_factor = 11;
+inline void ContextParam::clear_yarn_ext_factor() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.yarn_ext_factor_ = 0;
+  ClearHasBit(_impl_._has_bits_[0],
+                  0x00000800U);
+}
+inline float ContextParam::yarn_ext_factor() const {
+  // @@protoc_insertion_point(field_get:GrpcLibrary.ContextParam.yarn_ext_factor)
+  return _internal_yarn_ext_factor();
+}
+inline void ContextParam::set_yarn_ext_factor(float value) {
+  _internal_set_yarn_ext_factor(value);
+  SetHasBit(_impl_._has_bits_[0], 0x00000800U);
+  // @@protoc_insertion_point(field_set:GrpcLibrary.ContextParam.yarn_ext_factor)
+}
+inline float ContextParam::_internal_yarn_ext_factor() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.yarn_ext_factor_;
+}
+inline void ContextParam::_internal_set_yarn_ext_factor(float value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.yarn_ext_factor_ = value;
+}
+
+// float yarn_attn_factor = 12;
+inline void ContextParam::clear_yarn_attn_factor() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.yarn_attn_factor_ = 0;
+  ClearHasBit(_impl_._has_bits_[0],
+                  0x00001000U);
+}
+inline float ContextParam::yarn_attn_factor() const {
+  // @@protoc_insertion_point(field_get:GrpcLibrary.ContextParam.yarn_attn_factor)
+  return _internal_yarn_attn_factor();
+}
+inline void ContextParam::set_yarn_attn_factor(float value) {
+  _internal_set_yarn_attn_factor(value);
+  SetHasBit(_impl_._has_bits_[0], 0x00001000U);
+  // @@protoc_insertion_point(field_set:GrpcLibrary.ContextParam.yarn_attn_factor)
+}
+inline float ContextParam::_internal_yarn_attn_factor() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.yarn_attn_factor_;
+}
+inline void ContextParam::_internal_set_yarn_attn_factor(float value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.yarn_attn_factor_ = value;
+}
+
+// float yarn_beta_fast = 13;
+inline void ContextParam::clear_yarn_beta_fast() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.yarn_beta_fast_ = 0;
+  ClearHasBit(_impl_._has_bits_[0],
+                  0x00002000U);
+}
+inline float ContextParam::yarn_beta_fast() const {
+  // @@protoc_insertion_point(field_get:GrpcLibrary.ContextParam.yarn_beta_fast)
+  return _internal_yarn_beta_fast();
+}
+inline void ContextParam::set_yarn_beta_fast(float value) {
+  _internal_set_yarn_beta_fast(value);
+  SetHasBit(_impl_._has_bits_[0], 0x00002000U);
+  // @@protoc_insertion_point(field_set:GrpcLibrary.ContextParam.yarn_beta_fast)
+}
+inline float ContextParam::_internal_yarn_beta_fast() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.yarn_beta_fast_;
+}
+inline void ContextParam::_internal_set_yarn_beta_fast(float value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.yarn_beta_fast_ = value;
+}
+
+// float yarn_beta_slow = 14;
+inline void ContextParam::clear_yarn_beta_slow() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.yarn_beta_slow_ = 0;
+  ClearHasBit(_impl_._has_bits_[0],
+                  0x00004000U);
+}
+inline float ContextParam::yarn_beta_slow() const {
+  // @@protoc_insertion_point(field_get:GrpcLibrary.ContextParam.yarn_beta_slow)
+  return _internal_yarn_beta_slow();
+}
+inline void ContextParam::set_yarn_beta_slow(float value) {
+  _internal_set_yarn_beta_slow(value);
+  SetHasBit(_impl_._has_bits_[0], 0x00004000U);
+  // @@protoc_insertion_point(field_set:GrpcLibrary.ContextParam.yarn_beta_slow)
+}
+inline float ContextParam::_internal_yarn_beta_slow() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.yarn_beta_slow_;
+}
+inline void ContextParam::_internal_set_yarn_beta_slow(float value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.yarn_beta_slow_ = value;
+}
+
+// int32 yarn_orig_ctx = 15;
+inline void ContextParam::clear_yarn_orig_ctx() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.yarn_orig_ctx_ = 0;
+  ClearHasBit(_impl_._has_bits_[0],
+                  0x00008000U);
+}
+inline ::int32_t ContextParam::yarn_orig_ctx() const {
+  // @@protoc_insertion_point(field_get:GrpcLibrary.ContextParam.yarn_orig_ctx)
+  return _internal_yarn_orig_ctx();
+}
+inline void ContextParam::set_yarn_orig_ctx(::int32_t value) {
+  _internal_set_yarn_orig_ctx(value);
+  SetHasBit(_impl_._has_bits_[0], 0x00008000U);
+  // @@protoc_insertion_point(field_set:GrpcLibrary.ContextParam.yarn_orig_ctx)
+}
+inline ::int32_t ContextParam::_internal_yarn_orig_ctx() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.yarn_orig_ctx_;
+}
+inline void ContextParam::_internal_set_yarn_orig_ctx(::int32_t value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.yarn_orig_ctx_ = value;
+}
+
+// float defrag_thold = 16;
+inline void ContextParam::clear_defrag_thold() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.defrag_thold_ = 0;
+  ClearHasBit(_impl_._has_bits_[0],
+                  0x00010000U);
+}
+inline float ContextParam::defrag_thold() const {
+  // @@protoc_insertion_point(field_get:GrpcLibrary.ContextParam.defrag_thold)
+  return _internal_defrag_thold();
+}
+inline void ContextParam::set_defrag_thold(float value) {
+  _internal_set_defrag_thold(value);
+  SetHasBit(_impl_._has_bits_[0], 0x00010000U);
+  // @@protoc_insertion_point(field_set:GrpcLibrary.ContextParam.defrag_thold)
+}
+inline float ContextParam::_internal_defrag_thold() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.defrag_thold_;
+}
+inline void ContextParam::_internal_set_defrag_thold(float value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.defrag_thold_ = value;
+}
+
+// bool embeddings = 17;
+inline void ContextParam::clear_embeddings() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.embeddings_ = false;
+  ClearHasBit(_impl_._has_bits_[0],
+                  0x00020000U);
+}
+inline bool ContextParam::embeddings() const {
+  // @@protoc_insertion_point(field_get:GrpcLibrary.ContextParam.embeddings)
+  return _internal_embeddings();
+}
+inline void ContextParam::set_embeddings(bool value) {
+  _internal_set_embeddings(value);
+  SetHasBit(_impl_._has_bits_[0], 0x00020000U);
+  // @@protoc_insertion_point(field_set:GrpcLibrary.ContextParam.embeddings)
+}
+inline bool ContextParam::_internal_embeddings() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.embeddings_;
+}
+inline void ContextParam::_internal_set_embeddings(bool value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.embeddings_ = value;
+}
+
+// bool offload_kqv = 18;
+inline void ContextParam::clear_offload_kqv() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.offload_kqv_ = false;
+  ClearHasBit(_impl_._has_bits_[0],
+                  0x00040000U);
+}
+inline bool ContextParam::offload_kqv() const {
+  // @@protoc_insertion_point(field_get:GrpcLibrary.ContextParam.offload_kqv)
+  return _internal_offload_kqv();
+}
+inline void ContextParam::set_offload_kqv(bool value) {
+  _internal_set_offload_kqv(value);
+  SetHasBit(_impl_._has_bits_[0], 0x00040000U);
+  // @@protoc_insertion_point(field_set:GrpcLibrary.ContextParam.offload_kqv)
+}
+inline bool ContextParam::_internal_offload_kqv() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.offload_kqv_;
+}
+inline void ContextParam::_internal_set_offload_kqv(bool value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.offload_kqv_ = value;
+}
+
+// bool no_perf = 19;
+inline void ContextParam::clear_no_perf() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.no_perf_ = false;
+  ClearHasBit(_impl_._has_bits_[0],
+                  0x00080000U);
+}
+inline bool ContextParam::no_perf() const {
+  // @@protoc_insertion_point(field_get:GrpcLibrary.ContextParam.no_perf)
+  return _internal_no_perf();
+}
+inline void ContextParam::set_no_perf(bool value) {
+  _internal_set_no_perf(value);
+  SetHasBit(_impl_._has_bits_[0], 0x00080000U);
+  // @@protoc_insertion_point(field_set:GrpcLibrary.ContextParam.no_perf)
+}
+inline bool ContextParam::_internal_no_perf() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.no_perf_;
+}
+inline void ContextParam::_internal_set_no_perf(bool value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.no_perf_ = value;
+}
+
+// bool op_offload = 20;
+inline void ContextParam::clear_op_offload() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.op_offload_ = false;
+  ClearHasBit(_impl_._has_bits_[0],
+                  0x00100000U);
+}
+inline bool ContextParam::op_offload() const {
+  // @@protoc_insertion_point(field_get:GrpcLibrary.ContextParam.op_offload)
+  return _internal_op_offload();
+}
+inline void ContextParam::set_op_offload(bool value) {
+  _internal_set_op_offload(value);
+  SetHasBit(_impl_._has_bits_[0], 0x00100000U);
+  // @@protoc_insertion_point(field_set:GrpcLibrary.ContextParam.op_offload)
+}
+inline bool ContextParam::_internal_op_offload() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.op_offload_;
+}
+inline void ContextParam::_internal_set_op_offload(bool value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.op_offload_ = value;
+}
+
+// bool swa_full = 21;
+inline void ContextParam::clear_swa_full() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.swa_full_ = false;
+  ClearHasBit(_impl_._has_bits_[0],
+                  0x00200000U);
+}
+inline bool ContextParam::swa_full() const {
+  // @@protoc_insertion_point(field_get:GrpcLibrary.ContextParam.swa_full)
+  return _internal_swa_full();
+}
+inline void ContextParam::set_swa_full(bool value) {
+  _internal_set_swa_full(value);
+  SetHasBit(_impl_._has_bits_[0], 0x00200000U);
+  // @@protoc_insertion_point(field_set:GrpcLibrary.ContextParam.swa_full)
+}
+inline bool ContextParam::_internal_swa_full() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.swa_full_;
+}
+inline void ContextParam::_internal_set_swa_full(bool value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.swa_full_ = value;
+}
+
+// bool kv_unified = 22;
+inline void ContextParam::clear_kv_unified() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.kv_unified_ = false;
+  ClearHasBit(_impl_._has_bits_[0],
+                  0x00400000U);
+}
+inline bool ContextParam::kv_unified() const {
+  // @@protoc_insertion_point(field_get:GrpcLibrary.ContextParam.kv_unified)
+  return _internal_kv_unified();
+}
+inline void ContextParam::set_kv_unified(bool value) {
+  _internal_set_kv_unified(value);
+  SetHasBit(_impl_._has_bits_[0], 0x00400000U);
+  // @@protoc_insertion_point(field_set:GrpcLibrary.ContextParam.kv_unified)
+}
+inline bool ContextParam::_internal_kv_unified() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.kv_unified_;
+}
+inline void ContextParam::_internal_set_kv_unified(bool value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.kv_unified_ = value;
+}
+
+// string prompt = 23;
+inline void ContextParam::clear_prompt() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.prompt_.ClearToEmpty();
+  ClearHasBit(_impl_._has_bits_[0],
+                  0x00000002U);
+}
+inline const ::std::string& ContextParam::prompt() const
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_get:GrpcLibrary.ContextParam.prompt)
+  return _internal_prompt();
+}
+template <typename Arg_, typename... Args_>
+PROTOBUF_ALWAYS_INLINE void ContextParam::set_prompt(Arg_&& arg, Args_... args) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  SetHasBit(_impl_._has_bits_[0], 0x00000002U);
+  _impl_.prompt_.Set(static_cast<Arg_&&>(arg), args..., GetArena());
+  // @@protoc_insertion_point(field_set:GrpcLibrary.ContextParam.prompt)
+}
+inline ::std::string* PROTOBUF_NONNULL ContextParam::mutable_prompt()
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  SetHasBit(_impl_._has_bits_[0], 0x00000002U);
+  ::std::string* _s = _internal_mutable_prompt();
+  // @@protoc_insertion_point(field_mutable:GrpcLibrary.ContextParam.prompt)
+  return _s;
+}
+inline const ::std::string& ContextParam::_internal_prompt() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.prompt_.Get();
+}
+inline void ContextParam::_internal_set_prompt(const ::std::string& value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.prompt_.Set(value, GetArena());
+}
+inline ::std::string* PROTOBUF_NONNULL ContextParam::_internal_mutable_prompt() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  return _impl_.prompt_.Mutable( GetArena());
+}
+inline ::std::string* PROTOBUF_NULLABLE ContextParam::release_prompt() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  // @@protoc_insertion_point(field_release:GrpcLibrary.ContextParam.prompt)
+  if (!CheckHasBit(_impl_._has_bits_[0], 0x00000002U)) {
+    return nullptr;
+  }
+  ClearHasBit(_impl_._has_bits_[0], 0x00000002U);
+  auto* released = _impl_.prompt_.Release();
+  if (::google::protobuf::internal::DebugHardenForceCopyDefaultString()) {
+    _impl_.prompt_.Set("", GetArena());
+  }
+  return released;
+}
+inline void ContextParam::set_allocated_prompt(::std::string* PROTOBUF_NULLABLE value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  if (value != nullptr) {
+    SetHasBit(_impl_._has_bits_[0], 0x00000002U);
+  } else {
+    ClearHasBit(_impl_._has_bits_[0], 0x00000002U);
+  }
+  _impl_.prompt_.SetAllocated(value, GetArena());
+  if (::google::protobuf::internal::DebugHardenForceCopyDefaultString() && _impl_.prompt_.IsDefault()) {
+    _impl_.prompt_.Set("", GetArena());
+  }
+  // @@protoc_insertion_point(field_set_allocated:GrpcLibrary.ContextParam.prompt)
 }
 
 // -------------------------------------------------------------------
