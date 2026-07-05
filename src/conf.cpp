@@ -4,12 +4,17 @@
 #include <hj/util/string_util.hpp>
 
 #include <hj/log/logger.hpp>
+#include <hj/io/filepath.hpp>
+
+#include "global.h"
 
 conf::conf()
     : _cfg{}
 {
-    if(!_cfg.read_file("./core.ini"))
-        throw std::runtime_error("Failed to read config file: core.ini");
+    if(!_cfg.read_file(
+           hj::filepath::join(hj::filepath::pwd(), CORE_CONFIG_FILE).c_str()))
+        throw std::runtime_error("Failed to read config file: "
+                                 + std::string(CORE_CONFIG_FILE));
 
     _init();
 }

@@ -4,6 +4,8 @@
 #include <string>
 #include <vector>
 
+static constexpr const char *CORE_CONFIG_FILE = "core.ini";
+
 // time format: "2023-08-01 12:34:56"
 static constexpr const char *TIME_FORMAT = "%Y-%m-%d %H:%M:%S";
 
