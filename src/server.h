@@ -2,6 +2,8 @@
 #define SERVER_H
 
 #include <hj/net/grpc.hpp>
+#include <hj/sync/safe_map.hpp>
+
 #include "api.grpc.pb.h"
 
 #include "db_mgr.h"
@@ -72,6 +74,14 @@ class api_handler final : public GrpcLibrary::GrpcService::CallbackService
     grpc::ServerWriteReactor<::GrpcLibrary::QueryResp> *
     Query(grpc::CallbackServerContext   *ctx,
           const ::GrpcLibrary::QueryReq *req) override;
+
+    grpc::ServerBidiReactor<GrpcLibrary::RecognizeReq,
+                            GrpcLibrary::RecognizeResp> *
+    Recognize(grpc::CallbackServerContext *context) override;
+
+    reactor_t *StopRecognize(ctx_t                                 *ctx,
+                             const ::GrpcLibrary::StopRecognizeReq *req,
+                             ::GrpcLibrary::StopRecognizeResp *resp) override;
 };
 
 class server

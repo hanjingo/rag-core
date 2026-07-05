@@ -36,6 +36,9 @@ static constexpr int LLM_ERR_MODEL_CTX_DECODE_FAIL = 406;
 
 static constexpr int LLM_ERR_REPEAT_TOO_MANY_TIMES = 500;
 
+static constexpr int ASR_ERR_CTX_NOT_EXIST  = 600;
+static constexpr int ASR_ERR_CTX_LOAD_FAIL  = 601;
+static constexpr int ASR_ERR_NO_AUDIO_CHUNK = 602;
 
 static inline std::error_code error(const int   e,
                                     const char *category = "rag-core")

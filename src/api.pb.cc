@@ -26,6 +26,61 @@ namespace _pbi = ::google::protobuf::internal;
 namespace _fl = ::google::protobuf::internal::field_layout;
 namespace GrpcLibrary {
 
+inline constexpr StopRecognizeResp::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : _cached_size_{0},
+        session_id_{::int64_t{0}},
+        error_code_{0} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR StopRecognizeResp::StopRecognizeResp(::_pbi::ConstantInitialized)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(StopRecognizeResp_class_data_.base()),
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(),
+#endif  // PROTOBUF_CUSTOM_VTABLE
+      _impl_(::_pbi::ConstantInitialized()) {
+}
+struct StopRecognizeRespDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR StopRecognizeRespDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~StopRecognizeRespDefaultTypeInternal() {}
+  union {
+    StopRecognizeResp _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 StopRecognizeRespDefaultTypeInternal _StopRecognizeResp_default_instance_;
+
+inline constexpr StopRecognizeReq::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : _cached_size_{0},
+        auth_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        session_id_{::int64_t{0}},
+        user_id_{::int64_t{0}} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR StopRecognizeReq::StopRecognizeReq(::_pbi::ConstantInitialized)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(StopRecognizeReq_class_data_.base()),
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(),
+#endif  // PROTOBUF_CUSTOM_VTABLE
+      _impl_(::_pbi::ConstantInitialized()) {
+}
+struct StopRecognizeReqDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR StopRecognizeReqDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~StopRecognizeReqDefaultTypeInternal() {}
+  union {
+    StopRecognizeReq _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 StopRecognizeReqDefaultTypeInternal _StopRecognizeReq_default_instance_;
+
 inline constexpr StopAnswerResp::Impl_::Impl_(
     ::_pbi::ConstantInitialized) noexcept
       : _cached_size_{0},
@@ -240,6 +295,93 @@ struct RegAccountReqDefaultTypeInternal {
 
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
     PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 RegAccountReqDefaultTypeInternal _RegAccountReq_default_instance_;
+
+inline constexpr RecognizeResp::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : _cached_size_{0},
+        transcript_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        session_id_{::int64_t{0}},
+        error_code_{0},
+        is_finished_{false},
+        confidence_{0} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR RecognizeResp::RecognizeResp(::_pbi::ConstantInitialized)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(RecognizeResp_class_data_.base()),
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(),
+#endif  // PROTOBUF_CUSTOM_VTABLE
+      _impl_(::_pbi::ConstantInitialized()) {
+}
+struct RecognizeRespDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR RecognizeRespDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~RecognizeRespDefaultTypeInternal() {}
+  union {
+    RecognizeResp _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 RecognizeRespDefaultTypeInternal _RecognizeResp_default_instance_;
+
+inline constexpr RecognitionParam::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : _cached_size_{0},
+        language_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        initial_prompt_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        suppress_regex_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        n_threads_{0},
+        n_max_text_ctx_{0},
+        offset_ms_{0},
+        duration_ms_{0},
+        translate_{false},
+        detect_language_{false},
+        no_ctx_{false},
+        no_timestamps_{false},
+        single_segment_{false},
+        print_special_{false},
+        print_progress_{false},
+        print_realtime_{false},
+        print_timestamps_{false},
+        carry_initial_prompt_{false},
+        suppress_blank_{false},
+        suppress_nst_{false},
+        temperature_{0},
+        temperature_inc_{0},
+        max_initial_ts_{0},
+        length_penalty_{0},
+        entropy_thold_{0},
+        logprob_thold_{0},
+        no_speech_thold_{0} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR RecognitionParam::RecognitionParam(::_pbi::ConstantInitialized)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(RecognitionParam_class_data_.base()),
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(),
+#endif  // PROTOBUF_CUSTOM_VTABLE
+      _impl_(::_pbi::ConstantInitialized()) {
+}
+struct RecognitionParamDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR RecognitionParamDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~RecognitionParamDefaultTypeInternal() {}
+  union {
+    RecognitionParam _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 RecognitionParamDefaultTypeInternal _RecognitionParam_default_instance_;
 
 inline constexpr QueryResp::Impl_::Impl_(
     ::_pbi::ConstantInitialized) noexcept
@@ -835,6 +977,36 @@ struct ContextParamDefaultTypeInternal {
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
     PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 ContextParamDefaultTypeInternal _ContextParam_default_instance_;
 
+inline constexpr RecognizeReq::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : _cached_size_{0},
+        ctx_id_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        session_id_{::int64_t{0}},
+        request_type_{},
+        _oneof_case_{} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR RecognizeReq::RecognizeReq(::_pbi::ConstantInitialized)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(RecognizeReq_class_data_.base()),
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(),
+#endif  // PROTOBUF_CUSTOM_VTABLE
+      _impl_(::_pbi::ConstantInitialized()) {
+}
+struct RecognizeReqDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR RecognizeReqDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~RecognizeReqDefaultTypeInternal() {}
+  union {
+    RecognizeReq _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 RecognizeReqDefaultTypeInternal _RecognizeReq_default_instance_;
+
 inline constexpr QueryReq::Impl_::Impl_(
     ::_pbi::ConstantInitialized) noexcept
       : _cached_size_{0},
@@ -1092,6 +1264,61 @@ const ::uint32_t
         22,
         1,
         0x081, // bitmap
+        PROTOBUF_FIELD_OFFSET(::GrpcLibrary::RecognitionParam, _impl_._has_bits_),
+        29, // hasbit index offset
+        PROTOBUF_FIELD_OFFSET(::GrpcLibrary::RecognitionParam, _impl_.n_threads_),
+        PROTOBUF_FIELD_OFFSET(::GrpcLibrary::RecognitionParam, _impl_.n_max_text_ctx_),
+        PROTOBUF_FIELD_OFFSET(::GrpcLibrary::RecognitionParam, _impl_.offset_ms_),
+        PROTOBUF_FIELD_OFFSET(::GrpcLibrary::RecognitionParam, _impl_.duration_ms_),
+        PROTOBUF_FIELD_OFFSET(::GrpcLibrary::RecognitionParam, _impl_.translate_),
+        PROTOBUF_FIELD_OFFSET(::GrpcLibrary::RecognitionParam, _impl_.detect_language_),
+        PROTOBUF_FIELD_OFFSET(::GrpcLibrary::RecognitionParam, _impl_.language_),
+        PROTOBUF_FIELD_OFFSET(::GrpcLibrary::RecognitionParam, _impl_.no_ctx_),
+        PROTOBUF_FIELD_OFFSET(::GrpcLibrary::RecognitionParam, _impl_.no_timestamps_),
+        PROTOBUF_FIELD_OFFSET(::GrpcLibrary::RecognitionParam, _impl_.single_segment_),
+        PROTOBUF_FIELD_OFFSET(::GrpcLibrary::RecognitionParam, _impl_.print_special_),
+        PROTOBUF_FIELD_OFFSET(::GrpcLibrary::RecognitionParam, _impl_.print_progress_),
+        PROTOBUF_FIELD_OFFSET(::GrpcLibrary::RecognitionParam, _impl_.print_realtime_),
+        PROTOBUF_FIELD_OFFSET(::GrpcLibrary::RecognitionParam, _impl_.print_timestamps_),
+        PROTOBUF_FIELD_OFFSET(::GrpcLibrary::RecognitionParam, _impl_.carry_initial_prompt_),
+        PROTOBUF_FIELD_OFFSET(::GrpcLibrary::RecognitionParam, _impl_.initial_prompt_),
+        PROTOBUF_FIELD_OFFSET(::GrpcLibrary::RecognitionParam, _impl_.suppress_regex_),
+        PROTOBUF_FIELD_OFFSET(::GrpcLibrary::RecognitionParam, _impl_.suppress_blank_),
+        PROTOBUF_FIELD_OFFSET(::GrpcLibrary::RecognitionParam, _impl_.suppress_nst_),
+        PROTOBUF_FIELD_OFFSET(::GrpcLibrary::RecognitionParam, _impl_.temperature_),
+        PROTOBUF_FIELD_OFFSET(::GrpcLibrary::RecognitionParam, _impl_.temperature_inc_),
+        PROTOBUF_FIELD_OFFSET(::GrpcLibrary::RecognitionParam, _impl_.max_initial_ts_),
+        PROTOBUF_FIELD_OFFSET(::GrpcLibrary::RecognitionParam, _impl_.length_penalty_),
+        PROTOBUF_FIELD_OFFSET(::GrpcLibrary::RecognitionParam, _impl_.entropy_thold_),
+        PROTOBUF_FIELD_OFFSET(::GrpcLibrary::RecognitionParam, _impl_.logprob_thold_),
+        PROTOBUF_FIELD_OFFSET(::GrpcLibrary::RecognitionParam, _impl_.no_speech_thold_),
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        0,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        1,
+        2,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        0x081, // bitmap
         PROTOBUF_FIELD_OFFSET(::GrpcLibrary::Ping, _impl_._has_bits_),
         4, // hasbit index offset
         PROTOBUF_FIELD_OFFSET(::GrpcLibrary::Ping, _impl_.timestamp_),
@@ -1195,6 +1422,48 @@ const ::uint32_t
         5, // hasbit index offset
         PROTOBUF_FIELD_OFFSET(::GrpcLibrary::StopAnswerResp, _impl_.error_code_),
         PROTOBUF_FIELD_OFFSET(::GrpcLibrary::StopAnswerResp, _impl_.session_id_),
+        1,
+        0,
+        0x085, // bitmap
+        PROTOBUF_FIELD_OFFSET(::GrpcLibrary::RecognizeReq, _impl_._has_bits_),
+        PROTOBUF_FIELD_OFFSET(::GrpcLibrary::RecognizeReq, _impl_._oneof_case_[0]),
+        9, // hasbit index offset
+        PROTOBUF_FIELD_OFFSET(::GrpcLibrary::RecognizeReq, _impl_.ctx_id_),
+        PROTOBUF_FIELD_OFFSET(::GrpcLibrary::RecognizeReq, _impl_.session_id_),
+        PROTOBUF_FIELD_OFFSET(::GrpcLibrary::RecognizeReq, _impl_.request_type_),
+        PROTOBUF_FIELD_OFFSET(::GrpcLibrary::RecognizeReq, _impl_.request_type_),
+        PROTOBUF_FIELD_OFFSET(::GrpcLibrary::RecognizeReq, _impl_.request_type_),
+        0,
+        1,
+        ~0u,
+        ~0u,
+        0x081, // bitmap
+        PROTOBUF_FIELD_OFFSET(::GrpcLibrary::RecognizeResp, _impl_._has_bits_),
+        8, // hasbit index offset
+        PROTOBUF_FIELD_OFFSET(::GrpcLibrary::RecognizeResp, _impl_.error_code_),
+        PROTOBUF_FIELD_OFFSET(::GrpcLibrary::RecognizeResp, _impl_.session_id_),
+        PROTOBUF_FIELD_OFFSET(::GrpcLibrary::RecognizeResp, _impl_.transcript_),
+        PROTOBUF_FIELD_OFFSET(::GrpcLibrary::RecognizeResp, _impl_.is_finished_),
+        PROTOBUF_FIELD_OFFSET(::GrpcLibrary::RecognizeResp, _impl_.confidence_),
+        2,
+        1,
+        0,
+        3,
+        4,
+        0x081, // bitmap
+        PROTOBUF_FIELD_OFFSET(::GrpcLibrary::StopRecognizeReq, _impl_._has_bits_),
+        6, // hasbit index offset
+        PROTOBUF_FIELD_OFFSET(::GrpcLibrary::StopRecognizeReq, _impl_.session_id_),
+        PROTOBUF_FIELD_OFFSET(::GrpcLibrary::StopRecognizeReq, _impl_.user_id_),
+        PROTOBUF_FIELD_OFFSET(::GrpcLibrary::StopRecognizeReq, _impl_.auth_),
+        1,
+        2,
+        0,
+        0x081, // bitmap
+        PROTOBUF_FIELD_OFFSET(::GrpcLibrary::StopRecognizeResp, _impl_._has_bits_),
+        5, // hasbit index offset
+        PROTOBUF_FIELD_OFFSET(::GrpcLibrary::StopRecognizeResp, _impl_.error_code_),
+        PROTOBUF_FIELD_OFFSET(::GrpcLibrary::StopRecognizeResp, _impl_.session_id_),
         1,
         0,
         0x081, // bitmap
@@ -1334,32 +1603,37 @@ static const ::_pbi::MigrationSchema
         {28, sizeof(::GrpcLibrary::MessageInfo)},
         {43, sizeof(::GrpcLibrary::SamplingParam)},
         {56, sizeof(::GrpcLibrary::ContextParam)},
-        {105, sizeof(::GrpcLibrary::Ping)},
-        {110, sizeof(::GrpcLibrary::Pong)},
-        {115, sizeof(::GrpcLibrary::LoginReq)},
-        {122, sizeof(::GrpcLibrary::LoginResp)},
-        {137, sizeof(::GrpcLibrary::LogoutReq)},
-        {144, sizeof(::GrpcLibrary::LogoutResp)},
-        {151, sizeof(::GrpcLibrary::RegAccountReq)},
-        {158, sizeof(::GrpcLibrary::RegAccountResp)},
-        {165, sizeof(::GrpcLibrary::QueryReq)},
-        {184, sizeof(::GrpcLibrary::QueryResp)},
-        {195, sizeof(::GrpcLibrary::StopAnswerReq)},
-        {204, sizeof(::GrpcLibrary::StopAnswerResp)},
-        {211, sizeof(::GrpcLibrary::GetMessageInfoReq)},
-        {224, sizeof(::GrpcLibrary::GetMessageInfoResp)},
-        {231, sizeof(::GrpcLibrary::GetSessionReq)},
-        {242, sizeof(::GrpcLibrary::GetSessionResp)},
-        {249, sizeof(::GrpcLibrary::NewSessionReq)},
-        {262, sizeof(::GrpcLibrary::NewSessionResp)},
-        {269, sizeof(::GrpcLibrary::ModifySessionTitleReq)},
-        {280, sizeof(::GrpcLibrary::ModifySessionTitleResp)},
-        {289, sizeof(::GrpcLibrary::DelSessionReq)},
-        {298, sizeof(::GrpcLibrary::DelSessionResp)},
-        {305, sizeof(::GrpcLibrary::GetSkillInfoReq)},
-        {312, sizeof(::GrpcLibrary::GetSkillInfoResp)},
-        {319, sizeof(::GrpcLibrary::DownloadReq)},
-        {328, sizeof(::GrpcLibrary::DownloadResp)},
+        {105, sizeof(::GrpcLibrary::RecognitionParam)},
+        {160, sizeof(::GrpcLibrary::Ping)},
+        {165, sizeof(::GrpcLibrary::Pong)},
+        {170, sizeof(::GrpcLibrary::LoginReq)},
+        {177, sizeof(::GrpcLibrary::LoginResp)},
+        {192, sizeof(::GrpcLibrary::LogoutReq)},
+        {199, sizeof(::GrpcLibrary::LogoutResp)},
+        {206, sizeof(::GrpcLibrary::RegAccountReq)},
+        {213, sizeof(::GrpcLibrary::RegAccountResp)},
+        {220, sizeof(::GrpcLibrary::QueryReq)},
+        {239, sizeof(::GrpcLibrary::QueryResp)},
+        {250, sizeof(::GrpcLibrary::StopAnswerReq)},
+        {259, sizeof(::GrpcLibrary::StopAnswerResp)},
+        {266, sizeof(::GrpcLibrary::RecognizeReq)},
+        {279, sizeof(::GrpcLibrary::RecognizeResp)},
+        {292, sizeof(::GrpcLibrary::StopRecognizeReq)},
+        {301, sizeof(::GrpcLibrary::StopRecognizeResp)},
+        {308, sizeof(::GrpcLibrary::GetMessageInfoReq)},
+        {321, sizeof(::GrpcLibrary::GetMessageInfoResp)},
+        {328, sizeof(::GrpcLibrary::GetSessionReq)},
+        {339, sizeof(::GrpcLibrary::GetSessionResp)},
+        {346, sizeof(::GrpcLibrary::NewSessionReq)},
+        {359, sizeof(::GrpcLibrary::NewSessionResp)},
+        {366, sizeof(::GrpcLibrary::ModifySessionTitleReq)},
+        {377, sizeof(::GrpcLibrary::ModifySessionTitleResp)},
+        {386, sizeof(::GrpcLibrary::DelSessionReq)},
+        {395, sizeof(::GrpcLibrary::DelSessionResp)},
+        {402, sizeof(::GrpcLibrary::GetSkillInfoReq)},
+        {409, sizeof(::GrpcLibrary::GetSkillInfoResp)},
+        {416, sizeof(::GrpcLibrary::DownloadReq)},
+        {425, sizeof(::GrpcLibrary::DownloadResp)},
 };
 static const ::_pb::Message* PROTOBUF_NONNULL const file_default_instances[] = {
     &::GrpcLibrary::_Session_default_instance_._instance,
@@ -1367,6 +1641,7 @@ static const ::_pb::Message* PROTOBUF_NONNULL const file_default_instances[] = {
     &::GrpcLibrary::_MessageInfo_default_instance_._instance,
     &::GrpcLibrary::_SamplingParam_default_instance_._instance,
     &::GrpcLibrary::_ContextParam_default_instance_._instance,
+    &::GrpcLibrary::_RecognitionParam_default_instance_._instance,
     &::GrpcLibrary::_Ping_default_instance_._instance,
     &::GrpcLibrary::_Pong_default_instance_._instance,
     &::GrpcLibrary::_LoginReq_default_instance_._instance,
@@ -1379,6 +1654,10 @@ static const ::_pb::Message* PROTOBUF_NONNULL const file_default_instances[] = {
     &::GrpcLibrary::_QueryResp_default_instance_._instance,
     &::GrpcLibrary::_StopAnswerReq_default_instance_._instance,
     &::GrpcLibrary::_StopAnswerResp_default_instance_._instance,
+    &::GrpcLibrary::_RecognizeReq_default_instance_._instance,
+    &::GrpcLibrary::_RecognizeResp_default_instance_._instance,
+    &::GrpcLibrary::_StopRecognizeReq_default_instance_._instance,
+    &::GrpcLibrary::_StopRecognizeResp_default_instance_._instance,
     &::GrpcLibrary::_GetMessageInfoReq_default_instance_._instance,
     &::GrpcLibrary::_GetMessageInfoResp_default_instance_._instance,
     &::GrpcLibrary::_GetSessionReq_default_instance_._instance,
@@ -1419,90 +1698,119 @@ const char descriptor_table_protodef_src_2fapi_2eproto[] ABSL_ATTRIBUTE_SECTION_
     "\005\022\024\n\014defrag_thold\030\020 \001(\002\022\022\n\nembeddings\030\021 "
     "\001(\010\022\023\n\013offload_kqv\030\022 \001(\010\022\017\n\007no_perf\030\023 \001("
     "\010\022\022\n\nop_offload\030\024 \001(\010\022\020\n\010swa_full\030\025 \001(\010\022"
-    "\022\n\nkv_unified\030\026 \001(\010\022\016\n\006prompt\030\027 \001(\t\"\031\n\004P"
-    "ing\022\021\n\ttimestamp\030\001 \001(\003\"\031\n\004Pong\022\021\n\ttimest"
-    "amp\030\001 \001(\003\"+\n\010LoginReq\022\017\n\007account\030\001 \001(\t\022\016"
-    "\n\006passwd\030\002 \001(\t\"{\n\tLoginResp\022\022\n\nerror_cod"
-    "e\030\001 \001(\005\022\017\n\007user_id\030\002 \001(\003\022\021\n\tprivilege\030\003 "
-    "\001(\005\022\014\n\004auth\030\004 \001(\t\022\017\n\007account\030\005 \001(\t\022\027\n\017la"
-    "st_login_time\030\006 \001(\t\"*\n\tLogoutReq\022\017\n\007user"
-    "_id\030\001 \001(\003\022\014\n\004auth\030\002 \001(\t\"1\n\nLogoutResp\022\022\n"
-    "\nerror_code\030\001 \001(\005\022\017\n\007user_id\030\002 \001(\003\"0\n\rRe"
-    "gAccountReq\022\017\n\007account\030\001 \001(\t\022\016\n\006passwd\030\002"
-    " \001(\t\"5\n\016RegAccountResp\022\022\n\nerror_code\030\001 \001"
-    "(\005\022\017\n\007user_id\030\002 \001(\003\"\275\001\n\010QueryReq\022\n\n\002id\030\001"
-    " \001(\003\022\017\n\007user_id\030\002 \001(\003\022\014\n\004auth\030\003 \001(\t\022\017\n\007c"
-    "ontent\030\004 \001(\t\022\r\n\005model\030\005 \001(\t\022\020\n\010pipeline\030"
-    "\006 \001(\t\022,\n\010sampling\030\007 \001(\0132\032.GrpcLibrary.Sa"
-    "mplingParam\022&\n\003ctx\030\010 \001(\0132\031.GrpcLibrary.C"
-    "ontextParam\"Q\n\tQueryResp\022\022\n\nerror_code\030\001"
-    " \001(\005\022\n\n\002id\030\002 \001(\003\022\017\n\007content\030\003 \001(\t\022\023\n\013is_"
-    "finished\030\004 \001(\010\"B\n\rStopAnswerReq\022\022\n\nsessi"
-    "on_id\030\001 \001(\003\022\017\n\007user_id\030\002 \001(\003\022\014\n\004auth\030\003 \001"
-    "(\t\"8\n\016StopAnswerResp\022\022\n\nerror_code\030\001 \001(\005"
-    "\022\022\n\nsession_id\030\002 \001(\003\"a\n\021GetMessageInfoRe"
-    "q\022\n\n\002id\030\001 \001(\003\022\022\n\nsession_id\030\002 \001(\003\022\r\n\005lim"
-    "it\030\003 \001(\005\022\017\n\007user_id\030\004 \001(\003\022\014\n\004auth\030\005 \001(\t\""
-    "T\n\022GetMessageInfoResp\022\022\n\nerror_code\030\001 \001("
-    "\005\022*\n\010messages\030\002 \003(\0132\030.GrpcLibrary.Messag"
-    "eInfo\"I\n\rGetSessionReq\022\n\n\002id\030\001 \001(\003\022\017\n\007us"
-    "er_id\030\002 \001(\003\022\014\n\004auth\030\003 \001(\t\022\r\n\005limit\030\004 \001(\005"
-    "\"L\n\016GetSessionResp\022\022\n\nerror_code\030\001 \001(\005\022&"
-    "\n\010sessions\030\002 \003(\0132\024.GrpcLibrary.Session\"]"
-    "\n\rNewSessionReq\022\017\n\007user_id\030\001 \001(\003\022\014\n\004auth"
-    "\030\002 \001(\t\022\r\n\005title\030\003 \001(\t\022\017\n\007content\030\004 \001(\t\022\r"
-    "\n\005model\030\005 \001(\t\"K\n\016NewSessionResp\022\022\n\nerror"
-    "_code\030\001 \001(\005\022%\n\007session\030\002 \001(\0132\024.GrpcLibra"
-    "ry.Session\"Q\n\025ModifySessionTitleReq\022\n\n\002i"
-    "d\030\001 \001(\003\022\017\n\007user_id\030\002 \001(\003\022\014\n\004auth\030\003 \001(\t\022\r"
-    "\n\005title\030\004 \001(\t\"G\n\026ModifySessionTitleResp\022"
-    "\022\n\nerror_code\030\001 \001(\005\022\n\n\002id\030\002 \001(\003\022\r\n\005title"
-    "\030\003 \001(\t\";\n\rDelSessionReq\022\017\n\007user_id\030\001 \001(\003"
-    "\022\014\n\004auth\030\002 \001(\t\022\013\n\003ids\030\003 \003(\003\"1\n\016DelSessio"
-    "nResp\022\022\n\nerror_code\030\001 \001(\005\022\013\n\003ids\030\002 \003(\003\"."
-    "\n\017GetSkillInfoReq\022\014\n\004hash\030\001 \001(\t\022\r\n\005limit"
-    "\030\002 \001(\005\"J\n\020GetSkillInfoResp\022\022\n\nerror_code"
-    "\030\001 \001(\005\022\"\n\006skills\030\002 \003(\0132\022.GrpcLibrary.Ski"
-    "ll\":\n\013DownloadReq\022\014\n\004hash\030\001 \001(\t\022\017\n\007user_"
-    "id\030\002 \001(\003\022\014\n\004auth\030\003 \001(\t\"O\n\014DownloadResp\022\022"
-    "\n\nerror_code\030\001 \001(\005\022\014\n\004hash\030\002 \001(\t\022\014\n\004addr"
-    "\030\003 \001(\t\022\017\n\007size_kb\030\004 \001(\0032\252\007\n\013GrpcService\022"
-    "3\n\tHeartbeat\022\021.GrpcLibrary.Ping\032\021.GrpcLi"
-    "brary.Pong\"\000\0228\n\005Login\022\025.GrpcLibrary.Logi"
-    "nReq\032\026.GrpcLibrary.LoginResp\"\000\022;\n\006Logout"
-    "\022\026.GrpcLibrary.LogoutReq\032\027.GrpcLibrary.L"
-    "ogoutResp\"\000\022G\n\nRegAccount\022\032.GrpcLibrary."
-    "RegAccountReq\032\033.GrpcLibrary.RegAccountRe"
-    "sp\"\000\022:\n\005Query\022\025.GrpcLibrary.QueryReq\032\026.G"
-    "rpcLibrary.QueryResp\"\0000\001\022G\n\nStopAnswer\022\032"
-    ".GrpcLibrary.StopAnswerReq\032\033.GrpcLibrary"
-    ".StopAnswerResp\"\000\022S\n\016GetMessageInfo\022\036.Gr"
-    "pcLibrary.GetMessageInfoReq\032\037.GrpcLibrar"
-    "y.GetMessageInfoResp\"\000\022G\n\nGetSession\022\032.G"
-    "rpcLibrary.GetSessionReq\032\033.GrpcLibrary.G"
-    "etSessionResp\"\000\022G\n\nNewSession\022\032.GrpcLibr"
-    "ary.NewSessionReq\032\033.GrpcLibrary.NewSessi"
-    "onResp\"\000\022_\n\022ModifySessionTitle\022\".GrpcLib"
-    "rary.ModifySessionTitleReq\032#.GrpcLibrary"
-    ".ModifySessionTitleResp\"\000\022G\n\nDelSession\022"
-    "\032.GrpcLibrary.DelSessionReq\032\033.GrpcLibrar"
-    "y.DelSessionResp\"\000\022M\n\014GetSkillInfo\022\034.Grp"
-    "cLibrary.GetSkillInfoReq\032\035.GrpcLibrary.G"
-    "etSkillInfoResp\"\000\022A\n\010Download\022\030.GrpcLibr"
-    "ary.DownloadReq\032\031.GrpcLibrary.DownloadRe"
-    "sp\"\000b\006proto3"
+    "\022\n\nkv_unified\030\026 \001(\010\022\016\n\006prompt\030\027 \001(\t\"\344\004\n\020"
+    "RecognitionParam\022\021\n\tn_threads\030\001 \001(\005\022\026\n\016n"
+    "_max_text_ctx\030\002 \001(\005\022\021\n\toffset_ms\030\003 \001(\005\022\023"
+    "\n\013duration_ms\030\004 \001(\005\022\021\n\ttranslate\030\005 \001(\010\022\027"
+    "\n\017detect_language\030\006 \001(\010\022\020\n\010language\030\007 \001("
+    "\t\022\016\n\006no_ctx\030\010 \001(\010\022\025\n\rno_timestamps\030\t \001(\010"
+    "\022\026\n\016single_segment\030\n \001(\010\022\025\n\rprint_specia"
+    "l\030\013 \001(\010\022\026\n\016print_progress\030\014 \001(\010\022\026\n\016print"
+    "_realtime\030\r \001(\010\022\030\n\020print_timestamps\030\016 \001("
+    "\010\022\034\n\024carry_initial_prompt\030\017 \001(\010\022\026\n\016initi"
+    "al_prompt\030\020 \001(\t\022\026\n\016suppress_regex\030\021 \001(\t\022"
+    "\026\n\016suppress_blank\030\022 \001(\010\022\024\n\014suppress_nst\030"
+    "\023 \001(\010\022\023\n\013temperature\030\024 \001(\002\022\027\n\017temperatur"
+    "e_inc\030\025 \001(\002\022\026\n\016max_initial_ts\030\026 \001(\002\022\026\n\016l"
+    "ength_penalty\030\027 \001(\002\022\025\n\rentropy_thold\030\030 \001"
+    "(\002\022\025\n\rlogprob_thold\030\031 \001(\002\022\027\n\017no_speech_t"
+    "hold\030\032 \001(\002\"\031\n\004Ping\022\021\n\ttimestamp\030\001 \001(\003\"\031\n"
+    "\004Pong\022\021\n\ttimestamp\030\001 \001(\003\"+\n\010LoginReq\022\017\n\007"
+    "account\030\001 \001(\t\022\016\n\006passwd\030\002 \001(\t\"{\n\tLoginRe"
+    "sp\022\022\n\nerror_code\030\001 \001(\005\022\017\n\007user_id\030\002 \001(\003\022"
+    "\021\n\tprivilege\030\003 \001(\005\022\014\n\004auth\030\004 \001(\t\022\017\n\007acco"
+    "unt\030\005 \001(\t\022\027\n\017last_login_time\030\006 \001(\t\"*\n\tLo"
+    "goutReq\022\017\n\007user_id\030\001 \001(\003\022\014\n\004auth\030\002 \001(\t\"1"
+    "\n\nLogoutResp\022\022\n\nerror_code\030\001 \001(\005\022\017\n\007user"
+    "_id\030\002 \001(\003\"0\n\rRegAccountReq\022\017\n\007account\030\001 "
+    "\001(\t\022\016\n\006passwd\030\002 \001(\t\"5\n\016RegAccountResp\022\022\n"
+    "\nerror_code\030\001 \001(\005\022\017\n\007user_id\030\002 \001(\003\"\275\001\n\010Q"
+    "ueryReq\022\n\n\002id\030\001 \001(\003\022\017\n\007user_id\030\002 \001(\003\022\014\n\004"
+    "auth\030\003 \001(\t\022\017\n\007content\030\004 \001(\t\022\r\n\005model\030\005 \001"
+    "(\t\022\020\n\010pipeline\030\006 \001(\t\022,\n\010sampling\030\007 \001(\0132\032"
+    ".GrpcLibrary.SamplingParam\022&\n\003ctx\030\010 \001(\0132"
+    "\031.GrpcLibrary.ContextParam\"Q\n\tQueryResp\022"
+    "\022\n\nerror_code\030\001 \001(\005\022\n\n\002id\030\002 \001(\003\022\017\n\007conte"
+    "nt\030\003 \001(\t\022\023\n\013is_finished\030\004 \001(\010\"B\n\rStopAns"
+    "werReq\022\022\n\nsession_id\030\001 \001(\003\022\017\n\007user_id\030\002 "
+    "\001(\003\022\014\n\004auth\030\003 \001(\t\"8\n\016StopAnswerResp\022\022\n\ne"
+    "rror_code\030\001 \001(\005\022\022\n\nsession_id\030\002 \001(\003\"\211\001\n\014"
+    "RecognizeReq\022\016\n\006ctx_id\030\001 \001(\t\022\022\n\nsession_"
+    "id\030\002 \001(\003\022.\n\005param\030\003 \001(\0132\035.GrpcLibrary.Re"
+    "cognitionParamH\000\022\025\n\013audio_chunk\030\004 \001(\014H\000B"
+    "\016\n\014request_type\"t\n\rRecognizeResp\022\022\n\nerro"
+    "r_code\030\001 \001(\005\022\022\n\nsession_id\030\002 \001(\003\022\022\n\ntran"
+    "script\030\003 \001(\t\022\023\n\013is_finished\030\004 \001(\010\022\022\n\ncon"
+    "fidence\030\005 \001(\001\"E\n\020StopRecognizeReq\022\022\n\nses"
+    "sion_id\030\001 \001(\003\022\017\n\007user_id\030\002 \001(\003\022\014\n\004auth\030\003"
+    " \001(\t\";\n\021StopRecognizeResp\022\022\n\nerror_code\030"
+    "\001 \001(\005\022\022\n\nsession_id\030\002 \001(\003\"a\n\021GetMessageI"
+    "nfoReq\022\n\n\002id\030\001 \001(\003\022\022\n\nsession_id\030\002 \001(\003\022\r"
+    "\n\005limit\030\003 \001(\005\022\017\n\007user_id\030\004 \001(\003\022\014\n\004auth\030\005"
+    " \001(\t\"T\n\022GetMessageInfoResp\022\022\n\nerror_code"
+    "\030\001 \001(\005\022*\n\010messages\030\002 \003(\0132\030.GrpcLibrary.M"
+    "essageInfo\"I\n\rGetSessionReq\022\n\n\002id\030\001 \001(\003\022"
+    "\017\n\007user_id\030\002 \001(\003\022\014\n\004auth\030\003 \001(\t\022\r\n\005limit\030"
+    "\004 \001(\005\"L\n\016GetSessionResp\022\022\n\nerror_code\030\001 "
+    "\001(\005\022&\n\010sessions\030\002 \003(\0132\024.GrpcLibrary.Sess"
+    "ion\"]\n\rNewSessionReq\022\017\n\007user_id\030\001 \001(\003\022\014\n"
+    "\004auth\030\002 \001(\t\022\r\n\005title\030\003 \001(\t\022\017\n\007content\030\004 "
+    "\001(\t\022\r\n\005model\030\005 \001(\t\"K\n\016NewSessionResp\022\022\n\n"
+    "error_code\030\001 \001(\005\022%\n\007session\030\002 \001(\0132\024.Grpc"
+    "Library.Session\"Q\n\025ModifySessionTitleReq"
+    "\022\n\n\002id\030\001 \001(\003\022\017\n\007user_id\030\002 \001(\003\022\014\n\004auth\030\003 "
+    "\001(\t\022\r\n\005title\030\004 \001(\t\"G\n\026ModifySessionTitle"
+    "Resp\022\022\n\nerror_code\030\001 \001(\005\022\n\n\002id\030\002 \001(\003\022\r\n\005"
+    "title\030\003 \001(\t\";\n\rDelSessionReq\022\017\n\007user_id\030"
+    "\001 \001(\003\022\014\n\004auth\030\002 \001(\t\022\013\n\003ids\030\003 \003(\003\"1\n\016DelS"
+    "essionResp\022\022\n\nerror_code\030\001 \001(\005\022\013\n\003ids\030\002 "
+    "\003(\003\".\n\017GetSkillInfoReq\022\014\n\004hash\030\001 \001(\t\022\r\n\005"
+    "limit\030\002 \001(\005\"J\n\020GetSkillInfoResp\022\022\n\nerror"
+    "_code\030\001 \001(\005\022\"\n\006skills\030\002 \003(\0132\022.GrpcLibrar"
+    "y.Skill\":\n\013DownloadReq\022\014\n\004hash\030\001 \001(\t\022\017\n\007"
+    "user_id\030\002 \001(\003\022\014\n\004auth\030\003 \001(\t\"O\n\014DownloadR"
+    "esp\022\022\n\nerror_code\030\001 \001(\005\022\014\n\004hash\030\002 \001(\t\022\014\n"
+    "\004addr\030\003 \001(\t\022\017\n\007size_kb\030\004 \001(\0032\306\010\n\013GrpcSer"
+    "vice\0223\n\tHeartbeat\022\021.GrpcLibrary.Ping\032\021.G"
+    "rpcLibrary.Pong\"\000\0228\n\005Login\022\025.GrpcLibrary"
+    ".LoginReq\032\026.GrpcLibrary.LoginResp\"\000\022;\n\006L"
+    "ogout\022\026.GrpcLibrary.LogoutReq\032\027.GrpcLibr"
+    "ary.LogoutResp\"\000\022G\n\nRegAccount\022\032.GrpcLib"
+    "rary.RegAccountReq\032\033.GrpcLibrary.RegAcco"
+    "untResp\"\000\022:\n\005Query\022\025.GrpcLibrary.QueryRe"
+    "q\032\026.GrpcLibrary.QueryResp\"\0000\001\022G\n\nStopAns"
+    "wer\022\032.GrpcLibrary.StopAnswerReq\032\033.GrpcLi"
+    "brary.StopAnswerResp\"\000\022H\n\tRecognize\022\031.Gr"
+    "pcLibrary.RecognizeReq\032\032.GrpcLibrary.Rec"
+    "ognizeResp\"\000(\0010\001\022P\n\rStopRecognize\022\035.Grpc"
+    "Library.StopRecognizeReq\032\036.GrpcLibrary.S"
+    "topRecognizeResp\"\000\022S\n\016GetMessageInfo\022\036.G"
+    "rpcLibrary.GetMessageInfoReq\032\037.GrpcLibra"
+    "ry.GetMessageInfoResp\"\000\022G\n\nGetSession\022\032."
+    "GrpcLibrary.GetSessionReq\032\033.GrpcLibrary."
+    "GetSessionResp\"\000\022G\n\nNewSession\022\032.GrpcLib"
+    "rary.NewSessionReq\032\033.GrpcLibrary.NewSess"
+    "ionResp\"\000\022_\n\022ModifySessionTitle\022\".GrpcLi"
+    "brary.ModifySessionTitleReq\032#.GrpcLibrar"
+    "y.ModifySessionTitleResp\"\000\022G\n\nDelSession"
+    "\022\032.GrpcLibrary.DelSessionReq\032\033.GrpcLibra"
+    "ry.DelSessionResp\"\000\022M\n\014GetSkillInfo\022\034.Gr"
+    "pcLibrary.GetSkillInfoReq\032\035.GrpcLibrary."
+    "GetSkillInfoResp\"\000\022A\n\010Download\022\030.GrpcLib"
+    "rary.DownloadReq\032\031.GrpcLibrary.DownloadR"
+    "esp\"\000b\006proto3"
 };
 static ::absl::once_flag descriptor_table_src_2fapi_2eproto_once;
 PROTOBUF_CONSTINIT const ::_pbi::DescriptorTable descriptor_table_src_2fapi_2eproto = {
     false,
     false,
-    3772,
+    4933,
     descriptor_table_protodef_src_2fapi_2eproto,
     "src/api.proto",
     &descriptor_table_src_2fapi_2eproto_once,
     nullptr,
     0,
-    31,
+    36,
     schemas,
     file_default_instances,
     TableStruct_src_2fapi_2eproto::offsets,
@@ -4182,6 +4490,1025 @@ void ContextParam::InternalSwap(ContextParam* PROTOBUF_RESTRICT PROTOBUF_NONNULL
 }
 
 ::google::protobuf::Metadata ContextParam::GetMetadata() const {
+  return ::google::protobuf::Message::GetMetadataImpl(GetClassData()->full());
+}
+// ===================================================================
+
+class RecognitionParam::_Internal {
+ public:
+  using HasBits =
+      decltype(::std::declval<RecognitionParam>()._impl_._has_bits_);
+  static constexpr ::int32_t kHasBitsOffset =
+      8 * PROTOBUF_FIELD_OFFSET(RecognitionParam, _impl_._has_bits_);
+};
+
+RecognitionParam::RecognitionParam(::google::protobuf::Arena* PROTOBUF_NULLABLE arena)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(arena, RecognitionParam_class_data_.base()) {
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(arena) {
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  SharedCtor(arena);
+  // @@protoc_insertion_point(arena_constructor:GrpcLibrary.RecognitionParam)
+}
+PROTOBUF_NDEBUG_INLINE RecognitionParam::Impl_::Impl_(
+    [[maybe_unused]] ::google::protobuf::internal::InternalVisibility visibility,
+    [[maybe_unused]] ::google::protobuf::Arena* PROTOBUF_NULLABLE arena, const Impl_& from,
+    [[maybe_unused]] const ::GrpcLibrary::RecognitionParam& from_msg)
+      : _has_bits_{from._has_bits_},
+        _cached_size_{0},
+        language_(arena, from.language_),
+        initial_prompt_(arena, from.initial_prompt_),
+        suppress_regex_(arena, from.suppress_regex_) {}
+
+RecognitionParam::RecognitionParam(
+    ::google::protobuf::Arena* PROTOBUF_NULLABLE arena,
+    const RecognitionParam& from)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(arena, RecognitionParam_class_data_.base()) {
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(arena) {
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  RecognitionParam* const _this = this;
+  (void)_this;
+  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
+      from._internal_metadata_);
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_, from);
+  ::memcpy(reinterpret_cast<char*>(&_impl_) +
+               offsetof(Impl_, n_threads_),
+           reinterpret_cast<const char*>(&from._impl_) +
+               offsetof(Impl_, n_threads_),
+           offsetof(Impl_, no_speech_thold_) -
+               offsetof(Impl_, n_threads_) +
+               sizeof(Impl_::no_speech_thold_));
+
+  // @@protoc_insertion_point(copy_constructor:GrpcLibrary.RecognitionParam)
+}
+PROTOBUF_NDEBUG_INLINE RecognitionParam::Impl_::Impl_(
+    [[maybe_unused]] ::google::protobuf::internal::InternalVisibility visibility,
+    [[maybe_unused]] ::google::protobuf::Arena* PROTOBUF_NULLABLE arena)
+      : _cached_size_{0},
+        language_(arena),
+        initial_prompt_(arena),
+        suppress_regex_(arena) {}
+
+inline void RecognitionParam::SharedCtor(::_pb::Arena* PROTOBUF_NULLABLE arena) {
+  new (&_impl_) Impl_(internal_visibility(), arena);
+  ::memset(reinterpret_cast<char*>(&_impl_) +
+               offsetof(Impl_, n_threads_),
+           0,
+           offsetof(Impl_, no_speech_thold_) -
+               offsetof(Impl_, n_threads_) +
+               sizeof(Impl_::no_speech_thold_));
+}
+RecognitionParam::~RecognitionParam() {
+  // @@protoc_insertion_point(destructor:GrpcLibrary.RecognitionParam)
+  SharedDtor(*this);
+}
+inline void RecognitionParam::SharedDtor(MessageLite& self) {
+  RecognitionParam& this_ = static_cast<RecognitionParam&>(self);
+  if constexpr (::_pbi::DebugHardenCheckHasBitConsistency()) {
+    this_.CheckHasBitConsistency();
+  }
+  this_._internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
+  ABSL_DCHECK(this_.GetArena() == nullptr);
+  this_._impl_.language_.Destroy();
+  this_._impl_.initial_prompt_.Destroy();
+  this_._impl_.suppress_regex_.Destroy();
+  this_._impl_.~Impl_();
+}
+
+inline void* PROTOBUF_NONNULL RecognitionParam::PlacementNew_(
+    const void* PROTOBUF_NONNULL, void* PROTOBUF_NONNULL mem,
+    ::google::protobuf::Arena* PROTOBUF_NULLABLE arena) {
+  return ::new (mem) RecognitionParam(arena);
+}
+constexpr auto RecognitionParam::InternalNewImpl_() {
+  return ::google::protobuf::internal::MessageCreator::CopyInit(sizeof(RecognitionParam),
+                                            alignof(RecognitionParam));
+}
+constexpr auto RecognitionParam::InternalGenerateClassData_() {
+  return ::google::protobuf::internal::ClassDataFull{
+      ::google::protobuf::internal::ClassData{
+          &_RecognitionParam_default_instance_._instance,
+          &_table_.header,
+          nullptr,  // OnDemandRegisterArenaDtor
+          nullptr,  // IsInitialized
+          &RecognitionParam::MergeImpl,
+          ::google::protobuf::Message::GetNewImpl<RecognitionParam>(),
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+          &RecognitionParam::SharedDtor,
+          ::google::protobuf::Message::GetClearImpl<RecognitionParam>(), &RecognitionParam::ByteSizeLong,
+              &RecognitionParam::_InternalSerialize,
+#endif  // PROTOBUF_CUSTOM_VTABLE
+          PROTOBUF_FIELD_OFFSET(RecognitionParam, _impl_._cached_size_),
+          false,
+      },
+      &RecognitionParam::kDescriptorMethods,
+      &descriptor_table_src_2fapi_2eproto,
+      nullptr,  // tracker
+  };
+}
+
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 const
+    ::google::protobuf::internal::ClassDataFull RecognitionParam_class_data_ =
+        RecognitionParam::InternalGenerateClassData_();
+
+PROTOBUF_ATTRIBUTE_WEAK const ::google::protobuf::internal::ClassData* PROTOBUF_NONNULL
+RecognitionParam::GetClassData() const {
+  ::google::protobuf::internal::PrefetchToLocalCache(&RecognitionParam_class_data_);
+  ::google::protobuf::internal::PrefetchToLocalCache(RecognitionParam_class_data_.tc_table);
+  return RecognitionParam_class_data_.base();
+}
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::_pbi::TcParseTable<5, 26, 0, 97, 2>
+RecognitionParam::_table_ = {
+  {
+    PROTOBUF_FIELD_OFFSET(RecognitionParam, _impl_._has_bits_),
+    0, // no _extensions_
+    26, 248,  // max_field_number, fast_idx_mask
+    offsetof(decltype(_table_), field_lookup_table),
+    4227858432,  // skipmap
+    offsetof(decltype(_table_), field_entries),
+    26,  // num_field_entries
+    0,  // num_aux_entries
+    offsetof(decltype(_table_), field_names),  // no aux_entries
+    RecognitionParam_class_data_.base(),
+    nullptr,  // post_loop_handler
+    ::_pbi::TcParser::GenericFallback,  // fallback
+    #ifdef PROTOBUF_PREFETCH_PARSE_TABLE
+    ::_pbi::TcParser::GetTable<::GrpcLibrary::RecognitionParam>(),  // to_prefetch
+    #endif  // PROTOBUF_PREFETCH_PARSE_TABLE
+  }, {{
+    {::_pbi::TcParser::MiniParse, {}},
+    // int32 n_threads = 1;
+    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(RecognitionParam, _impl_.n_threads_), 3>(),
+     {8, 3, 0,
+      PROTOBUF_FIELD_OFFSET(RecognitionParam, _impl_.n_threads_)}},
+    // int32 n_max_text_ctx = 2;
+    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(RecognitionParam, _impl_.n_max_text_ctx_), 4>(),
+     {16, 4, 0,
+      PROTOBUF_FIELD_OFFSET(RecognitionParam, _impl_.n_max_text_ctx_)}},
+    // int32 offset_ms = 3;
+    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(RecognitionParam, _impl_.offset_ms_), 5>(),
+     {24, 5, 0,
+      PROTOBUF_FIELD_OFFSET(RecognitionParam, _impl_.offset_ms_)}},
+    // int32 duration_ms = 4;
+    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(RecognitionParam, _impl_.duration_ms_), 6>(),
+     {32, 6, 0,
+      PROTOBUF_FIELD_OFFSET(RecognitionParam, _impl_.duration_ms_)}},
+    // bool translate = 5;
+    {::_pbi::TcParser::SingularVarintNoZag1<bool, offsetof(RecognitionParam, _impl_.translate_), 7>(),
+     {40, 7, 0,
+      PROTOBUF_FIELD_OFFSET(RecognitionParam, _impl_.translate_)}},
+    // bool detect_language = 6;
+    {::_pbi::TcParser::SingularVarintNoZag1<bool, offsetof(RecognitionParam, _impl_.detect_language_), 8>(),
+     {48, 8, 0,
+      PROTOBUF_FIELD_OFFSET(RecognitionParam, _impl_.detect_language_)}},
+    // string language = 7;
+    {::_pbi::TcParser::FastUS1,
+     {58, 0, 0,
+      PROTOBUF_FIELD_OFFSET(RecognitionParam, _impl_.language_)}},
+    // bool no_ctx = 8;
+    {::_pbi::TcParser::SingularVarintNoZag1<bool, offsetof(RecognitionParam, _impl_.no_ctx_), 9>(),
+     {64, 9, 0,
+      PROTOBUF_FIELD_OFFSET(RecognitionParam, _impl_.no_ctx_)}},
+    // bool no_timestamps = 9;
+    {::_pbi::TcParser::SingularVarintNoZag1<bool, offsetof(RecognitionParam, _impl_.no_timestamps_), 10>(),
+     {72, 10, 0,
+      PROTOBUF_FIELD_OFFSET(RecognitionParam, _impl_.no_timestamps_)}},
+    // bool single_segment = 10;
+    {::_pbi::TcParser::SingularVarintNoZag1<bool, offsetof(RecognitionParam, _impl_.single_segment_), 11>(),
+     {80, 11, 0,
+      PROTOBUF_FIELD_OFFSET(RecognitionParam, _impl_.single_segment_)}},
+    // bool print_special = 11;
+    {::_pbi::TcParser::SingularVarintNoZag1<bool, offsetof(RecognitionParam, _impl_.print_special_), 12>(),
+     {88, 12, 0,
+      PROTOBUF_FIELD_OFFSET(RecognitionParam, _impl_.print_special_)}},
+    // bool print_progress = 12;
+    {::_pbi::TcParser::SingularVarintNoZag1<bool, offsetof(RecognitionParam, _impl_.print_progress_), 13>(),
+     {96, 13, 0,
+      PROTOBUF_FIELD_OFFSET(RecognitionParam, _impl_.print_progress_)}},
+    // bool print_realtime = 13;
+    {::_pbi::TcParser::SingularVarintNoZag1<bool, offsetof(RecognitionParam, _impl_.print_realtime_), 14>(),
+     {104, 14, 0,
+      PROTOBUF_FIELD_OFFSET(RecognitionParam, _impl_.print_realtime_)}},
+    // bool print_timestamps = 14;
+    {::_pbi::TcParser::SingularVarintNoZag1<bool, offsetof(RecognitionParam, _impl_.print_timestamps_), 15>(),
+     {112, 15, 0,
+      PROTOBUF_FIELD_OFFSET(RecognitionParam, _impl_.print_timestamps_)}},
+    // bool carry_initial_prompt = 15;
+    {::_pbi::TcParser::SingularVarintNoZag1<bool, offsetof(RecognitionParam, _impl_.carry_initial_prompt_), 16>(),
+     {120, 16, 0,
+      PROTOBUF_FIELD_OFFSET(RecognitionParam, _impl_.carry_initial_prompt_)}},
+    // string initial_prompt = 16;
+    {::_pbi::TcParser::FastUS2,
+     {386, 1, 0,
+      PROTOBUF_FIELD_OFFSET(RecognitionParam, _impl_.initial_prompt_)}},
+    // string suppress_regex = 17;
+    {::_pbi::TcParser::FastUS2,
+     {394, 2, 0,
+      PROTOBUF_FIELD_OFFSET(RecognitionParam, _impl_.suppress_regex_)}},
+    // bool suppress_blank = 18;
+    {::_pbi::TcParser::FastV8S2,
+     {400, 17, 0,
+      PROTOBUF_FIELD_OFFSET(RecognitionParam, _impl_.suppress_blank_)}},
+    // bool suppress_nst = 19;
+    {::_pbi::TcParser::FastV8S2,
+     {408, 18, 0,
+      PROTOBUF_FIELD_OFFSET(RecognitionParam, _impl_.suppress_nst_)}},
+    // float temperature = 20;
+    {::_pbi::TcParser::FastF32S2,
+     {421, 19, 0,
+      PROTOBUF_FIELD_OFFSET(RecognitionParam, _impl_.temperature_)}},
+    // float temperature_inc = 21;
+    {::_pbi::TcParser::FastF32S2,
+     {429, 20, 0,
+      PROTOBUF_FIELD_OFFSET(RecognitionParam, _impl_.temperature_inc_)}},
+    // float max_initial_ts = 22;
+    {::_pbi::TcParser::FastF32S2,
+     {437, 21, 0,
+      PROTOBUF_FIELD_OFFSET(RecognitionParam, _impl_.max_initial_ts_)}},
+    // float length_penalty = 23;
+    {::_pbi::TcParser::FastF32S2,
+     {445, 22, 0,
+      PROTOBUF_FIELD_OFFSET(RecognitionParam, _impl_.length_penalty_)}},
+    // float entropy_thold = 24;
+    {::_pbi::TcParser::FastF32S2,
+     {453, 23, 0,
+      PROTOBUF_FIELD_OFFSET(RecognitionParam, _impl_.entropy_thold_)}},
+    // float logprob_thold = 25;
+    {::_pbi::TcParser::FastF32S2,
+     {461, 24, 0,
+      PROTOBUF_FIELD_OFFSET(RecognitionParam, _impl_.logprob_thold_)}},
+    // float no_speech_thold = 26;
+    {::_pbi::TcParser::FastF32S2,
+     {469, 25, 0,
+      PROTOBUF_FIELD_OFFSET(RecognitionParam, _impl_.no_speech_thold_)}},
+    {::_pbi::TcParser::MiniParse, {}},
+    {::_pbi::TcParser::MiniParse, {}},
+    {::_pbi::TcParser::MiniParse, {}},
+    {::_pbi::TcParser::MiniParse, {}},
+    {::_pbi::TcParser::MiniParse, {}},
+  }}, {{
+    65535, 65535
+  }}, {{
+    // int32 n_threads = 1;
+    {PROTOBUF_FIELD_OFFSET(RecognitionParam, _impl_.n_threads_), _Internal::kHasBitsOffset + 3, 0, (0 | ::_fl::kFcOptional | ::_fl::kInt32)},
+    // int32 n_max_text_ctx = 2;
+    {PROTOBUF_FIELD_OFFSET(RecognitionParam, _impl_.n_max_text_ctx_), _Internal::kHasBitsOffset + 4, 0, (0 | ::_fl::kFcOptional | ::_fl::kInt32)},
+    // int32 offset_ms = 3;
+    {PROTOBUF_FIELD_OFFSET(RecognitionParam, _impl_.offset_ms_), _Internal::kHasBitsOffset + 5, 0, (0 | ::_fl::kFcOptional | ::_fl::kInt32)},
+    // int32 duration_ms = 4;
+    {PROTOBUF_FIELD_OFFSET(RecognitionParam, _impl_.duration_ms_), _Internal::kHasBitsOffset + 6, 0, (0 | ::_fl::kFcOptional | ::_fl::kInt32)},
+    // bool translate = 5;
+    {PROTOBUF_FIELD_OFFSET(RecognitionParam, _impl_.translate_), _Internal::kHasBitsOffset + 7, 0, (0 | ::_fl::kFcOptional | ::_fl::kBool)},
+    // bool detect_language = 6;
+    {PROTOBUF_FIELD_OFFSET(RecognitionParam, _impl_.detect_language_), _Internal::kHasBitsOffset + 8, 0, (0 | ::_fl::kFcOptional | ::_fl::kBool)},
+    // string language = 7;
+    {PROTOBUF_FIELD_OFFSET(RecognitionParam, _impl_.language_), _Internal::kHasBitsOffset + 0, 0, (0 | ::_fl::kFcOptional | ::_fl::kUtf8String | ::_fl::kRepAString)},
+    // bool no_ctx = 8;
+    {PROTOBUF_FIELD_OFFSET(RecognitionParam, _impl_.no_ctx_), _Internal::kHasBitsOffset + 9, 0, (0 | ::_fl::kFcOptional | ::_fl::kBool)},
+    // bool no_timestamps = 9;
+    {PROTOBUF_FIELD_OFFSET(RecognitionParam, _impl_.no_timestamps_), _Internal::kHasBitsOffset + 10, 0, (0 | ::_fl::kFcOptional | ::_fl::kBool)},
+    // bool single_segment = 10;
+    {PROTOBUF_FIELD_OFFSET(RecognitionParam, _impl_.single_segment_), _Internal::kHasBitsOffset + 11, 0, (0 | ::_fl::kFcOptional | ::_fl::kBool)},
+    // bool print_special = 11;
+    {PROTOBUF_FIELD_OFFSET(RecognitionParam, _impl_.print_special_), _Internal::kHasBitsOffset + 12, 0, (0 | ::_fl::kFcOptional | ::_fl::kBool)},
+    // bool print_progress = 12;
+    {PROTOBUF_FIELD_OFFSET(RecognitionParam, _impl_.print_progress_), _Internal::kHasBitsOffset + 13, 0, (0 | ::_fl::kFcOptional | ::_fl::kBool)},
+    // bool print_realtime = 13;
+    {PROTOBUF_FIELD_OFFSET(RecognitionParam, _impl_.print_realtime_), _Internal::kHasBitsOffset + 14, 0, (0 | ::_fl::kFcOptional | ::_fl::kBool)},
+    // bool print_timestamps = 14;
+    {PROTOBUF_FIELD_OFFSET(RecognitionParam, _impl_.print_timestamps_), _Internal::kHasBitsOffset + 15, 0, (0 | ::_fl::kFcOptional | ::_fl::kBool)},
+    // bool carry_initial_prompt = 15;
+    {PROTOBUF_FIELD_OFFSET(RecognitionParam, _impl_.carry_initial_prompt_), _Internal::kHasBitsOffset + 16, 0, (0 | ::_fl::kFcOptional | ::_fl::kBool)},
+    // string initial_prompt = 16;
+    {PROTOBUF_FIELD_OFFSET(RecognitionParam, _impl_.initial_prompt_), _Internal::kHasBitsOffset + 1, 0, (0 | ::_fl::kFcOptional | ::_fl::kUtf8String | ::_fl::kRepAString)},
+    // string suppress_regex = 17;
+    {PROTOBUF_FIELD_OFFSET(RecognitionParam, _impl_.suppress_regex_), _Internal::kHasBitsOffset + 2, 0, (0 | ::_fl::kFcOptional | ::_fl::kUtf8String | ::_fl::kRepAString)},
+    // bool suppress_blank = 18;
+    {PROTOBUF_FIELD_OFFSET(RecognitionParam, _impl_.suppress_blank_), _Internal::kHasBitsOffset + 17, 0, (0 | ::_fl::kFcOptional | ::_fl::kBool)},
+    // bool suppress_nst = 19;
+    {PROTOBUF_FIELD_OFFSET(RecognitionParam, _impl_.suppress_nst_), _Internal::kHasBitsOffset + 18, 0, (0 | ::_fl::kFcOptional | ::_fl::kBool)},
+    // float temperature = 20;
+    {PROTOBUF_FIELD_OFFSET(RecognitionParam, _impl_.temperature_), _Internal::kHasBitsOffset + 19, 0, (0 | ::_fl::kFcOptional | ::_fl::kFloat)},
+    // float temperature_inc = 21;
+    {PROTOBUF_FIELD_OFFSET(RecognitionParam, _impl_.temperature_inc_), _Internal::kHasBitsOffset + 20, 0, (0 | ::_fl::kFcOptional | ::_fl::kFloat)},
+    // float max_initial_ts = 22;
+    {PROTOBUF_FIELD_OFFSET(RecognitionParam, _impl_.max_initial_ts_), _Internal::kHasBitsOffset + 21, 0, (0 | ::_fl::kFcOptional | ::_fl::kFloat)},
+    // float length_penalty = 23;
+    {PROTOBUF_FIELD_OFFSET(RecognitionParam, _impl_.length_penalty_), _Internal::kHasBitsOffset + 22, 0, (0 | ::_fl::kFcOptional | ::_fl::kFloat)},
+    // float entropy_thold = 24;
+    {PROTOBUF_FIELD_OFFSET(RecognitionParam, _impl_.entropy_thold_), _Internal::kHasBitsOffset + 23, 0, (0 | ::_fl::kFcOptional | ::_fl::kFloat)},
+    // float logprob_thold = 25;
+    {PROTOBUF_FIELD_OFFSET(RecognitionParam, _impl_.logprob_thold_), _Internal::kHasBitsOffset + 24, 0, (0 | ::_fl::kFcOptional | ::_fl::kFloat)},
+    // float no_speech_thold = 26;
+    {PROTOBUF_FIELD_OFFSET(RecognitionParam, _impl_.no_speech_thold_), _Internal::kHasBitsOffset + 25, 0, (0 | ::_fl::kFcOptional | ::_fl::kFloat)},
+  }},
+  // no aux_entries
+  {{
+    "\34\0\0\0\0\0\0\10\0\0\0\0\0\0\0\0\16\16\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
+    "GrpcLibrary.RecognitionParam"
+    "language"
+    "initial_prompt"
+    "suppress_regex"
+  }},
+};
+PROTOBUF_NOINLINE void RecognitionParam::Clear() {
+// @@protoc_insertion_point(message_clear_start:GrpcLibrary.RecognitionParam)
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  ::uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  cached_has_bits = _impl_._has_bits_[0];
+  if (BatchCheckHasBit(cached_has_bits, 0x00000007U)) {
+    if (CheckHasBit(cached_has_bits, 0x00000001U)) {
+      _impl_.language_.ClearNonDefaultToEmpty();
+    }
+    if (CheckHasBit(cached_has_bits, 0x00000002U)) {
+      _impl_.initial_prompt_.ClearNonDefaultToEmpty();
+    }
+    if (CheckHasBit(cached_has_bits, 0x00000004U)) {
+      _impl_.suppress_regex_.ClearNonDefaultToEmpty();
+    }
+  }
+  if (BatchCheckHasBit(cached_has_bits, 0x000000f8U)) {
+    ::memset(&_impl_.n_threads_, 0, static_cast<::size_t>(
+        reinterpret_cast<char*>(&_impl_.translate_) -
+        reinterpret_cast<char*>(&_impl_.n_threads_)) + sizeof(_impl_.translate_));
+  }
+  if (BatchCheckHasBit(cached_has_bits, 0x0000ff00U)) {
+    ::memset(&_impl_.detect_language_, 0, static_cast<::size_t>(
+        reinterpret_cast<char*>(&_impl_.print_timestamps_) -
+        reinterpret_cast<char*>(&_impl_.detect_language_)) + sizeof(_impl_.print_timestamps_));
+  }
+  if (BatchCheckHasBit(cached_has_bits, 0x00ff0000U)) {
+    ::memset(&_impl_.carry_initial_prompt_, 0, static_cast<::size_t>(
+        reinterpret_cast<char*>(&_impl_.entropy_thold_) -
+        reinterpret_cast<char*>(&_impl_.carry_initial_prompt_)) + sizeof(_impl_.entropy_thold_));
+  }
+  if (BatchCheckHasBit(cached_has_bits, 0x03000000U)) {
+    ::memset(&_impl_.logprob_thold_, 0, static_cast<::size_t>(
+        reinterpret_cast<char*>(&_impl_.no_speech_thold_) -
+        reinterpret_cast<char*>(&_impl_.logprob_thold_)) + sizeof(_impl_.no_speech_thold_));
+  }
+  _impl_._has_bits_.Clear();
+  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
+}
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+::uint8_t* PROTOBUF_NONNULL RecognitionParam::_InternalSerialize(
+    const ::google::protobuf::MessageLite& base, ::uint8_t* PROTOBUF_NONNULL target,
+    ::google::protobuf::io::EpsCopyOutputStream* PROTOBUF_NONNULL stream) {
+  const RecognitionParam& this_ = static_cast<const RecognitionParam&>(base);
+#else   // PROTOBUF_CUSTOM_VTABLE
+::uint8_t* PROTOBUF_NONNULL RecognitionParam::_InternalSerialize(
+    ::uint8_t* PROTOBUF_NONNULL target,
+    ::google::protobuf::io::EpsCopyOutputStream* PROTOBUF_NONNULL stream) const {
+  const RecognitionParam& this_ = *this;
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  if constexpr (::_pbi::DebugHardenCheckHasBitConsistency()) {
+    this_.CheckHasBitConsistency();
+  }
+  // @@protoc_insertion_point(serialize_to_array_start:GrpcLibrary.RecognitionParam)
+  ::uint32_t cached_has_bits = 0;
+  (void)cached_has_bits;
+
+  cached_has_bits = this_._impl_._has_bits_[0];
+  // int32 n_threads = 1;
+  if (CheckHasBit(cached_has_bits, 0x00000008U)) {
+    if (this_._internal_n_threads() != 0) {
+      target =
+          ::google::protobuf::internal::WireFormatLite::WriteInt32ToArrayWithField<1>(
+              stream, this_._internal_n_threads(), target);
+    }
+  }
+
+  // int32 n_max_text_ctx = 2;
+  if (CheckHasBit(cached_has_bits, 0x00000010U)) {
+    if (this_._internal_n_max_text_ctx() != 0) {
+      target =
+          ::google::protobuf::internal::WireFormatLite::WriteInt32ToArrayWithField<2>(
+              stream, this_._internal_n_max_text_ctx(), target);
+    }
+  }
+
+  // int32 offset_ms = 3;
+  if (CheckHasBit(cached_has_bits, 0x00000020U)) {
+    if (this_._internal_offset_ms() != 0) {
+      target =
+          ::google::protobuf::internal::WireFormatLite::WriteInt32ToArrayWithField<3>(
+              stream, this_._internal_offset_ms(), target);
+    }
+  }
+
+  // int32 duration_ms = 4;
+  if (CheckHasBit(cached_has_bits, 0x00000040U)) {
+    if (this_._internal_duration_ms() != 0) {
+      target =
+          ::google::protobuf::internal::WireFormatLite::WriteInt32ToArrayWithField<4>(
+              stream, this_._internal_duration_ms(), target);
+    }
+  }
+
+  // bool translate = 5;
+  if (CheckHasBit(cached_has_bits, 0x00000080U)) {
+    if (this_._internal_translate() != 0) {
+      target = stream->EnsureSpace(target);
+      target = ::_pbi::WireFormatLite::WriteBoolToArray(
+          5, this_._internal_translate(), target);
+    }
+  }
+
+  // bool detect_language = 6;
+  if (CheckHasBit(cached_has_bits, 0x00000100U)) {
+    if (this_._internal_detect_language() != 0) {
+      target = stream->EnsureSpace(target);
+      target = ::_pbi::WireFormatLite::WriteBoolToArray(
+          6, this_._internal_detect_language(), target);
+    }
+  }
+
+  // string language = 7;
+  if (CheckHasBit(cached_has_bits, 0x00000001U)) {
+    if (!this_._internal_language().empty()) {
+      const ::std::string& _s = this_._internal_language();
+      ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+          _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "GrpcLibrary.RecognitionParam.language");
+      target = stream->WriteStringMaybeAliased(7, _s, target);
+    }
+  }
+
+  // bool no_ctx = 8;
+  if (CheckHasBit(cached_has_bits, 0x00000200U)) {
+    if (this_._internal_no_ctx() != 0) {
+      target = stream->EnsureSpace(target);
+      target = ::_pbi::WireFormatLite::WriteBoolToArray(
+          8, this_._internal_no_ctx(), target);
+    }
+  }
+
+  // bool no_timestamps = 9;
+  if (CheckHasBit(cached_has_bits, 0x00000400U)) {
+    if (this_._internal_no_timestamps() != 0) {
+      target = stream->EnsureSpace(target);
+      target = ::_pbi::WireFormatLite::WriteBoolToArray(
+          9, this_._internal_no_timestamps(), target);
+    }
+  }
+
+  // bool single_segment = 10;
+  if (CheckHasBit(cached_has_bits, 0x00000800U)) {
+    if (this_._internal_single_segment() != 0) {
+      target = stream->EnsureSpace(target);
+      target = ::_pbi::WireFormatLite::WriteBoolToArray(
+          10, this_._internal_single_segment(), target);
+    }
+  }
+
+  // bool print_special = 11;
+  if (CheckHasBit(cached_has_bits, 0x00001000U)) {
+    if (this_._internal_print_special() != 0) {
+      target = stream->EnsureSpace(target);
+      target = ::_pbi::WireFormatLite::WriteBoolToArray(
+          11, this_._internal_print_special(), target);
+    }
+  }
+
+  // bool print_progress = 12;
+  if (CheckHasBit(cached_has_bits, 0x00002000U)) {
+    if (this_._internal_print_progress() != 0) {
+      target = stream->EnsureSpace(target);
+      target = ::_pbi::WireFormatLite::WriteBoolToArray(
+          12, this_._internal_print_progress(), target);
+    }
+  }
+
+  // bool print_realtime = 13;
+  if (CheckHasBit(cached_has_bits, 0x00004000U)) {
+    if (this_._internal_print_realtime() != 0) {
+      target = stream->EnsureSpace(target);
+      target = ::_pbi::WireFormatLite::WriteBoolToArray(
+          13, this_._internal_print_realtime(), target);
+    }
+  }
+
+  // bool print_timestamps = 14;
+  if (CheckHasBit(cached_has_bits, 0x00008000U)) {
+    if (this_._internal_print_timestamps() != 0) {
+      target = stream->EnsureSpace(target);
+      target = ::_pbi::WireFormatLite::WriteBoolToArray(
+          14, this_._internal_print_timestamps(), target);
+    }
+  }
+
+  // bool carry_initial_prompt = 15;
+  if (CheckHasBit(cached_has_bits, 0x00010000U)) {
+    if (this_._internal_carry_initial_prompt() != 0) {
+      target = stream->EnsureSpace(target);
+      target = ::_pbi::WireFormatLite::WriteBoolToArray(
+          15, this_._internal_carry_initial_prompt(), target);
+    }
+  }
+
+  // string initial_prompt = 16;
+  if (CheckHasBit(cached_has_bits, 0x00000002U)) {
+    if (!this_._internal_initial_prompt().empty()) {
+      const ::std::string& _s = this_._internal_initial_prompt();
+      ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+          _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "GrpcLibrary.RecognitionParam.initial_prompt");
+      target = stream->WriteStringMaybeAliased(16, _s, target);
+    }
+  }
+
+  // string suppress_regex = 17;
+  if (CheckHasBit(cached_has_bits, 0x00000004U)) {
+    if (!this_._internal_suppress_regex().empty()) {
+      const ::std::string& _s = this_._internal_suppress_regex();
+      ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+          _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "GrpcLibrary.RecognitionParam.suppress_regex");
+      target = stream->WriteStringMaybeAliased(17, _s, target);
+    }
+  }
+
+  // bool suppress_blank = 18;
+  if (CheckHasBit(cached_has_bits, 0x00020000U)) {
+    if (this_._internal_suppress_blank() != 0) {
+      target = stream->EnsureSpace(target);
+      target = ::_pbi::WireFormatLite::WriteBoolToArray(
+          18, this_._internal_suppress_blank(), target);
+    }
+  }
+
+  // bool suppress_nst = 19;
+  if (CheckHasBit(cached_has_bits, 0x00040000U)) {
+    if (this_._internal_suppress_nst() != 0) {
+      target = stream->EnsureSpace(target);
+      target = ::_pbi::WireFormatLite::WriteBoolToArray(
+          19, this_._internal_suppress_nst(), target);
+    }
+  }
+
+  // float temperature = 20;
+  if (CheckHasBit(cached_has_bits, 0x00080000U)) {
+    if (::absl::bit_cast<::uint32_t>(this_._internal_temperature()) != 0) {
+      target = stream->EnsureSpace(target);
+      target = ::_pbi::WireFormatLite::WriteFloatToArray(
+          20, this_._internal_temperature(), target);
+    }
+  }
+
+  // float temperature_inc = 21;
+  if (CheckHasBit(cached_has_bits, 0x00100000U)) {
+    if (::absl::bit_cast<::uint32_t>(this_._internal_temperature_inc()) != 0) {
+      target = stream->EnsureSpace(target);
+      target = ::_pbi::WireFormatLite::WriteFloatToArray(
+          21, this_._internal_temperature_inc(), target);
+    }
+  }
+
+  // float max_initial_ts = 22;
+  if (CheckHasBit(cached_has_bits, 0x00200000U)) {
+    if (::absl::bit_cast<::uint32_t>(this_._internal_max_initial_ts()) != 0) {
+      target = stream->EnsureSpace(target);
+      target = ::_pbi::WireFormatLite::WriteFloatToArray(
+          22, this_._internal_max_initial_ts(), target);
+    }
+  }
+
+  // float length_penalty = 23;
+  if (CheckHasBit(cached_has_bits, 0x00400000U)) {
+    if (::absl::bit_cast<::uint32_t>(this_._internal_length_penalty()) != 0) {
+      target = stream->EnsureSpace(target);
+      target = ::_pbi::WireFormatLite::WriteFloatToArray(
+          23, this_._internal_length_penalty(), target);
+    }
+  }
+
+  // float entropy_thold = 24;
+  if (CheckHasBit(cached_has_bits, 0x00800000U)) {
+    if (::absl::bit_cast<::uint32_t>(this_._internal_entropy_thold()) != 0) {
+      target = stream->EnsureSpace(target);
+      target = ::_pbi::WireFormatLite::WriteFloatToArray(
+          24, this_._internal_entropy_thold(), target);
+    }
+  }
+
+  // float logprob_thold = 25;
+  if (CheckHasBit(cached_has_bits, 0x01000000U)) {
+    if (::absl::bit_cast<::uint32_t>(this_._internal_logprob_thold()) != 0) {
+      target = stream->EnsureSpace(target);
+      target = ::_pbi::WireFormatLite::WriteFloatToArray(
+          25, this_._internal_logprob_thold(), target);
+    }
+  }
+
+  // float no_speech_thold = 26;
+  if (CheckHasBit(cached_has_bits, 0x02000000U)) {
+    if (::absl::bit_cast<::uint32_t>(this_._internal_no_speech_thold()) != 0) {
+      target = stream->EnsureSpace(target);
+      target = ::_pbi::WireFormatLite::WriteFloatToArray(
+          26, this_._internal_no_speech_thold(), target);
+    }
+  }
+
+  if (ABSL_PREDICT_FALSE(this_._internal_metadata_.have_unknown_fields())) {
+    target =
+        ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+            this_._internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:GrpcLibrary.RecognitionParam)
+  return target;
+}
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+::size_t RecognitionParam::ByteSizeLong(const MessageLite& base) {
+  const RecognitionParam& this_ = static_cast<const RecognitionParam&>(base);
+#else   // PROTOBUF_CUSTOM_VTABLE
+::size_t RecognitionParam::ByteSizeLong() const {
+  const RecognitionParam& this_ = *this;
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  // @@protoc_insertion_point(message_byte_size_start:GrpcLibrary.RecognitionParam)
+  ::size_t total_size = 0;
+
+  ::uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void)cached_has_bits;
+
+  ::_pbi::Prefetch5LinesFrom7Lines(&this_);
+  cached_has_bits = this_._impl_._has_bits_[0];
+  if (BatchCheckHasBit(cached_has_bits, 0x000000ffU)) {
+    // string language = 7;
+    if (CheckHasBit(cached_has_bits, 0x00000001U)) {
+      if (!this_._internal_language().empty()) {
+        total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
+                                        this_._internal_language());
+      }
+    }
+    // string initial_prompt = 16;
+    if (CheckHasBit(cached_has_bits, 0x00000002U)) {
+      if (!this_._internal_initial_prompt().empty()) {
+        total_size += 2 + ::google::protobuf::internal::WireFormatLite::StringSize(
+                                        this_._internal_initial_prompt());
+      }
+    }
+    // string suppress_regex = 17;
+    if (CheckHasBit(cached_has_bits, 0x00000004U)) {
+      if (!this_._internal_suppress_regex().empty()) {
+        total_size += 2 + ::google::protobuf::internal::WireFormatLite::StringSize(
+                                        this_._internal_suppress_regex());
+      }
+    }
+    // int32 n_threads = 1;
+    if (CheckHasBit(cached_has_bits, 0x00000008U)) {
+      if (this_._internal_n_threads() != 0) {
+        total_size += ::_pbi::WireFormatLite::Int32SizePlusOne(
+            this_._internal_n_threads());
+      }
+    }
+    // int32 n_max_text_ctx = 2;
+    if (CheckHasBit(cached_has_bits, 0x00000010U)) {
+      if (this_._internal_n_max_text_ctx() != 0) {
+        total_size += ::_pbi::WireFormatLite::Int32SizePlusOne(
+            this_._internal_n_max_text_ctx());
+      }
+    }
+    // int32 offset_ms = 3;
+    if (CheckHasBit(cached_has_bits, 0x00000020U)) {
+      if (this_._internal_offset_ms() != 0) {
+        total_size += ::_pbi::WireFormatLite::Int32SizePlusOne(
+            this_._internal_offset_ms());
+      }
+    }
+    // int32 duration_ms = 4;
+    if (CheckHasBit(cached_has_bits, 0x00000040U)) {
+      if (this_._internal_duration_ms() != 0) {
+        total_size += ::_pbi::WireFormatLite::Int32SizePlusOne(
+            this_._internal_duration_ms());
+      }
+    }
+    // bool translate = 5;
+    if (CheckHasBit(cached_has_bits, 0x00000080U)) {
+      if (this_._internal_translate() != 0) {
+        total_size += 2;
+      }
+    }
+  }
+  if (BatchCheckHasBit(cached_has_bits, 0x0000ff00U)) {
+    // bool detect_language = 6;
+    if (CheckHasBit(cached_has_bits, 0x00000100U)) {
+      if (this_._internal_detect_language() != 0) {
+        total_size += 2;
+      }
+    }
+    // bool no_ctx = 8;
+    if (CheckHasBit(cached_has_bits, 0x00000200U)) {
+      if (this_._internal_no_ctx() != 0) {
+        total_size += 2;
+      }
+    }
+    // bool no_timestamps = 9;
+    if (CheckHasBit(cached_has_bits, 0x00000400U)) {
+      if (this_._internal_no_timestamps() != 0) {
+        total_size += 2;
+      }
+    }
+    // bool single_segment = 10;
+    if (CheckHasBit(cached_has_bits, 0x00000800U)) {
+      if (this_._internal_single_segment() != 0) {
+        total_size += 2;
+      }
+    }
+    // bool print_special = 11;
+    if (CheckHasBit(cached_has_bits, 0x00001000U)) {
+      if (this_._internal_print_special() != 0) {
+        total_size += 2;
+      }
+    }
+    // bool print_progress = 12;
+    if (CheckHasBit(cached_has_bits, 0x00002000U)) {
+      if (this_._internal_print_progress() != 0) {
+        total_size += 2;
+      }
+    }
+    // bool print_realtime = 13;
+    if (CheckHasBit(cached_has_bits, 0x00004000U)) {
+      if (this_._internal_print_realtime() != 0) {
+        total_size += 2;
+      }
+    }
+    // bool print_timestamps = 14;
+    if (CheckHasBit(cached_has_bits, 0x00008000U)) {
+      if (this_._internal_print_timestamps() != 0) {
+        total_size += 2;
+      }
+    }
+  }
+  if (BatchCheckHasBit(cached_has_bits, 0x00ff0000U)) {
+    // bool carry_initial_prompt = 15;
+    if (CheckHasBit(cached_has_bits, 0x00010000U)) {
+      if (this_._internal_carry_initial_prompt() != 0) {
+        total_size += 2;
+      }
+    }
+    // bool suppress_blank = 18;
+    if (CheckHasBit(cached_has_bits, 0x00020000U)) {
+      if (this_._internal_suppress_blank() != 0) {
+        total_size += 3;
+      }
+    }
+    // bool suppress_nst = 19;
+    if (CheckHasBit(cached_has_bits, 0x00040000U)) {
+      if (this_._internal_suppress_nst() != 0) {
+        total_size += 3;
+      }
+    }
+    // float temperature = 20;
+    if (CheckHasBit(cached_has_bits, 0x00080000U)) {
+      if (::absl::bit_cast<::uint32_t>(this_._internal_temperature()) != 0) {
+        total_size += 6;
+      }
+    }
+    // float temperature_inc = 21;
+    if (CheckHasBit(cached_has_bits, 0x00100000U)) {
+      if (::absl::bit_cast<::uint32_t>(this_._internal_temperature_inc()) != 0) {
+        total_size += 6;
+      }
+    }
+    // float max_initial_ts = 22;
+    if (CheckHasBit(cached_has_bits, 0x00200000U)) {
+      if (::absl::bit_cast<::uint32_t>(this_._internal_max_initial_ts()) != 0) {
+        total_size += 6;
+      }
+    }
+    // float length_penalty = 23;
+    if (CheckHasBit(cached_has_bits, 0x00400000U)) {
+      if (::absl::bit_cast<::uint32_t>(this_._internal_length_penalty()) != 0) {
+        total_size += 6;
+      }
+    }
+    // float entropy_thold = 24;
+    if (CheckHasBit(cached_has_bits, 0x00800000U)) {
+      if (::absl::bit_cast<::uint32_t>(this_._internal_entropy_thold()) != 0) {
+        total_size += 6;
+      }
+    }
+  }
+  if (BatchCheckHasBit(cached_has_bits, 0x03000000U)) {
+    // float logprob_thold = 25;
+    if (CheckHasBit(cached_has_bits, 0x01000000U)) {
+      if (::absl::bit_cast<::uint32_t>(this_._internal_logprob_thold()) != 0) {
+        total_size += 6;
+      }
+    }
+    // float no_speech_thold = 26;
+    if (CheckHasBit(cached_has_bits, 0x02000000U)) {
+      if (::absl::bit_cast<::uint32_t>(this_._internal_no_speech_thold()) != 0) {
+        total_size += 6;
+      }
+    }
+  }
+  return this_.MaybeComputeUnknownFieldsSize(total_size,
+                                             &this_._impl_._cached_size_);
+}
+
+void RecognitionParam::MergeImpl(::google::protobuf::MessageLite& to_msg,
+                            const ::google::protobuf::MessageLite& from_msg) {
+   auto* const _this =
+      static_cast<RecognitionParam*>(&to_msg);
+  auto& from = static_cast<const RecognitionParam&>(from_msg);
+  if constexpr (::_pbi::DebugHardenCheckHasBitConsistency()) {
+    from.CheckHasBitConsistency();
+  }
+  // @@protoc_insertion_point(class_specific_merge_from_start:GrpcLibrary.RecognitionParam)
+  ABSL_DCHECK_NE(&from, _this);
+  ::uint32_t cached_has_bits = 0;
+  (void)cached_has_bits;
+
+  cached_has_bits = from._impl_._has_bits_[0];
+  if (BatchCheckHasBit(cached_has_bits, 0x000000ffU)) {
+    if (CheckHasBit(cached_has_bits, 0x00000001U)) {
+      if (!from._internal_language().empty()) {
+        _this->_internal_set_language(from._internal_language());
+      } else {
+        if (_this->_impl_.language_.IsDefault()) {
+          _this->_internal_set_language("");
+        }
+      }
+    }
+    if (CheckHasBit(cached_has_bits, 0x00000002U)) {
+      if (!from._internal_initial_prompt().empty()) {
+        _this->_internal_set_initial_prompt(from._internal_initial_prompt());
+      } else {
+        if (_this->_impl_.initial_prompt_.IsDefault()) {
+          _this->_internal_set_initial_prompt("");
+        }
+      }
+    }
+    if (CheckHasBit(cached_has_bits, 0x00000004U)) {
+      if (!from._internal_suppress_regex().empty()) {
+        _this->_internal_set_suppress_regex(from._internal_suppress_regex());
+      } else {
+        if (_this->_impl_.suppress_regex_.IsDefault()) {
+          _this->_internal_set_suppress_regex("");
+        }
+      }
+    }
+    if (CheckHasBit(cached_has_bits, 0x00000008U)) {
+      if (from._internal_n_threads() != 0) {
+        _this->_impl_.n_threads_ = from._impl_.n_threads_;
+      }
+    }
+    if (CheckHasBit(cached_has_bits, 0x00000010U)) {
+      if (from._internal_n_max_text_ctx() != 0) {
+        _this->_impl_.n_max_text_ctx_ = from._impl_.n_max_text_ctx_;
+      }
+    }
+    if (CheckHasBit(cached_has_bits, 0x00000020U)) {
+      if (from._internal_offset_ms() != 0) {
+        _this->_impl_.offset_ms_ = from._impl_.offset_ms_;
+      }
+    }
+    if (CheckHasBit(cached_has_bits, 0x00000040U)) {
+      if (from._internal_duration_ms() != 0) {
+        _this->_impl_.duration_ms_ = from._impl_.duration_ms_;
+      }
+    }
+    if (CheckHasBit(cached_has_bits, 0x00000080U)) {
+      if (from._internal_translate() != 0) {
+        _this->_impl_.translate_ = from._impl_.translate_;
+      }
+    }
+  }
+  if (BatchCheckHasBit(cached_has_bits, 0x0000ff00U)) {
+    if (CheckHasBit(cached_has_bits, 0x00000100U)) {
+      if (from._internal_detect_language() != 0) {
+        _this->_impl_.detect_language_ = from._impl_.detect_language_;
+      }
+    }
+    if (CheckHasBit(cached_has_bits, 0x00000200U)) {
+      if (from._internal_no_ctx() != 0) {
+        _this->_impl_.no_ctx_ = from._impl_.no_ctx_;
+      }
+    }
+    if (CheckHasBit(cached_has_bits, 0x00000400U)) {
+      if (from._internal_no_timestamps() != 0) {
+        _this->_impl_.no_timestamps_ = from._impl_.no_timestamps_;
+      }
+    }
+    if (CheckHasBit(cached_has_bits, 0x00000800U)) {
+      if (from._internal_single_segment() != 0) {
+        _this->_impl_.single_segment_ = from._impl_.single_segment_;
+      }
+    }
+    if (CheckHasBit(cached_has_bits, 0x00001000U)) {
+      if (from._internal_print_special() != 0) {
+        _this->_impl_.print_special_ = from._impl_.print_special_;
+      }
+    }
+    if (CheckHasBit(cached_has_bits, 0x00002000U)) {
+      if (from._internal_print_progress() != 0) {
+        _this->_impl_.print_progress_ = from._impl_.print_progress_;
+      }
+    }
+    if (CheckHasBit(cached_has_bits, 0x00004000U)) {
+      if (from._internal_print_realtime() != 0) {
+        _this->_impl_.print_realtime_ = from._impl_.print_realtime_;
+      }
+    }
+    if (CheckHasBit(cached_has_bits, 0x00008000U)) {
+      if (from._internal_print_timestamps() != 0) {
+        _this->_impl_.print_timestamps_ = from._impl_.print_timestamps_;
+      }
+    }
+  }
+  if (BatchCheckHasBit(cached_has_bits, 0x00ff0000U)) {
+    if (CheckHasBit(cached_has_bits, 0x00010000U)) {
+      if (from._internal_carry_initial_prompt() != 0) {
+        _this->_impl_.carry_initial_prompt_ = from._impl_.carry_initial_prompt_;
+      }
+    }
+    if (CheckHasBit(cached_has_bits, 0x00020000U)) {
+      if (from._internal_suppress_blank() != 0) {
+        _this->_impl_.suppress_blank_ = from._impl_.suppress_blank_;
+      }
+    }
+    if (CheckHasBit(cached_has_bits, 0x00040000U)) {
+      if (from._internal_suppress_nst() != 0) {
+        _this->_impl_.suppress_nst_ = from._impl_.suppress_nst_;
+      }
+    }
+    if (CheckHasBit(cached_has_bits, 0x00080000U)) {
+      if (::absl::bit_cast<::uint32_t>(from._internal_temperature()) != 0) {
+        _this->_impl_.temperature_ = from._impl_.temperature_;
+      }
+    }
+    if (CheckHasBit(cached_has_bits, 0x00100000U)) {
+      if (::absl::bit_cast<::uint32_t>(from._internal_temperature_inc()) != 0) {
+        _this->_impl_.temperature_inc_ = from._impl_.temperature_inc_;
+      }
+    }
+    if (CheckHasBit(cached_has_bits, 0x00200000U)) {
+      if (::absl::bit_cast<::uint32_t>(from._internal_max_initial_ts()) != 0) {
+        _this->_impl_.max_initial_ts_ = from._impl_.max_initial_ts_;
+      }
+    }
+    if (CheckHasBit(cached_has_bits, 0x00400000U)) {
+      if (::absl::bit_cast<::uint32_t>(from._internal_length_penalty()) != 0) {
+        _this->_impl_.length_penalty_ = from._impl_.length_penalty_;
+      }
+    }
+    if (CheckHasBit(cached_has_bits, 0x00800000U)) {
+      if (::absl::bit_cast<::uint32_t>(from._internal_entropy_thold()) != 0) {
+        _this->_impl_.entropy_thold_ = from._impl_.entropy_thold_;
+      }
+    }
+  }
+  if (BatchCheckHasBit(cached_has_bits, 0x03000000U)) {
+    if (CheckHasBit(cached_has_bits, 0x01000000U)) {
+      if (::absl::bit_cast<::uint32_t>(from._internal_logprob_thold()) != 0) {
+        _this->_impl_.logprob_thold_ = from._impl_.logprob_thold_;
+      }
+    }
+    if (CheckHasBit(cached_has_bits, 0x02000000U)) {
+      if (::absl::bit_cast<::uint32_t>(from._internal_no_speech_thold()) != 0) {
+        _this->_impl_.no_speech_thold_ = from._impl_.no_speech_thold_;
+      }
+    }
+  }
+  _this->_impl_._has_bits_[0] |= cached_has_bits;
+  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
+      from._internal_metadata_);
+}
+
+void RecognitionParam::CopyFrom(const RecognitionParam& from) {
+  // @@protoc_insertion_point(class_specific_copy_from_start:GrpcLibrary.RecognitionParam)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+
+void RecognitionParam::InternalSwap(RecognitionParam* PROTOBUF_RESTRICT PROTOBUF_NONNULL other) {
+  using ::std::swap;
+  auto* arena = GetArena();
+  ABSL_DCHECK_EQ(arena, other->GetArena());
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.language_, &other->_impl_.language_, arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.initial_prompt_, &other->_impl_.initial_prompt_, arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.suppress_regex_, &other->_impl_.suppress_regex_, arena);
+  ::google::protobuf::internal::memswap<
+      PROTOBUF_FIELD_OFFSET(RecognitionParam, _impl_.no_speech_thold_)
+      + sizeof(RecognitionParam::_impl_.no_speech_thold_)
+      - PROTOBUF_FIELD_OFFSET(RecognitionParam, _impl_.n_threads_)>(
+          reinterpret_cast<char*>(&_impl_.n_threads_),
+          reinterpret_cast<char*>(&other->_impl_.n_threads_));
+}
+
+::google::protobuf::Metadata RecognitionParam::GetMetadata() const {
   return ::google::protobuf::Message::GetMetadataImpl(GetClassData()->full());
 }
 // ===================================================================
@@ -8263,6 +9590,1505 @@ void StopAnswerResp::InternalSwap(StopAnswerResp* PROTOBUF_RESTRICT PROTOBUF_NON
 }
 
 ::google::protobuf::Metadata StopAnswerResp::GetMetadata() const {
+  return ::google::protobuf::Message::GetMetadataImpl(GetClassData()->full());
+}
+// ===================================================================
+
+class RecognizeReq::_Internal {
+ public:
+  using HasBits =
+      decltype(::std::declval<RecognizeReq>()._impl_._has_bits_);
+  static constexpr ::int32_t kHasBitsOffset =
+      8 * PROTOBUF_FIELD_OFFSET(RecognizeReq, _impl_._has_bits_);
+  static constexpr ::int32_t kOneofCaseOffset =
+      PROTOBUF_FIELD_OFFSET(::GrpcLibrary::RecognizeReq, _impl_._oneof_case_);
+};
+
+void RecognizeReq::set_allocated_param(::GrpcLibrary::RecognitionParam* PROTOBUF_NULLABLE param) {
+  ::google::protobuf::Arena* message_arena = GetArena();
+  clear_request_type();
+  if (param) {
+    ::google::protobuf::Arena* submessage_arena = param->GetArena();
+    if (message_arena != submessage_arena) {
+      param = ::google::protobuf::internal::GetOwnedMessage(message_arena, param, submessage_arena);
+    }
+    set_has_param();
+    _impl_.request_type_.param_ = param;
+  }
+  // @@protoc_insertion_point(field_set_allocated:GrpcLibrary.RecognizeReq.param)
+}
+RecognizeReq::RecognizeReq(::google::protobuf::Arena* PROTOBUF_NULLABLE arena)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(arena, RecognizeReq_class_data_.base()) {
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(arena) {
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  SharedCtor(arena);
+  // @@protoc_insertion_point(arena_constructor:GrpcLibrary.RecognizeReq)
+}
+PROTOBUF_NDEBUG_INLINE RecognizeReq::Impl_::Impl_(
+    [[maybe_unused]] ::google::protobuf::internal::InternalVisibility visibility,
+    [[maybe_unused]] ::google::protobuf::Arena* PROTOBUF_NULLABLE arena, const Impl_& from,
+    [[maybe_unused]] const ::GrpcLibrary::RecognizeReq& from_msg)
+      : _has_bits_{from._has_bits_},
+        _cached_size_{0},
+        ctx_id_(arena, from.ctx_id_),
+        request_type_{},
+        _oneof_case_{from._oneof_case_[0]} {}
+
+RecognizeReq::RecognizeReq(
+    ::google::protobuf::Arena* PROTOBUF_NULLABLE arena,
+    const RecognizeReq& from)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(arena, RecognizeReq_class_data_.base()) {
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(arena) {
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  RecognizeReq* const _this = this;
+  (void)_this;
+  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
+      from._internal_metadata_);
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_, from);
+  _impl_.session_id_ = from._impl_.session_id_;
+  switch (request_type_case()) {
+    case REQUEST_TYPE_NOT_SET:
+      break;
+      case kParam:
+        _impl_.request_type_.param_ = ::google::protobuf::Message::CopyConstruct(arena, *from._impl_.request_type_.param_);
+        break;
+      case kAudioChunk:
+        new (&_impl_.request_type_.audio_chunk_) decltype(_impl_.request_type_.audio_chunk_){arena, from._impl_.request_type_.audio_chunk_};
+        break;
+  }
+
+  // @@protoc_insertion_point(copy_constructor:GrpcLibrary.RecognizeReq)
+}
+PROTOBUF_NDEBUG_INLINE RecognizeReq::Impl_::Impl_(
+    [[maybe_unused]] ::google::protobuf::internal::InternalVisibility visibility,
+    [[maybe_unused]] ::google::protobuf::Arena* PROTOBUF_NULLABLE arena)
+      : _cached_size_{0},
+        ctx_id_(arena),
+        request_type_{},
+        _oneof_case_{} {}
+
+inline void RecognizeReq::SharedCtor(::_pb::Arena* PROTOBUF_NULLABLE arena) {
+  new (&_impl_) Impl_(internal_visibility(), arena);
+  _impl_.session_id_ = {};
+}
+RecognizeReq::~RecognizeReq() {
+  // @@protoc_insertion_point(destructor:GrpcLibrary.RecognizeReq)
+  SharedDtor(*this);
+}
+inline void RecognizeReq::SharedDtor(MessageLite& self) {
+  RecognizeReq& this_ = static_cast<RecognizeReq&>(self);
+  if constexpr (::_pbi::DebugHardenCheckHasBitConsistency()) {
+    this_.CheckHasBitConsistency();
+  }
+  this_._internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
+  ABSL_DCHECK(this_.GetArena() == nullptr);
+  this_._impl_.ctx_id_.Destroy();
+  if (this_.has_request_type()) {
+    this_.clear_request_type();
+  }
+  this_._impl_.~Impl_();
+}
+
+void RecognizeReq::clear_request_type() {
+// @@protoc_insertion_point(one_of_clear_start:GrpcLibrary.RecognizeReq)
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  switch (request_type_case()) {
+    case kParam: {
+      if (GetArena() == nullptr) {
+        delete _impl_.request_type_.param_;
+      } else if (::google::protobuf::internal::DebugHardenClearOneofMessageOnArena()) {
+        ::google::protobuf::internal::MaybePoisonAfterClear(_impl_.request_type_.param_);
+      }
+      break;
+    }
+    case kAudioChunk: {
+      _impl_.request_type_.audio_chunk_.Destroy();
+      break;
+    }
+    case REQUEST_TYPE_NOT_SET: {
+      break;
+    }
+  }
+  _impl_._oneof_case_[0] = REQUEST_TYPE_NOT_SET;
+}
+
+
+inline void* PROTOBUF_NONNULL RecognizeReq::PlacementNew_(
+    const void* PROTOBUF_NONNULL, void* PROTOBUF_NONNULL mem,
+    ::google::protobuf::Arena* PROTOBUF_NULLABLE arena) {
+  return ::new (mem) RecognizeReq(arena);
+}
+constexpr auto RecognizeReq::InternalNewImpl_() {
+  return ::google::protobuf::internal::MessageCreator::CopyInit(sizeof(RecognizeReq),
+                                            alignof(RecognizeReq));
+}
+constexpr auto RecognizeReq::InternalGenerateClassData_() {
+  return ::google::protobuf::internal::ClassDataFull{
+      ::google::protobuf::internal::ClassData{
+          &_RecognizeReq_default_instance_._instance,
+          &_table_.header,
+          nullptr,  // OnDemandRegisterArenaDtor
+          nullptr,  // IsInitialized
+          &RecognizeReq::MergeImpl,
+          ::google::protobuf::Message::GetNewImpl<RecognizeReq>(),
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+          &RecognizeReq::SharedDtor,
+          ::google::protobuf::Message::GetClearImpl<RecognizeReq>(), &RecognizeReq::ByteSizeLong,
+              &RecognizeReq::_InternalSerialize,
+#endif  // PROTOBUF_CUSTOM_VTABLE
+          PROTOBUF_FIELD_OFFSET(RecognizeReq, _impl_._cached_size_),
+          false,
+      },
+      &RecognizeReq::kDescriptorMethods,
+      &descriptor_table_src_2fapi_2eproto,
+      nullptr,  // tracker
+  };
+}
+
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 const
+    ::google::protobuf::internal::ClassDataFull RecognizeReq_class_data_ =
+        RecognizeReq::InternalGenerateClassData_();
+
+PROTOBUF_ATTRIBUTE_WEAK const ::google::protobuf::internal::ClassData* PROTOBUF_NONNULL
+RecognizeReq::GetClassData() const {
+  ::google::protobuf::internal::PrefetchToLocalCache(&RecognizeReq_class_data_);
+  ::google::protobuf::internal::PrefetchToLocalCache(RecognizeReq_class_data_.tc_table);
+  return RecognizeReq_class_data_.base();
+}
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::_pbi::TcParseTable<1, 4, 1, 39, 2>
+RecognizeReq::_table_ = {
+  {
+    PROTOBUF_FIELD_OFFSET(RecognizeReq, _impl_._has_bits_),
+    0, // no _extensions_
+    4, 8,  // max_field_number, fast_idx_mask
+    offsetof(decltype(_table_), field_lookup_table),
+    4294967280,  // skipmap
+    offsetof(decltype(_table_), field_entries),
+    4,  // num_field_entries
+    1,  // num_aux_entries
+    offsetof(decltype(_table_), aux_entries),
+    RecognizeReq_class_data_.base(),
+    nullptr,  // post_loop_handler
+    ::_pbi::TcParser::GenericFallback,  // fallback
+    #ifdef PROTOBUF_PREFETCH_PARSE_TABLE
+    ::_pbi::TcParser::GetTable<::GrpcLibrary::RecognizeReq>(),  // to_prefetch
+    #endif  // PROTOBUF_PREFETCH_PARSE_TABLE
+  }, {{
+    // int64 session_id = 2;
+    {::_pbi::TcParser::SingularVarintNoZag1<::uint64_t, offsetof(RecognizeReq, _impl_.session_id_), 1>(),
+     {16, 1, 0,
+      PROTOBUF_FIELD_OFFSET(RecognizeReq, _impl_.session_id_)}},
+    // string ctx_id = 1;
+    {::_pbi::TcParser::FastUS1,
+     {10, 0, 0,
+      PROTOBUF_FIELD_OFFSET(RecognizeReq, _impl_.ctx_id_)}},
+  }}, {{
+    65535, 65535
+  }}, {{
+    // string ctx_id = 1;
+    {PROTOBUF_FIELD_OFFSET(RecognizeReq, _impl_.ctx_id_), _Internal::kHasBitsOffset + 0, 0, (0 | ::_fl::kFcOptional | ::_fl::kUtf8String | ::_fl::kRepAString)},
+    // int64 session_id = 2;
+    {PROTOBUF_FIELD_OFFSET(RecognizeReq, _impl_.session_id_), _Internal::kHasBitsOffset + 1, 0, (0 | ::_fl::kFcOptional | ::_fl::kInt64)},
+    // .GrpcLibrary.RecognitionParam param = 3;
+    {PROTOBUF_FIELD_OFFSET(RecognizeReq, _impl_.request_type_.param_), _Internal::kOneofCaseOffset + 0, 0, (0 | ::_fl::kFcOneof | ::_fl::kMessage | ::_fl::kTvTable)},
+    // bytes audio_chunk = 4;
+    {PROTOBUF_FIELD_OFFSET(RecognizeReq, _impl_.request_type_.audio_chunk_), _Internal::kOneofCaseOffset + 0, 0, (0 | ::_fl::kFcOneof | ::_fl::kBytes | ::_fl::kRepAString)},
+  }},
+  {{
+      {::_pbi::TcParser::GetTable<::GrpcLibrary::RecognitionParam>()},
+  }},
+  {{
+    "\30\6\0\0\0\0\0\0"
+    "GrpcLibrary.RecognizeReq"
+    "ctx_id"
+  }},
+};
+PROTOBUF_NOINLINE void RecognizeReq::Clear() {
+// @@protoc_insertion_point(message_clear_start:GrpcLibrary.RecognizeReq)
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  ::uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  cached_has_bits = _impl_._has_bits_[0];
+  if (CheckHasBit(cached_has_bits, 0x00000001U)) {
+    _impl_.ctx_id_.ClearNonDefaultToEmpty();
+  }
+  _impl_.session_id_ = ::int64_t{0};
+  clear_request_type();
+  _impl_._has_bits_.Clear();
+  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
+}
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+::uint8_t* PROTOBUF_NONNULL RecognizeReq::_InternalSerialize(
+    const ::google::protobuf::MessageLite& base, ::uint8_t* PROTOBUF_NONNULL target,
+    ::google::protobuf::io::EpsCopyOutputStream* PROTOBUF_NONNULL stream) {
+  const RecognizeReq& this_ = static_cast<const RecognizeReq&>(base);
+#else   // PROTOBUF_CUSTOM_VTABLE
+::uint8_t* PROTOBUF_NONNULL RecognizeReq::_InternalSerialize(
+    ::uint8_t* PROTOBUF_NONNULL target,
+    ::google::protobuf::io::EpsCopyOutputStream* PROTOBUF_NONNULL stream) const {
+  const RecognizeReq& this_ = *this;
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  if constexpr (::_pbi::DebugHardenCheckHasBitConsistency()) {
+    this_.CheckHasBitConsistency();
+  }
+  // @@protoc_insertion_point(serialize_to_array_start:GrpcLibrary.RecognizeReq)
+  ::uint32_t cached_has_bits = 0;
+  (void)cached_has_bits;
+
+  cached_has_bits = this_._impl_._has_bits_[0];
+  // string ctx_id = 1;
+  if (CheckHasBit(cached_has_bits, 0x00000001U)) {
+    if (!this_._internal_ctx_id().empty()) {
+      const ::std::string& _s = this_._internal_ctx_id();
+      ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+          _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "GrpcLibrary.RecognizeReq.ctx_id");
+      target = stream->WriteStringMaybeAliased(1, _s, target);
+    }
+  }
+
+  // int64 session_id = 2;
+  if (CheckHasBit(cached_has_bits, 0x00000002U)) {
+    if (this_._internal_session_id() != 0) {
+      target =
+          ::google::protobuf::internal::WireFormatLite::WriteInt64ToArrayWithField<2>(
+              stream, this_._internal_session_id(), target);
+    }
+  }
+
+  switch (this_.request_type_case()) {
+    case kParam: {
+      target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
+          3, *this_._impl_.request_type_.param_, this_._impl_.request_type_.param_->GetCachedSize(), target,
+          stream);
+      break;
+    }
+    case kAudioChunk: {
+      const ::std::string& _s = this_._internal_audio_chunk();
+      target = stream->WriteBytesMaybeAliased(4, _s, target);
+      break;
+    }
+    default:
+      break;
+  }
+  if (ABSL_PREDICT_FALSE(this_._internal_metadata_.have_unknown_fields())) {
+    target =
+        ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+            this_._internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:GrpcLibrary.RecognizeReq)
+  return target;
+}
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+::size_t RecognizeReq::ByteSizeLong(const MessageLite& base) {
+  const RecognizeReq& this_ = static_cast<const RecognizeReq&>(base);
+#else   // PROTOBUF_CUSTOM_VTABLE
+::size_t RecognizeReq::ByteSizeLong() const {
+  const RecognizeReq& this_ = *this;
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  // @@protoc_insertion_point(message_byte_size_start:GrpcLibrary.RecognizeReq)
+  ::size_t total_size = 0;
+
+  ::uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void)cached_has_bits;
+
+  ::_pbi::Prefetch5LinesFrom7Lines(&this_);
+  cached_has_bits = this_._impl_._has_bits_[0];
+  if (BatchCheckHasBit(cached_has_bits, 0x00000003U)) {
+    // string ctx_id = 1;
+    if (CheckHasBit(cached_has_bits, 0x00000001U)) {
+      if (!this_._internal_ctx_id().empty()) {
+        total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
+                                        this_._internal_ctx_id());
+      }
+    }
+    // int64 session_id = 2;
+    if (CheckHasBit(cached_has_bits, 0x00000002U)) {
+      if (this_._internal_session_id() != 0) {
+        total_size += ::_pbi::WireFormatLite::Int64SizePlusOne(
+            this_._internal_session_id());
+      }
+    }
+  }
+  switch (this_.request_type_case()) {
+    // .GrpcLibrary.RecognitionParam param = 3;
+    case kParam: {
+      total_size += 1 +
+                    ::google::protobuf::internal::WireFormatLite::MessageSize(*this_._impl_.request_type_.param_);
+      break;
+    }
+    // bytes audio_chunk = 4;
+    case kAudioChunk: {
+      total_size += 1 + ::google::protobuf::internal::WireFormatLite::BytesSize(
+                                      this_._internal_audio_chunk());
+      break;
+    }
+    case REQUEST_TYPE_NOT_SET: {
+      break;
+    }
+  }
+  return this_.MaybeComputeUnknownFieldsSize(total_size,
+                                             &this_._impl_._cached_size_);
+}
+
+void RecognizeReq::MergeImpl(::google::protobuf::MessageLite& to_msg,
+                            const ::google::protobuf::MessageLite& from_msg) {
+   auto* const _this =
+      static_cast<RecognizeReq*>(&to_msg);
+  auto& from = static_cast<const RecognizeReq&>(from_msg);
+  if constexpr (::_pbi::DebugHardenCheckHasBitConsistency()) {
+    from.CheckHasBitConsistency();
+  }
+  ::google::protobuf::Arena* arena = _this->GetArena();
+  // @@protoc_insertion_point(class_specific_merge_from_start:GrpcLibrary.RecognizeReq)
+  ABSL_DCHECK_NE(&from, _this);
+  ::uint32_t cached_has_bits = 0;
+  (void)cached_has_bits;
+
+  cached_has_bits = from._impl_._has_bits_[0];
+  if (BatchCheckHasBit(cached_has_bits, 0x00000003U)) {
+    if (CheckHasBit(cached_has_bits, 0x00000001U)) {
+      if (!from._internal_ctx_id().empty()) {
+        _this->_internal_set_ctx_id(from._internal_ctx_id());
+      } else {
+        if (_this->_impl_.ctx_id_.IsDefault()) {
+          _this->_internal_set_ctx_id("");
+        }
+      }
+    }
+    if (CheckHasBit(cached_has_bits, 0x00000002U)) {
+      if (from._internal_session_id() != 0) {
+        _this->_impl_.session_id_ = from._impl_.session_id_;
+      }
+    }
+  }
+  _this->_impl_._has_bits_[0] |= cached_has_bits;
+  if (const uint32_t oneof_from_case =
+          from._impl_._oneof_case_[0]) {
+    const uint32_t oneof_to_case = _this->_impl_._oneof_case_[0];
+    const bool oneof_needs_init = oneof_to_case != oneof_from_case;
+    if (oneof_needs_init) {
+      if (oneof_to_case != 0) {
+        _this->clear_request_type();
+      }
+      _this->_impl_._oneof_case_[0] = oneof_from_case;
+    }
+
+    switch (oneof_from_case) {
+      case kParam: {
+        if (oneof_needs_init) {
+          _this->_impl_.request_type_.param_ = ::google::protobuf::Message::CopyConstruct(arena, *from._impl_.request_type_.param_);
+        } else {
+          _this->_impl_.request_type_.param_->MergeFrom(*from._impl_.request_type_.param_);
+        }
+        break;
+      }
+      case kAudioChunk: {
+        if (oneof_needs_init) {
+          _this->_impl_.request_type_.audio_chunk_.InitDefault();
+        }
+        _this->_impl_.request_type_.audio_chunk_.Set(from._internal_audio_chunk(), arena);
+        break;
+      }
+      case REQUEST_TYPE_NOT_SET:
+        break;
+    }
+  }
+  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
+      from._internal_metadata_);
+}
+
+void RecognizeReq::CopyFrom(const RecognizeReq& from) {
+  // @@protoc_insertion_point(class_specific_copy_from_start:GrpcLibrary.RecognizeReq)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+
+void RecognizeReq::InternalSwap(RecognizeReq* PROTOBUF_RESTRICT PROTOBUF_NONNULL other) {
+  using ::std::swap;
+  auto* arena = GetArena();
+  ABSL_DCHECK_EQ(arena, other->GetArena());
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.ctx_id_, &other->_impl_.ctx_id_, arena);
+  swap(_impl_.session_id_, other->_impl_.session_id_);
+  swap(_impl_.request_type_, other->_impl_.request_type_);
+  swap(_impl_._oneof_case_[0], other->_impl_._oneof_case_[0]);
+}
+
+::google::protobuf::Metadata RecognizeReq::GetMetadata() const {
+  return ::google::protobuf::Message::GetMetadataImpl(GetClassData()->full());
+}
+// ===================================================================
+
+class RecognizeResp::_Internal {
+ public:
+  using HasBits =
+      decltype(::std::declval<RecognizeResp>()._impl_._has_bits_);
+  static constexpr ::int32_t kHasBitsOffset =
+      8 * PROTOBUF_FIELD_OFFSET(RecognizeResp, _impl_._has_bits_);
+};
+
+RecognizeResp::RecognizeResp(::google::protobuf::Arena* PROTOBUF_NULLABLE arena)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(arena, RecognizeResp_class_data_.base()) {
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(arena) {
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  SharedCtor(arena);
+  // @@protoc_insertion_point(arena_constructor:GrpcLibrary.RecognizeResp)
+}
+PROTOBUF_NDEBUG_INLINE RecognizeResp::Impl_::Impl_(
+    [[maybe_unused]] ::google::protobuf::internal::InternalVisibility visibility,
+    [[maybe_unused]] ::google::protobuf::Arena* PROTOBUF_NULLABLE arena, const Impl_& from,
+    [[maybe_unused]] const ::GrpcLibrary::RecognizeResp& from_msg)
+      : _has_bits_{from._has_bits_},
+        _cached_size_{0},
+        transcript_(arena, from.transcript_) {}
+
+RecognizeResp::RecognizeResp(
+    ::google::protobuf::Arena* PROTOBUF_NULLABLE arena,
+    const RecognizeResp& from)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(arena, RecognizeResp_class_data_.base()) {
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(arena) {
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  RecognizeResp* const _this = this;
+  (void)_this;
+  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
+      from._internal_metadata_);
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_, from);
+  ::memcpy(reinterpret_cast<char*>(&_impl_) +
+               offsetof(Impl_, session_id_),
+           reinterpret_cast<const char*>(&from._impl_) +
+               offsetof(Impl_, session_id_),
+           offsetof(Impl_, confidence_) -
+               offsetof(Impl_, session_id_) +
+               sizeof(Impl_::confidence_));
+
+  // @@protoc_insertion_point(copy_constructor:GrpcLibrary.RecognizeResp)
+}
+PROTOBUF_NDEBUG_INLINE RecognizeResp::Impl_::Impl_(
+    [[maybe_unused]] ::google::protobuf::internal::InternalVisibility visibility,
+    [[maybe_unused]] ::google::protobuf::Arena* PROTOBUF_NULLABLE arena)
+      : _cached_size_{0},
+        transcript_(arena) {}
+
+inline void RecognizeResp::SharedCtor(::_pb::Arena* PROTOBUF_NULLABLE arena) {
+  new (&_impl_) Impl_(internal_visibility(), arena);
+  ::memset(reinterpret_cast<char*>(&_impl_) +
+               offsetof(Impl_, session_id_),
+           0,
+           offsetof(Impl_, confidence_) -
+               offsetof(Impl_, session_id_) +
+               sizeof(Impl_::confidence_));
+}
+RecognizeResp::~RecognizeResp() {
+  // @@protoc_insertion_point(destructor:GrpcLibrary.RecognizeResp)
+  SharedDtor(*this);
+}
+inline void RecognizeResp::SharedDtor(MessageLite& self) {
+  RecognizeResp& this_ = static_cast<RecognizeResp&>(self);
+  if constexpr (::_pbi::DebugHardenCheckHasBitConsistency()) {
+    this_.CheckHasBitConsistency();
+  }
+  this_._internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
+  ABSL_DCHECK(this_.GetArena() == nullptr);
+  this_._impl_.transcript_.Destroy();
+  this_._impl_.~Impl_();
+}
+
+inline void* PROTOBUF_NONNULL RecognizeResp::PlacementNew_(
+    const void* PROTOBUF_NONNULL, void* PROTOBUF_NONNULL mem,
+    ::google::protobuf::Arena* PROTOBUF_NULLABLE arena) {
+  return ::new (mem) RecognizeResp(arena);
+}
+constexpr auto RecognizeResp::InternalNewImpl_() {
+  return ::google::protobuf::internal::MessageCreator::CopyInit(sizeof(RecognizeResp),
+                                            alignof(RecognizeResp));
+}
+constexpr auto RecognizeResp::InternalGenerateClassData_() {
+  return ::google::protobuf::internal::ClassDataFull{
+      ::google::protobuf::internal::ClassData{
+          &_RecognizeResp_default_instance_._instance,
+          &_table_.header,
+          nullptr,  // OnDemandRegisterArenaDtor
+          nullptr,  // IsInitialized
+          &RecognizeResp::MergeImpl,
+          ::google::protobuf::Message::GetNewImpl<RecognizeResp>(),
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+          &RecognizeResp::SharedDtor,
+          ::google::protobuf::Message::GetClearImpl<RecognizeResp>(), &RecognizeResp::ByteSizeLong,
+              &RecognizeResp::_InternalSerialize,
+#endif  // PROTOBUF_CUSTOM_VTABLE
+          PROTOBUF_FIELD_OFFSET(RecognizeResp, _impl_._cached_size_),
+          false,
+      },
+      &RecognizeResp::kDescriptorMethods,
+      &descriptor_table_src_2fapi_2eproto,
+      nullptr,  // tracker
+  };
+}
+
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 const
+    ::google::protobuf::internal::ClassDataFull RecognizeResp_class_data_ =
+        RecognizeResp::InternalGenerateClassData_();
+
+PROTOBUF_ATTRIBUTE_WEAK const ::google::protobuf::internal::ClassData* PROTOBUF_NONNULL
+RecognizeResp::GetClassData() const {
+  ::google::protobuf::internal::PrefetchToLocalCache(&RecognizeResp_class_data_);
+  ::google::protobuf::internal::PrefetchToLocalCache(RecognizeResp_class_data_.tc_table);
+  return RecognizeResp_class_data_.base();
+}
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::_pbi::TcParseTable<3, 5, 0, 44, 2>
+RecognizeResp::_table_ = {
+  {
+    PROTOBUF_FIELD_OFFSET(RecognizeResp, _impl_._has_bits_),
+    0, // no _extensions_
+    5, 56,  // max_field_number, fast_idx_mask
+    offsetof(decltype(_table_), field_lookup_table),
+    4294967264,  // skipmap
+    offsetof(decltype(_table_), field_entries),
+    5,  // num_field_entries
+    0,  // num_aux_entries
+    offsetof(decltype(_table_), field_names),  // no aux_entries
+    RecognizeResp_class_data_.base(),
+    nullptr,  // post_loop_handler
+    ::_pbi::TcParser::GenericFallback,  // fallback
+    #ifdef PROTOBUF_PREFETCH_PARSE_TABLE
+    ::_pbi::TcParser::GetTable<::GrpcLibrary::RecognizeResp>(),  // to_prefetch
+    #endif  // PROTOBUF_PREFETCH_PARSE_TABLE
+  }, {{
+    {::_pbi::TcParser::MiniParse, {}},
+    // int32 error_code = 1;
+    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(RecognizeResp, _impl_.error_code_), 2>(),
+     {8, 2, 0,
+      PROTOBUF_FIELD_OFFSET(RecognizeResp, _impl_.error_code_)}},
+    // int64 session_id = 2;
+    {::_pbi::TcParser::SingularVarintNoZag1<::uint64_t, offsetof(RecognizeResp, _impl_.session_id_), 1>(),
+     {16, 1, 0,
+      PROTOBUF_FIELD_OFFSET(RecognizeResp, _impl_.session_id_)}},
+    // string transcript = 3;
+    {::_pbi::TcParser::FastUS1,
+     {26, 0, 0,
+      PROTOBUF_FIELD_OFFSET(RecognizeResp, _impl_.transcript_)}},
+    // bool is_finished = 4;
+    {::_pbi::TcParser::SingularVarintNoZag1<bool, offsetof(RecognizeResp, _impl_.is_finished_), 3>(),
+     {32, 3, 0,
+      PROTOBUF_FIELD_OFFSET(RecognizeResp, _impl_.is_finished_)}},
+    // double confidence = 5;
+    {::_pbi::TcParser::FastF64S1,
+     {41, 4, 0,
+      PROTOBUF_FIELD_OFFSET(RecognizeResp, _impl_.confidence_)}},
+    {::_pbi::TcParser::MiniParse, {}},
+    {::_pbi::TcParser::MiniParse, {}},
+  }}, {{
+    65535, 65535
+  }}, {{
+    // int32 error_code = 1;
+    {PROTOBUF_FIELD_OFFSET(RecognizeResp, _impl_.error_code_), _Internal::kHasBitsOffset + 2, 0, (0 | ::_fl::kFcOptional | ::_fl::kInt32)},
+    // int64 session_id = 2;
+    {PROTOBUF_FIELD_OFFSET(RecognizeResp, _impl_.session_id_), _Internal::kHasBitsOffset + 1, 0, (0 | ::_fl::kFcOptional | ::_fl::kInt64)},
+    // string transcript = 3;
+    {PROTOBUF_FIELD_OFFSET(RecognizeResp, _impl_.transcript_), _Internal::kHasBitsOffset + 0, 0, (0 | ::_fl::kFcOptional | ::_fl::kUtf8String | ::_fl::kRepAString)},
+    // bool is_finished = 4;
+    {PROTOBUF_FIELD_OFFSET(RecognizeResp, _impl_.is_finished_), _Internal::kHasBitsOffset + 3, 0, (0 | ::_fl::kFcOptional | ::_fl::kBool)},
+    // double confidence = 5;
+    {PROTOBUF_FIELD_OFFSET(RecognizeResp, _impl_.confidence_), _Internal::kHasBitsOffset + 4, 0, (0 | ::_fl::kFcOptional | ::_fl::kDouble)},
+  }},
+  // no aux_entries
+  {{
+    "\31\0\0\12\0\0\0\0"
+    "GrpcLibrary.RecognizeResp"
+    "transcript"
+  }},
+};
+PROTOBUF_NOINLINE void RecognizeResp::Clear() {
+// @@protoc_insertion_point(message_clear_start:GrpcLibrary.RecognizeResp)
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  ::uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  cached_has_bits = _impl_._has_bits_[0];
+  if (CheckHasBit(cached_has_bits, 0x00000001U)) {
+    _impl_.transcript_.ClearNonDefaultToEmpty();
+  }
+  if (BatchCheckHasBit(cached_has_bits, 0x0000001eU)) {
+    ::memset(&_impl_.session_id_, 0, static_cast<::size_t>(
+        reinterpret_cast<char*>(&_impl_.confidence_) -
+        reinterpret_cast<char*>(&_impl_.session_id_)) + sizeof(_impl_.confidence_));
+  }
+  _impl_._has_bits_.Clear();
+  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
+}
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+::uint8_t* PROTOBUF_NONNULL RecognizeResp::_InternalSerialize(
+    const ::google::protobuf::MessageLite& base, ::uint8_t* PROTOBUF_NONNULL target,
+    ::google::protobuf::io::EpsCopyOutputStream* PROTOBUF_NONNULL stream) {
+  const RecognizeResp& this_ = static_cast<const RecognizeResp&>(base);
+#else   // PROTOBUF_CUSTOM_VTABLE
+::uint8_t* PROTOBUF_NONNULL RecognizeResp::_InternalSerialize(
+    ::uint8_t* PROTOBUF_NONNULL target,
+    ::google::protobuf::io::EpsCopyOutputStream* PROTOBUF_NONNULL stream) const {
+  const RecognizeResp& this_ = *this;
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  if constexpr (::_pbi::DebugHardenCheckHasBitConsistency()) {
+    this_.CheckHasBitConsistency();
+  }
+  // @@protoc_insertion_point(serialize_to_array_start:GrpcLibrary.RecognizeResp)
+  ::uint32_t cached_has_bits = 0;
+  (void)cached_has_bits;
+
+  cached_has_bits = this_._impl_._has_bits_[0];
+  // int32 error_code = 1;
+  if (CheckHasBit(cached_has_bits, 0x00000004U)) {
+    if (this_._internal_error_code() != 0) {
+      target =
+          ::google::protobuf::internal::WireFormatLite::WriteInt32ToArrayWithField<1>(
+              stream, this_._internal_error_code(), target);
+    }
+  }
+
+  // int64 session_id = 2;
+  if (CheckHasBit(cached_has_bits, 0x00000002U)) {
+    if (this_._internal_session_id() != 0) {
+      target =
+          ::google::protobuf::internal::WireFormatLite::WriteInt64ToArrayWithField<2>(
+              stream, this_._internal_session_id(), target);
+    }
+  }
+
+  // string transcript = 3;
+  if (CheckHasBit(cached_has_bits, 0x00000001U)) {
+    if (!this_._internal_transcript().empty()) {
+      const ::std::string& _s = this_._internal_transcript();
+      ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+          _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "GrpcLibrary.RecognizeResp.transcript");
+      target = stream->WriteStringMaybeAliased(3, _s, target);
+    }
+  }
+
+  // bool is_finished = 4;
+  if (CheckHasBit(cached_has_bits, 0x00000008U)) {
+    if (this_._internal_is_finished() != 0) {
+      target = stream->EnsureSpace(target);
+      target = ::_pbi::WireFormatLite::WriteBoolToArray(
+          4, this_._internal_is_finished(), target);
+    }
+  }
+
+  // double confidence = 5;
+  if (CheckHasBit(cached_has_bits, 0x00000010U)) {
+    if (::absl::bit_cast<::uint64_t>(this_._internal_confidence()) != 0) {
+      target = stream->EnsureSpace(target);
+      target = ::_pbi::WireFormatLite::WriteDoubleToArray(
+          5, this_._internal_confidence(), target);
+    }
+  }
+
+  if (ABSL_PREDICT_FALSE(this_._internal_metadata_.have_unknown_fields())) {
+    target =
+        ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+            this_._internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:GrpcLibrary.RecognizeResp)
+  return target;
+}
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+::size_t RecognizeResp::ByteSizeLong(const MessageLite& base) {
+  const RecognizeResp& this_ = static_cast<const RecognizeResp&>(base);
+#else   // PROTOBUF_CUSTOM_VTABLE
+::size_t RecognizeResp::ByteSizeLong() const {
+  const RecognizeResp& this_ = *this;
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  // @@protoc_insertion_point(message_byte_size_start:GrpcLibrary.RecognizeResp)
+  ::size_t total_size = 0;
+
+  ::uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void)cached_has_bits;
+
+  ::_pbi::Prefetch5LinesFrom7Lines(&this_);
+  cached_has_bits = this_._impl_._has_bits_[0];
+  if (BatchCheckHasBit(cached_has_bits, 0x0000001fU)) {
+    // string transcript = 3;
+    if (CheckHasBit(cached_has_bits, 0x00000001U)) {
+      if (!this_._internal_transcript().empty()) {
+        total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
+                                        this_._internal_transcript());
+      }
+    }
+    // int64 session_id = 2;
+    if (CheckHasBit(cached_has_bits, 0x00000002U)) {
+      if (this_._internal_session_id() != 0) {
+        total_size += ::_pbi::WireFormatLite::Int64SizePlusOne(
+            this_._internal_session_id());
+      }
+    }
+    // int32 error_code = 1;
+    if (CheckHasBit(cached_has_bits, 0x00000004U)) {
+      if (this_._internal_error_code() != 0) {
+        total_size += ::_pbi::WireFormatLite::Int32SizePlusOne(
+            this_._internal_error_code());
+      }
+    }
+    // bool is_finished = 4;
+    if (CheckHasBit(cached_has_bits, 0x00000008U)) {
+      if (this_._internal_is_finished() != 0) {
+        total_size += 2;
+      }
+    }
+    // double confidence = 5;
+    if (CheckHasBit(cached_has_bits, 0x00000010U)) {
+      if (::absl::bit_cast<::uint64_t>(this_._internal_confidence()) != 0) {
+        total_size += 9;
+      }
+    }
+  }
+  return this_.MaybeComputeUnknownFieldsSize(total_size,
+                                             &this_._impl_._cached_size_);
+}
+
+void RecognizeResp::MergeImpl(::google::protobuf::MessageLite& to_msg,
+                            const ::google::protobuf::MessageLite& from_msg) {
+   auto* const _this =
+      static_cast<RecognizeResp*>(&to_msg);
+  auto& from = static_cast<const RecognizeResp&>(from_msg);
+  if constexpr (::_pbi::DebugHardenCheckHasBitConsistency()) {
+    from.CheckHasBitConsistency();
+  }
+  // @@protoc_insertion_point(class_specific_merge_from_start:GrpcLibrary.RecognizeResp)
+  ABSL_DCHECK_NE(&from, _this);
+  ::uint32_t cached_has_bits = 0;
+  (void)cached_has_bits;
+
+  cached_has_bits = from._impl_._has_bits_[0];
+  if (BatchCheckHasBit(cached_has_bits, 0x0000001fU)) {
+    if (CheckHasBit(cached_has_bits, 0x00000001U)) {
+      if (!from._internal_transcript().empty()) {
+        _this->_internal_set_transcript(from._internal_transcript());
+      } else {
+        if (_this->_impl_.transcript_.IsDefault()) {
+          _this->_internal_set_transcript("");
+        }
+      }
+    }
+    if (CheckHasBit(cached_has_bits, 0x00000002U)) {
+      if (from._internal_session_id() != 0) {
+        _this->_impl_.session_id_ = from._impl_.session_id_;
+      }
+    }
+    if (CheckHasBit(cached_has_bits, 0x00000004U)) {
+      if (from._internal_error_code() != 0) {
+        _this->_impl_.error_code_ = from._impl_.error_code_;
+      }
+    }
+    if (CheckHasBit(cached_has_bits, 0x00000008U)) {
+      if (from._internal_is_finished() != 0) {
+        _this->_impl_.is_finished_ = from._impl_.is_finished_;
+      }
+    }
+    if (CheckHasBit(cached_has_bits, 0x00000010U)) {
+      if (::absl::bit_cast<::uint64_t>(from._internal_confidence()) != 0) {
+        _this->_impl_.confidence_ = from._impl_.confidence_;
+      }
+    }
+  }
+  _this->_impl_._has_bits_[0] |= cached_has_bits;
+  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
+      from._internal_metadata_);
+}
+
+void RecognizeResp::CopyFrom(const RecognizeResp& from) {
+  // @@protoc_insertion_point(class_specific_copy_from_start:GrpcLibrary.RecognizeResp)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+
+void RecognizeResp::InternalSwap(RecognizeResp* PROTOBUF_RESTRICT PROTOBUF_NONNULL other) {
+  using ::std::swap;
+  auto* arena = GetArena();
+  ABSL_DCHECK_EQ(arena, other->GetArena());
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.transcript_, &other->_impl_.transcript_, arena);
+  ::google::protobuf::internal::memswap<
+      PROTOBUF_FIELD_OFFSET(RecognizeResp, _impl_.confidence_)
+      + sizeof(RecognizeResp::_impl_.confidence_)
+      - PROTOBUF_FIELD_OFFSET(RecognizeResp, _impl_.session_id_)>(
+          reinterpret_cast<char*>(&_impl_.session_id_),
+          reinterpret_cast<char*>(&other->_impl_.session_id_));
+}
+
+::google::protobuf::Metadata RecognizeResp::GetMetadata() const {
+  return ::google::protobuf::Message::GetMetadataImpl(GetClassData()->full());
+}
+// ===================================================================
+
+class StopRecognizeReq::_Internal {
+ public:
+  using HasBits =
+      decltype(::std::declval<StopRecognizeReq>()._impl_._has_bits_);
+  static constexpr ::int32_t kHasBitsOffset =
+      8 * PROTOBUF_FIELD_OFFSET(StopRecognizeReq, _impl_._has_bits_);
+};
+
+StopRecognizeReq::StopRecognizeReq(::google::protobuf::Arena* PROTOBUF_NULLABLE arena)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(arena, StopRecognizeReq_class_data_.base()) {
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(arena) {
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  SharedCtor(arena);
+  // @@protoc_insertion_point(arena_constructor:GrpcLibrary.StopRecognizeReq)
+}
+PROTOBUF_NDEBUG_INLINE StopRecognizeReq::Impl_::Impl_(
+    [[maybe_unused]] ::google::protobuf::internal::InternalVisibility visibility,
+    [[maybe_unused]] ::google::protobuf::Arena* PROTOBUF_NULLABLE arena, const Impl_& from,
+    [[maybe_unused]] const ::GrpcLibrary::StopRecognizeReq& from_msg)
+      : _has_bits_{from._has_bits_},
+        _cached_size_{0},
+        auth_(arena, from.auth_) {}
+
+StopRecognizeReq::StopRecognizeReq(
+    ::google::protobuf::Arena* PROTOBUF_NULLABLE arena,
+    const StopRecognizeReq& from)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(arena, StopRecognizeReq_class_data_.base()) {
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(arena) {
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  StopRecognizeReq* const _this = this;
+  (void)_this;
+  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
+      from._internal_metadata_);
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_, from);
+  ::memcpy(reinterpret_cast<char*>(&_impl_) +
+               offsetof(Impl_, session_id_),
+           reinterpret_cast<const char*>(&from._impl_) +
+               offsetof(Impl_, session_id_),
+           offsetof(Impl_, user_id_) -
+               offsetof(Impl_, session_id_) +
+               sizeof(Impl_::user_id_));
+
+  // @@protoc_insertion_point(copy_constructor:GrpcLibrary.StopRecognizeReq)
+}
+PROTOBUF_NDEBUG_INLINE StopRecognizeReq::Impl_::Impl_(
+    [[maybe_unused]] ::google::protobuf::internal::InternalVisibility visibility,
+    [[maybe_unused]] ::google::protobuf::Arena* PROTOBUF_NULLABLE arena)
+      : _cached_size_{0},
+        auth_(arena) {}
+
+inline void StopRecognizeReq::SharedCtor(::_pb::Arena* PROTOBUF_NULLABLE arena) {
+  new (&_impl_) Impl_(internal_visibility(), arena);
+  ::memset(reinterpret_cast<char*>(&_impl_) +
+               offsetof(Impl_, session_id_),
+           0,
+           offsetof(Impl_, user_id_) -
+               offsetof(Impl_, session_id_) +
+               sizeof(Impl_::user_id_));
+}
+StopRecognizeReq::~StopRecognizeReq() {
+  // @@protoc_insertion_point(destructor:GrpcLibrary.StopRecognizeReq)
+  SharedDtor(*this);
+}
+inline void StopRecognizeReq::SharedDtor(MessageLite& self) {
+  StopRecognizeReq& this_ = static_cast<StopRecognizeReq&>(self);
+  if constexpr (::_pbi::DebugHardenCheckHasBitConsistency()) {
+    this_.CheckHasBitConsistency();
+  }
+  this_._internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
+  ABSL_DCHECK(this_.GetArena() == nullptr);
+  this_._impl_.auth_.Destroy();
+  this_._impl_.~Impl_();
+}
+
+inline void* PROTOBUF_NONNULL StopRecognizeReq::PlacementNew_(
+    const void* PROTOBUF_NONNULL, void* PROTOBUF_NONNULL mem,
+    ::google::protobuf::Arena* PROTOBUF_NULLABLE arena) {
+  return ::new (mem) StopRecognizeReq(arena);
+}
+constexpr auto StopRecognizeReq::InternalNewImpl_() {
+  return ::google::protobuf::internal::MessageCreator::CopyInit(sizeof(StopRecognizeReq),
+                                            alignof(StopRecognizeReq));
+}
+constexpr auto StopRecognizeReq::InternalGenerateClassData_() {
+  return ::google::protobuf::internal::ClassDataFull{
+      ::google::protobuf::internal::ClassData{
+          &_StopRecognizeReq_default_instance_._instance,
+          &_table_.header,
+          nullptr,  // OnDemandRegisterArenaDtor
+          nullptr,  // IsInitialized
+          &StopRecognizeReq::MergeImpl,
+          ::google::protobuf::Message::GetNewImpl<StopRecognizeReq>(),
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+          &StopRecognizeReq::SharedDtor,
+          ::google::protobuf::Message::GetClearImpl<StopRecognizeReq>(), &StopRecognizeReq::ByteSizeLong,
+              &StopRecognizeReq::_InternalSerialize,
+#endif  // PROTOBUF_CUSTOM_VTABLE
+          PROTOBUF_FIELD_OFFSET(StopRecognizeReq, _impl_._cached_size_),
+          false,
+      },
+      &StopRecognizeReq::kDescriptorMethods,
+      &descriptor_table_src_2fapi_2eproto,
+      nullptr,  // tracker
+  };
+}
+
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 const
+    ::google::protobuf::internal::ClassDataFull StopRecognizeReq_class_data_ =
+        StopRecognizeReq::InternalGenerateClassData_();
+
+PROTOBUF_ATTRIBUTE_WEAK const ::google::protobuf::internal::ClassData* PROTOBUF_NONNULL
+StopRecognizeReq::GetClassData() const {
+  ::google::protobuf::internal::PrefetchToLocalCache(&StopRecognizeReq_class_data_);
+  ::google::protobuf::internal::PrefetchToLocalCache(StopRecognizeReq_class_data_.tc_table);
+  return StopRecognizeReq_class_data_.base();
+}
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::_pbi::TcParseTable<2, 3, 0, 41, 2>
+StopRecognizeReq::_table_ = {
+  {
+    PROTOBUF_FIELD_OFFSET(StopRecognizeReq, _impl_._has_bits_),
+    0, // no _extensions_
+    3, 24,  // max_field_number, fast_idx_mask
+    offsetof(decltype(_table_), field_lookup_table),
+    4294967288,  // skipmap
+    offsetof(decltype(_table_), field_entries),
+    3,  // num_field_entries
+    0,  // num_aux_entries
+    offsetof(decltype(_table_), field_names),  // no aux_entries
+    StopRecognizeReq_class_data_.base(),
+    nullptr,  // post_loop_handler
+    ::_pbi::TcParser::GenericFallback,  // fallback
+    #ifdef PROTOBUF_PREFETCH_PARSE_TABLE
+    ::_pbi::TcParser::GetTable<::GrpcLibrary::StopRecognizeReq>(),  // to_prefetch
+    #endif  // PROTOBUF_PREFETCH_PARSE_TABLE
+  }, {{
+    {::_pbi::TcParser::MiniParse, {}},
+    // int64 session_id = 1;
+    {::_pbi::TcParser::SingularVarintNoZag1<::uint64_t, offsetof(StopRecognizeReq, _impl_.session_id_), 1>(),
+     {8, 1, 0,
+      PROTOBUF_FIELD_OFFSET(StopRecognizeReq, _impl_.session_id_)}},
+    // int64 user_id = 2;
+    {::_pbi::TcParser::SingularVarintNoZag1<::uint64_t, offsetof(StopRecognizeReq, _impl_.user_id_), 2>(),
+     {16, 2, 0,
+      PROTOBUF_FIELD_OFFSET(StopRecognizeReq, _impl_.user_id_)}},
+    // string auth = 3;
+    {::_pbi::TcParser::FastUS1,
+     {26, 0, 0,
+      PROTOBUF_FIELD_OFFSET(StopRecognizeReq, _impl_.auth_)}},
+  }}, {{
+    65535, 65535
+  }}, {{
+    // int64 session_id = 1;
+    {PROTOBUF_FIELD_OFFSET(StopRecognizeReq, _impl_.session_id_), _Internal::kHasBitsOffset + 1, 0, (0 | ::_fl::kFcOptional | ::_fl::kInt64)},
+    // int64 user_id = 2;
+    {PROTOBUF_FIELD_OFFSET(StopRecognizeReq, _impl_.user_id_), _Internal::kHasBitsOffset + 2, 0, (0 | ::_fl::kFcOptional | ::_fl::kInt64)},
+    // string auth = 3;
+    {PROTOBUF_FIELD_OFFSET(StopRecognizeReq, _impl_.auth_), _Internal::kHasBitsOffset + 0, 0, (0 | ::_fl::kFcOptional | ::_fl::kUtf8String | ::_fl::kRepAString)},
+  }},
+  // no aux_entries
+  {{
+    "\34\0\0\4\0\0\0\0"
+    "GrpcLibrary.StopRecognizeReq"
+    "auth"
+  }},
+};
+PROTOBUF_NOINLINE void StopRecognizeReq::Clear() {
+// @@protoc_insertion_point(message_clear_start:GrpcLibrary.StopRecognizeReq)
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  ::uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  cached_has_bits = _impl_._has_bits_[0];
+  if (CheckHasBit(cached_has_bits, 0x00000001U)) {
+    _impl_.auth_.ClearNonDefaultToEmpty();
+  }
+  if (BatchCheckHasBit(cached_has_bits, 0x00000006U)) {
+    ::memset(&_impl_.session_id_, 0, static_cast<::size_t>(
+        reinterpret_cast<char*>(&_impl_.user_id_) -
+        reinterpret_cast<char*>(&_impl_.session_id_)) + sizeof(_impl_.user_id_));
+  }
+  _impl_._has_bits_.Clear();
+  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
+}
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+::uint8_t* PROTOBUF_NONNULL StopRecognizeReq::_InternalSerialize(
+    const ::google::protobuf::MessageLite& base, ::uint8_t* PROTOBUF_NONNULL target,
+    ::google::protobuf::io::EpsCopyOutputStream* PROTOBUF_NONNULL stream) {
+  const StopRecognizeReq& this_ = static_cast<const StopRecognizeReq&>(base);
+#else   // PROTOBUF_CUSTOM_VTABLE
+::uint8_t* PROTOBUF_NONNULL StopRecognizeReq::_InternalSerialize(
+    ::uint8_t* PROTOBUF_NONNULL target,
+    ::google::protobuf::io::EpsCopyOutputStream* PROTOBUF_NONNULL stream) const {
+  const StopRecognizeReq& this_ = *this;
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  if constexpr (::_pbi::DebugHardenCheckHasBitConsistency()) {
+    this_.CheckHasBitConsistency();
+  }
+  // @@protoc_insertion_point(serialize_to_array_start:GrpcLibrary.StopRecognizeReq)
+  ::uint32_t cached_has_bits = 0;
+  (void)cached_has_bits;
+
+  cached_has_bits = this_._impl_._has_bits_[0];
+  // int64 session_id = 1;
+  if (CheckHasBit(cached_has_bits, 0x00000002U)) {
+    if (this_._internal_session_id() != 0) {
+      target =
+          ::google::protobuf::internal::WireFormatLite::WriteInt64ToArrayWithField<1>(
+              stream, this_._internal_session_id(), target);
+    }
+  }
+
+  // int64 user_id = 2;
+  if (CheckHasBit(cached_has_bits, 0x00000004U)) {
+    if (this_._internal_user_id() != 0) {
+      target =
+          ::google::protobuf::internal::WireFormatLite::WriteInt64ToArrayWithField<2>(
+              stream, this_._internal_user_id(), target);
+    }
+  }
+
+  // string auth = 3;
+  if (CheckHasBit(cached_has_bits, 0x00000001U)) {
+    if (!this_._internal_auth().empty()) {
+      const ::std::string& _s = this_._internal_auth();
+      ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+          _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "GrpcLibrary.StopRecognizeReq.auth");
+      target = stream->WriteStringMaybeAliased(3, _s, target);
+    }
+  }
+
+  if (ABSL_PREDICT_FALSE(this_._internal_metadata_.have_unknown_fields())) {
+    target =
+        ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+            this_._internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:GrpcLibrary.StopRecognizeReq)
+  return target;
+}
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+::size_t StopRecognizeReq::ByteSizeLong(const MessageLite& base) {
+  const StopRecognizeReq& this_ = static_cast<const StopRecognizeReq&>(base);
+#else   // PROTOBUF_CUSTOM_VTABLE
+::size_t StopRecognizeReq::ByteSizeLong() const {
+  const StopRecognizeReq& this_ = *this;
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  // @@protoc_insertion_point(message_byte_size_start:GrpcLibrary.StopRecognizeReq)
+  ::size_t total_size = 0;
+
+  ::uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void)cached_has_bits;
+
+  ::_pbi::Prefetch5LinesFrom7Lines(&this_);
+  cached_has_bits = this_._impl_._has_bits_[0];
+  if (BatchCheckHasBit(cached_has_bits, 0x00000007U)) {
+    // string auth = 3;
+    if (CheckHasBit(cached_has_bits, 0x00000001U)) {
+      if (!this_._internal_auth().empty()) {
+        total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
+                                        this_._internal_auth());
+      }
+    }
+    // int64 session_id = 1;
+    if (CheckHasBit(cached_has_bits, 0x00000002U)) {
+      if (this_._internal_session_id() != 0) {
+        total_size += ::_pbi::WireFormatLite::Int64SizePlusOne(
+            this_._internal_session_id());
+      }
+    }
+    // int64 user_id = 2;
+    if (CheckHasBit(cached_has_bits, 0x00000004U)) {
+      if (this_._internal_user_id() != 0) {
+        total_size += ::_pbi::WireFormatLite::Int64SizePlusOne(
+            this_._internal_user_id());
+      }
+    }
+  }
+  return this_.MaybeComputeUnknownFieldsSize(total_size,
+                                             &this_._impl_._cached_size_);
+}
+
+void StopRecognizeReq::MergeImpl(::google::protobuf::MessageLite& to_msg,
+                            const ::google::protobuf::MessageLite& from_msg) {
+   auto* const _this =
+      static_cast<StopRecognizeReq*>(&to_msg);
+  auto& from = static_cast<const StopRecognizeReq&>(from_msg);
+  if constexpr (::_pbi::DebugHardenCheckHasBitConsistency()) {
+    from.CheckHasBitConsistency();
+  }
+  // @@protoc_insertion_point(class_specific_merge_from_start:GrpcLibrary.StopRecognizeReq)
+  ABSL_DCHECK_NE(&from, _this);
+  ::uint32_t cached_has_bits = 0;
+  (void)cached_has_bits;
+
+  cached_has_bits = from._impl_._has_bits_[0];
+  if (BatchCheckHasBit(cached_has_bits, 0x00000007U)) {
+    if (CheckHasBit(cached_has_bits, 0x00000001U)) {
+      if (!from._internal_auth().empty()) {
+        _this->_internal_set_auth(from._internal_auth());
+      } else {
+        if (_this->_impl_.auth_.IsDefault()) {
+          _this->_internal_set_auth("");
+        }
+      }
+    }
+    if (CheckHasBit(cached_has_bits, 0x00000002U)) {
+      if (from._internal_session_id() != 0) {
+        _this->_impl_.session_id_ = from._impl_.session_id_;
+      }
+    }
+    if (CheckHasBit(cached_has_bits, 0x00000004U)) {
+      if (from._internal_user_id() != 0) {
+        _this->_impl_.user_id_ = from._impl_.user_id_;
+      }
+    }
+  }
+  _this->_impl_._has_bits_[0] |= cached_has_bits;
+  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
+      from._internal_metadata_);
+}
+
+void StopRecognizeReq::CopyFrom(const StopRecognizeReq& from) {
+  // @@protoc_insertion_point(class_specific_copy_from_start:GrpcLibrary.StopRecognizeReq)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+
+void StopRecognizeReq::InternalSwap(StopRecognizeReq* PROTOBUF_RESTRICT PROTOBUF_NONNULL other) {
+  using ::std::swap;
+  auto* arena = GetArena();
+  ABSL_DCHECK_EQ(arena, other->GetArena());
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.auth_, &other->_impl_.auth_, arena);
+  ::google::protobuf::internal::memswap<
+      PROTOBUF_FIELD_OFFSET(StopRecognizeReq, _impl_.user_id_)
+      + sizeof(StopRecognizeReq::_impl_.user_id_)
+      - PROTOBUF_FIELD_OFFSET(StopRecognizeReq, _impl_.session_id_)>(
+          reinterpret_cast<char*>(&_impl_.session_id_),
+          reinterpret_cast<char*>(&other->_impl_.session_id_));
+}
+
+::google::protobuf::Metadata StopRecognizeReq::GetMetadata() const {
+  return ::google::protobuf::Message::GetMetadataImpl(GetClassData()->full());
+}
+// ===================================================================
+
+class StopRecognizeResp::_Internal {
+ public:
+  using HasBits =
+      decltype(::std::declval<StopRecognizeResp>()._impl_._has_bits_);
+  static constexpr ::int32_t kHasBitsOffset =
+      8 * PROTOBUF_FIELD_OFFSET(StopRecognizeResp, _impl_._has_bits_);
+};
+
+StopRecognizeResp::StopRecognizeResp(::google::protobuf::Arena* PROTOBUF_NULLABLE arena)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(arena, StopRecognizeResp_class_data_.base()) {
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(arena) {
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  SharedCtor(arena);
+  // @@protoc_insertion_point(arena_constructor:GrpcLibrary.StopRecognizeResp)
+}
+StopRecognizeResp::StopRecognizeResp(
+    ::google::protobuf::Arena* PROTOBUF_NULLABLE arena, const StopRecognizeResp& from)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(arena, StopRecognizeResp_class_data_.base()),
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(arena),
+#endif  // PROTOBUF_CUSTOM_VTABLE
+      _impl_(from._impl_) {
+  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
+      from._internal_metadata_);
+}
+PROTOBUF_NDEBUG_INLINE StopRecognizeResp::Impl_::Impl_(
+    [[maybe_unused]] ::google::protobuf::internal::InternalVisibility visibility,
+    [[maybe_unused]] ::google::protobuf::Arena* PROTOBUF_NULLABLE arena)
+      : _cached_size_{0} {}
+
+inline void StopRecognizeResp::SharedCtor(::_pb::Arena* PROTOBUF_NULLABLE arena) {
+  new (&_impl_) Impl_(internal_visibility(), arena);
+  ::memset(reinterpret_cast<char*>(&_impl_) +
+               offsetof(Impl_, session_id_),
+           0,
+           offsetof(Impl_, error_code_) -
+               offsetof(Impl_, session_id_) +
+               sizeof(Impl_::error_code_));
+}
+StopRecognizeResp::~StopRecognizeResp() {
+  // @@protoc_insertion_point(destructor:GrpcLibrary.StopRecognizeResp)
+  SharedDtor(*this);
+}
+inline void StopRecognizeResp::SharedDtor(MessageLite& self) {
+  StopRecognizeResp& this_ = static_cast<StopRecognizeResp&>(self);
+  if constexpr (::_pbi::DebugHardenCheckHasBitConsistency()) {
+    this_.CheckHasBitConsistency();
+  }
+  this_._internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
+  ABSL_DCHECK(this_.GetArena() == nullptr);
+  this_._impl_.~Impl_();
+}
+
+inline void* PROTOBUF_NONNULL StopRecognizeResp::PlacementNew_(
+    const void* PROTOBUF_NONNULL, void* PROTOBUF_NONNULL mem,
+    ::google::protobuf::Arena* PROTOBUF_NULLABLE arena) {
+  return ::new (mem) StopRecognizeResp(arena);
+}
+constexpr auto StopRecognizeResp::InternalNewImpl_() {
+  return ::google::protobuf::internal::MessageCreator::ZeroInit(sizeof(StopRecognizeResp),
+                                            alignof(StopRecognizeResp));
+}
+constexpr auto StopRecognizeResp::InternalGenerateClassData_() {
+  return ::google::protobuf::internal::ClassDataFull{
+      ::google::protobuf::internal::ClassData{
+          &_StopRecognizeResp_default_instance_._instance,
+          &_table_.header,
+          nullptr,  // OnDemandRegisterArenaDtor
+          nullptr,  // IsInitialized
+          &StopRecognizeResp::MergeImpl,
+          ::google::protobuf::Message::GetNewImpl<StopRecognizeResp>(),
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+          &StopRecognizeResp::SharedDtor,
+          ::google::protobuf::Message::GetClearImpl<StopRecognizeResp>(), &StopRecognizeResp::ByteSizeLong,
+              &StopRecognizeResp::_InternalSerialize,
+#endif  // PROTOBUF_CUSTOM_VTABLE
+          PROTOBUF_FIELD_OFFSET(StopRecognizeResp, _impl_._cached_size_),
+          false,
+      },
+      &StopRecognizeResp::kDescriptorMethods,
+      &descriptor_table_src_2fapi_2eproto,
+      nullptr,  // tracker
+  };
+}
+
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 const
+    ::google::protobuf::internal::ClassDataFull StopRecognizeResp_class_data_ =
+        StopRecognizeResp::InternalGenerateClassData_();
+
+PROTOBUF_ATTRIBUTE_WEAK const ::google::protobuf::internal::ClassData* PROTOBUF_NONNULL
+StopRecognizeResp::GetClassData() const {
+  ::google::protobuf::internal::PrefetchToLocalCache(&StopRecognizeResp_class_data_);
+  ::google::protobuf::internal::PrefetchToLocalCache(StopRecognizeResp_class_data_.tc_table);
+  return StopRecognizeResp_class_data_.base();
+}
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::_pbi::TcParseTable<1, 2, 0, 0, 2>
+StopRecognizeResp::_table_ = {
+  {
+    PROTOBUF_FIELD_OFFSET(StopRecognizeResp, _impl_._has_bits_),
+    0, // no _extensions_
+    2, 8,  // max_field_number, fast_idx_mask
+    offsetof(decltype(_table_), field_lookup_table),
+    4294967292,  // skipmap
+    offsetof(decltype(_table_), field_entries),
+    2,  // num_field_entries
+    0,  // num_aux_entries
+    offsetof(decltype(_table_), field_names),  // no aux_entries
+    StopRecognizeResp_class_data_.base(),
+    nullptr,  // post_loop_handler
+    ::_pbi::TcParser::GenericFallback,  // fallback
+    #ifdef PROTOBUF_PREFETCH_PARSE_TABLE
+    ::_pbi::TcParser::GetTable<::GrpcLibrary::StopRecognizeResp>(),  // to_prefetch
+    #endif  // PROTOBUF_PREFETCH_PARSE_TABLE
+  }, {{
+    // int64 session_id = 2;
+    {::_pbi::TcParser::SingularVarintNoZag1<::uint64_t, offsetof(StopRecognizeResp, _impl_.session_id_), 0>(),
+     {16, 0, 0,
+      PROTOBUF_FIELD_OFFSET(StopRecognizeResp, _impl_.session_id_)}},
+    // int32 error_code = 1;
+    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(StopRecognizeResp, _impl_.error_code_), 1>(),
+     {8, 1, 0,
+      PROTOBUF_FIELD_OFFSET(StopRecognizeResp, _impl_.error_code_)}},
+  }}, {{
+    65535, 65535
+  }}, {{
+    // int32 error_code = 1;
+    {PROTOBUF_FIELD_OFFSET(StopRecognizeResp, _impl_.error_code_), _Internal::kHasBitsOffset + 1, 0, (0 | ::_fl::kFcOptional | ::_fl::kInt32)},
+    // int64 session_id = 2;
+    {PROTOBUF_FIELD_OFFSET(StopRecognizeResp, _impl_.session_id_), _Internal::kHasBitsOffset + 0, 0, (0 | ::_fl::kFcOptional | ::_fl::kInt64)},
+  }},
+  // no aux_entries
+  {{
+  }},
+};
+PROTOBUF_NOINLINE void StopRecognizeResp::Clear() {
+// @@protoc_insertion_point(message_clear_start:GrpcLibrary.StopRecognizeResp)
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  ::uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  cached_has_bits = _impl_._has_bits_[0];
+  if (BatchCheckHasBit(cached_has_bits, 0x00000003U)) {
+    ::memset(&_impl_.session_id_, 0, static_cast<::size_t>(
+        reinterpret_cast<char*>(&_impl_.error_code_) -
+        reinterpret_cast<char*>(&_impl_.session_id_)) + sizeof(_impl_.error_code_));
+  }
+  _impl_._has_bits_.Clear();
+  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
+}
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+::uint8_t* PROTOBUF_NONNULL StopRecognizeResp::_InternalSerialize(
+    const ::google::protobuf::MessageLite& base, ::uint8_t* PROTOBUF_NONNULL target,
+    ::google::protobuf::io::EpsCopyOutputStream* PROTOBUF_NONNULL stream) {
+  const StopRecognizeResp& this_ = static_cast<const StopRecognizeResp&>(base);
+#else   // PROTOBUF_CUSTOM_VTABLE
+::uint8_t* PROTOBUF_NONNULL StopRecognizeResp::_InternalSerialize(
+    ::uint8_t* PROTOBUF_NONNULL target,
+    ::google::protobuf::io::EpsCopyOutputStream* PROTOBUF_NONNULL stream) const {
+  const StopRecognizeResp& this_ = *this;
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  if constexpr (::_pbi::DebugHardenCheckHasBitConsistency()) {
+    this_.CheckHasBitConsistency();
+  }
+  // @@protoc_insertion_point(serialize_to_array_start:GrpcLibrary.StopRecognizeResp)
+  ::uint32_t cached_has_bits = 0;
+  (void)cached_has_bits;
+
+  cached_has_bits = this_._impl_._has_bits_[0];
+  // int32 error_code = 1;
+  if (CheckHasBit(cached_has_bits, 0x00000002U)) {
+    if (this_._internal_error_code() != 0) {
+      target =
+          ::google::protobuf::internal::WireFormatLite::WriteInt32ToArrayWithField<1>(
+              stream, this_._internal_error_code(), target);
+    }
+  }
+
+  // int64 session_id = 2;
+  if (CheckHasBit(cached_has_bits, 0x00000001U)) {
+    if (this_._internal_session_id() != 0) {
+      target =
+          ::google::protobuf::internal::WireFormatLite::WriteInt64ToArrayWithField<2>(
+              stream, this_._internal_session_id(), target);
+    }
+  }
+
+  if (ABSL_PREDICT_FALSE(this_._internal_metadata_.have_unknown_fields())) {
+    target =
+        ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+            this_._internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:GrpcLibrary.StopRecognizeResp)
+  return target;
+}
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+::size_t StopRecognizeResp::ByteSizeLong(const MessageLite& base) {
+  const StopRecognizeResp& this_ = static_cast<const StopRecognizeResp&>(base);
+#else   // PROTOBUF_CUSTOM_VTABLE
+::size_t StopRecognizeResp::ByteSizeLong() const {
+  const StopRecognizeResp& this_ = *this;
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  // @@protoc_insertion_point(message_byte_size_start:GrpcLibrary.StopRecognizeResp)
+  ::size_t total_size = 0;
+
+  ::uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void)cached_has_bits;
+
+  ::_pbi::Prefetch5LinesFrom7Lines(&this_);
+  cached_has_bits = this_._impl_._has_bits_[0];
+  if (BatchCheckHasBit(cached_has_bits, 0x00000003U)) {
+    // int64 session_id = 2;
+    if (CheckHasBit(cached_has_bits, 0x00000001U)) {
+      if (this_._internal_session_id() != 0) {
+        total_size += ::_pbi::WireFormatLite::Int64SizePlusOne(
+            this_._internal_session_id());
+      }
+    }
+    // int32 error_code = 1;
+    if (CheckHasBit(cached_has_bits, 0x00000002U)) {
+      if (this_._internal_error_code() != 0) {
+        total_size += ::_pbi::WireFormatLite::Int32SizePlusOne(
+            this_._internal_error_code());
+      }
+    }
+  }
+  return this_.MaybeComputeUnknownFieldsSize(total_size,
+                                             &this_._impl_._cached_size_);
+}
+
+void StopRecognizeResp::MergeImpl(::google::protobuf::MessageLite& to_msg,
+                            const ::google::protobuf::MessageLite& from_msg) {
+   auto* const _this =
+      static_cast<StopRecognizeResp*>(&to_msg);
+  auto& from = static_cast<const StopRecognizeResp&>(from_msg);
+  if constexpr (::_pbi::DebugHardenCheckHasBitConsistency()) {
+    from.CheckHasBitConsistency();
+  }
+  // @@protoc_insertion_point(class_specific_merge_from_start:GrpcLibrary.StopRecognizeResp)
+  ABSL_DCHECK_NE(&from, _this);
+  ::uint32_t cached_has_bits = 0;
+  (void)cached_has_bits;
+
+  cached_has_bits = from._impl_._has_bits_[0];
+  if (BatchCheckHasBit(cached_has_bits, 0x00000003U)) {
+    if (CheckHasBit(cached_has_bits, 0x00000001U)) {
+      if (from._internal_session_id() != 0) {
+        _this->_impl_.session_id_ = from._impl_.session_id_;
+      }
+    }
+    if (CheckHasBit(cached_has_bits, 0x00000002U)) {
+      if (from._internal_error_code() != 0) {
+        _this->_impl_.error_code_ = from._impl_.error_code_;
+      }
+    }
+  }
+  _this->_impl_._has_bits_[0] |= cached_has_bits;
+  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
+      from._internal_metadata_);
+}
+
+void StopRecognizeResp::CopyFrom(const StopRecognizeResp& from) {
+  // @@protoc_insertion_point(class_specific_copy_from_start:GrpcLibrary.StopRecognizeResp)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+
+void StopRecognizeResp::InternalSwap(StopRecognizeResp* PROTOBUF_RESTRICT PROTOBUF_NONNULL other) {
+  using ::std::swap;
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
+  ::google::protobuf::internal::memswap<
+      PROTOBUF_FIELD_OFFSET(StopRecognizeResp, _impl_.error_code_)
+      + sizeof(StopRecognizeResp::_impl_.error_code_)
+      - PROTOBUF_FIELD_OFFSET(StopRecognizeResp, _impl_.session_id_)>(
+          reinterpret_cast<char*>(&_impl_.session_id_),
+          reinterpret_cast<char*>(&other->_impl_.session_id_));
+}
+
+::google::protobuf::Metadata StopRecognizeResp::GetMetadata() const {
   return ::google::protobuf::Message::GetMetadataImpl(GetClassData()->full());
 }
 // ===================================================================

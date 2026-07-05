@@ -29,6 +29,8 @@ static const char* GrpcService_method_names[] = {
   "/GrpcLibrary.GrpcService/RegAccount",
   "/GrpcLibrary.GrpcService/Query",
   "/GrpcLibrary.GrpcService/StopAnswer",
+  "/GrpcLibrary.GrpcService/Recognize",
+  "/GrpcLibrary.GrpcService/StopRecognize",
   "/GrpcLibrary.GrpcService/GetMessageInfo",
   "/GrpcLibrary.GrpcService/GetSession",
   "/GrpcLibrary.GrpcService/NewSession",
@@ -51,13 +53,15 @@ GrpcService::Stub::Stub(const std::shared_ptr< ::grpc::ChannelInterface>& channe
   , rpcmethod_RegAccount_(GrpcService_method_names[3], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
   , rpcmethod_Query_(GrpcService_method_names[4], options.suffix_for_stats(),::grpc::internal::RpcMethod::SERVER_STREAMING, channel)
   , rpcmethod_StopAnswer_(GrpcService_method_names[5], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_GetMessageInfo_(GrpcService_method_names[6], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_GetSession_(GrpcService_method_names[7], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_NewSession_(GrpcService_method_names[8], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_ModifySessionTitle_(GrpcService_method_names[9], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_DelSession_(GrpcService_method_names[10], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_GetSkillInfo_(GrpcService_method_names[11], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_Download_(GrpcService_method_names[12], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_Recognize_(GrpcService_method_names[6], options.suffix_for_stats(),::grpc::internal::RpcMethod::BIDI_STREAMING, channel)
+  , rpcmethod_StopRecognize_(GrpcService_method_names[7], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_GetMessageInfo_(GrpcService_method_names[8], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_GetSession_(GrpcService_method_names[9], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_NewSession_(GrpcService_method_names[10], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_ModifySessionTitle_(GrpcService_method_names[11], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_DelSession_(GrpcService_method_names[12], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_GetSkillInfo_(GrpcService_method_names[13], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_Download_(GrpcService_method_names[14], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
   {}
 
 ::grpc::Status GrpcService::Stub::Heartbeat(::grpc::ClientContext* context, const ::GrpcLibrary::Ping& request, ::GrpcLibrary::Pong* response) {
@@ -187,6 +191,45 @@ void GrpcService::Stub::async::StopAnswer(::grpc::ClientContext* context, const 
 ::grpc::ClientAsyncResponseReader< ::GrpcLibrary::StopAnswerResp>* GrpcService::Stub::AsyncStopAnswerRaw(::grpc::ClientContext* context, const ::GrpcLibrary::StopAnswerReq& request, ::grpc::CompletionQueue* cq) {
   auto* result =
     this->PrepareAsyncStopAnswerRaw(context, request, cq);
+  result->StartCall();
+  return result;
+}
+
+::grpc::ClientReaderWriter< ::GrpcLibrary::RecognizeReq, ::GrpcLibrary::RecognizeResp>* GrpcService::Stub::RecognizeRaw(::grpc::ClientContext* context) {
+  return ::grpc::internal::ClientReaderWriterFactory< ::GrpcLibrary::RecognizeReq, ::GrpcLibrary::RecognizeResp>::Create(channel_.get(), rpcmethod_Recognize_, context);
+}
+
+void GrpcService::Stub::async::Recognize(::grpc::ClientContext* context, ::grpc::ClientBidiReactor< ::GrpcLibrary::RecognizeReq,::GrpcLibrary::RecognizeResp>* reactor) {
+  ::grpc::internal::ClientCallbackReaderWriterFactory< ::GrpcLibrary::RecognizeReq,::GrpcLibrary::RecognizeResp>::Create(stub_->channel_.get(), stub_->rpcmethod_Recognize_, context, reactor);
+}
+
+::grpc::ClientAsyncReaderWriter< ::GrpcLibrary::RecognizeReq, ::GrpcLibrary::RecognizeResp>* GrpcService::Stub::AsyncRecognizeRaw(::grpc::ClientContext* context, ::grpc::CompletionQueue* cq, void* tag) {
+  return ::grpc::internal::ClientAsyncReaderWriterFactory< ::GrpcLibrary::RecognizeReq, ::GrpcLibrary::RecognizeResp>::Create(channel_.get(), cq, rpcmethod_Recognize_, context, true, tag);
+}
+
+::grpc::ClientAsyncReaderWriter< ::GrpcLibrary::RecognizeReq, ::GrpcLibrary::RecognizeResp>* GrpcService::Stub::PrepareAsyncRecognizeRaw(::grpc::ClientContext* context, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncReaderWriterFactory< ::GrpcLibrary::RecognizeReq, ::GrpcLibrary::RecognizeResp>::Create(channel_.get(), cq, rpcmethod_Recognize_, context, false, nullptr);
+}
+
+::grpc::Status GrpcService::Stub::StopRecognize(::grpc::ClientContext* context, const ::GrpcLibrary::StopRecognizeReq& request, ::GrpcLibrary::StopRecognizeResp* response) {
+  return ::grpc::internal::BlockingUnaryCall< ::GrpcLibrary::StopRecognizeReq, ::GrpcLibrary::StopRecognizeResp, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_StopRecognize_, context, request, response);
+}
+
+void GrpcService::Stub::async::StopRecognize(::grpc::ClientContext* context, const ::GrpcLibrary::StopRecognizeReq* request, ::GrpcLibrary::StopRecognizeResp* response, std::function<void(::grpc::Status)> f) {
+  ::grpc::internal::CallbackUnaryCall< ::GrpcLibrary::StopRecognizeReq, ::GrpcLibrary::StopRecognizeResp, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_StopRecognize_, context, request, response, std::move(f));
+}
+
+void GrpcService::Stub::async::StopRecognize(::grpc::ClientContext* context, const ::GrpcLibrary::StopRecognizeReq* request, ::GrpcLibrary::StopRecognizeResp* response, ::grpc::ClientUnaryReactor* reactor) {
+  ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_StopRecognize_, context, request, response, reactor);
+}
+
+::grpc::ClientAsyncResponseReader< ::GrpcLibrary::StopRecognizeResp>* GrpcService::Stub::PrepareAsyncStopRecognizeRaw(::grpc::ClientContext* context, const ::GrpcLibrary::StopRecognizeReq& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncResponseReaderHelper::Create< ::GrpcLibrary::StopRecognizeResp, ::GrpcLibrary::StopRecognizeReq, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), cq, rpcmethod_StopRecognize_, context, request);
+}
+
+::grpc::ClientAsyncResponseReader< ::GrpcLibrary::StopRecognizeResp>* GrpcService::Stub::AsyncStopRecognizeRaw(::grpc::ClientContext* context, const ::GrpcLibrary::StopRecognizeReq& request, ::grpc::CompletionQueue* cq) {
+  auto* result =
+    this->PrepareAsyncStopRecognizeRaw(context, request, cq);
   result->StartCall();
   return result;
 }
@@ -415,6 +458,26 @@ GrpcService::Service::Service() {
              }, this)));
   AddMethod(new ::grpc::internal::RpcServiceMethod(
       GrpcService_method_names[6],
+      ::grpc::internal::RpcMethod::BIDI_STREAMING,
+      new ::grpc::internal::BidiStreamingHandler< GrpcService::Service, ::GrpcLibrary::RecognizeReq, ::GrpcLibrary::RecognizeResp>(
+          [](GrpcService::Service* service,
+             ::grpc::ServerContext* ctx,
+             ::grpc::ServerReaderWriter<::GrpcLibrary::RecognizeResp,
+             ::GrpcLibrary::RecognizeReq>* stream) {
+               return service->Recognize(ctx, stream);
+             }, this)));
+  AddMethod(new ::grpc::internal::RpcServiceMethod(
+      GrpcService_method_names[7],
+      ::grpc::internal::RpcMethod::NORMAL_RPC,
+      new ::grpc::internal::RpcMethodHandler< GrpcService::Service, ::GrpcLibrary::StopRecognizeReq, ::GrpcLibrary::StopRecognizeResp, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
+          [](GrpcService::Service* service,
+             ::grpc::ServerContext* ctx,
+             const ::GrpcLibrary::StopRecognizeReq* req,
+             ::GrpcLibrary::StopRecognizeResp* resp) {
+               return service->StopRecognize(ctx, req, resp);
+             }, this)));
+  AddMethod(new ::grpc::internal::RpcServiceMethod(
+      GrpcService_method_names[8],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
       new ::grpc::internal::RpcMethodHandler< GrpcService::Service, ::GrpcLibrary::GetMessageInfoReq, ::GrpcLibrary::GetMessageInfoResp, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
           [](GrpcService::Service* service,
@@ -424,7 +487,7 @@ GrpcService::Service::Service() {
                return service->GetMessageInfo(ctx, req, resp);
              }, this)));
   AddMethod(new ::grpc::internal::RpcServiceMethod(
-      GrpcService_method_names[7],
+      GrpcService_method_names[9],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
       new ::grpc::internal::RpcMethodHandler< GrpcService::Service, ::GrpcLibrary::GetSessionReq, ::GrpcLibrary::GetSessionResp, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
           [](GrpcService::Service* service,
@@ -434,7 +497,7 @@ GrpcService::Service::Service() {
                return service->GetSession(ctx, req, resp);
              }, this)));
   AddMethod(new ::grpc::internal::RpcServiceMethod(
-      GrpcService_method_names[8],
+      GrpcService_method_names[10],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
       new ::grpc::internal::RpcMethodHandler< GrpcService::Service, ::GrpcLibrary::NewSessionReq, ::GrpcLibrary::NewSessionResp, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
           [](GrpcService::Service* service,
@@ -444,7 +507,7 @@ GrpcService::Service::Service() {
                return service->NewSession(ctx, req, resp);
              }, this)));
   AddMethod(new ::grpc::internal::RpcServiceMethod(
-      GrpcService_method_names[9],
+      GrpcService_method_names[11],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
       new ::grpc::internal::RpcMethodHandler< GrpcService::Service, ::GrpcLibrary::ModifySessionTitleReq, ::GrpcLibrary::ModifySessionTitleResp, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
           [](GrpcService::Service* service,
@@ -454,7 +517,7 @@ GrpcService::Service::Service() {
                return service->ModifySessionTitle(ctx, req, resp);
              }, this)));
   AddMethod(new ::grpc::internal::RpcServiceMethod(
-      GrpcService_method_names[10],
+      GrpcService_method_names[12],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
       new ::grpc::internal::RpcMethodHandler< GrpcService::Service, ::GrpcLibrary::DelSessionReq, ::GrpcLibrary::DelSessionResp, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
           [](GrpcService::Service* service,
@@ -464,7 +527,7 @@ GrpcService::Service::Service() {
                return service->DelSession(ctx, req, resp);
              }, this)));
   AddMethod(new ::grpc::internal::RpcServiceMethod(
-      GrpcService_method_names[11],
+      GrpcService_method_names[13],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
       new ::grpc::internal::RpcMethodHandler< GrpcService::Service, ::GrpcLibrary::GetSkillInfoReq, ::GrpcLibrary::GetSkillInfoResp, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
           [](GrpcService::Service* service,
@@ -474,7 +537,7 @@ GrpcService::Service::Service() {
                return service->GetSkillInfo(ctx, req, resp);
              }, this)));
   AddMethod(new ::grpc::internal::RpcServiceMethod(
-      GrpcService_method_names[12],
+      GrpcService_method_names[14],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
       new ::grpc::internal::RpcMethodHandler< GrpcService::Service, ::GrpcLibrary::DownloadReq, ::GrpcLibrary::DownloadResp, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
           [](GrpcService::Service* service,
@@ -524,6 +587,19 @@ GrpcService::Service::~Service() {
 }
 
 ::grpc::Status GrpcService::Service::StopAnswer(::grpc::ServerContext* context, const ::GrpcLibrary::StopAnswerReq* request, ::GrpcLibrary::StopAnswerResp* response) {
+  (void) context;
+  (void) request;
+  (void) response;
+  return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+}
+
+::grpc::Status GrpcService::Service::Recognize(::grpc::ServerContext* context, ::grpc::ServerReaderWriter< ::GrpcLibrary::RecognizeResp, ::GrpcLibrary::RecognizeReq>* stream) {
+  (void) context;
+  (void) stream;
+  return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+}
+
+::grpc::Status GrpcService::Service::StopRecognize(::grpc::ServerContext* context, const ::GrpcLibrary::StopRecognizeReq* request, ::GrpcLibrary::StopRecognizeResp* response) {
   (void) context;
   (void) request;
   (void) response;

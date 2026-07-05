@@ -8,6 +8,8 @@ service GrpcService {
     rpc RegAccount (RegAccountReq) returns (RegAccountResp) {}
     rpc Query (QueryReq) returns (stream QueryResp) {}
     rpc StopAnswer (StopAnswerReq) returns (StopAnswerResp) {}
+    rpc Recognize(stream RecognizeReq) returns (stream RecognizeResp) {}
+    rpc StopRecognize (StopRecognizeReq) returns (StopRecognizeResp) {}
     rpc GetMessageInfo (GetMessageInfoReq) returns (GetMessageInfoResp) {}
     rpc GetSession (GetSessionReq) returns (GetSessionResp) {}
     rpc NewSession (NewSessionReq) returns (NewSessionResp) {}
@@ -81,6 +83,35 @@ message ContextParam {
     string prompt = 23;
 }
 
+message RecognitionParam {
+    int32 n_threads = 1;
+    int32 n_max_text_ctx = 2;
+    int32 offset_ms = 3;
+    int32 duration_ms = 4;
+    bool translate = 5;
+    bool detect_language = 6;
+    string language = 7;
+    bool no_ctx = 8;
+    bool no_timestamps = 9;
+    bool single_segment = 10;
+    bool print_special = 11;
+    bool print_progress = 12;
+    bool print_realtime = 13;
+    bool print_timestamps = 14;
+    bool carry_initial_prompt = 15;
+    string initial_prompt = 16;
+    string suppress_regex = 17;
+    bool suppress_blank = 18;
+    bool suppress_nst = 19;
+    float temperature = 20;
+    float temperature_inc = 21;
+    float max_initial_ts = 22;
+    float length_penalty = 23;
+    float entropy_thold = 24;
+    float logprob_thold = 25;
+    float no_speech_thold = 26;
+}
+
 message Ping {
     int64 timestamp = 1;
 }
@@ -148,6 +179,34 @@ message StopAnswerReq {
 }
 
 message StopAnswerResp {
+    int32 error_code = 1;
+    int64 session_id = 2;
+}
+
+message RecognizeReq {
+    string ctx_id = 1;
+    int64 session_id = 2;
+    oneof request_type {
+        RecognitionParam param = 3;
+        bytes audio_chunk = 4;
+    }
+}
+
+message RecognizeResp {
+    int32 error_code = 1;
+    int64 session_id = 2;
+    string transcript = 3;
+    bool is_finished = 4;
+    double confidence = 5;
+}
+
+message StopRecognizeReq {
+    int64 session_id = 1;
+    int64 user_id = 2;
+    string auth = 3;
+}
+
+message StopRecognizeResp {
     int32 error_code = 1;
     int64 session_id = 2;
 }

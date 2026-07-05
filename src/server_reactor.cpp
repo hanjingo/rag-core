@@ -10,6 +10,7 @@
 #include "auth.h"
 #include "account_mgr.h"
 #include "llm.h"
+#include "asr.h"
 #include "router.h"
 #include "watch_dog.h"
 #include "sync.h"
@@ -207,4 +208,254 @@ void QueryReactor::_push()
                   resp.is_finished(),
                   resp.error_code());
     }
+}
+
+// ------------------------------------------ ReocgnizeReactor -------------------------------
+RecognizeReactor::RecognizeReactor(grpc::CallbackServerContext *ctx)
+    : _ctx(ctx)
+    , _session_id(0)
+    , _w_queue{conf::instance().sync_write_queue_size()}
+    , _is_registered(false)
+    , _is_cancelled(false)
+    , _is_writing(false)
+{
+    LOG_DEBUG("RecognizeReactor entry");
+
+    // start reading the first request
+    StartRead(&_req);
+}
+
+RecognizeReactor::~RecognizeReactor()
+{
+    if(_is_registered.load() && _session_id != 0)
+    {
+        recognize_reactor_mgr::instance().unregister_recognize(_session_id);
+    }
+    LOG_DEBUG("RecognizeReactor exit for session_id: {}", _session_id);
+}
+
+void RecognizeReactor::_ensure_registered(int64_t session_id)
+{
+    if(_is_registered.load())
+        return;
+
+    std::lock_guard<std::mutex> lock(_mu);
+    if(_is_registered.load())
+        return;
+
+    _session_id = session_id;
+    recognize_reactor_mgr::instance().register_recognize(_session_id, this);
+    _is_registered.store(true);
+    LOG_DEBUG("Registered RecognizeReactor with session_id: {}", _session_id);
+}
+
+void RecognizeReactor::OnReadDone(bool ok)
+{
+    LOG_DEBUG("OnReadDone called with ok={}, session_id: {}", ok, _session_id);
+
+    if(!ok)
+    {
+        LOG_DEBUG("Read done with !ok, finishing");
+        Finish(grpc::Status::OK);
+        return;
+    }
+
+    if(_req.session_id() != 0 && !_is_registered.load())
+    {
+        _ensure_registered(_req.session_id());
+    }
+
+    _process(_req);
+
+    StartRead(&_req);
+}
+
+void RecognizeReactor::OnWriteDone(bool ok)
+{
+    LOG_DEBUG("OnWriteDone called with ok={}, session_id: {}", ok, _session_id);
+    _is_writing.store(false);
+
+    if(!ok)
+    {
+        LOG_WARN("Write failed for session_id: {}", _session_id);
+        _is_cancelled.store(true);
+
+        ::GrpcLibrary::RecognizeResp resp;
+        while(_w_queue.try_dequeue(resp))
+        {
+        }
+
+        Finish(grpc::Status(grpc::StatusCode::ABORTED, "Client disconnected"));
+        return;
+    }
+
+    _flush();
+}
+
+void RecognizeReactor::OnDone()
+{
+    LOG_DEBUG("OnDone called for session_id: {}", _session_id);
+    delete this;
+}
+
+void RecognizeReactor::OnCancel()
+{
+    LOG_INFO("OnCancel called for session_id: {}", _session_id);
+    _is_cancelled.store(true);
+    _is_writing.store(false);
+
+    ::GrpcLibrary::RecognizeResp resp;
+    while(_w_queue.try_dequeue(resp))
+    {
+    }
+}
+
+void RecognizeReactor::Stop()
+{
+    LOG_INFO("RecognizeReactor {} was stopped by user", _session_id);
+    _is_cancelled.store(true);
+    _is_writing.store(false);
+
+    ::GrpcLibrary::RecognizeResp resp;
+    while(_w_queue.try_dequeue(resp))
+    {
+    }
+}
+
+void RecognizeReactor::_process(const ::GrpcLibrary::RecognizeReq &req)
+{
+    // check if registered
+    if(!_is_registered.load() && req.session_id() != 0)
+    {
+        _ensure_registered(req.session_id());
+    }
+
+    // Check if cancelled
+    if(_is_cancelled.load())
+    {
+        LOG_DEBUG("Process cancelled for session_id: {}", _session_id);
+        return;
+    }
+
+    LOG_DEBUG("RecognizeReactor::_process: ctx_id: {}, has_audio_chunk: {}, "
+              "has_param: {}, _session_id: {}",
+              req.ctx_id(),
+              req.has_audio_chunk(),
+              req.has_param(),
+              req.session_id());
+    int         err         = ERR_FAIL;
+    std::string text        = "";
+    int64_t     session_id  = req.session_id();
+    bool        is_finished = true;
+    double      confidence  = 0.0;
+
+    // ctx_id
+    auto ctx_id = req.ctx_id();
+    if(req.has_param())
+    {
+        LOG_DEBUG("RecognizeReactor::_process param: ctx_id: {}", ctx_id);
+        // full param
+        auto tmp                     = req.param();
+        _params                      = hj::asr::context::default_full_params();
+        _params.n_threads            = tmp.n_threads();
+        _params.n_max_text_ctx       = tmp.n_max_text_ctx();
+        _params.offset_ms            = tmp.offset_ms();
+        _params.duration_ms          = tmp.duration_ms();
+        _params.translate            = tmp.translate();
+        _params.detect_language      = tmp.detect_language();
+        _params.language             = "auto";
+        _params.no_context           = tmp.no_ctx();
+        _params.no_timestamps        = tmp.no_timestamps();
+        _params.single_segment       = tmp.single_segment();
+        _params.print_special        = tmp.print_special();
+        _params.print_progress       = tmp.print_progress();
+        _params.print_realtime       = tmp.print_realtime();
+        _params.print_timestamps     = tmp.print_timestamps();
+        _params.carry_initial_prompt = tmp.carry_initial_prompt();
+        _params.initial_prompt       = "";
+        _params.suppress_regex       = "";
+        _params.suppress_blank       = tmp.suppress_blank();
+        _params.suppress_nst         = tmp.suppress_nst();
+        _params.temperature          = tmp.temperature();
+        _params.temperature_inc      = tmp.temperature_inc();
+        _params.max_initial_ts       = tmp.max_initial_ts();
+        _params.length_penalty       = tmp.length_penalty();
+        _params.entropy_thold        = tmp.entropy_thold();
+        _params.logprob_thold        = tmp.logprob_thold();
+        _params.no_speech_thold      = tmp.no_speech_thold();
+
+        err         = OK;
+        is_finished = false;
+    }
+
+    if(req.has_audio_chunk())
+    {
+        LOG_DEBUG("RecognizeReactor::_process audio chunk: ctx_id: {}, "
+                  "has_audio_chunk: true, session_id: {}",
+                  ctx_id,
+                  session_id);
+        // fcm
+        auto               chunk = req.audio_chunk();
+        std::vector<float> data;
+        hj::asr::context::convert(data, chunk);
+        std::string segment;
+        auto ec = asr_mgr::instance().translate(segment, ctx_id, data, _params);
+        LOG_DEBUG("_process with ec:{}, ctx_id:{}, segment: {}",
+                  ec,
+                  ctx_id,
+                  segment);
+        if(ec != OK)
+        {
+            LOG_ERROR(
+                "asr_mgr::instance().translate failed with error code: {}",
+                ec);
+            _send(ec, session_id, "", true, 0.0);
+            return;
+        }
+
+        err         = OK;
+        text        = segment;
+        is_finished = false;
+    }
+
+    _send(err, session_id, text, is_finished, confidence);
+}
+
+void RecognizeReactor::_send(const int          error_code,
+                             const int64_t      session_id,
+                             const std::string &text,
+                             const bool         is_finished,
+                             const double       confidence)
+{
+    ::GrpcLibrary::RecognizeResp resp;
+    resp.set_error_code(error_code);
+    resp.set_session_id(session_id);
+    resp.set_transcript(text);
+    resp.set_is_finished(is_finished);
+    resp.set_confidence(confidence);
+
+    _w_queue.enqueue(resp);
+    _flush();
+}
+
+void RecognizeReactor::_flush()
+{
+    if(_is_writing.load())
+        return;
+
+    if(_is_cancelled.load())
+        return;
+
+    ::GrpcLibrary::RecognizeResp resp;
+    if(!_w_queue.try_dequeue(resp))
+        return;
+
+    _is_writing.store(true);
+    StartWrite(&resp);
+    LOG_DEBUG("RecognizeReactor::_flush: session_id: {}, transcript: {}, "
+              "is_finished: {}, error_code: {}",
+              resp.session_id(),
+              resp.transcript(),
+              resp.is_finished(),
+              resp.error_code());
 }

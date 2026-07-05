@@ -28,6 +28,14 @@ class conf
         bool             no_alloc;
     };
 
+    struct asr_ctx_config
+    {
+        std::string id;
+        std::string path;
+        bool        use_gpu;
+        int         gpu_device;
+    };
+
   public:
     conf();
     ~conf();
@@ -72,13 +80,16 @@ class conf
     int                                           llm_ctx_window_sz();
     int                                           llm_num_threads();
 
+    std::unordered_map<std::string, asr_ctx_config> asr_ctxs();
+
   private:
     void _init();
 
   private:
     hj::ini _cfg;
 
-    std::unordered_map<std::string, conf::model_config> _models;
+    std::unordered_map<std::string, conf::model_config>   _models;
+    std::unordered_map<std::string, conf::asr_ctx_config> _asr_ctxs;
 };
 
 #endif

@@ -47,4 +47,62 @@ class query_reactor_mgr
     std::mutex                                  _mu;
 };
 
+class recognize_reactor_mgr
+{
+  public:
+    static recognize_reactor_mgr &instance()
+    {
+        static recognize_reactor_mgr manager;
+        return manager;
+    }
+
+    void register_recognize(int64_t session_id, RecognizeReactor *reactor)
+    {
+        std::lock_guard<std::mutex> lock(_mu);
+        _active_recognizes[session_id] = reactor;
+    }
+
+    void unregister_recognize(int64_t session_id)
+    {
+        std::lock_guard<std::mutex> lock(_mu);
+        auto                        it = _active_recognizes.find(session_id);
+        if(it != _active_recognizes.end())
+        {
+            _active_recognizes.erase(it);
+            LOG_DEBUG("Unregistered RecognizeReactor for session_id: {}",
+                      session_id);
+        }
+    }
+
+    bool stop_recognize(int64_t session_id)
+    {
+        std::lock_guard<std::mutex> lock(_mu);
+        auto                        it = _active_recognizes.find(session_id);
+        if(it != _active_recognizes.end() && it->second != nullptr)
+        {
+            it->second->Stop();
+            return true;
+        }
+        LOG_WARN("No active RecognizeReactor found for session_id: {}",
+                 session_id);
+        return false;
+    }
+
+    RecognizeReactor *get_recognize(int64_t session_id)
+    {
+        std::lock_guard<std::mutex> lock(_mu);
+        auto                        it = _active_recognizes.find(session_id);
+        if(it != _active_recognizes.end())
+            return it->second;
+
+        LOG_WARN("No active RecognizeReactor found for session_id: {}",
+                 session_id);
+        return nullptr;
+    }
+
+  private:
+    std::unordered_map<int64_t, RecognizeReactor *> _active_recognizes;
+    std::mutex                                      _mu;
+};
+
 #endif // REACTOR_MGR_H

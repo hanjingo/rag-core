@@ -25,6 +25,7 @@
 #include "conf.h"
 #include "db_mgr.h"
 #include "llm.h"
+#include "asr.h"
 
 int main(int argc, char *argv[])
 {
@@ -150,6 +151,23 @@ int main(int argc, char *argv[])
                      param.no_alloc);
         }
         LOG_INFO("init llm model finish");
+
+        // init asr
+        auto asr_ctxs = conf::instance().asr_ctxs();
+        LOG_DEBUG("init asr ctx config num: {}", asr_ctxs.size());
+        for(const auto &ctx : asr_ctxs)
+        {
+            auto param       = asr_mgr::instance().create_ctx_params();
+            param.use_gpu    = ctx.second.use_gpu;
+            param.gpu_device = ctx.second.gpu_device;
+            asr_mgr::instance().load(ctx.second.id, ctx.second.path, param);
+            LOG_INFO("init asr ctx id:{}, path:{}, use_gpu:{}, gpu_device:{}",
+                     ctx.second.id,
+                     ctx.second.path,
+                     param.use_gpu,
+                     param.gpu_device);
+        }
+        LOG_INFO("init asr ctx finish");
 
         // run server
         auto   addr = conf::instance().server_addr();

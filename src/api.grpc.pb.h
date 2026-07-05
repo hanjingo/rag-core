@@ -80,6 +80,22 @@ class GrpcService final {
     std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::GrpcLibrary::StopAnswerResp>> PrepareAsyncStopAnswer(::grpc::ClientContext* context, const ::GrpcLibrary::StopAnswerReq& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::GrpcLibrary::StopAnswerResp>>(PrepareAsyncStopAnswerRaw(context, request, cq));
     }
+    std::unique_ptr< ::grpc::ClientReaderWriterInterface< ::GrpcLibrary::RecognizeReq, ::GrpcLibrary::RecognizeResp>> Recognize(::grpc::ClientContext* context) {
+      return std::unique_ptr< ::grpc::ClientReaderWriterInterface< ::GrpcLibrary::RecognizeReq, ::GrpcLibrary::RecognizeResp>>(RecognizeRaw(context));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncReaderWriterInterface< ::GrpcLibrary::RecognizeReq, ::GrpcLibrary::RecognizeResp>> AsyncRecognize(::grpc::ClientContext* context, ::grpc::CompletionQueue* cq, void* tag) {
+      return std::unique_ptr< ::grpc::ClientAsyncReaderWriterInterface< ::GrpcLibrary::RecognizeReq, ::GrpcLibrary::RecognizeResp>>(AsyncRecognizeRaw(context, cq, tag));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncReaderWriterInterface< ::GrpcLibrary::RecognizeReq, ::GrpcLibrary::RecognizeResp>> PrepareAsyncRecognize(::grpc::ClientContext* context, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncReaderWriterInterface< ::GrpcLibrary::RecognizeReq, ::GrpcLibrary::RecognizeResp>>(PrepareAsyncRecognizeRaw(context, cq));
+    }
+    virtual ::grpc::Status StopRecognize(::grpc::ClientContext* context, const ::GrpcLibrary::StopRecognizeReq& request, ::GrpcLibrary::StopRecognizeResp* response) = 0;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::GrpcLibrary::StopRecognizeResp>> AsyncStopRecognize(::grpc::ClientContext* context, const ::GrpcLibrary::StopRecognizeReq& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::GrpcLibrary::StopRecognizeResp>>(AsyncStopRecognizeRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::GrpcLibrary::StopRecognizeResp>> PrepareAsyncStopRecognize(::grpc::ClientContext* context, const ::GrpcLibrary::StopRecognizeReq& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::GrpcLibrary::StopRecognizeResp>>(PrepareAsyncStopRecognizeRaw(context, request, cq));
+    }
     virtual ::grpc::Status GetMessageInfo(::grpc::ClientContext* context, const ::GrpcLibrary::GetMessageInfoReq& request, ::GrpcLibrary::GetMessageInfoResp* response) = 0;
     std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::GrpcLibrary::GetMessageInfoResp>> AsyncGetMessageInfo(::grpc::ClientContext* context, const ::GrpcLibrary::GetMessageInfoReq& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::GrpcLibrary::GetMessageInfoResp>>(AsyncGetMessageInfoRaw(context, request, cq));
@@ -143,6 +159,9 @@ class GrpcService final {
       virtual void Query(::grpc::ClientContext* context, const ::GrpcLibrary::QueryReq* request, ::grpc::ClientReadReactor< ::GrpcLibrary::QueryResp>* reactor) = 0;
       virtual void StopAnswer(::grpc::ClientContext* context, const ::GrpcLibrary::StopAnswerReq* request, ::GrpcLibrary::StopAnswerResp* response, std::function<void(::grpc::Status)>) = 0;
       virtual void StopAnswer(::grpc::ClientContext* context, const ::GrpcLibrary::StopAnswerReq* request, ::GrpcLibrary::StopAnswerResp* response, ::grpc::ClientUnaryReactor* reactor) = 0;
+      virtual void Recognize(::grpc::ClientContext* context, ::grpc::ClientBidiReactor< ::GrpcLibrary::RecognizeReq,::GrpcLibrary::RecognizeResp>* reactor) = 0;
+      virtual void StopRecognize(::grpc::ClientContext* context, const ::GrpcLibrary::StopRecognizeReq* request, ::GrpcLibrary::StopRecognizeResp* response, std::function<void(::grpc::Status)>) = 0;
+      virtual void StopRecognize(::grpc::ClientContext* context, const ::GrpcLibrary::StopRecognizeReq* request, ::GrpcLibrary::StopRecognizeResp* response, ::grpc::ClientUnaryReactor* reactor) = 0;
       virtual void GetMessageInfo(::grpc::ClientContext* context, const ::GrpcLibrary::GetMessageInfoReq* request, ::GrpcLibrary::GetMessageInfoResp* response, std::function<void(::grpc::Status)>) = 0;
       virtual void GetMessageInfo(::grpc::ClientContext* context, const ::GrpcLibrary::GetMessageInfoReq* request, ::GrpcLibrary::GetMessageInfoResp* response, ::grpc::ClientUnaryReactor* reactor) = 0;
       virtual void GetSession(::grpc::ClientContext* context, const ::GrpcLibrary::GetSessionReq* request, ::GrpcLibrary::GetSessionResp* response, std::function<void(::grpc::Status)>) = 0;
@@ -175,6 +194,11 @@ class GrpcService final {
     virtual ::grpc::ClientAsyncReaderInterface< ::GrpcLibrary::QueryResp>* PrepareAsyncQueryRaw(::grpc::ClientContext* context, const ::GrpcLibrary::QueryReq& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::GrpcLibrary::StopAnswerResp>* AsyncStopAnswerRaw(::grpc::ClientContext* context, const ::GrpcLibrary::StopAnswerReq& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::GrpcLibrary::StopAnswerResp>* PrepareAsyncStopAnswerRaw(::grpc::ClientContext* context, const ::GrpcLibrary::StopAnswerReq& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientReaderWriterInterface< ::GrpcLibrary::RecognizeReq, ::GrpcLibrary::RecognizeResp>* RecognizeRaw(::grpc::ClientContext* context) = 0;
+    virtual ::grpc::ClientAsyncReaderWriterInterface< ::GrpcLibrary::RecognizeReq, ::GrpcLibrary::RecognizeResp>* AsyncRecognizeRaw(::grpc::ClientContext* context, ::grpc::CompletionQueue* cq, void* tag) = 0;
+    virtual ::grpc::ClientAsyncReaderWriterInterface< ::GrpcLibrary::RecognizeReq, ::GrpcLibrary::RecognizeResp>* PrepareAsyncRecognizeRaw(::grpc::ClientContext* context, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::GrpcLibrary::StopRecognizeResp>* AsyncStopRecognizeRaw(::grpc::ClientContext* context, const ::GrpcLibrary::StopRecognizeReq& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::GrpcLibrary::StopRecognizeResp>* PrepareAsyncStopRecognizeRaw(::grpc::ClientContext* context, const ::GrpcLibrary::StopRecognizeReq& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::GrpcLibrary::GetMessageInfoResp>* AsyncGetMessageInfoRaw(::grpc::ClientContext* context, const ::GrpcLibrary::GetMessageInfoReq& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::GrpcLibrary::GetMessageInfoResp>* PrepareAsyncGetMessageInfoRaw(::grpc::ClientContext* context, const ::GrpcLibrary::GetMessageInfoReq& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::GrpcLibrary::GetSessionResp>* AsyncGetSessionRaw(::grpc::ClientContext* context, const ::GrpcLibrary::GetSessionReq& request, ::grpc::CompletionQueue* cq) = 0;
@@ -236,6 +260,22 @@ class GrpcService final {
     }
     std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::GrpcLibrary::StopAnswerResp>> PrepareAsyncStopAnswer(::grpc::ClientContext* context, const ::GrpcLibrary::StopAnswerReq& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::GrpcLibrary::StopAnswerResp>>(PrepareAsyncStopAnswerRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientReaderWriter< ::GrpcLibrary::RecognizeReq, ::GrpcLibrary::RecognizeResp>> Recognize(::grpc::ClientContext* context) {
+      return std::unique_ptr< ::grpc::ClientReaderWriter< ::GrpcLibrary::RecognizeReq, ::GrpcLibrary::RecognizeResp>>(RecognizeRaw(context));
+    }
+    std::unique_ptr<  ::grpc::ClientAsyncReaderWriter< ::GrpcLibrary::RecognizeReq, ::GrpcLibrary::RecognizeResp>> AsyncRecognize(::grpc::ClientContext* context, ::grpc::CompletionQueue* cq, void* tag) {
+      return std::unique_ptr< ::grpc::ClientAsyncReaderWriter< ::GrpcLibrary::RecognizeReq, ::GrpcLibrary::RecognizeResp>>(AsyncRecognizeRaw(context, cq, tag));
+    }
+    std::unique_ptr<  ::grpc::ClientAsyncReaderWriter< ::GrpcLibrary::RecognizeReq, ::GrpcLibrary::RecognizeResp>> PrepareAsyncRecognize(::grpc::ClientContext* context, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncReaderWriter< ::GrpcLibrary::RecognizeReq, ::GrpcLibrary::RecognizeResp>>(PrepareAsyncRecognizeRaw(context, cq));
+    }
+    ::grpc::Status StopRecognize(::grpc::ClientContext* context, const ::GrpcLibrary::StopRecognizeReq& request, ::GrpcLibrary::StopRecognizeResp* response) override;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::GrpcLibrary::StopRecognizeResp>> AsyncStopRecognize(::grpc::ClientContext* context, const ::GrpcLibrary::StopRecognizeReq& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::GrpcLibrary::StopRecognizeResp>>(AsyncStopRecognizeRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::GrpcLibrary::StopRecognizeResp>> PrepareAsyncStopRecognize(::grpc::ClientContext* context, const ::GrpcLibrary::StopRecognizeReq& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::GrpcLibrary::StopRecognizeResp>>(PrepareAsyncStopRecognizeRaw(context, request, cq));
     }
     ::grpc::Status GetMessageInfo(::grpc::ClientContext* context, const ::GrpcLibrary::GetMessageInfoReq& request, ::GrpcLibrary::GetMessageInfoResp* response) override;
     std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::GrpcLibrary::GetMessageInfoResp>> AsyncGetMessageInfo(::grpc::ClientContext* context, const ::GrpcLibrary::GetMessageInfoReq& request, ::grpc::CompletionQueue* cq) {
@@ -300,6 +340,9 @@ class GrpcService final {
       void Query(::grpc::ClientContext* context, const ::GrpcLibrary::QueryReq* request, ::grpc::ClientReadReactor< ::GrpcLibrary::QueryResp>* reactor) override;
       void StopAnswer(::grpc::ClientContext* context, const ::GrpcLibrary::StopAnswerReq* request, ::GrpcLibrary::StopAnswerResp* response, std::function<void(::grpc::Status)>) override;
       void StopAnswer(::grpc::ClientContext* context, const ::GrpcLibrary::StopAnswerReq* request, ::GrpcLibrary::StopAnswerResp* response, ::grpc::ClientUnaryReactor* reactor) override;
+      void Recognize(::grpc::ClientContext* context, ::grpc::ClientBidiReactor< ::GrpcLibrary::RecognizeReq,::GrpcLibrary::RecognizeResp>* reactor) override;
+      void StopRecognize(::grpc::ClientContext* context, const ::GrpcLibrary::StopRecognizeReq* request, ::GrpcLibrary::StopRecognizeResp* response, std::function<void(::grpc::Status)>) override;
+      void StopRecognize(::grpc::ClientContext* context, const ::GrpcLibrary::StopRecognizeReq* request, ::GrpcLibrary::StopRecognizeResp* response, ::grpc::ClientUnaryReactor* reactor) override;
       void GetMessageInfo(::grpc::ClientContext* context, const ::GrpcLibrary::GetMessageInfoReq* request, ::GrpcLibrary::GetMessageInfoResp* response, std::function<void(::grpc::Status)>) override;
       void GetMessageInfo(::grpc::ClientContext* context, const ::GrpcLibrary::GetMessageInfoReq* request, ::GrpcLibrary::GetMessageInfoResp* response, ::grpc::ClientUnaryReactor* reactor) override;
       void GetSession(::grpc::ClientContext* context, const ::GrpcLibrary::GetSessionReq* request, ::GrpcLibrary::GetSessionResp* response, std::function<void(::grpc::Status)>) override;
@@ -338,6 +381,11 @@ class GrpcService final {
     ::grpc::ClientAsyncReader< ::GrpcLibrary::QueryResp>* PrepareAsyncQueryRaw(::grpc::ClientContext* context, const ::GrpcLibrary::QueryReq& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::GrpcLibrary::StopAnswerResp>* AsyncStopAnswerRaw(::grpc::ClientContext* context, const ::GrpcLibrary::StopAnswerReq& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::GrpcLibrary::StopAnswerResp>* PrepareAsyncStopAnswerRaw(::grpc::ClientContext* context, const ::GrpcLibrary::StopAnswerReq& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientReaderWriter< ::GrpcLibrary::RecognizeReq, ::GrpcLibrary::RecognizeResp>* RecognizeRaw(::grpc::ClientContext* context) override;
+    ::grpc::ClientAsyncReaderWriter< ::GrpcLibrary::RecognizeReq, ::GrpcLibrary::RecognizeResp>* AsyncRecognizeRaw(::grpc::ClientContext* context, ::grpc::CompletionQueue* cq, void* tag) override;
+    ::grpc::ClientAsyncReaderWriter< ::GrpcLibrary::RecognizeReq, ::GrpcLibrary::RecognizeResp>* PrepareAsyncRecognizeRaw(::grpc::ClientContext* context, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::GrpcLibrary::StopRecognizeResp>* AsyncStopRecognizeRaw(::grpc::ClientContext* context, const ::GrpcLibrary::StopRecognizeReq& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::GrpcLibrary::StopRecognizeResp>* PrepareAsyncStopRecognizeRaw(::grpc::ClientContext* context, const ::GrpcLibrary::StopRecognizeReq& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::GrpcLibrary::GetMessageInfoResp>* AsyncGetMessageInfoRaw(::grpc::ClientContext* context, const ::GrpcLibrary::GetMessageInfoReq& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::GrpcLibrary::GetMessageInfoResp>* PrepareAsyncGetMessageInfoRaw(::grpc::ClientContext* context, const ::GrpcLibrary::GetMessageInfoReq& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::GrpcLibrary::GetSessionResp>* AsyncGetSessionRaw(::grpc::ClientContext* context, const ::GrpcLibrary::GetSessionReq& request, ::grpc::CompletionQueue* cq) override;
@@ -358,6 +406,8 @@ class GrpcService final {
     const ::grpc::internal::RpcMethod rpcmethod_RegAccount_;
     const ::grpc::internal::RpcMethod rpcmethod_Query_;
     const ::grpc::internal::RpcMethod rpcmethod_StopAnswer_;
+    const ::grpc::internal::RpcMethod rpcmethod_Recognize_;
+    const ::grpc::internal::RpcMethod rpcmethod_StopRecognize_;
     const ::grpc::internal::RpcMethod rpcmethod_GetMessageInfo_;
     const ::grpc::internal::RpcMethod rpcmethod_GetSession_;
     const ::grpc::internal::RpcMethod rpcmethod_NewSession_;
@@ -378,6 +428,8 @@ class GrpcService final {
     virtual ::grpc::Status RegAccount(::grpc::ServerContext* context, const ::GrpcLibrary::RegAccountReq* request, ::GrpcLibrary::RegAccountResp* response);
     virtual ::grpc::Status Query(::grpc::ServerContext* context, const ::GrpcLibrary::QueryReq* request, ::grpc::ServerWriter< ::GrpcLibrary::QueryResp>* writer);
     virtual ::grpc::Status StopAnswer(::grpc::ServerContext* context, const ::GrpcLibrary::StopAnswerReq* request, ::GrpcLibrary::StopAnswerResp* response);
+    virtual ::grpc::Status Recognize(::grpc::ServerContext* context, ::grpc::ServerReaderWriter< ::GrpcLibrary::RecognizeResp, ::GrpcLibrary::RecognizeReq>* stream);
+    virtual ::grpc::Status StopRecognize(::grpc::ServerContext* context, const ::GrpcLibrary::StopRecognizeReq* request, ::GrpcLibrary::StopRecognizeResp* response);
     virtual ::grpc::Status GetMessageInfo(::grpc::ServerContext* context, const ::GrpcLibrary::GetMessageInfoReq* request, ::GrpcLibrary::GetMessageInfoResp* response);
     virtual ::grpc::Status GetSession(::grpc::ServerContext* context, const ::GrpcLibrary::GetSessionReq* request, ::GrpcLibrary::GetSessionResp* response);
     virtual ::grpc::Status NewSession(::grpc::ServerContext* context, const ::GrpcLibrary::NewSessionReq* request, ::GrpcLibrary::NewSessionResp* response);
@@ -507,12 +559,52 @@ class GrpcService final {
     }
   };
   template <class BaseClass>
+  class WithAsyncMethod_Recognize : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithAsyncMethod_Recognize() {
+      ::grpc::Service::MarkMethodAsync(6);
+    }
+    ~WithAsyncMethod_Recognize() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status Recognize(::grpc::ServerContext* /*context*/, ::grpc::ServerReaderWriter< ::GrpcLibrary::RecognizeResp, ::GrpcLibrary::RecognizeReq>* /*stream*/)  override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestRecognize(::grpc::ServerContext* context, ::grpc::ServerAsyncReaderWriter< ::GrpcLibrary::RecognizeResp, ::GrpcLibrary::RecognizeReq>* stream, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncBidiStreaming(6, context, stream, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
+  class WithAsyncMethod_StopRecognize : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithAsyncMethod_StopRecognize() {
+      ::grpc::Service::MarkMethodAsync(7);
+    }
+    ~WithAsyncMethod_StopRecognize() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status StopRecognize(::grpc::ServerContext* /*context*/, const ::GrpcLibrary::StopRecognizeReq* /*request*/, ::GrpcLibrary::StopRecognizeResp* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestStopRecognize(::grpc::ServerContext* context, ::GrpcLibrary::StopRecognizeReq* request, ::grpc::ServerAsyncResponseWriter< ::GrpcLibrary::StopRecognizeResp>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(7, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
   class WithAsyncMethod_GetMessageInfo : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithAsyncMethod_GetMessageInfo() {
-      ::grpc::Service::MarkMethodAsync(6);
+      ::grpc::Service::MarkMethodAsync(8);
     }
     ~WithAsyncMethod_GetMessageInfo() override {
       BaseClassMustBeDerivedFromService(this);
@@ -523,7 +615,7 @@ class GrpcService final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestGetMessageInfo(::grpc::ServerContext* context, ::GrpcLibrary::GetMessageInfoReq* request, ::grpc::ServerAsyncResponseWriter< ::GrpcLibrary::GetMessageInfoResp>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(6, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(8, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -532,7 +624,7 @@ class GrpcService final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithAsyncMethod_GetSession() {
-      ::grpc::Service::MarkMethodAsync(7);
+      ::grpc::Service::MarkMethodAsync(9);
     }
     ~WithAsyncMethod_GetSession() override {
       BaseClassMustBeDerivedFromService(this);
@@ -543,7 +635,7 @@ class GrpcService final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestGetSession(::grpc::ServerContext* context, ::GrpcLibrary::GetSessionReq* request, ::grpc::ServerAsyncResponseWriter< ::GrpcLibrary::GetSessionResp>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(7, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(9, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -552,7 +644,7 @@ class GrpcService final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithAsyncMethod_NewSession() {
-      ::grpc::Service::MarkMethodAsync(8);
+      ::grpc::Service::MarkMethodAsync(10);
     }
     ~WithAsyncMethod_NewSession() override {
       BaseClassMustBeDerivedFromService(this);
@@ -563,7 +655,7 @@ class GrpcService final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestNewSession(::grpc::ServerContext* context, ::GrpcLibrary::NewSessionReq* request, ::grpc::ServerAsyncResponseWriter< ::GrpcLibrary::NewSessionResp>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(8, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(10, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -572,7 +664,7 @@ class GrpcService final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithAsyncMethod_ModifySessionTitle() {
-      ::grpc::Service::MarkMethodAsync(9);
+      ::grpc::Service::MarkMethodAsync(11);
     }
     ~WithAsyncMethod_ModifySessionTitle() override {
       BaseClassMustBeDerivedFromService(this);
@@ -583,7 +675,7 @@ class GrpcService final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestModifySessionTitle(::grpc::ServerContext* context, ::GrpcLibrary::ModifySessionTitleReq* request, ::grpc::ServerAsyncResponseWriter< ::GrpcLibrary::ModifySessionTitleResp>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(9, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(11, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -592,7 +684,7 @@ class GrpcService final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithAsyncMethod_DelSession() {
-      ::grpc::Service::MarkMethodAsync(10);
+      ::grpc::Service::MarkMethodAsync(12);
     }
     ~WithAsyncMethod_DelSession() override {
       BaseClassMustBeDerivedFromService(this);
@@ -603,7 +695,7 @@ class GrpcService final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestDelSession(::grpc::ServerContext* context, ::GrpcLibrary::DelSessionReq* request, ::grpc::ServerAsyncResponseWriter< ::GrpcLibrary::DelSessionResp>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(10, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(12, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -612,7 +704,7 @@ class GrpcService final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithAsyncMethod_GetSkillInfo() {
-      ::grpc::Service::MarkMethodAsync(11);
+      ::grpc::Service::MarkMethodAsync(13);
     }
     ~WithAsyncMethod_GetSkillInfo() override {
       BaseClassMustBeDerivedFromService(this);
@@ -623,7 +715,7 @@ class GrpcService final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestGetSkillInfo(::grpc::ServerContext* context, ::GrpcLibrary::GetSkillInfoReq* request, ::grpc::ServerAsyncResponseWriter< ::GrpcLibrary::GetSkillInfoResp>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(11, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(13, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -632,7 +724,7 @@ class GrpcService final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithAsyncMethod_Download() {
-      ::grpc::Service::MarkMethodAsync(12);
+      ::grpc::Service::MarkMethodAsync(14);
     }
     ~WithAsyncMethod_Download() override {
       BaseClassMustBeDerivedFromService(this);
@@ -643,10 +735,10 @@ class GrpcService final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestDownload(::grpc::ServerContext* context, ::GrpcLibrary::DownloadReq* request, ::grpc::ServerAsyncResponseWriter< ::GrpcLibrary::DownloadResp>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(12, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(14, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
-  typedef WithAsyncMethod_Heartbeat<WithAsyncMethod_Login<WithAsyncMethod_Logout<WithAsyncMethod_RegAccount<WithAsyncMethod_Query<WithAsyncMethod_StopAnswer<WithAsyncMethod_GetMessageInfo<WithAsyncMethod_GetSession<WithAsyncMethod_NewSession<WithAsyncMethod_ModifySessionTitle<WithAsyncMethod_DelSession<WithAsyncMethod_GetSkillInfo<WithAsyncMethod_Download<Service > > > > > > > > > > > > > AsyncService;
+  typedef WithAsyncMethod_Heartbeat<WithAsyncMethod_Login<WithAsyncMethod_Logout<WithAsyncMethod_RegAccount<WithAsyncMethod_Query<WithAsyncMethod_StopAnswer<WithAsyncMethod_Recognize<WithAsyncMethod_StopRecognize<WithAsyncMethod_GetMessageInfo<WithAsyncMethod_GetSession<WithAsyncMethod_NewSession<WithAsyncMethod_ModifySessionTitle<WithAsyncMethod_DelSession<WithAsyncMethod_GetSkillInfo<WithAsyncMethod_Download<Service > > > > > > > > > > > > > > > AsyncService;
   template <class BaseClass>
   class WithCallbackMethod_Heartbeat : public BaseClass {
    private:
@@ -805,18 +897,68 @@ class GrpcService final {
       ::grpc::CallbackServerContext* /*context*/, const ::GrpcLibrary::StopAnswerReq* /*request*/, ::GrpcLibrary::StopAnswerResp* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
+  class WithCallbackMethod_Recognize : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithCallbackMethod_Recognize() {
+      ::grpc::Service::MarkMethodCallback(6,
+          new ::grpc::internal::CallbackBidiHandler< ::GrpcLibrary::RecognizeReq, ::GrpcLibrary::RecognizeResp>(
+            [this](
+                   ::grpc::CallbackServerContext* context) { return this->Recognize(context); }));
+    }
+    ~WithCallbackMethod_Recognize() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status Recognize(::grpc::ServerContext* /*context*/, ::grpc::ServerReaderWriter< ::GrpcLibrary::RecognizeResp, ::GrpcLibrary::RecognizeReq>* /*stream*/)  override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual ::grpc::ServerBidiReactor< ::GrpcLibrary::RecognizeReq, ::GrpcLibrary::RecognizeResp>* Recognize(
+      ::grpc::CallbackServerContext* /*context*/)
+      { return nullptr; }
+  };
+  template <class BaseClass>
+  class WithCallbackMethod_StopRecognize : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithCallbackMethod_StopRecognize() {
+      ::grpc::Service::MarkMethodCallback(7,
+          new ::grpc::internal::CallbackUnaryHandler< ::GrpcLibrary::StopRecognizeReq, ::GrpcLibrary::StopRecognizeResp>(
+            [this](
+                   ::grpc::CallbackServerContext* context, const ::GrpcLibrary::StopRecognizeReq* request, ::GrpcLibrary::StopRecognizeResp* response) { return this->StopRecognize(context, request, response); }));}
+    void SetMessageAllocatorFor_StopRecognize(
+        ::grpc::MessageAllocator< ::GrpcLibrary::StopRecognizeReq, ::GrpcLibrary::StopRecognizeResp>* allocator) {
+      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(7);
+      static_cast<::grpc::internal::CallbackUnaryHandler< ::GrpcLibrary::StopRecognizeReq, ::GrpcLibrary::StopRecognizeResp>*>(handler)
+              ->SetMessageAllocator(allocator);
+    }
+    ~WithCallbackMethod_StopRecognize() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status StopRecognize(::grpc::ServerContext* /*context*/, const ::GrpcLibrary::StopRecognizeReq* /*request*/, ::GrpcLibrary::StopRecognizeResp* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual ::grpc::ServerUnaryReactor* StopRecognize(
+      ::grpc::CallbackServerContext* /*context*/, const ::GrpcLibrary::StopRecognizeReq* /*request*/, ::GrpcLibrary::StopRecognizeResp* /*response*/)  { return nullptr; }
+  };
+  template <class BaseClass>
   class WithCallbackMethod_GetMessageInfo : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithCallbackMethod_GetMessageInfo() {
-      ::grpc::Service::MarkMethodCallback(6,
+      ::grpc::Service::MarkMethodCallback(8,
           new ::grpc::internal::CallbackUnaryHandler< ::GrpcLibrary::GetMessageInfoReq, ::GrpcLibrary::GetMessageInfoResp>(
             [this](
                    ::grpc::CallbackServerContext* context, const ::GrpcLibrary::GetMessageInfoReq* request, ::GrpcLibrary::GetMessageInfoResp* response) { return this->GetMessageInfo(context, request, response); }));}
     void SetMessageAllocatorFor_GetMessageInfo(
         ::grpc::MessageAllocator< ::GrpcLibrary::GetMessageInfoReq, ::GrpcLibrary::GetMessageInfoResp>* allocator) {
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(6);
+      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(8);
       static_cast<::grpc::internal::CallbackUnaryHandler< ::GrpcLibrary::GetMessageInfoReq, ::GrpcLibrary::GetMessageInfoResp>*>(handler)
               ->SetMessageAllocator(allocator);
     }
@@ -837,13 +979,13 @@ class GrpcService final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithCallbackMethod_GetSession() {
-      ::grpc::Service::MarkMethodCallback(7,
+      ::grpc::Service::MarkMethodCallback(9,
           new ::grpc::internal::CallbackUnaryHandler< ::GrpcLibrary::GetSessionReq, ::GrpcLibrary::GetSessionResp>(
             [this](
                    ::grpc::CallbackServerContext* context, const ::GrpcLibrary::GetSessionReq* request, ::GrpcLibrary::GetSessionResp* response) { return this->GetSession(context, request, response); }));}
     void SetMessageAllocatorFor_GetSession(
         ::grpc::MessageAllocator< ::GrpcLibrary::GetSessionReq, ::GrpcLibrary::GetSessionResp>* allocator) {
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(7);
+      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(9);
       static_cast<::grpc::internal::CallbackUnaryHandler< ::GrpcLibrary::GetSessionReq, ::GrpcLibrary::GetSessionResp>*>(handler)
               ->SetMessageAllocator(allocator);
     }
@@ -864,13 +1006,13 @@ class GrpcService final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithCallbackMethod_NewSession() {
-      ::grpc::Service::MarkMethodCallback(8,
+      ::grpc::Service::MarkMethodCallback(10,
           new ::grpc::internal::CallbackUnaryHandler< ::GrpcLibrary::NewSessionReq, ::GrpcLibrary::NewSessionResp>(
             [this](
                    ::grpc::CallbackServerContext* context, const ::GrpcLibrary::NewSessionReq* request, ::GrpcLibrary::NewSessionResp* response) { return this->NewSession(context, request, response); }));}
     void SetMessageAllocatorFor_NewSession(
         ::grpc::MessageAllocator< ::GrpcLibrary::NewSessionReq, ::GrpcLibrary::NewSessionResp>* allocator) {
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(8);
+      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(10);
       static_cast<::grpc::internal::CallbackUnaryHandler< ::GrpcLibrary::NewSessionReq, ::GrpcLibrary::NewSessionResp>*>(handler)
               ->SetMessageAllocator(allocator);
     }
@@ -891,13 +1033,13 @@ class GrpcService final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithCallbackMethod_ModifySessionTitle() {
-      ::grpc::Service::MarkMethodCallback(9,
+      ::grpc::Service::MarkMethodCallback(11,
           new ::grpc::internal::CallbackUnaryHandler< ::GrpcLibrary::ModifySessionTitleReq, ::GrpcLibrary::ModifySessionTitleResp>(
             [this](
                    ::grpc::CallbackServerContext* context, const ::GrpcLibrary::ModifySessionTitleReq* request, ::GrpcLibrary::ModifySessionTitleResp* response) { return this->ModifySessionTitle(context, request, response); }));}
     void SetMessageAllocatorFor_ModifySessionTitle(
         ::grpc::MessageAllocator< ::GrpcLibrary::ModifySessionTitleReq, ::GrpcLibrary::ModifySessionTitleResp>* allocator) {
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(9);
+      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(11);
       static_cast<::grpc::internal::CallbackUnaryHandler< ::GrpcLibrary::ModifySessionTitleReq, ::GrpcLibrary::ModifySessionTitleResp>*>(handler)
               ->SetMessageAllocator(allocator);
     }
@@ -918,13 +1060,13 @@ class GrpcService final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithCallbackMethod_DelSession() {
-      ::grpc::Service::MarkMethodCallback(10,
+      ::grpc::Service::MarkMethodCallback(12,
           new ::grpc::internal::CallbackUnaryHandler< ::GrpcLibrary::DelSessionReq, ::GrpcLibrary::DelSessionResp>(
             [this](
                    ::grpc::CallbackServerContext* context, const ::GrpcLibrary::DelSessionReq* request, ::GrpcLibrary::DelSessionResp* response) { return this->DelSession(context, request, response); }));}
     void SetMessageAllocatorFor_DelSession(
         ::grpc::MessageAllocator< ::GrpcLibrary::DelSessionReq, ::GrpcLibrary::DelSessionResp>* allocator) {
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(10);
+      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(12);
       static_cast<::grpc::internal::CallbackUnaryHandler< ::GrpcLibrary::DelSessionReq, ::GrpcLibrary::DelSessionResp>*>(handler)
               ->SetMessageAllocator(allocator);
     }
@@ -945,13 +1087,13 @@ class GrpcService final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithCallbackMethod_GetSkillInfo() {
-      ::grpc::Service::MarkMethodCallback(11,
+      ::grpc::Service::MarkMethodCallback(13,
           new ::grpc::internal::CallbackUnaryHandler< ::GrpcLibrary::GetSkillInfoReq, ::GrpcLibrary::GetSkillInfoResp>(
             [this](
                    ::grpc::CallbackServerContext* context, const ::GrpcLibrary::GetSkillInfoReq* request, ::GrpcLibrary::GetSkillInfoResp* response) { return this->GetSkillInfo(context, request, response); }));}
     void SetMessageAllocatorFor_GetSkillInfo(
         ::grpc::MessageAllocator< ::GrpcLibrary::GetSkillInfoReq, ::GrpcLibrary::GetSkillInfoResp>* allocator) {
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(11);
+      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(13);
       static_cast<::grpc::internal::CallbackUnaryHandler< ::GrpcLibrary::GetSkillInfoReq, ::GrpcLibrary::GetSkillInfoResp>*>(handler)
               ->SetMessageAllocator(allocator);
     }
@@ -972,13 +1114,13 @@ class GrpcService final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithCallbackMethod_Download() {
-      ::grpc::Service::MarkMethodCallback(12,
+      ::grpc::Service::MarkMethodCallback(14,
           new ::grpc::internal::CallbackUnaryHandler< ::GrpcLibrary::DownloadReq, ::GrpcLibrary::DownloadResp>(
             [this](
                    ::grpc::CallbackServerContext* context, const ::GrpcLibrary::DownloadReq* request, ::GrpcLibrary::DownloadResp* response) { return this->Download(context, request, response); }));}
     void SetMessageAllocatorFor_Download(
         ::grpc::MessageAllocator< ::GrpcLibrary::DownloadReq, ::GrpcLibrary::DownloadResp>* allocator) {
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(12);
+      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(14);
       static_cast<::grpc::internal::CallbackUnaryHandler< ::GrpcLibrary::DownloadReq, ::GrpcLibrary::DownloadResp>*>(handler)
               ->SetMessageAllocator(allocator);
     }
@@ -993,7 +1135,7 @@ class GrpcService final {
     virtual ::grpc::ServerUnaryReactor* Download(
       ::grpc::CallbackServerContext* /*context*/, const ::GrpcLibrary::DownloadReq* /*request*/, ::GrpcLibrary::DownloadResp* /*response*/)  { return nullptr; }
   };
-  typedef WithCallbackMethod_Heartbeat<WithCallbackMethod_Login<WithCallbackMethod_Logout<WithCallbackMethod_RegAccount<WithCallbackMethod_Query<WithCallbackMethod_StopAnswer<WithCallbackMethod_GetMessageInfo<WithCallbackMethod_GetSession<WithCallbackMethod_NewSession<WithCallbackMethod_ModifySessionTitle<WithCallbackMethod_DelSession<WithCallbackMethod_GetSkillInfo<WithCallbackMethod_Download<Service > > > > > > > > > > > > > CallbackService;
+  typedef WithCallbackMethod_Heartbeat<WithCallbackMethod_Login<WithCallbackMethod_Logout<WithCallbackMethod_RegAccount<WithCallbackMethod_Query<WithCallbackMethod_StopAnswer<WithCallbackMethod_Recognize<WithCallbackMethod_StopRecognize<WithCallbackMethod_GetMessageInfo<WithCallbackMethod_GetSession<WithCallbackMethod_NewSession<WithCallbackMethod_ModifySessionTitle<WithCallbackMethod_DelSession<WithCallbackMethod_GetSkillInfo<WithCallbackMethod_Download<Service > > > > > > > > > > > > > > > CallbackService;
   typedef CallbackService ExperimentalCallbackService;
   template <class BaseClass>
   class WithGenericMethod_Heartbeat : public BaseClass {
@@ -1098,12 +1240,46 @@ class GrpcService final {
     }
   };
   template <class BaseClass>
+  class WithGenericMethod_Recognize : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithGenericMethod_Recognize() {
+      ::grpc::Service::MarkMethodGeneric(6);
+    }
+    ~WithGenericMethod_Recognize() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status Recognize(::grpc::ServerContext* /*context*/, ::grpc::ServerReaderWriter< ::GrpcLibrary::RecognizeResp, ::GrpcLibrary::RecognizeReq>* /*stream*/)  override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+  };
+  template <class BaseClass>
+  class WithGenericMethod_StopRecognize : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithGenericMethod_StopRecognize() {
+      ::grpc::Service::MarkMethodGeneric(7);
+    }
+    ~WithGenericMethod_StopRecognize() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status StopRecognize(::grpc::ServerContext* /*context*/, const ::GrpcLibrary::StopRecognizeReq* /*request*/, ::GrpcLibrary::StopRecognizeResp* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+  };
+  template <class BaseClass>
   class WithGenericMethod_GetMessageInfo : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithGenericMethod_GetMessageInfo() {
-      ::grpc::Service::MarkMethodGeneric(6);
+      ::grpc::Service::MarkMethodGeneric(8);
     }
     ~WithGenericMethod_GetMessageInfo() override {
       BaseClassMustBeDerivedFromService(this);
@@ -1120,7 +1296,7 @@ class GrpcService final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithGenericMethod_GetSession() {
-      ::grpc::Service::MarkMethodGeneric(7);
+      ::grpc::Service::MarkMethodGeneric(9);
     }
     ~WithGenericMethod_GetSession() override {
       BaseClassMustBeDerivedFromService(this);
@@ -1137,7 +1313,7 @@ class GrpcService final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithGenericMethod_NewSession() {
-      ::grpc::Service::MarkMethodGeneric(8);
+      ::grpc::Service::MarkMethodGeneric(10);
     }
     ~WithGenericMethod_NewSession() override {
       BaseClassMustBeDerivedFromService(this);
@@ -1154,7 +1330,7 @@ class GrpcService final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithGenericMethod_ModifySessionTitle() {
-      ::grpc::Service::MarkMethodGeneric(9);
+      ::grpc::Service::MarkMethodGeneric(11);
     }
     ~WithGenericMethod_ModifySessionTitle() override {
       BaseClassMustBeDerivedFromService(this);
@@ -1171,7 +1347,7 @@ class GrpcService final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithGenericMethod_DelSession() {
-      ::grpc::Service::MarkMethodGeneric(10);
+      ::grpc::Service::MarkMethodGeneric(12);
     }
     ~WithGenericMethod_DelSession() override {
       BaseClassMustBeDerivedFromService(this);
@@ -1188,7 +1364,7 @@ class GrpcService final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithGenericMethod_GetSkillInfo() {
-      ::grpc::Service::MarkMethodGeneric(11);
+      ::grpc::Service::MarkMethodGeneric(13);
     }
     ~WithGenericMethod_GetSkillInfo() override {
       BaseClassMustBeDerivedFromService(this);
@@ -1205,7 +1381,7 @@ class GrpcService final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithGenericMethod_Download() {
-      ::grpc::Service::MarkMethodGeneric(12);
+      ::grpc::Service::MarkMethodGeneric(14);
     }
     ~WithGenericMethod_Download() override {
       BaseClassMustBeDerivedFromService(this);
@@ -1337,12 +1513,52 @@ class GrpcService final {
     }
   };
   template <class BaseClass>
+  class WithRawMethod_Recognize : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithRawMethod_Recognize() {
+      ::grpc::Service::MarkMethodRaw(6);
+    }
+    ~WithRawMethod_Recognize() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status Recognize(::grpc::ServerContext* /*context*/, ::grpc::ServerReaderWriter< ::GrpcLibrary::RecognizeResp, ::GrpcLibrary::RecognizeReq>* /*stream*/)  override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestRecognize(::grpc::ServerContext* context, ::grpc::ServerAsyncReaderWriter< ::grpc::ByteBuffer, ::grpc::ByteBuffer>* stream, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncBidiStreaming(6, context, stream, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
+  class WithRawMethod_StopRecognize : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithRawMethod_StopRecognize() {
+      ::grpc::Service::MarkMethodRaw(7);
+    }
+    ~WithRawMethod_StopRecognize() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status StopRecognize(::grpc::ServerContext* /*context*/, const ::GrpcLibrary::StopRecognizeReq* /*request*/, ::GrpcLibrary::StopRecognizeResp* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestStopRecognize(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(7, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
   class WithRawMethod_GetMessageInfo : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithRawMethod_GetMessageInfo() {
-      ::grpc::Service::MarkMethodRaw(6);
+      ::grpc::Service::MarkMethodRaw(8);
     }
     ~WithRawMethod_GetMessageInfo() override {
       BaseClassMustBeDerivedFromService(this);
@@ -1353,7 +1569,7 @@ class GrpcService final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestGetMessageInfo(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(6, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(8, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -1362,7 +1578,7 @@ class GrpcService final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithRawMethod_GetSession() {
-      ::grpc::Service::MarkMethodRaw(7);
+      ::grpc::Service::MarkMethodRaw(9);
     }
     ~WithRawMethod_GetSession() override {
       BaseClassMustBeDerivedFromService(this);
@@ -1373,7 +1589,7 @@ class GrpcService final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestGetSession(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(7, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(9, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -1382,7 +1598,7 @@ class GrpcService final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithRawMethod_NewSession() {
-      ::grpc::Service::MarkMethodRaw(8);
+      ::grpc::Service::MarkMethodRaw(10);
     }
     ~WithRawMethod_NewSession() override {
       BaseClassMustBeDerivedFromService(this);
@@ -1393,7 +1609,7 @@ class GrpcService final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestNewSession(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(8, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(10, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -1402,7 +1618,7 @@ class GrpcService final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithRawMethod_ModifySessionTitle() {
-      ::grpc::Service::MarkMethodRaw(9);
+      ::grpc::Service::MarkMethodRaw(11);
     }
     ~WithRawMethod_ModifySessionTitle() override {
       BaseClassMustBeDerivedFromService(this);
@@ -1413,7 +1629,7 @@ class GrpcService final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestModifySessionTitle(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(9, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(11, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -1422,7 +1638,7 @@ class GrpcService final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithRawMethod_DelSession() {
-      ::grpc::Service::MarkMethodRaw(10);
+      ::grpc::Service::MarkMethodRaw(12);
     }
     ~WithRawMethod_DelSession() override {
       BaseClassMustBeDerivedFromService(this);
@@ -1433,7 +1649,7 @@ class GrpcService final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestDelSession(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(10, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(12, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -1442,7 +1658,7 @@ class GrpcService final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithRawMethod_GetSkillInfo() {
-      ::grpc::Service::MarkMethodRaw(11);
+      ::grpc::Service::MarkMethodRaw(13);
     }
     ~WithRawMethod_GetSkillInfo() override {
       BaseClassMustBeDerivedFromService(this);
@@ -1453,7 +1669,7 @@ class GrpcService final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestGetSkillInfo(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(11, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(13, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -1462,7 +1678,7 @@ class GrpcService final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithRawMethod_Download() {
-      ::grpc::Service::MarkMethodRaw(12);
+      ::grpc::Service::MarkMethodRaw(14);
     }
     ~WithRawMethod_Download() override {
       BaseClassMustBeDerivedFromService(this);
@@ -1473,7 +1689,7 @@ class GrpcService final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestDownload(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(12, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(14, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -1609,12 +1825,57 @@ class GrpcService final {
       ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
+  class WithRawCallbackMethod_Recognize : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithRawCallbackMethod_Recognize() {
+      ::grpc::Service::MarkMethodRawCallback(6,
+          new ::grpc::internal::CallbackBidiHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
+            [this](
+                   ::grpc::CallbackServerContext* context) { return this->Recognize(context); }));
+    }
+    ~WithRawCallbackMethod_Recognize() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status Recognize(::grpc::ServerContext* /*context*/, ::grpc::ServerReaderWriter< ::GrpcLibrary::RecognizeResp, ::GrpcLibrary::RecognizeReq>* /*stream*/)  override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual ::grpc::ServerBidiReactor< ::grpc::ByteBuffer, ::grpc::ByteBuffer>* Recognize(
+      ::grpc::CallbackServerContext* /*context*/)
+      { return nullptr; }
+  };
+  template <class BaseClass>
+  class WithRawCallbackMethod_StopRecognize : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithRawCallbackMethod_StopRecognize() {
+      ::grpc::Service::MarkMethodRawCallback(7,
+          new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
+            [this](
+                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->StopRecognize(context, request, response); }));
+    }
+    ~WithRawCallbackMethod_StopRecognize() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status StopRecognize(::grpc::ServerContext* /*context*/, const ::GrpcLibrary::StopRecognizeReq* /*request*/, ::GrpcLibrary::StopRecognizeResp* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual ::grpc::ServerUnaryReactor* StopRecognize(
+      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
+  };
+  template <class BaseClass>
   class WithRawCallbackMethod_GetMessageInfo : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithRawCallbackMethod_GetMessageInfo() {
-      ::grpc::Service::MarkMethodRawCallback(6,
+      ::grpc::Service::MarkMethodRawCallback(8,
           new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
             [this](
                    ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->GetMessageInfo(context, request, response); }));
@@ -1636,7 +1897,7 @@ class GrpcService final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithRawCallbackMethod_GetSession() {
-      ::grpc::Service::MarkMethodRawCallback(7,
+      ::grpc::Service::MarkMethodRawCallback(9,
           new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
             [this](
                    ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->GetSession(context, request, response); }));
@@ -1658,7 +1919,7 @@ class GrpcService final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithRawCallbackMethod_NewSession() {
-      ::grpc::Service::MarkMethodRawCallback(8,
+      ::grpc::Service::MarkMethodRawCallback(10,
           new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
             [this](
                    ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->NewSession(context, request, response); }));
@@ -1680,7 +1941,7 @@ class GrpcService final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithRawCallbackMethod_ModifySessionTitle() {
-      ::grpc::Service::MarkMethodRawCallback(9,
+      ::grpc::Service::MarkMethodRawCallback(11,
           new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
             [this](
                    ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->ModifySessionTitle(context, request, response); }));
@@ -1702,7 +1963,7 @@ class GrpcService final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithRawCallbackMethod_DelSession() {
-      ::grpc::Service::MarkMethodRawCallback(10,
+      ::grpc::Service::MarkMethodRawCallback(12,
           new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
             [this](
                    ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->DelSession(context, request, response); }));
@@ -1724,7 +1985,7 @@ class GrpcService final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithRawCallbackMethod_GetSkillInfo() {
-      ::grpc::Service::MarkMethodRawCallback(11,
+      ::grpc::Service::MarkMethodRawCallback(13,
           new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
             [this](
                    ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->GetSkillInfo(context, request, response); }));
@@ -1746,7 +2007,7 @@ class GrpcService final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithRawCallbackMethod_Download() {
-      ::grpc::Service::MarkMethodRawCallback(12,
+      ::grpc::Service::MarkMethodRawCallback(14,
           new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
             [this](
                    ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->Download(context, request, response); }));
@@ -1898,12 +2159,39 @@ class GrpcService final {
     virtual ::grpc::Status StreamedStopAnswer(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::GrpcLibrary::StopAnswerReq,::GrpcLibrary::StopAnswerResp>* server_unary_streamer) = 0;
   };
   template <class BaseClass>
+  class WithStreamedUnaryMethod_StopRecognize : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithStreamedUnaryMethod_StopRecognize() {
+      ::grpc::Service::MarkMethodStreamed(7,
+        new ::grpc::internal::StreamedUnaryHandler<
+          ::GrpcLibrary::StopRecognizeReq, ::GrpcLibrary::StopRecognizeResp>(
+            [this](::grpc::ServerContext* context,
+                   ::grpc::ServerUnaryStreamer<
+                     ::GrpcLibrary::StopRecognizeReq, ::GrpcLibrary::StopRecognizeResp>* streamer) {
+                       return this->StreamedStopRecognize(context,
+                         streamer);
+                  }));
+    }
+    ~WithStreamedUnaryMethod_StopRecognize() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable regular version of this method
+    ::grpc::Status StopRecognize(::grpc::ServerContext* /*context*/, const ::GrpcLibrary::StopRecognizeReq* /*request*/, ::GrpcLibrary::StopRecognizeResp* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    // replace default version of method with streamed unary
+    virtual ::grpc::Status StreamedStopRecognize(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::GrpcLibrary::StopRecognizeReq,::GrpcLibrary::StopRecognizeResp>* server_unary_streamer) = 0;
+  };
+  template <class BaseClass>
   class WithStreamedUnaryMethod_GetMessageInfo : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithStreamedUnaryMethod_GetMessageInfo() {
-      ::grpc::Service::MarkMethodStreamed(6,
+      ::grpc::Service::MarkMethodStreamed(8,
         new ::grpc::internal::StreamedUnaryHandler<
           ::GrpcLibrary::GetMessageInfoReq, ::GrpcLibrary::GetMessageInfoResp>(
             [this](::grpc::ServerContext* context,
@@ -1930,7 +2218,7 @@ class GrpcService final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithStreamedUnaryMethod_GetSession() {
-      ::grpc::Service::MarkMethodStreamed(7,
+      ::grpc::Service::MarkMethodStreamed(9,
         new ::grpc::internal::StreamedUnaryHandler<
           ::GrpcLibrary::GetSessionReq, ::GrpcLibrary::GetSessionResp>(
             [this](::grpc::ServerContext* context,
@@ -1957,7 +2245,7 @@ class GrpcService final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithStreamedUnaryMethod_NewSession() {
-      ::grpc::Service::MarkMethodStreamed(8,
+      ::grpc::Service::MarkMethodStreamed(10,
         new ::grpc::internal::StreamedUnaryHandler<
           ::GrpcLibrary::NewSessionReq, ::GrpcLibrary::NewSessionResp>(
             [this](::grpc::ServerContext* context,
@@ -1984,7 +2272,7 @@ class GrpcService final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithStreamedUnaryMethod_ModifySessionTitle() {
-      ::grpc::Service::MarkMethodStreamed(9,
+      ::grpc::Service::MarkMethodStreamed(11,
         new ::grpc::internal::StreamedUnaryHandler<
           ::GrpcLibrary::ModifySessionTitleReq, ::GrpcLibrary::ModifySessionTitleResp>(
             [this](::grpc::ServerContext* context,
@@ -2011,7 +2299,7 @@ class GrpcService final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithStreamedUnaryMethod_DelSession() {
-      ::grpc::Service::MarkMethodStreamed(10,
+      ::grpc::Service::MarkMethodStreamed(12,
         new ::grpc::internal::StreamedUnaryHandler<
           ::GrpcLibrary::DelSessionReq, ::GrpcLibrary::DelSessionResp>(
             [this](::grpc::ServerContext* context,
@@ -2038,7 +2326,7 @@ class GrpcService final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithStreamedUnaryMethod_GetSkillInfo() {
-      ::grpc::Service::MarkMethodStreamed(11,
+      ::grpc::Service::MarkMethodStreamed(13,
         new ::grpc::internal::StreamedUnaryHandler<
           ::GrpcLibrary::GetSkillInfoReq, ::GrpcLibrary::GetSkillInfoResp>(
             [this](::grpc::ServerContext* context,
@@ -2065,7 +2353,7 @@ class GrpcService final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithStreamedUnaryMethod_Download() {
-      ::grpc::Service::MarkMethodStreamed(12,
+      ::grpc::Service::MarkMethodStreamed(14,
         new ::grpc::internal::StreamedUnaryHandler<
           ::GrpcLibrary::DownloadReq, ::GrpcLibrary::DownloadResp>(
             [this](::grpc::ServerContext* context,
@@ -2086,7 +2374,7 @@ class GrpcService final {
     // replace default version of method with streamed unary
     virtual ::grpc::Status StreamedDownload(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::GrpcLibrary::DownloadReq,::GrpcLibrary::DownloadResp>* server_unary_streamer) = 0;
   };
-  typedef WithStreamedUnaryMethod_Heartbeat<WithStreamedUnaryMethod_Login<WithStreamedUnaryMethod_Logout<WithStreamedUnaryMethod_RegAccount<WithStreamedUnaryMethod_StopAnswer<WithStreamedUnaryMethod_GetMessageInfo<WithStreamedUnaryMethod_GetSession<WithStreamedUnaryMethod_NewSession<WithStreamedUnaryMethod_ModifySessionTitle<WithStreamedUnaryMethod_DelSession<WithStreamedUnaryMethod_GetSkillInfo<WithStreamedUnaryMethod_Download<Service > > > > > > > > > > > > StreamedUnaryService;
+  typedef WithStreamedUnaryMethod_Heartbeat<WithStreamedUnaryMethod_Login<WithStreamedUnaryMethod_Logout<WithStreamedUnaryMethod_RegAccount<WithStreamedUnaryMethod_StopAnswer<WithStreamedUnaryMethod_StopRecognize<WithStreamedUnaryMethod_GetMessageInfo<WithStreamedUnaryMethod_GetSession<WithStreamedUnaryMethod_NewSession<WithStreamedUnaryMethod_ModifySessionTitle<WithStreamedUnaryMethod_DelSession<WithStreamedUnaryMethod_GetSkillInfo<WithStreamedUnaryMethod_Download<Service > > > > > > > > > > > > > StreamedUnaryService;
   template <class BaseClass>
   class WithSplitStreamingMethod_Query : public BaseClass {
    private:
@@ -2115,7 +2403,7 @@ class GrpcService final {
     virtual ::grpc::Status StreamedQuery(::grpc::ServerContext* context, ::grpc::ServerSplitStreamer< ::GrpcLibrary::QueryReq,::GrpcLibrary::QueryResp>* server_split_streamer) = 0;
   };
   typedef WithSplitStreamingMethod_Query<Service > SplitStreamedService;
-  typedef WithStreamedUnaryMethod_Heartbeat<WithStreamedUnaryMethod_Login<WithStreamedUnaryMethod_Logout<WithStreamedUnaryMethod_RegAccount<WithSplitStreamingMethod_Query<WithStreamedUnaryMethod_StopAnswer<WithStreamedUnaryMethod_GetMessageInfo<WithStreamedUnaryMethod_GetSession<WithStreamedUnaryMethod_NewSession<WithStreamedUnaryMethod_ModifySessionTitle<WithStreamedUnaryMethod_DelSession<WithStreamedUnaryMethod_GetSkillInfo<WithStreamedUnaryMethod_Download<Service > > > > > > > > > > > > > StreamedService;
+  typedef WithStreamedUnaryMethod_Heartbeat<WithStreamedUnaryMethod_Login<WithStreamedUnaryMethod_Logout<WithStreamedUnaryMethod_RegAccount<WithSplitStreamingMethod_Query<WithStreamedUnaryMethod_StopAnswer<WithStreamedUnaryMethod_StopRecognize<WithStreamedUnaryMethod_GetMessageInfo<WithStreamedUnaryMethod_GetSession<WithStreamedUnaryMethod_NewSession<WithStreamedUnaryMethod_ModifySessionTitle<WithStreamedUnaryMethod_DelSession<WithStreamedUnaryMethod_GetSkillInfo<WithStreamedUnaryMethod_Download<Service > > > > > > > > > > > > > > StreamedService;
 };
 
 }  // namespace GrpcLibrary

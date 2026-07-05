@@ -213,6 +213,49 @@ api_handler::Query(grpc::CallbackServerContext   *ctx,
     return new QueryReactor(ctx, req);
 }
 
+grpc::ServerBidiReactor<GrpcLibrary::RecognizeReq, GrpcLibrary::RecognizeResp> *
+api_handler::Recognize(grpc::CallbackServerContext *context)
+{
+    LOG_INFO("Received Recognize bidirectional stream request from peer: {}",
+             context->peer());
+
+    return new RecognizeReactor(context);
+}
+
+reactor_t *
+api_handler::StopRecognize(ctx_t                                 *ctx,
+                           const ::GrpcLibrary::StopRecognizeReq *req,
+                           ::GrpcLibrary::StopRecognizeResp      *resp)
+{
+    auto session_id = req->session_id();
+    auto user_id    = req->user_id();
+    auto auth       = req->auth();
+    LOG_DEBUG(
+        "Received StopRecognize request. session_id: {}, user_id: {}, auth: {}",
+        session_id,
+        user_id,
+        auth);
+
+    auto *reactor = ctx->DefaultReactor();
+    resp->set_error_code(OK);
+    resp->set_session_id(session_id);
+
+    // bool stopped = recognize_reactor_mgr::instance().stop_recognize(session_id);
+    // if(!stopped)
+    // {
+    //     LOG_WARN("No active recognize found for session_id: {}", session_id);
+    //     resp->set_error_code(ERR_STOP_FAIL);
+    // } else
+    // {
+    //     LOG_DEBUG("Successfully stopped recognize for session_id: {}",
+    //               session_id);
+    //     resp->set_error_code(OK);
+    // }
+
+    reactor->Finish(status_t::OK);
+    return reactor;
+}
+
 reactor_t *
 api_handler::GetMessageInfo(ctx_t                                  *ctx,
                             const ::GrpcLibrary::GetMessageInfoReq *req,

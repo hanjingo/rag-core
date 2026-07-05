@@ -167,6 +167,11 @@ std::unordered_map<std::string, conf::model_config> conf::llm_models()
     return _models;
 }
 
+std::unordered_map<std::string, conf::asr_ctx_config> conf::asr_ctxs()
+{
+    return _asr_ctxs;
+}
+
 void conf::_init()
 {
     auto             str = _cfg.get<std::string>("llm/models", "");
@@ -204,5 +209,19 @@ void conf::_init()
         }
 
         _models[config.id] = config;
+    }
+
+    auto asr_str   = _cfg.get<std::string>("asr/ctxs", "");
+    auto asr_items = hj::string_util::split(asr_str, tag);
+    _asr_ctxs.clear();
+    for(const auto &item : asr_items)
+    {
+        asr_ctx_config config;
+        config.id         = _cfg.get<std::string>(item + "/id", "");
+        config.path       = _cfg.get<std::string>(item + "/path", "");
+        config.use_gpu    = (_cfg.get<int>(item + "/use_gpu", 0) == 1);
+        config.gpu_device = _cfg.get<int>(item + "/gpu_device", -1);
+
+        _asr_ctxs[config.id] = config;
     }
 }
