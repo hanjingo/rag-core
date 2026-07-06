@@ -81,6 +81,8 @@ class conf
     int                                           llm_num_threads();
 
     std::unordered_map<std::string, asr_ctx_config> asr_ctxs();
+    int                                             asr_audio_buffer_size();
+    int                                             asr_audio_min_chunk_size();
 
   private:
     void _init();

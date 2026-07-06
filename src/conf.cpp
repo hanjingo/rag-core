@@ -177,6 +177,16 @@ std::unordered_map<std::string, conf::asr_ctx_config> conf::asr_ctxs()
     return _asr_ctxs;
 }
 
+int conf::asr_audio_buffer_size()
+{
+    return _cfg.get<int>("asr/audio_buffer_size", 16000);
+}
+
+int conf::asr_audio_min_chunk_size()
+{
+    return _cfg.get<int>("asr/audio_min_chunk_size", 16000 * 0.2);
+}
+
 void conf::_init()
 {
     auto             str = _cfg.get<std::string>("llm/models", "");

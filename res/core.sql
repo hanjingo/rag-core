@@ -68,90 +68,27 @@ INSERT INTO message (id, session_id, role, content, prev_message_id, timestamp) 
     4, 1, 'assistant', 'Answer Test2', 3, 3);
 
 INSERT INTO skill (hash, name, platform, desc, publisher, version, timestamp) VALUES (
-    'sha256:4b6acc7d6edb5c71620adc9cc3def5b4f3e5b0beca27f9476edd066190ac02f5', 'chatbox', 1, 
-    'A skill for Chat, using llm model, free for use it etc...', 'admin', '0.0.1', 0);
+    'sha256:a05c13fcd95e7305526d8a70820247046335f461356271b4eaee0919ee340f2a', 'chatbox', 1, 
+    'A skill for Chat, using llm model, free for use it etc...', 'admin', '0.0.3', 0);
 INSERT INTO skill (hash, name, platform, desc, publisher, version, timestamp) VALUES (
-    'sha256:607396c3c0d48ddef72125d7a7a25d447961a0c19112ecf629e5eb1e25f89b52', 'grammar', 1, 
-    'A skill for english grammar checking', 'admin', '0.0.1', 1);
+    'sha256:4135b32bf4257a54aabeabd416b53dbd1bc411c50257688f0073eeb9aa785d16', 'grammar', 1, 
+    'A skill for english grammar checking', 'admin', '0.0.2', 1);
 INSERT INTO skill (hash, name, platform, desc, publisher, version, timestamp) VALUES (
-    'sha256:c82c0465c9c6d0e0cfdd51fd440d341ef60d892330fbcce880dc28fcf9f776a8', 'ielts-writer', 1, 
-    'A skill for IELTS Writer Guide', 'admin', '0.0.1', 2);
+    'sha256:cdfcc494cf944a74a06985688063197513295e6c3c876521ea184da11b6f0076', 'ielts-writer', 1, 
+    'A skill for IELTS Writer Guide', 'admin', '0.0.2', 2);
 INSERT INTO skill (hash, name, platform, desc, publisher, version, timestamp) VALUES (
-    'sha256:8637d9bf081dd37aaec97cc46cb7426585ab2cd056b291c0b72ed2102661a9c3', 'stock', 1, 
-    'A skill for Stock trade', 'admin', '0.0.1', 3);
-INSERT INTO skill (hash, name, platform, desc, publisher, version, timestamp) VALUES (
-    'hash9', 'skill9', 1, 
-    'A skill for testing9', 'admin', '0.0.1', 4);
-INSERT INTO skill (hash, name, platform, desc, publisher, version, timestamp) VALUES (
-    'hash10', 'skill10', 1, 
-    'A skill for testing10', 'admin', '0.0.1', 5);
-INSERT INTO skill (hash, name, platform, desc, publisher, version, timestamp) VALUES (
-    'hash11', 'skill11', 1, 
-    'A skill for testing11', 'admin', '0.0.1', 6);
-INSERT INTO skill (hash, name, platform, desc, publisher, version, timestamp) VALUES (
-    'hash12', 'skill12', 1, 
-    'A skill for testing12', 'admin', '0.0.1', 7);
-INSERT INTO skill (hash, name, platform, desc, publisher, version, timestamp) VALUES (
-    'hash13', 'skill13', 1, 
-    'A skill for testing13', 'admin', '0.0.1', 8);
-INSERT INTO skill (hash, name, platform, desc, publisher, version, timestamp) VALUES (
-    'hash14', 'skill14', 1, 
-    'A skill for testing14', 'admin', '0.0.1', 9);
-INSERT INTO skill (hash, name, platform, desc, publisher, version, timestamp) VALUES (
-    'hash15', 'skill15', 1, 
-    'A skill for testing15', 'admin', '0.0.1', 10);
-INSERT INTO skill (hash, name, platform, desc, publisher, version, timestamp) VALUES (
-    'hash16', 'skill16', 1, 
-    'A skill for testing16', 'admin', '0.0.1', 11);
-INSERT INTO skill (hash, name, platform,  desc, publisher, version, timestamp) VALUES (
-    'hash17', 'skill17', 1, 
-    'A skill for testing17', 'admin', '0.0.1', 12);
-INSERT INTO skill (hash, name, platform, desc, publisher, version, timestamp) VALUES (
-    'hash18', 'skill18', 1, 
-    'A skill for testing18', 'admin', '0.0.1', 13);
-INSERT INTO skill (hash, name, platform, desc, publisher, version, timestamp) VALUES (
-    'hash19', 'skill19', 1, 
-    'A skill for testing19', 'admin', '0.0.1', 14);
+    'sha256:cac176b447f4dd995677d1ee998b9bc37d49feed0fe5125020110ad7f52edfb5', 'stock', 1, 
+    'A skill for Stock trade', 'admin', '0.0.2', 3);
 
 INSERT INTO file (hash, addr, owner, size_kb) VALUES (
-    'sha256:4b6acc7d6edb5c71620adc9cc3def5b4f3e5b0beca27f9476edd066190ac02f5', 
-    'https://github.com/hanjingo/rag-qt-chatbox/releases/download/v0.0.2%231/chatbox-windows-x64-v0.0.2.1.zip', 1, 35);
+    'sha256:a05c13fcd95e7305526d8a70820247046335f461356271b4eaee0919ee340f2a', 
+    'https://github.com/hanjingo/rag-qt-chatbox/releases/download/v0.0.3/chatbox-windows-x64-v0.0.3.zip', 1, 152);
 INSERT INTO file (hash, addr, owner, size_kb) VALUES (
-    'sha256:607396c3c0d48ddef72125d7a7a25d447961a0c19112ecf629e5eb1e25f89b52', 
-    'https://github.com/hanjingo/rag-qt-grammar/releases/download/v0.0.1/grammar-windows-x64-v0.0.1.zip', 1, 60);
+    'sha256:4135b32bf4257a54aabeabd416b53dbd1bc411c50257688f0073eeb9aa785d16', 
+    'https://github.com/hanjingo/rag-qt-grammar/releases/download/v0.0.2/grammar-windows-x64-v0.0.2.zip', 1, 87);
 INSERT INTO file (hash, addr, owner, size_kb) VALUES (
-    'sha256:c82c0465c9c6d0e0cfdd51fd440d341ef60d892330fbcce880dc28fcf9f776a8', 
-    'https://github.com/hanjingo/rag-qt-ielts-writer/releases/download/v0.0.1%231/ielts-writer-windows-x64-v0.0.1.1.zip', 1, 49);
+    'sha256:cdfcc494cf944a74a06985688063197513295e6c3c876521ea184da11b6f0076', 
+    'https://github.com/hanjingo/rag-qt-ielts-writer/releases/download/v0.0.2/ielts-writer-windows-x64-v0.0.2.zip', 1, 49);
 INSERT INTO file (hash, addr, owner, size_kb) VALUES (
-    'sha256:8637d9bf081dd37aaec97cc46cb7426585ab2cd056b291c0b72ed2102661a9c3', 
-    'https://github.com/hanjingo/rag-qt-stock/releases/download/v0.0.1/stock-windows-x64-v0.0.1.zip', 1, 45);
-INSERT INTO file (hash, addr, owner, size_kb) VALUES (
-    'hash5', 'http://example.com/file5.zip', 1, 100);
-INSERT INTO file (hash, addr, owner, size_kb) VALUES (
-    'hash6', 'http://example.com/file6.zip', 1, 100);
-INSERT INTO file (hash, addr, owner, size_kb) VALUES (
-    'hash7', 'http://example.com/file7.zip', 1, 100);
-INSERT INTO file (hash, addr, owner, size_kb) VALUES (
-    'hash8', 'http://example.com/file8.zip', 1, 100);
-INSERT INTO file (hash, addr, owner, size_kb) VALUES (
-    'hash9', 'http://example.com/file9.zip', 1, 100);
-INSERT INTO file (hash, addr, owner, size_kb) VALUES (
-    'hash10', 'http://example.com/file10.zip', 1, 100);
-INSERT INTO file (hash, addr, owner, size_kb) VALUES (
-    'hash11', 'http://example.com/file11.zip', 1, 100);
-INSERT INTO file (hash, addr, owner, size_kb) VALUES (
-    'hash12', 'http://example.com/file12.zip', 1, 100);
-INSERT INTO file (hash, addr, owner, size_kb) VALUES (
-    'hash13', 'http://example.com/file13.zip', 1, 100);
-INSERT INTO file (hash, addr, owner, size_kb) VALUES (
-    'hash14', 'http://example.com/file14.zip', 1, 100);
-INSERT INTO file (hash, addr, owner, size_kb) VALUES (
-    'hash15', 'http://example.com/file15.zip', 1, 100);
-INSERT INTO file (hash, addr, owner, size_kb) VALUES (
-    'hash16', 'http://example.com/file16.zip', 1, 100);
-INSERT INTO file (hash, addr, owner, size_kb) VALUES (
-    'hash17', 'http://example.com/file17.zip', 1, 100);
-INSERT INTO file (hash, addr, owner, size_kb) VALUES (
-    'hash18', 'http://example.com/file18.zip', 1, 100);
-INSERT INTO file (hash, addr, owner, size_kb) VALUES (
-    'hash19', 'http://example.com/file19.zip', 1, 100);
+    'sha256:cac176b447f4dd995677d1ee998b9bc37d49feed0fe5125020110ad7f52edfb5', 
+    'https://github.com/hanjingo/rag-qt-stock/releases/download/v0.0.2/stock-windows-x64-v0.0.2.zip', 1, 45);

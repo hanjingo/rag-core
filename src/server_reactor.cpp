@@ -15,6 +15,7 @@
 #include "watch_dog.h"
 #include "sync.h"
 #include "reactor_mgr.h"
+#include "audio_buffer.h"
 
 QueryReactor::QueryReactor(grpc::CallbackServerContext   *ctx,
                            const ::GrpcLibrary::QueryReq *req)
@@ -218,6 +219,8 @@ RecognizeReactor::RecognizeReactor(grpc::CallbackServerContext *ctx)
     , _is_registered(false)
     , _is_cancelled(false)
     , _is_writing(false)
+    , _is_processing(false)
+    , _audio_buffer(conf::instance().asr_audio_buffer_size())
 {
     LOG_DEBUG("RecognizeReactor entry");
 
@@ -390,34 +393,72 @@ void RecognizeReactor::_process(const ::GrpcLibrary::RecognizeReq &req)
 
     if(req.has_audio_chunk())
     {
-        LOG_DEBUG("RecognizeReactor::_process audio chunk: ctx_id: {}, "
-                  "has_audio_chunk: true, session_id: {}",
-                  ctx_id,
-                  session_id);
         // fcm
         auto               chunk = req.audio_chunk();
         std::vector<float> data;
         hj::asr::context::convert(data, chunk);
-        std::string segment;
-        auto ec = asr_mgr::instance().translate(segment, ctx_id, data, _params);
-        LOG_DEBUG("_process with ec:{}, ctx_id:{}, segment: {}",
-                  ec,
+        // append to audio buffer
+        _audio_buffer.push(data.data(), data.size());
+        LOG_DEBUG("RecognizeReactor::_process audio chunk: ctx_id: {}, "
+                  "pushed {} samples to audio buffer, session_id: {}",
                   ctx_id,
-                  segment);
-        if(ec != OK)
-        {
-            LOG_ERROR(
-                "asr_mgr::instance().translate failed with error code: {}",
-                ec);
-            _send(ec, session_id, "", true, 0.0);
-            return;
-        }
+                  data.size(),
+                  session_id);
 
-        err         = OK;
-        text        = segment;
-        is_finished = false;
+        // process the audio buffer in a separate thread to avoid blocking the reactor
+        thread_pool::instance().enqueue([this, ctx_id, session_id]() {
+            if(_is_cancelled.load() || _is_processing.load())
+                return;
+
+            _is_processing.store(true);
+            // min size of audio at 16kHz
+            size_t required_sz = conf::instance().asr_audio_min_chunk_size();
+            std::vector<float> data(required_sz);
+            while(!_is_cancelled.load() && _is_processing.load())
+            {
+                auto actual = this->_audio_buffer.pop(data.data(), required_sz);
+                if(actual == 0)
+                {
+                    _is_processing.store(false);
+                    return;
+                }
+
+                if(actual < required_sz)
+                {
+                    LOG_WARN(
+                        "RecognizeReactor::_process: not enough audio data "
+                        "after pop, "
+                        "actual size: {}, required size: {}, session_id: {}",
+                        actual,
+                        required_sz,
+                        session_id);
+                }
+                std::string segment;
+                auto        ec = asr_mgr::instance().translate(segment,
+                                                               ctx_id,
+                                                               data,
+                                                               this->_params);
+                LOG_DEBUG("_process with ec:{}, ctx_id:{}, segment: {}",
+                          ec,
+                          ctx_id,
+                          segment);
+                if(ec != OK)
+                {
+                    LOG_ERROR("asr_mgr::instance().translate failed with error "
+                              "code: {}",
+                              ec);
+                    _send(ec, session_id, "", true, 0.0);
+                    _is_processing.store(false);
+                    return;
+                }
+                _send(OK, session_id, segment, false, 0.0);
+            }
+        });
+
+        return;
     }
 
+    // param only, no audio chunk, send back the param ack
     _send(err, session_id, text, is_finished, confidence);
 }
 
@@ -427,6 +468,9 @@ void RecognizeReactor::_send(const int          error_code,
                              const bool         is_finished,
                              const double       confidence)
 {
+    if(_is_cancelled.load())
+        return;
+
     ::GrpcLibrary::RecognizeResp resp;
     resp.set_error_code(error_code);
     resp.set_session_id(session_id);

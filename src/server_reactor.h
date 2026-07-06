@@ -10,6 +10,7 @@
 #include <hj/ai/asr.hpp>
 
 #include "sync.h"
+#include "audio_buffer.h"
 #include "api.grpc.pb.h"
 
 class QueryReactor : public grpc::ServerWriteReactor<::GrpcLibrary::QueryResp>
@@ -100,10 +101,11 @@ class RecognizeReactor
     std::atomic<bool>      _is_cancelled{false};
     std::atomic<bool>      _is_registered{false};
     std::atomic<bool>      _is_writing{false};
+    std::atomic<bool>      _is_processing{false};
     std::mutex             _mu;
     std::string            _ctx_id;
     hj::asr::full_params_t _params;
-    std::vector<float>     _audio_buffer;
+    audio_buffer           _audio_buffer;
 };
 
 #endif // SERVER_REACTOR_H
