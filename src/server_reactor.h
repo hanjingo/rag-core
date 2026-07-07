@@ -41,7 +41,7 @@ class QueryReactor : public grpc::ServerWriteReactor<::GrpcLibrary::QueryResp>
     std::atomic<bool>                     _is_writing{false};
     hj::channel<::GrpcLibrary::QueryResp> _w_queue;
 
-    // params
+    // base params
     int64_t     _session_id;
     int64_t     _user_id;
     std::string _auth;
@@ -49,15 +49,20 @@ class QueryReactor : public grpc::ServerWriteReactor<::GrpcLibrary::QueryResp>
     std::string _model;
 
     // sampling params
-    float _sampling_repetition_penalty;
-    float _sampling_temperature;
-    float _sampling_top_p;
-    float _sampling_top_k;
-    float _sampling_min_p;
+    float    _sampling_repetition_penalty;
+    float    _sampling_temperature;
+    float    _sampling_top_p;
+    int      _sampling_top_p_min_keep = 1;
+    float    _sampling_top_k;
+    float    _sampling_min_p;
+    int      _sampling_min_p_min_keep = 1;
+    uint32_t _sampling_seed;
 
     // context params
-    int32_t     _ctx_window_sz;
-    std::string _ctx_stop_words;
+    std::string                 _prompt;
+    int32_t                     _ctx_window_sz;
+    std::string                 _ctx_stop_words;
+    hj::llama::context_params_t _ctx_params;
 
     // resp
     std::string _answer;

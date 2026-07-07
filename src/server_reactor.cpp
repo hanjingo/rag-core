@@ -21,6 +21,7 @@ QueryReactor::QueryReactor(grpc::CallbackServerContext   *ctx,
                            const ::GrpcLibrary::QueryReq *req)
     : _ctx(ctx)
     , _w_queue{conf::instance().sync_write_queue_size()}
+    , _ctx_params{hj::llama::context::default_params()}
 {
     _session_id = req->id();
     _user_id    = req->user_id();
@@ -31,14 +32,40 @@ QueryReactor::QueryReactor(grpc::CallbackServerContext   *ctx,
     _sampling_repetition_penalty = req->sampling().repetition_penalty();
     _sampling_temperature        = req->sampling().temperature();
     _sampling_top_p              = req->sampling().top_p();
+    _sampling_top_p_min_keep     = req->sampling().top_p_min_keep();
     _sampling_top_k              = req->sampling().top_k();
     _sampling_min_p              = req->sampling().min_p();
+    _sampling_min_p_min_keep     = req->sampling().min_p_min_keep();
 
     _ctx_window_sz  = req->ctx().window_size();
     _ctx_stop_words = req->ctx().stop_words();
     _ctx_window_sz  = (_ctx_window_sz > 128)
                           ? _ctx_window_sz
                           : conf::instance().llm_ctx_window_sz();
+    _prompt         = req->ctx().prompt();
+
+    _ctx_params.n_ctx           = req->ctx().n_ctx();
+    _ctx_params.n_batch         = req->ctx().n_batch();
+    _ctx_params.n_ubatch        = req->ctx().n_ubatch();
+    _ctx_params.n_seq_max       = req->ctx().n_seq_max();
+    _ctx_params.n_threads       = req->ctx().n_threads();
+    _ctx_params.n_threads_batch = req->ctx().n_threads_batch();
+
+    _ctx_params.rope_freq_base   = req->ctx().rope_freq_base();
+    _ctx_params.rope_freq_scale  = req->ctx().rope_freq_scale();
+    _ctx_params.yarn_ext_factor  = req->ctx().yarn_ext_factor();
+    _ctx_params.yarn_attn_factor = req->ctx().yarn_attn_factor();
+    _ctx_params.yarn_beta_fast   = req->ctx().yarn_beta_fast();
+    _ctx_params.yarn_beta_slow   = req->ctx().yarn_beta_slow();
+    _ctx_params.yarn_orig_ctx    = req->ctx().yarn_orig_ctx();
+    _ctx_params.defrag_thold     = req->ctx().defrag_thold();
+
+    _ctx_params.embeddings  = req->ctx().embeddings();
+    _ctx_params.offload_kqv = req->ctx().offload_kqv();
+    _ctx_params.no_perf     = req->ctx().no_perf();
+    _ctx_params.op_offload  = req->ctx().op_offload();
+    _ctx_params.swa_full    = req->ctx().swa_full();
+    _ctx_params.kv_unified  = req->ctx().kv_unified();
 
     query_reactor_mgr::instance().register_query(_session_id, this);
     thread_pool::instance().enqueue([this]() { this->_process(); });
@@ -115,18 +142,15 @@ void QueryReactor::_process()
 
     auto tokens = llm_mgr::instance().tokenize(_model, _content, true, true);
     auto params = llm_mgr::instance().create_ctx_params();
-    // text context, 0 = from model
-    params.n_ctx = _ctx_window_sz;
-    // // logical maximum batch size that can be submitted to llama_decode
-    // params.n_batch;
-    // //  physical maximum batch size
-    // params.n_ubatch;
-    // // max number of sequences (i.e. distinct states for recurrent models)
-    // params.n_seq_max;
-    // // number of threads to use for generation
-    // params.n_threads;
-    // // number of threads to use for batch processing
-    // params.n_threads_batch;
+    auto smpl_params = llm_mgr::instance().create_sampler_params();
+
+    // create sampler
+    hj::llama::sampler sampler{};
+    sampler.init_top_k(_sampling_top_k);
+    sampler.init_top_p(_sampling_top_p, _sampling_top_p_min_keep);
+    sampler.init_min_p(_sampling_min_p, _sampling_min_p_min_keep);
+    sampler.init_temp(_sampling_temperature);
+    sampler.init_dist(_sampling_seed);
 
     auto      max_repeates = conf::instance().llm_max_repeats();
     watch_dog dog{max_repeates};
@@ -134,6 +158,7 @@ void QueryReactor::_process()
         _model,
         tokens,
         params,
+        sampler,
         [&](std::string &output) -> bool {
             // 1. if disconnect, stop
             // 2. if write too much repeat words (bug), stop

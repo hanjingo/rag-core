@@ -30,7 +30,7 @@ CREATE TABLE IF NOT EXISTS user (
     id BIGINT PRIMARY KEY,
     username TEXT NOT NULL UNIQUE,
     encrypted_passwd TEXT NOT NULL,
-    privilege INTEGER DEFAULT 0 -- 0: normal user, 1: admin, ...
+    privilege INTEGER DEFAULT 0 -- 0: normal user, 1: developer, 2: admin, ...
 );
 
 CREATE TABLE IF NOT EXISTS skill (
@@ -51,7 +51,7 @@ CREATE TABLE IF NOT EXISTS file (
     FOREIGN KEY (owner) REFERENCES user(id)
 );
 
-INSERT INTO user (id, username, encrypted_passwd, privilege) VALUES (1, 'admin', 'admin', 1);
+INSERT INTO user (id, username, encrypted_passwd, privilege) VALUES (1, 'admin', 'admin', 2);
 
 INSERT INTO session (id, user_id, title, timestamp) VALUES (
     1, 1, 'x', 0);
