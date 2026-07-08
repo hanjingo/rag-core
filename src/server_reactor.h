@@ -49,14 +49,7 @@ class QueryReactor : public grpc::ServerWriteReactor<::GrpcLibrary::QueryResp>
     std::string _model;
 
     // sampling params
-    float    _sampling_repetition_penalty;
-    float    _sampling_temperature;
-    float    _sampling_top_p;
-    int      _sampling_top_p_min_keep = 1;
-    float    _sampling_top_k;
-    float    _sampling_min_p;
-    int      _sampling_min_p_min_keep = 1;
-    uint32_t _sampling_seed;
+    hj::llama::sampler::params _smpl_params;
 
     // context params
     std::string                 _prompt;

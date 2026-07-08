@@ -214,14 +214,20 @@ PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
 inline constexpr SamplingParam::Impl_::Impl_(
     ::_pbi::ConstantInitialized) noexcept
       : _cached_size_{0},
-        repetition_penalty_{0},
+        penalty_last_n_{0},
+        penalty_repeat_{0},
+        penalty_freq_{0},
+        penalty_present_{0},
         temperature_{0},
+        temperature_ext_{0},
+        temperature_ext_delta_{0},
+        temperature_ext_exponent_{0},
+        seed_{0u},
         top_k_{0},
         top_p_{0},
-        min_p_{0},
         top_p_min_keep_{0},
-        min_p_min_keep_{0},
-        seed_{0} {}
+        min_p_{0},
+        min_p_min_keep_{0} {}
 
 template <typename>
 PROTOBUF_CONSTEXPR SamplingParam::SamplingParam(::_pbi::ConstantInitialized)
@@ -1206,15 +1212,21 @@ const ::uint32_t
         2,
         0x081, // bitmap
         PROTOBUF_FIELD_OFFSET(::GrpcLibrary::SamplingParam, _impl_._has_bits_),
-        11, // hasbit index offset
-        PROTOBUF_FIELD_OFFSET(::GrpcLibrary::SamplingParam, _impl_.repetition_penalty_),
+        17, // hasbit index offset
+        PROTOBUF_FIELD_OFFSET(::GrpcLibrary::SamplingParam, _impl_.penalty_last_n_),
+        PROTOBUF_FIELD_OFFSET(::GrpcLibrary::SamplingParam, _impl_.penalty_repeat_),
+        PROTOBUF_FIELD_OFFSET(::GrpcLibrary::SamplingParam, _impl_.penalty_freq_),
+        PROTOBUF_FIELD_OFFSET(::GrpcLibrary::SamplingParam, _impl_.penalty_present_),
         PROTOBUF_FIELD_OFFSET(::GrpcLibrary::SamplingParam, _impl_.temperature_),
+        PROTOBUF_FIELD_OFFSET(::GrpcLibrary::SamplingParam, _impl_.temperature_ext_),
+        PROTOBUF_FIELD_OFFSET(::GrpcLibrary::SamplingParam, _impl_.temperature_ext_delta_),
+        PROTOBUF_FIELD_OFFSET(::GrpcLibrary::SamplingParam, _impl_.temperature_ext_exponent_),
+        PROTOBUF_FIELD_OFFSET(::GrpcLibrary::SamplingParam, _impl_.seed_),
         PROTOBUF_FIELD_OFFSET(::GrpcLibrary::SamplingParam, _impl_.top_k_),
         PROTOBUF_FIELD_OFFSET(::GrpcLibrary::SamplingParam, _impl_.top_p_),
-        PROTOBUF_FIELD_OFFSET(::GrpcLibrary::SamplingParam, _impl_.min_p_),
         PROTOBUF_FIELD_OFFSET(::GrpcLibrary::SamplingParam, _impl_.top_p_min_keep_),
+        PROTOBUF_FIELD_OFFSET(::GrpcLibrary::SamplingParam, _impl_.min_p_),
         PROTOBUF_FIELD_OFFSET(::GrpcLibrary::SamplingParam, _impl_.min_p_min_keep_),
-        PROTOBUF_FIELD_OFFSET(::GrpcLibrary::SamplingParam, _impl_.seed_),
         0,
         1,
         2,
@@ -1223,6 +1235,12 @@ const ::uint32_t
         5,
         6,
         7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
         0x081, // bitmap
         PROTOBUF_FIELD_OFFSET(::GrpcLibrary::ContextParam, _impl_._has_bits_),
         26, // hasbit index offset
@@ -1611,38 +1629,38 @@ static const ::_pbi::MigrationSchema
         {11, sizeof(::GrpcLibrary::Skill)},
         {28, sizeof(::GrpcLibrary::MessageInfo)},
         {43, sizeof(::GrpcLibrary::SamplingParam)},
-        {62, sizeof(::GrpcLibrary::ContextParam)},
-        {111, sizeof(::GrpcLibrary::RecognitionParam)},
-        {166, sizeof(::GrpcLibrary::Ping)},
-        {171, sizeof(::GrpcLibrary::Pong)},
-        {176, sizeof(::GrpcLibrary::LoginReq)},
-        {183, sizeof(::GrpcLibrary::LoginResp)},
-        {198, sizeof(::GrpcLibrary::LogoutReq)},
-        {205, sizeof(::GrpcLibrary::LogoutResp)},
-        {212, sizeof(::GrpcLibrary::RegAccountReq)},
-        {219, sizeof(::GrpcLibrary::RegAccountResp)},
-        {226, sizeof(::GrpcLibrary::QueryReq)},
-        {245, sizeof(::GrpcLibrary::QueryResp)},
-        {256, sizeof(::GrpcLibrary::StopAnswerReq)},
-        {265, sizeof(::GrpcLibrary::StopAnswerResp)},
-        {272, sizeof(::GrpcLibrary::RecognizeReq)},
-        {285, sizeof(::GrpcLibrary::RecognizeResp)},
-        {298, sizeof(::GrpcLibrary::StopRecognizeReq)},
-        {307, sizeof(::GrpcLibrary::StopRecognizeResp)},
-        {314, sizeof(::GrpcLibrary::GetMessageInfoReq)},
-        {327, sizeof(::GrpcLibrary::GetMessageInfoResp)},
-        {334, sizeof(::GrpcLibrary::GetSessionReq)},
-        {345, sizeof(::GrpcLibrary::GetSessionResp)},
-        {352, sizeof(::GrpcLibrary::NewSessionReq)},
-        {365, sizeof(::GrpcLibrary::NewSessionResp)},
-        {372, sizeof(::GrpcLibrary::ModifySessionTitleReq)},
-        {383, sizeof(::GrpcLibrary::ModifySessionTitleResp)},
-        {392, sizeof(::GrpcLibrary::DelSessionReq)},
-        {401, sizeof(::GrpcLibrary::DelSessionResp)},
-        {408, sizeof(::GrpcLibrary::GetSkillInfoReq)},
-        {415, sizeof(::GrpcLibrary::GetSkillInfoResp)},
-        {422, sizeof(::GrpcLibrary::DownloadReq)},
-        {431, sizeof(::GrpcLibrary::DownloadResp)},
+        {74, sizeof(::GrpcLibrary::ContextParam)},
+        {123, sizeof(::GrpcLibrary::RecognitionParam)},
+        {178, sizeof(::GrpcLibrary::Ping)},
+        {183, sizeof(::GrpcLibrary::Pong)},
+        {188, sizeof(::GrpcLibrary::LoginReq)},
+        {195, sizeof(::GrpcLibrary::LoginResp)},
+        {210, sizeof(::GrpcLibrary::LogoutReq)},
+        {217, sizeof(::GrpcLibrary::LogoutResp)},
+        {224, sizeof(::GrpcLibrary::RegAccountReq)},
+        {231, sizeof(::GrpcLibrary::RegAccountResp)},
+        {238, sizeof(::GrpcLibrary::QueryReq)},
+        {257, sizeof(::GrpcLibrary::QueryResp)},
+        {268, sizeof(::GrpcLibrary::StopAnswerReq)},
+        {277, sizeof(::GrpcLibrary::StopAnswerResp)},
+        {284, sizeof(::GrpcLibrary::RecognizeReq)},
+        {297, sizeof(::GrpcLibrary::RecognizeResp)},
+        {310, sizeof(::GrpcLibrary::StopRecognizeReq)},
+        {319, sizeof(::GrpcLibrary::StopRecognizeResp)},
+        {326, sizeof(::GrpcLibrary::GetMessageInfoReq)},
+        {339, sizeof(::GrpcLibrary::GetMessageInfoResp)},
+        {346, sizeof(::GrpcLibrary::GetSessionReq)},
+        {357, sizeof(::GrpcLibrary::GetSessionResp)},
+        {364, sizeof(::GrpcLibrary::NewSessionReq)},
+        {377, sizeof(::GrpcLibrary::NewSessionResp)},
+        {384, sizeof(::GrpcLibrary::ModifySessionTitleReq)},
+        {395, sizeof(::GrpcLibrary::ModifySessionTitleResp)},
+        {404, sizeof(::GrpcLibrary::DelSessionReq)},
+        {413, sizeof(::GrpcLibrary::DelSessionResp)},
+        {420, sizeof(::GrpcLibrary::GetSkillInfoReq)},
+        {427, sizeof(::GrpcLibrary::GetSkillInfoResp)},
+        {434, sizeof(::GrpcLibrary::DownloadReq)},
+        {443, sizeof(::GrpcLibrary::DownloadResp)},
 };
 static const ::_pb::Message* PROTOBUF_NONNULL const file_default_instances[] = {
     &::GrpcLibrary::_Session_default_instance_._instance,
@@ -1692,129 +1710,133 @@ const char descriptor_table_protodef_src_2fapi_2eproto[] ABSL_ATTRIBUTE_SECTION_
     "mp\030\006 \001(\t\022\020\n\010platform\030\007 \001(\005\"x\n\013MessageInf"
     "o\022\n\n\002id\030\001 \001(\003\022\022\n\nsession_id\030\002 \001(\003\022\014\n\004rol"
     "e\030\003 \001(\t\022\017\n\007content\030\004 \001(\t\022\027\n\017prev_message"
-    "_id\030\005 \001(\003\022\021\n\ttimestamp\030\006 \001(\t\"\253\001\n\rSamplin"
-    "gParam\022\032\n\022repetition_penalty\030\001 \001(\002\022\023\n\013te"
-    "mperature\030\002 \001(\002\022\r\n\005top_k\030\003 \001(\002\022\r\n\005top_p\030"
-    "\004 \001(\002\022\r\n\005min_p\030\005 \001(\002\022\026\n\016top_p_min_keep\030\006"
-    " \001(\005\022\026\n\016min_p_min_keep\030\007 \001(\005\022\014\n\004seed\030\010 \001"
-    "(\005\"\355\003\n\014ContextParam\022\023\n\013window_size\030\001 \001(\005"
-    "\022\022\n\nstop_words\030\002 \001(\t\022\r\n\005n_ctx\030\003 \001(\005\022\017\n\007n"
-    "_batch\030\004 \001(\005\022\020\n\010n_ubatch\030\005 \001(\005\022\021\n\tn_seq_"
-    "max\030\006 \001(\005\022\021\n\tn_threads\030\007 \001(\005\022\027\n\017n_thread"
-    "s_batch\030\010 \001(\005\022\026\n\016rope_freq_base\030\t \001(\002\022\027\n"
-    "\017rope_freq_scale\030\n \001(\002\022\027\n\017yarn_ext_facto"
-    "r\030\013 \001(\002\022\030\n\020yarn_attn_factor\030\014 \001(\002\022\026\n\016yar"
-    "n_beta_fast\030\r \001(\002\022\026\n\016yarn_beta_slow\030\016 \001("
-    "\002\022\025\n\ryarn_orig_ctx\030\017 \001(\005\022\024\n\014defrag_thold"
-    "\030\020 \001(\002\022\022\n\nembeddings\030\021 \001(\010\022\023\n\013offload_kq"
-    "v\030\022 \001(\010\022\017\n\007no_perf\030\023 \001(\010\022\022\n\nop_offload\030\024"
-    " \001(\010\022\020\n\010swa_full\030\025 \001(\010\022\022\n\nkv_unified\030\026 \001"
-    "(\010\022\016\n\006prompt\030\027 \001(\t\"\344\004\n\020RecognitionParam\022"
-    "\021\n\tn_threads\030\001 \001(\005\022\026\n\016n_max_text_ctx\030\002 \001"
-    "(\005\022\021\n\toffset_ms\030\003 \001(\005\022\023\n\013duration_ms\030\004 \001"
-    "(\005\022\021\n\ttranslate\030\005 \001(\010\022\027\n\017detect_language"
-    "\030\006 \001(\010\022\020\n\010language\030\007 \001(\t\022\016\n\006no_ctx\030\010 \001(\010"
-    "\022\025\n\rno_timestamps\030\t \001(\010\022\026\n\016single_segmen"
-    "t\030\n \001(\010\022\025\n\rprint_special\030\013 \001(\010\022\026\n\016print_"
-    "progress\030\014 \001(\010\022\026\n\016print_realtime\030\r \001(\010\022\030"
-    "\n\020print_timestamps\030\016 \001(\010\022\034\n\024carry_initia"
-    "l_prompt\030\017 \001(\010\022\026\n\016initial_prompt\030\020 \001(\t\022\026"
-    "\n\016suppress_regex\030\021 \001(\t\022\026\n\016suppress_blank"
-    "\030\022 \001(\010\022\024\n\014suppress_nst\030\023 \001(\010\022\023\n\013temperat"
-    "ure\030\024 \001(\002\022\027\n\017temperature_inc\030\025 \001(\002\022\026\n\016ma"
-    "x_initial_ts\030\026 \001(\002\022\026\n\016length_penalty\030\027 \001"
-    "(\002\022\025\n\rentropy_thold\030\030 \001(\002\022\025\n\rlogprob_tho"
-    "ld\030\031 \001(\002\022\027\n\017no_speech_thold\030\032 \001(\002\"\031\n\004Pin"
-    "g\022\021\n\ttimestamp\030\001 \001(\003\"\031\n\004Pong\022\021\n\ttimestam"
-    "p\030\001 \001(\003\"+\n\010LoginReq\022\017\n\007account\030\001 \001(\t\022\016\n\006"
-    "passwd\030\002 \001(\t\"{\n\tLoginResp\022\022\n\nerror_code\030"
-    "\001 \001(\005\022\017\n\007user_id\030\002 \001(\003\022\021\n\tprivilege\030\003 \001("
-    "\005\022\014\n\004auth\030\004 \001(\t\022\017\n\007account\030\005 \001(\t\022\027\n\017last"
-    "_login_time\030\006 \001(\t\"*\n\tLogoutReq\022\017\n\007user_i"
-    "d\030\001 \001(\003\022\014\n\004auth\030\002 \001(\t\"1\n\nLogoutResp\022\022\n\ne"
-    "rror_code\030\001 \001(\005\022\017\n\007user_id\030\002 \001(\003\"0\n\rRegA"
-    "ccountReq\022\017\n\007account\030\001 \001(\t\022\016\n\006passwd\030\002 \001"
-    "(\t\"5\n\016RegAccountResp\022\022\n\nerror_code\030\001 \001(\005"
-    "\022\017\n\007user_id\030\002 \001(\003\"\275\001\n\010QueryReq\022\n\n\002id\030\001 \001"
-    "(\003\022\017\n\007user_id\030\002 \001(\003\022\014\n\004auth\030\003 \001(\t\022\017\n\007con"
-    "tent\030\004 \001(\t\022\r\n\005model\030\005 \001(\t\022\020\n\010pipeline\030\006 "
-    "\001(\t\022,\n\010sampling\030\007 \001(\0132\032.GrpcLibrary.Samp"
-    "lingParam\022&\n\003ctx\030\010 \001(\0132\031.GrpcLibrary.Con"
-    "textParam\"Q\n\tQueryResp\022\022\n\nerror_code\030\001 \001"
-    "(\005\022\n\n\002id\030\002 \001(\003\022\017\n\007content\030\003 \001(\t\022\023\n\013is_fi"
-    "nished\030\004 \001(\010\"B\n\rStopAnswerReq\022\022\n\nsession"
-    "_id\030\001 \001(\003\022\017\n\007user_id\030\002 \001(\003\022\014\n\004auth\030\003 \001(\t"
-    "\"8\n\016StopAnswerResp\022\022\n\nerror_code\030\001 \001(\005\022\022"
-    "\n\nsession_id\030\002 \001(\003\"\211\001\n\014RecognizeReq\022\016\n\006c"
-    "tx_id\030\001 \001(\t\022\022\n\nsession_id\030\002 \001(\003\022.\n\005param"
-    "\030\003 \001(\0132\035.GrpcLibrary.RecognitionParamH\000\022"
-    "\025\n\013audio_chunk\030\004 \001(\014H\000B\016\n\014request_type\"t"
-    "\n\rRecognizeResp\022\022\n\nerror_code\030\001 \001(\005\022\022\n\ns"
-    "ession_id\030\002 \001(\003\022\022\n\ntranscript\030\003 \001(\t\022\023\n\013i"
-    "s_finished\030\004 \001(\010\022\022\n\nconfidence\030\005 \001(\001\"E\n\020"
-    "StopRecognizeReq\022\022\n\nsession_id\030\001 \001(\003\022\017\n\007"
-    "user_id\030\002 \001(\003\022\014\n\004auth\030\003 \001(\t\";\n\021StopRecog"
-    "nizeResp\022\022\n\nerror_code\030\001 \001(\005\022\022\n\nsession_"
-    "id\030\002 \001(\003\"a\n\021GetMessageInfoReq\022\n\n\002id\030\001 \001("
-    "\003\022\022\n\nsession_id\030\002 \001(\003\022\r\n\005limit\030\003 \001(\005\022\017\n\007"
-    "user_id\030\004 \001(\003\022\014\n\004auth\030\005 \001(\t\"T\n\022GetMessag"
-    "eInfoResp\022\022\n\nerror_code\030\001 \001(\005\022*\n\010message"
-    "s\030\002 \003(\0132\030.GrpcLibrary.MessageInfo\"I\n\rGet"
-    "SessionReq\022\n\n\002id\030\001 \001(\003\022\017\n\007user_id\030\002 \001(\003\022"
-    "\014\n\004auth\030\003 \001(\t\022\r\n\005limit\030\004 \001(\005\"L\n\016GetSessi"
-    "onResp\022\022\n\nerror_code\030\001 \001(\005\022&\n\010sessions\030\002"
-    " \003(\0132\024.GrpcLibrary.Session\"]\n\rNewSession"
-    "Req\022\017\n\007user_id\030\001 \001(\003\022\014\n\004auth\030\002 \001(\t\022\r\n\005ti"
-    "tle\030\003 \001(\t\022\017\n\007content\030\004 \001(\t\022\r\n\005model\030\005 \001("
-    "\t\"K\n\016NewSessionResp\022\022\n\nerror_code\030\001 \001(\005\022"
-    "%\n\007session\030\002 \001(\0132\024.GrpcLibrary.Session\"Q"
-    "\n\025ModifySessionTitleReq\022\n\n\002id\030\001 \001(\003\022\017\n\007u"
-    "ser_id\030\002 \001(\003\022\014\n\004auth\030\003 \001(\t\022\r\n\005title\030\004 \001("
-    "\t\"G\n\026ModifySessionTitleResp\022\022\n\nerror_cod"
-    "e\030\001 \001(\005\022\n\n\002id\030\002 \001(\003\022\r\n\005title\030\003 \001(\t\";\n\rDe"
-    "lSessionReq\022\017\n\007user_id\030\001 \001(\003\022\014\n\004auth\030\002 \001"
-    "(\t\022\013\n\003ids\030\003 \003(\003\"1\n\016DelSessionResp\022\022\n\nerr"
-    "or_code\030\001 \001(\005\022\013\n\003ids\030\002 \003(\003\".\n\017GetSkillIn"
-    "foReq\022\014\n\004hash\030\001 \001(\t\022\r\n\005limit\030\002 \001(\005\"J\n\020Ge"
-    "tSkillInfoResp\022\022\n\nerror_code\030\001 \001(\005\022\"\n\006sk"
-    "ills\030\002 \003(\0132\022.GrpcLibrary.Skill\":\n\013Downlo"
-    "adReq\022\014\n\004hash\030\001 \001(\t\022\017\n\007user_id\030\002 \001(\003\022\014\n\004"
-    "auth\030\003 \001(\t\"O\n\014DownloadResp\022\022\n\nerror_code"
-    "\030\001 \001(\005\022\014\n\004hash\030\002 \001(\t\022\014\n\004addr\030\003 \001(\t\022\017\n\007si"
-    "ze_kb\030\004 \001(\0032\306\010\n\013GrpcService\0223\n\tHeartbeat"
-    "\022\021.GrpcLibrary.Ping\032\021.GrpcLibrary.Pong\"\000"
-    "\0228\n\005Login\022\025.GrpcLibrary.LoginReq\032\026.GrpcL"
-    "ibrary.LoginResp\"\000\022;\n\006Logout\022\026.GrpcLibra"
-    "ry.LogoutReq\032\027.GrpcLibrary.LogoutResp\"\000\022"
-    "G\n\nRegAccount\022\032.GrpcLibrary.RegAccountRe"
-    "q\032\033.GrpcLibrary.RegAccountResp\"\000\022:\n\005Quer"
-    "y\022\025.GrpcLibrary.QueryReq\032\026.GrpcLibrary.Q"
-    "ueryResp\"\0000\001\022G\n\nStopAnswer\022\032.GrpcLibrary"
-    ".StopAnswerReq\032\033.GrpcLibrary.StopAnswerR"
-    "esp\"\000\022H\n\tRecognize\022\031.GrpcLibrary.Recogni"
-    "zeReq\032\032.GrpcLibrary.RecognizeResp\"\000(\0010\001\022"
-    "P\n\rStopRecognize\022\035.GrpcLibrary.StopRecog"
-    "nizeReq\032\036.GrpcLibrary.StopRecognizeResp\""
-    "\000\022S\n\016GetMessageInfo\022\036.GrpcLibrary.GetMes"
-    "sageInfoReq\032\037.GrpcLibrary.GetMessageInfo"
-    "Resp\"\000\022G\n\nGetSession\022\032.GrpcLibrary.GetSe"
-    "ssionReq\032\033.GrpcLibrary.GetSessionResp\"\000\022"
-    "G\n\nNewSession\022\032.GrpcLibrary.NewSessionRe"
-    "q\032\033.GrpcLibrary.NewSessionResp\"\000\022_\n\022Modi"
-    "fySessionTitle\022\".GrpcLibrary.ModifySessi"
-    "onTitleReq\032#.GrpcLibrary.ModifySessionTi"
-    "tleResp\"\000\022G\n\nDelSession\022\032.GrpcLibrary.De"
-    "lSessionReq\032\033.GrpcLibrary.DelSessionResp"
-    "\"\000\022M\n\014GetSkillInfo\022\034.GrpcLibrary.GetSkil"
-    "lInfoReq\032\035.GrpcLibrary.GetSkillInfoResp\""
-    "\000\022A\n\010Download\022\030.GrpcLibrary.DownloadReq\032"
-    "\031.GrpcLibrary.DownloadResp\"\000b\006proto3"
+    "_id\030\005 \001(\003\022\021\n\ttimestamp\030\006 \001(\t\"\310\002\n\rSamplin"
+    "gParam\022\026\n\016penalty_last_n\030\001 \001(\005\022\026\n\016penalt"
+    "y_repeat\030\002 \001(\002\022\024\n\014penalty_freq\030\003 \001(\002\022\027\n\017"
+    "penalty_present\030\004 \001(\002\022\023\n\013temperature\030\005 \001"
+    "(\002\022\027\n\017temperature_ext\030\006 \001(\002\022\035\n\025temperatu"
+    "re_ext_delta\030\007 \001(\002\022 \n\030temperature_ext_ex"
+    "ponent\030\010 \001(\002\022\014\n\004seed\030\t \001(\r\022\r\n\005top_k\030\n \001("
+    "\005\022\r\n\005top_p\030\013 \001(\002\022\026\n\016top_p_min_keep\030\014 \001(\005"
+    "\022\r\n\005min_p\030\r \001(\002\022\026\n\016min_p_min_keep\030\016 \001(\005\""
+    "\355\003\n\014ContextParam\022\023\n\013window_size\030\001 \001(\005\022\022\n"
+    "\nstop_words\030\002 \001(\t\022\r\n\005n_ctx\030\003 \001(\005\022\017\n\007n_ba"
+    "tch\030\004 \001(\005\022\020\n\010n_ubatch\030\005 \001(\005\022\021\n\tn_seq_max"
+    "\030\006 \001(\005\022\021\n\tn_threads\030\007 \001(\005\022\027\n\017n_threads_b"
+    "atch\030\010 \001(\005\022\026\n\016rope_freq_base\030\t \001(\002\022\027\n\017ro"
+    "pe_freq_scale\030\n \001(\002\022\027\n\017yarn_ext_factor\030\013"
+    " \001(\002\022\030\n\020yarn_attn_factor\030\014 \001(\002\022\026\n\016yarn_b"
+    "eta_fast\030\r \001(\002\022\026\n\016yarn_beta_slow\030\016 \001(\002\022\025"
+    "\n\ryarn_orig_ctx\030\017 \001(\005\022\024\n\014defrag_thold\030\020 "
+    "\001(\002\022\022\n\nembeddings\030\021 \001(\010\022\023\n\013offload_kqv\030\022"
+    " \001(\010\022\017\n\007no_perf\030\023 \001(\010\022\022\n\nop_offload\030\024 \001("
+    "\010\022\020\n\010swa_full\030\025 \001(\010\022\022\n\nkv_unified\030\026 \001(\010\022"
+    "\016\n\006prompt\030\027 \001(\t\"\344\004\n\020RecognitionParam\022\021\n\t"
+    "n_threads\030\001 \001(\005\022\026\n\016n_max_text_ctx\030\002 \001(\005\022"
+    "\021\n\toffset_ms\030\003 \001(\005\022\023\n\013duration_ms\030\004 \001(\005\022"
+    "\021\n\ttranslate\030\005 \001(\010\022\027\n\017detect_language\030\006 "
+    "\001(\010\022\020\n\010language\030\007 \001(\t\022\016\n\006no_ctx\030\010 \001(\010\022\025\n"
+    "\rno_timestamps\030\t \001(\010\022\026\n\016single_segment\030\n"
+    " \001(\010\022\025\n\rprint_special\030\013 \001(\010\022\026\n\016print_pro"
+    "gress\030\014 \001(\010\022\026\n\016print_realtime\030\r \001(\010\022\030\n\020p"
+    "rint_timestamps\030\016 \001(\010\022\034\n\024carry_initial_p"
+    "rompt\030\017 \001(\010\022\026\n\016initial_prompt\030\020 \001(\t\022\026\n\016s"
+    "uppress_regex\030\021 \001(\t\022\026\n\016suppress_blank\030\022 "
+    "\001(\010\022\024\n\014suppress_nst\030\023 \001(\010\022\023\n\013temperature"
+    "\030\024 \001(\002\022\027\n\017temperature_inc\030\025 \001(\002\022\026\n\016max_i"
+    "nitial_ts\030\026 \001(\002\022\026\n\016length_penalty\030\027 \001(\002\022"
+    "\025\n\rentropy_thold\030\030 \001(\002\022\025\n\rlogprob_thold\030"
+    "\031 \001(\002\022\027\n\017no_speech_thold\030\032 \001(\002\"\031\n\004Ping\022\021"
+    "\n\ttimestamp\030\001 \001(\003\"\031\n\004Pong\022\021\n\ttimestamp\030\001"
+    " \001(\003\"+\n\010LoginReq\022\017\n\007account\030\001 \001(\t\022\016\n\006pas"
+    "swd\030\002 \001(\t\"{\n\tLoginResp\022\022\n\nerror_code\030\001 \001"
+    "(\005\022\017\n\007user_id\030\002 \001(\003\022\021\n\tprivilege\030\003 \001(\005\022\014"
+    "\n\004auth\030\004 \001(\t\022\017\n\007account\030\005 \001(\t\022\027\n\017last_lo"
+    "gin_time\030\006 \001(\t\"*\n\tLogoutReq\022\017\n\007user_id\030\001"
+    " \001(\003\022\014\n\004auth\030\002 \001(\t\"1\n\nLogoutResp\022\022\n\nerro"
+    "r_code\030\001 \001(\005\022\017\n\007user_id\030\002 \001(\003\"0\n\rRegAcco"
+    "untReq\022\017\n\007account\030\001 \001(\t\022\016\n\006passwd\030\002 \001(\t\""
+    "5\n\016RegAccountResp\022\022\n\nerror_code\030\001 \001(\005\022\017\n"
+    "\007user_id\030\002 \001(\003\"\275\001\n\010QueryReq\022\n\n\002id\030\001 \001(\003\022"
+    "\017\n\007user_id\030\002 \001(\003\022\014\n\004auth\030\003 \001(\t\022\017\n\007conten"
+    "t\030\004 \001(\t\022\r\n\005model\030\005 \001(\t\022\020\n\010pipeline\030\006 \001(\t"
+    "\022,\n\010sampling\030\007 \001(\0132\032.GrpcLibrary.Samplin"
+    "gParam\022&\n\003ctx\030\010 \001(\0132\031.GrpcLibrary.Contex"
+    "tParam\"Q\n\tQueryResp\022\022\n\nerror_code\030\001 \001(\005\022"
+    "\n\n\002id\030\002 \001(\003\022\017\n\007content\030\003 \001(\t\022\023\n\013is_finis"
+    "hed\030\004 \001(\010\"B\n\rStopAnswerReq\022\022\n\nsession_id"
+    "\030\001 \001(\003\022\017\n\007user_id\030\002 \001(\003\022\014\n\004auth\030\003 \001(\t\"8\n"
+    "\016StopAnswerResp\022\022\n\nerror_code\030\001 \001(\005\022\022\n\ns"
+    "ession_id\030\002 \001(\003\"\211\001\n\014RecognizeReq\022\016\n\006ctx_"
+    "id\030\001 \001(\t\022\022\n\nsession_id\030\002 \001(\003\022.\n\005param\030\003 "
+    "\001(\0132\035.GrpcLibrary.RecognitionParamH\000\022\025\n\013"
+    "audio_chunk\030\004 \001(\014H\000B\016\n\014request_type\"t\n\rR"
+    "ecognizeResp\022\022\n\nerror_code\030\001 \001(\005\022\022\n\nsess"
+    "ion_id\030\002 \001(\003\022\022\n\ntranscript\030\003 \001(\t\022\023\n\013is_f"
+    "inished\030\004 \001(\010\022\022\n\nconfidence\030\005 \001(\001\"E\n\020Sto"
+    "pRecognizeReq\022\022\n\nsession_id\030\001 \001(\003\022\017\n\007use"
+    "r_id\030\002 \001(\003\022\014\n\004auth\030\003 \001(\t\";\n\021StopRecogniz"
+    "eResp\022\022\n\nerror_code\030\001 \001(\005\022\022\n\nsession_id\030"
+    "\002 \001(\003\"a\n\021GetMessageInfoReq\022\n\n\002id\030\001 \001(\003\022\022"
+    "\n\nsession_id\030\002 \001(\003\022\r\n\005limit\030\003 \001(\005\022\017\n\007use"
+    "r_id\030\004 \001(\003\022\014\n\004auth\030\005 \001(\t\"T\n\022GetMessageIn"
+    "foResp\022\022\n\nerror_code\030\001 \001(\005\022*\n\010messages\030\002"
+    " \003(\0132\030.GrpcLibrary.MessageInfo\"I\n\rGetSes"
+    "sionReq\022\n\n\002id\030\001 \001(\003\022\017\n\007user_id\030\002 \001(\003\022\014\n\004"
+    "auth\030\003 \001(\t\022\r\n\005limit\030\004 \001(\005\"L\n\016GetSessionR"
+    "esp\022\022\n\nerror_code\030\001 \001(\005\022&\n\010sessions\030\002 \003("
+    "\0132\024.GrpcLibrary.Session\"]\n\rNewSessionReq"
+    "\022\017\n\007user_id\030\001 \001(\003\022\014\n\004auth\030\002 \001(\t\022\r\n\005title"
+    "\030\003 \001(\t\022\017\n\007content\030\004 \001(\t\022\r\n\005model\030\005 \001(\t\"K"
+    "\n\016NewSessionResp\022\022\n\nerror_code\030\001 \001(\005\022%\n\007"
+    "session\030\002 \001(\0132\024.GrpcLibrary.Session\"Q\n\025M"
+    "odifySessionTitleReq\022\n\n\002id\030\001 \001(\003\022\017\n\007user"
+    "_id\030\002 \001(\003\022\014\n\004auth\030\003 \001(\t\022\r\n\005title\030\004 \001(\t\"G"
+    "\n\026ModifySessionTitleResp\022\022\n\nerror_code\030\001"
+    " \001(\005\022\n\n\002id\030\002 \001(\003\022\r\n\005title\030\003 \001(\t\";\n\rDelSe"
+    "ssionReq\022\017\n\007user_id\030\001 \001(\003\022\014\n\004auth\030\002 \001(\t\022"
+    "\013\n\003ids\030\003 \003(\003\"1\n\016DelSessionResp\022\022\n\nerror_"
+    "code\030\001 \001(\005\022\013\n\003ids\030\002 \003(\003\".\n\017GetSkillInfoR"
+    "eq\022\014\n\004hash\030\001 \001(\t\022\r\n\005limit\030\002 \001(\005\"J\n\020GetSk"
+    "illInfoResp\022\022\n\nerror_code\030\001 \001(\005\022\"\n\006skill"
+    "s\030\002 \003(\0132\022.GrpcLibrary.Skill\":\n\013DownloadR"
+    "eq\022\014\n\004hash\030\001 \001(\t\022\017\n\007user_id\030\002 \001(\003\022\014\n\004aut"
+    "h\030\003 \001(\t\"O\n\014DownloadResp\022\022\n\nerror_code\030\001 "
+    "\001(\005\022\014\n\004hash\030\002 \001(\t\022\014\n\004addr\030\003 \001(\t\022\017\n\007size_"
+    "kb\030\004 \001(\0032\306\010\n\013GrpcService\0223\n\tHeartbeat\022\021."
+    "GrpcLibrary.Ping\032\021.GrpcLibrary.Pong\"\000\0228\n"
+    "\005Login\022\025.GrpcLibrary.LoginReq\032\026.GrpcLibr"
+    "ary.LoginResp\"\000\022;\n\006Logout\022\026.GrpcLibrary."
+    "LogoutReq\032\027.GrpcLibrary.LogoutResp\"\000\022G\n\n"
+    "RegAccount\022\032.GrpcLibrary.RegAccountReq\032\033"
+    ".GrpcLibrary.RegAccountResp\"\000\022:\n\005Query\022\025"
+    ".GrpcLibrary.QueryReq\032\026.GrpcLibrary.Quer"
+    "yResp\"\0000\001\022G\n\nStopAnswer\022\032.GrpcLibrary.St"
+    "opAnswerReq\032\033.GrpcLibrary.StopAnswerResp"
+    "\"\000\022H\n\tRecognize\022\031.GrpcLibrary.RecognizeR"
+    "eq\032\032.GrpcLibrary.RecognizeResp\"\000(\0010\001\022P\n\r"
+    "StopRecognize\022\035.GrpcLibrary.StopRecogniz"
+    "eReq\032\036.GrpcLibrary.StopRecognizeResp\"\000\022S"
+    "\n\016GetMessageInfo\022\036.GrpcLibrary.GetMessag"
+    "eInfoReq\032\037.GrpcLibrary.GetMessageInfoRes"
+    "p\"\000\022G\n\nGetSession\022\032.GrpcLibrary.GetSessi"
+    "onReq\032\033.GrpcLibrary.GetSessionResp\"\000\022G\n\n"
+    "NewSession\022\032.GrpcLibrary.NewSessionReq\032\033"
+    ".GrpcLibrary.NewSessionResp\"\000\022_\n\022ModifyS"
+    "essionTitle\022\".GrpcLibrary.ModifySessionT"
+    "itleReq\032#.GrpcLibrary.ModifySessionTitle"
+    "Resp\"\000\022G\n\nDelSession\022\032.GrpcLibrary.DelSe"
+    "ssionReq\032\033.GrpcLibrary.DelSessionResp\"\000\022"
+    "M\n\014GetSkillInfo\022\034.GrpcLibrary.GetSkillIn"
+    "foReq\032\035.GrpcLibrary.GetSkillInfoResp\"\000\022A"
+    "\n\010Download\022\030.GrpcLibrary.DownloadReq\032\031.G"
+    "rpcLibrary.DownloadResp\"\000b\006proto3"
 };
 static ::absl::once_flag descriptor_table_src_2fapi_2eproto_once;
 PROTOBUF_CONSTINIT const ::_pbi::DescriptorTable descriptor_table_src_2fapi_2eproto = {
     false,
     false,
-    4996,
+    5153,
     descriptor_table_protodef_src_2fapi_2eproto,
     "src/api.proto",
     &descriptor_table_src_2fapi_2eproto_once,
@@ -3243,11 +3265,11 @@ PROTOBUF_NDEBUG_INLINE SamplingParam::Impl_::Impl_(
 inline void SamplingParam::SharedCtor(::_pb::Arena* PROTOBUF_NULLABLE arena) {
   new (&_impl_) Impl_(internal_visibility(), arena);
   ::memset(reinterpret_cast<char*>(&_impl_) +
-               offsetof(Impl_, repetition_penalty_),
+               offsetof(Impl_, penalty_last_n_),
            0,
-           offsetof(Impl_, seed_) -
-               offsetof(Impl_, repetition_penalty_) +
-               sizeof(Impl_::seed_));
+           offsetof(Impl_, min_p_min_keep_) -
+               offsetof(Impl_, penalty_last_n_) +
+               sizeof(Impl_::min_p_min_keep_));
 }
 SamplingParam::~SamplingParam() {
   // @@protoc_insertion_point(destructor:GrpcLibrary.SamplingParam)
@@ -3306,16 +3328,16 @@ SamplingParam::GetClassData() const {
   return SamplingParam_class_data_.base();
 }
 PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
-const ::_pbi::TcParseTable<3, 8, 0, 0, 2>
+const ::_pbi::TcParseTable<4, 14, 0, 0, 2>
 SamplingParam::_table_ = {
   {
     PROTOBUF_FIELD_OFFSET(SamplingParam, _impl_._has_bits_),
     0, // no _extensions_
-    8, 56,  // max_field_number, fast_idx_mask
+    14, 120,  // max_field_number, fast_idx_mask
     offsetof(decltype(_table_), field_lookup_table),
-    4294967040,  // skipmap
+    4294950912,  // skipmap
     offsetof(decltype(_table_), field_entries),
-    8,  // num_field_entries
+    14,  // num_field_entries
     0,  // num_aux_entries
     offsetof(decltype(_table_), field_names),  // no aux_entries
     SamplingParam_class_data_.base(),
@@ -3325,57 +3347,95 @@ SamplingParam::_table_ = {
     ::_pbi::TcParser::GetTable<::GrpcLibrary::SamplingParam>(),  // to_prefetch
     #endif  // PROTOBUF_PREFETCH_PARSE_TABLE
   }, {{
-    // int32 seed = 8;
-    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(SamplingParam, _impl_.seed_), 7>(),
-     {64, 7, 0,
-      PROTOBUF_FIELD_OFFSET(SamplingParam, _impl_.seed_)}},
-    // float repetition_penalty = 1;
-    {::_pbi::TcParser::FastF32S1,
-     {13, 0, 0,
-      PROTOBUF_FIELD_OFFSET(SamplingParam, _impl_.repetition_penalty_)}},
-    // float temperature = 2;
+    {::_pbi::TcParser::MiniParse, {}},
+    // int32 penalty_last_n = 1;
+    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(SamplingParam, _impl_.penalty_last_n_), 0>(),
+     {8, 0, 0,
+      PROTOBUF_FIELD_OFFSET(SamplingParam, _impl_.penalty_last_n_)}},
+    // float penalty_repeat = 2;
     {::_pbi::TcParser::FastF32S1,
      {21, 1, 0,
-      PROTOBUF_FIELD_OFFSET(SamplingParam, _impl_.temperature_)}},
-    // float top_k = 3;
+      PROTOBUF_FIELD_OFFSET(SamplingParam, _impl_.penalty_repeat_)}},
+    // float penalty_freq = 3;
     {::_pbi::TcParser::FastF32S1,
      {29, 2, 0,
-      PROTOBUF_FIELD_OFFSET(SamplingParam, _impl_.top_k_)}},
-    // float top_p = 4;
+      PROTOBUF_FIELD_OFFSET(SamplingParam, _impl_.penalty_freq_)}},
+    // float penalty_present = 4;
     {::_pbi::TcParser::FastF32S1,
      {37, 3, 0,
-      PROTOBUF_FIELD_OFFSET(SamplingParam, _impl_.top_p_)}},
-    // float min_p = 5;
+      PROTOBUF_FIELD_OFFSET(SamplingParam, _impl_.penalty_present_)}},
+    // float temperature = 5;
     {::_pbi::TcParser::FastF32S1,
      {45, 4, 0,
-      PROTOBUF_FIELD_OFFSET(SamplingParam, _impl_.min_p_)}},
-    // int32 top_p_min_keep = 6;
-    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(SamplingParam, _impl_.top_p_min_keep_), 5>(),
-     {48, 5, 0,
+      PROTOBUF_FIELD_OFFSET(SamplingParam, _impl_.temperature_)}},
+    // float temperature_ext = 6;
+    {::_pbi::TcParser::FastF32S1,
+     {53, 5, 0,
+      PROTOBUF_FIELD_OFFSET(SamplingParam, _impl_.temperature_ext_)}},
+    // float temperature_ext_delta = 7;
+    {::_pbi::TcParser::FastF32S1,
+     {61, 6, 0,
+      PROTOBUF_FIELD_OFFSET(SamplingParam, _impl_.temperature_ext_delta_)}},
+    // float temperature_ext_exponent = 8;
+    {::_pbi::TcParser::FastF32S1,
+     {69, 7, 0,
+      PROTOBUF_FIELD_OFFSET(SamplingParam, _impl_.temperature_ext_exponent_)}},
+    // uint32 seed = 9;
+    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(SamplingParam, _impl_.seed_), 8>(),
+     {72, 8, 0,
+      PROTOBUF_FIELD_OFFSET(SamplingParam, _impl_.seed_)}},
+    // int32 top_k = 10;
+    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(SamplingParam, _impl_.top_k_), 9>(),
+     {80, 9, 0,
+      PROTOBUF_FIELD_OFFSET(SamplingParam, _impl_.top_k_)}},
+    // float top_p = 11;
+    {::_pbi::TcParser::FastF32S1,
+     {93, 10, 0,
+      PROTOBUF_FIELD_OFFSET(SamplingParam, _impl_.top_p_)}},
+    // int32 top_p_min_keep = 12;
+    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(SamplingParam, _impl_.top_p_min_keep_), 11>(),
+     {96, 11, 0,
       PROTOBUF_FIELD_OFFSET(SamplingParam, _impl_.top_p_min_keep_)}},
-    // int32 min_p_min_keep = 7;
-    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(SamplingParam, _impl_.min_p_min_keep_), 6>(),
-     {56, 6, 0,
+    // float min_p = 13;
+    {::_pbi::TcParser::FastF32S1,
+     {109, 12, 0,
+      PROTOBUF_FIELD_OFFSET(SamplingParam, _impl_.min_p_)}},
+    // int32 min_p_min_keep = 14;
+    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(SamplingParam, _impl_.min_p_min_keep_), 13>(),
+     {112, 13, 0,
       PROTOBUF_FIELD_OFFSET(SamplingParam, _impl_.min_p_min_keep_)}},
+    {::_pbi::TcParser::MiniParse, {}},
   }}, {{
     65535, 65535
   }}, {{
-    // float repetition_penalty = 1;
-    {PROTOBUF_FIELD_OFFSET(SamplingParam, _impl_.repetition_penalty_), _Internal::kHasBitsOffset + 0, 0, (0 | ::_fl::kFcOptional | ::_fl::kFloat)},
-    // float temperature = 2;
-    {PROTOBUF_FIELD_OFFSET(SamplingParam, _impl_.temperature_), _Internal::kHasBitsOffset + 1, 0, (0 | ::_fl::kFcOptional | ::_fl::kFloat)},
-    // float top_k = 3;
-    {PROTOBUF_FIELD_OFFSET(SamplingParam, _impl_.top_k_), _Internal::kHasBitsOffset + 2, 0, (0 | ::_fl::kFcOptional | ::_fl::kFloat)},
-    // float top_p = 4;
-    {PROTOBUF_FIELD_OFFSET(SamplingParam, _impl_.top_p_), _Internal::kHasBitsOffset + 3, 0, (0 | ::_fl::kFcOptional | ::_fl::kFloat)},
-    // float min_p = 5;
-    {PROTOBUF_FIELD_OFFSET(SamplingParam, _impl_.min_p_), _Internal::kHasBitsOffset + 4, 0, (0 | ::_fl::kFcOptional | ::_fl::kFloat)},
-    // int32 top_p_min_keep = 6;
-    {PROTOBUF_FIELD_OFFSET(SamplingParam, _impl_.top_p_min_keep_), _Internal::kHasBitsOffset + 5, 0, (0 | ::_fl::kFcOptional | ::_fl::kInt32)},
-    // int32 min_p_min_keep = 7;
-    {PROTOBUF_FIELD_OFFSET(SamplingParam, _impl_.min_p_min_keep_), _Internal::kHasBitsOffset + 6, 0, (0 | ::_fl::kFcOptional | ::_fl::kInt32)},
-    // int32 seed = 8;
-    {PROTOBUF_FIELD_OFFSET(SamplingParam, _impl_.seed_), _Internal::kHasBitsOffset + 7, 0, (0 | ::_fl::kFcOptional | ::_fl::kInt32)},
+    // int32 penalty_last_n = 1;
+    {PROTOBUF_FIELD_OFFSET(SamplingParam, _impl_.penalty_last_n_), _Internal::kHasBitsOffset + 0, 0, (0 | ::_fl::kFcOptional | ::_fl::kInt32)},
+    // float penalty_repeat = 2;
+    {PROTOBUF_FIELD_OFFSET(SamplingParam, _impl_.penalty_repeat_), _Internal::kHasBitsOffset + 1, 0, (0 | ::_fl::kFcOptional | ::_fl::kFloat)},
+    // float penalty_freq = 3;
+    {PROTOBUF_FIELD_OFFSET(SamplingParam, _impl_.penalty_freq_), _Internal::kHasBitsOffset + 2, 0, (0 | ::_fl::kFcOptional | ::_fl::kFloat)},
+    // float penalty_present = 4;
+    {PROTOBUF_FIELD_OFFSET(SamplingParam, _impl_.penalty_present_), _Internal::kHasBitsOffset + 3, 0, (0 | ::_fl::kFcOptional | ::_fl::kFloat)},
+    // float temperature = 5;
+    {PROTOBUF_FIELD_OFFSET(SamplingParam, _impl_.temperature_), _Internal::kHasBitsOffset + 4, 0, (0 | ::_fl::kFcOptional | ::_fl::kFloat)},
+    // float temperature_ext = 6;
+    {PROTOBUF_FIELD_OFFSET(SamplingParam, _impl_.temperature_ext_), _Internal::kHasBitsOffset + 5, 0, (0 | ::_fl::kFcOptional | ::_fl::kFloat)},
+    // float temperature_ext_delta = 7;
+    {PROTOBUF_FIELD_OFFSET(SamplingParam, _impl_.temperature_ext_delta_), _Internal::kHasBitsOffset + 6, 0, (0 | ::_fl::kFcOptional | ::_fl::kFloat)},
+    // float temperature_ext_exponent = 8;
+    {PROTOBUF_FIELD_OFFSET(SamplingParam, _impl_.temperature_ext_exponent_), _Internal::kHasBitsOffset + 7, 0, (0 | ::_fl::kFcOptional | ::_fl::kFloat)},
+    // uint32 seed = 9;
+    {PROTOBUF_FIELD_OFFSET(SamplingParam, _impl_.seed_), _Internal::kHasBitsOffset + 8, 0, (0 | ::_fl::kFcOptional | ::_fl::kUInt32)},
+    // int32 top_k = 10;
+    {PROTOBUF_FIELD_OFFSET(SamplingParam, _impl_.top_k_), _Internal::kHasBitsOffset + 9, 0, (0 | ::_fl::kFcOptional | ::_fl::kInt32)},
+    // float top_p = 11;
+    {PROTOBUF_FIELD_OFFSET(SamplingParam, _impl_.top_p_), _Internal::kHasBitsOffset + 10, 0, (0 | ::_fl::kFcOptional | ::_fl::kFloat)},
+    // int32 top_p_min_keep = 12;
+    {PROTOBUF_FIELD_OFFSET(SamplingParam, _impl_.top_p_min_keep_), _Internal::kHasBitsOffset + 11, 0, (0 | ::_fl::kFcOptional | ::_fl::kInt32)},
+    // float min_p = 13;
+    {PROTOBUF_FIELD_OFFSET(SamplingParam, _impl_.min_p_), _Internal::kHasBitsOffset + 12, 0, (0 | ::_fl::kFcOptional | ::_fl::kFloat)},
+    // int32 min_p_min_keep = 14;
+    {PROTOBUF_FIELD_OFFSET(SamplingParam, _impl_.min_p_min_keep_), _Internal::kHasBitsOffset + 13, 0, (0 | ::_fl::kFcOptional | ::_fl::kInt32)},
   }},
   // no aux_entries
   {{
@@ -3390,9 +3450,14 @@ PROTOBUF_NOINLINE void SamplingParam::Clear() {
 
   cached_has_bits = _impl_._has_bits_[0];
   if (BatchCheckHasBit(cached_has_bits, 0x000000ffU)) {
-    ::memset(&_impl_.repetition_penalty_, 0, static_cast<::size_t>(
-        reinterpret_cast<char*>(&_impl_.seed_) -
-        reinterpret_cast<char*>(&_impl_.repetition_penalty_)) + sizeof(_impl_.seed_));
+    ::memset(&_impl_.penalty_last_n_, 0, static_cast<::size_t>(
+        reinterpret_cast<char*>(&_impl_.temperature_ext_exponent_) -
+        reinterpret_cast<char*>(&_impl_.penalty_last_n_)) + sizeof(_impl_.temperature_ext_exponent_));
+  }
+  if (BatchCheckHasBit(cached_has_bits, 0x00003f00U)) {
+    ::memset(&_impl_.seed_, 0, static_cast<::size_t>(
+        reinterpret_cast<char*>(&_impl_.min_p_min_keep_) -
+        reinterpret_cast<char*>(&_impl_.seed_)) + sizeof(_impl_.min_p_min_keep_));
   }
   _impl_._has_bits_.Clear();
   _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
@@ -3417,75 +3482,129 @@ PROTOBUF_NOINLINE void SamplingParam::Clear() {
   (void)cached_has_bits;
 
   cached_has_bits = this_._impl_._has_bits_[0];
-  // float repetition_penalty = 1;
+  // int32 penalty_last_n = 1;
   if (CheckHasBit(cached_has_bits, 0x00000001U)) {
-    if (::absl::bit_cast<::uint32_t>(this_._internal_repetition_penalty()) != 0) {
-      target = stream->EnsureSpace(target);
-      target = ::_pbi::WireFormatLite::WriteFloatToArray(
-          1, this_._internal_repetition_penalty(), target);
+    if (this_._internal_penalty_last_n() != 0) {
+      target =
+          ::google::protobuf::internal::WireFormatLite::WriteInt32ToArrayWithField<1>(
+              stream, this_._internal_penalty_last_n(), target);
     }
   }
 
-  // float temperature = 2;
+  // float penalty_repeat = 2;
   if (CheckHasBit(cached_has_bits, 0x00000002U)) {
+    if (::absl::bit_cast<::uint32_t>(this_._internal_penalty_repeat()) != 0) {
+      target = stream->EnsureSpace(target);
+      target = ::_pbi::WireFormatLite::WriteFloatToArray(
+          2, this_._internal_penalty_repeat(), target);
+    }
+  }
+
+  // float penalty_freq = 3;
+  if (CheckHasBit(cached_has_bits, 0x00000004U)) {
+    if (::absl::bit_cast<::uint32_t>(this_._internal_penalty_freq()) != 0) {
+      target = stream->EnsureSpace(target);
+      target = ::_pbi::WireFormatLite::WriteFloatToArray(
+          3, this_._internal_penalty_freq(), target);
+    }
+  }
+
+  // float penalty_present = 4;
+  if (CheckHasBit(cached_has_bits, 0x00000008U)) {
+    if (::absl::bit_cast<::uint32_t>(this_._internal_penalty_present()) != 0) {
+      target = stream->EnsureSpace(target);
+      target = ::_pbi::WireFormatLite::WriteFloatToArray(
+          4, this_._internal_penalty_present(), target);
+    }
+  }
+
+  // float temperature = 5;
+  if (CheckHasBit(cached_has_bits, 0x00000010U)) {
     if (::absl::bit_cast<::uint32_t>(this_._internal_temperature()) != 0) {
       target = stream->EnsureSpace(target);
       target = ::_pbi::WireFormatLite::WriteFloatToArray(
-          2, this_._internal_temperature(), target);
+          5, this_._internal_temperature(), target);
     }
   }
 
-  // float top_k = 3;
-  if (CheckHasBit(cached_has_bits, 0x00000004U)) {
-    if (::absl::bit_cast<::uint32_t>(this_._internal_top_k()) != 0) {
+  // float temperature_ext = 6;
+  if (CheckHasBit(cached_has_bits, 0x00000020U)) {
+    if (::absl::bit_cast<::uint32_t>(this_._internal_temperature_ext()) != 0) {
       target = stream->EnsureSpace(target);
       target = ::_pbi::WireFormatLite::WriteFloatToArray(
-          3, this_._internal_top_k(), target);
+          6, this_._internal_temperature_ext(), target);
     }
   }
 
-  // float top_p = 4;
-  if (CheckHasBit(cached_has_bits, 0x00000008U)) {
+  // float temperature_ext_delta = 7;
+  if (CheckHasBit(cached_has_bits, 0x00000040U)) {
+    if (::absl::bit_cast<::uint32_t>(this_._internal_temperature_ext_delta()) != 0) {
+      target = stream->EnsureSpace(target);
+      target = ::_pbi::WireFormatLite::WriteFloatToArray(
+          7, this_._internal_temperature_ext_delta(), target);
+    }
+  }
+
+  // float temperature_ext_exponent = 8;
+  if (CheckHasBit(cached_has_bits, 0x00000080U)) {
+    if (::absl::bit_cast<::uint32_t>(this_._internal_temperature_ext_exponent()) != 0) {
+      target = stream->EnsureSpace(target);
+      target = ::_pbi::WireFormatLite::WriteFloatToArray(
+          8, this_._internal_temperature_ext_exponent(), target);
+    }
+  }
+
+  // uint32 seed = 9;
+  if (CheckHasBit(cached_has_bits, 0x00000100U)) {
+    if (this_._internal_seed() != 0) {
+      target = stream->EnsureSpace(target);
+      target = ::_pbi::WireFormatLite::WriteUInt32ToArray(
+          9, this_._internal_seed(), target);
+    }
+  }
+
+  // int32 top_k = 10;
+  if (CheckHasBit(cached_has_bits, 0x00000200U)) {
+    if (this_._internal_top_k() != 0) {
+      target =
+          ::google::protobuf::internal::WireFormatLite::WriteInt32ToArrayWithField<10>(
+              stream, this_._internal_top_k(), target);
+    }
+  }
+
+  // float top_p = 11;
+  if (CheckHasBit(cached_has_bits, 0x00000400U)) {
     if (::absl::bit_cast<::uint32_t>(this_._internal_top_p()) != 0) {
       target = stream->EnsureSpace(target);
       target = ::_pbi::WireFormatLite::WriteFloatToArray(
-          4, this_._internal_top_p(), target);
+          11, this_._internal_top_p(), target);
     }
   }
 
-  // float min_p = 5;
-  if (CheckHasBit(cached_has_bits, 0x00000010U)) {
-    if (::absl::bit_cast<::uint32_t>(this_._internal_min_p()) != 0) {
-      target = stream->EnsureSpace(target);
-      target = ::_pbi::WireFormatLite::WriteFloatToArray(
-          5, this_._internal_min_p(), target);
-    }
-  }
-
-  // int32 top_p_min_keep = 6;
-  if (CheckHasBit(cached_has_bits, 0x00000020U)) {
+  // int32 top_p_min_keep = 12;
+  if (CheckHasBit(cached_has_bits, 0x00000800U)) {
     if (this_._internal_top_p_min_keep() != 0) {
       target =
-          ::google::protobuf::internal::WireFormatLite::WriteInt32ToArrayWithField<6>(
+          ::google::protobuf::internal::WireFormatLite::WriteInt32ToArrayWithField<12>(
               stream, this_._internal_top_p_min_keep(), target);
     }
   }
 
-  // int32 min_p_min_keep = 7;
-  if (CheckHasBit(cached_has_bits, 0x00000040U)) {
-    if (this_._internal_min_p_min_keep() != 0) {
-      target =
-          ::google::protobuf::internal::WireFormatLite::WriteInt32ToArrayWithField<7>(
-              stream, this_._internal_min_p_min_keep(), target);
+  // float min_p = 13;
+  if (CheckHasBit(cached_has_bits, 0x00001000U)) {
+    if (::absl::bit_cast<::uint32_t>(this_._internal_min_p()) != 0) {
+      target = stream->EnsureSpace(target);
+      target = ::_pbi::WireFormatLite::WriteFloatToArray(
+          13, this_._internal_min_p(), target);
     }
   }
 
-  // int32 seed = 8;
-  if (CheckHasBit(cached_has_bits, 0x00000080U)) {
-    if (this_._internal_seed() != 0) {
+  // int32 min_p_min_keep = 14;
+  if (CheckHasBit(cached_has_bits, 0x00002000U)) {
+    if (this_._internal_min_p_min_keep() != 0) {
       target =
-          ::google::protobuf::internal::WireFormatLite::WriteInt32ToArrayWithField<8>(
-              stream, this_._internal_seed(), target);
+          ::google::protobuf::internal::WireFormatLite::WriteInt32ToArrayWithField<14>(
+              stream, this_._internal_min_p_min_keep(), target);
     }
   }
 
@@ -3515,55 +3634,95 @@ PROTOBUF_NOINLINE void SamplingParam::Clear() {
   ::_pbi::Prefetch5LinesFrom7Lines(&this_);
   cached_has_bits = this_._impl_._has_bits_[0];
   if (BatchCheckHasBit(cached_has_bits, 0x000000ffU)) {
-    // float repetition_penalty = 1;
+    // int32 penalty_last_n = 1;
     if (CheckHasBit(cached_has_bits, 0x00000001U)) {
-      if (::absl::bit_cast<::uint32_t>(this_._internal_repetition_penalty()) != 0) {
+      if (this_._internal_penalty_last_n() != 0) {
+        total_size += ::_pbi::WireFormatLite::Int32SizePlusOne(
+            this_._internal_penalty_last_n());
+      }
+    }
+    // float penalty_repeat = 2;
+    if (CheckHasBit(cached_has_bits, 0x00000002U)) {
+      if (::absl::bit_cast<::uint32_t>(this_._internal_penalty_repeat()) != 0) {
         total_size += 5;
       }
     }
-    // float temperature = 2;
-    if (CheckHasBit(cached_has_bits, 0x00000002U)) {
+    // float penalty_freq = 3;
+    if (CheckHasBit(cached_has_bits, 0x00000004U)) {
+      if (::absl::bit_cast<::uint32_t>(this_._internal_penalty_freq()) != 0) {
+        total_size += 5;
+      }
+    }
+    // float penalty_present = 4;
+    if (CheckHasBit(cached_has_bits, 0x00000008U)) {
+      if (::absl::bit_cast<::uint32_t>(this_._internal_penalty_present()) != 0) {
+        total_size += 5;
+      }
+    }
+    // float temperature = 5;
+    if (CheckHasBit(cached_has_bits, 0x00000010U)) {
       if (::absl::bit_cast<::uint32_t>(this_._internal_temperature()) != 0) {
         total_size += 5;
       }
     }
-    // float top_k = 3;
-    if (CheckHasBit(cached_has_bits, 0x00000004U)) {
-      if (::absl::bit_cast<::uint32_t>(this_._internal_top_k()) != 0) {
+    // float temperature_ext = 6;
+    if (CheckHasBit(cached_has_bits, 0x00000020U)) {
+      if (::absl::bit_cast<::uint32_t>(this_._internal_temperature_ext()) != 0) {
         total_size += 5;
       }
     }
-    // float top_p = 4;
-    if (CheckHasBit(cached_has_bits, 0x00000008U)) {
+    // float temperature_ext_delta = 7;
+    if (CheckHasBit(cached_has_bits, 0x00000040U)) {
+      if (::absl::bit_cast<::uint32_t>(this_._internal_temperature_ext_delta()) != 0) {
+        total_size += 5;
+      }
+    }
+    // float temperature_ext_exponent = 8;
+    if (CheckHasBit(cached_has_bits, 0x00000080U)) {
+      if (::absl::bit_cast<::uint32_t>(this_._internal_temperature_ext_exponent()) != 0) {
+        total_size += 5;
+      }
+    }
+  }
+  if (BatchCheckHasBit(cached_has_bits, 0x00003f00U)) {
+    // uint32 seed = 9;
+    if (CheckHasBit(cached_has_bits, 0x00000100U)) {
+      if (this_._internal_seed() != 0) {
+        total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(
+            this_._internal_seed());
+      }
+    }
+    // int32 top_k = 10;
+    if (CheckHasBit(cached_has_bits, 0x00000200U)) {
+      if (this_._internal_top_k() != 0) {
+        total_size += ::_pbi::WireFormatLite::Int32SizePlusOne(
+            this_._internal_top_k());
+      }
+    }
+    // float top_p = 11;
+    if (CheckHasBit(cached_has_bits, 0x00000400U)) {
       if (::absl::bit_cast<::uint32_t>(this_._internal_top_p()) != 0) {
         total_size += 5;
       }
     }
-    // float min_p = 5;
-    if (CheckHasBit(cached_has_bits, 0x00000010U)) {
-      if (::absl::bit_cast<::uint32_t>(this_._internal_min_p()) != 0) {
-        total_size += 5;
-      }
-    }
-    // int32 top_p_min_keep = 6;
-    if (CheckHasBit(cached_has_bits, 0x00000020U)) {
+    // int32 top_p_min_keep = 12;
+    if (CheckHasBit(cached_has_bits, 0x00000800U)) {
       if (this_._internal_top_p_min_keep() != 0) {
         total_size += ::_pbi::WireFormatLite::Int32SizePlusOne(
             this_._internal_top_p_min_keep());
       }
     }
-    // int32 min_p_min_keep = 7;
-    if (CheckHasBit(cached_has_bits, 0x00000040U)) {
+    // float min_p = 13;
+    if (CheckHasBit(cached_has_bits, 0x00001000U)) {
+      if (::absl::bit_cast<::uint32_t>(this_._internal_min_p()) != 0) {
+        total_size += 5;
+      }
+    }
+    // int32 min_p_min_keep = 14;
+    if (CheckHasBit(cached_has_bits, 0x00002000U)) {
       if (this_._internal_min_p_min_keep() != 0) {
         total_size += ::_pbi::WireFormatLite::Int32SizePlusOne(
             this_._internal_min_p_min_keep());
-      }
-    }
-    // int32 seed = 8;
-    if (CheckHasBit(cached_has_bits, 0x00000080U)) {
-      if (this_._internal_seed() != 0) {
-        total_size += ::_pbi::WireFormatLite::Int32SizePlusOne(
-            this_._internal_seed());
       }
     }
   }
@@ -3587,43 +3746,75 @@ void SamplingParam::MergeImpl(::google::protobuf::MessageLite& to_msg,
   cached_has_bits = from._impl_._has_bits_[0];
   if (BatchCheckHasBit(cached_has_bits, 0x000000ffU)) {
     if (CheckHasBit(cached_has_bits, 0x00000001U)) {
-      if (::absl::bit_cast<::uint32_t>(from._internal_repetition_penalty()) != 0) {
-        _this->_impl_.repetition_penalty_ = from._impl_.repetition_penalty_;
+      if (from._internal_penalty_last_n() != 0) {
+        _this->_impl_.penalty_last_n_ = from._impl_.penalty_last_n_;
       }
     }
     if (CheckHasBit(cached_has_bits, 0x00000002U)) {
+      if (::absl::bit_cast<::uint32_t>(from._internal_penalty_repeat()) != 0) {
+        _this->_impl_.penalty_repeat_ = from._impl_.penalty_repeat_;
+      }
+    }
+    if (CheckHasBit(cached_has_bits, 0x00000004U)) {
+      if (::absl::bit_cast<::uint32_t>(from._internal_penalty_freq()) != 0) {
+        _this->_impl_.penalty_freq_ = from._impl_.penalty_freq_;
+      }
+    }
+    if (CheckHasBit(cached_has_bits, 0x00000008U)) {
+      if (::absl::bit_cast<::uint32_t>(from._internal_penalty_present()) != 0) {
+        _this->_impl_.penalty_present_ = from._impl_.penalty_present_;
+      }
+    }
+    if (CheckHasBit(cached_has_bits, 0x00000010U)) {
       if (::absl::bit_cast<::uint32_t>(from._internal_temperature()) != 0) {
         _this->_impl_.temperature_ = from._impl_.temperature_;
       }
     }
-    if (CheckHasBit(cached_has_bits, 0x00000004U)) {
-      if (::absl::bit_cast<::uint32_t>(from._internal_top_k()) != 0) {
+    if (CheckHasBit(cached_has_bits, 0x00000020U)) {
+      if (::absl::bit_cast<::uint32_t>(from._internal_temperature_ext()) != 0) {
+        _this->_impl_.temperature_ext_ = from._impl_.temperature_ext_;
+      }
+    }
+    if (CheckHasBit(cached_has_bits, 0x00000040U)) {
+      if (::absl::bit_cast<::uint32_t>(from._internal_temperature_ext_delta()) != 0) {
+        _this->_impl_.temperature_ext_delta_ = from._impl_.temperature_ext_delta_;
+      }
+    }
+    if (CheckHasBit(cached_has_bits, 0x00000080U)) {
+      if (::absl::bit_cast<::uint32_t>(from._internal_temperature_ext_exponent()) != 0) {
+        _this->_impl_.temperature_ext_exponent_ = from._impl_.temperature_ext_exponent_;
+      }
+    }
+  }
+  if (BatchCheckHasBit(cached_has_bits, 0x00003f00U)) {
+    if (CheckHasBit(cached_has_bits, 0x00000100U)) {
+      if (from._internal_seed() != 0) {
+        _this->_impl_.seed_ = from._impl_.seed_;
+      }
+    }
+    if (CheckHasBit(cached_has_bits, 0x00000200U)) {
+      if (from._internal_top_k() != 0) {
         _this->_impl_.top_k_ = from._impl_.top_k_;
       }
     }
-    if (CheckHasBit(cached_has_bits, 0x00000008U)) {
+    if (CheckHasBit(cached_has_bits, 0x00000400U)) {
       if (::absl::bit_cast<::uint32_t>(from._internal_top_p()) != 0) {
         _this->_impl_.top_p_ = from._impl_.top_p_;
       }
     }
-    if (CheckHasBit(cached_has_bits, 0x00000010U)) {
-      if (::absl::bit_cast<::uint32_t>(from._internal_min_p()) != 0) {
-        _this->_impl_.min_p_ = from._impl_.min_p_;
-      }
-    }
-    if (CheckHasBit(cached_has_bits, 0x00000020U)) {
+    if (CheckHasBit(cached_has_bits, 0x00000800U)) {
       if (from._internal_top_p_min_keep() != 0) {
         _this->_impl_.top_p_min_keep_ = from._impl_.top_p_min_keep_;
       }
     }
-    if (CheckHasBit(cached_has_bits, 0x00000040U)) {
-      if (from._internal_min_p_min_keep() != 0) {
-        _this->_impl_.min_p_min_keep_ = from._impl_.min_p_min_keep_;
+    if (CheckHasBit(cached_has_bits, 0x00001000U)) {
+      if (::absl::bit_cast<::uint32_t>(from._internal_min_p()) != 0) {
+        _this->_impl_.min_p_ = from._impl_.min_p_;
       }
     }
-    if (CheckHasBit(cached_has_bits, 0x00000080U)) {
-      if (from._internal_seed() != 0) {
-        _this->_impl_.seed_ = from._impl_.seed_;
+    if (CheckHasBit(cached_has_bits, 0x00002000U)) {
+      if (from._internal_min_p_min_keep() != 0) {
+        _this->_impl_.min_p_min_keep_ = from._impl_.min_p_min_keep_;
       }
     }
   }
@@ -3645,11 +3836,11 @@ void SamplingParam::InternalSwap(SamplingParam* PROTOBUF_RESTRICT PROTOBUF_NONNU
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
   ::google::protobuf::internal::memswap<
-      PROTOBUF_FIELD_OFFSET(SamplingParam, _impl_.seed_)
-      + sizeof(SamplingParam::_impl_.seed_)
-      - PROTOBUF_FIELD_OFFSET(SamplingParam, _impl_.repetition_penalty_)>(
-          reinterpret_cast<char*>(&_impl_.repetition_penalty_),
-          reinterpret_cast<char*>(&other->_impl_.repetition_penalty_));
+      PROTOBUF_FIELD_OFFSET(SamplingParam, _impl_.min_p_min_keep_)
+      + sizeof(SamplingParam::_impl_.min_p_min_keep_)
+      - PROTOBUF_FIELD_OFFSET(SamplingParam, _impl_.penalty_last_n_)>(
+          reinterpret_cast<char*>(&_impl_.penalty_last_n_),
+          reinterpret_cast<char*>(&other->_impl_.penalty_last_n_));
 }
 
 ::google::protobuf::Metadata SamplingParam::GetMetadata() const {

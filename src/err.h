@@ -33,6 +33,7 @@ static constexpr int LLM_ERR_MODEL_TOKENIZE_FAIL   = 403;
 static constexpr int LLM_ERR_MODEL_QUERY_FAIL      = 404;
 static constexpr int LLM_ERR_MODEL_CREATE_CTX_FAIL = 405;
 static constexpr int LLM_ERR_MODEL_CTX_DECODE_FAIL = 406;
+static constexpr int LLM_ERR_MODEL_DECODE_FAIL     = 407;
 
 static constexpr int LLM_ERR_REPEAT_TOO_MANY_TIMES = 500;
 

@@ -66,19 +66,19 @@ hj::llama::model_params_t llm_mgr::create_model_params()
     return params;
 }
 
-hj::llama::sampler_params_t llm_mgr::create_sampler_params()
-{
-    auto params = hj::llama::sampler::default_params();
-    return params;
-}
-
 int llm_mgr::loop_query(
     const std::string                              &model_id,
     std::vector<hj::llama::token_t>                &tokens,
     const hj::llama::context_params_t              &ctx_params,
-    hj::llama::sampler                             &sampler,
+    const hj::llama::sampler::params               &smpl_params,
     const std::function<bool(std::string &output)> &callback)
 {
+    if(tokens.size() <= 0)
+    {
+        LOG_WARN("Invalid tokens");
+        return OK;
+    }
+
     // Load model
     if(_llms.find(model_id) == _llms.end())
     {
@@ -86,7 +86,7 @@ int llm_mgr::loop_query(
         return LLM_ERR_MODEL_NOT_EXIST;
     }
 
-    hj::llama::model* model = _llms.find(model_id)->second.get();
+    hj::llama::model *model = _llms.find(model_id)->second.get();
     if(model->data() == nullptr)
     {
         LOG_ERROR("Model {} data is null", model_id);
@@ -101,13 +101,25 @@ int llm_mgr::loop_query(
         return LLM_ERR_MODEL_CREATE_CTX_FAIL;
     }
 
+    // Create sampler
+    hj::llama::sampler sampler{hj::llama::sampler::default_chain_params(),
+                               smpl_params};
+
+    // Prefill
+    hj::llama::batch pre_batch{tokens};
+    pre_batch.set_logits(static_cast<int32_t>(tokens.size()) - 1, true);
+
     // Clear KV cache and evaluate prompt
-    auto batch = hj::llama::batch_get_one(tokens);
-    if(ctx.decode(batch) != 0)
+    // auto batch = hj::llama::batch_get_one(tokens);
+    if(ctx.decode(pre_batch) != 0)
     {
         LOG_ERROR("Decode failed! tokens.size: {}", tokens.size());
         return LLM_ERR_MODEL_CTX_DECODE_FAIL;
     }
+
+    // llama_batch loop_batch = llama_batch_init(1, 0, 1);
+    hj::llama::batch loop_batch{1, 0, 1};
+    int32_t          pos = static_cast<int32_t>(tokens.size());
 
     // Reset sampler state (clears token history)
     sampler.reset();
@@ -117,8 +129,10 @@ int llm_mgr::loop_query(
     std::string pieces;
     do
     {
-        // Sample the next token (Greedy sampling used here for simplicity)
-        auto next_token = sampler.sample(ctx, -1);
+        // Sample the next token
+        int32_t sample_idx =
+            (pos == static_cast<int32_t>(tokens.size())) ? (pos - 1) : 0;
+        auto next_token = sampler.sample(ctx, sample_idx);
         if(model->token_is_eog(next_token))
         {
             LOG_DEBUG("End of Generation token encountered, stopping query");
@@ -135,31 +149,17 @@ int llm_mgr::loop_query(
         sampler.accept(next_token);
 
         // Prepare the next token for the next iteration
-        batch = hj::llama::batch_get_one(&next_token, 1);
-        if(ctx.decode(batch) != 0)
+        loop_batch.set_tokens(&next_token, 1, pos);
+        loop_batch.set_logits(0, true);
+        if(ctx.decode(loop_batch) != 0)
         {
             LOG_ERROR("Decode batch fail");
             break;
         }
+
+        pos++;
     } while(callback(pieces));
 
     LOG_DEBUG("llm loop query end");
     return OK;
 }
-
-// int llm_mgr::loop_query_async(
-//     const std::string                             &model_id,
-//     std::vector<hj::llama::token_t>               &tokens,
-//     const hj::llama::context_params_t             &ctx_params,
-//     const std::function<bool(std::string &output)> callback)
-// {
-//     _thread_pool.enqueue(
-//         [model_id, tokens, ctx_params, callback]() mutable -> int {
-//             return llm_mgr::instance().loop_query(model_id,
-//                                                   tokens,
-//                                                   ctx_params,
-//                                                   callback);
-//         });
-
-//     return OK;
-// }

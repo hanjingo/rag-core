@@ -193,23 +193,6 @@ grpc::ServerWriteReactor<::GrpcLibrary::QueryResp> *
 api_handler::Query(grpc::CallbackServerContext   *ctx,
                    const ::GrpcLibrary::QueryReq *req)
 {
-    LOG_INFO("Received Async Callback Query request. session_id: {}, user_id: "
-             "{}, auth: {}, content: {}, model: {}, "
-             ", smapling.repetition_penalty: {}, sampling.temperature: {}"
-             ", sampling.top_p: {}, sampling.top_k: {}, "
-             ", ctx.window_size: {}, ctx.stop_words: {}",
-             req->id(),
-             req->user_id(),
-             req->auth(),
-             req->content(),
-             req->model(),
-             req->sampling().repetition_penalty(),
-             req->sampling().temperature(),
-             req->sampling().top_p(),
-             req->sampling().top_k(),
-             req->ctx().window_size(),
-             req->ctx().stop_words());
-
     return new QueryReactor(ctx, req);
 }
 

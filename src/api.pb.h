@@ -1722,26 +1722,62 @@ class SamplingParam final : public ::google::protobuf::Message
 
   // accessors -------------------------------------------------------
   enum : int {
-    kRepetitionPenaltyFieldNumber = 1,
-    kTemperatureFieldNumber = 2,
-    kTopKFieldNumber = 3,
-    kTopPFieldNumber = 4,
-    kMinPFieldNumber = 5,
-    kTopPMinKeepFieldNumber = 6,
-    kMinPMinKeepFieldNumber = 7,
-    kSeedFieldNumber = 8,
+    kPenaltyLastNFieldNumber = 1,
+    kPenaltyRepeatFieldNumber = 2,
+    kPenaltyFreqFieldNumber = 3,
+    kPenaltyPresentFieldNumber = 4,
+    kTemperatureFieldNumber = 5,
+    kTemperatureExtFieldNumber = 6,
+    kTemperatureExtDeltaFieldNumber = 7,
+    kTemperatureExtExponentFieldNumber = 8,
+    kSeedFieldNumber = 9,
+    kTopKFieldNumber = 10,
+    kTopPFieldNumber = 11,
+    kTopPMinKeepFieldNumber = 12,
+    kMinPFieldNumber = 13,
+    kMinPMinKeepFieldNumber = 14,
   };
-  // float repetition_penalty = 1;
-  void clear_repetition_penalty() ;
-  float repetition_penalty() const;
-  void set_repetition_penalty(float value);
+  // int32 penalty_last_n = 1;
+  void clear_penalty_last_n() ;
+  ::int32_t penalty_last_n() const;
+  void set_penalty_last_n(::int32_t value);
 
   private:
-  float _internal_repetition_penalty() const;
-  void _internal_set_repetition_penalty(float value);
+  ::int32_t _internal_penalty_last_n() const;
+  void _internal_set_penalty_last_n(::int32_t value);
 
   public:
-  // float temperature = 2;
+  // float penalty_repeat = 2;
+  void clear_penalty_repeat() ;
+  float penalty_repeat() const;
+  void set_penalty_repeat(float value);
+
+  private:
+  float _internal_penalty_repeat() const;
+  void _internal_set_penalty_repeat(float value);
+
+  public:
+  // float penalty_freq = 3;
+  void clear_penalty_freq() ;
+  float penalty_freq() const;
+  void set_penalty_freq(float value);
+
+  private:
+  float _internal_penalty_freq() const;
+  void _internal_set_penalty_freq(float value);
+
+  public:
+  // float penalty_present = 4;
+  void clear_penalty_present() ;
+  float penalty_present() const;
+  void set_penalty_present(float value);
+
+  private:
+  float _internal_penalty_present() const;
+  void _internal_set_penalty_present(float value);
+
+  public:
+  // float temperature = 5;
   void clear_temperature() ;
   float temperature() const;
   void set_temperature(float value);
@@ -1751,17 +1787,57 @@ class SamplingParam final : public ::google::protobuf::Message
   void _internal_set_temperature(float value);
 
   public:
-  // float top_k = 3;
-  void clear_top_k() ;
-  float top_k() const;
-  void set_top_k(float value);
+  // float temperature_ext = 6;
+  void clear_temperature_ext() ;
+  float temperature_ext() const;
+  void set_temperature_ext(float value);
 
   private:
-  float _internal_top_k() const;
-  void _internal_set_top_k(float value);
+  float _internal_temperature_ext() const;
+  void _internal_set_temperature_ext(float value);
 
   public:
-  // float top_p = 4;
+  // float temperature_ext_delta = 7;
+  void clear_temperature_ext_delta() ;
+  float temperature_ext_delta() const;
+  void set_temperature_ext_delta(float value);
+
+  private:
+  float _internal_temperature_ext_delta() const;
+  void _internal_set_temperature_ext_delta(float value);
+
+  public:
+  // float temperature_ext_exponent = 8;
+  void clear_temperature_ext_exponent() ;
+  float temperature_ext_exponent() const;
+  void set_temperature_ext_exponent(float value);
+
+  private:
+  float _internal_temperature_ext_exponent() const;
+  void _internal_set_temperature_ext_exponent(float value);
+
+  public:
+  // uint32 seed = 9;
+  void clear_seed() ;
+  ::uint32_t seed() const;
+  void set_seed(::uint32_t value);
+
+  private:
+  ::uint32_t _internal_seed() const;
+  void _internal_set_seed(::uint32_t value);
+
+  public:
+  // int32 top_k = 10;
+  void clear_top_k() ;
+  ::int32_t top_k() const;
+  void set_top_k(::int32_t value);
+
+  private:
+  ::int32_t _internal_top_k() const;
+  void _internal_set_top_k(::int32_t value);
+
+  public:
+  // float top_p = 11;
   void clear_top_p() ;
   float top_p() const;
   void set_top_p(float value);
@@ -1771,17 +1847,7 @@ class SamplingParam final : public ::google::protobuf::Message
   void _internal_set_top_p(float value);
 
   public:
-  // float min_p = 5;
-  void clear_min_p() ;
-  float min_p() const;
-  void set_min_p(float value);
-
-  private:
-  float _internal_min_p() const;
-  void _internal_set_min_p(float value);
-
-  public:
-  // int32 top_p_min_keep = 6;
+  // int32 top_p_min_keep = 12;
   void clear_top_p_min_keep() ;
   ::int32_t top_p_min_keep() const;
   void set_top_p_min_keep(::int32_t value);
@@ -1791,7 +1857,17 @@ class SamplingParam final : public ::google::protobuf::Message
   void _internal_set_top_p_min_keep(::int32_t value);
 
   public:
-  // int32 min_p_min_keep = 7;
+  // float min_p = 13;
+  void clear_min_p() ;
+  float min_p() const;
+  void set_min_p(float value);
+
+  private:
+  float _internal_min_p() const;
+  void _internal_set_min_p(float value);
+
+  public:
+  // int32 min_p_min_keep = 14;
   void clear_min_p_min_keep() ;
   ::int32_t min_p_min_keep() const;
   void set_min_p_min_keep(::int32_t value);
@@ -1801,21 +1877,11 @@ class SamplingParam final : public ::google::protobuf::Message
   void _internal_set_min_p_min_keep(::int32_t value);
 
   public:
-  // int32 seed = 8;
-  void clear_seed() ;
-  ::int32_t seed() const;
-  void set_seed(::int32_t value);
-
-  private:
-  ::int32_t _internal_seed() const;
-  void _internal_set_seed(::int32_t value);
-
-  public:
   // @@protoc_insertion_point(class_scope:GrpcLibrary.SamplingParam)
  private:
   class _Internal;
   friend class ::google::protobuf::internal::TcParser;
-  static const ::google::protobuf::internal::TcParseTable<3, 8,
+  static const ::google::protobuf::internal::TcParseTable<4, 14,
                                    0, 0,
                                    2>
       _table_;
@@ -1837,14 +1903,20 @@ class SamplingParam final : public ::google::protobuf::Message
         const SamplingParam& from_msg);
     ::google::protobuf::internal::HasBits<1> _has_bits_;
     ::google::protobuf::internal::CachedSize _cached_size_;
-    float repetition_penalty_;
+    ::int32_t penalty_last_n_;
+    float penalty_repeat_;
+    float penalty_freq_;
+    float penalty_present_;
     float temperature_;
-    float top_k_;
+    float temperature_ext_;
+    float temperature_ext_delta_;
+    float temperature_ext_exponent_;
+    ::uint32_t seed_;
+    ::int32_t top_k_;
     float top_p_;
-    float min_p_;
     ::int32_t top_p_min_keep_;
+    float min_p_;
     ::int32_t min_p_min_keep_;
-    ::int32_t seed_;
     PROTOBUF_TSAN_DECLARE_MEMBER
   };
   union { Impl_ _impl_; };
@@ -9827,37 +9899,112 @@ inline void MessageInfo::set_allocated_timestamp(::std::string* PROTOBUF_NULLABL
 
 // SamplingParam
 
-// float repetition_penalty = 1;
-inline void SamplingParam::clear_repetition_penalty() {
+// int32 penalty_last_n = 1;
+inline void SamplingParam::clear_penalty_last_n() {
   ::google::protobuf::internal::TSanWrite(&_impl_);
-  _impl_.repetition_penalty_ = 0;
+  _impl_.penalty_last_n_ = 0;
   ClearHasBit(_impl_._has_bits_[0],
                   0x00000001U);
 }
-inline float SamplingParam::repetition_penalty() const {
-  // @@protoc_insertion_point(field_get:GrpcLibrary.SamplingParam.repetition_penalty)
-  return _internal_repetition_penalty();
+inline ::int32_t SamplingParam::penalty_last_n() const {
+  // @@protoc_insertion_point(field_get:GrpcLibrary.SamplingParam.penalty_last_n)
+  return _internal_penalty_last_n();
 }
-inline void SamplingParam::set_repetition_penalty(float value) {
-  _internal_set_repetition_penalty(value);
+inline void SamplingParam::set_penalty_last_n(::int32_t value) {
+  _internal_set_penalty_last_n(value);
   SetHasBit(_impl_._has_bits_[0], 0x00000001U);
-  // @@protoc_insertion_point(field_set:GrpcLibrary.SamplingParam.repetition_penalty)
+  // @@protoc_insertion_point(field_set:GrpcLibrary.SamplingParam.penalty_last_n)
 }
-inline float SamplingParam::_internal_repetition_penalty() const {
+inline ::int32_t SamplingParam::_internal_penalty_last_n() const {
   ::google::protobuf::internal::TSanRead(&_impl_);
-  return _impl_.repetition_penalty_;
+  return _impl_.penalty_last_n_;
 }
-inline void SamplingParam::_internal_set_repetition_penalty(float value) {
+inline void SamplingParam::_internal_set_penalty_last_n(::int32_t value) {
   ::google::protobuf::internal::TSanWrite(&_impl_);
-  _impl_.repetition_penalty_ = value;
+  _impl_.penalty_last_n_ = value;
 }
 
-// float temperature = 2;
+// float penalty_repeat = 2;
+inline void SamplingParam::clear_penalty_repeat() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.penalty_repeat_ = 0;
+  ClearHasBit(_impl_._has_bits_[0],
+                  0x00000002U);
+}
+inline float SamplingParam::penalty_repeat() const {
+  // @@protoc_insertion_point(field_get:GrpcLibrary.SamplingParam.penalty_repeat)
+  return _internal_penalty_repeat();
+}
+inline void SamplingParam::set_penalty_repeat(float value) {
+  _internal_set_penalty_repeat(value);
+  SetHasBit(_impl_._has_bits_[0], 0x00000002U);
+  // @@protoc_insertion_point(field_set:GrpcLibrary.SamplingParam.penalty_repeat)
+}
+inline float SamplingParam::_internal_penalty_repeat() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.penalty_repeat_;
+}
+inline void SamplingParam::_internal_set_penalty_repeat(float value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.penalty_repeat_ = value;
+}
+
+// float penalty_freq = 3;
+inline void SamplingParam::clear_penalty_freq() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.penalty_freq_ = 0;
+  ClearHasBit(_impl_._has_bits_[0],
+                  0x00000004U);
+}
+inline float SamplingParam::penalty_freq() const {
+  // @@protoc_insertion_point(field_get:GrpcLibrary.SamplingParam.penalty_freq)
+  return _internal_penalty_freq();
+}
+inline void SamplingParam::set_penalty_freq(float value) {
+  _internal_set_penalty_freq(value);
+  SetHasBit(_impl_._has_bits_[0], 0x00000004U);
+  // @@protoc_insertion_point(field_set:GrpcLibrary.SamplingParam.penalty_freq)
+}
+inline float SamplingParam::_internal_penalty_freq() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.penalty_freq_;
+}
+inline void SamplingParam::_internal_set_penalty_freq(float value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.penalty_freq_ = value;
+}
+
+// float penalty_present = 4;
+inline void SamplingParam::clear_penalty_present() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.penalty_present_ = 0;
+  ClearHasBit(_impl_._has_bits_[0],
+                  0x00000008U);
+}
+inline float SamplingParam::penalty_present() const {
+  // @@protoc_insertion_point(field_get:GrpcLibrary.SamplingParam.penalty_present)
+  return _internal_penalty_present();
+}
+inline void SamplingParam::set_penalty_present(float value) {
+  _internal_set_penalty_present(value);
+  SetHasBit(_impl_._has_bits_[0], 0x00000008U);
+  // @@protoc_insertion_point(field_set:GrpcLibrary.SamplingParam.penalty_present)
+}
+inline float SamplingParam::_internal_penalty_present() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.penalty_present_;
+}
+inline void SamplingParam::_internal_set_penalty_present(float value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.penalty_present_ = value;
+}
+
+// float temperature = 5;
 inline void SamplingParam::clear_temperature() {
   ::google::protobuf::internal::TSanWrite(&_impl_);
   _impl_.temperature_ = 0;
   ClearHasBit(_impl_._has_bits_[0],
-                  0x00000002U);
+                  0x00000010U);
 }
 inline float SamplingParam::temperature() const {
   // @@protoc_insertion_point(field_get:GrpcLibrary.SamplingParam.temperature)
@@ -9865,7 +10012,7 @@ inline float SamplingParam::temperature() const {
 }
 inline void SamplingParam::set_temperature(float value) {
   _internal_set_temperature(value);
-  SetHasBit(_impl_._has_bits_[0], 0x00000002U);
+  SetHasBit(_impl_._has_bits_[0], 0x00000010U);
   // @@protoc_insertion_point(field_set:GrpcLibrary.SamplingParam.temperature)
 }
 inline float SamplingParam::_internal_temperature() const {
@@ -9877,37 +10024,137 @@ inline void SamplingParam::_internal_set_temperature(float value) {
   _impl_.temperature_ = value;
 }
 
-// float top_k = 3;
+// float temperature_ext = 6;
+inline void SamplingParam::clear_temperature_ext() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.temperature_ext_ = 0;
+  ClearHasBit(_impl_._has_bits_[0],
+                  0x00000020U);
+}
+inline float SamplingParam::temperature_ext() const {
+  // @@protoc_insertion_point(field_get:GrpcLibrary.SamplingParam.temperature_ext)
+  return _internal_temperature_ext();
+}
+inline void SamplingParam::set_temperature_ext(float value) {
+  _internal_set_temperature_ext(value);
+  SetHasBit(_impl_._has_bits_[0], 0x00000020U);
+  // @@protoc_insertion_point(field_set:GrpcLibrary.SamplingParam.temperature_ext)
+}
+inline float SamplingParam::_internal_temperature_ext() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.temperature_ext_;
+}
+inline void SamplingParam::_internal_set_temperature_ext(float value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.temperature_ext_ = value;
+}
+
+// float temperature_ext_delta = 7;
+inline void SamplingParam::clear_temperature_ext_delta() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.temperature_ext_delta_ = 0;
+  ClearHasBit(_impl_._has_bits_[0],
+                  0x00000040U);
+}
+inline float SamplingParam::temperature_ext_delta() const {
+  // @@protoc_insertion_point(field_get:GrpcLibrary.SamplingParam.temperature_ext_delta)
+  return _internal_temperature_ext_delta();
+}
+inline void SamplingParam::set_temperature_ext_delta(float value) {
+  _internal_set_temperature_ext_delta(value);
+  SetHasBit(_impl_._has_bits_[0], 0x00000040U);
+  // @@protoc_insertion_point(field_set:GrpcLibrary.SamplingParam.temperature_ext_delta)
+}
+inline float SamplingParam::_internal_temperature_ext_delta() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.temperature_ext_delta_;
+}
+inline void SamplingParam::_internal_set_temperature_ext_delta(float value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.temperature_ext_delta_ = value;
+}
+
+// float temperature_ext_exponent = 8;
+inline void SamplingParam::clear_temperature_ext_exponent() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.temperature_ext_exponent_ = 0;
+  ClearHasBit(_impl_._has_bits_[0],
+                  0x00000080U);
+}
+inline float SamplingParam::temperature_ext_exponent() const {
+  // @@protoc_insertion_point(field_get:GrpcLibrary.SamplingParam.temperature_ext_exponent)
+  return _internal_temperature_ext_exponent();
+}
+inline void SamplingParam::set_temperature_ext_exponent(float value) {
+  _internal_set_temperature_ext_exponent(value);
+  SetHasBit(_impl_._has_bits_[0], 0x00000080U);
+  // @@protoc_insertion_point(field_set:GrpcLibrary.SamplingParam.temperature_ext_exponent)
+}
+inline float SamplingParam::_internal_temperature_ext_exponent() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.temperature_ext_exponent_;
+}
+inline void SamplingParam::_internal_set_temperature_ext_exponent(float value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.temperature_ext_exponent_ = value;
+}
+
+// uint32 seed = 9;
+inline void SamplingParam::clear_seed() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.seed_ = 0u;
+  ClearHasBit(_impl_._has_bits_[0],
+                  0x00000100U);
+}
+inline ::uint32_t SamplingParam::seed() const {
+  // @@protoc_insertion_point(field_get:GrpcLibrary.SamplingParam.seed)
+  return _internal_seed();
+}
+inline void SamplingParam::set_seed(::uint32_t value) {
+  _internal_set_seed(value);
+  SetHasBit(_impl_._has_bits_[0], 0x00000100U);
+  // @@protoc_insertion_point(field_set:GrpcLibrary.SamplingParam.seed)
+}
+inline ::uint32_t SamplingParam::_internal_seed() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.seed_;
+}
+inline void SamplingParam::_internal_set_seed(::uint32_t value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.seed_ = value;
+}
+
+// int32 top_k = 10;
 inline void SamplingParam::clear_top_k() {
   ::google::protobuf::internal::TSanWrite(&_impl_);
   _impl_.top_k_ = 0;
   ClearHasBit(_impl_._has_bits_[0],
-                  0x00000004U);
+                  0x00000200U);
 }
-inline float SamplingParam::top_k() const {
+inline ::int32_t SamplingParam::top_k() const {
   // @@protoc_insertion_point(field_get:GrpcLibrary.SamplingParam.top_k)
   return _internal_top_k();
 }
-inline void SamplingParam::set_top_k(float value) {
+inline void SamplingParam::set_top_k(::int32_t value) {
   _internal_set_top_k(value);
-  SetHasBit(_impl_._has_bits_[0], 0x00000004U);
+  SetHasBit(_impl_._has_bits_[0], 0x00000200U);
   // @@protoc_insertion_point(field_set:GrpcLibrary.SamplingParam.top_k)
 }
-inline float SamplingParam::_internal_top_k() const {
+inline ::int32_t SamplingParam::_internal_top_k() const {
   ::google::protobuf::internal::TSanRead(&_impl_);
   return _impl_.top_k_;
 }
-inline void SamplingParam::_internal_set_top_k(float value) {
+inline void SamplingParam::_internal_set_top_k(::int32_t value) {
   ::google::protobuf::internal::TSanWrite(&_impl_);
   _impl_.top_k_ = value;
 }
 
-// float top_p = 4;
+// float top_p = 11;
 inline void SamplingParam::clear_top_p() {
   ::google::protobuf::internal::TSanWrite(&_impl_);
   _impl_.top_p_ = 0;
   ClearHasBit(_impl_._has_bits_[0],
-                  0x00000008U);
+                  0x00000400U);
 }
 inline float SamplingParam::top_p() const {
   // @@protoc_insertion_point(field_get:GrpcLibrary.SamplingParam.top_p)
@@ -9915,7 +10162,7 @@ inline float SamplingParam::top_p() const {
 }
 inline void SamplingParam::set_top_p(float value) {
   _internal_set_top_p(value);
-  SetHasBit(_impl_._has_bits_[0], 0x00000008U);
+  SetHasBit(_impl_._has_bits_[0], 0x00000400U);
   // @@protoc_insertion_point(field_set:GrpcLibrary.SamplingParam.top_p)
 }
 inline float SamplingParam::_internal_top_p() const {
@@ -9927,37 +10174,12 @@ inline void SamplingParam::_internal_set_top_p(float value) {
   _impl_.top_p_ = value;
 }
 
-// float min_p = 5;
-inline void SamplingParam::clear_min_p() {
-  ::google::protobuf::internal::TSanWrite(&_impl_);
-  _impl_.min_p_ = 0;
-  ClearHasBit(_impl_._has_bits_[0],
-                  0x00000010U);
-}
-inline float SamplingParam::min_p() const {
-  // @@protoc_insertion_point(field_get:GrpcLibrary.SamplingParam.min_p)
-  return _internal_min_p();
-}
-inline void SamplingParam::set_min_p(float value) {
-  _internal_set_min_p(value);
-  SetHasBit(_impl_._has_bits_[0], 0x00000010U);
-  // @@protoc_insertion_point(field_set:GrpcLibrary.SamplingParam.min_p)
-}
-inline float SamplingParam::_internal_min_p() const {
-  ::google::protobuf::internal::TSanRead(&_impl_);
-  return _impl_.min_p_;
-}
-inline void SamplingParam::_internal_set_min_p(float value) {
-  ::google::protobuf::internal::TSanWrite(&_impl_);
-  _impl_.min_p_ = value;
-}
-
-// int32 top_p_min_keep = 6;
+// int32 top_p_min_keep = 12;
 inline void SamplingParam::clear_top_p_min_keep() {
   ::google::protobuf::internal::TSanWrite(&_impl_);
   _impl_.top_p_min_keep_ = 0;
   ClearHasBit(_impl_._has_bits_[0],
-                  0x00000020U);
+                  0x00000800U);
 }
 inline ::int32_t SamplingParam::top_p_min_keep() const {
   // @@protoc_insertion_point(field_get:GrpcLibrary.SamplingParam.top_p_min_keep)
@@ -9965,7 +10187,7 @@ inline ::int32_t SamplingParam::top_p_min_keep() const {
 }
 inline void SamplingParam::set_top_p_min_keep(::int32_t value) {
   _internal_set_top_p_min_keep(value);
-  SetHasBit(_impl_._has_bits_[0], 0x00000020U);
+  SetHasBit(_impl_._has_bits_[0], 0x00000800U);
   // @@protoc_insertion_point(field_set:GrpcLibrary.SamplingParam.top_p_min_keep)
 }
 inline ::int32_t SamplingParam::_internal_top_p_min_keep() const {
@@ -9977,12 +10199,37 @@ inline void SamplingParam::_internal_set_top_p_min_keep(::int32_t value) {
   _impl_.top_p_min_keep_ = value;
 }
 
-// int32 min_p_min_keep = 7;
+// float min_p = 13;
+inline void SamplingParam::clear_min_p() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.min_p_ = 0;
+  ClearHasBit(_impl_._has_bits_[0],
+                  0x00001000U);
+}
+inline float SamplingParam::min_p() const {
+  // @@protoc_insertion_point(field_get:GrpcLibrary.SamplingParam.min_p)
+  return _internal_min_p();
+}
+inline void SamplingParam::set_min_p(float value) {
+  _internal_set_min_p(value);
+  SetHasBit(_impl_._has_bits_[0], 0x00001000U);
+  // @@protoc_insertion_point(field_set:GrpcLibrary.SamplingParam.min_p)
+}
+inline float SamplingParam::_internal_min_p() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.min_p_;
+}
+inline void SamplingParam::_internal_set_min_p(float value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.min_p_ = value;
+}
+
+// int32 min_p_min_keep = 14;
 inline void SamplingParam::clear_min_p_min_keep() {
   ::google::protobuf::internal::TSanWrite(&_impl_);
   _impl_.min_p_min_keep_ = 0;
   ClearHasBit(_impl_._has_bits_[0],
-                  0x00000040U);
+                  0x00002000U);
 }
 inline ::int32_t SamplingParam::min_p_min_keep() const {
   // @@protoc_insertion_point(field_get:GrpcLibrary.SamplingParam.min_p_min_keep)
@@ -9990,7 +10237,7 @@ inline ::int32_t SamplingParam::min_p_min_keep() const {
 }
 inline void SamplingParam::set_min_p_min_keep(::int32_t value) {
   _internal_set_min_p_min_keep(value);
-  SetHasBit(_impl_._has_bits_[0], 0x00000040U);
+  SetHasBit(_impl_._has_bits_[0], 0x00002000U);
   // @@protoc_insertion_point(field_set:GrpcLibrary.SamplingParam.min_p_min_keep)
 }
 inline ::int32_t SamplingParam::_internal_min_p_min_keep() const {
@@ -10000,31 +10247,6 @@ inline ::int32_t SamplingParam::_internal_min_p_min_keep() const {
 inline void SamplingParam::_internal_set_min_p_min_keep(::int32_t value) {
   ::google::protobuf::internal::TSanWrite(&_impl_);
   _impl_.min_p_min_keep_ = value;
-}
-
-// int32 seed = 8;
-inline void SamplingParam::clear_seed() {
-  ::google::protobuf::internal::TSanWrite(&_impl_);
-  _impl_.seed_ = 0;
-  ClearHasBit(_impl_._has_bits_[0],
-                  0x00000080U);
-}
-inline ::int32_t SamplingParam::seed() const {
-  // @@protoc_insertion_point(field_get:GrpcLibrary.SamplingParam.seed)
-  return _internal_seed();
-}
-inline void SamplingParam::set_seed(::int32_t value) {
-  _internal_set_seed(value);
-  SetHasBit(_impl_._has_bits_[0], 0x00000080U);
-  // @@protoc_insertion_point(field_set:GrpcLibrary.SamplingParam.seed)
-}
-inline ::int32_t SamplingParam::_internal_seed() const {
-  ::google::protobuf::internal::TSanRead(&_impl_);
-  return _impl_.seed_;
-}
-inline void SamplingParam::_internal_set_seed(::int32_t value) {
-  ::google::protobuf::internal::TSanWrite(&_impl_);
-  _impl_.seed_ = value;
 }
 
 // -------------------------------------------------------------------

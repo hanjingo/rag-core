@@ -29,13 +29,49 @@ QueryReactor::QueryReactor(grpc::CallbackServerContext   *ctx,
     _content    = req->content();
     _model      = req->model();
 
-    _sampling_repetition_penalty = req->sampling().repetition_penalty();
-    _sampling_temperature        = req->sampling().temperature();
-    _sampling_top_p              = req->sampling().top_p();
-    _sampling_top_p_min_keep     = req->sampling().top_p_min_keep();
-    _sampling_top_k              = req->sampling().top_k();
-    _sampling_min_p              = req->sampling().min_p();
-    _sampling_min_p_min_keep     = req->sampling().min_p_min_keep();
+    // init sampler params
+    _smpl_params.penalty_last_n    = req->sampling().penalty_last_n();
+    _smpl_params.penalty_repeat    = req->sampling().penalty_repeat();
+    _smpl_params.penalty_frequency = req->sampling().penalty_freq();
+    _smpl_params.penalty_present   = req->sampling().penalty_present();
+
+    _smpl_params.temperature     = req->sampling().temperature();
+    _smpl_params.temperature_ext = req->sampling().temperature_ext();
+    _smpl_params.temperature_ext_delta =
+        req->sampling().temperature_ext_delta();
+    _smpl_params.temperature_ext_exponent =
+        req->sampling().temperature_ext_exponent();
+
+    _smpl_params.seed = req->sampling().seed();
+
+    _smpl_params.top_k          = req->sampling().top_k();
+    _smpl_params.top_p          = req->sampling().top_p();
+    _smpl_params.top_p_min_keep = req->sampling().top_p_min_keep();
+    _smpl_params.min_p          = req->sampling().min_p();
+    _smpl_params.min_p_min_keep = req->sampling().min_p_min_keep();
+    LOG_DEBUG(
+        "QueryReactor sampler param: penalty_last_n:{}, penalty_repeat:{}, "
+        "penalty_freq:{}, penalty_present:{}, temperature:{}, "
+        "temperature_ext:{}, temperature_ext_delta:{}, "
+        "temperature_ext_exponent:{}, seed:{}, top_k:{}, top_p:{}, "
+        "top_p_min_keep:{}, min_p:{}, min_p_min_keep:{}",
+        _smpl_params.penalty_last_n,
+        _smpl_params.penalty_repeat,
+        _smpl_params.penalty_frequency,
+        _smpl_params.penalty_present,
+
+        _smpl_params.temperature,
+        _smpl_params.temperature_ext,
+        _smpl_params.temperature_ext_delta,
+        _smpl_params.temperature_ext_exponent,
+
+        _smpl_params.seed,
+
+        _smpl_params.top_k,
+        _smpl_params.top_p,
+        _smpl_params.top_p_min_keep,
+        _smpl_params.min_p,
+        _smpl_params.min_p_min_keep);
 
     _ctx_window_sz  = req->ctx().window_size();
     _ctx_stop_words = req->ctx().stop_words();
@@ -66,6 +102,18 @@ QueryReactor::QueryReactor(grpc::CallbackServerContext   *ctx,
     _ctx_params.op_offload  = req->ctx().op_offload();
     _ctx_params.swa_full    = req->ctx().swa_full();
     _ctx_params.kv_unified  = req->ctx().kv_unified();
+
+    LOG_DEBUG("QueryReactor ctx params: n_ctx:{}, n_batch:{}, n_ubatch:{}, "
+              "n_seq_max:{}, n_threads:{}, n_threads_batch:{}, "
+              "rope_freq_base:{}, rope_freq_scale:{}",
+              _ctx_params.n_ctx,
+              _ctx_params.n_batch,
+              _ctx_params.n_ubatch,
+              _ctx_params.n_seq_max,
+              _ctx_params.n_threads,
+              _ctx_params.n_threads_batch,
+              _ctx_params.rope_freq_base,
+              _ctx_params.rope_freq_scale);
 
     query_reactor_mgr::instance().register_query(_session_id, this);
     thread_pool::instance().enqueue([this]() { this->_process(); });
@@ -141,24 +189,12 @@ void QueryReactor::_process()
     }
 
     auto tokens = llm_mgr::instance().tokenize(_model, _content, true, true);
-    auto params = llm_mgr::instance().create_ctx_params();
-    auto smpl_params = llm_mgr::instance().create_sampler_params();
-
-    // create sampler
-    hj::llama::sampler sampler{};
-    sampler.init_top_k(_sampling_top_k);
-    sampler.init_top_p(_sampling_top_p, _sampling_top_p_min_keep);
-    sampler.init_min_p(_sampling_min_p, _sampling_min_p_min_keep);
-    sampler.init_temp(_sampling_temperature);
-    sampler.init_dist(_sampling_seed);
-
-    auto      max_repeates = conf::instance().llm_max_repeats();
-    watch_dog dog{max_repeates};
+    watch_dog dog{};
     auto      ec = llm_mgr::instance().loop_query(
         _model,
         tokens,
-        params,
-        sampler,
+        _ctx_params,
+        _smpl_params,
         [&](std::string &output) -> bool {
             // 1. if disconnect, stop
             // 2. if write too much repeat words (bug), stop

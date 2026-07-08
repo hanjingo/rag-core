@@ -46,14 +46,20 @@ message MessageInfo {
 }
 
 message SamplingParam {
-    float repetition_penalty = 1;
-    float temperature = 2;
-    float top_k = 3;
-    float top_p = 4;
-    float min_p = 5;
-    int32 top_p_min_keep = 6;
-    int32 min_p_min_keep = 7;
-    int32 seed = 8;
+    int32 penalty_last_n = 1;
+    float penalty_repeat = 2;
+    float penalty_freq = 3;
+    float penalty_present = 4;
+    float temperature = 5;
+    float temperature_ext = 6;
+    float temperature_ext_delta = 7;
+    float temperature_ext_exponent = 8;
+    uint32 seed = 9;
+    int32 top_k = 10;
+    float top_p = 11;
+    int32 top_p_min_keep = 12;
+    float min_p = 13;
+    int32 min_p_min_keep = 14;
 }
 
 message ContextParam {

@@ -48,19 +48,11 @@ class llm_mgr
 
     hj::llama::model_params_t create_model_params();
 
-    hj::llama::sampler_params_t create_sampler_params();
-
-    int loop_query(const std::string                               &model_id,
-                   std::vector<hj::llama::token_t>                 &tokens,
-                   const hj::llama::context_params_t               &ctx_params,
-                   hj::llama::sampler                              &sampler,
-                   const std::function<bool(std::string &peieces)> &callback);
-
-    // int
-    // loop_query_async(const std::string                             &model_id,
-    //                  std::vector<hj::llama::token_t>               &tokens,
-    //                  const hj::llama::context_params_t             &ctx_params,
-    //                  const std::function<bool(std::string &output)> callback);
+    int loop_query(const std::string                              &model_id,
+                   std::vector<hj::llama::token_t>                &tokens,
+                   const hj::llama::context_params_t              &ctx_params,
+                   const hj::llama::sampler::params               &smpl_params,
+                   const std::function<bool(std::string &output)> &callback);
 
   private:
     hj::thread_pool _thread_pool;
