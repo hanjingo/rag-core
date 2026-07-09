@@ -25,6 +25,7 @@
 #include "conf.h"
 #include "db_mgr.h"
 #include "llm.h"
+#include "caller.h"
 #include "asr.h"
 
 int main(int argc, char *argv[])
@@ -113,6 +114,23 @@ int main(int argc, char *argv[])
         // ./rag-core run
         // init dbs
         db_mgr::instance().init();
+
+        // init llm remote apis
+        auto apis = conf::instance().llm_remote_apis();
+        LOG_DEBUG("init remote api config num: {}", apis.size());
+        for(const auto &api : apis)
+        {
+            caller_mgr::instance().load(api.second.id,
+                                        api.second.type,
+                                        api.second.timeout_sec,
+                                        api.second.api_key);
+            LOG_INFO(
+                "init remote api id:{}, type:{}, timeout_sec:{}, api_key:{}",
+                api.second.id,
+                api.second.type,
+                api.second.timeout_sec,
+                api.second.api_key);
+        }
 
         // init models
         auto models = conf::instance().llm_models();

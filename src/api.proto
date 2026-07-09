@@ -170,8 +170,9 @@ message QueryReq {
     string content = 4;
     string model = 5;
     string pipeline = 6;
-    SamplingParam sampling = 7;
-    ContextParam ctx = 8;
+    string api_key = 7;
+    SamplingParam sampling = 8;
+    ContextParam ctx = 9;
 }
 
 message QueryResp {

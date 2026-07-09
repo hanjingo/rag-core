@@ -167,6 +167,21 @@ int conf::llm_num_threads()
     return _cfg.get<int>("llm/num_threads", 1);
 }
 
+int conf::llm_local_prompt_threshold()
+{
+    return _cfg.get<int>("llm/local_prompt_threshold", 100);
+}
+
+std::unordered_set<std::string> conf::llm_hard_prompt_class()
+{
+    return _hard_prompt_class;
+}
+
+std::unordered_map<std::string, conf::remote_api_config> conf::llm_remote_apis()
+{
+    return _remote_apis;
+}
+
 std::unordered_map<std::string, conf::model_config> conf::llm_models()
 {
     return _models;
@@ -189,6 +204,7 @@ int conf::asr_audio_min_chunk_size()
 
 void conf::_init()
 {
+    // init models
     auto             str = _cfg.get<std::string>("llm/models", "");
     std::string_view tag{";", 1};
     auto             items = hj::string_util::split(str, tag);
@@ -225,6 +241,35 @@ void conf::_init()
 
         _models[config.id] = config;
     }
+
+    // init remote apis
+    _remote_apis.clear();
+    str              = _cfg.get<std::string>("llm/remote_apis", "");
+    auto remote_apis = hj::string_util::split(str, tag);
+    for(const auto &item : remote_apis)
+    {
+        remote_api_config config;
+        config.id          = _cfg.get<std::string>(item + "/id", "");
+        config.type        = _cfg.get<std::string>(item + "/type", "");
+        config.api_key     = _cfg.get<std::string>(item + "/api_key", "");
+        config.timeout_sec = _cfg.get<int>(item + "/timeout_sec", 5);
+
+        if(config.id.empty() || config.type.empty())
+        {
+            std::cerr << "config remote api: " << item << ", id: " << config.id
+                      << ", type: " << config.type << " INVALID!!!"
+                      << std::endl;
+            continue;
+        }
+
+        _remote_apis[config.id] = config;
+    }
+
+    // init prompt classes
+    str          = _cfg.get<std::string>("llm/hard_prompt_class", "");
+    auto classes = hj::string_util::split(str, tag);
+    for(auto item : classes)
+        _hard_prompt_class.emplace(item);
 
     auto asr_str   = _cfg.get<std::string>("asr/ctxs", "");
     auto asr_items = hj::string_util::split(asr_str, tag);

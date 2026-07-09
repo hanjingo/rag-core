@@ -81,4 +81,26 @@ static constexpr const char *SQL_SELECT_SKILL_INFO_BY_HASH =
 static constexpr const char *SQL_SELECT_FILE_BY_HASH =
     R"(SELECT addr, owner, size_kb FROM file WHERE hash = %Q)";
 
+
+// Pipeline
+static constexpr const char *PIPELINE_LOCAL = "local";
+
+static constexpr const char *PIPELINE_REMOTE = "remote";
+
+static constexpr const char *PIPELINE_HYBRID = "hybrid";
+
+// Prompt class
+static constexpr const char *PROMPT_TYPE_UNKNOWN = "unknown";
+
+static constexpr const char *PROMPT_TYPE_CODE = "code";
+
+static constexpr const char *PROMPT_TYPE_ALGO = "algo";
+
+static constexpr const char *PROMPT_TYPE_MATH = "math";
+
+static constexpr const char *PROMPT_TYPE_CHAT = "chat";
+
+// caller type
+static constexpr const char *CALLER_TYPE_DEEPSEEK = "deepseek";
+
 #endif

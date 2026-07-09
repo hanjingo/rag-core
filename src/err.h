@@ -17,6 +17,7 @@ static constexpr int ERR_DB_NOT_EXIST         = 100;
 static constexpr int ERR_DB_EXISTED           = 101;
 static constexpr int ERR_SQLITE_GET_CONN_FAIL = 102;
 static constexpr int ERR_SQLITE_EXEC_FAIL     = 103;
+static constexpr int ERR_UNKNOWN_PIPELINE     = 104;
 
 static constexpr int AUTH_ERR_ISSUER_EXIST     = 200;
 static constexpr int AUTH_ERR_ISSUER_NOT_EXIST = 201;
@@ -40,6 +41,9 @@ static constexpr int LLM_ERR_REPEAT_TOO_MANY_TIMES = 500;
 static constexpr int ASR_ERR_CTX_NOT_EXIST  = 600;
 static constexpr int ASR_ERR_CTX_LOAD_FAIL  = 601;
 static constexpr int ASR_ERR_NO_AUDIO_CHUNK = 602;
+
+static constexpr int CALLER_ERR_NOT_EXIST            = 701;
+static constexpr int CALLER_ERR_REMOTE_RESPONSE_FAIL = 702;
 
 static inline std::error_code error(const int   e,
                                     const char *category = "rag-core")

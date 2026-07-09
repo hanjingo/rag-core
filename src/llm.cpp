@@ -5,14 +5,12 @@
 #include <hj/log/log.hpp>
 
 llm_mgr::llm_mgr()
-    : _thread_pool(conf::instance().llm_num_threads())
 {
     hj::llama::backend_init();
 }
 
 llm_mgr::~llm_mgr()
 {
-    _thread_pool.clear();
     hj::llama::backend_free();
 }
 

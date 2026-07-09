@@ -10,6 +10,7 @@
 #include "auth.h"
 #include "account_mgr.h"
 #include "llm.h"
+#include "caller.h"
 #include "asr.h"
 #include "router.h"
 #include "watch_dog.h"
@@ -28,6 +29,17 @@ QueryReactor::QueryReactor(grpc::CallbackServerContext   *ctx,
     _auth       = req->auth();
     _content    = req->content();
     _model      = req->model();
+    _pipeline   = req->pipeline();
+    _api_key    = req->api_key();
+    LOG_DEBUG("QueryReactor base param: session_id:{}, user_id:{}, auth:{}, "
+              "content:{}, model:{}, pipeline:{}, api_key:{}",
+              _session_id,
+              _user_id,
+              _auth,
+              _content,
+              _model,
+              _pipeline,
+              _api_key);
 
     // init sampler params
     _smpl_params.penalty_last_n    = req->sampling().penalty_last_n();
@@ -115,8 +127,21 @@ QueryReactor::QueryReactor(grpc::CallbackServerContext   *ctx,
               _ctx_params.rope_freq_base,
               _ctx_params.rope_freq_scale);
 
+    router::instance().route(_pipeline, _content);
     query_reactor_mgr::instance().register_query(_session_id, this);
-    thread_pool::instance().enqueue([this]() { this->_process(); });
+    thread_pool::instance().enqueue([this]() {
+        if(_pipeline == PIPELINE_LOCAL)
+        {
+            _process();
+        } else if(_pipeline == PIPELINE_REMOTE)
+        {
+            _processRemote();
+        } else
+        {
+            LOG_ERROR("Unknown pipeline: {}", _pipeline);
+            _send("", true, ERR_UNKNOWN_PIPELINE);
+        }
+    });
 }
 
 QueryReactor::~QueryReactor()
@@ -137,7 +162,7 @@ void QueryReactor::OnWriteDone(bool ok)
         return;
     }
 
-    _push();
+    _flush();
 }
 
 void QueryReactor::OnDone()
@@ -167,8 +192,12 @@ void QueryReactor::Stop()
 {
     LOG_INFO("Query {} was stopped by user", _session_id);
     _is_cancelled.store(true);
+    _is_writing.store(false);
 
-    // clear the queue
+    ::GrpcLibrary::QueryResp resp;
+    while(_w_queue.try_dequeue(resp))
+    {
+    }
 }
 
 void QueryReactor::_process()
@@ -236,10 +265,82 @@ void QueryReactor::_process()
     Finish(grpc::Status::OK);
 }
 
+void QueryReactor::_processRemote()
+{
+    LOG_DEBUG("On _processRemote with _model:{}, _cotent:{}, _api_key:{}",
+              _model,
+              _content,
+              _api_key);
+    int64_t msg_id = static_cast<int64_t>(hj::uuid::gen_u64());
+    auto    now    = hj::date_time::now().ms_since_epoch();
+    auto    sql    = hj::sqlite::mprintf(SQL_INSERT_MESSAGE,
+                                         msg_id,
+                                         _session_id,
+                                         ROLE_USER,
+                                         _content.c_str(),
+                                         NONE_MSG_ID,
+                                         now);
+    if(db_mgr::instance().exec(DB_SQLITE, sql) != OK)
+    {
+        _send("", true, ERR_SQLITE_EXEC_FAIL);
+        return;
+    }
+
+    // watch_dog dog{};
+    auto ec = caller_mgr::instance().loop_query(
+        _model,
+        _content,
+        _api_key,
+        [this](std::string &output) -> bool {
+            // 1. if disconnect, stop
+            // 2. if write too much repeat words (bug), stop
+            // 3. if client stop answer, stop
+            // 4. ...
+            if(_is_cancelled.load())
+            {
+                LOG_DEBUG("is_cancelled.load() is true, stop query");
+                // send final words
+                _send(output, true, OK);
+                Finish(grpc::Status::OK);
+                return false;
+            }
+
+            if(output.empty())
+            {
+                return true;
+            }
+
+            // if(!dog.watch(output))
+            // {
+            //     LOG_DEBUG("dog.watch() is false, stop query");
+            //     _send(output, true, OK);
+            //     return false;
+            // }
+
+            _answer += output;
+            _send(output, false, OK);
+            return true;
+        });
+
+    if(_is_cancelled.load())
+    {
+        LOG_INFO("Query {} was cancelled", _session_id);
+        return;
+    }
+
+    // send final words
+    LOG_INFO("Query {} finished with error code {}", _session_id, ec);
+    _send("", true, ec);
+    Finish(grpc::Status::OK);
+}
+
 void QueryReactor::_send(const std::string &text,
                          bool               is_finished,
                          int                error_code)
 {
+    if(_is_cancelled.load())
+        return;
+
     ::GrpcLibrary::QueryResp resp;
     resp.set_error_code(error_code);
     resp.set_id(_session_id);
@@ -247,29 +348,32 @@ void QueryReactor::_send(const std::string &text,
     resp.set_is_finished(is_finished);
 
     _w_queue.enqueue(resp);
-    _push();
+    _flush();
 }
 
-void QueryReactor::_push()
+void QueryReactor::_flush()
 {
     if(_is_writing.load())
         return;
 
+    if(_is_cancelled.load())
+        return;
+
     ::GrpcLibrary::QueryResp resp;
-    while(_w_queue.try_dequeue(resp))
-    {
-        _is_writing.store(true);
-        StartWrite(&resp);
-        LOG_DEBUG("QueryReactor::_push: session_id: {}, user_id: {}, auth: {}, "
-                  "content: {}, model: {}, is_finished: {}, error_code: {}",
-                  _session_id,
-                  _user_id,
-                  _auth,
-                  resp.content(),
-                  _model,
-                  resp.is_finished(),
-                  resp.error_code());
-    }
+    if(!_w_queue.try_dequeue(resp))
+        return;
+
+    _is_writing.store(true);
+    StartWrite(&resp);
+    LOG_DEBUG("QueryReactor::_flush: session_id: {}, user_id: {}, auth: {}, "
+              "content: {}, model: {}, is_finished: {}, error_code: {}",
+              _session_id,
+              _user_id,
+              _auth,
+              resp.content(),
+              _model,
+              resp.is_finished(),
+              resp.error_code());
 }
 
 // ------------------------------------------ ReocgnizeReactor -------------------------------

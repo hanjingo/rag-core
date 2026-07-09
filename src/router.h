@@ -6,8 +6,8 @@
 class router
 {
   public:
-    router();
-    ~router();
+    router() {}
+    ~router() {}
 
     static router &instance()
     {
@@ -15,7 +15,9 @@ class router
         return inst;
     }
 
-    virtual void route(const std::string &prompt);
+    virtual void route(std::string &pipeline, const std::string &prompt);
+
+    virtual std::string classify(const std::string &prompt);
 };
 
 #endif // ROUTER_H

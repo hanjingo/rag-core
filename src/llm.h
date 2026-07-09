@@ -55,7 +55,6 @@ class llm_mgr
                    const std::function<bool(std::string &output)> &callback);
 
   private:
-    hj::thread_pool _thread_pool;
     std::unordered_map<std::string, std::unique_ptr<hj::llama::model>> _llms;
 };
 

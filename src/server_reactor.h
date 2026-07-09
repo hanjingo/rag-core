@@ -8,6 +8,8 @@
 
 #include <hj/net/grpc.hpp>
 #include <hj/ai/asr.hpp>
+#include <hj/encoding/json.hpp>
+#include <hj/net/http/http_request.hpp>
 
 #include "sync.h"
 #include "audio_buffer.h"
@@ -30,10 +32,11 @@ class QueryReactor : public grpc::ServerWriteReactor<::GrpcLibrary::QueryResp>
 
   private:
     void _process();
+    void _processRemote();
 
     void _send(const std::string &text, bool is_finished, int error_code);
 
-    void _push();
+    void _flush();
 
   private:
     grpc::CallbackServerContext          *_ctx;
@@ -47,6 +50,7 @@ class QueryReactor : public grpc::ServerWriteReactor<::GrpcLibrary::QueryResp>
     std::string _auth;
     std::string _content;
     std::string _model;
+    std::string _pipeline;
 
     // sampling params
     hj::llama::sampler::params _smpl_params;
@@ -56,6 +60,10 @@ class QueryReactor : public grpc::ServerWriteReactor<::GrpcLibrary::QueryResp>
     int32_t                     _ctx_window_sz;
     std::string                 _ctx_stop_words;
     hj::llama::context_params_t _ctx_params;
+
+    // remote api params
+    std::string      _api_key;
+    hj::http_request _api_req;
 
     // resp
     std::string _answer;

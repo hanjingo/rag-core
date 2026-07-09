@@ -8015,8 +8015,9 @@ class QueryReq final : public ::google::protobuf::Message
     kContentFieldNumber = 4,
     kModelFieldNumber = 5,
     kPipelineFieldNumber = 6,
-    kSamplingFieldNumber = 7,
-    kCtxFieldNumber = 8,
+    kApiKeyFieldNumber = 7,
+    kSamplingFieldNumber = 8,
+    kCtxFieldNumber = 9,
     kIdFieldNumber = 1,
     kUserIdFieldNumber = 2,
   };
@@ -8080,7 +8081,22 @@ class QueryReq final : public ::google::protobuf::Message
   ::std::string* PROTOBUF_NONNULL _internal_mutable_pipeline();
 
   public:
-  // .GrpcLibrary.SamplingParam sampling = 7;
+  // string api_key = 7;
+  void clear_api_key() ;
+  const ::std::string& api_key() const;
+  template <typename Arg_ = const ::std::string&, typename... Args_>
+  void set_api_key(Arg_&& arg, Args_... args);
+  ::std::string* PROTOBUF_NONNULL mutable_api_key();
+  [[nodiscard]] ::std::string* PROTOBUF_NULLABLE release_api_key();
+  void set_allocated_api_key(::std::string* PROTOBUF_NULLABLE value);
+
+  private:
+  const ::std::string& _internal_api_key() const;
+  PROTOBUF_ALWAYS_INLINE void _internal_set_api_key(const ::std::string& value);
+  ::std::string* PROTOBUF_NONNULL _internal_mutable_api_key();
+
+  public:
+  // .GrpcLibrary.SamplingParam sampling = 8;
   bool has_sampling() const;
   void clear_sampling() ;
   const ::GrpcLibrary::SamplingParam& sampling() const;
@@ -8095,7 +8111,7 @@ class QueryReq final : public ::google::protobuf::Message
   ::GrpcLibrary::SamplingParam* PROTOBUF_NONNULL _internal_mutable_sampling();
 
   public:
-  // .GrpcLibrary.ContextParam ctx = 8;
+  // .GrpcLibrary.ContextParam ctx = 9;
   bool has_ctx() const;
   void clear_ctx() ;
   const ::GrpcLibrary::ContextParam& ctx() const;
@@ -8134,8 +8150,8 @@ class QueryReq final : public ::google::protobuf::Message
  private:
   class _Internal;
   friend class ::google::protobuf::internal::TcParser;
-  static const ::google::protobuf::internal::TcParseTable<3, 8,
-                                   2, 61,
+  static const ::google::protobuf::internal::TcParseTable<4, 9,
+                                   2, 68,
                                    2>
       _table_;
 
@@ -8160,6 +8176,7 @@ class QueryReq final : public ::google::protobuf::Message
     ::google::protobuf::internal::ArenaStringPtr content_;
     ::google::protobuf::internal::ArenaStringPtr model_;
     ::google::protobuf::internal::ArenaStringPtr pipeline_;
+    ::google::protobuf::internal::ArenaStringPtr api_key_;
     ::GrpcLibrary::SamplingParam* PROTOBUF_NULLABLE sampling_;
     ::GrpcLibrary::ContextParam* PROTOBUF_NULLABLE ctx_;
     ::int64_t id_;
@@ -12493,7 +12510,7 @@ inline void QueryReq::clear_id() {
   ::google::protobuf::internal::TSanWrite(&_impl_);
   _impl_.id_ = ::int64_t{0};
   ClearHasBit(_impl_._has_bits_[0],
-                  0x00000040U);
+                  0x00000080U);
 }
 inline ::int64_t QueryReq::id() const {
   // @@protoc_insertion_point(field_get:GrpcLibrary.QueryReq.id)
@@ -12501,7 +12518,7 @@ inline ::int64_t QueryReq::id() const {
 }
 inline void QueryReq::set_id(::int64_t value) {
   _internal_set_id(value);
-  SetHasBit(_impl_._has_bits_[0], 0x00000040U);
+  SetHasBit(_impl_._has_bits_[0], 0x00000080U);
   // @@protoc_insertion_point(field_set:GrpcLibrary.QueryReq.id)
 }
 inline ::int64_t QueryReq::_internal_id() const {
@@ -12518,7 +12535,7 @@ inline void QueryReq::clear_user_id() {
   ::google::protobuf::internal::TSanWrite(&_impl_);
   _impl_.user_id_ = ::int64_t{0};
   ClearHasBit(_impl_._has_bits_[0],
-                  0x00000080U);
+                  0x00000100U);
 }
 inline ::int64_t QueryReq::user_id() const {
   // @@protoc_insertion_point(field_get:GrpcLibrary.QueryReq.user_id)
@@ -12526,7 +12543,7 @@ inline ::int64_t QueryReq::user_id() const {
 }
 inline void QueryReq::set_user_id(::int64_t value) {
   _internal_set_user_id(value);
-  SetHasBit(_impl_._has_bits_[0], 0x00000080U);
+  SetHasBit(_impl_._has_bits_[0], 0x00000100U);
   // @@protoc_insertion_point(field_set:GrpcLibrary.QueryReq.user_id)
 }
 inline ::int64_t QueryReq::_internal_user_id() const {
@@ -12798,9 +12815,74 @@ inline void QueryReq::set_allocated_pipeline(::std::string* PROTOBUF_NULLABLE va
   // @@protoc_insertion_point(field_set_allocated:GrpcLibrary.QueryReq.pipeline)
 }
 
-// .GrpcLibrary.SamplingParam sampling = 7;
+// string api_key = 7;
+inline void QueryReq::clear_api_key() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.api_key_.ClearToEmpty();
+  ClearHasBit(_impl_._has_bits_[0],
+                  0x00000010U);
+}
+inline const ::std::string& QueryReq::api_key() const
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_get:GrpcLibrary.QueryReq.api_key)
+  return _internal_api_key();
+}
+template <typename Arg_, typename... Args_>
+PROTOBUF_ALWAYS_INLINE void QueryReq::set_api_key(Arg_&& arg, Args_... args) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  SetHasBit(_impl_._has_bits_[0], 0x00000010U);
+  _impl_.api_key_.Set(static_cast<Arg_&&>(arg), args..., GetArena());
+  // @@protoc_insertion_point(field_set:GrpcLibrary.QueryReq.api_key)
+}
+inline ::std::string* PROTOBUF_NONNULL QueryReq::mutable_api_key()
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  SetHasBit(_impl_._has_bits_[0], 0x00000010U);
+  ::std::string* _s = _internal_mutable_api_key();
+  // @@protoc_insertion_point(field_mutable:GrpcLibrary.QueryReq.api_key)
+  return _s;
+}
+inline const ::std::string& QueryReq::_internal_api_key() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.api_key_.Get();
+}
+inline void QueryReq::_internal_set_api_key(const ::std::string& value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.api_key_.Set(value, GetArena());
+}
+inline ::std::string* PROTOBUF_NONNULL QueryReq::_internal_mutable_api_key() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  return _impl_.api_key_.Mutable( GetArena());
+}
+inline ::std::string* PROTOBUF_NULLABLE QueryReq::release_api_key() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  // @@protoc_insertion_point(field_release:GrpcLibrary.QueryReq.api_key)
+  if (!CheckHasBit(_impl_._has_bits_[0], 0x00000010U)) {
+    return nullptr;
+  }
+  ClearHasBit(_impl_._has_bits_[0], 0x00000010U);
+  auto* released = _impl_.api_key_.Release();
+  if (::google::protobuf::internal::DebugHardenForceCopyDefaultString()) {
+    _impl_.api_key_.Set("", GetArena());
+  }
+  return released;
+}
+inline void QueryReq::set_allocated_api_key(::std::string* PROTOBUF_NULLABLE value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  if (value != nullptr) {
+    SetHasBit(_impl_._has_bits_[0], 0x00000010U);
+  } else {
+    ClearHasBit(_impl_._has_bits_[0], 0x00000010U);
+  }
+  _impl_.api_key_.SetAllocated(value, GetArena());
+  if (::google::protobuf::internal::DebugHardenForceCopyDefaultString() && _impl_.api_key_.IsDefault()) {
+    _impl_.api_key_.Set("", GetArena());
+  }
+  // @@protoc_insertion_point(field_set_allocated:GrpcLibrary.QueryReq.api_key)
+}
+
+// .GrpcLibrary.SamplingParam sampling = 8;
 inline bool QueryReq::has_sampling() const {
-  bool value = CheckHasBit(_impl_._has_bits_[0], 0x00000010U);
+  bool value = CheckHasBit(_impl_._has_bits_[0], 0x00000020U);
   PROTOBUF_ASSUME(!value || _impl_.sampling_ != nullptr);
   return value;
 }
@@ -12808,7 +12890,7 @@ inline void QueryReq::clear_sampling() {
   ::google::protobuf::internal::TSanWrite(&_impl_);
   if (_impl_.sampling_ != nullptr) _impl_.sampling_->Clear();
   ClearHasBit(_impl_._has_bits_[0],
-                  0x00000010U);
+                  0x00000020U);
 }
 inline const ::GrpcLibrary::SamplingParam& QueryReq::_internal_sampling() const {
   ::google::protobuf::internal::TSanRead(&_impl_);
@@ -12827,16 +12909,16 @@ inline void QueryReq::unsafe_arena_set_allocated_sampling(
   }
   _impl_.sampling_ = reinterpret_cast<::GrpcLibrary::SamplingParam*>(value);
   if (value != nullptr) {
-    SetHasBit(_impl_._has_bits_[0], 0x00000010U);
+    SetHasBit(_impl_._has_bits_[0], 0x00000020U);
   } else {
-    ClearHasBit(_impl_._has_bits_[0], 0x00000010U);
+    ClearHasBit(_impl_._has_bits_[0], 0x00000020U);
   }
   // @@protoc_insertion_point(field_unsafe_arena_set_allocated:GrpcLibrary.QueryReq.sampling)
 }
 inline ::GrpcLibrary::SamplingParam* PROTOBUF_NULLABLE QueryReq::release_sampling() {
   ::google::protobuf::internal::TSanWrite(&_impl_);
 
-  ClearHasBit(_impl_._has_bits_[0], 0x00000010U);
+  ClearHasBit(_impl_._has_bits_[0], 0x00000020U);
   ::GrpcLibrary::SamplingParam* released = _impl_.sampling_;
   _impl_.sampling_ = nullptr;
   if (::google::protobuf::internal::DebugHardenForceCopyInRelease()) {
@@ -12856,7 +12938,7 @@ inline ::GrpcLibrary::SamplingParam* PROTOBUF_NULLABLE QueryReq::unsafe_arena_re
   ::google::protobuf::internal::TSanWrite(&_impl_);
   // @@protoc_insertion_point(field_release:GrpcLibrary.QueryReq.sampling)
 
-  ClearHasBit(_impl_._has_bits_[0], 0x00000010U);
+  ClearHasBit(_impl_._has_bits_[0], 0x00000020U);
   ::GrpcLibrary::SamplingParam* temp = _impl_.sampling_;
   _impl_.sampling_ = nullptr;
   return temp;
@@ -12871,7 +12953,7 @@ inline ::GrpcLibrary::SamplingParam* PROTOBUF_NONNULL QueryReq::_internal_mutabl
 }
 inline ::GrpcLibrary::SamplingParam* PROTOBUF_NONNULL QueryReq::mutable_sampling()
     ABSL_ATTRIBUTE_LIFETIME_BOUND {
-  SetHasBit(_impl_._has_bits_[0], 0x00000010U);
+  SetHasBit(_impl_._has_bits_[0], 0x00000020U);
   ::GrpcLibrary::SamplingParam* _msg = _internal_mutable_sampling();
   // @@protoc_insertion_point(field_mutable:GrpcLibrary.QueryReq.sampling)
   return _msg;
@@ -12888,18 +12970,18 @@ inline void QueryReq::set_allocated_sampling(::GrpcLibrary::SamplingParam* PROTO
     if (message_arena != submessage_arena) {
       value = ::google::protobuf::internal::GetOwnedMessage(message_arena, value, submessage_arena);
     }
-    SetHasBit(_impl_._has_bits_[0], 0x00000010U);
+    SetHasBit(_impl_._has_bits_[0], 0x00000020U);
   } else {
-    ClearHasBit(_impl_._has_bits_[0], 0x00000010U);
+    ClearHasBit(_impl_._has_bits_[0], 0x00000020U);
   }
 
   _impl_.sampling_ = reinterpret_cast<::GrpcLibrary::SamplingParam*>(value);
   // @@protoc_insertion_point(field_set_allocated:GrpcLibrary.QueryReq.sampling)
 }
 
-// .GrpcLibrary.ContextParam ctx = 8;
+// .GrpcLibrary.ContextParam ctx = 9;
 inline bool QueryReq::has_ctx() const {
-  bool value = CheckHasBit(_impl_._has_bits_[0], 0x00000020U);
+  bool value = CheckHasBit(_impl_._has_bits_[0], 0x00000040U);
   PROTOBUF_ASSUME(!value || _impl_.ctx_ != nullptr);
   return value;
 }
@@ -12907,7 +12989,7 @@ inline void QueryReq::clear_ctx() {
   ::google::protobuf::internal::TSanWrite(&_impl_);
   if (_impl_.ctx_ != nullptr) _impl_.ctx_->Clear();
   ClearHasBit(_impl_._has_bits_[0],
-                  0x00000020U);
+                  0x00000040U);
 }
 inline const ::GrpcLibrary::ContextParam& QueryReq::_internal_ctx() const {
   ::google::protobuf::internal::TSanRead(&_impl_);
@@ -12926,16 +13008,16 @@ inline void QueryReq::unsafe_arena_set_allocated_ctx(
   }
   _impl_.ctx_ = reinterpret_cast<::GrpcLibrary::ContextParam*>(value);
   if (value != nullptr) {
-    SetHasBit(_impl_._has_bits_[0], 0x00000020U);
+    SetHasBit(_impl_._has_bits_[0], 0x00000040U);
   } else {
-    ClearHasBit(_impl_._has_bits_[0], 0x00000020U);
+    ClearHasBit(_impl_._has_bits_[0], 0x00000040U);
   }
   // @@protoc_insertion_point(field_unsafe_arena_set_allocated:GrpcLibrary.QueryReq.ctx)
 }
 inline ::GrpcLibrary::ContextParam* PROTOBUF_NULLABLE QueryReq::release_ctx() {
   ::google::protobuf::internal::TSanWrite(&_impl_);
 
-  ClearHasBit(_impl_._has_bits_[0], 0x00000020U);
+  ClearHasBit(_impl_._has_bits_[0], 0x00000040U);
   ::GrpcLibrary::ContextParam* released = _impl_.ctx_;
   _impl_.ctx_ = nullptr;
   if (::google::protobuf::internal::DebugHardenForceCopyInRelease()) {
@@ -12955,7 +13037,7 @@ inline ::GrpcLibrary::ContextParam* PROTOBUF_NULLABLE QueryReq::unsafe_arena_rel
   ::google::protobuf::internal::TSanWrite(&_impl_);
   // @@protoc_insertion_point(field_release:GrpcLibrary.QueryReq.ctx)
 
-  ClearHasBit(_impl_._has_bits_[0], 0x00000020U);
+  ClearHasBit(_impl_._has_bits_[0], 0x00000040U);
   ::GrpcLibrary::ContextParam* temp = _impl_.ctx_;
   _impl_.ctx_ = nullptr;
   return temp;
@@ -12970,7 +13052,7 @@ inline ::GrpcLibrary::ContextParam* PROTOBUF_NONNULL QueryReq::_internal_mutable
 }
 inline ::GrpcLibrary::ContextParam* PROTOBUF_NONNULL QueryReq::mutable_ctx()
     ABSL_ATTRIBUTE_LIFETIME_BOUND {
-  SetHasBit(_impl_._has_bits_[0], 0x00000020U);
+  SetHasBit(_impl_._has_bits_[0], 0x00000040U);
   ::GrpcLibrary::ContextParam* _msg = _internal_mutable_ctx();
   // @@protoc_insertion_point(field_mutable:GrpcLibrary.QueryReq.ctx)
   return _msg;
@@ -12987,9 +13069,9 @@ inline void QueryReq::set_allocated_ctx(::GrpcLibrary::ContextParam* PROTOBUF_NU
     if (message_arena != submessage_arena) {
       value = ::google::protobuf::internal::GetOwnedMessage(message_arena, value, submessage_arena);
     }
-    SetHasBit(_impl_._has_bits_[0], 0x00000020U);
+    SetHasBit(_impl_._has_bits_[0], 0x00000040U);
   } else {
-    ClearHasBit(_impl_._has_bits_[0], 0x00000020U);
+    ClearHasBit(_impl_._has_bits_[0], 0x00000040U);
   }
 
   _impl_.ctx_ = reinterpret_cast<::GrpcLibrary::ContextParam*>(value);

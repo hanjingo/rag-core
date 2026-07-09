@@ -11,6 +11,10 @@
     {
       "name": "whisper-cpp",
       "features": [ "cuda" ]
+    },
+    {
+      "name": "cpp-httplib",
+      "features": ["openssl"]
     }
   ]
 }
