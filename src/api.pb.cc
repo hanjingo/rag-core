@@ -26,6 +26,69 @@ namespace _pbi = ::google::protobuf::internal;
 namespace _fl = ::google::protobuf::internal::field_layout;
 namespace GrpcLibrary {
 
+inline constexpr UploadResp::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : _cached_size_{0},
+        hash_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        error_code_{0} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR UploadResp::UploadResp(::_pbi::ConstantInitialized)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(UploadResp_class_data_.base()),
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(),
+#endif  // PROTOBUF_CUSTOM_VTABLE
+      _impl_(::_pbi::ConstantInitialized()) {
+}
+struct UploadRespDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR UploadRespDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~UploadRespDefaultTypeInternal() {}
+  union {
+    UploadResp _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 UploadRespDefaultTypeInternal _UploadResp_default_instance_;
+
+inline constexpr UploadReq::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : _cached_size_{0},
+        hash_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        auth_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        addr_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        user_id_{::int64_t{0}},
+        size_kb_{::int64_t{0}} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR UploadReq::UploadReq(::_pbi::ConstantInitialized)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(UploadReq_class_data_.base()),
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(),
+#endif  // PROTOBUF_CUSTOM_VTABLE
+      _impl_(::_pbi::ConstantInitialized()) {
+}
+struct UploadReqDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR UploadReqDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~UploadReqDefaultTypeInternal() {}
+  union {
+    UploadReq _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 UploadReqDefaultTypeInternal _UploadReq_default_instance_;
+
 inline constexpr StopRecognizeResp::Impl_::Impl_(
     ::_pbi::ConstantInitialized) noexcept
       : _cached_size_{0},
@@ -1626,6 +1689,26 @@ const ::uint32_t
         0,
         1,
         2,
+        0x081, // bitmap
+        PROTOBUF_FIELD_OFFSET(::GrpcLibrary::UploadReq, _impl_._has_bits_),
+        8, // hasbit index offset
+        PROTOBUF_FIELD_OFFSET(::GrpcLibrary::UploadReq, _impl_.hash_),
+        PROTOBUF_FIELD_OFFSET(::GrpcLibrary::UploadReq, _impl_.user_id_),
+        PROTOBUF_FIELD_OFFSET(::GrpcLibrary::UploadReq, _impl_.auth_),
+        PROTOBUF_FIELD_OFFSET(::GrpcLibrary::UploadReq, _impl_.addr_),
+        PROTOBUF_FIELD_OFFSET(::GrpcLibrary::UploadReq, _impl_.size_kb_),
+        0,
+        3,
+        1,
+        2,
+        4,
+        0x081, // bitmap
+        PROTOBUF_FIELD_OFFSET(::GrpcLibrary::UploadResp, _impl_._has_bits_),
+        5, // hasbit index offset
+        PROTOBUF_FIELD_OFFSET(::GrpcLibrary::UploadResp, _impl_.error_code_),
+        PROTOBUF_FIELD_OFFSET(::GrpcLibrary::UploadResp, _impl_.hash_),
+        1,
+        0,
 };
 
 static const ::_pbi::MigrationSchema
@@ -1666,6 +1749,8 @@ static const ::_pbi::MigrationSchema
         {429, sizeof(::GrpcLibrary::GetSkillInfoResp)},
         {436, sizeof(::GrpcLibrary::DownloadReq)},
         {445, sizeof(::GrpcLibrary::DownloadResp)},
+        {456, sizeof(::GrpcLibrary::UploadReq)},
+        {469, sizeof(::GrpcLibrary::UploadResp)},
 };
 static const ::_pb::Message* PROTOBUF_NONNULL const file_default_instances[] = {
     &::GrpcLibrary::_Session_default_instance_._instance,
@@ -1704,6 +1789,8 @@ static const ::_pb::Message* PROTOBUF_NONNULL const file_default_instances[] = {
     &::GrpcLibrary::_GetSkillInfoResp_default_instance_._instance,
     &::GrpcLibrary::_DownloadReq_default_instance_._instance,
     &::GrpcLibrary::_DownloadResp_default_instance_._instance,
+    &::GrpcLibrary::_UploadReq_default_instance_._instance,
+    &::GrpcLibrary::_UploadResp_default_instance_._instance,
 };
 const char descriptor_table_protodef_src_2fapi_2eproto[] ABSL_ATTRIBUTE_SECTION_VARIABLE(
     protodesc_cold) = {
@@ -1808,47 +1895,52 @@ const char descriptor_table_protodef_src_2fapi_2eproto[] ABSL_ATTRIBUTE_SECTION_
     "kill\":\n\013DownloadReq\022\014\n\004hash\030\001 \001(\t\022\017\n\007use"
     "r_id\030\002 \001(\003\022\014\n\004auth\030\003 \001(\t\"O\n\014DownloadResp"
     "\022\022\n\nerror_code\030\001 \001(\005\022\014\n\004hash\030\002 \001(\t\022\014\n\004ad"
-    "dr\030\003 \001(\t\022\017\n\007size_kb\030\004 \001(\0032\306\010\n\013GrpcServic"
-    "e\0223\n\tHeartbeat\022\021.GrpcLibrary.Ping\032\021.Grpc"
-    "Library.Pong\"\000\0228\n\005Login\022\025.GrpcLibrary.Lo"
-    "ginReq\032\026.GrpcLibrary.LoginResp\"\000\022;\n\006Logo"
-    "ut\022\026.GrpcLibrary.LogoutReq\032\027.GrpcLibrary"
-    ".LogoutResp\"\000\022G\n\nRegAccount\022\032.GrpcLibrar"
-    "y.RegAccountReq\032\033.GrpcLibrary.RegAccount"
-    "Resp\"\000\022:\n\005Query\022\025.GrpcLibrary.QueryReq\032\026"
-    ".GrpcLibrary.QueryResp\"\0000\001\022G\n\nStopAnswer"
-    "\022\032.GrpcLibrary.StopAnswerReq\032\033.GrpcLibra"
-    "ry.StopAnswerResp\"\000\022H\n\tRecognize\022\031.GrpcL"
-    "ibrary.RecognizeReq\032\032.GrpcLibrary.Recogn"
-    "izeResp\"\000(\0010\001\022P\n\rStopRecognize\022\035.GrpcLib"
-    "rary.StopRecognizeReq\032\036.GrpcLibrary.Stop"
-    "RecognizeResp\"\000\022S\n\016GetMessageInfo\022\036.Grpc"
-    "Library.GetMessageInfoReq\032\037.GrpcLibrary."
-    "GetMessageInfoResp\"\000\022G\n\nGetSession\022\032.Grp"
-    "cLibrary.GetSessionReq\032\033.GrpcLibrary.Get"
-    "SessionResp\"\000\022G\n\nNewSession\022\032.GrpcLibrar"
-    "y.NewSessionReq\032\033.GrpcLibrary.NewSession"
-    "Resp\"\000\022_\n\022ModifySessionTitle\022\".GrpcLibra"
-    "ry.ModifySessionTitleReq\032#.GrpcLibrary.M"
-    "odifySessionTitleResp\"\000\022G\n\nDelSession\022\032."
-    "GrpcLibrary.DelSessionReq\032\033.GrpcLibrary."
-    "DelSessionResp\"\000\022M\n\014GetSkillInfo\022\034.GrpcL"
-    "ibrary.GetSkillInfoReq\032\035.GrpcLibrary.Get"
-    "SkillInfoResp\"\000\022A\n\010Download\022\030.GrpcLibrar"
-    "y.DownloadReq\032\031.GrpcLibrary.DownloadResp"
-    "\"\000b\006proto3"
+    "dr\030\003 \001(\t\022\017\n\007size_kb\030\004 \001(\003\"W\n\tUploadReq\022\014"
+    "\n\004hash\030\001 \001(\t\022\017\n\007user_id\030\002 \001(\003\022\014\n\004auth\030\003 "
+    "\001(\t\022\014\n\004addr\030\004 \001(\t\022\017\n\007size_kb\030\005 \001(\003\".\n\nUp"
+    "loadResp\022\022\n\nerror_code\030\001 \001(\005\022\014\n\004hash\030\002 \001"
+    "(\t2\203\t\n\013GrpcService\0223\n\tHeartbeat\022\021.GrpcLi"
+    "brary.Ping\032\021.GrpcLibrary.Pong\"\000\0228\n\005Login"
+    "\022\025.GrpcLibrary.LoginReq\032\026.GrpcLibrary.Lo"
+    "ginResp\"\000\022;\n\006Logout\022\026.GrpcLibrary.Logout"
+    "Req\032\027.GrpcLibrary.LogoutResp\"\000\022G\n\nRegAcc"
+    "ount\022\032.GrpcLibrary.RegAccountReq\032\033.GrpcL"
+    "ibrary.RegAccountResp\"\000\022:\n\005Query\022\025.GrpcL"
+    "ibrary.QueryReq\032\026.GrpcLibrary.QueryResp\""
+    "\0000\001\022G\n\nStopAnswer\022\032.GrpcLibrary.StopAnsw"
+    "erReq\032\033.GrpcLibrary.StopAnswerResp\"\000\022H\n\t"
+    "Recognize\022\031.GrpcLibrary.RecognizeReq\032\032.G"
+    "rpcLibrary.RecognizeResp\"\000(\0010\001\022P\n\rStopRe"
+    "cognize\022\035.GrpcLibrary.StopRecognizeReq\032\036"
+    ".GrpcLibrary.StopRecognizeResp\"\000\022S\n\016GetM"
+    "essageInfo\022\036.GrpcLibrary.GetMessageInfoR"
+    "eq\032\037.GrpcLibrary.GetMessageInfoResp\"\000\022G\n"
+    "\nGetSession\022\032.GrpcLibrary.GetSessionReq\032"
+    "\033.GrpcLibrary.GetSessionResp\"\000\022G\n\nNewSes"
+    "sion\022\032.GrpcLibrary.NewSessionReq\032\033.GrpcL"
+    "ibrary.NewSessionResp\"\000\022_\n\022ModifySession"
+    "Title\022\".GrpcLibrary.ModifySessionTitleRe"
+    "q\032#.GrpcLibrary.ModifySessionTitleResp\"\000"
+    "\022G\n\nDelSession\022\032.GrpcLibrary.DelSessionR"
+    "eq\032\033.GrpcLibrary.DelSessionResp\"\000\022M\n\014Get"
+    "SkillInfo\022\034.GrpcLibrary.GetSkillInfoReq\032"
+    "\035.GrpcLibrary.GetSkillInfoResp\"\000\022A\n\010Down"
+    "load\022\030.GrpcLibrary.DownloadReq\032\031.GrpcLib"
+    "rary.DownloadResp\"\000\022;\n\006Upload\022\026.GrpcLibr"
+    "ary.UploadReq\032\027.GrpcLibrary.UploadResp\"\000"
+    "b\006proto3"
 };
 static ::absl::once_flag descriptor_table_src_2fapi_2eproto_once;
 PROTOBUF_CONSTINIT const ::_pbi::DescriptorTable descriptor_table_src_2fapi_2eproto = {
     false,
     false,
-    5170,
+    5368,
     descriptor_table_protodef_src_2fapi_2eproto,
     "src/api.proto",
     &descriptor_table_src_2fapi_2eproto_once,
     nullptr,
     0,
-    36,
+    38,
     schemas,
     file_default_instances,
     TableStruct_src_2fapi_2eproto::offsets,
@@ -16399,6 +16491,756 @@ void DownloadResp::InternalSwap(DownloadResp* PROTOBUF_RESTRICT PROTOBUF_NONNULL
 }
 
 ::google::protobuf::Metadata DownloadResp::GetMetadata() const {
+  return ::google::protobuf::Message::GetMetadataImpl(GetClassData()->full());
+}
+// ===================================================================
+
+class UploadReq::_Internal {
+ public:
+  using HasBits =
+      decltype(::std::declval<UploadReq>()._impl_._has_bits_);
+  static constexpr ::int32_t kHasBitsOffset =
+      8 * PROTOBUF_FIELD_OFFSET(UploadReq, _impl_._has_bits_);
+};
+
+UploadReq::UploadReq(::google::protobuf::Arena* PROTOBUF_NULLABLE arena)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(arena, UploadReq_class_data_.base()) {
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(arena) {
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  SharedCtor(arena);
+  // @@protoc_insertion_point(arena_constructor:GrpcLibrary.UploadReq)
+}
+PROTOBUF_NDEBUG_INLINE UploadReq::Impl_::Impl_(
+    [[maybe_unused]] ::google::protobuf::internal::InternalVisibility visibility,
+    [[maybe_unused]] ::google::protobuf::Arena* PROTOBUF_NULLABLE arena, const Impl_& from,
+    [[maybe_unused]] const ::GrpcLibrary::UploadReq& from_msg)
+      : _has_bits_{from._has_bits_},
+        _cached_size_{0},
+        hash_(arena, from.hash_),
+        auth_(arena, from.auth_),
+        addr_(arena, from.addr_) {}
+
+UploadReq::UploadReq(
+    ::google::protobuf::Arena* PROTOBUF_NULLABLE arena,
+    const UploadReq& from)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(arena, UploadReq_class_data_.base()) {
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(arena) {
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  UploadReq* const _this = this;
+  (void)_this;
+  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
+      from._internal_metadata_);
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_, from);
+  ::memcpy(reinterpret_cast<char*>(&_impl_) +
+               offsetof(Impl_, user_id_),
+           reinterpret_cast<const char*>(&from._impl_) +
+               offsetof(Impl_, user_id_),
+           offsetof(Impl_, size_kb_) -
+               offsetof(Impl_, user_id_) +
+               sizeof(Impl_::size_kb_));
+
+  // @@protoc_insertion_point(copy_constructor:GrpcLibrary.UploadReq)
+}
+PROTOBUF_NDEBUG_INLINE UploadReq::Impl_::Impl_(
+    [[maybe_unused]] ::google::protobuf::internal::InternalVisibility visibility,
+    [[maybe_unused]] ::google::protobuf::Arena* PROTOBUF_NULLABLE arena)
+      : _cached_size_{0},
+        hash_(arena),
+        auth_(arena),
+        addr_(arena) {}
+
+inline void UploadReq::SharedCtor(::_pb::Arena* PROTOBUF_NULLABLE arena) {
+  new (&_impl_) Impl_(internal_visibility(), arena);
+  ::memset(reinterpret_cast<char*>(&_impl_) +
+               offsetof(Impl_, user_id_),
+           0,
+           offsetof(Impl_, size_kb_) -
+               offsetof(Impl_, user_id_) +
+               sizeof(Impl_::size_kb_));
+}
+UploadReq::~UploadReq() {
+  // @@protoc_insertion_point(destructor:GrpcLibrary.UploadReq)
+  SharedDtor(*this);
+}
+inline void UploadReq::SharedDtor(MessageLite& self) {
+  UploadReq& this_ = static_cast<UploadReq&>(self);
+  if constexpr (::_pbi::DebugHardenCheckHasBitConsistency()) {
+    this_.CheckHasBitConsistency();
+  }
+  this_._internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
+  ABSL_DCHECK(this_.GetArena() == nullptr);
+  this_._impl_.hash_.Destroy();
+  this_._impl_.auth_.Destroy();
+  this_._impl_.addr_.Destroy();
+  this_._impl_.~Impl_();
+}
+
+inline void* PROTOBUF_NONNULL UploadReq::PlacementNew_(
+    const void* PROTOBUF_NONNULL, void* PROTOBUF_NONNULL mem,
+    ::google::protobuf::Arena* PROTOBUF_NULLABLE arena) {
+  return ::new (mem) UploadReq(arena);
+}
+constexpr auto UploadReq::InternalNewImpl_() {
+  return ::google::protobuf::internal::MessageCreator::CopyInit(sizeof(UploadReq),
+                                            alignof(UploadReq));
+}
+constexpr auto UploadReq::InternalGenerateClassData_() {
+  return ::google::protobuf::internal::ClassDataFull{
+      ::google::protobuf::internal::ClassData{
+          &_UploadReq_default_instance_._instance,
+          &_table_.header,
+          nullptr,  // OnDemandRegisterArenaDtor
+          nullptr,  // IsInitialized
+          &UploadReq::MergeImpl,
+          ::google::protobuf::Message::GetNewImpl<UploadReq>(),
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+          &UploadReq::SharedDtor,
+          ::google::protobuf::Message::GetClearImpl<UploadReq>(), &UploadReq::ByteSizeLong,
+              &UploadReq::_InternalSerialize,
+#endif  // PROTOBUF_CUSTOM_VTABLE
+          PROTOBUF_FIELD_OFFSET(UploadReq, _impl_._cached_size_),
+          false,
+      },
+      &UploadReq::kDescriptorMethods,
+      &descriptor_table_src_2fapi_2eproto,
+      nullptr,  // tracker
+  };
+}
+
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 const
+    ::google::protobuf::internal::ClassDataFull UploadReq_class_data_ =
+        UploadReq::InternalGenerateClassData_();
+
+PROTOBUF_ATTRIBUTE_WEAK const ::google::protobuf::internal::ClassData* PROTOBUF_NONNULL
+UploadReq::GetClassData() const {
+  ::google::protobuf::internal::PrefetchToLocalCache(&UploadReq_class_data_);
+  ::google::protobuf::internal::PrefetchToLocalCache(UploadReq_class_data_.tc_table);
+  return UploadReq_class_data_.base();
+}
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::_pbi::TcParseTable<3, 5, 0, 42, 2>
+UploadReq::_table_ = {
+  {
+    PROTOBUF_FIELD_OFFSET(UploadReq, _impl_._has_bits_),
+    0, // no _extensions_
+    5, 56,  // max_field_number, fast_idx_mask
+    offsetof(decltype(_table_), field_lookup_table),
+    4294967264,  // skipmap
+    offsetof(decltype(_table_), field_entries),
+    5,  // num_field_entries
+    0,  // num_aux_entries
+    offsetof(decltype(_table_), field_names),  // no aux_entries
+    UploadReq_class_data_.base(),
+    nullptr,  // post_loop_handler
+    ::_pbi::TcParser::GenericFallback,  // fallback
+    #ifdef PROTOBUF_PREFETCH_PARSE_TABLE
+    ::_pbi::TcParser::GetTable<::GrpcLibrary::UploadReq>(),  // to_prefetch
+    #endif  // PROTOBUF_PREFETCH_PARSE_TABLE
+  }, {{
+    {::_pbi::TcParser::MiniParse, {}},
+    // string hash = 1;
+    {::_pbi::TcParser::FastUS1,
+     {10, 0, 0,
+      PROTOBUF_FIELD_OFFSET(UploadReq, _impl_.hash_)}},
+    // int64 user_id = 2;
+    {::_pbi::TcParser::SingularVarintNoZag1<::uint64_t, offsetof(UploadReq, _impl_.user_id_), 3>(),
+     {16, 3, 0,
+      PROTOBUF_FIELD_OFFSET(UploadReq, _impl_.user_id_)}},
+    // string auth = 3;
+    {::_pbi::TcParser::FastUS1,
+     {26, 1, 0,
+      PROTOBUF_FIELD_OFFSET(UploadReq, _impl_.auth_)}},
+    // string addr = 4;
+    {::_pbi::TcParser::FastUS1,
+     {34, 2, 0,
+      PROTOBUF_FIELD_OFFSET(UploadReq, _impl_.addr_)}},
+    // int64 size_kb = 5;
+    {::_pbi::TcParser::SingularVarintNoZag1<::uint64_t, offsetof(UploadReq, _impl_.size_kb_), 4>(),
+     {40, 4, 0,
+      PROTOBUF_FIELD_OFFSET(UploadReq, _impl_.size_kb_)}},
+    {::_pbi::TcParser::MiniParse, {}},
+    {::_pbi::TcParser::MiniParse, {}},
+  }}, {{
+    65535, 65535
+  }}, {{
+    // string hash = 1;
+    {PROTOBUF_FIELD_OFFSET(UploadReq, _impl_.hash_), _Internal::kHasBitsOffset + 0, 0, (0 | ::_fl::kFcOptional | ::_fl::kUtf8String | ::_fl::kRepAString)},
+    // int64 user_id = 2;
+    {PROTOBUF_FIELD_OFFSET(UploadReq, _impl_.user_id_), _Internal::kHasBitsOffset + 3, 0, (0 | ::_fl::kFcOptional | ::_fl::kInt64)},
+    // string auth = 3;
+    {PROTOBUF_FIELD_OFFSET(UploadReq, _impl_.auth_), _Internal::kHasBitsOffset + 1, 0, (0 | ::_fl::kFcOptional | ::_fl::kUtf8String | ::_fl::kRepAString)},
+    // string addr = 4;
+    {PROTOBUF_FIELD_OFFSET(UploadReq, _impl_.addr_), _Internal::kHasBitsOffset + 2, 0, (0 | ::_fl::kFcOptional | ::_fl::kUtf8String | ::_fl::kRepAString)},
+    // int64 size_kb = 5;
+    {PROTOBUF_FIELD_OFFSET(UploadReq, _impl_.size_kb_), _Internal::kHasBitsOffset + 4, 0, (0 | ::_fl::kFcOptional | ::_fl::kInt64)},
+  }},
+  // no aux_entries
+  {{
+    "\25\4\0\4\4\0\0\0"
+    "GrpcLibrary.UploadReq"
+    "hash"
+    "auth"
+    "addr"
+  }},
+};
+PROTOBUF_NOINLINE void UploadReq::Clear() {
+// @@protoc_insertion_point(message_clear_start:GrpcLibrary.UploadReq)
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  ::uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  cached_has_bits = _impl_._has_bits_[0];
+  if (BatchCheckHasBit(cached_has_bits, 0x00000007U)) {
+    if (CheckHasBit(cached_has_bits, 0x00000001U)) {
+      _impl_.hash_.ClearNonDefaultToEmpty();
+    }
+    if (CheckHasBit(cached_has_bits, 0x00000002U)) {
+      _impl_.auth_.ClearNonDefaultToEmpty();
+    }
+    if (CheckHasBit(cached_has_bits, 0x00000004U)) {
+      _impl_.addr_.ClearNonDefaultToEmpty();
+    }
+  }
+  if (BatchCheckHasBit(cached_has_bits, 0x00000018U)) {
+    ::memset(&_impl_.user_id_, 0, static_cast<::size_t>(
+        reinterpret_cast<char*>(&_impl_.size_kb_) -
+        reinterpret_cast<char*>(&_impl_.user_id_)) + sizeof(_impl_.size_kb_));
+  }
+  _impl_._has_bits_.Clear();
+  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
+}
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+::uint8_t* PROTOBUF_NONNULL UploadReq::_InternalSerialize(
+    const ::google::protobuf::MessageLite& base, ::uint8_t* PROTOBUF_NONNULL target,
+    ::google::protobuf::io::EpsCopyOutputStream* PROTOBUF_NONNULL stream) {
+  const UploadReq& this_ = static_cast<const UploadReq&>(base);
+#else   // PROTOBUF_CUSTOM_VTABLE
+::uint8_t* PROTOBUF_NONNULL UploadReq::_InternalSerialize(
+    ::uint8_t* PROTOBUF_NONNULL target,
+    ::google::protobuf::io::EpsCopyOutputStream* PROTOBUF_NONNULL stream) const {
+  const UploadReq& this_ = *this;
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  if constexpr (::_pbi::DebugHardenCheckHasBitConsistency()) {
+    this_.CheckHasBitConsistency();
+  }
+  // @@protoc_insertion_point(serialize_to_array_start:GrpcLibrary.UploadReq)
+  ::uint32_t cached_has_bits = 0;
+  (void)cached_has_bits;
+
+  cached_has_bits = this_._impl_._has_bits_[0];
+  // string hash = 1;
+  if (CheckHasBit(cached_has_bits, 0x00000001U)) {
+    if (!this_._internal_hash().empty()) {
+      const ::std::string& _s = this_._internal_hash();
+      ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+          _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "GrpcLibrary.UploadReq.hash");
+      target = stream->WriteStringMaybeAliased(1, _s, target);
+    }
+  }
+
+  // int64 user_id = 2;
+  if (CheckHasBit(cached_has_bits, 0x00000008U)) {
+    if (this_._internal_user_id() != 0) {
+      target =
+          ::google::protobuf::internal::WireFormatLite::WriteInt64ToArrayWithField<2>(
+              stream, this_._internal_user_id(), target);
+    }
+  }
+
+  // string auth = 3;
+  if (CheckHasBit(cached_has_bits, 0x00000002U)) {
+    if (!this_._internal_auth().empty()) {
+      const ::std::string& _s = this_._internal_auth();
+      ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+          _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "GrpcLibrary.UploadReq.auth");
+      target = stream->WriteStringMaybeAliased(3, _s, target);
+    }
+  }
+
+  // string addr = 4;
+  if (CheckHasBit(cached_has_bits, 0x00000004U)) {
+    if (!this_._internal_addr().empty()) {
+      const ::std::string& _s = this_._internal_addr();
+      ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+          _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "GrpcLibrary.UploadReq.addr");
+      target = stream->WriteStringMaybeAliased(4, _s, target);
+    }
+  }
+
+  // int64 size_kb = 5;
+  if (CheckHasBit(cached_has_bits, 0x00000010U)) {
+    if (this_._internal_size_kb() != 0) {
+      target =
+          ::google::protobuf::internal::WireFormatLite::WriteInt64ToArrayWithField<5>(
+              stream, this_._internal_size_kb(), target);
+    }
+  }
+
+  if (ABSL_PREDICT_FALSE(this_._internal_metadata_.have_unknown_fields())) {
+    target =
+        ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+            this_._internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:GrpcLibrary.UploadReq)
+  return target;
+}
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+::size_t UploadReq::ByteSizeLong(const MessageLite& base) {
+  const UploadReq& this_ = static_cast<const UploadReq&>(base);
+#else   // PROTOBUF_CUSTOM_VTABLE
+::size_t UploadReq::ByteSizeLong() const {
+  const UploadReq& this_ = *this;
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  // @@protoc_insertion_point(message_byte_size_start:GrpcLibrary.UploadReq)
+  ::size_t total_size = 0;
+
+  ::uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void)cached_has_bits;
+
+  ::_pbi::Prefetch5LinesFrom7Lines(&this_);
+  cached_has_bits = this_._impl_._has_bits_[0];
+  if (BatchCheckHasBit(cached_has_bits, 0x0000001fU)) {
+    // string hash = 1;
+    if (CheckHasBit(cached_has_bits, 0x00000001U)) {
+      if (!this_._internal_hash().empty()) {
+        total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
+                                        this_._internal_hash());
+      }
+    }
+    // string auth = 3;
+    if (CheckHasBit(cached_has_bits, 0x00000002U)) {
+      if (!this_._internal_auth().empty()) {
+        total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
+                                        this_._internal_auth());
+      }
+    }
+    // string addr = 4;
+    if (CheckHasBit(cached_has_bits, 0x00000004U)) {
+      if (!this_._internal_addr().empty()) {
+        total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
+                                        this_._internal_addr());
+      }
+    }
+    // int64 user_id = 2;
+    if (CheckHasBit(cached_has_bits, 0x00000008U)) {
+      if (this_._internal_user_id() != 0) {
+        total_size += ::_pbi::WireFormatLite::Int64SizePlusOne(
+            this_._internal_user_id());
+      }
+    }
+    // int64 size_kb = 5;
+    if (CheckHasBit(cached_has_bits, 0x00000010U)) {
+      if (this_._internal_size_kb() != 0) {
+        total_size += ::_pbi::WireFormatLite::Int64SizePlusOne(
+            this_._internal_size_kb());
+      }
+    }
+  }
+  return this_.MaybeComputeUnknownFieldsSize(total_size,
+                                             &this_._impl_._cached_size_);
+}
+
+void UploadReq::MergeImpl(::google::protobuf::MessageLite& to_msg,
+                            const ::google::protobuf::MessageLite& from_msg) {
+   auto* const _this =
+      static_cast<UploadReq*>(&to_msg);
+  auto& from = static_cast<const UploadReq&>(from_msg);
+  if constexpr (::_pbi::DebugHardenCheckHasBitConsistency()) {
+    from.CheckHasBitConsistency();
+  }
+  // @@protoc_insertion_point(class_specific_merge_from_start:GrpcLibrary.UploadReq)
+  ABSL_DCHECK_NE(&from, _this);
+  ::uint32_t cached_has_bits = 0;
+  (void)cached_has_bits;
+
+  cached_has_bits = from._impl_._has_bits_[0];
+  if (BatchCheckHasBit(cached_has_bits, 0x0000001fU)) {
+    if (CheckHasBit(cached_has_bits, 0x00000001U)) {
+      if (!from._internal_hash().empty()) {
+        _this->_internal_set_hash(from._internal_hash());
+      } else {
+        if (_this->_impl_.hash_.IsDefault()) {
+          _this->_internal_set_hash("");
+        }
+      }
+    }
+    if (CheckHasBit(cached_has_bits, 0x00000002U)) {
+      if (!from._internal_auth().empty()) {
+        _this->_internal_set_auth(from._internal_auth());
+      } else {
+        if (_this->_impl_.auth_.IsDefault()) {
+          _this->_internal_set_auth("");
+        }
+      }
+    }
+    if (CheckHasBit(cached_has_bits, 0x00000004U)) {
+      if (!from._internal_addr().empty()) {
+        _this->_internal_set_addr(from._internal_addr());
+      } else {
+        if (_this->_impl_.addr_.IsDefault()) {
+          _this->_internal_set_addr("");
+        }
+      }
+    }
+    if (CheckHasBit(cached_has_bits, 0x00000008U)) {
+      if (from._internal_user_id() != 0) {
+        _this->_impl_.user_id_ = from._impl_.user_id_;
+      }
+    }
+    if (CheckHasBit(cached_has_bits, 0x00000010U)) {
+      if (from._internal_size_kb() != 0) {
+        _this->_impl_.size_kb_ = from._impl_.size_kb_;
+      }
+    }
+  }
+  _this->_impl_._has_bits_[0] |= cached_has_bits;
+  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
+      from._internal_metadata_);
+}
+
+void UploadReq::CopyFrom(const UploadReq& from) {
+  // @@protoc_insertion_point(class_specific_copy_from_start:GrpcLibrary.UploadReq)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+
+void UploadReq::InternalSwap(UploadReq* PROTOBUF_RESTRICT PROTOBUF_NONNULL other) {
+  using ::std::swap;
+  auto* arena = GetArena();
+  ABSL_DCHECK_EQ(arena, other->GetArena());
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.hash_, &other->_impl_.hash_, arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.auth_, &other->_impl_.auth_, arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.addr_, &other->_impl_.addr_, arena);
+  ::google::protobuf::internal::memswap<
+      PROTOBUF_FIELD_OFFSET(UploadReq, _impl_.size_kb_)
+      + sizeof(UploadReq::_impl_.size_kb_)
+      - PROTOBUF_FIELD_OFFSET(UploadReq, _impl_.user_id_)>(
+          reinterpret_cast<char*>(&_impl_.user_id_),
+          reinterpret_cast<char*>(&other->_impl_.user_id_));
+}
+
+::google::protobuf::Metadata UploadReq::GetMetadata() const {
+  return ::google::protobuf::Message::GetMetadataImpl(GetClassData()->full());
+}
+// ===================================================================
+
+class UploadResp::_Internal {
+ public:
+  using HasBits =
+      decltype(::std::declval<UploadResp>()._impl_._has_bits_);
+  static constexpr ::int32_t kHasBitsOffset =
+      8 * PROTOBUF_FIELD_OFFSET(UploadResp, _impl_._has_bits_);
+};
+
+UploadResp::UploadResp(::google::protobuf::Arena* PROTOBUF_NULLABLE arena)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(arena, UploadResp_class_data_.base()) {
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(arena) {
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  SharedCtor(arena);
+  // @@protoc_insertion_point(arena_constructor:GrpcLibrary.UploadResp)
+}
+PROTOBUF_NDEBUG_INLINE UploadResp::Impl_::Impl_(
+    [[maybe_unused]] ::google::protobuf::internal::InternalVisibility visibility,
+    [[maybe_unused]] ::google::protobuf::Arena* PROTOBUF_NULLABLE arena, const Impl_& from,
+    [[maybe_unused]] const ::GrpcLibrary::UploadResp& from_msg)
+      : _has_bits_{from._has_bits_},
+        _cached_size_{0},
+        hash_(arena, from.hash_) {}
+
+UploadResp::UploadResp(
+    ::google::protobuf::Arena* PROTOBUF_NULLABLE arena,
+    const UploadResp& from)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(arena, UploadResp_class_data_.base()) {
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(arena) {
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  UploadResp* const _this = this;
+  (void)_this;
+  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
+      from._internal_metadata_);
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_, from);
+  _impl_.error_code_ = from._impl_.error_code_;
+
+  // @@protoc_insertion_point(copy_constructor:GrpcLibrary.UploadResp)
+}
+PROTOBUF_NDEBUG_INLINE UploadResp::Impl_::Impl_(
+    [[maybe_unused]] ::google::protobuf::internal::InternalVisibility visibility,
+    [[maybe_unused]] ::google::protobuf::Arena* PROTOBUF_NULLABLE arena)
+      : _cached_size_{0},
+        hash_(arena) {}
+
+inline void UploadResp::SharedCtor(::_pb::Arena* PROTOBUF_NULLABLE arena) {
+  new (&_impl_) Impl_(internal_visibility(), arena);
+  _impl_.error_code_ = {};
+}
+UploadResp::~UploadResp() {
+  // @@protoc_insertion_point(destructor:GrpcLibrary.UploadResp)
+  SharedDtor(*this);
+}
+inline void UploadResp::SharedDtor(MessageLite& self) {
+  UploadResp& this_ = static_cast<UploadResp&>(self);
+  if constexpr (::_pbi::DebugHardenCheckHasBitConsistency()) {
+    this_.CheckHasBitConsistency();
+  }
+  this_._internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
+  ABSL_DCHECK(this_.GetArena() == nullptr);
+  this_._impl_.hash_.Destroy();
+  this_._impl_.~Impl_();
+}
+
+inline void* PROTOBUF_NONNULL UploadResp::PlacementNew_(
+    const void* PROTOBUF_NONNULL, void* PROTOBUF_NONNULL mem,
+    ::google::protobuf::Arena* PROTOBUF_NULLABLE arena) {
+  return ::new (mem) UploadResp(arena);
+}
+constexpr auto UploadResp::InternalNewImpl_() {
+  return ::google::protobuf::internal::MessageCreator::CopyInit(sizeof(UploadResp),
+                                            alignof(UploadResp));
+}
+constexpr auto UploadResp::InternalGenerateClassData_() {
+  return ::google::protobuf::internal::ClassDataFull{
+      ::google::protobuf::internal::ClassData{
+          &_UploadResp_default_instance_._instance,
+          &_table_.header,
+          nullptr,  // OnDemandRegisterArenaDtor
+          nullptr,  // IsInitialized
+          &UploadResp::MergeImpl,
+          ::google::protobuf::Message::GetNewImpl<UploadResp>(),
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+          &UploadResp::SharedDtor,
+          ::google::protobuf::Message::GetClearImpl<UploadResp>(), &UploadResp::ByteSizeLong,
+              &UploadResp::_InternalSerialize,
+#endif  // PROTOBUF_CUSTOM_VTABLE
+          PROTOBUF_FIELD_OFFSET(UploadResp, _impl_._cached_size_),
+          false,
+      },
+      &UploadResp::kDescriptorMethods,
+      &descriptor_table_src_2fapi_2eproto,
+      nullptr,  // tracker
+  };
+}
+
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 const
+    ::google::protobuf::internal::ClassDataFull UploadResp_class_data_ =
+        UploadResp::InternalGenerateClassData_();
+
+PROTOBUF_ATTRIBUTE_WEAK const ::google::protobuf::internal::ClassData* PROTOBUF_NONNULL
+UploadResp::GetClassData() const {
+  ::google::protobuf::internal::PrefetchToLocalCache(&UploadResp_class_data_);
+  ::google::protobuf::internal::PrefetchToLocalCache(UploadResp_class_data_.tc_table);
+  return UploadResp_class_data_.base();
+}
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::_pbi::TcParseTable<1, 2, 0, 35, 2>
+UploadResp::_table_ = {
+  {
+    PROTOBUF_FIELD_OFFSET(UploadResp, _impl_._has_bits_),
+    0, // no _extensions_
+    2, 8,  // max_field_number, fast_idx_mask
+    offsetof(decltype(_table_), field_lookup_table),
+    4294967292,  // skipmap
+    offsetof(decltype(_table_), field_entries),
+    2,  // num_field_entries
+    0,  // num_aux_entries
+    offsetof(decltype(_table_), field_names),  // no aux_entries
+    UploadResp_class_data_.base(),
+    nullptr,  // post_loop_handler
+    ::_pbi::TcParser::GenericFallback,  // fallback
+    #ifdef PROTOBUF_PREFETCH_PARSE_TABLE
+    ::_pbi::TcParser::GetTable<::GrpcLibrary::UploadResp>(),  // to_prefetch
+    #endif  // PROTOBUF_PREFETCH_PARSE_TABLE
+  }, {{
+    // string hash = 2;
+    {::_pbi::TcParser::FastUS1,
+     {18, 0, 0,
+      PROTOBUF_FIELD_OFFSET(UploadResp, _impl_.hash_)}},
+    // int32 error_code = 1;
+    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(UploadResp, _impl_.error_code_), 1>(),
+     {8, 1, 0,
+      PROTOBUF_FIELD_OFFSET(UploadResp, _impl_.error_code_)}},
+  }}, {{
+    65535, 65535
+  }}, {{
+    // int32 error_code = 1;
+    {PROTOBUF_FIELD_OFFSET(UploadResp, _impl_.error_code_), _Internal::kHasBitsOffset + 1, 0, (0 | ::_fl::kFcOptional | ::_fl::kInt32)},
+    // string hash = 2;
+    {PROTOBUF_FIELD_OFFSET(UploadResp, _impl_.hash_), _Internal::kHasBitsOffset + 0, 0, (0 | ::_fl::kFcOptional | ::_fl::kUtf8String | ::_fl::kRepAString)},
+  }},
+  // no aux_entries
+  {{
+    "\26\0\4\0\0\0\0\0"
+    "GrpcLibrary.UploadResp"
+    "hash"
+  }},
+};
+PROTOBUF_NOINLINE void UploadResp::Clear() {
+// @@protoc_insertion_point(message_clear_start:GrpcLibrary.UploadResp)
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  ::uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  cached_has_bits = _impl_._has_bits_[0];
+  if (CheckHasBit(cached_has_bits, 0x00000001U)) {
+    _impl_.hash_.ClearNonDefaultToEmpty();
+  }
+  _impl_.error_code_ = 0;
+  _impl_._has_bits_.Clear();
+  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
+}
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+::uint8_t* PROTOBUF_NONNULL UploadResp::_InternalSerialize(
+    const ::google::protobuf::MessageLite& base, ::uint8_t* PROTOBUF_NONNULL target,
+    ::google::protobuf::io::EpsCopyOutputStream* PROTOBUF_NONNULL stream) {
+  const UploadResp& this_ = static_cast<const UploadResp&>(base);
+#else   // PROTOBUF_CUSTOM_VTABLE
+::uint8_t* PROTOBUF_NONNULL UploadResp::_InternalSerialize(
+    ::uint8_t* PROTOBUF_NONNULL target,
+    ::google::protobuf::io::EpsCopyOutputStream* PROTOBUF_NONNULL stream) const {
+  const UploadResp& this_ = *this;
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  if constexpr (::_pbi::DebugHardenCheckHasBitConsistency()) {
+    this_.CheckHasBitConsistency();
+  }
+  // @@protoc_insertion_point(serialize_to_array_start:GrpcLibrary.UploadResp)
+  ::uint32_t cached_has_bits = 0;
+  (void)cached_has_bits;
+
+  cached_has_bits = this_._impl_._has_bits_[0];
+  // int32 error_code = 1;
+  if (CheckHasBit(cached_has_bits, 0x00000002U)) {
+    if (this_._internal_error_code() != 0) {
+      target =
+          ::google::protobuf::internal::WireFormatLite::WriteInt32ToArrayWithField<1>(
+              stream, this_._internal_error_code(), target);
+    }
+  }
+
+  // string hash = 2;
+  if (CheckHasBit(cached_has_bits, 0x00000001U)) {
+    if (!this_._internal_hash().empty()) {
+      const ::std::string& _s = this_._internal_hash();
+      ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+          _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "GrpcLibrary.UploadResp.hash");
+      target = stream->WriteStringMaybeAliased(2, _s, target);
+    }
+  }
+
+  if (ABSL_PREDICT_FALSE(this_._internal_metadata_.have_unknown_fields())) {
+    target =
+        ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+            this_._internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:GrpcLibrary.UploadResp)
+  return target;
+}
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+::size_t UploadResp::ByteSizeLong(const MessageLite& base) {
+  const UploadResp& this_ = static_cast<const UploadResp&>(base);
+#else   // PROTOBUF_CUSTOM_VTABLE
+::size_t UploadResp::ByteSizeLong() const {
+  const UploadResp& this_ = *this;
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  // @@protoc_insertion_point(message_byte_size_start:GrpcLibrary.UploadResp)
+  ::size_t total_size = 0;
+
+  ::uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void)cached_has_bits;
+
+  ::_pbi::Prefetch5LinesFrom7Lines(&this_);
+  cached_has_bits = this_._impl_._has_bits_[0];
+  if (BatchCheckHasBit(cached_has_bits, 0x00000003U)) {
+    // string hash = 2;
+    if (CheckHasBit(cached_has_bits, 0x00000001U)) {
+      if (!this_._internal_hash().empty()) {
+        total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
+                                        this_._internal_hash());
+      }
+    }
+    // int32 error_code = 1;
+    if (CheckHasBit(cached_has_bits, 0x00000002U)) {
+      if (this_._internal_error_code() != 0) {
+        total_size += ::_pbi::WireFormatLite::Int32SizePlusOne(
+            this_._internal_error_code());
+      }
+    }
+  }
+  return this_.MaybeComputeUnknownFieldsSize(total_size,
+                                             &this_._impl_._cached_size_);
+}
+
+void UploadResp::MergeImpl(::google::protobuf::MessageLite& to_msg,
+                            const ::google::protobuf::MessageLite& from_msg) {
+   auto* const _this =
+      static_cast<UploadResp*>(&to_msg);
+  auto& from = static_cast<const UploadResp&>(from_msg);
+  if constexpr (::_pbi::DebugHardenCheckHasBitConsistency()) {
+    from.CheckHasBitConsistency();
+  }
+  // @@protoc_insertion_point(class_specific_merge_from_start:GrpcLibrary.UploadResp)
+  ABSL_DCHECK_NE(&from, _this);
+  ::uint32_t cached_has_bits = 0;
+  (void)cached_has_bits;
+
+  cached_has_bits = from._impl_._has_bits_[0];
+  if (BatchCheckHasBit(cached_has_bits, 0x00000003U)) {
+    if (CheckHasBit(cached_has_bits, 0x00000001U)) {
+      if (!from._internal_hash().empty()) {
+        _this->_internal_set_hash(from._internal_hash());
+      } else {
+        if (_this->_impl_.hash_.IsDefault()) {
+          _this->_internal_set_hash("");
+        }
+      }
+    }
+    if (CheckHasBit(cached_has_bits, 0x00000002U)) {
+      if (from._internal_error_code() != 0) {
+        _this->_impl_.error_code_ = from._impl_.error_code_;
+      }
+    }
+  }
+  _this->_impl_._has_bits_[0] |= cached_has_bits;
+  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
+      from._internal_metadata_);
+}
+
+void UploadResp::CopyFrom(const UploadResp& from) {
+  // @@protoc_insertion_point(class_specific_copy_from_start:GrpcLibrary.UploadResp)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+
+void UploadResp::InternalSwap(UploadResp* PROTOBUF_RESTRICT PROTOBUF_NONNULL other) {
+  using ::std::swap;
+  auto* arena = GetArena();
+  ABSL_DCHECK_EQ(arena, other->GetArena());
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.hash_, &other->_impl_.hash_, arena);
+  swap(_impl_.error_code_, other->_impl_.error_code_);
+}
+
+::google::protobuf::Metadata UploadResp::GetMetadata() const {
   return ::google::protobuf::Message::GetMetadataImpl(GetClassData()->full());
 }
 // @@protoc_insertion_point(namespace_scope)

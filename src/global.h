@@ -81,6 +81,9 @@ static constexpr const char *SQL_SELECT_SKILL_INFO_BY_HASH =
 static constexpr const char *SQL_SELECT_FILE_BY_HASH =
     R"(SELECT addr, owner, size_kb FROM file WHERE hash = %Q)";
 
+static constexpr const char *SQL_INSERT_FILE =
+    R"(INSERT INTO file (hash, addr, owner, size_kb) VALUES (%Q, %Q, %lld, %lld))";
+
 
 // Pipeline
 static constexpr const char *PIPELINE_LOCAL = "local";

@@ -612,3 +612,44 @@ reactor_t *api_handler::Download(ctx_t                            *ctx,
     reactor->Finish(status_t::OK);
     return reactor;
 }
+
+reactor_t *api_handler::Upload(ctx_t                          *ctx,
+                               const ::GrpcLibrary::UploadReq *req,
+                               ::GrpcLibrary::UploadResp      *resp)
+{
+    std::string hash    = req->hash();
+    int64_t     user_id = req->user_id();
+    std::string auth    = req->auth();
+    std::string addr    = req->addr();
+    int64_t     size_kb = req->size_kb();
+    auto       *reactor = ctx->DefaultReactor();
+    resp->set_error_code(ERR_FAIL);
+    resp->set_hash(hash);
+    LOG_DEBUG("Received Upload request. hash: {}, user_id: {}, auth: {}",
+              hash,
+              user_id,
+              auth);
+
+    // TODO check privilege
+
+    auto sql = hj::sqlite::mprintf(SQL_INSERT_FILE,
+                                   hash.c_str(),
+                                   addr.c_str(),
+                                   user_id,
+                                   size_kb);
+    LOG_DEBUG("{}", sql);
+    db_mgr::query_ret rows;
+    if(db_mgr::instance().exec(DB_SQLITE, sql) != OK)
+    {
+        resp->set_error_code(ERR_SQLITE_EXEC_FAIL);
+        LOG_ERROR("Failed to insert file for sql: {}", sql);
+
+        reactor->Finish(status_t::OK);
+        return reactor;
+    }
+
+    resp->set_error_code(OK);
+    resp->set_hash(hash);
+    reactor->Finish(status_t::OK);
+    return reactor;
+}

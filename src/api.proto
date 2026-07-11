@@ -17,6 +17,7 @@ service GrpcService {
     rpc DelSession (DelSessionReq) returns (DelSessionResp) {}
     rpc GetSkillInfo (GetSkillInfoReq) returns (GetSkillInfoResp) {}
     rpc Download (DownloadReq) returns (DownloadResp) {}
+    rpc Upload (UploadReq) returns (UploadResp) {}
 }
 
 message Session {
@@ -304,4 +305,17 @@ message DownloadResp {
     string hash = 2;
     string addr = 3;
     int64 size_kb = 4;
+}
+
+message UploadReq {
+    string hash = 1;
+    int64 user_id = 2;
+    string auth = 3;
+    string addr = 4;
+    int64 size_kb = 5;
+}
+
+message UploadResp {
+    int32 error_code = 1;
+    string hash = 2;
 }

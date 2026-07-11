@@ -145,6 +145,13 @@ class GrpcService final {
     std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::GrpcLibrary::DownloadResp>> PrepareAsyncDownload(::grpc::ClientContext* context, const ::GrpcLibrary::DownloadReq& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::GrpcLibrary::DownloadResp>>(PrepareAsyncDownloadRaw(context, request, cq));
     }
+    virtual ::grpc::Status Upload(::grpc::ClientContext* context, const ::GrpcLibrary::UploadReq& request, ::GrpcLibrary::UploadResp* response) = 0;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::GrpcLibrary::UploadResp>> AsyncUpload(::grpc::ClientContext* context, const ::GrpcLibrary::UploadReq& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::GrpcLibrary::UploadResp>>(AsyncUploadRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::GrpcLibrary::UploadResp>> PrepareAsyncUpload(::grpc::ClientContext* context, const ::GrpcLibrary::UploadReq& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::GrpcLibrary::UploadResp>>(PrepareAsyncUploadRaw(context, request, cq));
+    }
     class async_interface {
      public:
       virtual ~async_interface() {}
@@ -176,6 +183,8 @@ class GrpcService final {
       virtual void GetSkillInfo(::grpc::ClientContext* context, const ::GrpcLibrary::GetSkillInfoReq* request, ::GrpcLibrary::GetSkillInfoResp* response, ::grpc::ClientUnaryReactor* reactor) = 0;
       virtual void Download(::grpc::ClientContext* context, const ::GrpcLibrary::DownloadReq* request, ::GrpcLibrary::DownloadResp* response, std::function<void(::grpc::Status)>) = 0;
       virtual void Download(::grpc::ClientContext* context, const ::GrpcLibrary::DownloadReq* request, ::GrpcLibrary::DownloadResp* response, ::grpc::ClientUnaryReactor* reactor) = 0;
+      virtual void Upload(::grpc::ClientContext* context, const ::GrpcLibrary::UploadReq* request, ::GrpcLibrary::UploadResp* response, std::function<void(::grpc::Status)>) = 0;
+      virtual void Upload(::grpc::ClientContext* context, const ::GrpcLibrary::UploadReq* request, ::GrpcLibrary::UploadResp* response, ::grpc::ClientUnaryReactor* reactor) = 0;
     };
     typedef class async_interface experimental_async_interface;
     virtual class async_interface* async() { return nullptr; }
@@ -213,6 +222,8 @@ class GrpcService final {
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::GrpcLibrary::GetSkillInfoResp>* PrepareAsyncGetSkillInfoRaw(::grpc::ClientContext* context, const ::GrpcLibrary::GetSkillInfoReq& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::GrpcLibrary::DownloadResp>* AsyncDownloadRaw(::grpc::ClientContext* context, const ::GrpcLibrary::DownloadReq& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::GrpcLibrary::DownloadResp>* PrepareAsyncDownloadRaw(::grpc::ClientContext* context, const ::GrpcLibrary::DownloadReq& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::GrpcLibrary::UploadResp>* AsyncUploadRaw(::grpc::ClientContext* context, const ::GrpcLibrary::UploadReq& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::GrpcLibrary::UploadResp>* PrepareAsyncUploadRaw(::grpc::ClientContext* context, const ::GrpcLibrary::UploadReq& request, ::grpc::CompletionQueue* cq) = 0;
   };
   class Stub final : public StubInterface {
    public:
@@ -326,6 +337,13 @@ class GrpcService final {
     std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::GrpcLibrary::DownloadResp>> PrepareAsyncDownload(::grpc::ClientContext* context, const ::GrpcLibrary::DownloadReq& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::GrpcLibrary::DownloadResp>>(PrepareAsyncDownloadRaw(context, request, cq));
     }
+    ::grpc::Status Upload(::grpc::ClientContext* context, const ::GrpcLibrary::UploadReq& request, ::GrpcLibrary::UploadResp* response) override;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::GrpcLibrary::UploadResp>> AsyncUpload(::grpc::ClientContext* context, const ::GrpcLibrary::UploadReq& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::GrpcLibrary::UploadResp>>(AsyncUploadRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::GrpcLibrary::UploadResp>> PrepareAsyncUpload(::grpc::ClientContext* context, const ::GrpcLibrary::UploadReq& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::GrpcLibrary::UploadResp>>(PrepareAsyncUploadRaw(context, request, cq));
+    }
     class async final :
       public StubInterface::async_interface {
      public:
@@ -357,6 +375,8 @@ class GrpcService final {
       void GetSkillInfo(::grpc::ClientContext* context, const ::GrpcLibrary::GetSkillInfoReq* request, ::GrpcLibrary::GetSkillInfoResp* response, ::grpc::ClientUnaryReactor* reactor) override;
       void Download(::grpc::ClientContext* context, const ::GrpcLibrary::DownloadReq* request, ::GrpcLibrary::DownloadResp* response, std::function<void(::grpc::Status)>) override;
       void Download(::grpc::ClientContext* context, const ::GrpcLibrary::DownloadReq* request, ::GrpcLibrary::DownloadResp* response, ::grpc::ClientUnaryReactor* reactor) override;
+      void Upload(::grpc::ClientContext* context, const ::GrpcLibrary::UploadReq* request, ::GrpcLibrary::UploadResp* response, std::function<void(::grpc::Status)>) override;
+      void Upload(::grpc::ClientContext* context, const ::GrpcLibrary::UploadReq* request, ::GrpcLibrary::UploadResp* response, ::grpc::ClientUnaryReactor* reactor) override;
      private:
       friend class Stub;
       explicit async(Stub* stub): stub_(stub) { }
@@ -400,6 +420,8 @@ class GrpcService final {
     ::grpc::ClientAsyncResponseReader< ::GrpcLibrary::GetSkillInfoResp>* PrepareAsyncGetSkillInfoRaw(::grpc::ClientContext* context, const ::GrpcLibrary::GetSkillInfoReq& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::GrpcLibrary::DownloadResp>* AsyncDownloadRaw(::grpc::ClientContext* context, const ::GrpcLibrary::DownloadReq& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::GrpcLibrary::DownloadResp>* PrepareAsyncDownloadRaw(::grpc::ClientContext* context, const ::GrpcLibrary::DownloadReq& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::GrpcLibrary::UploadResp>* AsyncUploadRaw(::grpc::ClientContext* context, const ::GrpcLibrary::UploadReq& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::GrpcLibrary::UploadResp>* PrepareAsyncUploadRaw(::grpc::ClientContext* context, const ::GrpcLibrary::UploadReq& request, ::grpc::CompletionQueue* cq) override;
     const ::grpc::internal::RpcMethod rpcmethod_Heartbeat_;
     const ::grpc::internal::RpcMethod rpcmethod_Login_;
     const ::grpc::internal::RpcMethod rpcmethod_Logout_;
@@ -415,6 +437,7 @@ class GrpcService final {
     const ::grpc::internal::RpcMethod rpcmethod_DelSession_;
     const ::grpc::internal::RpcMethod rpcmethod_GetSkillInfo_;
     const ::grpc::internal::RpcMethod rpcmethod_Download_;
+    const ::grpc::internal::RpcMethod rpcmethod_Upload_;
   };
   static std::unique_ptr<Stub> NewStub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, const ::grpc::StubOptions& options = ::grpc::StubOptions());
 
@@ -437,6 +460,7 @@ class GrpcService final {
     virtual ::grpc::Status DelSession(::grpc::ServerContext* context, const ::GrpcLibrary::DelSessionReq* request, ::GrpcLibrary::DelSessionResp* response);
     virtual ::grpc::Status GetSkillInfo(::grpc::ServerContext* context, const ::GrpcLibrary::GetSkillInfoReq* request, ::GrpcLibrary::GetSkillInfoResp* response);
     virtual ::grpc::Status Download(::grpc::ServerContext* context, const ::GrpcLibrary::DownloadReq* request, ::GrpcLibrary::DownloadResp* response);
+    virtual ::grpc::Status Upload(::grpc::ServerContext* context, const ::GrpcLibrary::UploadReq* request, ::GrpcLibrary::UploadResp* response);
   };
   template <class BaseClass>
   class WithAsyncMethod_Heartbeat : public BaseClass {
@@ -738,7 +762,27 @@ class GrpcService final {
       ::grpc::Service::RequestAsyncUnary(14, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
-  typedef WithAsyncMethod_Heartbeat<WithAsyncMethod_Login<WithAsyncMethod_Logout<WithAsyncMethod_RegAccount<WithAsyncMethod_Query<WithAsyncMethod_StopAnswer<WithAsyncMethod_Recognize<WithAsyncMethod_StopRecognize<WithAsyncMethod_GetMessageInfo<WithAsyncMethod_GetSession<WithAsyncMethod_NewSession<WithAsyncMethod_ModifySessionTitle<WithAsyncMethod_DelSession<WithAsyncMethod_GetSkillInfo<WithAsyncMethod_Download<Service > > > > > > > > > > > > > > > AsyncService;
+  template <class BaseClass>
+  class WithAsyncMethod_Upload : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithAsyncMethod_Upload() {
+      ::grpc::Service::MarkMethodAsync(15);
+    }
+    ~WithAsyncMethod_Upload() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status Upload(::grpc::ServerContext* /*context*/, const ::GrpcLibrary::UploadReq* /*request*/, ::GrpcLibrary::UploadResp* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestUpload(::grpc::ServerContext* context, ::GrpcLibrary::UploadReq* request, ::grpc::ServerAsyncResponseWriter< ::GrpcLibrary::UploadResp>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(15, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  typedef WithAsyncMethod_Heartbeat<WithAsyncMethod_Login<WithAsyncMethod_Logout<WithAsyncMethod_RegAccount<WithAsyncMethod_Query<WithAsyncMethod_StopAnswer<WithAsyncMethod_Recognize<WithAsyncMethod_StopRecognize<WithAsyncMethod_GetMessageInfo<WithAsyncMethod_GetSession<WithAsyncMethod_NewSession<WithAsyncMethod_ModifySessionTitle<WithAsyncMethod_DelSession<WithAsyncMethod_GetSkillInfo<WithAsyncMethod_Download<WithAsyncMethod_Upload<Service > > > > > > > > > > > > > > > > AsyncService;
   template <class BaseClass>
   class WithCallbackMethod_Heartbeat : public BaseClass {
    private:
@@ -1135,7 +1179,34 @@ class GrpcService final {
     virtual ::grpc::ServerUnaryReactor* Download(
       ::grpc::CallbackServerContext* /*context*/, const ::GrpcLibrary::DownloadReq* /*request*/, ::GrpcLibrary::DownloadResp* /*response*/)  { return nullptr; }
   };
-  typedef WithCallbackMethod_Heartbeat<WithCallbackMethod_Login<WithCallbackMethod_Logout<WithCallbackMethod_RegAccount<WithCallbackMethod_Query<WithCallbackMethod_StopAnswer<WithCallbackMethod_Recognize<WithCallbackMethod_StopRecognize<WithCallbackMethod_GetMessageInfo<WithCallbackMethod_GetSession<WithCallbackMethod_NewSession<WithCallbackMethod_ModifySessionTitle<WithCallbackMethod_DelSession<WithCallbackMethod_GetSkillInfo<WithCallbackMethod_Download<Service > > > > > > > > > > > > > > > CallbackService;
+  template <class BaseClass>
+  class WithCallbackMethod_Upload : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithCallbackMethod_Upload() {
+      ::grpc::Service::MarkMethodCallback(15,
+          new ::grpc::internal::CallbackUnaryHandler< ::GrpcLibrary::UploadReq, ::GrpcLibrary::UploadResp>(
+            [this](
+                   ::grpc::CallbackServerContext* context, const ::GrpcLibrary::UploadReq* request, ::GrpcLibrary::UploadResp* response) { return this->Upload(context, request, response); }));}
+    void SetMessageAllocatorFor_Upload(
+        ::grpc::MessageAllocator< ::GrpcLibrary::UploadReq, ::GrpcLibrary::UploadResp>* allocator) {
+      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(15);
+      static_cast<::grpc::internal::CallbackUnaryHandler< ::GrpcLibrary::UploadReq, ::GrpcLibrary::UploadResp>*>(handler)
+              ->SetMessageAllocator(allocator);
+    }
+    ~WithCallbackMethod_Upload() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status Upload(::grpc::ServerContext* /*context*/, const ::GrpcLibrary::UploadReq* /*request*/, ::GrpcLibrary::UploadResp* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual ::grpc::ServerUnaryReactor* Upload(
+      ::grpc::CallbackServerContext* /*context*/, const ::GrpcLibrary::UploadReq* /*request*/, ::GrpcLibrary::UploadResp* /*response*/)  { return nullptr; }
+  };
+  typedef WithCallbackMethod_Heartbeat<WithCallbackMethod_Login<WithCallbackMethod_Logout<WithCallbackMethod_RegAccount<WithCallbackMethod_Query<WithCallbackMethod_StopAnswer<WithCallbackMethod_Recognize<WithCallbackMethod_StopRecognize<WithCallbackMethod_GetMessageInfo<WithCallbackMethod_GetSession<WithCallbackMethod_NewSession<WithCallbackMethod_ModifySessionTitle<WithCallbackMethod_DelSession<WithCallbackMethod_GetSkillInfo<WithCallbackMethod_Download<WithCallbackMethod_Upload<Service > > > > > > > > > > > > > > > > CallbackService;
   typedef CallbackService ExperimentalCallbackService;
   template <class BaseClass>
   class WithGenericMethod_Heartbeat : public BaseClass {
@@ -1388,6 +1459,23 @@ class GrpcService final {
     }
     // disable synchronous version of this method
     ::grpc::Status Download(::grpc::ServerContext* /*context*/, const ::GrpcLibrary::DownloadReq* /*request*/, ::GrpcLibrary::DownloadResp* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+  };
+  template <class BaseClass>
+  class WithGenericMethod_Upload : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithGenericMethod_Upload() {
+      ::grpc::Service::MarkMethodGeneric(15);
+    }
+    ~WithGenericMethod_Upload() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status Upload(::grpc::ServerContext* /*context*/, const ::GrpcLibrary::UploadReq* /*request*/, ::GrpcLibrary::UploadResp* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -1690,6 +1778,26 @@ class GrpcService final {
     }
     void RequestDownload(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
       ::grpc::Service::RequestAsyncUnary(14, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
+  class WithRawMethod_Upload : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithRawMethod_Upload() {
+      ::grpc::Service::MarkMethodRaw(15);
+    }
+    ~WithRawMethod_Upload() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status Upload(::grpc::ServerContext* /*context*/, const ::GrpcLibrary::UploadReq* /*request*/, ::GrpcLibrary::UploadResp* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestUpload(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(15, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -2021,6 +2129,28 @@ class GrpcService final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     virtual ::grpc::ServerUnaryReactor* Download(
+      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
+  };
+  template <class BaseClass>
+  class WithRawCallbackMethod_Upload : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithRawCallbackMethod_Upload() {
+      ::grpc::Service::MarkMethodRawCallback(15,
+          new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
+            [this](
+                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->Upload(context, request, response); }));
+    }
+    ~WithRawCallbackMethod_Upload() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status Upload(::grpc::ServerContext* /*context*/, const ::GrpcLibrary::UploadReq* /*request*/, ::GrpcLibrary::UploadResp* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual ::grpc::ServerUnaryReactor* Upload(
       ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
@@ -2374,7 +2504,34 @@ class GrpcService final {
     // replace default version of method with streamed unary
     virtual ::grpc::Status StreamedDownload(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::GrpcLibrary::DownloadReq,::GrpcLibrary::DownloadResp>* server_unary_streamer) = 0;
   };
-  typedef WithStreamedUnaryMethod_Heartbeat<WithStreamedUnaryMethod_Login<WithStreamedUnaryMethod_Logout<WithStreamedUnaryMethod_RegAccount<WithStreamedUnaryMethod_StopAnswer<WithStreamedUnaryMethod_StopRecognize<WithStreamedUnaryMethod_GetMessageInfo<WithStreamedUnaryMethod_GetSession<WithStreamedUnaryMethod_NewSession<WithStreamedUnaryMethod_ModifySessionTitle<WithStreamedUnaryMethod_DelSession<WithStreamedUnaryMethod_GetSkillInfo<WithStreamedUnaryMethod_Download<Service > > > > > > > > > > > > > StreamedUnaryService;
+  template <class BaseClass>
+  class WithStreamedUnaryMethod_Upload : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithStreamedUnaryMethod_Upload() {
+      ::grpc::Service::MarkMethodStreamed(15,
+        new ::grpc::internal::StreamedUnaryHandler<
+          ::GrpcLibrary::UploadReq, ::GrpcLibrary::UploadResp>(
+            [this](::grpc::ServerContext* context,
+                   ::grpc::ServerUnaryStreamer<
+                     ::GrpcLibrary::UploadReq, ::GrpcLibrary::UploadResp>* streamer) {
+                       return this->StreamedUpload(context,
+                         streamer);
+                  }));
+    }
+    ~WithStreamedUnaryMethod_Upload() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable regular version of this method
+    ::grpc::Status Upload(::grpc::ServerContext* /*context*/, const ::GrpcLibrary::UploadReq* /*request*/, ::GrpcLibrary::UploadResp* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    // replace default version of method with streamed unary
+    virtual ::grpc::Status StreamedUpload(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::GrpcLibrary::UploadReq,::GrpcLibrary::UploadResp>* server_unary_streamer) = 0;
+  };
+  typedef WithStreamedUnaryMethod_Heartbeat<WithStreamedUnaryMethod_Login<WithStreamedUnaryMethod_Logout<WithStreamedUnaryMethod_RegAccount<WithStreamedUnaryMethod_StopAnswer<WithStreamedUnaryMethod_StopRecognize<WithStreamedUnaryMethod_GetMessageInfo<WithStreamedUnaryMethod_GetSession<WithStreamedUnaryMethod_NewSession<WithStreamedUnaryMethod_ModifySessionTitle<WithStreamedUnaryMethod_DelSession<WithStreamedUnaryMethod_GetSkillInfo<WithStreamedUnaryMethod_Download<WithStreamedUnaryMethod_Upload<Service > > > > > > > > > > > > > > StreamedUnaryService;
   template <class BaseClass>
   class WithSplitStreamingMethod_Query : public BaseClass {
    private:
@@ -2403,7 +2560,7 @@ class GrpcService final {
     virtual ::grpc::Status StreamedQuery(::grpc::ServerContext* context, ::grpc::ServerSplitStreamer< ::GrpcLibrary::QueryReq,::GrpcLibrary::QueryResp>* server_split_streamer) = 0;
   };
   typedef WithSplitStreamingMethod_Query<Service > SplitStreamedService;
-  typedef WithStreamedUnaryMethod_Heartbeat<WithStreamedUnaryMethod_Login<WithStreamedUnaryMethod_Logout<WithStreamedUnaryMethod_RegAccount<WithSplitStreamingMethod_Query<WithStreamedUnaryMethod_StopAnswer<WithStreamedUnaryMethod_StopRecognize<WithStreamedUnaryMethod_GetMessageInfo<WithStreamedUnaryMethod_GetSession<WithStreamedUnaryMethod_NewSession<WithStreamedUnaryMethod_ModifySessionTitle<WithStreamedUnaryMethod_DelSession<WithStreamedUnaryMethod_GetSkillInfo<WithStreamedUnaryMethod_Download<Service > > > > > > > > > > > > > > StreamedService;
+  typedef WithStreamedUnaryMethod_Heartbeat<WithStreamedUnaryMethod_Login<WithStreamedUnaryMethod_Logout<WithStreamedUnaryMethod_RegAccount<WithSplitStreamingMethod_Query<WithStreamedUnaryMethod_StopAnswer<WithStreamedUnaryMethod_StopRecognize<WithStreamedUnaryMethod_GetMessageInfo<WithStreamedUnaryMethod_GetSession<WithStreamedUnaryMethod_NewSession<WithStreamedUnaryMethod_ModifySessionTitle<WithStreamedUnaryMethod_DelSession<WithStreamedUnaryMethod_GetSkillInfo<WithStreamedUnaryMethod_Download<WithStreamedUnaryMethod_Upload<Service > > > > > > > > > > > > > > > StreamedService;
 };
 
 }  // namespace GrpcLibrary
