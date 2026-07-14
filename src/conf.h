@@ -92,6 +92,7 @@ class conf
     int                                                llm_num_threads();
     int                             llm_local_prompt_threshold();
     std::unordered_set<std::string> llm_hard_prompt_class();
+    std::string                     llm_embedding_model();
 
     std::unordered_map<std::string, asr_ctx_config> asr_ctxs();
     int                                             asr_audio_buffer_size();

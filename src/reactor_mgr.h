@@ -105,4 +105,61 @@ class recognize_reactor_mgr
     std::mutex                                      _mu;
 };
 
+class embedding_reactor_mgr
+{
+  public:
+    static embedding_reactor_mgr &instance()
+    {
+        static embedding_reactor_mgr manager;
+        return manager;
+    }
+
+    void register_embedding(int64_t task_id, EmbeddingReactor *reactor)
+    {
+        std::lock_guard<std::mutex> lock(_mu);
+        _active_embeddings[task_id] = reactor;
+        LOG_DEBUG("Registered EmbeddingReactor for task_id: {}", task_id);
+    }
+
+    void unregister_embedding(int64_t task_id)
+    {
+        std::lock_guard<std::mutex> lock(_mu);
+        auto                        it = _active_embeddings.find(task_id);
+        if(it != _active_embeddings.end())
+        {
+            _active_embeddings.erase(it);
+            LOG_DEBUG("Unregistered EmbeddingReactor for task_id: {}", task_id);
+        }
+    }
+
+    bool stop_embedding(int64_t task_id)
+    {
+        std::lock_guard<std::mutex> lock(_mu);
+        auto                        it = _active_embeddings.find(task_id);
+        if(it != _active_embeddings.end() && it->second != nullptr)
+        {
+            it->second->Stop();
+            return true;
+        }
+        LOG_WARN("No active EmbeddingReactor found to stop for task_id: {}",
+                 task_id);
+        return false;
+    }
+
+    EmbeddingReactor *get_embedding(int64_t task_id)
+    {
+        std::lock_guard<std::mutex> lock(_mu);
+        auto                        it = _active_embeddings.find(task_id);
+        if(it != _active_embeddings.end())
+            return it->second;
+
+        LOG_WARN("No active EmbeddingReactor found for task_id: {}", task_id);
+        return nullptr;
+    }
+
+  private:
+    std::unordered_map<int64_t, EmbeddingReactor *> _active_embeddings;
+    std::mutex                                      _mu;
+};
+
 #endif // REACTOR_MGR_H

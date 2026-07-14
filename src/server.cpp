@@ -653,3 +653,51 @@ reactor_t *api_handler::Upload(ctx_t                          *ctx,
     reactor->Finish(status_t::OK);
     return reactor;
 }
+
+grpc::ServerBidiReactor<GrpcLibrary::EmbeddingReq, GrpcLibrary::EmbeddingResp> *
+api_handler::Embedding(grpc::CallbackServerContext *context)
+{
+    LOG_INFO("Received Embedding bidirectional stream request from peer: {}",
+             context->peer());
+
+    return new EmbeddingReactor(context);
+}
+
+reactor_t *
+api_handler::StopEmbedding(ctx_t                                 *ctx,
+                           const ::GrpcLibrary::StopEmbeddingReq *req,
+                           ::GrpcLibrary::StopEmbeddingResp      *resp)
+{
+    auto task_id = req->task_id();
+    auto user_id = req->user_id();
+    auto auth    = req->auth();
+    LOG_DEBUG(
+        "Received StopEmbedding request. task_id: {}, user_id: {}, auth: {}",
+        task_id,
+        user_id,
+        auth);
+
+    auto *reactor = ctx->DefaultReactor();
+    resp->set_task_id(task_id);
+
+    bool stopped = embedding_reactor_mgr::instance().stop_embedding(task_id);
+    if(!stopped)
+    {
+        LOG_WARN("No active EmbeddingReactor found for task_id: {}", task_id);
+        resp->set_error_code(ERR_STOP_FAIL);
+    } else
+    {
+        LOG_DEBUG("Successfully stopped EmbeddingReactor for task_id: {}",
+                  task_id);
+        resp->set_error_code(OK);
+    }
+
+    LOG_DEBUG("StopEmbedding request processed for task_id: {}, user_id: {}, "
+              "auth: {}",
+              task_id,
+              user_id,
+              auth);
+
+    reactor->Finish(status_t::OK);
+    return reactor;
+}

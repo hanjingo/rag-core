@@ -187,6 +187,11 @@ std::unordered_map<std::string, conf::model_config> conf::llm_models()
     return _models;
 }
 
+std::string conf::llm_embedding_model()
+{
+    return _cfg.get<std::string>("llm/embedding_model", "");
+}
+
 std::unordered_map<std::string, conf::asr_ctx_config> conf::asr_ctxs()
 {
     return _asr_ctxs;

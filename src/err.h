@@ -36,7 +36,11 @@ static constexpr int LLM_ERR_MODEL_CREATE_CTX_FAIL = 405;
 static constexpr int LLM_ERR_MODEL_CTX_DECODE_FAIL = 406;
 static constexpr int LLM_ERR_MODEL_DECODE_FAIL     = 407;
 
-static constexpr int LLM_ERR_REPEAT_TOO_MANY_TIMES = 500;
+static constexpr int LLM_ERR_REPEAT_TOO_MANY_TIMES        = 500;
+static constexpr int LLM_ERR_EMBEDDING_EXTRACT_FAIL       = 501;
+static constexpr int LLM_ERR_EMBEDDING_INVALID            = 502;
+static constexpr int LLM_ERR_EMBEDDING_DIMENSION_MISMATCH = 503;
+static constexpr int LLM_ERR_EMBEDDING_SERIALIZE_FAIL     = 504;
 
 static constexpr int ASR_ERR_CTX_NOT_EXIST  = 600;
 static constexpr int ASR_ERR_CTX_LOAD_FAIL  = 601;

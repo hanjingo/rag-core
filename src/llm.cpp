@@ -161,3 +161,76 @@ int llm_mgr::loop_query(
     LOG_DEBUG("llm loop query end");
     return OK;
 }
+
+int llm_mgr::get_embedding(std::vector<float>         &embedding,
+                           const std::string          &model_id,
+                           const std::string          &text,
+                           hj::llama::context_params_t ctx_params,
+                           int                         dimension,
+                           bool                        add_special,
+                           bool                        parse_special)
+{
+    embedding.resize(dimension, 0.0f);
+
+    // get model
+    auto it = _llms.find(model_id);
+    if(it == _llms.end())
+    {
+        LOG_ERROR("Model {} not found", model_id);
+        return LLM_ERR_MODEL_NOT_EXIST;
+    }
+    hj::llama::model *model = it->second.get();
+    if(model->data() == nullptr)
+    {
+        LOG_ERROR("Model {} data is null", model_id);
+        return LLM_ERR_MODEL_LOAD_FAIL;
+    }
+
+    // tokenize text
+    auto tokens = model->tokenize(text, add_special, parse_special);
+    if(tokens.empty())
+    {
+        LOG_ERROR("Tokenization failed for text: {}", text.substr(0, 50));
+        return LLM_ERR_MODEL_TOKENIZE_FAIL;
+    }
+
+    // create context with embedding enabled
+    ctx_params.embeddings = true;
+    hj::llama::context ctx(model, ctx_params);
+    if(ctx.data() == nullptr)
+    {
+        LOG_ERROR("Failed to create context for embedding");
+        return LLM_ERR_MODEL_CREATE_CTX_FAIL;
+    }
+
+    // decode tokens
+    hj::llama::batch batch(tokens);
+    batch.set_logits(0, true);
+    // batch.set_logits(static_cast<int32_t>(tokens.size()) - 1, true);
+    if(ctx.decode(batch) != 0)
+    {
+        LOG_ERROR("Failed to decode tokens for embedding");
+        return LLM_ERR_MODEL_CTX_DECODE_FAIL;
+    }
+
+    // extract embedding
+    const float *emb_data = ctx.get_embeddings_seq(0);
+    if(!emb_data)
+    {
+        LOG_ERROR("Failed to get embeddings from context");
+        return LLM_ERR_EMBEDDING_EXTRACT_FAIL;
+    }
+
+    // cp embedding data to output vector
+    int actual_dim = model->n_embd();
+    int copy_dim   = std::min(dimension, actual_dim);
+    LOG_DEBUG("Model n_embd: {}, requested dimension: {}, copy_dim: {}",
+              actual_dim,
+              dimension,
+              copy_dim);
+    for(int i = 0; i < copy_dim; ++i)
+        embedding[i] = emb_data[i];
+
+    LOG_DEBUG("Successfully extracted embedding, dimension: {}", dimension);
+    return OK;
+}

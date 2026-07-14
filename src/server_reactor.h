@@ -114,4 +114,44 @@ class RecognizeReactor
     audio_buffer           _audio_buffer;
 };
 
+class EmbeddingReactor
+    : public grpc::ServerBidiReactor<::GrpcLibrary::EmbeddingReq,
+                                     ::GrpcLibrary::EmbeddingResp>
+{
+  public:
+    EmbeddingReactor(grpc::CallbackServerContext *ctx);
+    ~EmbeddingReactor();
+
+    void OnReadDone(bool ok) override;
+    void OnWriteDone(bool ok) override;
+    void OnDone() override;
+    void OnCancel() override;
+    void Stop();
+
+  private:
+    void _process(const ::GrpcLibrary::EmbeddingReq &req);
+    void _ensure_registered(int64_t session_id);
+
+    void _send(const int                   error_code,
+               const int64_t               task_id,
+               const int64_t               chunk_id,
+               const std::vector<uint8_t> &indexs);
+    void _flush();
+    void _convert(std::vector<unsigned char> &data, const std::string &src);
+
+  private:
+    grpc::CallbackServerContext  *_ctx;
+    ::GrpcLibrary::EmbeddingReq   _req;
+    ::GrpcLibrary::EmbeddingResp  _resp;
+    ::GrpcLibrary::EmbeddingParam _param;
+
+    hj::channel<::GrpcLibrary::EmbeddingResp> _w_queue;
+
+    int64_t           _task_id;
+    std::atomic<bool> _is_cancelled{false};
+    std::atomic<bool> _is_registered{false};
+    std::atomic<bool> _is_writing{false};
+    std::atomic<bool> _is_processing{false};
+};
+
 #endif // SERVER_REACTOR_H

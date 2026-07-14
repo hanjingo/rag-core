@@ -152,6 +152,22 @@ class GrpcService final {
     std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::GrpcLibrary::UploadResp>> PrepareAsyncUpload(::grpc::ClientContext* context, const ::GrpcLibrary::UploadReq& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::GrpcLibrary::UploadResp>>(PrepareAsyncUploadRaw(context, request, cq));
     }
+    std::unique_ptr< ::grpc::ClientReaderWriterInterface< ::GrpcLibrary::EmbeddingReq, ::GrpcLibrary::EmbeddingResp>> Embedding(::grpc::ClientContext* context) {
+      return std::unique_ptr< ::grpc::ClientReaderWriterInterface< ::GrpcLibrary::EmbeddingReq, ::GrpcLibrary::EmbeddingResp>>(EmbeddingRaw(context));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncReaderWriterInterface< ::GrpcLibrary::EmbeddingReq, ::GrpcLibrary::EmbeddingResp>> AsyncEmbedding(::grpc::ClientContext* context, ::grpc::CompletionQueue* cq, void* tag) {
+      return std::unique_ptr< ::grpc::ClientAsyncReaderWriterInterface< ::GrpcLibrary::EmbeddingReq, ::GrpcLibrary::EmbeddingResp>>(AsyncEmbeddingRaw(context, cq, tag));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncReaderWriterInterface< ::GrpcLibrary::EmbeddingReq, ::GrpcLibrary::EmbeddingResp>> PrepareAsyncEmbedding(::grpc::ClientContext* context, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncReaderWriterInterface< ::GrpcLibrary::EmbeddingReq, ::GrpcLibrary::EmbeddingResp>>(PrepareAsyncEmbeddingRaw(context, cq));
+    }
+    virtual ::grpc::Status StopEmbedding(::grpc::ClientContext* context, const ::GrpcLibrary::StopEmbeddingReq& request, ::GrpcLibrary::StopEmbeddingResp* response) = 0;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::GrpcLibrary::StopEmbeddingResp>> AsyncStopEmbedding(::grpc::ClientContext* context, const ::GrpcLibrary::StopEmbeddingReq& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::GrpcLibrary::StopEmbeddingResp>>(AsyncStopEmbeddingRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::GrpcLibrary::StopEmbeddingResp>> PrepareAsyncStopEmbedding(::grpc::ClientContext* context, const ::GrpcLibrary::StopEmbeddingReq& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::GrpcLibrary::StopEmbeddingResp>>(PrepareAsyncStopEmbeddingRaw(context, request, cq));
+    }
     class async_interface {
      public:
       virtual ~async_interface() {}
@@ -185,6 +201,9 @@ class GrpcService final {
       virtual void Download(::grpc::ClientContext* context, const ::GrpcLibrary::DownloadReq* request, ::GrpcLibrary::DownloadResp* response, ::grpc::ClientUnaryReactor* reactor) = 0;
       virtual void Upload(::grpc::ClientContext* context, const ::GrpcLibrary::UploadReq* request, ::GrpcLibrary::UploadResp* response, std::function<void(::grpc::Status)>) = 0;
       virtual void Upload(::grpc::ClientContext* context, const ::GrpcLibrary::UploadReq* request, ::GrpcLibrary::UploadResp* response, ::grpc::ClientUnaryReactor* reactor) = 0;
+      virtual void Embedding(::grpc::ClientContext* context, ::grpc::ClientBidiReactor< ::GrpcLibrary::EmbeddingReq,::GrpcLibrary::EmbeddingResp>* reactor) = 0;
+      virtual void StopEmbedding(::grpc::ClientContext* context, const ::GrpcLibrary::StopEmbeddingReq* request, ::GrpcLibrary::StopEmbeddingResp* response, std::function<void(::grpc::Status)>) = 0;
+      virtual void StopEmbedding(::grpc::ClientContext* context, const ::GrpcLibrary::StopEmbeddingReq* request, ::GrpcLibrary::StopEmbeddingResp* response, ::grpc::ClientUnaryReactor* reactor) = 0;
     };
     typedef class async_interface experimental_async_interface;
     virtual class async_interface* async() { return nullptr; }
@@ -224,6 +243,11 @@ class GrpcService final {
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::GrpcLibrary::DownloadResp>* PrepareAsyncDownloadRaw(::grpc::ClientContext* context, const ::GrpcLibrary::DownloadReq& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::GrpcLibrary::UploadResp>* AsyncUploadRaw(::grpc::ClientContext* context, const ::GrpcLibrary::UploadReq& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::GrpcLibrary::UploadResp>* PrepareAsyncUploadRaw(::grpc::ClientContext* context, const ::GrpcLibrary::UploadReq& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientReaderWriterInterface< ::GrpcLibrary::EmbeddingReq, ::GrpcLibrary::EmbeddingResp>* EmbeddingRaw(::grpc::ClientContext* context) = 0;
+    virtual ::grpc::ClientAsyncReaderWriterInterface< ::GrpcLibrary::EmbeddingReq, ::GrpcLibrary::EmbeddingResp>* AsyncEmbeddingRaw(::grpc::ClientContext* context, ::grpc::CompletionQueue* cq, void* tag) = 0;
+    virtual ::grpc::ClientAsyncReaderWriterInterface< ::GrpcLibrary::EmbeddingReq, ::GrpcLibrary::EmbeddingResp>* PrepareAsyncEmbeddingRaw(::grpc::ClientContext* context, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::GrpcLibrary::StopEmbeddingResp>* AsyncStopEmbeddingRaw(::grpc::ClientContext* context, const ::GrpcLibrary::StopEmbeddingReq& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::GrpcLibrary::StopEmbeddingResp>* PrepareAsyncStopEmbeddingRaw(::grpc::ClientContext* context, const ::GrpcLibrary::StopEmbeddingReq& request, ::grpc::CompletionQueue* cq) = 0;
   };
   class Stub final : public StubInterface {
    public:
@@ -344,6 +368,22 @@ class GrpcService final {
     std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::GrpcLibrary::UploadResp>> PrepareAsyncUpload(::grpc::ClientContext* context, const ::GrpcLibrary::UploadReq& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::GrpcLibrary::UploadResp>>(PrepareAsyncUploadRaw(context, request, cq));
     }
+    std::unique_ptr< ::grpc::ClientReaderWriter< ::GrpcLibrary::EmbeddingReq, ::GrpcLibrary::EmbeddingResp>> Embedding(::grpc::ClientContext* context) {
+      return std::unique_ptr< ::grpc::ClientReaderWriter< ::GrpcLibrary::EmbeddingReq, ::GrpcLibrary::EmbeddingResp>>(EmbeddingRaw(context));
+    }
+    std::unique_ptr<  ::grpc::ClientAsyncReaderWriter< ::GrpcLibrary::EmbeddingReq, ::GrpcLibrary::EmbeddingResp>> AsyncEmbedding(::grpc::ClientContext* context, ::grpc::CompletionQueue* cq, void* tag) {
+      return std::unique_ptr< ::grpc::ClientAsyncReaderWriter< ::GrpcLibrary::EmbeddingReq, ::GrpcLibrary::EmbeddingResp>>(AsyncEmbeddingRaw(context, cq, tag));
+    }
+    std::unique_ptr<  ::grpc::ClientAsyncReaderWriter< ::GrpcLibrary::EmbeddingReq, ::GrpcLibrary::EmbeddingResp>> PrepareAsyncEmbedding(::grpc::ClientContext* context, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncReaderWriter< ::GrpcLibrary::EmbeddingReq, ::GrpcLibrary::EmbeddingResp>>(PrepareAsyncEmbeddingRaw(context, cq));
+    }
+    ::grpc::Status StopEmbedding(::grpc::ClientContext* context, const ::GrpcLibrary::StopEmbeddingReq& request, ::GrpcLibrary::StopEmbeddingResp* response) override;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::GrpcLibrary::StopEmbeddingResp>> AsyncStopEmbedding(::grpc::ClientContext* context, const ::GrpcLibrary::StopEmbeddingReq& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::GrpcLibrary::StopEmbeddingResp>>(AsyncStopEmbeddingRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::GrpcLibrary::StopEmbeddingResp>> PrepareAsyncStopEmbedding(::grpc::ClientContext* context, const ::GrpcLibrary::StopEmbeddingReq& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::GrpcLibrary::StopEmbeddingResp>>(PrepareAsyncStopEmbeddingRaw(context, request, cq));
+    }
     class async final :
       public StubInterface::async_interface {
      public:
@@ -377,6 +417,9 @@ class GrpcService final {
       void Download(::grpc::ClientContext* context, const ::GrpcLibrary::DownloadReq* request, ::GrpcLibrary::DownloadResp* response, ::grpc::ClientUnaryReactor* reactor) override;
       void Upload(::grpc::ClientContext* context, const ::GrpcLibrary::UploadReq* request, ::GrpcLibrary::UploadResp* response, std::function<void(::grpc::Status)>) override;
       void Upload(::grpc::ClientContext* context, const ::GrpcLibrary::UploadReq* request, ::GrpcLibrary::UploadResp* response, ::grpc::ClientUnaryReactor* reactor) override;
+      void Embedding(::grpc::ClientContext* context, ::grpc::ClientBidiReactor< ::GrpcLibrary::EmbeddingReq,::GrpcLibrary::EmbeddingResp>* reactor) override;
+      void StopEmbedding(::grpc::ClientContext* context, const ::GrpcLibrary::StopEmbeddingReq* request, ::GrpcLibrary::StopEmbeddingResp* response, std::function<void(::grpc::Status)>) override;
+      void StopEmbedding(::grpc::ClientContext* context, const ::GrpcLibrary::StopEmbeddingReq* request, ::GrpcLibrary::StopEmbeddingResp* response, ::grpc::ClientUnaryReactor* reactor) override;
      private:
       friend class Stub;
       explicit async(Stub* stub): stub_(stub) { }
@@ -422,6 +465,11 @@ class GrpcService final {
     ::grpc::ClientAsyncResponseReader< ::GrpcLibrary::DownloadResp>* PrepareAsyncDownloadRaw(::grpc::ClientContext* context, const ::GrpcLibrary::DownloadReq& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::GrpcLibrary::UploadResp>* AsyncUploadRaw(::grpc::ClientContext* context, const ::GrpcLibrary::UploadReq& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::GrpcLibrary::UploadResp>* PrepareAsyncUploadRaw(::grpc::ClientContext* context, const ::GrpcLibrary::UploadReq& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientReaderWriter< ::GrpcLibrary::EmbeddingReq, ::GrpcLibrary::EmbeddingResp>* EmbeddingRaw(::grpc::ClientContext* context) override;
+    ::grpc::ClientAsyncReaderWriter< ::GrpcLibrary::EmbeddingReq, ::GrpcLibrary::EmbeddingResp>* AsyncEmbeddingRaw(::grpc::ClientContext* context, ::grpc::CompletionQueue* cq, void* tag) override;
+    ::grpc::ClientAsyncReaderWriter< ::GrpcLibrary::EmbeddingReq, ::GrpcLibrary::EmbeddingResp>* PrepareAsyncEmbeddingRaw(::grpc::ClientContext* context, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::GrpcLibrary::StopEmbeddingResp>* AsyncStopEmbeddingRaw(::grpc::ClientContext* context, const ::GrpcLibrary::StopEmbeddingReq& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::GrpcLibrary::StopEmbeddingResp>* PrepareAsyncStopEmbeddingRaw(::grpc::ClientContext* context, const ::GrpcLibrary::StopEmbeddingReq& request, ::grpc::CompletionQueue* cq) override;
     const ::grpc::internal::RpcMethod rpcmethod_Heartbeat_;
     const ::grpc::internal::RpcMethod rpcmethod_Login_;
     const ::grpc::internal::RpcMethod rpcmethod_Logout_;
@@ -438,6 +486,8 @@ class GrpcService final {
     const ::grpc::internal::RpcMethod rpcmethod_GetSkillInfo_;
     const ::grpc::internal::RpcMethod rpcmethod_Download_;
     const ::grpc::internal::RpcMethod rpcmethod_Upload_;
+    const ::grpc::internal::RpcMethod rpcmethod_Embedding_;
+    const ::grpc::internal::RpcMethod rpcmethod_StopEmbedding_;
   };
   static std::unique_ptr<Stub> NewStub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, const ::grpc::StubOptions& options = ::grpc::StubOptions());
 
@@ -461,6 +511,8 @@ class GrpcService final {
     virtual ::grpc::Status GetSkillInfo(::grpc::ServerContext* context, const ::GrpcLibrary::GetSkillInfoReq* request, ::GrpcLibrary::GetSkillInfoResp* response);
     virtual ::grpc::Status Download(::grpc::ServerContext* context, const ::GrpcLibrary::DownloadReq* request, ::GrpcLibrary::DownloadResp* response);
     virtual ::grpc::Status Upload(::grpc::ServerContext* context, const ::GrpcLibrary::UploadReq* request, ::GrpcLibrary::UploadResp* response);
+    virtual ::grpc::Status Embedding(::grpc::ServerContext* context, ::grpc::ServerReaderWriter< ::GrpcLibrary::EmbeddingResp, ::GrpcLibrary::EmbeddingReq>* stream);
+    virtual ::grpc::Status StopEmbedding(::grpc::ServerContext* context, const ::GrpcLibrary::StopEmbeddingReq* request, ::GrpcLibrary::StopEmbeddingResp* response);
   };
   template <class BaseClass>
   class WithAsyncMethod_Heartbeat : public BaseClass {
@@ -782,7 +834,47 @@ class GrpcService final {
       ::grpc::Service::RequestAsyncUnary(15, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
-  typedef WithAsyncMethod_Heartbeat<WithAsyncMethod_Login<WithAsyncMethod_Logout<WithAsyncMethod_RegAccount<WithAsyncMethod_Query<WithAsyncMethod_StopAnswer<WithAsyncMethod_Recognize<WithAsyncMethod_StopRecognize<WithAsyncMethod_GetMessageInfo<WithAsyncMethod_GetSession<WithAsyncMethod_NewSession<WithAsyncMethod_ModifySessionTitle<WithAsyncMethod_DelSession<WithAsyncMethod_GetSkillInfo<WithAsyncMethod_Download<WithAsyncMethod_Upload<Service > > > > > > > > > > > > > > > > AsyncService;
+  template <class BaseClass>
+  class WithAsyncMethod_Embedding : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithAsyncMethod_Embedding() {
+      ::grpc::Service::MarkMethodAsync(16);
+    }
+    ~WithAsyncMethod_Embedding() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status Embedding(::grpc::ServerContext* /*context*/, ::grpc::ServerReaderWriter< ::GrpcLibrary::EmbeddingResp, ::GrpcLibrary::EmbeddingReq>* /*stream*/)  override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestEmbedding(::grpc::ServerContext* context, ::grpc::ServerAsyncReaderWriter< ::GrpcLibrary::EmbeddingResp, ::GrpcLibrary::EmbeddingReq>* stream, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncBidiStreaming(16, context, stream, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
+  class WithAsyncMethod_StopEmbedding : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithAsyncMethod_StopEmbedding() {
+      ::grpc::Service::MarkMethodAsync(17);
+    }
+    ~WithAsyncMethod_StopEmbedding() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status StopEmbedding(::grpc::ServerContext* /*context*/, const ::GrpcLibrary::StopEmbeddingReq* /*request*/, ::GrpcLibrary::StopEmbeddingResp* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestStopEmbedding(::grpc::ServerContext* context, ::GrpcLibrary::StopEmbeddingReq* request, ::grpc::ServerAsyncResponseWriter< ::GrpcLibrary::StopEmbeddingResp>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(17, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  typedef WithAsyncMethod_Heartbeat<WithAsyncMethod_Login<WithAsyncMethod_Logout<WithAsyncMethod_RegAccount<WithAsyncMethod_Query<WithAsyncMethod_StopAnswer<WithAsyncMethod_Recognize<WithAsyncMethod_StopRecognize<WithAsyncMethod_GetMessageInfo<WithAsyncMethod_GetSession<WithAsyncMethod_NewSession<WithAsyncMethod_ModifySessionTitle<WithAsyncMethod_DelSession<WithAsyncMethod_GetSkillInfo<WithAsyncMethod_Download<WithAsyncMethod_Upload<WithAsyncMethod_Embedding<WithAsyncMethod_StopEmbedding<Service > > > > > > > > > > > > > > > > > > AsyncService;
   template <class BaseClass>
   class WithCallbackMethod_Heartbeat : public BaseClass {
    private:
@@ -1206,7 +1298,57 @@ class GrpcService final {
     virtual ::grpc::ServerUnaryReactor* Upload(
       ::grpc::CallbackServerContext* /*context*/, const ::GrpcLibrary::UploadReq* /*request*/, ::GrpcLibrary::UploadResp* /*response*/)  { return nullptr; }
   };
-  typedef WithCallbackMethod_Heartbeat<WithCallbackMethod_Login<WithCallbackMethod_Logout<WithCallbackMethod_RegAccount<WithCallbackMethod_Query<WithCallbackMethod_StopAnswer<WithCallbackMethod_Recognize<WithCallbackMethod_StopRecognize<WithCallbackMethod_GetMessageInfo<WithCallbackMethod_GetSession<WithCallbackMethod_NewSession<WithCallbackMethod_ModifySessionTitle<WithCallbackMethod_DelSession<WithCallbackMethod_GetSkillInfo<WithCallbackMethod_Download<WithCallbackMethod_Upload<Service > > > > > > > > > > > > > > > > CallbackService;
+  template <class BaseClass>
+  class WithCallbackMethod_Embedding : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithCallbackMethod_Embedding() {
+      ::grpc::Service::MarkMethodCallback(16,
+          new ::grpc::internal::CallbackBidiHandler< ::GrpcLibrary::EmbeddingReq, ::GrpcLibrary::EmbeddingResp>(
+            [this](
+                   ::grpc::CallbackServerContext* context) { return this->Embedding(context); }));
+    }
+    ~WithCallbackMethod_Embedding() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status Embedding(::grpc::ServerContext* /*context*/, ::grpc::ServerReaderWriter< ::GrpcLibrary::EmbeddingResp, ::GrpcLibrary::EmbeddingReq>* /*stream*/)  override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual ::grpc::ServerBidiReactor< ::GrpcLibrary::EmbeddingReq, ::GrpcLibrary::EmbeddingResp>* Embedding(
+      ::grpc::CallbackServerContext* /*context*/)
+      { return nullptr; }
+  };
+  template <class BaseClass>
+  class WithCallbackMethod_StopEmbedding : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithCallbackMethod_StopEmbedding() {
+      ::grpc::Service::MarkMethodCallback(17,
+          new ::grpc::internal::CallbackUnaryHandler< ::GrpcLibrary::StopEmbeddingReq, ::GrpcLibrary::StopEmbeddingResp>(
+            [this](
+                   ::grpc::CallbackServerContext* context, const ::GrpcLibrary::StopEmbeddingReq* request, ::GrpcLibrary::StopEmbeddingResp* response) { return this->StopEmbedding(context, request, response); }));}
+    void SetMessageAllocatorFor_StopEmbedding(
+        ::grpc::MessageAllocator< ::GrpcLibrary::StopEmbeddingReq, ::GrpcLibrary::StopEmbeddingResp>* allocator) {
+      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(17);
+      static_cast<::grpc::internal::CallbackUnaryHandler< ::GrpcLibrary::StopEmbeddingReq, ::GrpcLibrary::StopEmbeddingResp>*>(handler)
+              ->SetMessageAllocator(allocator);
+    }
+    ~WithCallbackMethod_StopEmbedding() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status StopEmbedding(::grpc::ServerContext* /*context*/, const ::GrpcLibrary::StopEmbeddingReq* /*request*/, ::GrpcLibrary::StopEmbeddingResp* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual ::grpc::ServerUnaryReactor* StopEmbedding(
+      ::grpc::CallbackServerContext* /*context*/, const ::GrpcLibrary::StopEmbeddingReq* /*request*/, ::GrpcLibrary::StopEmbeddingResp* /*response*/)  { return nullptr; }
+  };
+  typedef WithCallbackMethod_Heartbeat<WithCallbackMethod_Login<WithCallbackMethod_Logout<WithCallbackMethod_RegAccount<WithCallbackMethod_Query<WithCallbackMethod_StopAnswer<WithCallbackMethod_Recognize<WithCallbackMethod_StopRecognize<WithCallbackMethod_GetMessageInfo<WithCallbackMethod_GetSession<WithCallbackMethod_NewSession<WithCallbackMethod_ModifySessionTitle<WithCallbackMethod_DelSession<WithCallbackMethod_GetSkillInfo<WithCallbackMethod_Download<WithCallbackMethod_Upload<WithCallbackMethod_Embedding<WithCallbackMethod_StopEmbedding<Service > > > > > > > > > > > > > > > > > > CallbackService;
   typedef CallbackService ExperimentalCallbackService;
   template <class BaseClass>
   class WithGenericMethod_Heartbeat : public BaseClass {
@@ -1476,6 +1618,40 @@ class GrpcService final {
     }
     // disable synchronous version of this method
     ::grpc::Status Upload(::grpc::ServerContext* /*context*/, const ::GrpcLibrary::UploadReq* /*request*/, ::GrpcLibrary::UploadResp* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+  };
+  template <class BaseClass>
+  class WithGenericMethod_Embedding : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithGenericMethod_Embedding() {
+      ::grpc::Service::MarkMethodGeneric(16);
+    }
+    ~WithGenericMethod_Embedding() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status Embedding(::grpc::ServerContext* /*context*/, ::grpc::ServerReaderWriter< ::GrpcLibrary::EmbeddingResp, ::GrpcLibrary::EmbeddingReq>* /*stream*/)  override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+  };
+  template <class BaseClass>
+  class WithGenericMethod_StopEmbedding : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithGenericMethod_StopEmbedding() {
+      ::grpc::Service::MarkMethodGeneric(17);
+    }
+    ~WithGenericMethod_StopEmbedding() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status StopEmbedding(::grpc::ServerContext* /*context*/, const ::GrpcLibrary::StopEmbeddingReq* /*request*/, ::GrpcLibrary::StopEmbeddingResp* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -1798,6 +1974,46 @@ class GrpcService final {
     }
     void RequestUpload(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
       ::grpc::Service::RequestAsyncUnary(15, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
+  class WithRawMethod_Embedding : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithRawMethod_Embedding() {
+      ::grpc::Service::MarkMethodRaw(16);
+    }
+    ~WithRawMethod_Embedding() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status Embedding(::grpc::ServerContext* /*context*/, ::grpc::ServerReaderWriter< ::GrpcLibrary::EmbeddingResp, ::GrpcLibrary::EmbeddingReq>* /*stream*/)  override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestEmbedding(::grpc::ServerContext* context, ::grpc::ServerAsyncReaderWriter< ::grpc::ByteBuffer, ::grpc::ByteBuffer>* stream, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncBidiStreaming(16, context, stream, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
+  class WithRawMethod_StopEmbedding : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithRawMethod_StopEmbedding() {
+      ::grpc::Service::MarkMethodRaw(17);
+    }
+    ~WithRawMethod_StopEmbedding() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status StopEmbedding(::grpc::ServerContext* /*context*/, const ::GrpcLibrary::StopEmbeddingReq* /*request*/, ::GrpcLibrary::StopEmbeddingResp* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestStopEmbedding(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(17, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -2151,6 +2367,51 @@ class GrpcService final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     virtual ::grpc::ServerUnaryReactor* Upload(
+      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
+  };
+  template <class BaseClass>
+  class WithRawCallbackMethod_Embedding : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithRawCallbackMethod_Embedding() {
+      ::grpc::Service::MarkMethodRawCallback(16,
+          new ::grpc::internal::CallbackBidiHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
+            [this](
+                   ::grpc::CallbackServerContext* context) { return this->Embedding(context); }));
+    }
+    ~WithRawCallbackMethod_Embedding() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status Embedding(::grpc::ServerContext* /*context*/, ::grpc::ServerReaderWriter< ::GrpcLibrary::EmbeddingResp, ::GrpcLibrary::EmbeddingReq>* /*stream*/)  override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual ::grpc::ServerBidiReactor< ::grpc::ByteBuffer, ::grpc::ByteBuffer>* Embedding(
+      ::grpc::CallbackServerContext* /*context*/)
+      { return nullptr; }
+  };
+  template <class BaseClass>
+  class WithRawCallbackMethod_StopEmbedding : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithRawCallbackMethod_StopEmbedding() {
+      ::grpc::Service::MarkMethodRawCallback(17,
+          new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
+            [this](
+                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->StopEmbedding(context, request, response); }));
+    }
+    ~WithRawCallbackMethod_StopEmbedding() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status StopEmbedding(::grpc::ServerContext* /*context*/, const ::GrpcLibrary::StopEmbeddingReq* /*request*/, ::GrpcLibrary::StopEmbeddingResp* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual ::grpc::ServerUnaryReactor* StopEmbedding(
       ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
@@ -2531,7 +2792,34 @@ class GrpcService final {
     // replace default version of method with streamed unary
     virtual ::grpc::Status StreamedUpload(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::GrpcLibrary::UploadReq,::GrpcLibrary::UploadResp>* server_unary_streamer) = 0;
   };
-  typedef WithStreamedUnaryMethod_Heartbeat<WithStreamedUnaryMethod_Login<WithStreamedUnaryMethod_Logout<WithStreamedUnaryMethod_RegAccount<WithStreamedUnaryMethod_StopAnswer<WithStreamedUnaryMethod_StopRecognize<WithStreamedUnaryMethod_GetMessageInfo<WithStreamedUnaryMethod_GetSession<WithStreamedUnaryMethod_NewSession<WithStreamedUnaryMethod_ModifySessionTitle<WithStreamedUnaryMethod_DelSession<WithStreamedUnaryMethod_GetSkillInfo<WithStreamedUnaryMethod_Download<WithStreamedUnaryMethod_Upload<Service > > > > > > > > > > > > > > StreamedUnaryService;
+  template <class BaseClass>
+  class WithStreamedUnaryMethod_StopEmbedding : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithStreamedUnaryMethod_StopEmbedding() {
+      ::grpc::Service::MarkMethodStreamed(17,
+        new ::grpc::internal::StreamedUnaryHandler<
+          ::GrpcLibrary::StopEmbeddingReq, ::GrpcLibrary::StopEmbeddingResp>(
+            [this](::grpc::ServerContext* context,
+                   ::grpc::ServerUnaryStreamer<
+                     ::GrpcLibrary::StopEmbeddingReq, ::GrpcLibrary::StopEmbeddingResp>* streamer) {
+                       return this->StreamedStopEmbedding(context,
+                         streamer);
+                  }));
+    }
+    ~WithStreamedUnaryMethod_StopEmbedding() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable regular version of this method
+    ::grpc::Status StopEmbedding(::grpc::ServerContext* /*context*/, const ::GrpcLibrary::StopEmbeddingReq* /*request*/, ::GrpcLibrary::StopEmbeddingResp* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    // replace default version of method with streamed unary
+    virtual ::grpc::Status StreamedStopEmbedding(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::GrpcLibrary::StopEmbeddingReq,::GrpcLibrary::StopEmbeddingResp>* server_unary_streamer) = 0;
+  };
+  typedef WithStreamedUnaryMethod_Heartbeat<WithStreamedUnaryMethod_Login<WithStreamedUnaryMethod_Logout<WithStreamedUnaryMethod_RegAccount<WithStreamedUnaryMethod_StopAnswer<WithStreamedUnaryMethod_StopRecognize<WithStreamedUnaryMethod_GetMessageInfo<WithStreamedUnaryMethod_GetSession<WithStreamedUnaryMethod_NewSession<WithStreamedUnaryMethod_ModifySessionTitle<WithStreamedUnaryMethod_DelSession<WithStreamedUnaryMethod_GetSkillInfo<WithStreamedUnaryMethod_Download<WithStreamedUnaryMethod_Upload<WithStreamedUnaryMethod_StopEmbedding<Service > > > > > > > > > > > > > > > StreamedUnaryService;
   template <class BaseClass>
   class WithSplitStreamingMethod_Query : public BaseClass {
    private:
@@ -2560,7 +2848,7 @@ class GrpcService final {
     virtual ::grpc::Status StreamedQuery(::grpc::ServerContext* context, ::grpc::ServerSplitStreamer< ::GrpcLibrary::QueryReq,::GrpcLibrary::QueryResp>* server_split_streamer) = 0;
   };
   typedef WithSplitStreamingMethod_Query<Service > SplitStreamedService;
-  typedef WithStreamedUnaryMethod_Heartbeat<WithStreamedUnaryMethod_Login<WithStreamedUnaryMethod_Logout<WithStreamedUnaryMethod_RegAccount<WithSplitStreamingMethod_Query<WithStreamedUnaryMethod_StopAnswer<WithStreamedUnaryMethod_StopRecognize<WithStreamedUnaryMethod_GetMessageInfo<WithStreamedUnaryMethod_GetSession<WithStreamedUnaryMethod_NewSession<WithStreamedUnaryMethod_ModifySessionTitle<WithStreamedUnaryMethod_DelSession<WithStreamedUnaryMethod_GetSkillInfo<WithStreamedUnaryMethod_Download<WithStreamedUnaryMethod_Upload<Service > > > > > > > > > > > > > > > StreamedService;
+  typedef WithStreamedUnaryMethod_Heartbeat<WithStreamedUnaryMethod_Login<WithStreamedUnaryMethod_Logout<WithStreamedUnaryMethod_RegAccount<WithSplitStreamingMethod_Query<WithStreamedUnaryMethod_StopAnswer<WithStreamedUnaryMethod_StopRecognize<WithStreamedUnaryMethod_GetMessageInfo<WithStreamedUnaryMethod_GetSession<WithStreamedUnaryMethod_NewSession<WithStreamedUnaryMethod_ModifySessionTitle<WithStreamedUnaryMethod_DelSession<WithStreamedUnaryMethod_GetSkillInfo<WithStreamedUnaryMethod_Download<WithStreamedUnaryMethod_Upload<WithStreamedUnaryMethod_StopEmbedding<Service > > > > > > > > > > > > > > > > StreamedService;
 };
 
 }  // namespace GrpcLibrary

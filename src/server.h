@@ -86,6 +86,14 @@ class api_handler final : public GrpcLibrary::GrpcService::CallbackService
     reactor_t *StopRecognize(ctx_t                                 *ctx,
                              const ::GrpcLibrary::StopRecognizeReq *req,
                              ::GrpcLibrary::StopRecognizeResp *resp) override;
+
+    grpc::ServerBidiReactor<GrpcLibrary::EmbeddingReq,
+                            GrpcLibrary::EmbeddingResp> *
+    Embedding(grpc::CallbackServerContext *context) override;
+
+    reactor_t *StopEmbedding(ctx_t                                 *ctx,
+                             const ::GrpcLibrary::StopEmbeddingReq *req,
+                             ::GrpcLibrary::StopEmbeddingResp *resp) override;
 };
 
 class server

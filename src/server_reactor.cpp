@@ -17,6 +17,7 @@
 #include "sync.h"
 #include "reactor_mgr.h"
 #include "audio_buffer.h"
+#include "memory.h"
 
 QueryReactor::QueryReactor(grpc::CallbackServerContext   *ctx,
                            const ::GrpcLibrary::QueryReq *req)
@@ -667,4 +668,241 @@ void RecognizeReactor::_flush()
               resp.transcript(),
               resp.is_finished(),
               resp.error_code());
+}
+
+// ------------------------------------------ Embedding Reactor -------------------------------
+EmbeddingReactor::EmbeddingReactor(grpc::CallbackServerContext *ctx)
+    : _ctx(ctx)
+    , _task_id(0)
+    , _w_queue{conf::instance().sync_write_queue_size()}
+    , _is_registered(false)
+    , _is_cancelled(false)
+    , _is_writing(false)
+    , _is_processing(false)
+{
+    LOG_DEBUG("EmbeddingReactor entry");
+
+    // start reading the first request
+    StartRead(&_req);
+}
+
+EmbeddingReactor::~EmbeddingReactor()
+{
+    if(_is_registered.load() && _task_id != 0)
+    {
+        embedding_reactor_mgr::instance().unregister_embedding(_task_id);
+    }
+    LOG_DEBUG("EmbeddingReactor exit for task_id: {}", _task_id);
+}
+
+void EmbeddingReactor::_ensure_registered(int64_t task_id)
+{
+    if(_is_registered.load())
+        return;
+
+    _is_registered.store(true);
+    _task_id = task_id;
+    embedding_reactor_mgr::instance().register_embedding(_task_id, this);
+    LOG_DEBUG("Registered EmbeddingReactor with task_id: {}", _task_id);
+}
+
+void EmbeddingReactor::OnReadDone(bool ok)
+{
+    LOG_DEBUG("OnReadDone called with ok={}, task_id: {}", ok, _task_id);
+
+    if(!ok)
+    {
+        LOG_DEBUG("Read done with !ok, finishing");
+        Finish(grpc::Status::OK);
+        return;
+    }
+
+    if(_req.task_id() != 0 && !_is_registered.load())
+    {
+        _ensure_registered(_req.task_id());
+    }
+
+    _process(_req);
+
+    if(_is_cancelled.load())
+    {
+        LOG_DEBUG("Reactor cancelled, not starting new read for task_id: {}",
+                  _task_id);
+        Finish(grpc::Status::OK);
+        return;
+    }
+
+    StartRead(&_req);
+}
+
+void EmbeddingReactor::OnWriteDone(bool ok)
+{
+    LOG_DEBUG("EmbeddingReactor::OnWriteDone called with ok={}, task_id: {}",
+              ok,
+              _task_id);
+    _is_writing.store(false);
+
+    if(!ok)
+    {
+        LOG_WARN("EmbeddingReactor write failed for task_id: {}", _task_id);
+        _is_cancelled.store(true);
+
+        ::GrpcLibrary::EmbeddingResp resp;
+        while(_w_queue.try_dequeue(resp))
+        {
+        }
+
+        Finish(grpc::Status(grpc::StatusCode::ABORTED, "Client disconnected"));
+        return;
+    }
+
+    _flush();
+}
+
+void EmbeddingReactor::OnDone()
+{
+    LOG_DEBUG("EmbeddingReactor::OnDone called for task_id: {}", _task_id);
+    delete this;
+}
+
+void EmbeddingReactor::OnCancel()
+{
+    LOG_INFO("EmbeddingReactor::OnCancel called for task_id: {}", _task_id);
+    _is_cancelled.store(true);
+    _is_writing.store(false);
+
+    ::GrpcLibrary::EmbeddingResp resp;
+    while(_w_queue.try_dequeue(resp))
+    {
+    }
+}
+
+void EmbeddingReactor::Stop()
+{
+    LOG_INFO("EmbeddingReactor {} was stopped by user", _task_id);
+    _is_cancelled.store(true);
+    _is_writing.store(false);
+
+    ::GrpcLibrary::EmbeddingResp resp;
+    while(_w_queue.try_dequeue(resp))
+    {
+    }
+}
+
+void EmbeddingReactor::_process(const ::GrpcLibrary::EmbeddingReq &req)
+{
+    // check if registered
+    if(!_is_registered.load() && req.task_id() != 0)
+    {
+        _ensure_registered(req.task_id());
+    }
+
+    // Check if cancelled
+    if(_is_cancelled.load())
+    {
+        LOG_DEBUG("Process cancelled for task_id: {}", _task_id);
+        return;
+    }
+
+    LOG_DEBUG(
+        "EmbeddingReactor::_process: task_id: {}, has_param:{}, has_chunk: {}",
+        _task_id,
+        req.has_param(),
+        req.has_chunk());
+
+    if(req.has_param())
+    {
+        _param = req.param();
+        LOG_DEBUG(
+            "EmbeddingReactor::_process param: task_id: {}, dimension: {}",
+            _task_id,
+            _param.dimension());
+    }
+
+    if(req.has_chunk())
+    {
+        auto chunk_id = req.chunk().id();
+        LOG_DEBUG("EmbeddingReactor::_process chunk");
+        auto ctx_params  = hj::llama::context::default_params();
+        ctx_params.n_ctx = 512;
+        hj::vector_index<hj::vindex_flat_l2_t> index;
+        auto ec = memory_mgr::instance().build_index<hj::vindex_flat_l2_t>(
+            index,
+            conf::instance().llm_embedding_model(),
+            req.chunk().data(),
+            ctx_params,
+            _param.dimension(),
+            true,
+            true);
+        if(ec != OK)
+        {
+            LOG_ERROR("Fail to build index for task_id: {}, error code: {}",
+                      _task_id,
+                      ec);
+            _send(ec, _task_id, chunk_id, {});
+            return;
+        }
+
+        std::vector<uint8_t> data;
+        if(!index.serialize(data))
+        {
+            LOG_ERROR("Fail to serialize index for task_id: {}", _task_id);
+            _send(LLM_ERR_EMBEDDING_SERIALIZE_FAIL, _task_id, chunk_id, {});
+            return;
+        }
+
+        _send(OK, _task_id, chunk_id, data);
+        return;
+    }
+
+    // param only, no audio chunk, send back the param ack
+    _send(OK, _task_id, 0, {});
+}
+
+void EmbeddingReactor::_send(const int                   error_code,
+                             const int64_t               task_id,
+                             const int64_t               chunk_id,
+                             const std::vector<uint8_t> &indexs)
+{
+    if(_is_cancelled.load())
+        return;
+
+    ::GrpcLibrary::EmbeddingResp resp;
+    resp.set_error_code(error_code);
+    resp.set_task_id(task_id);
+    resp.set_chunk_id(chunk_id);
+    std::string idx(indexs.begin(), indexs.end());
+    resp.set_vector_indexs(idx);
+    _w_queue.enqueue(resp);
+    _flush();
+}
+
+void EmbeddingReactor::_flush()
+{
+    if(_is_writing.load())
+        return;
+
+    if(_is_cancelled.load())
+        return;
+
+    ::GrpcLibrary::EmbeddingResp resp;
+    if(!_w_queue.try_dequeue(resp))
+        return;
+
+    _is_writing.store(true);
+    StartWrite(&resp);
+    LOG_DEBUG(
+        "EmbeddingReactor::_flush: task_id: {}, chunk_id:{}, indexs size: {}, "
+        "error_code: {}",
+        resp.task_id(),
+        resp.chunk_id(),
+        resp.vector_indexs().size(),
+        resp.error_code());
+}
+
+void EmbeddingReactor::_convert(std::vector<uint8_t> &data,
+                                const std::string    &src)
+{
+    data.resize(src.size());
+    std::memcpy(data.data(), src.data(), src.size());
 }

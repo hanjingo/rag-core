@@ -73,6 +73,22 @@ class DownloadResp;
 struct DownloadRespDefaultTypeInternal;
 extern DownloadRespDefaultTypeInternal _DownloadResp_default_instance_;
 extern const ::google::protobuf::internal::ClassDataFull DownloadResp_class_data_;
+class EmbeddingParam;
+struct EmbeddingParamDefaultTypeInternal;
+extern EmbeddingParamDefaultTypeInternal _EmbeddingParam_default_instance_;
+extern const ::google::protobuf::internal::ClassDataFull EmbeddingParam_class_data_;
+class EmbeddingReq;
+struct EmbeddingReqDefaultTypeInternal;
+extern EmbeddingReqDefaultTypeInternal _EmbeddingReq_default_instance_;
+extern const ::google::protobuf::internal::ClassDataFull EmbeddingReq_class_data_;
+class EmbeddingResp;
+struct EmbeddingRespDefaultTypeInternal;
+extern EmbeddingRespDefaultTypeInternal _EmbeddingResp_default_instance_;
+extern const ::google::protobuf::internal::ClassDataFull EmbeddingResp_class_data_;
+class FileChunk;
+struct FileChunkDefaultTypeInternal;
+extern FileChunkDefaultTypeInternal _FileChunk_default_instance_;
+extern const ::google::protobuf::internal::ClassDataFull FileChunk_class_data_;
 class GetMessageInfoReq;
 struct GetMessageInfoReqDefaultTypeInternal;
 extern GetMessageInfoReqDefaultTypeInternal _GetMessageInfoReq_default_instance_;
@@ -189,6 +205,14 @@ class StopAnswerResp;
 struct StopAnswerRespDefaultTypeInternal;
 extern StopAnswerRespDefaultTypeInternal _StopAnswerResp_default_instance_;
 extern const ::google::protobuf::internal::ClassDataFull StopAnswerResp_class_data_;
+class StopEmbeddingReq;
+struct StopEmbeddingReqDefaultTypeInternal;
+extern StopEmbeddingReqDefaultTypeInternal _StopEmbeddingReq_default_instance_;
+extern const ::google::protobuf::internal::ClassDataFull StopEmbeddingReq_class_data_;
+class StopEmbeddingResp;
+struct StopEmbeddingRespDefaultTypeInternal;
+extern StopEmbeddingRespDefaultTypeInternal _StopEmbeddingResp_default_instance_;
+extern const ::google::protobuf::internal::ClassDataFull StopEmbeddingResp_class_data_;
 class StopRecognizeReq;
 struct StopRecognizeReqDefaultTypeInternal;
 extern StopRecognizeReqDefaultTypeInternal _StopRecognizeReq_default_instance_;
@@ -273,7 +297,7 @@ class UploadResp final : public ::google::protobuf::Message
     return *reinterpret_cast<const UploadResp*>(
         &_UploadResp_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 37;
+  static constexpr int kIndexInFileMessages = 39;
   friend void swap(UploadResp& a, UploadResp& b) { a.Swap(&b); }
   inline void Swap(UploadResp* PROTOBUF_NONNULL other) {
     if (other == this) return;
@@ -480,7 +504,7 @@ class UploadReq final : public ::google::protobuf::Message
     return *reinterpret_cast<const UploadReq*>(
         &_UploadReq_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 36;
+  static constexpr int kIndexInFileMessages = 38;
   friend void swap(UploadReq& a, UploadReq& b) { a.Swap(&b); }
   inline void Swap(UploadReq* PROTOBUF_NONNULL other) {
     if (other == this) return;
@@ -733,7 +757,7 @@ class StopRecognizeResp final : public ::google::protobuf::Message
     return *reinterpret_cast<const StopRecognizeResp*>(
         &_StopRecognizeResp_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 21;
+  static constexpr int kIndexInFileMessages = 23;
   friend void swap(StopRecognizeResp& a, StopRecognizeResp& b) { a.Swap(&b); }
   inline void Swap(StopRecognizeResp* PROTOBUF_NONNULL other) {
     if (other == this) return;
@@ -935,7 +959,7 @@ class StopRecognizeReq final : public ::google::protobuf::Message
     return *reinterpret_cast<const StopRecognizeReq*>(
         &_StopRecognizeReq_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 20;
+  static constexpr int kIndexInFileMessages = 22;
   friend void swap(StopRecognizeReq& a, StopRecognizeReq& b) { a.Swap(&b); }
   inline void Swap(StopRecognizeReq* PROTOBUF_NONNULL other) {
     if (other == this) return;
@@ -1099,6 +1123,427 @@ class StopRecognizeReq final : public ::google::protobuf::Message
 extern const ::google::protobuf::internal::ClassDataFull StopRecognizeReq_class_data_;
 // -------------------------------------------------------------------
 
+class StopEmbeddingResp final : public ::google::protobuf::Message
+/* @@protoc_insertion_point(class_definition:GrpcLibrary.StopEmbeddingResp) */ {
+ public:
+  inline StopEmbeddingResp() : StopEmbeddingResp(nullptr) {}
+  ~StopEmbeddingResp() PROTOBUF_FINAL;
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+  void operator delete(StopEmbeddingResp* PROTOBUF_NONNULL msg, ::std::destroying_delete_t) {
+    SharedDtor(*msg);
+    ::google::protobuf::internal::SizedDelete(msg, sizeof(StopEmbeddingResp));
+  }
+#endif
+
+  template <typename = void>
+  explicit PROTOBUF_CONSTEXPR StopEmbeddingResp(::google::protobuf::internal::ConstantInitialized);
+
+  inline StopEmbeddingResp(const StopEmbeddingResp& from) : StopEmbeddingResp(nullptr, from) {}
+  inline StopEmbeddingResp(StopEmbeddingResp&& from) noexcept
+      : StopEmbeddingResp(nullptr, ::std::move(from)) {}
+  inline StopEmbeddingResp& operator=(const StopEmbeddingResp& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline StopEmbeddingResp& operator=(StopEmbeddingResp&& from) noexcept {
+    if (this == &from) return *this;
+    if (::google::protobuf::internal::CanMoveWithInternalSwap(GetArena(), from.GetArena())) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance);
+  }
+  inline ::google::protobuf::UnknownFieldSet* PROTOBUF_NONNULL mutable_unknown_fields()
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.mutable_unknown_fields<::google::protobuf::UnknownFieldSet>();
+  }
+
+  static const ::google::protobuf::Descriptor* PROTOBUF_NONNULL descriptor() {
+    return GetDescriptor();
+  }
+  static const ::google::protobuf::Descriptor* PROTOBUF_NONNULL GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::google::protobuf::Reflection* PROTOBUF_NONNULL GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const StopEmbeddingResp& default_instance() {
+    return *reinterpret_cast<const StopEmbeddingResp*>(
+        &_StopEmbeddingResp_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages = 43;
+  friend void swap(StopEmbeddingResp& a, StopEmbeddingResp& b) { a.Swap(&b); }
+  inline void Swap(StopEmbeddingResp* PROTOBUF_NONNULL other) {
+    if (other == this) return;
+    if (::google::protobuf::internal::CanUseInternalSwap(GetArena(), other->GetArena())) {
+      InternalSwap(other);
+    } else {
+      ::google::protobuf::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(StopEmbeddingResp* PROTOBUF_NONNULL other) {
+    if (other == this) return;
+    ABSL_DCHECK(GetArena() == other->GetArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  StopEmbeddingResp* PROTOBUF_NONNULL New(::google::protobuf::Arena* PROTOBUF_NULLABLE arena = nullptr) const {
+    return ::google::protobuf::Message::DefaultConstruct<StopEmbeddingResp>(arena);
+  }
+  using ::google::protobuf::Message::CopyFrom;
+  void CopyFrom(const StopEmbeddingResp& from);
+  using ::google::protobuf::Message::MergeFrom;
+  void MergeFrom(const StopEmbeddingResp& from) { StopEmbeddingResp::MergeImpl(*this, from); }
+
+  private:
+  static void MergeImpl(::google::protobuf::MessageLite& to_msg,
+                        const ::google::protobuf::MessageLite& from_msg);
+
+  public:
+  bool IsInitialized() const {
+    return true;
+  }
+  ABSL_ATTRIBUTE_REINITIALIZES void Clear() PROTOBUF_FINAL;
+  #if defined(PROTOBUF_CUSTOM_VTABLE)
+  private:
+  static ::size_t ByteSizeLong(const ::google::protobuf::MessageLite& msg);
+  static ::uint8_t* PROTOBUF_NONNULL _InternalSerialize(
+      const ::google::protobuf::MessageLite& msg, ::uint8_t* PROTOBUF_NONNULL target,
+      ::google::protobuf::io::EpsCopyOutputStream* PROTOBUF_NONNULL stream);
+
+  public:
+  ::size_t ByteSizeLong() const { return ByteSizeLong(*this); }
+  ::uint8_t* PROTOBUF_NONNULL _InternalSerialize(
+      ::uint8_t* PROTOBUF_NONNULL target,
+      ::google::protobuf::io::EpsCopyOutputStream* PROTOBUF_NONNULL stream) const {
+    return _InternalSerialize(*this, target, stream);
+  }
+  #else   // PROTOBUF_CUSTOM_VTABLE
+  ::size_t ByteSizeLong() const final;
+  ::uint8_t* PROTOBUF_NONNULL _InternalSerialize(
+      ::uint8_t* PROTOBUF_NONNULL target,
+      ::google::protobuf::io::EpsCopyOutputStream* PROTOBUF_NONNULL stream) const final;
+  #endif  // PROTOBUF_CUSTOM_VTABLE
+  int GetCachedSize() const { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::google::protobuf::Arena* PROTOBUF_NULLABLE arena);
+  static void SharedDtor(MessageLite& self);
+  void InternalSwap(StopEmbeddingResp* PROTOBUF_NONNULL other);
+ private:
+  template <typename T>
+  friend ::absl::string_view(::google::protobuf::internal::GetAnyMessageName)();
+  static ::absl::string_view FullMessageName() { return "GrpcLibrary.StopEmbeddingResp"; }
+
+  explicit StopEmbeddingResp(::google::protobuf::Arena* PROTOBUF_NULLABLE arena);
+  StopEmbeddingResp(::google::protobuf::Arena* PROTOBUF_NULLABLE arena, const StopEmbeddingResp& from);
+  StopEmbeddingResp(
+      ::google::protobuf::Arena* PROTOBUF_NULLABLE arena, StopEmbeddingResp&& from) noexcept
+      : StopEmbeddingResp(arena) {
+    *this = ::std::move(from);
+  }
+  const ::google::protobuf::internal::ClassData* PROTOBUF_NONNULL GetClassData() const PROTOBUF_FINAL;
+  static void* PROTOBUF_NONNULL PlacementNew_(
+      const void* PROTOBUF_NONNULL, void* PROTOBUF_NONNULL mem,
+      ::google::protobuf::Arena* PROTOBUF_NULLABLE arena);
+  static constexpr auto InternalNewImpl_();
+
+ public:
+  static constexpr auto InternalGenerateClassData_();
+
+  ::google::protobuf::Metadata GetMetadata() const;
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+  enum : int {
+    kTaskIdFieldNumber = 2,
+    kErrorCodeFieldNumber = 1,
+  };
+  // int64 task_id = 2;
+  void clear_task_id() ;
+  ::int64_t task_id() const;
+  void set_task_id(::int64_t value);
+
+  private:
+  ::int64_t _internal_task_id() const;
+  void _internal_set_task_id(::int64_t value);
+
+  public:
+  // int32 error_code = 1;
+  void clear_error_code() ;
+  ::int32_t error_code() const;
+  void set_error_code(::int32_t value);
+
+  private:
+  ::int32_t _internal_error_code() const;
+  void _internal_set_error_code(::int32_t value);
+
+  public:
+  // @@protoc_insertion_point(class_scope:GrpcLibrary.StopEmbeddingResp)
+ private:
+  class _Internal;
+  friend class ::google::protobuf::internal::TcParser;
+  static const ::google::protobuf::internal::TcParseTable<1, 2,
+                                   0, 0,
+                                   2>
+      _table_;
+
+  friend class ::google::protobuf::MessageLite;
+  friend class ::google::protobuf::Arena;
+  template <typename T>
+  friend class ::google::protobuf::Arena::InternalHelper;
+  using InternalArenaConstructable_ = void;
+  using DestructorSkippable_ = void;
+  struct Impl_ {
+    inline explicit constexpr Impl_(::google::protobuf::internal::ConstantInitialized) noexcept;
+    inline explicit Impl_(
+        ::google::protobuf::internal::InternalVisibility visibility,
+        ::google::protobuf::Arena* PROTOBUF_NULLABLE arena);
+    inline explicit Impl_(
+        ::google::protobuf::internal::InternalVisibility visibility,
+        ::google::protobuf::Arena* PROTOBUF_NULLABLE arena, const Impl_& from,
+        const StopEmbeddingResp& from_msg);
+    ::google::protobuf::internal::HasBits<1> _has_bits_;
+    ::google::protobuf::internal::CachedSize _cached_size_;
+    ::int64_t task_id_;
+    ::int32_t error_code_;
+    PROTOBUF_TSAN_DECLARE_MEMBER
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_src_2fapi_2eproto;
+};
+
+extern const ::google::protobuf::internal::ClassDataFull StopEmbeddingResp_class_data_;
+// -------------------------------------------------------------------
+
+class StopEmbeddingReq final : public ::google::protobuf::Message
+/* @@protoc_insertion_point(class_definition:GrpcLibrary.StopEmbeddingReq) */ {
+ public:
+  inline StopEmbeddingReq() : StopEmbeddingReq(nullptr) {}
+  ~StopEmbeddingReq() PROTOBUF_FINAL;
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+  void operator delete(StopEmbeddingReq* PROTOBUF_NONNULL msg, ::std::destroying_delete_t) {
+    SharedDtor(*msg);
+    ::google::protobuf::internal::SizedDelete(msg, sizeof(StopEmbeddingReq));
+  }
+#endif
+
+  template <typename = void>
+  explicit PROTOBUF_CONSTEXPR StopEmbeddingReq(::google::protobuf::internal::ConstantInitialized);
+
+  inline StopEmbeddingReq(const StopEmbeddingReq& from) : StopEmbeddingReq(nullptr, from) {}
+  inline StopEmbeddingReq(StopEmbeddingReq&& from) noexcept
+      : StopEmbeddingReq(nullptr, ::std::move(from)) {}
+  inline StopEmbeddingReq& operator=(const StopEmbeddingReq& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline StopEmbeddingReq& operator=(StopEmbeddingReq&& from) noexcept {
+    if (this == &from) return *this;
+    if (::google::protobuf::internal::CanMoveWithInternalSwap(GetArena(), from.GetArena())) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance);
+  }
+  inline ::google::protobuf::UnknownFieldSet* PROTOBUF_NONNULL mutable_unknown_fields()
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.mutable_unknown_fields<::google::protobuf::UnknownFieldSet>();
+  }
+
+  static const ::google::protobuf::Descriptor* PROTOBUF_NONNULL descriptor() {
+    return GetDescriptor();
+  }
+  static const ::google::protobuf::Descriptor* PROTOBUF_NONNULL GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::google::protobuf::Reflection* PROTOBUF_NONNULL GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const StopEmbeddingReq& default_instance() {
+    return *reinterpret_cast<const StopEmbeddingReq*>(
+        &_StopEmbeddingReq_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages = 42;
+  friend void swap(StopEmbeddingReq& a, StopEmbeddingReq& b) { a.Swap(&b); }
+  inline void Swap(StopEmbeddingReq* PROTOBUF_NONNULL other) {
+    if (other == this) return;
+    if (::google::protobuf::internal::CanUseInternalSwap(GetArena(), other->GetArena())) {
+      InternalSwap(other);
+    } else {
+      ::google::protobuf::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(StopEmbeddingReq* PROTOBUF_NONNULL other) {
+    if (other == this) return;
+    ABSL_DCHECK(GetArena() == other->GetArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  StopEmbeddingReq* PROTOBUF_NONNULL New(::google::protobuf::Arena* PROTOBUF_NULLABLE arena = nullptr) const {
+    return ::google::protobuf::Message::DefaultConstruct<StopEmbeddingReq>(arena);
+  }
+  using ::google::protobuf::Message::CopyFrom;
+  void CopyFrom(const StopEmbeddingReq& from);
+  using ::google::protobuf::Message::MergeFrom;
+  void MergeFrom(const StopEmbeddingReq& from) { StopEmbeddingReq::MergeImpl(*this, from); }
+
+  private:
+  static void MergeImpl(::google::protobuf::MessageLite& to_msg,
+                        const ::google::protobuf::MessageLite& from_msg);
+
+  public:
+  bool IsInitialized() const {
+    return true;
+  }
+  ABSL_ATTRIBUTE_REINITIALIZES void Clear() PROTOBUF_FINAL;
+  #if defined(PROTOBUF_CUSTOM_VTABLE)
+  private:
+  static ::size_t ByteSizeLong(const ::google::protobuf::MessageLite& msg);
+  static ::uint8_t* PROTOBUF_NONNULL _InternalSerialize(
+      const ::google::protobuf::MessageLite& msg, ::uint8_t* PROTOBUF_NONNULL target,
+      ::google::protobuf::io::EpsCopyOutputStream* PROTOBUF_NONNULL stream);
+
+  public:
+  ::size_t ByteSizeLong() const { return ByteSizeLong(*this); }
+  ::uint8_t* PROTOBUF_NONNULL _InternalSerialize(
+      ::uint8_t* PROTOBUF_NONNULL target,
+      ::google::protobuf::io::EpsCopyOutputStream* PROTOBUF_NONNULL stream) const {
+    return _InternalSerialize(*this, target, stream);
+  }
+  #else   // PROTOBUF_CUSTOM_VTABLE
+  ::size_t ByteSizeLong() const final;
+  ::uint8_t* PROTOBUF_NONNULL _InternalSerialize(
+      ::uint8_t* PROTOBUF_NONNULL target,
+      ::google::protobuf::io::EpsCopyOutputStream* PROTOBUF_NONNULL stream) const final;
+  #endif  // PROTOBUF_CUSTOM_VTABLE
+  int GetCachedSize() const { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::google::protobuf::Arena* PROTOBUF_NULLABLE arena);
+  static void SharedDtor(MessageLite& self);
+  void InternalSwap(StopEmbeddingReq* PROTOBUF_NONNULL other);
+ private:
+  template <typename T>
+  friend ::absl::string_view(::google::protobuf::internal::GetAnyMessageName)();
+  static ::absl::string_view FullMessageName() { return "GrpcLibrary.StopEmbeddingReq"; }
+
+  explicit StopEmbeddingReq(::google::protobuf::Arena* PROTOBUF_NULLABLE arena);
+  StopEmbeddingReq(::google::protobuf::Arena* PROTOBUF_NULLABLE arena, const StopEmbeddingReq& from);
+  StopEmbeddingReq(
+      ::google::protobuf::Arena* PROTOBUF_NULLABLE arena, StopEmbeddingReq&& from) noexcept
+      : StopEmbeddingReq(arena) {
+    *this = ::std::move(from);
+  }
+  const ::google::protobuf::internal::ClassData* PROTOBUF_NONNULL GetClassData() const PROTOBUF_FINAL;
+  static void* PROTOBUF_NONNULL PlacementNew_(
+      const void* PROTOBUF_NONNULL, void* PROTOBUF_NONNULL mem,
+      ::google::protobuf::Arena* PROTOBUF_NULLABLE arena);
+  static constexpr auto InternalNewImpl_();
+
+ public:
+  static constexpr auto InternalGenerateClassData_();
+
+  ::google::protobuf::Metadata GetMetadata() const;
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+  enum : int {
+    kAuthFieldNumber = 3,
+    kTaskIdFieldNumber = 1,
+    kUserIdFieldNumber = 2,
+  };
+  // string auth = 3;
+  void clear_auth() ;
+  const ::std::string& auth() const;
+  template <typename Arg_ = const ::std::string&, typename... Args_>
+  void set_auth(Arg_&& arg, Args_... args);
+  ::std::string* PROTOBUF_NONNULL mutable_auth();
+  [[nodiscard]] ::std::string* PROTOBUF_NULLABLE release_auth();
+  void set_allocated_auth(::std::string* PROTOBUF_NULLABLE value);
+
+  private:
+  const ::std::string& _internal_auth() const;
+  PROTOBUF_ALWAYS_INLINE void _internal_set_auth(const ::std::string& value);
+  ::std::string* PROTOBUF_NONNULL _internal_mutable_auth();
+
+  public:
+  // int64 task_id = 1;
+  void clear_task_id() ;
+  ::int64_t task_id() const;
+  void set_task_id(::int64_t value);
+
+  private:
+  ::int64_t _internal_task_id() const;
+  void _internal_set_task_id(::int64_t value);
+
+  public:
+  // int64 user_id = 2;
+  void clear_user_id() ;
+  ::int64_t user_id() const;
+  void set_user_id(::int64_t value);
+
+  private:
+  ::int64_t _internal_user_id() const;
+  void _internal_set_user_id(::int64_t value);
+
+  public:
+  // @@protoc_insertion_point(class_scope:GrpcLibrary.StopEmbeddingReq)
+ private:
+  class _Internal;
+  friend class ::google::protobuf::internal::TcParser;
+  static const ::google::protobuf::internal::TcParseTable<2, 3,
+                                   0, 41,
+                                   2>
+      _table_;
+
+  friend class ::google::protobuf::MessageLite;
+  friend class ::google::protobuf::Arena;
+  template <typename T>
+  friend class ::google::protobuf::Arena::InternalHelper;
+  using InternalArenaConstructable_ = void;
+  using DestructorSkippable_ = void;
+  struct Impl_ {
+    inline explicit constexpr Impl_(::google::protobuf::internal::ConstantInitialized) noexcept;
+    inline explicit Impl_(
+        ::google::protobuf::internal::InternalVisibility visibility,
+        ::google::protobuf::Arena* PROTOBUF_NULLABLE arena);
+    inline explicit Impl_(
+        ::google::protobuf::internal::InternalVisibility visibility,
+        ::google::protobuf::Arena* PROTOBUF_NULLABLE arena, const Impl_& from,
+        const StopEmbeddingReq& from_msg);
+    ::google::protobuf::internal::HasBits<1> _has_bits_;
+    ::google::protobuf::internal::CachedSize _cached_size_;
+    ::google::protobuf::internal::ArenaStringPtr auth_;
+    ::int64_t task_id_;
+    ::int64_t user_id_;
+    PROTOBUF_TSAN_DECLARE_MEMBER
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_src_2fapi_2eproto;
+};
+
+extern const ::google::protobuf::internal::ClassDataFull StopEmbeddingReq_class_data_;
+// -------------------------------------------------------------------
+
 class StopAnswerResp final : public ::google::protobuf::Message
 /* @@protoc_insertion_point(class_definition:GrpcLibrary.StopAnswerResp) */ {
  public:
@@ -1154,7 +1599,7 @@ class StopAnswerResp final : public ::google::protobuf::Message
     return *reinterpret_cast<const StopAnswerResp*>(
         &_StopAnswerResp_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 17;
+  static constexpr int kIndexInFileMessages = 19;
   friend void swap(StopAnswerResp& a, StopAnswerResp& b) { a.Swap(&b); }
   inline void Swap(StopAnswerResp* PROTOBUF_NONNULL other) {
     if (other == this) return;
@@ -1356,7 +1801,7 @@ class StopAnswerReq final : public ::google::protobuf::Message
     return *reinterpret_cast<const StopAnswerReq*>(
         &_StopAnswerReq_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 16;
+  static constexpr int kIndexInFileMessages = 18;
   friend void swap(StopAnswerReq& a, StopAnswerReq& b) { a.Swap(&b); }
   inline void Swap(StopAnswerReq* PROTOBUF_NONNULL other) {
     if (other == this) return;
@@ -2449,7 +2894,7 @@ class RegAccountResp final : public ::google::protobuf::Message
     return *reinterpret_cast<const RegAccountResp*>(
         &_RegAccountResp_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 13;
+  static constexpr int kIndexInFileMessages = 15;
   friend void swap(RegAccountResp& a, RegAccountResp& b) { a.Swap(&b); }
   inline void Swap(RegAccountResp* PROTOBUF_NONNULL other) {
     if (other == this) return;
@@ -2651,7 +3096,7 @@ class RegAccountReq final : public ::google::protobuf::Message
     return *reinterpret_cast<const RegAccountReq*>(
         &_RegAccountReq_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 12;
+  static constexpr int kIndexInFileMessages = 14;
   friend void swap(RegAccountReq& a, RegAccountReq& b) { a.Swap(&b); }
   inline void Swap(RegAccountReq* PROTOBUF_NONNULL other) {
     if (other == this) return;
@@ -2863,7 +3308,7 @@ class RecognizeResp final : public ::google::protobuf::Message
     return *reinterpret_cast<const RecognizeResp*>(
         &_RecognizeResp_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 19;
+  static constexpr int kIndexInFileMessages = 21;
   friend void swap(RecognizeResp& a, RecognizeResp& b) { a.Swap(&b); }
   inline void Swap(RecognizeResp* PROTOBUF_NONNULL other) {
     if (other == this) return;
@@ -3611,7 +4056,7 @@ class QueryResp final : public ::google::protobuf::Message
     return *reinterpret_cast<const QueryResp*>(
         &_QueryResp_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 15;
+  static constexpr int kIndexInFileMessages = 17;
   friend void swap(QueryResp& a, QueryResp& b) { a.Swap(&b); }
   inline void Swap(QueryResp* PROTOBUF_NONNULL other) {
     if (other == this) return;
@@ -3842,7 +4287,7 @@ class Pong final : public ::google::protobuf::Message
     return *reinterpret_cast<const Pong*>(
         &_Pong_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 7;
+  static constexpr int kIndexInFileMessages = 9;
   friend void swap(Pong& a, Pong& b) { a.Swap(&b); }
   inline void Swap(Pong* PROTOBUF_NONNULL other) {
     if (other == this) return;
@@ -4032,7 +4477,7 @@ class Ping final : public ::google::protobuf::Message
     return *reinterpret_cast<const Ping*>(
         &_Ping_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 6;
+  static constexpr int kIndexInFileMessages = 8;
   friend void swap(Ping& a, Ping& b) { a.Swap(&b); }
   inline void Swap(Ping* PROTOBUF_NONNULL other) {
     if (other == this) return;
@@ -4222,7 +4667,7 @@ class NewSessionReq final : public ::google::protobuf::Message
     return *reinterpret_cast<const NewSessionReq*>(
         &_NewSessionReq_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 26;
+  static constexpr int kIndexInFileMessages = 28;
   friend void swap(NewSessionReq& a, NewSessionReq& b) { a.Swap(&b); }
   inline void Swap(NewSessionReq* PROTOBUF_NONNULL other) {
     if (other == this) return;
@@ -4480,7 +4925,7 @@ class ModifySessionTitleResp final : public ::google::protobuf::Message
     return *reinterpret_cast<const ModifySessionTitleResp*>(
         &_ModifySessionTitleResp_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 29;
+  static constexpr int kIndexInFileMessages = 31;
   friend void swap(ModifySessionTitleResp& a, ModifySessionTitleResp& b) { a.Swap(&b); }
   inline void Swap(ModifySessionTitleResp* PROTOBUF_NONNULL other) {
     if (other == this) return;
@@ -4699,7 +5144,7 @@ class ModifySessionTitleReq final : public ::google::protobuf::Message
     return *reinterpret_cast<const ModifySessionTitleReq*>(
         &_ModifySessionTitleReq_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 28;
+  static constexpr int kIndexInFileMessages = 30;
   friend void swap(ModifySessionTitleReq& a, ModifySessionTitleReq& b) { a.Swap(&b); }
   inline void Swap(ModifySessionTitleReq* PROTOBUF_NONNULL other) {
     if (other == this) return;
@@ -5200,7 +5645,7 @@ class LogoutResp final : public ::google::protobuf::Message
     return *reinterpret_cast<const LogoutResp*>(
         &_LogoutResp_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 11;
+  static constexpr int kIndexInFileMessages = 13;
   friend void swap(LogoutResp& a, LogoutResp& b) { a.Swap(&b); }
   inline void Swap(LogoutResp* PROTOBUF_NONNULL other) {
     if (other == this) return;
@@ -5402,7 +5847,7 @@ class LogoutReq final : public ::google::protobuf::Message
     return *reinterpret_cast<const LogoutReq*>(
         &_LogoutReq_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 10;
+  static constexpr int kIndexInFileMessages = 12;
   friend void swap(LogoutReq& a, LogoutReq& b) { a.Swap(&b); }
   inline void Swap(LogoutReq* PROTOBUF_NONNULL other) {
     if (other == this) return;
@@ -5609,7 +6054,7 @@ class LoginResp final : public ::google::protobuf::Message
     return *reinterpret_cast<const LoginResp*>(
         &_LoginResp_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 9;
+  static constexpr int kIndexInFileMessages = 11;
   friend void swap(LoginResp& a, LoginResp& b) { a.Swap(&b); }
   inline void Swap(LoginResp* PROTOBUF_NONNULL other) {
     if (other == this) return;
@@ -5874,7 +6319,7 @@ class LoginReq final : public ::google::protobuf::Message
     return *reinterpret_cast<const LoginReq*>(
         &_LoginReq_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 8;
+  static constexpr int kIndexInFileMessages = 10;
   friend void swap(LoginReq& a, LoginReq& b) { a.Swap(&b); }
   inline void Swap(LoginReq* PROTOBUF_NONNULL other) {
     if (other == this) return;
@@ -6086,7 +6531,7 @@ class GetSkillInfoReq final : public ::google::protobuf::Message
     return *reinterpret_cast<const GetSkillInfoReq*>(
         &_GetSkillInfoReq_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 32;
+  static constexpr int kIndexInFileMessages = 34;
   friend void swap(GetSkillInfoReq& a, GetSkillInfoReq& b) { a.Swap(&b); }
   inline void Swap(GetSkillInfoReq* PROTOBUF_NONNULL other) {
     if (other == this) return;
@@ -6293,7 +6738,7 @@ class GetSessionReq final : public ::google::protobuf::Message
     return *reinterpret_cast<const GetSessionReq*>(
         &_GetSessionReq_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 24;
+  static constexpr int kIndexInFileMessages = 26;
   friend void swap(GetSessionReq& a, GetSessionReq& b) { a.Swap(&b); }
   inline void Swap(GetSessionReq* PROTOBUF_NONNULL other) {
     if (other == this) return;
@@ -6524,7 +6969,7 @@ class GetMessageInfoReq final : public ::google::protobuf::Message
     return *reinterpret_cast<const GetMessageInfoReq*>(
         &_GetMessageInfoReq_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 22;
+  static constexpr int kIndexInFileMessages = 24;
   friend void swap(GetMessageInfoReq& a, GetMessageInfoReq& b) { a.Swap(&b); }
   inline void Swap(GetMessageInfoReq* PROTOBUF_NONNULL other) {
     if (other == this) return;
@@ -6712,6 +7157,675 @@ class GetMessageInfoReq final : public ::google::protobuf::Message
 extern const ::google::protobuf::internal::ClassDataFull GetMessageInfoReq_class_data_;
 // -------------------------------------------------------------------
 
+class FileChunk final : public ::google::protobuf::Message
+/* @@protoc_insertion_point(class_definition:GrpcLibrary.FileChunk) */ {
+ public:
+  inline FileChunk() : FileChunk(nullptr) {}
+  ~FileChunk() PROTOBUF_FINAL;
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+  void operator delete(FileChunk* PROTOBUF_NONNULL msg, ::std::destroying_delete_t) {
+    SharedDtor(*msg);
+    ::google::protobuf::internal::SizedDelete(msg, sizeof(FileChunk));
+  }
+#endif
+
+  template <typename = void>
+  explicit PROTOBUF_CONSTEXPR FileChunk(::google::protobuf::internal::ConstantInitialized);
+
+  inline FileChunk(const FileChunk& from) : FileChunk(nullptr, from) {}
+  inline FileChunk(FileChunk&& from) noexcept
+      : FileChunk(nullptr, ::std::move(from)) {}
+  inline FileChunk& operator=(const FileChunk& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline FileChunk& operator=(FileChunk&& from) noexcept {
+    if (this == &from) return *this;
+    if (::google::protobuf::internal::CanMoveWithInternalSwap(GetArena(), from.GetArena())) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance);
+  }
+  inline ::google::protobuf::UnknownFieldSet* PROTOBUF_NONNULL mutable_unknown_fields()
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.mutable_unknown_fields<::google::protobuf::UnknownFieldSet>();
+  }
+
+  static const ::google::protobuf::Descriptor* PROTOBUF_NONNULL descriptor() {
+    return GetDescriptor();
+  }
+  static const ::google::protobuf::Descriptor* PROTOBUF_NONNULL GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::google::protobuf::Reflection* PROTOBUF_NONNULL GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const FileChunk& default_instance() {
+    return *reinterpret_cast<const FileChunk*>(
+        &_FileChunk_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages = 7;
+  friend void swap(FileChunk& a, FileChunk& b) { a.Swap(&b); }
+  inline void Swap(FileChunk* PROTOBUF_NONNULL other) {
+    if (other == this) return;
+    if (::google::protobuf::internal::CanUseInternalSwap(GetArena(), other->GetArena())) {
+      InternalSwap(other);
+    } else {
+      ::google::protobuf::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(FileChunk* PROTOBUF_NONNULL other) {
+    if (other == this) return;
+    ABSL_DCHECK(GetArena() == other->GetArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  FileChunk* PROTOBUF_NONNULL New(::google::protobuf::Arena* PROTOBUF_NULLABLE arena = nullptr) const {
+    return ::google::protobuf::Message::DefaultConstruct<FileChunk>(arena);
+  }
+  using ::google::protobuf::Message::CopyFrom;
+  void CopyFrom(const FileChunk& from);
+  using ::google::protobuf::Message::MergeFrom;
+  void MergeFrom(const FileChunk& from) { FileChunk::MergeImpl(*this, from); }
+
+  private:
+  static void MergeImpl(::google::protobuf::MessageLite& to_msg,
+                        const ::google::protobuf::MessageLite& from_msg);
+
+  public:
+  bool IsInitialized() const {
+    return true;
+  }
+  ABSL_ATTRIBUTE_REINITIALIZES void Clear() PROTOBUF_FINAL;
+  #if defined(PROTOBUF_CUSTOM_VTABLE)
+  private:
+  static ::size_t ByteSizeLong(const ::google::protobuf::MessageLite& msg);
+  static ::uint8_t* PROTOBUF_NONNULL _InternalSerialize(
+      const ::google::protobuf::MessageLite& msg, ::uint8_t* PROTOBUF_NONNULL target,
+      ::google::protobuf::io::EpsCopyOutputStream* PROTOBUF_NONNULL stream);
+
+  public:
+  ::size_t ByteSizeLong() const { return ByteSizeLong(*this); }
+  ::uint8_t* PROTOBUF_NONNULL _InternalSerialize(
+      ::uint8_t* PROTOBUF_NONNULL target,
+      ::google::protobuf::io::EpsCopyOutputStream* PROTOBUF_NONNULL stream) const {
+    return _InternalSerialize(*this, target, stream);
+  }
+  #else   // PROTOBUF_CUSTOM_VTABLE
+  ::size_t ByteSizeLong() const final;
+  ::uint8_t* PROTOBUF_NONNULL _InternalSerialize(
+      ::uint8_t* PROTOBUF_NONNULL target,
+      ::google::protobuf::io::EpsCopyOutputStream* PROTOBUF_NONNULL stream) const final;
+  #endif  // PROTOBUF_CUSTOM_VTABLE
+  int GetCachedSize() const { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::google::protobuf::Arena* PROTOBUF_NULLABLE arena);
+  static void SharedDtor(MessageLite& self);
+  void InternalSwap(FileChunk* PROTOBUF_NONNULL other);
+ private:
+  template <typename T>
+  friend ::absl::string_view(::google::protobuf::internal::GetAnyMessageName)();
+  static ::absl::string_view FullMessageName() { return "GrpcLibrary.FileChunk"; }
+
+  explicit FileChunk(::google::protobuf::Arena* PROTOBUF_NULLABLE arena);
+  FileChunk(::google::protobuf::Arena* PROTOBUF_NULLABLE arena, const FileChunk& from);
+  FileChunk(
+      ::google::protobuf::Arena* PROTOBUF_NULLABLE arena, FileChunk&& from) noexcept
+      : FileChunk(arena) {
+    *this = ::std::move(from);
+  }
+  const ::google::protobuf::internal::ClassData* PROTOBUF_NONNULL GetClassData() const PROTOBUF_FINAL;
+  static void* PROTOBUF_NONNULL PlacementNew_(
+      const void* PROTOBUF_NONNULL, void* PROTOBUF_NONNULL mem,
+      ::google::protobuf::Arena* PROTOBUF_NULLABLE arena);
+  static constexpr auto InternalNewImpl_();
+
+ public:
+  static constexpr auto InternalGenerateClassData_();
+
+  ::google::protobuf::Metadata GetMetadata() const;
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+  enum : int {
+    kDataFieldNumber = 2,
+    kFilenameFieldNumber = 5,
+    kIdFieldNumber = 1,
+    kStartPosFieldNumber = 3,
+    kEndPosFieldNumber = 4,
+  };
+  // bytes data = 2;
+  void clear_data() ;
+  const ::std::string& data() const;
+  template <typename Arg_ = const ::std::string&, typename... Args_>
+  void set_data(Arg_&& arg, Args_... args);
+  ::std::string* PROTOBUF_NONNULL mutable_data();
+  [[nodiscard]] ::std::string* PROTOBUF_NULLABLE release_data();
+  void set_allocated_data(::std::string* PROTOBUF_NULLABLE value);
+
+  private:
+  const ::std::string& _internal_data() const;
+  PROTOBUF_ALWAYS_INLINE void _internal_set_data(const ::std::string& value);
+  ::std::string* PROTOBUF_NONNULL _internal_mutable_data();
+
+  public:
+  // string filename = 5;
+  void clear_filename() ;
+  const ::std::string& filename() const;
+  template <typename Arg_ = const ::std::string&, typename... Args_>
+  void set_filename(Arg_&& arg, Args_... args);
+  ::std::string* PROTOBUF_NONNULL mutable_filename();
+  [[nodiscard]] ::std::string* PROTOBUF_NULLABLE release_filename();
+  void set_allocated_filename(::std::string* PROTOBUF_NULLABLE value);
+
+  private:
+  const ::std::string& _internal_filename() const;
+  PROTOBUF_ALWAYS_INLINE void _internal_set_filename(const ::std::string& value);
+  ::std::string* PROTOBUF_NONNULL _internal_mutable_filename();
+
+  public:
+  // int64 id = 1;
+  void clear_id() ;
+  ::int64_t id() const;
+  void set_id(::int64_t value);
+
+  private:
+  ::int64_t _internal_id() const;
+  void _internal_set_id(::int64_t value);
+
+  public:
+  // int64 start_pos = 3;
+  void clear_start_pos() ;
+  ::int64_t start_pos() const;
+  void set_start_pos(::int64_t value);
+
+  private:
+  ::int64_t _internal_start_pos() const;
+  void _internal_set_start_pos(::int64_t value);
+
+  public:
+  // int64 end_pos = 4;
+  void clear_end_pos() ;
+  ::int64_t end_pos() const;
+  void set_end_pos(::int64_t value);
+
+  private:
+  ::int64_t _internal_end_pos() const;
+  void _internal_set_end_pos(::int64_t value);
+
+  public:
+  // @@protoc_insertion_point(class_scope:GrpcLibrary.FileChunk)
+ private:
+  class _Internal;
+  friend class ::google::protobuf::internal::TcParser;
+  static const ::google::protobuf::internal::TcParseTable<3, 5,
+                                   0, 38,
+                                   2>
+      _table_;
+
+  friend class ::google::protobuf::MessageLite;
+  friend class ::google::protobuf::Arena;
+  template <typename T>
+  friend class ::google::protobuf::Arena::InternalHelper;
+  using InternalArenaConstructable_ = void;
+  using DestructorSkippable_ = void;
+  struct Impl_ {
+    inline explicit constexpr Impl_(::google::protobuf::internal::ConstantInitialized) noexcept;
+    inline explicit Impl_(
+        ::google::protobuf::internal::InternalVisibility visibility,
+        ::google::protobuf::Arena* PROTOBUF_NULLABLE arena);
+    inline explicit Impl_(
+        ::google::protobuf::internal::InternalVisibility visibility,
+        ::google::protobuf::Arena* PROTOBUF_NULLABLE arena, const Impl_& from,
+        const FileChunk& from_msg);
+    ::google::protobuf::internal::HasBits<1> _has_bits_;
+    ::google::protobuf::internal::CachedSize _cached_size_;
+    ::google::protobuf::internal::ArenaStringPtr data_;
+    ::google::protobuf::internal::ArenaStringPtr filename_;
+    ::int64_t id_;
+    ::int64_t start_pos_;
+    ::int64_t end_pos_;
+    PROTOBUF_TSAN_DECLARE_MEMBER
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_src_2fapi_2eproto;
+};
+
+extern const ::google::protobuf::internal::ClassDataFull FileChunk_class_data_;
+// -------------------------------------------------------------------
+
+class EmbeddingResp final : public ::google::protobuf::Message
+/* @@protoc_insertion_point(class_definition:GrpcLibrary.EmbeddingResp) */ {
+ public:
+  inline EmbeddingResp() : EmbeddingResp(nullptr) {}
+  ~EmbeddingResp() PROTOBUF_FINAL;
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+  void operator delete(EmbeddingResp* PROTOBUF_NONNULL msg, ::std::destroying_delete_t) {
+    SharedDtor(*msg);
+    ::google::protobuf::internal::SizedDelete(msg, sizeof(EmbeddingResp));
+  }
+#endif
+
+  template <typename = void>
+  explicit PROTOBUF_CONSTEXPR EmbeddingResp(::google::protobuf::internal::ConstantInitialized);
+
+  inline EmbeddingResp(const EmbeddingResp& from) : EmbeddingResp(nullptr, from) {}
+  inline EmbeddingResp(EmbeddingResp&& from) noexcept
+      : EmbeddingResp(nullptr, ::std::move(from)) {}
+  inline EmbeddingResp& operator=(const EmbeddingResp& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline EmbeddingResp& operator=(EmbeddingResp&& from) noexcept {
+    if (this == &from) return *this;
+    if (::google::protobuf::internal::CanMoveWithInternalSwap(GetArena(), from.GetArena())) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance);
+  }
+  inline ::google::protobuf::UnknownFieldSet* PROTOBUF_NONNULL mutable_unknown_fields()
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.mutable_unknown_fields<::google::protobuf::UnknownFieldSet>();
+  }
+
+  static const ::google::protobuf::Descriptor* PROTOBUF_NONNULL descriptor() {
+    return GetDescriptor();
+  }
+  static const ::google::protobuf::Descriptor* PROTOBUF_NONNULL GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::google::protobuf::Reflection* PROTOBUF_NONNULL GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const EmbeddingResp& default_instance() {
+    return *reinterpret_cast<const EmbeddingResp*>(
+        &_EmbeddingResp_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages = 41;
+  friend void swap(EmbeddingResp& a, EmbeddingResp& b) { a.Swap(&b); }
+  inline void Swap(EmbeddingResp* PROTOBUF_NONNULL other) {
+    if (other == this) return;
+    if (::google::protobuf::internal::CanUseInternalSwap(GetArena(), other->GetArena())) {
+      InternalSwap(other);
+    } else {
+      ::google::protobuf::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(EmbeddingResp* PROTOBUF_NONNULL other) {
+    if (other == this) return;
+    ABSL_DCHECK(GetArena() == other->GetArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  EmbeddingResp* PROTOBUF_NONNULL New(::google::protobuf::Arena* PROTOBUF_NULLABLE arena = nullptr) const {
+    return ::google::protobuf::Message::DefaultConstruct<EmbeddingResp>(arena);
+  }
+  using ::google::protobuf::Message::CopyFrom;
+  void CopyFrom(const EmbeddingResp& from);
+  using ::google::protobuf::Message::MergeFrom;
+  void MergeFrom(const EmbeddingResp& from) { EmbeddingResp::MergeImpl(*this, from); }
+
+  private:
+  static void MergeImpl(::google::protobuf::MessageLite& to_msg,
+                        const ::google::protobuf::MessageLite& from_msg);
+
+  public:
+  bool IsInitialized() const {
+    return true;
+  }
+  ABSL_ATTRIBUTE_REINITIALIZES void Clear() PROTOBUF_FINAL;
+  #if defined(PROTOBUF_CUSTOM_VTABLE)
+  private:
+  static ::size_t ByteSizeLong(const ::google::protobuf::MessageLite& msg);
+  static ::uint8_t* PROTOBUF_NONNULL _InternalSerialize(
+      const ::google::protobuf::MessageLite& msg, ::uint8_t* PROTOBUF_NONNULL target,
+      ::google::protobuf::io::EpsCopyOutputStream* PROTOBUF_NONNULL stream);
+
+  public:
+  ::size_t ByteSizeLong() const { return ByteSizeLong(*this); }
+  ::uint8_t* PROTOBUF_NONNULL _InternalSerialize(
+      ::uint8_t* PROTOBUF_NONNULL target,
+      ::google::protobuf::io::EpsCopyOutputStream* PROTOBUF_NONNULL stream) const {
+    return _InternalSerialize(*this, target, stream);
+  }
+  #else   // PROTOBUF_CUSTOM_VTABLE
+  ::size_t ByteSizeLong() const final;
+  ::uint8_t* PROTOBUF_NONNULL _InternalSerialize(
+      ::uint8_t* PROTOBUF_NONNULL target,
+      ::google::protobuf::io::EpsCopyOutputStream* PROTOBUF_NONNULL stream) const final;
+  #endif  // PROTOBUF_CUSTOM_VTABLE
+  int GetCachedSize() const { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::google::protobuf::Arena* PROTOBUF_NULLABLE arena);
+  static void SharedDtor(MessageLite& self);
+  void InternalSwap(EmbeddingResp* PROTOBUF_NONNULL other);
+ private:
+  template <typename T>
+  friend ::absl::string_view(::google::protobuf::internal::GetAnyMessageName)();
+  static ::absl::string_view FullMessageName() { return "GrpcLibrary.EmbeddingResp"; }
+
+  explicit EmbeddingResp(::google::protobuf::Arena* PROTOBUF_NULLABLE arena);
+  EmbeddingResp(::google::protobuf::Arena* PROTOBUF_NULLABLE arena, const EmbeddingResp& from);
+  EmbeddingResp(
+      ::google::protobuf::Arena* PROTOBUF_NULLABLE arena, EmbeddingResp&& from) noexcept
+      : EmbeddingResp(arena) {
+    *this = ::std::move(from);
+  }
+  const ::google::protobuf::internal::ClassData* PROTOBUF_NONNULL GetClassData() const PROTOBUF_FINAL;
+  static void* PROTOBUF_NONNULL PlacementNew_(
+      const void* PROTOBUF_NONNULL, void* PROTOBUF_NONNULL mem,
+      ::google::protobuf::Arena* PROTOBUF_NULLABLE arena);
+  static constexpr auto InternalNewImpl_();
+
+ public:
+  static constexpr auto InternalGenerateClassData_();
+
+  ::google::protobuf::Metadata GetMetadata() const;
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+  enum : int {
+    kVectorIndexsFieldNumber = 4,
+    kTaskIdFieldNumber = 2,
+    kChunkIdFieldNumber = 3,
+    kErrorCodeFieldNumber = 1,
+  };
+  // bytes vector_indexs = 4;
+  void clear_vector_indexs() ;
+  const ::std::string& vector_indexs() const;
+  template <typename Arg_ = const ::std::string&, typename... Args_>
+  void set_vector_indexs(Arg_&& arg, Args_... args);
+  ::std::string* PROTOBUF_NONNULL mutable_vector_indexs();
+  [[nodiscard]] ::std::string* PROTOBUF_NULLABLE release_vector_indexs();
+  void set_allocated_vector_indexs(::std::string* PROTOBUF_NULLABLE value);
+
+  private:
+  const ::std::string& _internal_vector_indexs() const;
+  PROTOBUF_ALWAYS_INLINE void _internal_set_vector_indexs(const ::std::string& value);
+  ::std::string* PROTOBUF_NONNULL _internal_mutable_vector_indexs();
+
+  public:
+  // int64 task_id = 2;
+  void clear_task_id() ;
+  ::int64_t task_id() const;
+  void set_task_id(::int64_t value);
+
+  private:
+  ::int64_t _internal_task_id() const;
+  void _internal_set_task_id(::int64_t value);
+
+  public:
+  // int64 chunk_id = 3;
+  void clear_chunk_id() ;
+  ::int64_t chunk_id() const;
+  void set_chunk_id(::int64_t value);
+
+  private:
+  ::int64_t _internal_chunk_id() const;
+  void _internal_set_chunk_id(::int64_t value);
+
+  public:
+  // int32 error_code = 1;
+  void clear_error_code() ;
+  ::int32_t error_code() const;
+  void set_error_code(::int32_t value);
+
+  private:
+  ::int32_t _internal_error_code() const;
+  void _internal_set_error_code(::int32_t value);
+
+  public:
+  // @@protoc_insertion_point(class_scope:GrpcLibrary.EmbeddingResp)
+ private:
+  class _Internal;
+  friend class ::google::protobuf::internal::TcParser;
+  static const ::google::protobuf::internal::TcParseTable<2, 4,
+                                   0, 0,
+                                   2>
+      _table_;
+
+  friend class ::google::protobuf::MessageLite;
+  friend class ::google::protobuf::Arena;
+  template <typename T>
+  friend class ::google::protobuf::Arena::InternalHelper;
+  using InternalArenaConstructable_ = void;
+  using DestructorSkippable_ = void;
+  struct Impl_ {
+    inline explicit constexpr Impl_(::google::protobuf::internal::ConstantInitialized) noexcept;
+    inline explicit Impl_(
+        ::google::protobuf::internal::InternalVisibility visibility,
+        ::google::protobuf::Arena* PROTOBUF_NULLABLE arena);
+    inline explicit Impl_(
+        ::google::protobuf::internal::InternalVisibility visibility,
+        ::google::protobuf::Arena* PROTOBUF_NULLABLE arena, const Impl_& from,
+        const EmbeddingResp& from_msg);
+    ::google::protobuf::internal::HasBits<1> _has_bits_;
+    ::google::protobuf::internal::CachedSize _cached_size_;
+    ::google::protobuf::internal::ArenaStringPtr vector_indexs_;
+    ::int64_t task_id_;
+    ::int64_t chunk_id_;
+    ::int32_t error_code_;
+    PROTOBUF_TSAN_DECLARE_MEMBER
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_src_2fapi_2eproto;
+};
+
+extern const ::google::protobuf::internal::ClassDataFull EmbeddingResp_class_data_;
+// -------------------------------------------------------------------
+
+class EmbeddingParam final : public ::google::protobuf::Message
+/* @@protoc_insertion_point(class_definition:GrpcLibrary.EmbeddingParam) */ {
+ public:
+  inline EmbeddingParam() : EmbeddingParam(nullptr) {}
+  ~EmbeddingParam() PROTOBUF_FINAL;
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+  void operator delete(EmbeddingParam* PROTOBUF_NONNULL msg, ::std::destroying_delete_t) {
+    SharedDtor(*msg);
+    ::google::protobuf::internal::SizedDelete(msg, sizeof(EmbeddingParam));
+  }
+#endif
+
+  template <typename = void>
+  explicit PROTOBUF_CONSTEXPR EmbeddingParam(::google::protobuf::internal::ConstantInitialized);
+
+  inline EmbeddingParam(const EmbeddingParam& from) : EmbeddingParam(nullptr, from) {}
+  inline EmbeddingParam(EmbeddingParam&& from) noexcept
+      : EmbeddingParam(nullptr, ::std::move(from)) {}
+  inline EmbeddingParam& operator=(const EmbeddingParam& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline EmbeddingParam& operator=(EmbeddingParam&& from) noexcept {
+    if (this == &from) return *this;
+    if (::google::protobuf::internal::CanMoveWithInternalSwap(GetArena(), from.GetArena())) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance);
+  }
+  inline ::google::protobuf::UnknownFieldSet* PROTOBUF_NONNULL mutable_unknown_fields()
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.mutable_unknown_fields<::google::protobuf::UnknownFieldSet>();
+  }
+
+  static const ::google::protobuf::Descriptor* PROTOBUF_NONNULL descriptor() {
+    return GetDescriptor();
+  }
+  static const ::google::protobuf::Descriptor* PROTOBUF_NONNULL GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::google::protobuf::Reflection* PROTOBUF_NONNULL GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const EmbeddingParam& default_instance() {
+    return *reinterpret_cast<const EmbeddingParam*>(
+        &_EmbeddingParam_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages = 6;
+  friend void swap(EmbeddingParam& a, EmbeddingParam& b) { a.Swap(&b); }
+  inline void Swap(EmbeddingParam* PROTOBUF_NONNULL other) {
+    if (other == this) return;
+    if (::google::protobuf::internal::CanUseInternalSwap(GetArena(), other->GetArena())) {
+      InternalSwap(other);
+    } else {
+      ::google::protobuf::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(EmbeddingParam* PROTOBUF_NONNULL other) {
+    if (other == this) return;
+    ABSL_DCHECK(GetArena() == other->GetArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  EmbeddingParam* PROTOBUF_NONNULL New(::google::protobuf::Arena* PROTOBUF_NULLABLE arena = nullptr) const {
+    return ::google::protobuf::Message::DefaultConstruct<EmbeddingParam>(arena);
+  }
+  using ::google::protobuf::Message::CopyFrom;
+  void CopyFrom(const EmbeddingParam& from);
+  using ::google::protobuf::Message::MergeFrom;
+  void MergeFrom(const EmbeddingParam& from) { EmbeddingParam::MergeImpl(*this, from); }
+
+  private:
+  static void MergeImpl(::google::protobuf::MessageLite& to_msg,
+                        const ::google::protobuf::MessageLite& from_msg);
+
+  public:
+  bool IsInitialized() const {
+    return true;
+  }
+  ABSL_ATTRIBUTE_REINITIALIZES void Clear() PROTOBUF_FINAL;
+  #if defined(PROTOBUF_CUSTOM_VTABLE)
+  private:
+  static ::size_t ByteSizeLong(const ::google::protobuf::MessageLite& msg);
+  static ::uint8_t* PROTOBUF_NONNULL _InternalSerialize(
+      const ::google::protobuf::MessageLite& msg, ::uint8_t* PROTOBUF_NONNULL target,
+      ::google::protobuf::io::EpsCopyOutputStream* PROTOBUF_NONNULL stream);
+
+  public:
+  ::size_t ByteSizeLong() const { return ByteSizeLong(*this); }
+  ::uint8_t* PROTOBUF_NONNULL _InternalSerialize(
+      ::uint8_t* PROTOBUF_NONNULL target,
+      ::google::protobuf::io::EpsCopyOutputStream* PROTOBUF_NONNULL stream) const {
+    return _InternalSerialize(*this, target, stream);
+  }
+  #else   // PROTOBUF_CUSTOM_VTABLE
+  ::size_t ByteSizeLong() const final;
+  ::uint8_t* PROTOBUF_NONNULL _InternalSerialize(
+      ::uint8_t* PROTOBUF_NONNULL target,
+      ::google::protobuf::io::EpsCopyOutputStream* PROTOBUF_NONNULL stream) const final;
+  #endif  // PROTOBUF_CUSTOM_VTABLE
+  int GetCachedSize() const { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::google::protobuf::Arena* PROTOBUF_NULLABLE arena);
+  static void SharedDtor(MessageLite& self);
+  void InternalSwap(EmbeddingParam* PROTOBUF_NONNULL other);
+ private:
+  template <typename T>
+  friend ::absl::string_view(::google::protobuf::internal::GetAnyMessageName)();
+  static ::absl::string_view FullMessageName() { return "GrpcLibrary.EmbeddingParam"; }
+
+  explicit EmbeddingParam(::google::protobuf::Arena* PROTOBUF_NULLABLE arena);
+  EmbeddingParam(::google::protobuf::Arena* PROTOBUF_NULLABLE arena, const EmbeddingParam& from);
+  EmbeddingParam(
+      ::google::protobuf::Arena* PROTOBUF_NULLABLE arena, EmbeddingParam&& from) noexcept
+      : EmbeddingParam(arena) {
+    *this = ::std::move(from);
+  }
+  const ::google::protobuf::internal::ClassData* PROTOBUF_NONNULL GetClassData() const PROTOBUF_FINAL;
+  static void* PROTOBUF_NONNULL PlacementNew_(
+      const void* PROTOBUF_NONNULL, void* PROTOBUF_NONNULL mem,
+      ::google::protobuf::Arena* PROTOBUF_NULLABLE arena);
+  static constexpr auto InternalNewImpl_();
+
+ public:
+  static constexpr auto InternalGenerateClassData_();
+
+  ::google::protobuf::Metadata GetMetadata() const;
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+  enum : int {
+    kDimensionFieldNumber = 1,
+  };
+  // int32 dimension = 1;
+  void clear_dimension() ;
+  ::int32_t dimension() const;
+  void set_dimension(::int32_t value);
+
+  private:
+  ::int32_t _internal_dimension() const;
+  void _internal_set_dimension(::int32_t value);
+
+  public:
+  // @@protoc_insertion_point(class_scope:GrpcLibrary.EmbeddingParam)
+ private:
+  class _Internal;
+  friend class ::google::protobuf::internal::TcParser;
+  static const ::google::protobuf::internal::TcParseTable<0, 1,
+                                   0, 0,
+                                   2>
+      _table_;
+
+  friend class ::google::protobuf::MessageLite;
+  friend class ::google::protobuf::Arena;
+  template <typename T>
+  friend class ::google::protobuf::Arena::InternalHelper;
+  using InternalArenaConstructable_ = void;
+  using DestructorSkippable_ = void;
+  struct Impl_ {
+    inline explicit constexpr Impl_(::google::protobuf::internal::ConstantInitialized) noexcept;
+    inline explicit Impl_(
+        ::google::protobuf::internal::InternalVisibility visibility,
+        ::google::protobuf::Arena* PROTOBUF_NULLABLE arena);
+    inline explicit Impl_(
+        ::google::protobuf::internal::InternalVisibility visibility,
+        ::google::protobuf::Arena* PROTOBUF_NULLABLE arena, const Impl_& from,
+        const EmbeddingParam& from_msg);
+    ::google::protobuf::internal::HasBits<1> _has_bits_;
+    ::google::protobuf::internal::CachedSize _cached_size_;
+    ::int32_t dimension_;
+    PROTOBUF_TSAN_DECLARE_MEMBER
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_src_2fapi_2eproto;
+};
+
+extern const ::google::protobuf::internal::ClassDataFull EmbeddingParam_class_data_;
+// -------------------------------------------------------------------
+
 class DownloadResp final : public ::google::protobuf::Message
 /* @@protoc_insertion_point(class_definition:GrpcLibrary.DownloadResp) */ {
  public:
@@ -6767,7 +7881,7 @@ class DownloadResp final : public ::google::protobuf::Message
     return *reinterpret_cast<const DownloadResp*>(
         &_DownloadResp_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 35;
+  static constexpr int kIndexInFileMessages = 37;
   friend void swap(DownloadResp& a, DownloadResp& b) { a.Swap(&b); }
   inline void Swap(DownloadResp* PROTOBUF_NONNULL other) {
     if (other == this) return;
@@ -7003,7 +8117,7 @@ class DownloadReq final : public ::google::protobuf::Message
     return *reinterpret_cast<const DownloadReq*>(
         &_DownloadReq_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 34;
+  static constexpr int kIndexInFileMessages = 36;
   friend void swap(DownloadReq& a, DownloadReq& b) { a.Swap(&b); }
   inline void Swap(DownloadReq* PROTOBUF_NONNULL other) {
     if (other == this) return;
@@ -7227,7 +8341,7 @@ class DelSessionResp final : public ::google::protobuf::Message
     return *reinterpret_cast<const DelSessionResp*>(
         &_DelSessionResp_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 31;
+  static constexpr int kIndexInFileMessages = 33;
   friend void swap(DelSessionResp& a, DelSessionResp& b) { a.Swap(&b); }
   inline void Swap(DelSessionResp* PROTOBUF_NONNULL other) {
     if (other == this) return;
@@ -7438,7 +8552,7 @@ class DelSessionReq final : public ::google::protobuf::Message
     return *reinterpret_cast<const DelSessionReq*>(
         &_DelSessionReq_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 30;
+  static constexpr int kIndexInFileMessages = 32;
   friend void swap(DelSessionReq& a, DelSessionReq& b) { a.Swap(&b); }
   inline void Swap(DelSessionReq* PROTOBUF_NONNULL other) {
     if (other == this) return;
@@ -8135,7 +9249,7 @@ class RecognizeReq final : public ::google::protobuf::Message
     kAudioChunk = 4,
     REQUEST_TYPE_NOT_SET = 0,
   };
-  static constexpr int kIndexInFileMessages = 18;
+  static constexpr int kIndexInFileMessages = 20;
   friend void swap(RecognizeReq& a, RecognizeReq& b) { a.Swap(&b); }
   inline void Swap(RecognizeReq* PROTOBUF_NONNULL other) {
     if (other == this) return;
@@ -8392,7 +9506,7 @@ class QueryReq final : public ::google::protobuf::Message
     return *reinterpret_cast<const QueryReq*>(
         &_QueryReq_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 14;
+  static constexpr int kIndexInFileMessages = 16;
   friend void swap(QueryReq& a, QueryReq& b) { a.Swap(&b); }
   inline void Swap(QueryReq* PROTOBUF_NONNULL other) {
     if (other == this) return;
@@ -8713,7 +9827,7 @@ class NewSessionResp final : public ::google::protobuf::Message
     return *reinterpret_cast<const NewSessionResp*>(
         &_NewSessionResp_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 27;
+  static constexpr int kIndexInFileMessages = 29;
   friend void swap(NewSessionResp& a, NewSessionResp& b) { a.Swap(&b); }
   inline void Swap(NewSessionResp* PROTOBUF_NONNULL other) {
     if (other == this) return;
@@ -8920,7 +10034,7 @@ class GetSkillInfoResp final : public ::google::protobuf::Message
     return *reinterpret_cast<const GetSkillInfoResp*>(
         &_GetSkillInfoResp_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 33;
+  static constexpr int kIndexInFileMessages = 35;
   friend void swap(GetSkillInfoResp& a, GetSkillInfoResp& b) { a.Swap(&b); }
   inline void Swap(GetSkillInfoResp* PROTOBUF_NONNULL other) {
     if (other == this) return;
@@ -9129,7 +10243,7 @@ class GetSessionResp final : public ::google::protobuf::Message
     return *reinterpret_cast<const GetSessionResp*>(
         &_GetSessionResp_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 25;
+  static constexpr int kIndexInFileMessages = 27;
   friend void swap(GetSessionResp& a, GetSessionResp& b) { a.Swap(&b); }
   inline void Swap(GetSessionResp* PROTOBUF_NONNULL other) {
     if (other == this) return;
@@ -9338,7 +10452,7 @@ class GetMessageInfoResp final : public ::google::protobuf::Message
     return *reinterpret_cast<const GetMessageInfoResp*>(
         &_GetMessageInfoResp_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 23;
+  static constexpr int kIndexInFileMessages = 25;
   friend void swap(GetMessageInfoResp& a, GetMessageInfoResp& b) { a.Swap(&b); }
   inline void Swap(GetMessageInfoResp* PROTOBUF_NONNULL other) {
     if (other == this) return;
@@ -9490,6 +10604,254 @@ class GetMessageInfoResp final : public ::google::protobuf::Message
 };
 
 extern const ::google::protobuf::internal::ClassDataFull GetMessageInfoResp_class_data_;
+// -------------------------------------------------------------------
+
+class EmbeddingReq final : public ::google::protobuf::Message
+/* @@protoc_insertion_point(class_definition:GrpcLibrary.EmbeddingReq) */ {
+ public:
+  inline EmbeddingReq() : EmbeddingReq(nullptr) {}
+  ~EmbeddingReq() PROTOBUF_FINAL;
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+  void operator delete(EmbeddingReq* PROTOBUF_NONNULL msg, ::std::destroying_delete_t) {
+    SharedDtor(*msg);
+    ::google::protobuf::internal::SizedDelete(msg, sizeof(EmbeddingReq));
+  }
+#endif
+
+  template <typename = void>
+  explicit PROTOBUF_CONSTEXPR EmbeddingReq(::google::protobuf::internal::ConstantInitialized);
+
+  inline EmbeddingReq(const EmbeddingReq& from) : EmbeddingReq(nullptr, from) {}
+  inline EmbeddingReq(EmbeddingReq&& from) noexcept
+      : EmbeddingReq(nullptr, ::std::move(from)) {}
+  inline EmbeddingReq& operator=(const EmbeddingReq& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline EmbeddingReq& operator=(EmbeddingReq&& from) noexcept {
+    if (this == &from) return *this;
+    if (::google::protobuf::internal::CanMoveWithInternalSwap(GetArena(), from.GetArena())) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance);
+  }
+  inline ::google::protobuf::UnknownFieldSet* PROTOBUF_NONNULL mutable_unknown_fields()
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.mutable_unknown_fields<::google::protobuf::UnknownFieldSet>();
+  }
+
+  static const ::google::protobuf::Descriptor* PROTOBUF_NONNULL descriptor() {
+    return GetDescriptor();
+  }
+  static const ::google::protobuf::Descriptor* PROTOBUF_NONNULL GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::google::protobuf::Reflection* PROTOBUF_NONNULL GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const EmbeddingReq& default_instance() {
+    return *reinterpret_cast<const EmbeddingReq*>(
+        &_EmbeddingReq_default_instance_);
+  }
+  enum RequestTypeCase {
+    kParam = 2,
+    kChunk = 3,
+    REQUEST_TYPE_NOT_SET = 0,
+  };
+  static constexpr int kIndexInFileMessages = 40;
+  friend void swap(EmbeddingReq& a, EmbeddingReq& b) { a.Swap(&b); }
+  inline void Swap(EmbeddingReq* PROTOBUF_NONNULL other) {
+    if (other == this) return;
+    if (::google::protobuf::internal::CanUseInternalSwap(GetArena(), other->GetArena())) {
+      InternalSwap(other);
+    } else {
+      ::google::protobuf::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(EmbeddingReq* PROTOBUF_NONNULL other) {
+    if (other == this) return;
+    ABSL_DCHECK(GetArena() == other->GetArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  EmbeddingReq* PROTOBUF_NONNULL New(::google::protobuf::Arena* PROTOBUF_NULLABLE arena = nullptr) const {
+    return ::google::protobuf::Message::DefaultConstruct<EmbeddingReq>(arena);
+  }
+  using ::google::protobuf::Message::CopyFrom;
+  void CopyFrom(const EmbeddingReq& from);
+  using ::google::protobuf::Message::MergeFrom;
+  void MergeFrom(const EmbeddingReq& from) { EmbeddingReq::MergeImpl(*this, from); }
+
+  private:
+  static void MergeImpl(::google::protobuf::MessageLite& to_msg,
+                        const ::google::protobuf::MessageLite& from_msg);
+
+  public:
+  bool IsInitialized() const {
+    return true;
+  }
+  ABSL_ATTRIBUTE_REINITIALIZES void Clear() PROTOBUF_FINAL;
+  #if defined(PROTOBUF_CUSTOM_VTABLE)
+  private:
+  static ::size_t ByteSizeLong(const ::google::protobuf::MessageLite& msg);
+  static ::uint8_t* PROTOBUF_NONNULL _InternalSerialize(
+      const ::google::protobuf::MessageLite& msg, ::uint8_t* PROTOBUF_NONNULL target,
+      ::google::protobuf::io::EpsCopyOutputStream* PROTOBUF_NONNULL stream);
+
+  public:
+  ::size_t ByteSizeLong() const { return ByteSizeLong(*this); }
+  ::uint8_t* PROTOBUF_NONNULL _InternalSerialize(
+      ::uint8_t* PROTOBUF_NONNULL target,
+      ::google::protobuf::io::EpsCopyOutputStream* PROTOBUF_NONNULL stream) const {
+    return _InternalSerialize(*this, target, stream);
+  }
+  #else   // PROTOBUF_CUSTOM_VTABLE
+  ::size_t ByteSizeLong() const final;
+  ::uint8_t* PROTOBUF_NONNULL _InternalSerialize(
+      ::uint8_t* PROTOBUF_NONNULL target,
+      ::google::protobuf::io::EpsCopyOutputStream* PROTOBUF_NONNULL stream) const final;
+  #endif  // PROTOBUF_CUSTOM_VTABLE
+  int GetCachedSize() const { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::google::protobuf::Arena* PROTOBUF_NULLABLE arena);
+  static void SharedDtor(MessageLite& self);
+  void InternalSwap(EmbeddingReq* PROTOBUF_NONNULL other);
+ private:
+  template <typename T>
+  friend ::absl::string_view(::google::protobuf::internal::GetAnyMessageName)();
+  static ::absl::string_view FullMessageName() { return "GrpcLibrary.EmbeddingReq"; }
+
+  explicit EmbeddingReq(::google::protobuf::Arena* PROTOBUF_NULLABLE arena);
+  EmbeddingReq(::google::protobuf::Arena* PROTOBUF_NULLABLE arena, const EmbeddingReq& from);
+  EmbeddingReq(
+      ::google::protobuf::Arena* PROTOBUF_NULLABLE arena, EmbeddingReq&& from) noexcept
+      : EmbeddingReq(arena) {
+    *this = ::std::move(from);
+  }
+  const ::google::protobuf::internal::ClassData* PROTOBUF_NONNULL GetClassData() const PROTOBUF_FINAL;
+  static void* PROTOBUF_NONNULL PlacementNew_(
+      const void* PROTOBUF_NONNULL, void* PROTOBUF_NONNULL mem,
+      ::google::protobuf::Arena* PROTOBUF_NULLABLE arena);
+  static constexpr auto InternalNewImpl_();
+
+ public:
+  static constexpr auto InternalGenerateClassData_();
+
+  ::google::protobuf::Metadata GetMetadata() const;
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+  enum : int {
+    kTaskIdFieldNumber = 1,
+    kParamFieldNumber = 2,
+    kChunkFieldNumber = 3,
+  };
+  // int64 task_id = 1;
+  void clear_task_id() ;
+  ::int64_t task_id() const;
+  void set_task_id(::int64_t value);
+
+  private:
+  ::int64_t _internal_task_id() const;
+  void _internal_set_task_id(::int64_t value);
+
+  public:
+  // .GrpcLibrary.EmbeddingParam param = 2;
+  bool has_param() const;
+  private:
+  bool _internal_has_param() const;
+
+  public:
+  void clear_param() ;
+  const ::GrpcLibrary::EmbeddingParam& param() const;
+  [[nodiscard]] ::GrpcLibrary::EmbeddingParam* PROTOBUF_NULLABLE release_param();
+  ::GrpcLibrary::EmbeddingParam* PROTOBUF_NONNULL mutable_param();
+  void set_allocated_param(::GrpcLibrary::EmbeddingParam* PROTOBUF_NULLABLE value);
+  void unsafe_arena_set_allocated_param(::GrpcLibrary::EmbeddingParam* PROTOBUF_NULLABLE value);
+  ::GrpcLibrary::EmbeddingParam* PROTOBUF_NULLABLE unsafe_arena_release_param();
+
+  private:
+  const ::GrpcLibrary::EmbeddingParam& _internal_param() const;
+  ::GrpcLibrary::EmbeddingParam* PROTOBUF_NONNULL _internal_mutable_param();
+
+  public:
+  // .GrpcLibrary.FileChunk chunk = 3;
+  bool has_chunk() const;
+  private:
+  bool _internal_has_chunk() const;
+
+  public:
+  void clear_chunk() ;
+  const ::GrpcLibrary::FileChunk& chunk() const;
+  [[nodiscard]] ::GrpcLibrary::FileChunk* PROTOBUF_NULLABLE release_chunk();
+  ::GrpcLibrary::FileChunk* PROTOBUF_NONNULL mutable_chunk();
+  void set_allocated_chunk(::GrpcLibrary::FileChunk* PROTOBUF_NULLABLE value);
+  void unsafe_arena_set_allocated_chunk(::GrpcLibrary::FileChunk* PROTOBUF_NULLABLE value);
+  ::GrpcLibrary::FileChunk* PROTOBUF_NULLABLE unsafe_arena_release_chunk();
+
+  private:
+  const ::GrpcLibrary::FileChunk& _internal_chunk() const;
+  ::GrpcLibrary::FileChunk* PROTOBUF_NONNULL _internal_mutable_chunk();
+
+  public:
+  void clear_request_type();
+  RequestTypeCase request_type_case() const;
+  // @@protoc_insertion_point(class_scope:GrpcLibrary.EmbeddingReq)
+ private:
+  class _Internal;
+  void set_has_param();
+  void set_has_chunk();
+  inline bool has_request_type() const;
+  inline void clear_has_request_type();
+  friend class ::google::protobuf::internal::TcParser;
+  static const ::google::protobuf::internal::TcParseTable<0, 3,
+                                   2, 0,
+                                   2>
+      _table_;
+
+  friend class ::google::protobuf::MessageLite;
+  friend class ::google::protobuf::Arena;
+  template <typename T>
+  friend class ::google::protobuf::Arena::InternalHelper;
+  using InternalArenaConstructable_ = void;
+  using DestructorSkippable_ = void;
+  struct Impl_ {
+    inline explicit constexpr Impl_(::google::protobuf::internal::ConstantInitialized) noexcept;
+    inline explicit Impl_(
+        ::google::protobuf::internal::InternalVisibility visibility,
+        ::google::protobuf::Arena* PROTOBUF_NULLABLE arena);
+    inline explicit Impl_(
+        ::google::protobuf::internal::InternalVisibility visibility,
+        ::google::protobuf::Arena* PROTOBUF_NULLABLE arena, const Impl_& from,
+        const EmbeddingReq& from_msg);
+    ::google::protobuf::internal::HasBits<1> _has_bits_;
+    ::google::protobuf::internal::CachedSize _cached_size_;
+    ::int64_t task_id_;
+    union RequestTypeUnion {
+      constexpr RequestTypeUnion() : _constinit_{} {}
+      ::google::protobuf::internal::ConstantInitialized _constinit_;
+      ::GrpcLibrary::EmbeddingParam* PROTOBUF_NULLABLE param_;
+      ::GrpcLibrary::FileChunk* PROTOBUF_NULLABLE chunk_;
+    } request_type_;
+    ::uint32_t _oneof_case_[1];
+    PROTOBUF_TSAN_DECLARE_MEMBER
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_src_2fapi_2eproto;
+};
+
+extern const ::google::protobuf::internal::ClassDataFull EmbeddingReq_class_data_;
 
 // ===================================================================
 
@@ -12165,6 +13527,244 @@ inline float RecognitionParam::_internal_no_speech_thold() const {
 inline void RecognitionParam::_internal_set_no_speech_thold(float value) {
   ::google::protobuf::internal::TSanWrite(&_impl_);
   _impl_.no_speech_thold_ = value;
+}
+
+// -------------------------------------------------------------------
+
+// EmbeddingParam
+
+// int32 dimension = 1;
+inline void EmbeddingParam::clear_dimension() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.dimension_ = 0;
+  ClearHasBit(_impl_._has_bits_[0],
+                  0x00000001U);
+}
+inline ::int32_t EmbeddingParam::dimension() const {
+  // @@protoc_insertion_point(field_get:GrpcLibrary.EmbeddingParam.dimension)
+  return _internal_dimension();
+}
+inline void EmbeddingParam::set_dimension(::int32_t value) {
+  _internal_set_dimension(value);
+  SetHasBit(_impl_._has_bits_[0], 0x00000001U);
+  // @@protoc_insertion_point(field_set:GrpcLibrary.EmbeddingParam.dimension)
+}
+inline ::int32_t EmbeddingParam::_internal_dimension() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.dimension_;
+}
+inline void EmbeddingParam::_internal_set_dimension(::int32_t value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.dimension_ = value;
+}
+
+// -------------------------------------------------------------------
+
+// FileChunk
+
+// int64 id = 1;
+inline void FileChunk::clear_id() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.id_ = ::int64_t{0};
+  ClearHasBit(_impl_._has_bits_[0],
+                  0x00000004U);
+}
+inline ::int64_t FileChunk::id() const {
+  // @@protoc_insertion_point(field_get:GrpcLibrary.FileChunk.id)
+  return _internal_id();
+}
+inline void FileChunk::set_id(::int64_t value) {
+  _internal_set_id(value);
+  SetHasBit(_impl_._has_bits_[0], 0x00000004U);
+  // @@protoc_insertion_point(field_set:GrpcLibrary.FileChunk.id)
+}
+inline ::int64_t FileChunk::_internal_id() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.id_;
+}
+inline void FileChunk::_internal_set_id(::int64_t value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.id_ = value;
+}
+
+// bytes data = 2;
+inline void FileChunk::clear_data() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.data_.ClearToEmpty();
+  ClearHasBit(_impl_._has_bits_[0],
+                  0x00000001U);
+}
+inline const ::std::string& FileChunk::data() const
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_get:GrpcLibrary.FileChunk.data)
+  return _internal_data();
+}
+template <typename Arg_, typename... Args_>
+PROTOBUF_ALWAYS_INLINE void FileChunk::set_data(Arg_&& arg, Args_... args) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  SetHasBit(_impl_._has_bits_[0], 0x00000001U);
+  _impl_.data_.SetBytes(static_cast<Arg_&&>(arg), args..., GetArena());
+  // @@protoc_insertion_point(field_set:GrpcLibrary.FileChunk.data)
+}
+inline ::std::string* PROTOBUF_NONNULL FileChunk::mutable_data()
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  SetHasBit(_impl_._has_bits_[0], 0x00000001U);
+  ::std::string* _s = _internal_mutable_data();
+  // @@protoc_insertion_point(field_mutable:GrpcLibrary.FileChunk.data)
+  return _s;
+}
+inline const ::std::string& FileChunk::_internal_data() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.data_.Get();
+}
+inline void FileChunk::_internal_set_data(const ::std::string& value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.data_.Set(value, GetArena());
+}
+inline ::std::string* PROTOBUF_NONNULL FileChunk::_internal_mutable_data() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  return _impl_.data_.Mutable( GetArena());
+}
+inline ::std::string* PROTOBUF_NULLABLE FileChunk::release_data() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  // @@protoc_insertion_point(field_release:GrpcLibrary.FileChunk.data)
+  if (!CheckHasBit(_impl_._has_bits_[0], 0x00000001U)) {
+    return nullptr;
+  }
+  ClearHasBit(_impl_._has_bits_[0], 0x00000001U);
+  auto* released = _impl_.data_.Release();
+  if (::google::protobuf::internal::DebugHardenForceCopyDefaultString()) {
+    _impl_.data_.Set("", GetArena());
+  }
+  return released;
+}
+inline void FileChunk::set_allocated_data(::std::string* PROTOBUF_NULLABLE value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  if (value != nullptr) {
+    SetHasBit(_impl_._has_bits_[0], 0x00000001U);
+  } else {
+    ClearHasBit(_impl_._has_bits_[0], 0x00000001U);
+  }
+  _impl_.data_.SetAllocated(value, GetArena());
+  if (::google::protobuf::internal::DebugHardenForceCopyDefaultString() && _impl_.data_.IsDefault()) {
+    _impl_.data_.Set("", GetArena());
+  }
+  // @@protoc_insertion_point(field_set_allocated:GrpcLibrary.FileChunk.data)
+}
+
+// int64 start_pos = 3;
+inline void FileChunk::clear_start_pos() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.start_pos_ = ::int64_t{0};
+  ClearHasBit(_impl_._has_bits_[0],
+                  0x00000008U);
+}
+inline ::int64_t FileChunk::start_pos() const {
+  // @@protoc_insertion_point(field_get:GrpcLibrary.FileChunk.start_pos)
+  return _internal_start_pos();
+}
+inline void FileChunk::set_start_pos(::int64_t value) {
+  _internal_set_start_pos(value);
+  SetHasBit(_impl_._has_bits_[0], 0x00000008U);
+  // @@protoc_insertion_point(field_set:GrpcLibrary.FileChunk.start_pos)
+}
+inline ::int64_t FileChunk::_internal_start_pos() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.start_pos_;
+}
+inline void FileChunk::_internal_set_start_pos(::int64_t value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.start_pos_ = value;
+}
+
+// int64 end_pos = 4;
+inline void FileChunk::clear_end_pos() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.end_pos_ = ::int64_t{0};
+  ClearHasBit(_impl_._has_bits_[0],
+                  0x00000010U);
+}
+inline ::int64_t FileChunk::end_pos() const {
+  // @@protoc_insertion_point(field_get:GrpcLibrary.FileChunk.end_pos)
+  return _internal_end_pos();
+}
+inline void FileChunk::set_end_pos(::int64_t value) {
+  _internal_set_end_pos(value);
+  SetHasBit(_impl_._has_bits_[0], 0x00000010U);
+  // @@protoc_insertion_point(field_set:GrpcLibrary.FileChunk.end_pos)
+}
+inline ::int64_t FileChunk::_internal_end_pos() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.end_pos_;
+}
+inline void FileChunk::_internal_set_end_pos(::int64_t value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.end_pos_ = value;
+}
+
+// string filename = 5;
+inline void FileChunk::clear_filename() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.filename_.ClearToEmpty();
+  ClearHasBit(_impl_._has_bits_[0],
+                  0x00000002U);
+}
+inline const ::std::string& FileChunk::filename() const
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_get:GrpcLibrary.FileChunk.filename)
+  return _internal_filename();
+}
+template <typename Arg_, typename... Args_>
+PROTOBUF_ALWAYS_INLINE void FileChunk::set_filename(Arg_&& arg, Args_... args) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  SetHasBit(_impl_._has_bits_[0], 0x00000002U);
+  _impl_.filename_.Set(static_cast<Arg_&&>(arg), args..., GetArena());
+  // @@protoc_insertion_point(field_set:GrpcLibrary.FileChunk.filename)
+}
+inline ::std::string* PROTOBUF_NONNULL FileChunk::mutable_filename()
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  SetHasBit(_impl_._has_bits_[0], 0x00000002U);
+  ::std::string* _s = _internal_mutable_filename();
+  // @@protoc_insertion_point(field_mutable:GrpcLibrary.FileChunk.filename)
+  return _s;
+}
+inline const ::std::string& FileChunk::_internal_filename() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.filename_.Get();
+}
+inline void FileChunk::_internal_set_filename(const ::std::string& value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.filename_.Set(value, GetArena());
+}
+inline ::std::string* PROTOBUF_NONNULL FileChunk::_internal_mutable_filename() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  return _impl_.filename_.Mutable( GetArena());
+}
+inline ::std::string* PROTOBUF_NULLABLE FileChunk::release_filename() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  // @@protoc_insertion_point(field_release:GrpcLibrary.FileChunk.filename)
+  if (!CheckHasBit(_impl_._has_bits_[0], 0x00000002U)) {
+    return nullptr;
+  }
+  ClearHasBit(_impl_._has_bits_[0], 0x00000002U);
+  auto* released = _impl_.filename_.Release();
+  if (::google::protobuf::internal::DebugHardenForceCopyDefaultString()) {
+    _impl_.filename_.Set("", GetArena());
+  }
+  return released;
+}
+inline void FileChunk::set_allocated_filename(::std::string* PROTOBUF_NULLABLE value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  if (value != nullptr) {
+    SetHasBit(_impl_._has_bits_[0], 0x00000002U);
+  } else {
+    ClearHasBit(_impl_._has_bits_[0], 0x00000002U);
+  }
+  _impl_.filename_.SetAllocated(value, GetArena());
+  if (::google::protobuf::internal::DebugHardenForceCopyDefaultString() && _impl_.filename_.IsDefault()) {
+    _impl_.filename_.Set("", GetArena());
+  }
+  // @@protoc_insertion_point(field_set_allocated:GrpcLibrary.FileChunk.filename)
 }
 
 // -------------------------------------------------------------------
@@ -16758,6 +18358,525 @@ inline void UploadResp::set_allocated_hash(::std::string* PROTOBUF_NULLABLE valu
     _impl_.hash_.Set("", GetArena());
   }
   // @@protoc_insertion_point(field_set_allocated:GrpcLibrary.UploadResp.hash)
+}
+
+// -------------------------------------------------------------------
+
+// EmbeddingReq
+
+// int64 task_id = 1;
+inline void EmbeddingReq::clear_task_id() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.task_id_ = ::int64_t{0};
+  ClearHasBit(_impl_._has_bits_[0],
+                  0x00000001U);
+}
+inline ::int64_t EmbeddingReq::task_id() const {
+  // @@protoc_insertion_point(field_get:GrpcLibrary.EmbeddingReq.task_id)
+  return _internal_task_id();
+}
+inline void EmbeddingReq::set_task_id(::int64_t value) {
+  _internal_set_task_id(value);
+  SetHasBit(_impl_._has_bits_[0], 0x00000001U);
+  // @@protoc_insertion_point(field_set:GrpcLibrary.EmbeddingReq.task_id)
+}
+inline ::int64_t EmbeddingReq::_internal_task_id() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.task_id_;
+}
+inline void EmbeddingReq::_internal_set_task_id(::int64_t value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.task_id_ = value;
+}
+
+// .GrpcLibrary.EmbeddingParam param = 2;
+inline bool EmbeddingReq::has_param() const {
+  return request_type_case() == kParam;
+}
+inline bool EmbeddingReq::_internal_has_param() const {
+  return request_type_case() == kParam;
+}
+inline void EmbeddingReq::set_has_param() {
+  _impl_._oneof_case_[0] = kParam;
+}
+inline void EmbeddingReq::clear_param() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  if (request_type_case() == kParam) {
+    if (GetArena() == nullptr) {
+      delete _impl_.request_type_.param_;
+    } else if (::google::protobuf::internal::DebugHardenClearOneofMessageOnArena()) {
+      ::google::protobuf::internal::MaybePoisonAfterClear(_impl_.request_type_.param_);
+    }
+    clear_has_request_type();
+  }
+}
+inline ::GrpcLibrary::EmbeddingParam* PROTOBUF_NULLABLE EmbeddingReq::release_param() {
+  // @@protoc_insertion_point(field_release:GrpcLibrary.EmbeddingReq.param)
+  if (request_type_case() == kParam) {
+    clear_has_request_type();
+    auto* temp = _impl_.request_type_.param_;
+    if (GetArena() != nullptr) {
+      temp = ::google::protobuf::internal::DuplicateIfNonNull(temp);
+    }
+    _impl_.request_type_.param_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline const ::GrpcLibrary::EmbeddingParam& EmbeddingReq::_internal_param() const {
+  return request_type_case() == kParam ? static_cast<const ::GrpcLibrary::EmbeddingParam&>(*_impl_.request_type_.param_)
+                     : reinterpret_cast<const ::GrpcLibrary::EmbeddingParam&>(::GrpcLibrary::_EmbeddingParam_default_instance_);
+}
+inline const ::GrpcLibrary::EmbeddingParam& EmbeddingReq::param() const ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_get:GrpcLibrary.EmbeddingReq.param)
+  return _internal_param();
+}
+inline ::GrpcLibrary::EmbeddingParam* PROTOBUF_NULLABLE EmbeddingReq::unsafe_arena_release_param() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:GrpcLibrary.EmbeddingReq.param)
+  if (request_type_case() == kParam) {
+    clear_has_request_type();
+    auto* temp = _impl_.request_type_.param_;
+    _impl_.request_type_.param_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline void EmbeddingReq::unsafe_arena_set_allocated_param(
+    ::GrpcLibrary::EmbeddingParam* PROTOBUF_NULLABLE value) {
+  // We rely on the oneof clear method to free the earlier contents
+  // of this oneof. We can directly use the pointer we're given to
+  // set the new value.
+  clear_request_type();
+  if (value) {
+    set_has_param();
+    _impl_.request_type_.param_ = value;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:GrpcLibrary.EmbeddingReq.param)
+}
+inline ::GrpcLibrary::EmbeddingParam* PROTOBUF_NONNULL EmbeddingReq::_internal_mutable_param() {
+  if (request_type_case() != kParam) {
+    clear_request_type();
+    set_has_param();
+    _impl_.request_type_.param_ = 
+        ::google::protobuf::Message::DefaultConstruct<::GrpcLibrary::EmbeddingParam>(GetArena());
+  }
+  return _impl_.request_type_.param_;
+}
+inline ::GrpcLibrary::EmbeddingParam* PROTOBUF_NONNULL EmbeddingReq::mutable_param()
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  ::GrpcLibrary::EmbeddingParam* _msg = _internal_mutable_param();
+  // @@protoc_insertion_point(field_mutable:GrpcLibrary.EmbeddingReq.param)
+  return _msg;
+}
+
+// .GrpcLibrary.FileChunk chunk = 3;
+inline bool EmbeddingReq::has_chunk() const {
+  return request_type_case() == kChunk;
+}
+inline bool EmbeddingReq::_internal_has_chunk() const {
+  return request_type_case() == kChunk;
+}
+inline void EmbeddingReq::set_has_chunk() {
+  _impl_._oneof_case_[0] = kChunk;
+}
+inline void EmbeddingReq::clear_chunk() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  if (request_type_case() == kChunk) {
+    if (GetArena() == nullptr) {
+      delete _impl_.request_type_.chunk_;
+    } else if (::google::protobuf::internal::DebugHardenClearOneofMessageOnArena()) {
+      ::google::protobuf::internal::MaybePoisonAfterClear(_impl_.request_type_.chunk_);
+    }
+    clear_has_request_type();
+  }
+}
+inline ::GrpcLibrary::FileChunk* PROTOBUF_NULLABLE EmbeddingReq::release_chunk() {
+  // @@protoc_insertion_point(field_release:GrpcLibrary.EmbeddingReq.chunk)
+  if (request_type_case() == kChunk) {
+    clear_has_request_type();
+    auto* temp = _impl_.request_type_.chunk_;
+    if (GetArena() != nullptr) {
+      temp = ::google::protobuf::internal::DuplicateIfNonNull(temp);
+    }
+    _impl_.request_type_.chunk_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline const ::GrpcLibrary::FileChunk& EmbeddingReq::_internal_chunk() const {
+  return request_type_case() == kChunk ? static_cast<const ::GrpcLibrary::FileChunk&>(*_impl_.request_type_.chunk_)
+                     : reinterpret_cast<const ::GrpcLibrary::FileChunk&>(::GrpcLibrary::_FileChunk_default_instance_);
+}
+inline const ::GrpcLibrary::FileChunk& EmbeddingReq::chunk() const ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_get:GrpcLibrary.EmbeddingReq.chunk)
+  return _internal_chunk();
+}
+inline ::GrpcLibrary::FileChunk* PROTOBUF_NULLABLE EmbeddingReq::unsafe_arena_release_chunk() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:GrpcLibrary.EmbeddingReq.chunk)
+  if (request_type_case() == kChunk) {
+    clear_has_request_type();
+    auto* temp = _impl_.request_type_.chunk_;
+    _impl_.request_type_.chunk_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline void EmbeddingReq::unsafe_arena_set_allocated_chunk(
+    ::GrpcLibrary::FileChunk* PROTOBUF_NULLABLE value) {
+  // We rely on the oneof clear method to free the earlier contents
+  // of this oneof. We can directly use the pointer we're given to
+  // set the new value.
+  clear_request_type();
+  if (value) {
+    set_has_chunk();
+    _impl_.request_type_.chunk_ = value;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:GrpcLibrary.EmbeddingReq.chunk)
+}
+inline ::GrpcLibrary::FileChunk* PROTOBUF_NONNULL EmbeddingReq::_internal_mutable_chunk() {
+  if (request_type_case() != kChunk) {
+    clear_request_type();
+    set_has_chunk();
+    _impl_.request_type_.chunk_ = 
+        ::google::protobuf::Message::DefaultConstruct<::GrpcLibrary::FileChunk>(GetArena());
+  }
+  return _impl_.request_type_.chunk_;
+}
+inline ::GrpcLibrary::FileChunk* PROTOBUF_NONNULL EmbeddingReq::mutable_chunk()
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  ::GrpcLibrary::FileChunk* _msg = _internal_mutable_chunk();
+  // @@protoc_insertion_point(field_mutable:GrpcLibrary.EmbeddingReq.chunk)
+  return _msg;
+}
+
+inline bool EmbeddingReq::has_request_type() const {
+  return request_type_case() != REQUEST_TYPE_NOT_SET;
+}
+inline void EmbeddingReq::clear_has_request_type() {
+  _impl_._oneof_case_[0] = REQUEST_TYPE_NOT_SET;
+}
+inline EmbeddingReq::RequestTypeCase EmbeddingReq::request_type_case() const {
+  return EmbeddingReq::RequestTypeCase(_impl_._oneof_case_[0]);
+}
+// -------------------------------------------------------------------
+
+// EmbeddingResp
+
+// int32 error_code = 1;
+inline void EmbeddingResp::clear_error_code() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.error_code_ = 0;
+  ClearHasBit(_impl_._has_bits_[0],
+                  0x00000008U);
+}
+inline ::int32_t EmbeddingResp::error_code() const {
+  // @@protoc_insertion_point(field_get:GrpcLibrary.EmbeddingResp.error_code)
+  return _internal_error_code();
+}
+inline void EmbeddingResp::set_error_code(::int32_t value) {
+  _internal_set_error_code(value);
+  SetHasBit(_impl_._has_bits_[0], 0x00000008U);
+  // @@protoc_insertion_point(field_set:GrpcLibrary.EmbeddingResp.error_code)
+}
+inline ::int32_t EmbeddingResp::_internal_error_code() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.error_code_;
+}
+inline void EmbeddingResp::_internal_set_error_code(::int32_t value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.error_code_ = value;
+}
+
+// int64 task_id = 2;
+inline void EmbeddingResp::clear_task_id() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.task_id_ = ::int64_t{0};
+  ClearHasBit(_impl_._has_bits_[0],
+                  0x00000002U);
+}
+inline ::int64_t EmbeddingResp::task_id() const {
+  // @@protoc_insertion_point(field_get:GrpcLibrary.EmbeddingResp.task_id)
+  return _internal_task_id();
+}
+inline void EmbeddingResp::set_task_id(::int64_t value) {
+  _internal_set_task_id(value);
+  SetHasBit(_impl_._has_bits_[0], 0x00000002U);
+  // @@protoc_insertion_point(field_set:GrpcLibrary.EmbeddingResp.task_id)
+}
+inline ::int64_t EmbeddingResp::_internal_task_id() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.task_id_;
+}
+inline void EmbeddingResp::_internal_set_task_id(::int64_t value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.task_id_ = value;
+}
+
+// int64 chunk_id = 3;
+inline void EmbeddingResp::clear_chunk_id() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.chunk_id_ = ::int64_t{0};
+  ClearHasBit(_impl_._has_bits_[0],
+                  0x00000004U);
+}
+inline ::int64_t EmbeddingResp::chunk_id() const {
+  // @@protoc_insertion_point(field_get:GrpcLibrary.EmbeddingResp.chunk_id)
+  return _internal_chunk_id();
+}
+inline void EmbeddingResp::set_chunk_id(::int64_t value) {
+  _internal_set_chunk_id(value);
+  SetHasBit(_impl_._has_bits_[0], 0x00000004U);
+  // @@protoc_insertion_point(field_set:GrpcLibrary.EmbeddingResp.chunk_id)
+}
+inline ::int64_t EmbeddingResp::_internal_chunk_id() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.chunk_id_;
+}
+inline void EmbeddingResp::_internal_set_chunk_id(::int64_t value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.chunk_id_ = value;
+}
+
+// bytes vector_indexs = 4;
+inline void EmbeddingResp::clear_vector_indexs() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.vector_indexs_.ClearToEmpty();
+  ClearHasBit(_impl_._has_bits_[0],
+                  0x00000001U);
+}
+inline const ::std::string& EmbeddingResp::vector_indexs() const
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_get:GrpcLibrary.EmbeddingResp.vector_indexs)
+  return _internal_vector_indexs();
+}
+template <typename Arg_, typename... Args_>
+PROTOBUF_ALWAYS_INLINE void EmbeddingResp::set_vector_indexs(Arg_&& arg, Args_... args) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  SetHasBit(_impl_._has_bits_[0], 0x00000001U);
+  _impl_.vector_indexs_.SetBytes(static_cast<Arg_&&>(arg), args..., GetArena());
+  // @@protoc_insertion_point(field_set:GrpcLibrary.EmbeddingResp.vector_indexs)
+}
+inline ::std::string* PROTOBUF_NONNULL EmbeddingResp::mutable_vector_indexs()
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  SetHasBit(_impl_._has_bits_[0], 0x00000001U);
+  ::std::string* _s = _internal_mutable_vector_indexs();
+  // @@protoc_insertion_point(field_mutable:GrpcLibrary.EmbeddingResp.vector_indexs)
+  return _s;
+}
+inline const ::std::string& EmbeddingResp::_internal_vector_indexs() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.vector_indexs_.Get();
+}
+inline void EmbeddingResp::_internal_set_vector_indexs(const ::std::string& value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.vector_indexs_.Set(value, GetArena());
+}
+inline ::std::string* PROTOBUF_NONNULL EmbeddingResp::_internal_mutable_vector_indexs() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  return _impl_.vector_indexs_.Mutable( GetArena());
+}
+inline ::std::string* PROTOBUF_NULLABLE EmbeddingResp::release_vector_indexs() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  // @@protoc_insertion_point(field_release:GrpcLibrary.EmbeddingResp.vector_indexs)
+  if (!CheckHasBit(_impl_._has_bits_[0], 0x00000001U)) {
+    return nullptr;
+  }
+  ClearHasBit(_impl_._has_bits_[0], 0x00000001U);
+  auto* released = _impl_.vector_indexs_.Release();
+  if (::google::protobuf::internal::DebugHardenForceCopyDefaultString()) {
+    _impl_.vector_indexs_.Set("", GetArena());
+  }
+  return released;
+}
+inline void EmbeddingResp::set_allocated_vector_indexs(::std::string* PROTOBUF_NULLABLE value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  if (value != nullptr) {
+    SetHasBit(_impl_._has_bits_[0], 0x00000001U);
+  } else {
+    ClearHasBit(_impl_._has_bits_[0], 0x00000001U);
+  }
+  _impl_.vector_indexs_.SetAllocated(value, GetArena());
+  if (::google::protobuf::internal::DebugHardenForceCopyDefaultString() && _impl_.vector_indexs_.IsDefault()) {
+    _impl_.vector_indexs_.Set("", GetArena());
+  }
+  // @@protoc_insertion_point(field_set_allocated:GrpcLibrary.EmbeddingResp.vector_indexs)
+}
+
+// -------------------------------------------------------------------
+
+// StopEmbeddingReq
+
+// int64 task_id = 1;
+inline void StopEmbeddingReq::clear_task_id() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.task_id_ = ::int64_t{0};
+  ClearHasBit(_impl_._has_bits_[0],
+                  0x00000002U);
+}
+inline ::int64_t StopEmbeddingReq::task_id() const {
+  // @@protoc_insertion_point(field_get:GrpcLibrary.StopEmbeddingReq.task_id)
+  return _internal_task_id();
+}
+inline void StopEmbeddingReq::set_task_id(::int64_t value) {
+  _internal_set_task_id(value);
+  SetHasBit(_impl_._has_bits_[0], 0x00000002U);
+  // @@protoc_insertion_point(field_set:GrpcLibrary.StopEmbeddingReq.task_id)
+}
+inline ::int64_t StopEmbeddingReq::_internal_task_id() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.task_id_;
+}
+inline void StopEmbeddingReq::_internal_set_task_id(::int64_t value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.task_id_ = value;
+}
+
+// int64 user_id = 2;
+inline void StopEmbeddingReq::clear_user_id() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.user_id_ = ::int64_t{0};
+  ClearHasBit(_impl_._has_bits_[0],
+                  0x00000004U);
+}
+inline ::int64_t StopEmbeddingReq::user_id() const {
+  // @@protoc_insertion_point(field_get:GrpcLibrary.StopEmbeddingReq.user_id)
+  return _internal_user_id();
+}
+inline void StopEmbeddingReq::set_user_id(::int64_t value) {
+  _internal_set_user_id(value);
+  SetHasBit(_impl_._has_bits_[0], 0x00000004U);
+  // @@protoc_insertion_point(field_set:GrpcLibrary.StopEmbeddingReq.user_id)
+}
+inline ::int64_t StopEmbeddingReq::_internal_user_id() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.user_id_;
+}
+inline void StopEmbeddingReq::_internal_set_user_id(::int64_t value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.user_id_ = value;
+}
+
+// string auth = 3;
+inline void StopEmbeddingReq::clear_auth() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.auth_.ClearToEmpty();
+  ClearHasBit(_impl_._has_bits_[0],
+                  0x00000001U);
+}
+inline const ::std::string& StopEmbeddingReq::auth() const
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_get:GrpcLibrary.StopEmbeddingReq.auth)
+  return _internal_auth();
+}
+template <typename Arg_, typename... Args_>
+PROTOBUF_ALWAYS_INLINE void StopEmbeddingReq::set_auth(Arg_&& arg, Args_... args) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  SetHasBit(_impl_._has_bits_[0], 0x00000001U);
+  _impl_.auth_.Set(static_cast<Arg_&&>(arg), args..., GetArena());
+  // @@protoc_insertion_point(field_set:GrpcLibrary.StopEmbeddingReq.auth)
+}
+inline ::std::string* PROTOBUF_NONNULL StopEmbeddingReq::mutable_auth()
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  SetHasBit(_impl_._has_bits_[0], 0x00000001U);
+  ::std::string* _s = _internal_mutable_auth();
+  // @@protoc_insertion_point(field_mutable:GrpcLibrary.StopEmbeddingReq.auth)
+  return _s;
+}
+inline const ::std::string& StopEmbeddingReq::_internal_auth() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.auth_.Get();
+}
+inline void StopEmbeddingReq::_internal_set_auth(const ::std::string& value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.auth_.Set(value, GetArena());
+}
+inline ::std::string* PROTOBUF_NONNULL StopEmbeddingReq::_internal_mutable_auth() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  return _impl_.auth_.Mutable( GetArena());
+}
+inline ::std::string* PROTOBUF_NULLABLE StopEmbeddingReq::release_auth() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  // @@protoc_insertion_point(field_release:GrpcLibrary.StopEmbeddingReq.auth)
+  if (!CheckHasBit(_impl_._has_bits_[0], 0x00000001U)) {
+    return nullptr;
+  }
+  ClearHasBit(_impl_._has_bits_[0], 0x00000001U);
+  auto* released = _impl_.auth_.Release();
+  if (::google::protobuf::internal::DebugHardenForceCopyDefaultString()) {
+    _impl_.auth_.Set("", GetArena());
+  }
+  return released;
+}
+inline void StopEmbeddingReq::set_allocated_auth(::std::string* PROTOBUF_NULLABLE value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  if (value != nullptr) {
+    SetHasBit(_impl_._has_bits_[0], 0x00000001U);
+  } else {
+    ClearHasBit(_impl_._has_bits_[0], 0x00000001U);
+  }
+  _impl_.auth_.SetAllocated(value, GetArena());
+  if (::google::protobuf::internal::DebugHardenForceCopyDefaultString() && _impl_.auth_.IsDefault()) {
+    _impl_.auth_.Set("", GetArena());
+  }
+  // @@protoc_insertion_point(field_set_allocated:GrpcLibrary.StopEmbeddingReq.auth)
+}
+
+// -------------------------------------------------------------------
+
+// StopEmbeddingResp
+
+// int32 error_code = 1;
+inline void StopEmbeddingResp::clear_error_code() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.error_code_ = 0;
+  ClearHasBit(_impl_._has_bits_[0],
+                  0x00000002U);
+}
+inline ::int32_t StopEmbeddingResp::error_code() const {
+  // @@protoc_insertion_point(field_get:GrpcLibrary.StopEmbeddingResp.error_code)
+  return _internal_error_code();
+}
+inline void StopEmbeddingResp::set_error_code(::int32_t value) {
+  _internal_set_error_code(value);
+  SetHasBit(_impl_._has_bits_[0], 0x00000002U);
+  // @@protoc_insertion_point(field_set:GrpcLibrary.StopEmbeddingResp.error_code)
+}
+inline ::int32_t StopEmbeddingResp::_internal_error_code() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.error_code_;
+}
+inline void StopEmbeddingResp::_internal_set_error_code(::int32_t value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.error_code_ = value;
+}
+
+// int64 task_id = 2;
+inline void StopEmbeddingResp::clear_task_id() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.task_id_ = ::int64_t{0};
+  ClearHasBit(_impl_._has_bits_[0],
+                  0x00000001U);
+}
+inline ::int64_t StopEmbeddingResp::task_id() const {
+  // @@protoc_insertion_point(field_get:GrpcLibrary.StopEmbeddingResp.task_id)
+  return _internal_task_id();
+}
+inline void StopEmbeddingResp::set_task_id(::int64_t value) {
+  _internal_set_task_id(value);
+  SetHasBit(_impl_._has_bits_[0], 0x00000001U);
+  // @@protoc_insertion_point(field_set:GrpcLibrary.StopEmbeddingResp.task_id)
+}
+inline ::int64_t StopEmbeddingResp::_internal_task_id() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.task_id_;
+}
+inline void StopEmbeddingResp::_internal_set_task_id(::int64_t value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.task_id_ = value;
 }
 
 #ifdef __GNUC__

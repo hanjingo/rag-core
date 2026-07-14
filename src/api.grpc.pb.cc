@@ -39,6 +39,8 @@ static const char* GrpcService_method_names[] = {
   "/GrpcLibrary.GrpcService/GetSkillInfo",
   "/GrpcLibrary.GrpcService/Download",
   "/GrpcLibrary.GrpcService/Upload",
+  "/GrpcLibrary.GrpcService/Embedding",
+  "/GrpcLibrary.GrpcService/StopEmbedding",
 };
 
 std::unique_ptr< GrpcService::Stub> GrpcService::NewStub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, const ::grpc::StubOptions& options) {
@@ -64,6 +66,8 @@ GrpcService::Stub::Stub(const std::shared_ptr< ::grpc::ChannelInterface>& channe
   , rpcmethod_GetSkillInfo_(GrpcService_method_names[13], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
   , rpcmethod_Download_(GrpcService_method_names[14], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
   , rpcmethod_Upload_(GrpcService_method_names[15], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_Embedding_(GrpcService_method_names[16], options.suffix_for_stats(),::grpc::internal::RpcMethod::BIDI_STREAMING, channel)
+  , rpcmethod_StopEmbedding_(GrpcService_method_names[17], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
   {}
 
 ::grpc::Status GrpcService::Stub::Heartbeat(::grpc::ClientContext* context, const ::GrpcLibrary::Ping& request, ::GrpcLibrary::Pong* response) {
@@ -420,6 +424,45 @@ void GrpcService::Stub::async::Upload(::grpc::ClientContext* context, const ::Gr
   return result;
 }
 
+::grpc::ClientReaderWriter< ::GrpcLibrary::EmbeddingReq, ::GrpcLibrary::EmbeddingResp>* GrpcService::Stub::EmbeddingRaw(::grpc::ClientContext* context) {
+  return ::grpc::internal::ClientReaderWriterFactory< ::GrpcLibrary::EmbeddingReq, ::GrpcLibrary::EmbeddingResp>::Create(channel_.get(), rpcmethod_Embedding_, context);
+}
+
+void GrpcService::Stub::async::Embedding(::grpc::ClientContext* context, ::grpc::ClientBidiReactor< ::GrpcLibrary::EmbeddingReq,::GrpcLibrary::EmbeddingResp>* reactor) {
+  ::grpc::internal::ClientCallbackReaderWriterFactory< ::GrpcLibrary::EmbeddingReq,::GrpcLibrary::EmbeddingResp>::Create(stub_->channel_.get(), stub_->rpcmethod_Embedding_, context, reactor);
+}
+
+::grpc::ClientAsyncReaderWriter< ::GrpcLibrary::EmbeddingReq, ::GrpcLibrary::EmbeddingResp>* GrpcService::Stub::AsyncEmbeddingRaw(::grpc::ClientContext* context, ::grpc::CompletionQueue* cq, void* tag) {
+  return ::grpc::internal::ClientAsyncReaderWriterFactory< ::GrpcLibrary::EmbeddingReq, ::GrpcLibrary::EmbeddingResp>::Create(channel_.get(), cq, rpcmethod_Embedding_, context, true, tag);
+}
+
+::grpc::ClientAsyncReaderWriter< ::GrpcLibrary::EmbeddingReq, ::GrpcLibrary::EmbeddingResp>* GrpcService::Stub::PrepareAsyncEmbeddingRaw(::grpc::ClientContext* context, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncReaderWriterFactory< ::GrpcLibrary::EmbeddingReq, ::GrpcLibrary::EmbeddingResp>::Create(channel_.get(), cq, rpcmethod_Embedding_, context, false, nullptr);
+}
+
+::grpc::Status GrpcService::Stub::StopEmbedding(::grpc::ClientContext* context, const ::GrpcLibrary::StopEmbeddingReq& request, ::GrpcLibrary::StopEmbeddingResp* response) {
+  return ::grpc::internal::BlockingUnaryCall< ::GrpcLibrary::StopEmbeddingReq, ::GrpcLibrary::StopEmbeddingResp, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_StopEmbedding_, context, request, response);
+}
+
+void GrpcService::Stub::async::StopEmbedding(::grpc::ClientContext* context, const ::GrpcLibrary::StopEmbeddingReq* request, ::GrpcLibrary::StopEmbeddingResp* response, std::function<void(::grpc::Status)> f) {
+  ::grpc::internal::CallbackUnaryCall< ::GrpcLibrary::StopEmbeddingReq, ::GrpcLibrary::StopEmbeddingResp, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_StopEmbedding_, context, request, response, std::move(f));
+}
+
+void GrpcService::Stub::async::StopEmbedding(::grpc::ClientContext* context, const ::GrpcLibrary::StopEmbeddingReq* request, ::GrpcLibrary::StopEmbeddingResp* response, ::grpc::ClientUnaryReactor* reactor) {
+  ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_StopEmbedding_, context, request, response, reactor);
+}
+
+::grpc::ClientAsyncResponseReader< ::GrpcLibrary::StopEmbeddingResp>* GrpcService::Stub::PrepareAsyncStopEmbeddingRaw(::grpc::ClientContext* context, const ::GrpcLibrary::StopEmbeddingReq& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncResponseReaderHelper::Create< ::GrpcLibrary::StopEmbeddingResp, ::GrpcLibrary::StopEmbeddingReq, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), cq, rpcmethod_StopEmbedding_, context, request);
+}
+
+::grpc::ClientAsyncResponseReader< ::GrpcLibrary::StopEmbeddingResp>* GrpcService::Stub::AsyncStopEmbeddingRaw(::grpc::ClientContext* context, const ::GrpcLibrary::StopEmbeddingReq& request, ::grpc::CompletionQueue* cq) {
+  auto* result =
+    this->PrepareAsyncStopEmbeddingRaw(context, request, cq);
+  result->StartCall();
+  return result;
+}
+
 GrpcService::Service::Service() {
   AddMethod(new ::grpc::internal::RpcServiceMethod(
       GrpcService_method_names[0],
@@ -581,6 +624,26 @@ GrpcService::Service::Service() {
              ::GrpcLibrary::UploadResp* resp) {
                return service->Upload(ctx, req, resp);
              }, this)));
+  AddMethod(new ::grpc::internal::RpcServiceMethod(
+      GrpcService_method_names[16],
+      ::grpc::internal::RpcMethod::BIDI_STREAMING,
+      new ::grpc::internal::BidiStreamingHandler< GrpcService::Service, ::GrpcLibrary::EmbeddingReq, ::GrpcLibrary::EmbeddingResp>(
+          [](GrpcService::Service* service,
+             ::grpc::ServerContext* ctx,
+             ::grpc::ServerReaderWriter<::GrpcLibrary::EmbeddingResp,
+             ::GrpcLibrary::EmbeddingReq>* stream) {
+               return service->Embedding(ctx, stream);
+             }, this)));
+  AddMethod(new ::grpc::internal::RpcServiceMethod(
+      GrpcService_method_names[17],
+      ::grpc::internal::RpcMethod::NORMAL_RPC,
+      new ::grpc::internal::RpcMethodHandler< GrpcService::Service, ::GrpcLibrary::StopEmbeddingReq, ::GrpcLibrary::StopEmbeddingResp, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
+          [](GrpcService::Service* service,
+             ::grpc::ServerContext* ctx,
+             const ::GrpcLibrary::StopEmbeddingReq* req,
+             ::GrpcLibrary::StopEmbeddingResp* resp) {
+               return service->StopEmbedding(ctx, req, resp);
+             }, this)));
 }
 
 GrpcService::Service::~Service() {
@@ -691,6 +754,19 @@ GrpcService::Service::~Service() {
 }
 
 ::grpc::Status GrpcService::Service::Upload(::grpc::ServerContext* context, const ::GrpcLibrary::UploadReq* request, ::GrpcLibrary::UploadResp* response) {
+  (void) context;
+  (void) request;
+  (void) response;
+  return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+}
+
+::grpc::Status GrpcService::Service::Embedding(::grpc::ServerContext* context, ::grpc::ServerReaderWriter< ::GrpcLibrary::EmbeddingResp, ::GrpcLibrary::EmbeddingReq>* stream) {
+  (void) context;
+  (void) stream;
+  return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+}
+
+::grpc::Status GrpcService::Service::StopEmbedding(::grpc::ServerContext* context, const ::GrpcLibrary::StopEmbeddingReq* request, ::GrpcLibrary::StopEmbeddingResp* response) {
   (void) context;
   (void) request;
   (void) response;

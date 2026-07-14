@@ -18,6 +18,8 @@ service GrpcService {
     rpc GetSkillInfo (GetSkillInfoReq) returns (GetSkillInfoResp) {}
     rpc Download (DownloadReq) returns (DownloadResp) {}
     rpc Upload (UploadReq) returns (UploadResp) {}
+    rpc Embedding (stream EmbeddingReq) returns (stream EmbeddingResp) {}
+    rpc StopEmbedding (StopEmbeddingReq) returns (StopEmbeddingResp) {}
 }
 
 message Session {
@@ -120,6 +122,18 @@ message RecognitionParam {
     float entropy_thold = 24;
     float logprob_thold = 25;
     float no_speech_thold = 26;
+}
+
+message EmbeddingParam {
+    int32 dimension = 1;
+}
+
+message FileChunk {
+    int64 id = 1;
+    bytes data = 2;
+    int64 start_pos = 3;
+    int64 end_pos = 4;
+    string filename = 5;
 }
 
 message Ping {
@@ -318,4 +332,30 @@ message UploadReq {
 message UploadResp {
     int32 error_code = 1;
     string hash = 2;
+}
+
+message EmbeddingReq {
+    int64 task_id = 1;
+    oneof request_type {
+        EmbeddingParam param = 2;
+        FileChunk chunk = 3;
+    }
+}
+
+message EmbeddingResp {
+    int32 error_code = 1;
+    int64 task_id = 2;
+    int64 chunk_id = 3;
+    bytes vector_indexs = 4;
+}
+
+message StopEmbeddingReq {
+    int64 task_id = 1;
+    int64 user_id = 2;
+    string auth = 3;
+}
+
+message StopEmbeddingResp {
+    int32 error_code = 1;
+    int64 task_id = 2;
 }
