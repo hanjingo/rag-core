@@ -717,13 +717,6 @@ void EmbeddingReactor::OnReadDone(bool ok)
         return;
     }
 
-    if(_req.task_id() != 0 && !_is_registered.load())
-    {
-        _ensure_registered(_req.task_id());
-    }
-
-    _process(_req);
-
     if(_is_cancelled.load())
     {
         LOG_DEBUG("Reactor cancelled, not starting new read for task_id: {}",
@@ -731,6 +724,13 @@ void EmbeddingReactor::OnReadDone(bool ok)
         Finish(grpc::Status::OK);
         return;
     }
+
+    if(_req.task_id() != 0 && !_is_registered.load())
+    {
+        _ensure_registered(_req.task_id());
+    }
+
+    _process(_req);
 
     StartRead(&_req);
 }
@@ -753,6 +753,19 @@ void EmbeddingReactor::OnWriteDone(bool ok)
         }
 
         Finish(grpc::Status(grpc::StatusCode::ABORTED, "Client disconnected"));
+        return;
+    }
+
+    if(_is_cancelled.load())
+    {
+        LOG_DEBUG("Cancelled in OnWriteDone, finishing for task_id: {}",
+                  _task_id);
+        ::GrpcLibrary::EmbeddingResp resp;
+        while(_w_queue.try_dequeue(resp))
+        {
+        }
+
+        Finish(grpc::Status::OK);
         return;
     }
 
@@ -787,6 +800,8 @@ void EmbeddingReactor::Stop()
     while(_w_queue.try_dequeue(resp))
     {
     }
+
+    _ctx->TryCancel();
 }
 
 void EmbeddingReactor::_process(const ::GrpcLibrary::EmbeddingReq &req)
@@ -871,7 +886,8 @@ void EmbeddingReactor::_send(const int                   error_code,
     resp.set_error_code(error_code);
     resp.set_task_id(task_id);
     resp.set_chunk_id(chunk_id);
-    std::string idx(indexs.begin(), indexs.end());
+    std::string idx;
+    idx.assign(reinterpret_cast<const char *>(indexs.data()), indexs.size());
     resp.set_vector_indexs(idx);
     _w_queue.enqueue(resp);
     _flush();
