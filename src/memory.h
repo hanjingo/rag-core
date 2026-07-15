@@ -20,6 +20,11 @@ class memory_mgr
         return inst;
     }
 
+    static hj::vector_index<hj::vindex_flat_l2_t> create_index()
+    {
+        return hj::vector_index<hj::vindex_flat_l2_t>();
+    }
+
     void distribution(std::vector<float> &dst,
                       std::mt19937 &rng = std::mt19937(std::random_device{}()));
 
