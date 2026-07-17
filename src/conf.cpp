@@ -172,11 +172,6 @@ int conf::llm_local_prompt_threshold()
     return _cfg.get<int>("llm/local_prompt_threshold", 100);
 }
 
-std::unordered_set<std::string> conf::llm_hard_prompt_class()
-{
-    return _hard_prompt_class;
-}
-
 std::unordered_map<std::string, conf::remote_api_config> conf::llm_remote_apis()
 {
     return _remote_apis;
@@ -185,6 +180,26 @@ std::unordered_map<std::string, conf::remote_api_config> conf::llm_remote_apis()
 std::unordered_map<std::string, conf::model_config> conf::llm_models()
 {
     return _models;
+}
+
+int conf::llm_remote_api_sz()
+{
+    return _remote_apis.size();
+}
+
+int conf::llm_model_sz()
+{
+    return _models.size();
+}
+
+bool conf::llm_is_local_model(const std::string &model_id)
+{
+    return _models.find(model_id) != _models.end();
+}
+
+bool conf::llm_is_remote_api(const std::string &model_id)
+{
+    return _remote_apis.find(model_id) != _remote_apis.end();
 }
 
 std::string conf::llm_embedding_model()
@@ -270,12 +285,7 @@ void conf::_init()
         _remote_apis[config.id] = config;
     }
 
-    // init prompt classes
-    str          = _cfg.get<std::string>("llm/hard_prompt_class", "");
-    auto classes = hj::string_util::split(str, tag);
-    for(auto item : classes)
-        _hard_prompt_class.emplace(item);
-
+    // init asr
     auto asr_str   = _cfg.get<std::string>("asr/ctxs", "");
     auto asr_items = hj::string_util::split(asr_str, tag);
     _asr_ctxs.clear();
@@ -289,4 +299,14 @@ void conf::_init()
 
         _asr_ctxs[config.id] = config;
     }
+}
+
+std::string conf::regex_norm_prompt()
+{
+    return _cfg.get<std::string>("regex/norm_prompt", "");
+}
+
+std::string conf::regex_hard_prompt()
+{
+    return _cfg.get<std::string>("regex/hard_prompt", "");
 }

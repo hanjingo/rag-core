@@ -87,16 +87,22 @@ class conf
 
     std::unordered_map<std::string, remote_api_config> llm_remote_apis();
     std::unordered_map<std::string, model_config>      llm_models();
-    int                                                llm_max_repeats();
-    int                                                llm_ctx_window_sz();
-    int                                                llm_num_threads();
-    int                             llm_local_prompt_threshold();
-    std::unordered_set<std::string> llm_hard_prompt_class();
-    std::string                     llm_embedding_model();
+    int                                                llm_remote_api_sz();
+    int                                                llm_model_sz();
+    bool        llm_is_local_model(const std::string &model_id);
+    bool        llm_is_remote_api(const std::string &model_id);
+    int         llm_max_repeats();
+    int         llm_ctx_window_sz();
+    int         llm_num_threads();
+    int         llm_local_prompt_threshold();
+    std::string llm_embedding_model();
 
     std::unordered_map<std::string, asr_ctx_config> asr_ctxs();
     int                                             asr_audio_buffer_size();
     int                                             asr_audio_min_chunk_size();
+
+    std::string regex_norm_prompt();
+    std::string regex_hard_prompt();
 
   private:
     void _init();
@@ -107,7 +113,6 @@ class conf
     std::unordered_map<std::string, remote_api_config>    _remote_apis;
     std::unordered_map<std::string, conf::model_config>   _models;
     std::unordered_map<std::string, conf::asr_ctx_config> _asr_ctxs;
-    std::unordered_set<std::string>                       _hard_prompt_class;
 };
 
 #endif

@@ -128,7 +128,10 @@ QueryReactor::QueryReactor(grpc::CallbackServerContext   *ctx,
               _ctx_params.rope_freq_base,
               _ctx_params.rope_freq_scale);
 
-    router::instance().route(_pipeline, _content);
+    // route prompt
+    router::instance().route(_pipeline, _model, _content);
+    LOG_DEBUG("route pipeline:{}, model:{}", _pipeline, _model);
+
     query_reactor_mgr::instance().register_query(_session_id, this);
     thread_pool::instance().enqueue([this]() {
         if(_pipeline == PIPELINE_LOCAL)
@@ -837,7 +840,8 @@ void EmbeddingReactor::_process(const ::GrpcLibrary::EmbeddingReq &req)
     if(req.has_chunk())
     {
         auto chunk_id = req.chunk().id();
-        LOG_DEBUG("EmbeddingReactor::_process chunk");
+        LOG_DEBUG("EmbeddingReactor::_process chunk with chunk_size:{}",
+                  req.chunk().data().size());
         auto ctx_params  = hj::llama::context::default_params();
         ctx_params.n_ctx = 512;
         hj::vector_index<hj::vindex_flat_l2_t> index;
@@ -865,7 +869,15 @@ void EmbeddingReactor::_process(const ::GrpcLibrary::EmbeddingReq &req)
             _send(LLM_ERR_EMBEDDING_SERIALIZE_FAIL, _task_id, chunk_id, {});
             return;
         }
+        if(data.empty())
+        {
+            LOG_ERROR("Failed to serialize empty data for task_id: {}",
+                      _task_id);
+            _send(LLM_ERR_EMBEDDING_SERIALIZE_FAIL, _task_id, chunk_id, {});
+            return;
+        }
 
+        LOG_DEBUG("serialize index data_size:{}", data.size());
         _send(OK, _task_id, chunk_id, data);
         return;
     }
@@ -886,9 +898,19 @@ void EmbeddingReactor::_send(const int                   error_code,
     resp.set_error_code(error_code);
     resp.set_task_id(task_id);
     resp.set_chunk_id(chunk_id);
-    std::string idx;
-    idx.assign(reinterpret_cast<const char *>(indexs.data()), indexs.size());
-    resp.set_vector_indexs(idx);
+
+    if(!indexs.empty())
+    {
+        std::string idx(reinterpret_cast<const char *>(indexs.data()),
+                        indexs.size());
+        resp.set_vector_indexs(idx);
+        LOG_DEBUG("set idx.size():{}", idx.size());
+    } else
+    {
+        resp.set_vector_indexs("");
+        LOG_DEBUG("set empty idx");
+    }
+
     _w_queue.enqueue(resp);
     _flush();
 }

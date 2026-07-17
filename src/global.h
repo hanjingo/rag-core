@@ -95,13 +95,9 @@ static constexpr const char *PIPELINE_HYBRID = "hybrid";
 // Prompt class
 static constexpr const char *PROMPT_TYPE_UNKNOWN = "unknown";
 
-static constexpr const char *PROMPT_TYPE_CODE = "code";
+static constexpr const char *PROMPT_TYPE_HARD = "hard";
 
-static constexpr const char *PROMPT_TYPE_ALGO = "algo";
-
-static constexpr const char *PROMPT_TYPE_MATH = "math";
-
-static constexpr const char *PROMPT_TYPE_CHAT = "chat";
+static constexpr const char *PROMPT_TYPE_NORM = "norm";
 
 // caller type
 static constexpr const char *CALLER_TYPE_DEEPSEEK = "deepseek";
