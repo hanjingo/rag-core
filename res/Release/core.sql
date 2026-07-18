@@ -33,7 +33,7 @@ CREATE TABLE IF NOT EXISTS user (
     privilege INTEGER DEFAULT 0 -- 0: normal user, 1: developer, 2: admin, ...
 );
 
-CREATE TABLE IF NOT EXISTS skill (
+CREATE TABLE IF NOT EXISTS plugin (
     hash TEXT PRIMARY KEY,
     platform INTEGER DEFAULT 0, -- 1: windows, 2: linux, 4: macos, 5: win+mac, ...
     name TEXT NOT NULL,

@@ -36,7 +36,7 @@ static const char* GrpcService_method_names[] = {
   "/GrpcLibrary.GrpcService/NewSession",
   "/GrpcLibrary.GrpcService/ModifySessionTitle",
   "/GrpcLibrary.GrpcService/DelSession",
-  "/GrpcLibrary.GrpcService/GetSkillInfo",
+  "/GrpcLibrary.GrpcService/GetPluginInfo",
   "/GrpcLibrary.GrpcService/Download",
   "/GrpcLibrary.GrpcService/Upload",
   "/GrpcLibrary.GrpcService/Embedding",
@@ -63,7 +63,7 @@ GrpcService::Stub::Stub(const std::shared_ptr< ::grpc::ChannelInterface>& channe
   , rpcmethod_NewSession_(GrpcService_method_names[10], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
   , rpcmethod_ModifySessionTitle_(GrpcService_method_names[11], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
   , rpcmethod_DelSession_(GrpcService_method_names[12], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_GetSkillInfo_(GrpcService_method_names[13], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_GetPluginInfo_(GrpcService_method_names[13], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
   , rpcmethod_Download_(GrpcService_method_names[14], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
   , rpcmethod_Upload_(GrpcService_method_names[15], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
   , rpcmethod_Embedding_(GrpcService_method_names[16], options.suffix_for_stats(),::grpc::internal::RpcMethod::BIDI_STREAMING, channel)
@@ -355,25 +355,25 @@ void GrpcService::Stub::async::DelSession(::grpc::ClientContext* context, const 
   return result;
 }
 
-::grpc::Status GrpcService::Stub::GetSkillInfo(::grpc::ClientContext* context, const ::GrpcLibrary::GetSkillInfoReq& request, ::GrpcLibrary::GetSkillInfoResp* response) {
-  return ::grpc::internal::BlockingUnaryCall< ::GrpcLibrary::GetSkillInfoReq, ::GrpcLibrary::GetSkillInfoResp, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_GetSkillInfo_, context, request, response);
+::grpc::Status GrpcService::Stub::GetPluginInfo(::grpc::ClientContext* context, const ::GrpcLibrary::GetPluginInfoReq& request, ::GrpcLibrary::GetPluginInfoResp* response) {
+  return ::grpc::internal::BlockingUnaryCall< ::GrpcLibrary::GetPluginInfoReq, ::GrpcLibrary::GetPluginInfoResp, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_GetPluginInfo_, context, request, response);
 }
 
-void GrpcService::Stub::async::GetSkillInfo(::grpc::ClientContext* context, const ::GrpcLibrary::GetSkillInfoReq* request, ::GrpcLibrary::GetSkillInfoResp* response, std::function<void(::grpc::Status)> f) {
-  ::grpc::internal::CallbackUnaryCall< ::GrpcLibrary::GetSkillInfoReq, ::GrpcLibrary::GetSkillInfoResp, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_GetSkillInfo_, context, request, response, std::move(f));
+void GrpcService::Stub::async::GetPluginInfo(::grpc::ClientContext* context, const ::GrpcLibrary::GetPluginInfoReq* request, ::GrpcLibrary::GetPluginInfoResp* response, std::function<void(::grpc::Status)> f) {
+  ::grpc::internal::CallbackUnaryCall< ::GrpcLibrary::GetPluginInfoReq, ::GrpcLibrary::GetPluginInfoResp, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_GetPluginInfo_, context, request, response, std::move(f));
 }
 
-void GrpcService::Stub::async::GetSkillInfo(::grpc::ClientContext* context, const ::GrpcLibrary::GetSkillInfoReq* request, ::GrpcLibrary::GetSkillInfoResp* response, ::grpc::ClientUnaryReactor* reactor) {
-  ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_GetSkillInfo_, context, request, response, reactor);
+void GrpcService::Stub::async::GetPluginInfo(::grpc::ClientContext* context, const ::GrpcLibrary::GetPluginInfoReq* request, ::GrpcLibrary::GetPluginInfoResp* response, ::grpc::ClientUnaryReactor* reactor) {
+  ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_GetPluginInfo_, context, request, response, reactor);
 }
 
-::grpc::ClientAsyncResponseReader< ::GrpcLibrary::GetSkillInfoResp>* GrpcService::Stub::PrepareAsyncGetSkillInfoRaw(::grpc::ClientContext* context, const ::GrpcLibrary::GetSkillInfoReq& request, ::grpc::CompletionQueue* cq) {
-  return ::grpc::internal::ClientAsyncResponseReaderHelper::Create< ::GrpcLibrary::GetSkillInfoResp, ::GrpcLibrary::GetSkillInfoReq, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), cq, rpcmethod_GetSkillInfo_, context, request);
+::grpc::ClientAsyncResponseReader< ::GrpcLibrary::GetPluginInfoResp>* GrpcService::Stub::PrepareAsyncGetPluginInfoRaw(::grpc::ClientContext* context, const ::GrpcLibrary::GetPluginInfoReq& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncResponseReaderHelper::Create< ::GrpcLibrary::GetPluginInfoResp, ::GrpcLibrary::GetPluginInfoReq, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), cq, rpcmethod_GetPluginInfo_, context, request);
 }
 
-::grpc::ClientAsyncResponseReader< ::GrpcLibrary::GetSkillInfoResp>* GrpcService::Stub::AsyncGetSkillInfoRaw(::grpc::ClientContext* context, const ::GrpcLibrary::GetSkillInfoReq& request, ::grpc::CompletionQueue* cq) {
+::grpc::ClientAsyncResponseReader< ::GrpcLibrary::GetPluginInfoResp>* GrpcService::Stub::AsyncGetPluginInfoRaw(::grpc::ClientContext* context, const ::GrpcLibrary::GetPluginInfoReq& request, ::grpc::CompletionQueue* cq) {
   auto* result =
-    this->PrepareAsyncGetSkillInfoRaw(context, request, cq);
+    this->PrepareAsyncGetPluginInfoRaw(context, request, cq);
   result->StartCall();
   return result;
 }
@@ -597,12 +597,12 @@ GrpcService::Service::Service() {
   AddMethod(new ::grpc::internal::RpcServiceMethod(
       GrpcService_method_names[13],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
-      new ::grpc::internal::RpcMethodHandler< GrpcService::Service, ::GrpcLibrary::GetSkillInfoReq, ::GrpcLibrary::GetSkillInfoResp, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
+      new ::grpc::internal::RpcMethodHandler< GrpcService::Service, ::GrpcLibrary::GetPluginInfoReq, ::GrpcLibrary::GetPluginInfoResp, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
           [](GrpcService::Service* service,
              ::grpc::ServerContext* ctx,
-             const ::GrpcLibrary::GetSkillInfoReq* req,
-             ::GrpcLibrary::GetSkillInfoResp* resp) {
-               return service->GetSkillInfo(ctx, req, resp);
+             const ::GrpcLibrary::GetPluginInfoReq* req,
+             ::GrpcLibrary::GetPluginInfoResp* resp) {
+               return service->GetPluginInfo(ctx, req, resp);
              }, this)));
   AddMethod(new ::grpc::internal::RpcServiceMethod(
       GrpcService_method_names[14],
@@ -739,7 +739,7 @@ GrpcService::Service::~Service() {
   return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
 }
 
-::grpc::Status GrpcService::Service::GetSkillInfo(::grpc::ServerContext* context, const ::GrpcLibrary::GetSkillInfoReq* request, ::GrpcLibrary::GetSkillInfoResp* response) {
+::grpc::Status GrpcService::Service::GetPluginInfo(::grpc::ServerContext* context, const ::GrpcLibrary::GetPluginInfoReq* request, ::GrpcLibrary::GetPluginInfoResp* response) {
   (void) context;
   (void) request;
   (void) response;

@@ -33,7 +33,7 @@ CREATE TABLE IF NOT EXISTS user (
     privilege INTEGER DEFAULT 0 -- 0: normal user, 1: developer, 2: admin, ...
 );
 
-CREATE TABLE IF NOT EXISTS skill (
+CREATE TABLE IF NOT EXISTS plugin (
     hash TEXT PRIMARY KEY,
     platform INTEGER DEFAULT 0, -- 1: windows, 2: linux, 4: macos, 5: win+mac, ...
     name TEXT NOT NULL,
@@ -67,18 +67,18 @@ INSERT INTO message (id, session_id, role, content, prev_message_id, timestamp) 
 INSERT INTO message (id, session_id, role, content, prev_message_id, timestamp) VALUES (
     4, 1, 'assistant', 'Answer Test2', 3, 3);
 
-INSERT INTO skill (hash, name, platform, desc, publisher, version, timestamp) VALUES (
+INSERT INTO plugin (hash, name, platform, desc, publisher, version, timestamp) VALUES (
     'sha256:a05c13fcd95e7305526d8a70820247046335f461356271b4eaee0919ee340f2a', 'chatbox', 1, 
-    'A skill for Chat, using llm model, free for use it etc...', 'admin', '0.0.3', 0);
-INSERT INTO skill (hash, name, platform, desc, publisher, version, timestamp) VALUES (
+    'A plugin for Chat, using llm model, free for use it etc...', 'admin', '0.0.3', 0);
+INSERT INTO plugin (hash, name, platform, desc, publisher, version, timestamp) VALUES (
     'sha256:4135b32bf4257a54aabeabd416b53dbd1bc411c50257688f0073eeb9aa785d16', 'grammar', 1, 
-    'A skill for english grammar checking', 'admin', '0.0.2', 1);
-INSERT INTO skill (hash, name, platform, desc, publisher, version, timestamp) VALUES (
+    'A plugin for english grammar checking', 'admin', '0.0.2', 1);
+INSERT INTO plugin (hash, name, platform, desc, publisher, version, timestamp) VALUES (
     'sha256:cdfcc494cf944a74a06985688063197513295e6c3c876521ea184da11b6f0076', 'ielts-writer', 1, 
-    'A skill for IELTS Writer Guide', 'admin', '0.0.2', 2);
-INSERT INTO skill (hash, name, platform, desc, publisher, version, timestamp) VALUES (
+    'A plugin for IELTS Writer Guide', 'admin', '0.0.2', 2);
+INSERT INTO plugin (hash, name, platform, desc, publisher, version, timestamp) VALUES (
     'sha256:cac176b447f4dd995677d1ee998b9bc37d49feed0fe5125020110ad7f52edfb5', 'stock', 1, 
-    'A skill for Stock trade', 'admin', '0.0.2', 3);
+    'A plugin for Stock trade', 'admin', '0.0.2', 3);
 
 INSERT INTO file (hash, addr, owner, size_kb) VALUES (
     'sha256:a05c13fcd95e7305526d8a70820247046335f461356271b4eaee0919ee340f2a', 

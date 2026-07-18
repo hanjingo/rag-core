@@ -15,7 +15,7 @@ service GrpcService {
     rpc NewSession (NewSessionReq) returns (NewSessionResp) {}
     rpc ModifySessionTitle (ModifySessionTitleReq) returns (ModifySessionTitleResp) {}
     rpc DelSession (DelSessionReq) returns (DelSessionResp) {}
-    rpc GetSkillInfo (GetSkillInfoReq) returns (GetSkillInfoResp) {}
+    rpc GetPluginInfo (GetPluginInfoReq) returns (GetPluginInfoResp) {}
     rpc Download (DownloadReq) returns (DownloadResp) {}
     rpc Upload (UploadReq) returns (UploadResp) {}
     rpc Embedding (stream EmbeddingReq) returns (stream EmbeddingResp) {}
@@ -29,7 +29,7 @@ message Session {
     string timestamp = 4;
 }
 
-message Skill {
+message Plugin {
     string hash = 1;
     string name = 2;
     string desc = 3;
@@ -298,14 +298,14 @@ message DelSessionResp {
     repeated int64 ids = 2;
 }
 
-message GetSkillInfoReq {
+message GetPluginInfoReq {
     string hash = 1;
     int32 limit = 2;
 }
 
-message GetSkillInfoResp {
+message GetPluginInfoResp {
     int32 error_code = 1;
-    repeated Skill skills = 2;
+    repeated Plugin plugins = 2;
 }
 
 message DownloadReq {

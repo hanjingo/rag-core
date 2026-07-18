@@ -511,24 +511,25 @@ reactor_t *api_handler::DelSession(ctx_t                              *ctx,
     return reactor;
 }
 
-reactor_t *api_handler::GetSkillInfo(ctx_t                                *ctx,
-                                     const ::GrpcLibrary::GetSkillInfoReq *req,
-                                     ::GrpcLibrary::GetSkillInfoResp      *resp)
+reactor_t *
+api_handler::GetPluginInfo(ctx_t                                 *ctx,
+                           const ::GrpcLibrary::GetPluginInfoReq *req,
+                           ::GrpcLibrary::GetPluginInfoResp      *resp)
 {
     std::string hash  = req->hash();
     int         limit = req->limit();
     limit             = limit < 0 || limit > 50 ? 50 : limit;
     auto *reactor     = ctx->DefaultReactor();
     resp->set_error_code(ERR_FAIL);
-    LOG_DEBUG("Received GetSkillInfo request. hash: {}, limit: {}",
+    LOG_DEBUG("Received GetPluginInfo request. hash: {}, limit: {}",
               hash,
               limit);
 
     std::string sql;
     if(hash.empty())
-        sql = SQL_SELECT_SKILL_INFO + hj::sqlite::mprintf(" LIMIT %d;", limit);
+        sql = SQL_SELECT_PLUGIN_INFO + hj::sqlite::mprintf(" LIMIT %d;", limit);
     else
-        sql = hj::sqlite::mprintf(SQL_SELECT_SKILL_INFO_BY_HASH, hash.c_str())
+        sql = hj::sqlite::mprintf(SQL_SELECT_PLUGIN_INFO_BY_HASH, hash.c_str())
               + " LIMIT 1;";
 
     LOG_DEBUG("{}", sql);
@@ -536,14 +537,14 @@ reactor_t *api_handler::GetSkillInfo(ctx_t                                *ctx,
     if(db_mgr::instance().query(rows, DB_SQLITE, sql) != OK)
     {
         resp->set_error_code(ERR_SQLITE_EXEC_FAIL);
-        LOG_ERROR("Failed to query skill info for sql: {}", sql);
+        LOG_ERROR("Failed to query plugin info for sql: {}", sql);
 
         reactor->Finish(status_t::OK);
         return reactor;
     }
     for(const auto row : rows)
     {
-        auto item = resp->add_skills();
+        auto item = resp->add_plugins();
         item->set_hash(row[0]);
         item->set_platform(row[1].empty() ? 0 : std::stoi(row[1]));
         item->set_name(row[2]);
@@ -555,8 +556,8 @@ reactor_t *api_handler::GetSkillInfo(ctx_t                                *ctx,
             hj::date_time::format(hj::date_time::from_ms_since_epoch(ms),
                                   TIME_FORMAT));
 
-        LOG_DEBUG("GetSkillInfo hash: {}, platform: {}, name: {}, desc: {}",
-                  ", publisher: {}, version: {}, timestamp: {}",
+        LOG_DEBUG("GetPluginInfo hash: {}, platform: {}, name: {}, desc: {}, "
+                  "publisher: {}, version: {}, timestamp: {}",
                   item->hash(),
                   item->platform(),
                   item->name(),

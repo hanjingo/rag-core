@@ -72,11 +72,11 @@ static constexpr const char *SQL_UPDATE_SESSION_TITLE_BY_ID =
 static constexpr const char *SQL_DELETE_SESSION_BY_ID =
     R"(DELETE FROM session WHERE id = %lld)";
 
-static constexpr const char *SQL_SELECT_SKILL_INFO =
-    R"(SELECT hash, platform, name, desc, publisher, version, timestamp FROM skill)";
+static constexpr const char *SQL_SELECT_PLUGIN_INFO =
+    R"(SELECT hash, platform, name, desc, publisher, version, timestamp FROM plugin)";
 
-static constexpr const char *SQL_SELECT_SKILL_INFO_BY_HASH =
-    R"(SELECT hash, platform, name, desc, publisher, version, timestamp FROM skill WHERE hash = %Q)";
+static constexpr const char *SQL_SELECT_PLUGIN_INFO_BY_HASH =
+    R"(SELECT hash, platform, name, desc, publisher, version, timestamp FROM plugin WHERE hash = %Q)";
 
 static constexpr const char *SQL_SELECT_FILE_BY_HASH =
     R"(SELECT addr, owner, size_kb FROM file WHERE hash = %Q)";

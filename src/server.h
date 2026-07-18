@@ -59,9 +59,9 @@ class api_handler final : public GrpcLibrary::GrpcService::CallbackService
                           const ::GrpcLibrary::DelSessionReq *req,
                           ::GrpcLibrary::DelSessionResp      *resp) override;
 
-    reactor_t *GetSkillInfo(ctx_t                                *ctx,
-                            const ::GrpcLibrary::GetSkillInfoReq *req,
-                            ::GrpcLibrary::GetSkillInfoResp *resp) override;
+    reactor_t *GetPluginInfo(ctx_t                                 *ctx,
+                             const ::GrpcLibrary::GetPluginInfoReq *req,
+                             ::GrpcLibrary::GetPluginInfoResp *resp) override;
 
     reactor_t *Download(ctx_t                            *ctx,
                         const ::GrpcLibrary::DownloadReq *req,

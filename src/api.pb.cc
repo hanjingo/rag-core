@@ -254,49 +254,6 @@ struct StopAnswerReqDefaultTypeInternal {
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
     PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 StopAnswerReqDefaultTypeInternal _StopAnswerReq_default_instance_;
 
-inline constexpr Skill::Impl_::Impl_(
-    ::_pbi::ConstantInitialized) noexcept
-      : _cached_size_{0},
-        hash_(
-            &::google::protobuf::internal::fixed_address_empty_string,
-            ::_pbi::ConstantInitialized()),
-        name_(
-            &::google::protobuf::internal::fixed_address_empty_string,
-            ::_pbi::ConstantInitialized()),
-        desc_(
-            &::google::protobuf::internal::fixed_address_empty_string,
-            ::_pbi::ConstantInitialized()),
-        publisher_(
-            &::google::protobuf::internal::fixed_address_empty_string,
-            ::_pbi::ConstantInitialized()),
-        version_(
-            &::google::protobuf::internal::fixed_address_empty_string,
-            ::_pbi::ConstantInitialized()),
-        timestamp_(
-            &::google::protobuf::internal::fixed_address_empty_string,
-            ::_pbi::ConstantInitialized()),
-        platform_{0} {}
-
-template <typename>
-PROTOBUF_CONSTEXPR Skill::Skill(::_pbi::ConstantInitialized)
-#if defined(PROTOBUF_CUSTOM_VTABLE)
-    : ::google::protobuf::Message(Skill_class_data_.base()),
-#else   // PROTOBUF_CUSTOM_VTABLE
-    : ::google::protobuf::Message(),
-#endif  // PROTOBUF_CUSTOM_VTABLE
-      _impl_(::_pbi::ConstantInitialized()) {
-}
-struct SkillDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR SkillDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
-  ~SkillDefaultTypeInternal() {}
-  union {
-    Skill _instance;
-  };
-};
-
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 SkillDefaultTypeInternal _Skill_default_instance_;
-
 inline constexpr Session::Impl_::Impl_(
     ::_pbi::ConstantInitialized) noexcept
       : _cached_size_{0},
@@ -564,6 +521,49 @@ struct PongDefaultTypeInternal {
 
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
     PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 PongDefaultTypeInternal _Pong_default_instance_;
+
+inline constexpr Plugin::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : _cached_size_{0},
+        hash_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        name_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        desc_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        publisher_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        version_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        timestamp_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        platform_{0} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR Plugin::Plugin(::_pbi::ConstantInitialized)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(Plugin_class_data_.base()),
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(),
+#endif  // PROTOBUF_CUSTOM_VTABLE
+      _impl_(::_pbi::ConstantInitialized()) {
+}
+struct PluginDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR PluginDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~PluginDefaultTypeInternal() {}
+  union {
+    Plugin _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 PluginDefaultTypeInternal _Plugin_default_instance_;
 
 inline constexpr Ping::Impl_::Impl_(
     ::_pbi::ConstantInitialized) noexcept
@@ -844,34 +844,6 @@ struct LoginReqDefaultTypeInternal {
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
     PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 LoginReqDefaultTypeInternal _LoginReq_default_instance_;
 
-inline constexpr GetSkillInfoReq::Impl_::Impl_(
-    ::_pbi::ConstantInitialized) noexcept
-      : _cached_size_{0},
-        hash_(
-            &::google::protobuf::internal::fixed_address_empty_string,
-            ::_pbi::ConstantInitialized()),
-        limit_{0} {}
-
-template <typename>
-PROTOBUF_CONSTEXPR GetSkillInfoReq::GetSkillInfoReq(::_pbi::ConstantInitialized)
-#if defined(PROTOBUF_CUSTOM_VTABLE)
-    : ::google::protobuf::Message(GetSkillInfoReq_class_data_.base()),
-#else   // PROTOBUF_CUSTOM_VTABLE
-    : ::google::protobuf::Message(),
-#endif  // PROTOBUF_CUSTOM_VTABLE
-      _impl_(::_pbi::ConstantInitialized()) {
-}
-struct GetSkillInfoReqDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR GetSkillInfoReqDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
-  ~GetSkillInfoReqDefaultTypeInternal() {}
-  union {
-    GetSkillInfoReq _instance;
-  };
-};
-
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 GetSkillInfoReqDefaultTypeInternal _GetSkillInfoReq_default_instance_;
-
 inline constexpr GetSessionReq::Impl_::Impl_(
     ::_pbi::ConstantInitialized) noexcept
       : _cached_size_{0},
@@ -901,6 +873,34 @@ struct GetSessionReqDefaultTypeInternal {
 
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
     PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 GetSessionReqDefaultTypeInternal _GetSessionReq_default_instance_;
+
+inline constexpr GetPluginInfoReq::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : _cached_size_{0},
+        hash_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        limit_{0} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR GetPluginInfoReq::GetPluginInfoReq(::_pbi::ConstantInitialized)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(GetPluginInfoReq_class_data_.base()),
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(),
+#endif  // PROTOBUF_CUSTOM_VTABLE
+      _impl_(::_pbi::ConstantInitialized()) {
+}
+struct GetPluginInfoReqDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR GetPluginInfoReqDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~GetPluginInfoReqDefaultTypeInternal() {}
+  union {
+    GetPluginInfoReq _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 GetPluginInfoReqDefaultTypeInternal _GetPluginInfoReq_default_instance_;
 
 inline constexpr GetMessageInfoReq::Impl_::Impl_(
     ::_pbi::ConstantInitialized) noexcept
@@ -1291,32 +1291,6 @@ struct NewSessionRespDefaultTypeInternal {
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
     PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 NewSessionRespDefaultTypeInternal _NewSessionResp_default_instance_;
 
-inline constexpr GetSkillInfoResp::Impl_::Impl_(
-    ::_pbi::ConstantInitialized) noexcept
-      : _cached_size_{0},
-        skills_{},
-        error_code_{0} {}
-
-template <typename>
-PROTOBUF_CONSTEXPR GetSkillInfoResp::GetSkillInfoResp(::_pbi::ConstantInitialized)
-#if defined(PROTOBUF_CUSTOM_VTABLE)
-    : ::google::protobuf::Message(GetSkillInfoResp_class_data_.base()),
-#else   // PROTOBUF_CUSTOM_VTABLE
-    : ::google::protobuf::Message(),
-#endif  // PROTOBUF_CUSTOM_VTABLE
-      _impl_(::_pbi::ConstantInitialized()) {
-}
-struct GetSkillInfoRespDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR GetSkillInfoRespDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
-  ~GetSkillInfoRespDefaultTypeInternal() {}
-  union {
-    GetSkillInfoResp _instance;
-  };
-};
-
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 GetSkillInfoRespDefaultTypeInternal _GetSkillInfoResp_default_instance_;
-
 inline constexpr GetSessionResp::Impl_::Impl_(
     ::_pbi::ConstantInitialized) noexcept
       : _cached_size_{0},
@@ -1342,6 +1316,32 @@ struct GetSessionRespDefaultTypeInternal {
 
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
     PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 GetSessionRespDefaultTypeInternal _GetSessionResp_default_instance_;
+
+inline constexpr GetPluginInfoResp::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : _cached_size_{0},
+        plugins_{},
+        error_code_{0} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR GetPluginInfoResp::GetPluginInfoResp(::_pbi::ConstantInitialized)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(GetPluginInfoResp_class_data_.base()),
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(),
+#endif  // PROTOBUF_CUSTOM_VTABLE
+      _impl_(::_pbi::ConstantInitialized()) {
+}
+struct GetPluginInfoRespDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR GetPluginInfoRespDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~GetPluginInfoRespDefaultTypeInternal() {}
+  union {
+    GetPluginInfoResp _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 GetPluginInfoRespDefaultTypeInternal _GetPluginInfoResp_default_instance_;
 
 inline constexpr GetMessageInfoResp::Impl_::Impl_(
     ::_pbi::ConstantInitialized) noexcept
@@ -1415,15 +1415,15 @@ const ::uint32_t
         0,
         1,
         0x081, // bitmap
-        PROTOBUF_FIELD_OFFSET(::GrpcLibrary::Skill, _impl_._has_bits_),
+        PROTOBUF_FIELD_OFFSET(::GrpcLibrary::Plugin, _impl_._has_bits_),
         10, // hasbit index offset
-        PROTOBUF_FIELD_OFFSET(::GrpcLibrary::Skill, _impl_.hash_),
-        PROTOBUF_FIELD_OFFSET(::GrpcLibrary::Skill, _impl_.name_),
-        PROTOBUF_FIELD_OFFSET(::GrpcLibrary::Skill, _impl_.desc_),
-        PROTOBUF_FIELD_OFFSET(::GrpcLibrary::Skill, _impl_.publisher_),
-        PROTOBUF_FIELD_OFFSET(::GrpcLibrary::Skill, _impl_.version_),
-        PROTOBUF_FIELD_OFFSET(::GrpcLibrary::Skill, _impl_.timestamp_),
-        PROTOBUF_FIELD_OFFSET(::GrpcLibrary::Skill, _impl_.platform_),
+        PROTOBUF_FIELD_OFFSET(::GrpcLibrary::Plugin, _impl_.hash_),
+        PROTOBUF_FIELD_OFFSET(::GrpcLibrary::Plugin, _impl_.name_),
+        PROTOBUF_FIELD_OFFSET(::GrpcLibrary::Plugin, _impl_.desc_),
+        PROTOBUF_FIELD_OFFSET(::GrpcLibrary::Plugin, _impl_.publisher_),
+        PROTOBUF_FIELD_OFFSET(::GrpcLibrary::Plugin, _impl_.version_),
+        PROTOBUF_FIELD_OFFSET(::GrpcLibrary::Plugin, _impl_.timestamp_),
+        PROTOBUF_FIELD_OFFSET(::GrpcLibrary::Plugin, _impl_.platform_),
         0,
         1,
         2,
@@ -1844,17 +1844,17 @@ const ::uint32_t
         1,
         0,
         0x081, // bitmap
-        PROTOBUF_FIELD_OFFSET(::GrpcLibrary::GetSkillInfoReq, _impl_._has_bits_),
+        PROTOBUF_FIELD_OFFSET(::GrpcLibrary::GetPluginInfoReq, _impl_._has_bits_),
         5, // hasbit index offset
-        PROTOBUF_FIELD_OFFSET(::GrpcLibrary::GetSkillInfoReq, _impl_.hash_),
-        PROTOBUF_FIELD_OFFSET(::GrpcLibrary::GetSkillInfoReq, _impl_.limit_),
+        PROTOBUF_FIELD_OFFSET(::GrpcLibrary::GetPluginInfoReq, _impl_.hash_),
+        PROTOBUF_FIELD_OFFSET(::GrpcLibrary::GetPluginInfoReq, _impl_.limit_),
         0,
         1,
         0x081, // bitmap
-        PROTOBUF_FIELD_OFFSET(::GrpcLibrary::GetSkillInfoResp, _impl_._has_bits_),
+        PROTOBUF_FIELD_OFFSET(::GrpcLibrary::GetPluginInfoResp, _impl_._has_bits_),
         5, // hasbit index offset
-        PROTOBUF_FIELD_OFFSET(::GrpcLibrary::GetSkillInfoResp, _impl_.error_code_),
-        PROTOBUF_FIELD_OFFSET(::GrpcLibrary::GetSkillInfoResp, _impl_.skills_),
+        PROTOBUF_FIELD_OFFSET(::GrpcLibrary::GetPluginInfoResp, _impl_.error_code_),
+        PROTOBUF_FIELD_OFFSET(::GrpcLibrary::GetPluginInfoResp, _impl_.plugins_),
         1,
         0,
         0x081, // bitmap
@@ -1940,7 +1940,7 @@ const ::uint32_t
 static const ::_pbi::MigrationSchema
     schemas[] ABSL_ATTRIBUTE_SECTION_VARIABLE(protodesc_cold) = {
         {0, sizeof(::GrpcLibrary::Session)},
-        {11, sizeof(::GrpcLibrary::Skill)},
+        {11, sizeof(::GrpcLibrary::Plugin)},
         {28, sizeof(::GrpcLibrary::MessageInfo)},
         {43, sizeof(::GrpcLibrary::SamplingParam)},
         {74, sizeof(::GrpcLibrary::ContextParam)},
@@ -1973,8 +1973,8 @@ static const ::_pbi::MigrationSchema
         {415, sizeof(::GrpcLibrary::ModifySessionTitleResp)},
         {424, sizeof(::GrpcLibrary::DelSessionReq)},
         {433, sizeof(::GrpcLibrary::DelSessionResp)},
-        {440, sizeof(::GrpcLibrary::GetSkillInfoReq)},
-        {447, sizeof(::GrpcLibrary::GetSkillInfoResp)},
+        {440, sizeof(::GrpcLibrary::GetPluginInfoReq)},
+        {447, sizeof(::GrpcLibrary::GetPluginInfoResp)},
         {454, sizeof(::GrpcLibrary::DownloadReq)},
         {463, sizeof(::GrpcLibrary::DownloadResp)},
         {474, sizeof(::GrpcLibrary::UploadReq)},
@@ -1986,7 +1986,7 @@ static const ::_pbi::MigrationSchema
 };
 static const ::_pb::Message* PROTOBUF_NONNULL const file_default_instances[] = {
     &::GrpcLibrary::_Session_default_instance_._instance,
-    &::GrpcLibrary::_Skill_default_instance_._instance,
+    &::GrpcLibrary::_Plugin_default_instance_._instance,
     &::GrpcLibrary::_MessageInfo_default_instance_._instance,
     &::GrpcLibrary::_SamplingParam_default_instance_._instance,
     &::GrpcLibrary::_ContextParam_default_instance_._instance,
@@ -2019,8 +2019,8 @@ static const ::_pb::Message* PROTOBUF_NONNULL const file_default_instances[] = {
     &::GrpcLibrary::_ModifySessionTitleResp_default_instance_._instance,
     &::GrpcLibrary::_DelSessionReq_default_instance_._instance,
     &::GrpcLibrary::_DelSessionResp_default_instance_._instance,
-    &::GrpcLibrary::_GetSkillInfoReq_default_instance_._instance,
-    &::GrpcLibrary::_GetSkillInfoResp_default_instance_._instance,
+    &::GrpcLibrary::_GetPluginInfoReq_default_instance_._instance,
+    &::GrpcLibrary::_GetPluginInfoResp_default_instance_._instance,
     &::GrpcLibrary::_DownloadReq_default_instance_._instance,
     &::GrpcLibrary::_DownloadResp_default_instance_._instance,
     &::GrpcLibrary::_UploadReq_default_instance_._instance,
@@ -2034,161 +2034,161 @@ const char descriptor_table_protodef_src_2fapi_2eproto[] ABSL_ATTRIBUTE_SECTION_
     protodesc_cold) = {
     "\n\rsrc/api.proto\022\013GrpcLibrary\"H\n\007Session\022"
     "\n\n\002id\030\001 \001(\003\022\017\n\007user_id\030\002 \001(\003\022\r\n\005title\030\003 "
-    "\001(\t\022\021\n\ttimestamp\030\004 \001(\t\"z\n\005Skill\022\014\n\004hash\030"
-    "\001 \001(\t\022\014\n\004name\030\002 \001(\t\022\014\n\004desc\030\003 \001(\t\022\021\n\tpub"
-    "lisher\030\004 \001(\t\022\017\n\007version\030\005 \001(\t\022\021\n\ttimesta"
-    "mp\030\006 \001(\t\022\020\n\010platform\030\007 \001(\005\"x\n\013MessageInf"
-    "o\022\n\n\002id\030\001 \001(\003\022\022\n\nsession_id\030\002 \001(\003\022\014\n\004rol"
-    "e\030\003 \001(\t\022\017\n\007content\030\004 \001(\t\022\027\n\017prev_message"
-    "_id\030\005 \001(\003\022\021\n\ttimestamp\030\006 \001(\t\"\310\002\n\rSamplin"
-    "gParam\022\026\n\016penalty_last_n\030\001 \001(\005\022\026\n\016penalt"
-    "y_repeat\030\002 \001(\002\022\024\n\014penalty_freq\030\003 \001(\002\022\027\n\017"
-    "penalty_present\030\004 \001(\002\022\023\n\013temperature\030\005 \001"
-    "(\002\022\027\n\017temperature_ext\030\006 \001(\002\022\035\n\025temperatu"
-    "re_ext_delta\030\007 \001(\002\022 \n\030temperature_ext_ex"
-    "ponent\030\010 \001(\002\022\014\n\004seed\030\t \001(\r\022\r\n\005top_k\030\n \001("
-    "\005\022\r\n\005top_p\030\013 \001(\002\022\026\n\016top_p_min_keep\030\014 \001(\005"
-    "\022\r\n\005min_p\030\r \001(\002\022\026\n\016min_p_min_keep\030\016 \001(\005\""
-    "\355\003\n\014ContextParam\022\023\n\013window_size\030\001 \001(\005\022\022\n"
-    "\nstop_words\030\002 \001(\t\022\r\n\005n_ctx\030\003 \001(\005\022\017\n\007n_ba"
-    "tch\030\004 \001(\005\022\020\n\010n_ubatch\030\005 \001(\005\022\021\n\tn_seq_max"
-    "\030\006 \001(\005\022\021\n\tn_threads\030\007 \001(\005\022\027\n\017n_threads_b"
-    "atch\030\010 \001(\005\022\026\n\016rope_freq_base\030\t \001(\002\022\027\n\017ro"
-    "pe_freq_scale\030\n \001(\002\022\027\n\017yarn_ext_factor\030\013"
-    " \001(\002\022\030\n\020yarn_attn_factor\030\014 \001(\002\022\026\n\016yarn_b"
-    "eta_fast\030\r \001(\002\022\026\n\016yarn_beta_slow\030\016 \001(\002\022\025"
-    "\n\ryarn_orig_ctx\030\017 \001(\005\022\024\n\014defrag_thold\030\020 "
-    "\001(\002\022\022\n\nembeddings\030\021 \001(\010\022\023\n\013offload_kqv\030\022"
-    " \001(\010\022\017\n\007no_perf\030\023 \001(\010\022\022\n\nop_offload\030\024 \001("
-    "\010\022\020\n\010swa_full\030\025 \001(\010\022\022\n\nkv_unified\030\026 \001(\010\022"
-    "\016\n\006prompt\030\027 \001(\t\"\344\004\n\020RecognitionParam\022\021\n\t"
-    "n_threads\030\001 \001(\005\022\026\n\016n_max_text_ctx\030\002 \001(\005\022"
-    "\021\n\toffset_ms\030\003 \001(\005\022\023\n\013duration_ms\030\004 \001(\005\022"
-    "\021\n\ttranslate\030\005 \001(\010\022\027\n\017detect_language\030\006 "
-    "\001(\010\022\020\n\010language\030\007 \001(\t\022\016\n\006no_ctx\030\010 \001(\010\022\025\n"
-    "\rno_timestamps\030\t \001(\010\022\026\n\016single_segment\030\n"
-    " \001(\010\022\025\n\rprint_special\030\013 \001(\010\022\026\n\016print_pro"
-    "gress\030\014 \001(\010\022\026\n\016print_realtime\030\r \001(\010\022\030\n\020p"
-    "rint_timestamps\030\016 \001(\010\022\034\n\024carry_initial_p"
-    "rompt\030\017 \001(\010\022\026\n\016initial_prompt\030\020 \001(\t\022\026\n\016s"
-    "uppress_regex\030\021 \001(\t\022\026\n\016suppress_blank\030\022 "
-    "\001(\010\022\024\n\014suppress_nst\030\023 \001(\010\022\023\n\013temperature"
-    "\030\024 \001(\002\022\027\n\017temperature_inc\030\025 \001(\002\022\026\n\016max_i"
-    "nitial_ts\030\026 \001(\002\022\026\n\016length_penalty\030\027 \001(\002\022"
-    "\025\n\rentropy_thold\030\030 \001(\002\022\025\n\rlogprob_thold\030"
-    "\031 \001(\002\022\027\n\017no_speech_thold\030\032 \001(\002\"#\n\016Embedd"
-    "ingParam\022\021\n\tdimension\030\001 \001(\005\"[\n\tFileChunk"
-    "\022\n\n\002id\030\001 \001(\003\022\014\n\004data\030\002 \001(\014\022\021\n\tstart_pos\030"
-    "\003 \001(\003\022\017\n\007end_pos\030\004 \001(\003\022\020\n\010filename\030\005 \001(\t"
-    "\"\031\n\004Ping\022\021\n\ttimestamp\030\001 \001(\003\"\031\n\004Pong\022\021\n\tt"
-    "imestamp\030\001 \001(\003\"+\n\010LoginReq\022\017\n\007account\030\001 "
-    "\001(\t\022\016\n\006passwd\030\002 \001(\t\"{\n\tLoginResp\022\022\n\nerro"
-    "r_code\030\001 \001(\005\022\017\n\007user_id\030\002 \001(\003\022\021\n\tprivile"
-    "ge\030\003 \001(\005\022\014\n\004auth\030\004 \001(\t\022\017\n\007account\030\005 \001(\t\022"
-    "\027\n\017last_login_time\030\006 \001(\t\"*\n\tLogoutReq\022\017\n"
-    "\007user_id\030\001 \001(\003\022\014\n\004auth\030\002 \001(\t\"1\n\nLogoutRe"
-    "sp\022\022\n\nerror_code\030\001 \001(\005\022\017\n\007user_id\030\002 \001(\003\""
-    "0\n\rRegAccountReq\022\017\n\007account\030\001 \001(\t\022\016\n\006pas"
-    "swd\030\002 \001(\t\"5\n\016RegAccountResp\022\022\n\nerror_cod"
-    "e\030\001 \001(\005\022\017\n\007user_id\030\002 \001(\003\"\316\001\n\010QueryReq\022\n\n"
-    "\002id\030\001 \001(\003\022\017\n\007user_id\030\002 \001(\003\022\014\n\004auth\030\003 \001(\t"
-    "\022\017\n\007content\030\004 \001(\t\022\r\n\005model\030\005 \001(\t\022\020\n\010pipe"
-    "line\030\006 \001(\t\022\017\n\007api_key\030\007 \001(\t\022,\n\010sampling\030"
-    "\010 \001(\0132\032.GrpcLibrary.SamplingParam\022&\n\003ctx"
-    "\030\t \001(\0132\031.GrpcLibrary.ContextParam\"Q\n\tQue"
-    "ryResp\022\022\n\nerror_code\030\001 \001(\005\022\n\n\002id\030\002 \001(\003\022\017"
-    "\n\007content\030\003 \001(\t\022\023\n\013is_finished\030\004 \001(\010\"B\n\r"
-    "StopAnswerReq\022\022\n\nsession_id\030\001 \001(\003\022\017\n\007use"
-    "r_id\030\002 \001(\003\022\014\n\004auth\030\003 \001(\t\"8\n\016StopAnswerRe"
-    "sp\022\022\n\nerror_code\030\001 \001(\005\022\022\n\nsession_id\030\002 \001"
-    "(\003\"\211\001\n\014RecognizeReq\022\016\n\006ctx_id\030\001 \001(\t\022\022\n\ns"
-    "ession_id\030\002 \001(\003\022.\n\005param\030\003 \001(\0132\035.GrpcLib"
-    "rary.RecognitionParamH\000\022\025\n\013audio_chunk\030\004"
-    " \001(\014H\000B\016\n\014request_type\"t\n\rRecognizeResp\022"
-    "\022\n\nerror_code\030\001 \001(\005\022\022\n\nsession_id\030\002 \001(\003\022"
-    "\022\n\ntranscript\030\003 \001(\t\022\023\n\013is_finished\030\004 \001(\010"
-    "\022\022\n\nconfidence\030\005 \001(\001\"E\n\020StopRecognizeReq"
-    "\022\022\n\nsession_id\030\001 \001(\003\022\017\n\007user_id\030\002 \001(\003\022\014\n"
-    "\004auth\030\003 \001(\t\";\n\021StopRecognizeResp\022\022\n\nerro"
-    "r_code\030\001 \001(\005\022\022\n\nsession_id\030\002 \001(\003\"a\n\021GetM"
-    "essageInfoReq\022\n\n\002id\030\001 \001(\003\022\022\n\nsession_id\030"
-    "\002 \001(\003\022\r\n\005limit\030\003 \001(\005\022\017\n\007user_id\030\004 \001(\003\022\014\n"
-    "\004auth\030\005 \001(\t\"T\n\022GetMessageInfoResp\022\022\n\nerr"
-    "or_code\030\001 \001(\005\022*\n\010messages\030\002 \003(\0132\030.GrpcLi"
-    "brary.MessageInfo\"I\n\rGetSessionReq\022\n\n\002id"
-    "\030\001 \001(\003\022\017\n\007user_id\030\002 \001(\003\022\014\n\004auth\030\003 \001(\t\022\r\n"
-    "\005limit\030\004 \001(\005\"L\n\016GetSessionResp\022\022\n\nerror_"
-    "code\030\001 \001(\005\022&\n\010sessions\030\002 \003(\0132\024.GrpcLibra"
-    "ry.Session\"]\n\rNewSessionReq\022\017\n\007user_id\030\001"
-    " \001(\003\022\014\n\004auth\030\002 \001(\t\022\r\n\005title\030\003 \001(\t\022\017\n\007con"
-    "tent\030\004 \001(\t\022\r\n\005model\030\005 \001(\t\"K\n\016NewSessionR"
-    "esp\022\022\n\nerror_code\030\001 \001(\005\022%\n\007session\030\002 \001(\013"
-    "2\024.GrpcLibrary.Session\"Q\n\025ModifySessionT"
-    "itleReq\022\n\n\002id\030\001 \001(\003\022\017\n\007user_id\030\002 \001(\003\022\014\n\004"
-    "auth\030\003 \001(\t\022\r\n\005title\030\004 \001(\t\"G\n\026ModifySessi"
-    "onTitleResp\022\022\n\nerror_code\030\001 \001(\005\022\n\n\002id\030\002 "
-    "\001(\003\022\r\n\005title\030\003 \001(\t\";\n\rDelSessionReq\022\017\n\007u"
-    "ser_id\030\001 \001(\003\022\014\n\004auth\030\002 \001(\t\022\013\n\003ids\030\003 \003(\003\""
-    "1\n\016DelSessionResp\022\022\n\nerror_code\030\001 \001(\005\022\013\n"
-    "\003ids\030\002 \003(\003\".\n\017GetSkillInfoReq\022\014\n\004hash\030\001 "
-    "\001(\t\022\r\n\005limit\030\002 \001(\005\"J\n\020GetSkillInfoResp\022\022"
-    "\n\nerror_code\030\001 \001(\005\022\"\n\006skills\030\002 \003(\0132\022.Grp"
-    "cLibrary.Skill\":\n\013DownloadReq\022\014\n\004hash\030\001 "
-    "\001(\t\022\017\n\007user_id\030\002 \001(\003\022\014\n\004auth\030\003 \001(\t\"O\n\014Do"
-    "wnloadResp\022\022\n\nerror_code\030\001 \001(\005\022\014\n\004hash\030\002"
-    " \001(\t\022\014\n\004addr\030\003 \001(\t\022\017\n\007size_kb\030\004 \001(\003\"W\n\tU"
-    "ploadReq\022\014\n\004hash\030\001 \001(\t\022\017\n\007user_id\030\002 \001(\003\022"
-    "\014\n\004auth\030\003 \001(\t\022\014\n\004addr\030\004 \001(\t\022\017\n\007size_kb\030\005"
-    " \001(\003\".\n\nUploadResp\022\022\n\nerror_code\030\001 \001(\005\022\014"
-    "\n\004hash\030\002 \001(\t\"\206\001\n\014EmbeddingReq\022\017\n\007task_id"
-    "\030\001 \001(\003\022,\n\005param\030\002 \001(\0132\033.GrpcLibrary.Embe"
-    "ddingParamH\000\022\'\n\005chunk\030\003 \001(\0132\026.GrpcLibrar"
-    "y.FileChunkH\000B\016\n\014request_type\"]\n\rEmbeddi"
-    "ngResp\022\022\n\nerror_code\030\001 \001(\005\022\017\n\007task_id\030\002 "
-    "\001(\003\022\020\n\010chunk_id\030\003 \001(\003\022\025\n\rvector_indexs\030\004"
-    " \001(\014\"B\n\020StopEmbeddingReq\022\017\n\007task_id\030\001 \001("
-    "\003\022\017\n\007user_id\030\002 \001(\003\022\014\n\004auth\030\003 \001(\t\"8\n\021Stop"
-    "EmbeddingResp\022\022\n\nerror_code\030\001 \001(\005\022\017\n\007tas"
-    "k_id\030\002 \001(\0032\237\n\n\013GrpcService\0223\n\tHeartbeat\022"
-    "\021.GrpcLibrary.Ping\032\021.GrpcLibrary.Pong\"\000\022"
-    "8\n\005Login\022\025.GrpcLibrary.LoginReq\032\026.GrpcLi"
-    "brary.LoginResp\"\000\022;\n\006Logout\022\026.GrpcLibrar"
-    "y.LogoutReq\032\027.GrpcLibrary.LogoutResp\"\000\022G"
-    "\n\nRegAccount\022\032.GrpcLibrary.RegAccountReq"
-    "\032\033.GrpcLibrary.RegAccountResp\"\000\022:\n\005Query"
-    "\022\025.GrpcLibrary.QueryReq\032\026.GrpcLibrary.Qu"
-    "eryResp\"\0000\001\022G\n\nStopAnswer\022\032.GrpcLibrary."
-    "StopAnswerReq\032\033.GrpcLibrary.StopAnswerRe"
-    "sp\"\000\022H\n\tRecognize\022\031.GrpcLibrary.Recogniz"
-    "eReq\032\032.GrpcLibrary.RecognizeResp\"\000(\0010\001\022P"
-    "\n\rStopRecognize\022\035.GrpcLibrary.StopRecogn"
-    "izeReq\032\036.GrpcLibrary.StopRecognizeResp\"\000"
-    "\022S\n\016GetMessageInfo\022\036.GrpcLibrary.GetMess"
-    "ageInfoReq\032\037.GrpcLibrary.GetMessageInfoR"
-    "esp\"\000\022G\n\nGetSession\022\032.GrpcLibrary.GetSes"
-    "sionReq\032\033.GrpcLibrary.GetSessionResp\"\000\022G"
-    "\n\nNewSession\022\032.GrpcLibrary.NewSessionReq"
-    "\032\033.GrpcLibrary.NewSessionResp\"\000\022_\n\022Modif"
-    "ySessionTitle\022\".GrpcLibrary.ModifySessio"
-    "nTitleReq\032#.GrpcLibrary.ModifySessionTit"
-    "leResp\"\000\022G\n\nDelSession\022\032.GrpcLibrary.Del"
-    "SessionReq\032\033.GrpcLibrary.DelSessionResp\""
-    "\000\022M\n\014GetSkillInfo\022\034.GrpcLibrary.GetSkill"
-    "InfoReq\032\035.GrpcLibrary.GetSkillInfoResp\"\000"
-    "\022A\n\010Download\022\030.GrpcLibrary.DownloadReq\032\031"
-    ".GrpcLibrary.DownloadResp\"\000\022;\n\006Upload\022\026."
-    "GrpcLibrary.UploadReq\032\027.GrpcLibrary.Uplo"
-    "adResp\"\000\022H\n\tEmbedding\022\031.GrpcLibrary.Embe"
-    "ddingReq\032\032.GrpcLibrary.EmbeddingResp\"\000(\001"
-    "0\001\022P\n\rStopEmbedding\022\035.GrpcLibrary.StopEm"
-    "beddingReq\032\036.GrpcLibrary.StopEmbeddingRe"
-    "sp\"\000b\006proto3"
+    "\001(\t\022\021\n\ttimestamp\030\004 \001(\t\"{\n\006Plugin\022\014\n\004hash"
+    "\030\001 \001(\t\022\014\n\004name\030\002 \001(\t\022\014\n\004desc\030\003 \001(\t\022\021\n\tpu"
+    "blisher\030\004 \001(\t\022\017\n\007version\030\005 \001(\t\022\021\n\ttimest"
+    "amp\030\006 \001(\t\022\020\n\010platform\030\007 \001(\005\"x\n\013MessageIn"
+    "fo\022\n\n\002id\030\001 \001(\003\022\022\n\nsession_id\030\002 \001(\003\022\014\n\004ro"
+    "le\030\003 \001(\t\022\017\n\007content\030\004 \001(\t\022\027\n\017prev_messag"
+    "e_id\030\005 \001(\003\022\021\n\ttimestamp\030\006 \001(\t\"\310\002\n\rSampli"
+    "ngParam\022\026\n\016penalty_last_n\030\001 \001(\005\022\026\n\016penal"
+    "ty_repeat\030\002 \001(\002\022\024\n\014penalty_freq\030\003 \001(\002\022\027\n"
+    "\017penalty_present\030\004 \001(\002\022\023\n\013temperature\030\005 "
+    "\001(\002\022\027\n\017temperature_ext\030\006 \001(\002\022\035\n\025temperat"
+    "ure_ext_delta\030\007 \001(\002\022 \n\030temperature_ext_e"
+    "xponent\030\010 \001(\002\022\014\n\004seed\030\t \001(\r\022\r\n\005top_k\030\n \001"
+    "(\005\022\r\n\005top_p\030\013 \001(\002\022\026\n\016top_p_min_keep\030\014 \001("
+    "\005\022\r\n\005min_p\030\r \001(\002\022\026\n\016min_p_min_keep\030\016 \001(\005"
+    "\"\355\003\n\014ContextParam\022\023\n\013window_size\030\001 \001(\005\022\022"
+    "\n\nstop_words\030\002 \001(\t\022\r\n\005n_ctx\030\003 \001(\005\022\017\n\007n_b"
+    "atch\030\004 \001(\005\022\020\n\010n_ubatch\030\005 \001(\005\022\021\n\tn_seq_ma"
+    "x\030\006 \001(\005\022\021\n\tn_threads\030\007 \001(\005\022\027\n\017n_threads_"
+    "batch\030\010 \001(\005\022\026\n\016rope_freq_base\030\t \001(\002\022\027\n\017r"
+    "ope_freq_scale\030\n \001(\002\022\027\n\017yarn_ext_factor\030"
+    "\013 \001(\002\022\030\n\020yarn_attn_factor\030\014 \001(\002\022\026\n\016yarn_"
+    "beta_fast\030\r \001(\002\022\026\n\016yarn_beta_slow\030\016 \001(\002\022"
+    "\025\n\ryarn_orig_ctx\030\017 \001(\005\022\024\n\014defrag_thold\030\020"
+    " \001(\002\022\022\n\nembeddings\030\021 \001(\010\022\023\n\013offload_kqv\030"
+    "\022 \001(\010\022\017\n\007no_perf\030\023 \001(\010\022\022\n\nop_offload\030\024 \001"
+    "(\010\022\020\n\010swa_full\030\025 \001(\010\022\022\n\nkv_unified\030\026 \001(\010"
+    "\022\016\n\006prompt\030\027 \001(\t\"\344\004\n\020RecognitionParam\022\021\n"
+    "\tn_threads\030\001 \001(\005\022\026\n\016n_max_text_ctx\030\002 \001(\005"
+    "\022\021\n\toffset_ms\030\003 \001(\005\022\023\n\013duration_ms\030\004 \001(\005"
+    "\022\021\n\ttranslate\030\005 \001(\010\022\027\n\017detect_language\030\006"
+    " \001(\010\022\020\n\010language\030\007 \001(\t\022\016\n\006no_ctx\030\010 \001(\010\022\025"
+    "\n\rno_timestamps\030\t \001(\010\022\026\n\016single_segment\030"
+    "\n \001(\010\022\025\n\rprint_special\030\013 \001(\010\022\026\n\016print_pr"
+    "ogress\030\014 \001(\010\022\026\n\016print_realtime\030\r \001(\010\022\030\n\020"
+    "print_timestamps\030\016 \001(\010\022\034\n\024carry_initial_"
+    "prompt\030\017 \001(\010\022\026\n\016initial_prompt\030\020 \001(\t\022\026\n\016"
+    "suppress_regex\030\021 \001(\t\022\026\n\016suppress_blank\030\022"
+    " \001(\010\022\024\n\014suppress_nst\030\023 \001(\010\022\023\n\013temperatur"
+    "e\030\024 \001(\002\022\027\n\017temperature_inc\030\025 \001(\002\022\026\n\016max_"
+    "initial_ts\030\026 \001(\002\022\026\n\016length_penalty\030\027 \001(\002"
+    "\022\025\n\rentropy_thold\030\030 \001(\002\022\025\n\rlogprob_thold"
+    "\030\031 \001(\002\022\027\n\017no_speech_thold\030\032 \001(\002\"#\n\016Embed"
+    "dingParam\022\021\n\tdimension\030\001 \001(\005\"[\n\tFileChun"
+    "k\022\n\n\002id\030\001 \001(\003\022\014\n\004data\030\002 \001(\014\022\021\n\tstart_pos"
+    "\030\003 \001(\003\022\017\n\007end_pos\030\004 \001(\003\022\020\n\010filename\030\005 \001("
+    "\t\"\031\n\004Ping\022\021\n\ttimestamp\030\001 \001(\003\"\031\n\004Pong\022\021\n\t"
+    "timestamp\030\001 \001(\003\"+\n\010LoginReq\022\017\n\007account\030\001"
+    " \001(\t\022\016\n\006passwd\030\002 \001(\t\"{\n\tLoginResp\022\022\n\nerr"
+    "or_code\030\001 \001(\005\022\017\n\007user_id\030\002 \001(\003\022\021\n\tprivil"
+    "ege\030\003 \001(\005\022\014\n\004auth\030\004 \001(\t\022\017\n\007account\030\005 \001(\t"
+    "\022\027\n\017last_login_time\030\006 \001(\t\"*\n\tLogoutReq\022\017"
+    "\n\007user_id\030\001 \001(\003\022\014\n\004auth\030\002 \001(\t\"1\n\nLogoutR"
+    "esp\022\022\n\nerror_code\030\001 \001(\005\022\017\n\007user_id\030\002 \001(\003"
+    "\"0\n\rRegAccountReq\022\017\n\007account\030\001 \001(\t\022\016\n\006pa"
+    "sswd\030\002 \001(\t\"5\n\016RegAccountResp\022\022\n\nerror_co"
+    "de\030\001 \001(\005\022\017\n\007user_id\030\002 \001(\003\"\316\001\n\010QueryReq\022\n"
+    "\n\002id\030\001 \001(\003\022\017\n\007user_id\030\002 \001(\003\022\014\n\004auth\030\003 \001("
+    "\t\022\017\n\007content\030\004 \001(\t\022\r\n\005model\030\005 \001(\t\022\020\n\010pip"
+    "eline\030\006 \001(\t\022\017\n\007api_key\030\007 \001(\t\022,\n\010sampling"
+    "\030\010 \001(\0132\032.GrpcLibrary.SamplingParam\022&\n\003ct"
+    "x\030\t \001(\0132\031.GrpcLibrary.ContextParam\"Q\n\tQu"
+    "eryResp\022\022\n\nerror_code\030\001 \001(\005\022\n\n\002id\030\002 \001(\003\022"
+    "\017\n\007content\030\003 \001(\t\022\023\n\013is_finished\030\004 \001(\010\"B\n"
+    "\rStopAnswerReq\022\022\n\nsession_id\030\001 \001(\003\022\017\n\007us"
+    "er_id\030\002 \001(\003\022\014\n\004auth\030\003 \001(\t\"8\n\016StopAnswerR"
+    "esp\022\022\n\nerror_code\030\001 \001(\005\022\022\n\nsession_id\030\002 "
+    "\001(\003\"\211\001\n\014RecognizeReq\022\016\n\006ctx_id\030\001 \001(\t\022\022\n\n"
+    "session_id\030\002 \001(\003\022.\n\005param\030\003 \001(\0132\035.GrpcLi"
+    "brary.RecognitionParamH\000\022\025\n\013audio_chunk\030"
+    "\004 \001(\014H\000B\016\n\014request_type\"t\n\rRecognizeResp"
+    "\022\022\n\nerror_code\030\001 \001(\005\022\022\n\nsession_id\030\002 \001(\003"
+    "\022\022\n\ntranscript\030\003 \001(\t\022\023\n\013is_finished\030\004 \001("
+    "\010\022\022\n\nconfidence\030\005 \001(\001\"E\n\020StopRecognizeRe"
+    "q\022\022\n\nsession_id\030\001 \001(\003\022\017\n\007user_id\030\002 \001(\003\022\014"
+    "\n\004auth\030\003 \001(\t\";\n\021StopRecognizeResp\022\022\n\nerr"
+    "or_code\030\001 \001(\005\022\022\n\nsession_id\030\002 \001(\003\"a\n\021Get"
+    "MessageInfoReq\022\n\n\002id\030\001 \001(\003\022\022\n\nsession_id"
+    "\030\002 \001(\003\022\r\n\005limit\030\003 \001(\005\022\017\n\007user_id\030\004 \001(\003\022\014"
+    "\n\004auth\030\005 \001(\t\"T\n\022GetMessageInfoResp\022\022\n\ner"
+    "ror_code\030\001 \001(\005\022*\n\010messages\030\002 \003(\0132\030.GrpcL"
+    "ibrary.MessageInfo\"I\n\rGetSessionReq\022\n\n\002i"
+    "d\030\001 \001(\003\022\017\n\007user_id\030\002 \001(\003\022\014\n\004auth\030\003 \001(\t\022\r"
+    "\n\005limit\030\004 \001(\005\"L\n\016GetSessionResp\022\022\n\nerror"
+    "_code\030\001 \001(\005\022&\n\010sessions\030\002 \003(\0132\024.GrpcLibr"
+    "ary.Session\"]\n\rNewSessionReq\022\017\n\007user_id\030"
+    "\001 \001(\003\022\014\n\004auth\030\002 \001(\t\022\r\n\005title\030\003 \001(\t\022\017\n\007co"
+    "ntent\030\004 \001(\t\022\r\n\005model\030\005 \001(\t\"K\n\016NewSession"
+    "Resp\022\022\n\nerror_code\030\001 \001(\005\022%\n\007session\030\002 \001("
+    "\0132\024.GrpcLibrary.Session\"Q\n\025ModifySession"
+    "TitleReq\022\n\n\002id\030\001 \001(\003\022\017\n\007user_id\030\002 \001(\003\022\014\n"
+    "\004auth\030\003 \001(\t\022\r\n\005title\030\004 \001(\t\"G\n\026ModifySess"
+    "ionTitleResp\022\022\n\nerror_code\030\001 \001(\005\022\n\n\002id\030\002"
+    " \001(\003\022\r\n\005title\030\003 \001(\t\";\n\rDelSessionReq\022\017\n\007"
+    "user_id\030\001 \001(\003\022\014\n\004auth\030\002 \001(\t\022\013\n\003ids\030\003 \003(\003"
+    "\"1\n\016DelSessionResp\022\022\n\nerror_code\030\001 \001(\005\022\013"
+    "\n\003ids\030\002 \003(\003\"/\n\020GetPluginInfoReq\022\014\n\004hash\030"
+    "\001 \001(\t\022\r\n\005limit\030\002 \001(\005\"M\n\021GetPluginInfoRes"
+    "p\022\022\n\nerror_code\030\001 \001(\005\022$\n\007plugins\030\002 \003(\0132\023"
+    ".GrpcLibrary.Plugin\":\n\013DownloadReq\022\014\n\004ha"
+    "sh\030\001 \001(\t\022\017\n\007user_id\030\002 \001(\003\022\014\n\004auth\030\003 \001(\t\""
+    "O\n\014DownloadResp\022\022\n\nerror_code\030\001 \001(\005\022\014\n\004h"
+    "ash\030\002 \001(\t\022\014\n\004addr\030\003 \001(\t\022\017\n\007size_kb\030\004 \001(\003"
+    "\"W\n\tUploadReq\022\014\n\004hash\030\001 \001(\t\022\017\n\007user_id\030\002"
+    " \001(\003\022\014\n\004auth\030\003 \001(\t\022\014\n\004addr\030\004 \001(\t\022\017\n\007size"
+    "_kb\030\005 \001(\003\".\n\nUploadResp\022\022\n\nerror_code\030\001 "
+    "\001(\005\022\014\n\004hash\030\002 \001(\t\"\206\001\n\014EmbeddingReq\022\017\n\007ta"
+    "sk_id\030\001 \001(\003\022,\n\005param\030\002 \001(\0132\033.GrpcLibrary"
+    ".EmbeddingParamH\000\022\'\n\005chunk\030\003 \001(\0132\026.GrpcL"
+    "ibrary.FileChunkH\000B\016\n\014request_type\"]\n\rEm"
+    "beddingResp\022\022\n\nerror_code\030\001 \001(\005\022\017\n\007task_"
+    "id\030\002 \001(\003\022\020\n\010chunk_id\030\003 \001(\003\022\025\n\rvector_ind"
+    "exs\030\004 \001(\014\"B\n\020StopEmbeddingReq\022\017\n\007task_id"
+    "\030\001 \001(\003\022\017\n\007user_id\030\002 \001(\003\022\014\n\004auth\030\003 \001(\t\"8\n"
+    "\021StopEmbeddingResp\022\022\n\nerror_code\030\001 \001(\005\022\017"
+    "\n\007task_id\030\002 \001(\0032\242\n\n\013GrpcService\0223\n\tHeart"
+    "beat\022\021.GrpcLibrary.Ping\032\021.GrpcLibrary.Po"
+    "ng\"\000\0228\n\005Login\022\025.GrpcLibrary.LoginReq\032\026.G"
+    "rpcLibrary.LoginResp\"\000\022;\n\006Logout\022\026.GrpcL"
+    "ibrary.LogoutReq\032\027.GrpcLibrary.LogoutRes"
+    "p\"\000\022G\n\nRegAccount\022\032.GrpcLibrary.RegAccou"
+    "ntReq\032\033.GrpcLibrary.RegAccountResp\"\000\022:\n\005"
+    "Query\022\025.GrpcLibrary.QueryReq\032\026.GrpcLibra"
+    "ry.QueryResp\"\0000\001\022G\n\nStopAnswer\022\032.GrpcLib"
+    "rary.StopAnswerReq\032\033.GrpcLibrary.StopAns"
+    "werResp\"\000\022H\n\tRecognize\022\031.GrpcLibrary.Rec"
+    "ognizeReq\032\032.GrpcLibrary.RecognizeResp\"\000("
+    "\0010\001\022P\n\rStopRecognize\022\035.GrpcLibrary.StopR"
+    "ecognizeReq\032\036.GrpcLibrary.StopRecognizeR"
+    "esp\"\000\022S\n\016GetMessageInfo\022\036.GrpcLibrary.Ge"
+    "tMessageInfoReq\032\037.GrpcLibrary.GetMessage"
+    "InfoResp\"\000\022G\n\nGetSession\022\032.GrpcLibrary.G"
+    "etSessionReq\032\033.GrpcLibrary.GetSessionRes"
+    "p\"\000\022G\n\nNewSession\022\032.GrpcLibrary.NewSessi"
+    "onReq\032\033.GrpcLibrary.NewSessionResp\"\000\022_\n\022"
+    "ModifySessionTitle\022\".GrpcLibrary.ModifyS"
+    "essionTitleReq\032#.GrpcLibrary.ModifySessi"
+    "onTitleResp\"\000\022G\n\nDelSession\022\032.GrpcLibrar"
+    "y.DelSessionReq\032\033.GrpcLibrary.DelSession"
+    "Resp\"\000\022P\n\rGetPluginInfo\022\035.GrpcLibrary.Ge"
+    "tPluginInfoReq\032\036.GrpcLibrary.GetPluginIn"
+    "foResp\"\000\022A\n\010Download\022\030.GrpcLibrary.Downl"
+    "oadReq\032\031.GrpcLibrary.DownloadResp\"\000\022;\n\006U"
+    "pload\022\026.GrpcLibrary.UploadReq\032\027.GrpcLibr"
+    "ary.UploadResp\"\000\022H\n\tEmbedding\022\031.GrpcLibr"
+    "ary.EmbeddingReq\032\032.GrpcLibrary.Embedding"
+    "Resp\"\000(\0010\001\022P\n\rStopEmbedding\022\035.GrpcLibrar"
+    "y.StopEmbeddingReq\032\036.GrpcLibrary.StopEmb"
+    "eddingResp\"\000b\006proto3"
 };
 static ::absl::once_flag descriptor_table_src_2fapi_2eproto_once;
 PROTOBUF_CONSTINIT const ::_pbi::DescriptorTable descriptor_table_src_2fapi_2eproto = {
     false,
     false,
-    6012,
+    6020,
     descriptor_table_protodef_src_2fapi_2eproto,
     "src/api.proto",
     &descriptor_table_src_2fapi_2eproto_once,
@@ -2602,27 +2602,27 @@ void Session::InternalSwap(Session* PROTOBUF_RESTRICT PROTOBUF_NONNULL other) {
 }
 // ===================================================================
 
-class Skill::_Internal {
+class Plugin::_Internal {
  public:
   using HasBits =
-      decltype(::std::declval<Skill>()._impl_._has_bits_);
+      decltype(::std::declval<Plugin>()._impl_._has_bits_);
   static constexpr ::int32_t kHasBitsOffset =
-      8 * PROTOBUF_FIELD_OFFSET(Skill, _impl_._has_bits_);
+      8 * PROTOBUF_FIELD_OFFSET(Plugin, _impl_._has_bits_);
 };
 
-Skill::Skill(::google::protobuf::Arena* PROTOBUF_NULLABLE arena)
+Plugin::Plugin(::google::protobuf::Arena* PROTOBUF_NULLABLE arena)
 #if defined(PROTOBUF_CUSTOM_VTABLE)
-    : ::google::protobuf::Message(arena, Skill_class_data_.base()) {
+    : ::google::protobuf::Message(arena, Plugin_class_data_.base()) {
 #else   // PROTOBUF_CUSTOM_VTABLE
     : ::google::protobuf::Message(arena) {
 #endif  // PROTOBUF_CUSTOM_VTABLE
   SharedCtor(arena);
-  // @@protoc_insertion_point(arena_constructor:GrpcLibrary.Skill)
+  // @@protoc_insertion_point(arena_constructor:GrpcLibrary.Plugin)
 }
-PROTOBUF_NDEBUG_INLINE Skill::Impl_::Impl_(
+PROTOBUF_NDEBUG_INLINE Plugin::Impl_::Impl_(
     [[maybe_unused]] ::google::protobuf::internal::InternalVisibility visibility,
     [[maybe_unused]] ::google::protobuf::Arena* PROTOBUF_NULLABLE arena, const Impl_& from,
-    [[maybe_unused]] const ::GrpcLibrary::Skill& from_msg)
+    [[maybe_unused]] const ::GrpcLibrary::Plugin& from_msg)
       : _has_bits_{from._has_bits_},
         _cached_size_{0},
         hash_(arena, from.hash_),
@@ -2632,24 +2632,24 @@ PROTOBUF_NDEBUG_INLINE Skill::Impl_::Impl_(
         version_(arena, from.version_),
         timestamp_(arena, from.timestamp_) {}
 
-Skill::Skill(
+Plugin::Plugin(
     ::google::protobuf::Arena* PROTOBUF_NULLABLE arena,
-    const Skill& from)
+    const Plugin& from)
 #if defined(PROTOBUF_CUSTOM_VTABLE)
-    : ::google::protobuf::Message(arena, Skill_class_data_.base()) {
+    : ::google::protobuf::Message(arena, Plugin_class_data_.base()) {
 #else   // PROTOBUF_CUSTOM_VTABLE
     : ::google::protobuf::Message(arena) {
 #endif  // PROTOBUF_CUSTOM_VTABLE
-  Skill* const _this = this;
+  Plugin* const _this = this;
   (void)_this;
   _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
       from._internal_metadata_);
   new (&_impl_) Impl_(internal_visibility(), arena, from._impl_, from);
   _impl_.platform_ = from._impl_.platform_;
 
-  // @@protoc_insertion_point(copy_constructor:GrpcLibrary.Skill)
+  // @@protoc_insertion_point(copy_constructor:GrpcLibrary.Plugin)
 }
-PROTOBUF_NDEBUG_INLINE Skill::Impl_::Impl_(
+PROTOBUF_NDEBUG_INLINE Plugin::Impl_::Impl_(
     [[maybe_unused]] ::google::protobuf::internal::InternalVisibility visibility,
     [[maybe_unused]] ::google::protobuf::Arena* PROTOBUF_NULLABLE arena)
       : _cached_size_{0},
@@ -2660,16 +2660,16 @@ PROTOBUF_NDEBUG_INLINE Skill::Impl_::Impl_(
         version_(arena),
         timestamp_(arena) {}
 
-inline void Skill::SharedCtor(::_pb::Arena* PROTOBUF_NULLABLE arena) {
+inline void Plugin::SharedCtor(::_pb::Arena* PROTOBUF_NULLABLE arena) {
   new (&_impl_) Impl_(internal_visibility(), arena);
   _impl_.platform_ = {};
 }
-Skill::~Skill() {
-  // @@protoc_insertion_point(destructor:GrpcLibrary.Skill)
+Plugin::~Plugin() {
+  // @@protoc_insertion_point(destructor:GrpcLibrary.Plugin)
   SharedDtor(*this);
 }
-inline void Skill::SharedDtor(MessageLite& self) {
-  Skill& this_ = static_cast<Skill&>(self);
+inline void Plugin::SharedDtor(MessageLite& self) {
+  Plugin& this_ = static_cast<Plugin&>(self);
   if constexpr (::_pbi::DebugHardenCheckHasBitConsistency()) {
     this_.CheckHasBitConsistency();
   }
@@ -2684,53 +2684,53 @@ inline void Skill::SharedDtor(MessageLite& self) {
   this_._impl_.~Impl_();
 }
 
-inline void* PROTOBUF_NONNULL Skill::PlacementNew_(
+inline void* PROTOBUF_NONNULL Plugin::PlacementNew_(
     const void* PROTOBUF_NONNULL, void* PROTOBUF_NONNULL mem,
     ::google::protobuf::Arena* PROTOBUF_NULLABLE arena) {
-  return ::new (mem) Skill(arena);
+  return ::new (mem) Plugin(arena);
 }
-constexpr auto Skill::InternalNewImpl_() {
-  return ::google::protobuf::internal::MessageCreator::CopyInit(sizeof(Skill),
-                                            alignof(Skill));
+constexpr auto Plugin::InternalNewImpl_() {
+  return ::google::protobuf::internal::MessageCreator::CopyInit(sizeof(Plugin),
+                                            alignof(Plugin));
 }
-constexpr auto Skill::InternalGenerateClassData_() {
+constexpr auto Plugin::InternalGenerateClassData_() {
   return ::google::protobuf::internal::ClassDataFull{
       ::google::protobuf::internal::ClassData{
-          &_Skill_default_instance_._instance,
+          &_Plugin_default_instance_._instance,
           &_table_.header,
           nullptr,  // OnDemandRegisterArenaDtor
           nullptr,  // IsInitialized
-          &Skill::MergeImpl,
-          ::google::protobuf::Message::GetNewImpl<Skill>(),
+          &Plugin::MergeImpl,
+          ::google::protobuf::Message::GetNewImpl<Plugin>(),
 #if defined(PROTOBUF_CUSTOM_VTABLE)
-          &Skill::SharedDtor,
-          ::google::protobuf::Message::GetClearImpl<Skill>(), &Skill::ByteSizeLong,
-              &Skill::_InternalSerialize,
+          &Plugin::SharedDtor,
+          ::google::protobuf::Message::GetClearImpl<Plugin>(), &Plugin::ByteSizeLong,
+              &Plugin::_InternalSerialize,
 #endif  // PROTOBUF_CUSTOM_VTABLE
-          PROTOBUF_FIELD_OFFSET(Skill, _impl_._cached_size_),
+          PROTOBUF_FIELD_OFFSET(Plugin, _impl_._cached_size_),
           false,
       },
-      &Skill::kDescriptorMethods,
+      &Plugin::kDescriptorMethods,
       &descriptor_table_src_2fapi_2eproto,
       nullptr,  // tracker
   };
 }
 
 PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 const
-    ::google::protobuf::internal::ClassDataFull Skill_class_data_ =
-        Skill::InternalGenerateClassData_();
+    ::google::protobuf::internal::ClassDataFull Plugin_class_data_ =
+        Plugin::InternalGenerateClassData_();
 
 PROTOBUF_ATTRIBUTE_WEAK const ::google::protobuf::internal::ClassData* PROTOBUF_NONNULL
-Skill::GetClassData() const {
-  ::google::protobuf::internal::PrefetchToLocalCache(&Skill_class_data_);
-  ::google::protobuf::internal::PrefetchToLocalCache(Skill_class_data_.tc_table);
-  return Skill_class_data_.base();
+Plugin::GetClassData() const {
+  ::google::protobuf::internal::PrefetchToLocalCache(&Plugin_class_data_);
+  ::google::protobuf::internal::PrefetchToLocalCache(Plugin_class_data_.tc_table);
+  return Plugin_class_data_.base();
 }
 PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
-const ::_pbi::TcParseTable<3, 7, 0, 63, 2>
-Skill::_table_ = {
+const ::_pbi::TcParseTable<3, 7, 0, 64, 2>
+Plugin::_table_ = {
   {
-    PROTOBUF_FIELD_OFFSET(Skill, _impl_._has_bits_),
+    PROTOBUF_FIELD_OFFSET(Plugin, _impl_._has_bits_),
     0, // no _extensions_
     7, 56,  // max_field_number, fast_idx_mask
     offsetof(decltype(_table_), field_lookup_table),
@@ -2739,64 +2739,64 @@ Skill::_table_ = {
     7,  // num_field_entries
     0,  // num_aux_entries
     offsetof(decltype(_table_), field_names),  // no aux_entries
-    Skill_class_data_.base(),
+    Plugin_class_data_.base(),
     nullptr,  // post_loop_handler
     ::_pbi::TcParser::GenericFallback,  // fallback
     #ifdef PROTOBUF_PREFETCH_PARSE_TABLE
-    ::_pbi::TcParser::GetTable<::GrpcLibrary::Skill>(),  // to_prefetch
+    ::_pbi::TcParser::GetTable<::GrpcLibrary::Plugin>(),  // to_prefetch
     #endif  // PROTOBUF_PREFETCH_PARSE_TABLE
   }, {{
     {::_pbi::TcParser::MiniParse, {}},
     // string hash = 1;
     {::_pbi::TcParser::FastUS1,
      {10, 0, 0,
-      PROTOBUF_FIELD_OFFSET(Skill, _impl_.hash_)}},
+      PROTOBUF_FIELD_OFFSET(Plugin, _impl_.hash_)}},
     // string name = 2;
     {::_pbi::TcParser::FastUS1,
      {18, 1, 0,
-      PROTOBUF_FIELD_OFFSET(Skill, _impl_.name_)}},
+      PROTOBUF_FIELD_OFFSET(Plugin, _impl_.name_)}},
     // string desc = 3;
     {::_pbi::TcParser::FastUS1,
      {26, 2, 0,
-      PROTOBUF_FIELD_OFFSET(Skill, _impl_.desc_)}},
+      PROTOBUF_FIELD_OFFSET(Plugin, _impl_.desc_)}},
     // string publisher = 4;
     {::_pbi::TcParser::FastUS1,
      {34, 3, 0,
-      PROTOBUF_FIELD_OFFSET(Skill, _impl_.publisher_)}},
+      PROTOBUF_FIELD_OFFSET(Plugin, _impl_.publisher_)}},
     // string version = 5;
     {::_pbi::TcParser::FastUS1,
      {42, 4, 0,
-      PROTOBUF_FIELD_OFFSET(Skill, _impl_.version_)}},
+      PROTOBUF_FIELD_OFFSET(Plugin, _impl_.version_)}},
     // string timestamp = 6;
     {::_pbi::TcParser::FastUS1,
      {50, 5, 0,
-      PROTOBUF_FIELD_OFFSET(Skill, _impl_.timestamp_)}},
+      PROTOBUF_FIELD_OFFSET(Plugin, _impl_.timestamp_)}},
     // int32 platform = 7;
-    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(Skill, _impl_.platform_), 6>(),
+    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(Plugin, _impl_.platform_), 6>(),
      {56, 6, 0,
-      PROTOBUF_FIELD_OFFSET(Skill, _impl_.platform_)}},
+      PROTOBUF_FIELD_OFFSET(Plugin, _impl_.platform_)}},
   }}, {{
     65535, 65535
   }}, {{
     // string hash = 1;
-    {PROTOBUF_FIELD_OFFSET(Skill, _impl_.hash_), _Internal::kHasBitsOffset + 0, 0, (0 | ::_fl::kFcOptional | ::_fl::kUtf8String | ::_fl::kRepAString)},
+    {PROTOBUF_FIELD_OFFSET(Plugin, _impl_.hash_), _Internal::kHasBitsOffset + 0, 0, (0 | ::_fl::kFcOptional | ::_fl::kUtf8String | ::_fl::kRepAString)},
     // string name = 2;
-    {PROTOBUF_FIELD_OFFSET(Skill, _impl_.name_), _Internal::kHasBitsOffset + 1, 0, (0 | ::_fl::kFcOptional | ::_fl::kUtf8String | ::_fl::kRepAString)},
+    {PROTOBUF_FIELD_OFFSET(Plugin, _impl_.name_), _Internal::kHasBitsOffset + 1, 0, (0 | ::_fl::kFcOptional | ::_fl::kUtf8String | ::_fl::kRepAString)},
     // string desc = 3;
-    {PROTOBUF_FIELD_OFFSET(Skill, _impl_.desc_), _Internal::kHasBitsOffset + 2, 0, (0 | ::_fl::kFcOptional | ::_fl::kUtf8String | ::_fl::kRepAString)},
+    {PROTOBUF_FIELD_OFFSET(Plugin, _impl_.desc_), _Internal::kHasBitsOffset + 2, 0, (0 | ::_fl::kFcOptional | ::_fl::kUtf8String | ::_fl::kRepAString)},
     // string publisher = 4;
-    {PROTOBUF_FIELD_OFFSET(Skill, _impl_.publisher_), _Internal::kHasBitsOffset + 3, 0, (0 | ::_fl::kFcOptional | ::_fl::kUtf8String | ::_fl::kRepAString)},
+    {PROTOBUF_FIELD_OFFSET(Plugin, _impl_.publisher_), _Internal::kHasBitsOffset + 3, 0, (0 | ::_fl::kFcOptional | ::_fl::kUtf8String | ::_fl::kRepAString)},
     // string version = 5;
-    {PROTOBUF_FIELD_OFFSET(Skill, _impl_.version_), _Internal::kHasBitsOffset + 4, 0, (0 | ::_fl::kFcOptional | ::_fl::kUtf8String | ::_fl::kRepAString)},
+    {PROTOBUF_FIELD_OFFSET(Plugin, _impl_.version_), _Internal::kHasBitsOffset + 4, 0, (0 | ::_fl::kFcOptional | ::_fl::kUtf8String | ::_fl::kRepAString)},
     // string timestamp = 6;
-    {PROTOBUF_FIELD_OFFSET(Skill, _impl_.timestamp_), _Internal::kHasBitsOffset + 5, 0, (0 | ::_fl::kFcOptional | ::_fl::kUtf8String | ::_fl::kRepAString)},
+    {PROTOBUF_FIELD_OFFSET(Plugin, _impl_.timestamp_), _Internal::kHasBitsOffset + 5, 0, (0 | ::_fl::kFcOptional | ::_fl::kUtf8String | ::_fl::kRepAString)},
     // int32 platform = 7;
-    {PROTOBUF_FIELD_OFFSET(Skill, _impl_.platform_), _Internal::kHasBitsOffset + 6, 0, (0 | ::_fl::kFcOptional | ::_fl::kInt32)},
+    {PROTOBUF_FIELD_OFFSET(Plugin, _impl_.platform_), _Internal::kHasBitsOffset + 6, 0, (0 | ::_fl::kFcOptional | ::_fl::kInt32)},
   }},
   // no aux_entries
   {{
-    "\21\4\4\4\11\7\11\0"
-    "GrpcLibrary.Skill"
+    "\22\4\4\4\11\7\11\0"
+    "GrpcLibrary.Plugin"
     "hash"
     "name"
     "desc"
@@ -2805,8 +2805,8 @@ Skill::_table_ = {
     "timestamp"
   }},
 };
-PROTOBUF_NOINLINE void Skill::Clear() {
-// @@protoc_insertion_point(message_clear_start:GrpcLibrary.Skill)
+PROTOBUF_NOINLINE void Plugin::Clear() {
+// @@protoc_insertion_point(message_clear_start:GrpcLibrary.Plugin)
   ::google::protobuf::internal::TSanWrite(&_impl_);
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
@@ -2839,20 +2839,20 @@ PROTOBUF_NOINLINE void Skill::Clear() {
 }
 
 #if defined(PROTOBUF_CUSTOM_VTABLE)
-::uint8_t* PROTOBUF_NONNULL Skill::_InternalSerialize(
+::uint8_t* PROTOBUF_NONNULL Plugin::_InternalSerialize(
     const ::google::protobuf::MessageLite& base, ::uint8_t* PROTOBUF_NONNULL target,
     ::google::protobuf::io::EpsCopyOutputStream* PROTOBUF_NONNULL stream) {
-  const Skill& this_ = static_cast<const Skill&>(base);
+  const Plugin& this_ = static_cast<const Plugin&>(base);
 #else   // PROTOBUF_CUSTOM_VTABLE
-::uint8_t* PROTOBUF_NONNULL Skill::_InternalSerialize(
+::uint8_t* PROTOBUF_NONNULL Plugin::_InternalSerialize(
     ::uint8_t* PROTOBUF_NONNULL target,
     ::google::protobuf::io::EpsCopyOutputStream* PROTOBUF_NONNULL stream) const {
-  const Skill& this_ = *this;
+  const Plugin& this_ = *this;
 #endif  // PROTOBUF_CUSTOM_VTABLE
   if constexpr (::_pbi::DebugHardenCheckHasBitConsistency()) {
     this_.CheckHasBitConsistency();
   }
-  // @@protoc_insertion_point(serialize_to_array_start:GrpcLibrary.Skill)
+  // @@protoc_insertion_point(serialize_to_array_start:GrpcLibrary.Plugin)
   ::uint32_t cached_has_bits = 0;
   (void)cached_has_bits;
 
@@ -2862,7 +2862,7 @@ PROTOBUF_NOINLINE void Skill::Clear() {
     if (!this_._internal_hash().empty()) {
       const ::std::string& _s = this_._internal_hash();
       ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-          _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "GrpcLibrary.Skill.hash");
+          _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "GrpcLibrary.Plugin.hash");
       target = stream->WriteStringMaybeAliased(1, _s, target);
     }
   }
@@ -2872,7 +2872,7 @@ PROTOBUF_NOINLINE void Skill::Clear() {
     if (!this_._internal_name().empty()) {
       const ::std::string& _s = this_._internal_name();
       ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-          _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "GrpcLibrary.Skill.name");
+          _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "GrpcLibrary.Plugin.name");
       target = stream->WriteStringMaybeAliased(2, _s, target);
     }
   }
@@ -2882,7 +2882,7 @@ PROTOBUF_NOINLINE void Skill::Clear() {
     if (!this_._internal_desc().empty()) {
       const ::std::string& _s = this_._internal_desc();
       ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-          _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "GrpcLibrary.Skill.desc");
+          _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "GrpcLibrary.Plugin.desc");
       target = stream->WriteStringMaybeAliased(3, _s, target);
     }
   }
@@ -2892,7 +2892,7 @@ PROTOBUF_NOINLINE void Skill::Clear() {
     if (!this_._internal_publisher().empty()) {
       const ::std::string& _s = this_._internal_publisher();
       ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-          _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "GrpcLibrary.Skill.publisher");
+          _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "GrpcLibrary.Plugin.publisher");
       target = stream->WriteStringMaybeAliased(4, _s, target);
     }
   }
@@ -2902,7 +2902,7 @@ PROTOBUF_NOINLINE void Skill::Clear() {
     if (!this_._internal_version().empty()) {
       const ::std::string& _s = this_._internal_version();
       ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-          _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "GrpcLibrary.Skill.version");
+          _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "GrpcLibrary.Plugin.version");
       target = stream->WriteStringMaybeAliased(5, _s, target);
     }
   }
@@ -2912,7 +2912,7 @@ PROTOBUF_NOINLINE void Skill::Clear() {
     if (!this_._internal_timestamp().empty()) {
       const ::std::string& _s = this_._internal_timestamp();
       ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-          _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "GrpcLibrary.Skill.timestamp");
+          _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "GrpcLibrary.Plugin.timestamp");
       target = stream->WriteStringMaybeAliased(6, _s, target);
     }
   }
@@ -2931,18 +2931,18 @@ PROTOBUF_NOINLINE void Skill::Clear() {
         ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
             this_._internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:GrpcLibrary.Skill)
+  // @@protoc_insertion_point(serialize_to_array_end:GrpcLibrary.Plugin)
   return target;
 }
 
 #if defined(PROTOBUF_CUSTOM_VTABLE)
-::size_t Skill::ByteSizeLong(const MessageLite& base) {
-  const Skill& this_ = static_cast<const Skill&>(base);
+::size_t Plugin::ByteSizeLong(const MessageLite& base) {
+  const Plugin& this_ = static_cast<const Plugin&>(base);
 #else   // PROTOBUF_CUSTOM_VTABLE
-::size_t Skill::ByteSizeLong() const {
-  const Skill& this_ = *this;
+::size_t Plugin::ByteSizeLong() const {
+  const Plugin& this_ = *this;
 #endif  // PROTOBUF_CUSTOM_VTABLE
-  // @@protoc_insertion_point(message_byte_size_start:GrpcLibrary.Skill)
+  // @@protoc_insertion_point(message_byte_size_start:GrpcLibrary.Plugin)
   ::size_t total_size = 0;
 
   ::uint32_t cached_has_bits = 0;
@@ -3006,15 +3006,15 @@ PROTOBUF_NOINLINE void Skill::Clear() {
                                              &this_._impl_._cached_size_);
 }
 
-void Skill::MergeImpl(::google::protobuf::MessageLite& to_msg,
+void Plugin::MergeImpl(::google::protobuf::MessageLite& to_msg,
                             const ::google::protobuf::MessageLite& from_msg) {
    auto* const _this =
-      static_cast<Skill*>(&to_msg);
-  auto& from = static_cast<const Skill&>(from_msg);
+      static_cast<Plugin*>(&to_msg);
+  auto& from = static_cast<const Plugin&>(from_msg);
   if constexpr (::_pbi::DebugHardenCheckHasBitConsistency()) {
     from.CheckHasBitConsistency();
   }
-  // @@protoc_insertion_point(class_specific_merge_from_start:GrpcLibrary.Skill)
+  // @@protoc_insertion_point(class_specific_merge_from_start:GrpcLibrary.Plugin)
   ABSL_DCHECK_NE(&from, _this);
   ::uint32_t cached_has_bits = 0;
   (void)cached_has_bits;
@@ -3086,15 +3086,15 @@ void Skill::MergeImpl(::google::protobuf::MessageLite& to_msg,
       from._internal_metadata_);
 }
 
-void Skill::CopyFrom(const Skill& from) {
-  // @@protoc_insertion_point(class_specific_copy_from_start:GrpcLibrary.Skill)
+void Plugin::CopyFrom(const Plugin& from) {
+  // @@protoc_insertion_point(class_specific_copy_from_start:GrpcLibrary.Plugin)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
 
-void Skill::InternalSwap(Skill* PROTOBUF_RESTRICT PROTOBUF_NONNULL other) {
+void Plugin::InternalSwap(Plugin* PROTOBUF_RESTRICT PROTOBUF_NONNULL other) {
   using ::std::swap;
   auto* arena = GetArena();
   ABSL_DCHECK_EQ(arena, other->GetArena());
@@ -3109,7 +3109,7 @@ void Skill::InternalSwap(Skill* PROTOBUF_RESTRICT PROTOBUF_NONNULL other) {
   swap(_impl_.platform_, other->_impl_.platform_);
 }
 
-::google::protobuf::Metadata Skill::GetMetadata() const {
+::google::protobuf::Metadata Plugin::GetMetadata() const {
   return ::google::protobuf::Message::GetMetadataImpl(GetClassData()->full());
 }
 // ===================================================================
@@ -16046,64 +16046,64 @@ void DelSessionResp::InternalSwap(DelSessionResp* PROTOBUF_RESTRICT PROTOBUF_NON
 }
 // ===================================================================
 
-class GetSkillInfoReq::_Internal {
+class GetPluginInfoReq::_Internal {
  public:
   using HasBits =
-      decltype(::std::declval<GetSkillInfoReq>()._impl_._has_bits_);
+      decltype(::std::declval<GetPluginInfoReq>()._impl_._has_bits_);
   static constexpr ::int32_t kHasBitsOffset =
-      8 * PROTOBUF_FIELD_OFFSET(GetSkillInfoReq, _impl_._has_bits_);
+      8 * PROTOBUF_FIELD_OFFSET(GetPluginInfoReq, _impl_._has_bits_);
 };
 
-GetSkillInfoReq::GetSkillInfoReq(::google::protobuf::Arena* PROTOBUF_NULLABLE arena)
+GetPluginInfoReq::GetPluginInfoReq(::google::protobuf::Arena* PROTOBUF_NULLABLE arena)
 #if defined(PROTOBUF_CUSTOM_VTABLE)
-    : ::google::protobuf::Message(arena, GetSkillInfoReq_class_data_.base()) {
+    : ::google::protobuf::Message(arena, GetPluginInfoReq_class_data_.base()) {
 #else   // PROTOBUF_CUSTOM_VTABLE
     : ::google::protobuf::Message(arena) {
 #endif  // PROTOBUF_CUSTOM_VTABLE
   SharedCtor(arena);
-  // @@protoc_insertion_point(arena_constructor:GrpcLibrary.GetSkillInfoReq)
+  // @@protoc_insertion_point(arena_constructor:GrpcLibrary.GetPluginInfoReq)
 }
-PROTOBUF_NDEBUG_INLINE GetSkillInfoReq::Impl_::Impl_(
+PROTOBUF_NDEBUG_INLINE GetPluginInfoReq::Impl_::Impl_(
     [[maybe_unused]] ::google::protobuf::internal::InternalVisibility visibility,
     [[maybe_unused]] ::google::protobuf::Arena* PROTOBUF_NULLABLE arena, const Impl_& from,
-    [[maybe_unused]] const ::GrpcLibrary::GetSkillInfoReq& from_msg)
+    [[maybe_unused]] const ::GrpcLibrary::GetPluginInfoReq& from_msg)
       : _has_bits_{from._has_bits_},
         _cached_size_{0},
         hash_(arena, from.hash_) {}
 
-GetSkillInfoReq::GetSkillInfoReq(
+GetPluginInfoReq::GetPluginInfoReq(
     ::google::protobuf::Arena* PROTOBUF_NULLABLE arena,
-    const GetSkillInfoReq& from)
+    const GetPluginInfoReq& from)
 #if defined(PROTOBUF_CUSTOM_VTABLE)
-    : ::google::protobuf::Message(arena, GetSkillInfoReq_class_data_.base()) {
+    : ::google::protobuf::Message(arena, GetPluginInfoReq_class_data_.base()) {
 #else   // PROTOBUF_CUSTOM_VTABLE
     : ::google::protobuf::Message(arena) {
 #endif  // PROTOBUF_CUSTOM_VTABLE
-  GetSkillInfoReq* const _this = this;
+  GetPluginInfoReq* const _this = this;
   (void)_this;
   _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
       from._internal_metadata_);
   new (&_impl_) Impl_(internal_visibility(), arena, from._impl_, from);
   _impl_.limit_ = from._impl_.limit_;
 
-  // @@protoc_insertion_point(copy_constructor:GrpcLibrary.GetSkillInfoReq)
+  // @@protoc_insertion_point(copy_constructor:GrpcLibrary.GetPluginInfoReq)
 }
-PROTOBUF_NDEBUG_INLINE GetSkillInfoReq::Impl_::Impl_(
+PROTOBUF_NDEBUG_INLINE GetPluginInfoReq::Impl_::Impl_(
     [[maybe_unused]] ::google::protobuf::internal::InternalVisibility visibility,
     [[maybe_unused]] ::google::protobuf::Arena* PROTOBUF_NULLABLE arena)
       : _cached_size_{0},
         hash_(arena) {}
 
-inline void GetSkillInfoReq::SharedCtor(::_pb::Arena* PROTOBUF_NULLABLE arena) {
+inline void GetPluginInfoReq::SharedCtor(::_pb::Arena* PROTOBUF_NULLABLE arena) {
   new (&_impl_) Impl_(internal_visibility(), arena);
   _impl_.limit_ = {};
 }
-GetSkillInfoReq::~GetSkillInfoReq() {
-  // @@protoc_insertion_point(destructor:GrpcLibrary.GetSkillInfoReq)
+GetPluginInfoReq::~GetPluginInfoReq() {
+  // @@protoc_insertion_point(destructor:GrpcLibrary.GetPluginInfoReq)
   SharedDtor(*this);
 }
-inline void GetSkillInfoReq::SharedDtor(MessageLite& self) {
-  GetSkillInfoReq& this_ = static_cast<GetSkillInfoReq&>(self);
+inline void GetPluginInfoReq::SharedDtor(MessageLite& self) {
+  GetPluginInfoReq& this_ = static_cast<GetPluginInfoReq&>(self);
   if constexpr (::_pbi::DebugHardenCheckHasBitConsistency()) {
     this_.CheckHasBitConsistency();
   }
@@ -16113,53 +16113,53 @@ inline void GetSkillInfoReq::SharedDtor(MessageLite& self) {
   this_._impl_.~Impl_();
 }
 
-inline void* PROTOBUF_NONNULL GetSkillInfoReq::PlacementNew_(
+inline void* PROTOBUF_NONNULL GetPluginInfoReq::PlacementNew_(
     const void* PROTOBUF_NONNULL, void* PROTOBUF_NONNULL mem,
     ::google::protobuf::Arena* PROTOBUF_NULLABLE arena) {
-  return ::new (mem) GetSkillInfoReq(arena);
+  return ::new (mem) GetPluginInfoReq(arena);
 }
-constexpr auto GetSkillInfoReq::InternalNewImpl_() {
-  return ::google::protobuf::internal::MessageCreator::CopyInit(sizeof(GetSkillInfoReq),
-                                            alignof(GetSkillInfoReq));
+constexpr auto GetPluginInfoReq::InternalNewImpl_() {
+  return ::google::protobuf::internal::MessageCreator::CopyInit(sizeof(GetPluginInfoReq),
+                                            alignof(GetPluginInfoReq));
 }
-constexpr auto GetSkillInfoReq::InternalGenerateClassData_() {
+constexpr auto GetPluginInfoReq::InternalGenerateClassData_() {
   return ::google::protobuf::internal::ClassDataFull{
       ::google::protobuf::internal::ClassData{
-          &_GetSkillInfoReq_default_instance_._instance,
+          &_GetPluginInfoReq_default_instance_._instance,
           &_table_.header,
           nullptr,  // OnDemandRegisterArenaDtor
           nullptr,  // IsInitialized
-          &GetSkillInfoReq::MergeImpl,
-          ::google::protobuf::Message::GetNewImpl<GetSkillInfoReq>(),
+          &GetPluginInfoReq::MergeImpl,
+          ::google::protobuf::Message::GetNewImpl<GetPluginInfoReq>(),
 #if defined(PROTOBUF_CUSTOM_VTABLE)
-          &GetSkillInfoReq::SharedDtor,
-          ::google::protobuf::Message::GetClearImpl<GetSkillInfoReq>(), &GetSkillInfoReq::ByteSizeLong,
-              &GetSkillInfoReq::_InternalSerialize,
+          &GetPluginInfoReq::SharedDtor,
+          ::google::protobuf::Message::GetClearImpl<GetPluginInfoReq>(), &GetPluginInfoReq::ByteSizeLong,
+              &GetPluginInfoReq::_InternalSerialize,
 #endif  // PROTOBUF_CUSTOM_VTABLE
-          PROTOBUF_FIELD_OFFSET(GetSkillInfoReq, _impl_._cached_size_),
+          PROTOBUF_FIELD_OFFSET(GetPluginInfoReq, _impl_._cached_size_),
           false,
       },
-      &GetSkillInfoReq::kDescriptorMethods,
+      &GetPluginInfoReq::kDescriptorMethods,
       &descriptor_table_src_2fapi_2eproto,
       nullptr,  // tracker
   };
 }
 
 PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 const
-    ::google::protobuf::internal::ClassDataFull GetSkillInfoReq_class_data_ =
-        GetSkillInfoReq::InternalGenerateClassData_();
+    ::google::protobuf::internal::ClassDataFull GetPluginInfoReq_class_data_ =
+        GetPluginInfoReq::InternalGenerateClassData_();
 
 PROTOBUF_ATTRIBUTE_WEAK const ::google::protobuf::internal::ClassData* PROTOBUF_NONNULL
-GetSkillInfoReq::GetClassData() const {
-  ::google::protobuf::internal::PrefetchToLocalCache(&GetSkillInfoReq_class_data_);
-  ::google::protobuf::internal::PrefetchToLocalCache(GetSkillInfoReq_class_data_.tc_table);
-  return GetSkillInfoReq_class_data_.base();
+GetPluginInfoReq::GetClassData() const {
+  ::google::protobuf::internal::PrefetchToLocalCache(&GetPluginInfoReq_class_data_);
+  ::google::protobuf::internal::PrefetchToLocalCache(GetPluginInfoReq_class_data_.tc_table);
+  return GetPluginInfoReq_class_data_.base();
 }
 PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
-const ::_pbi::TcParseTable<1, 2, 0, 40, 2>
-GetSkillInfoReq::_table_ = {
+const ::_pbi::TcParseTable<1, 2, 0, 41, 2>
+GetPluginInfoReq::_table_ = {
   {
-    PROTOBUF_FIELD_OFFSET(GetSkillInfoReq, _impl_._has_bits_),
+    PROTOBUF_FIELD_OFFSET(GetPluginInfoReq, _impl_._has_bits_),
     0, // no _extensions_
     2, 8,  // max_field_number, fast_idx_mask
     offsetof(decltype(_table_), field_lookup_table),
@@ -16168,38 +16168,38 @@ GetSkillInfoReq::_table_ = {
     2,  // num_field_entries
     0,  // num_aux_entries
     offsetof(decltype(_table_), field_names),  // no aux_entries
-    GetSkillInfoReq_class_data_.base(),
+    GetPluginInfoReq_class_data_.base(),
     nullptr,  // post_loop_handler
     ::_pbi::TcParser::GenericFallback,  // fallback
     #ifdef PROTOBUF_PREFETCH_PARSE_TABLE
-    ::_pbi::TcParser::GetTable<::GrpcLibrary::GetSkillInfoReq>(),  // to_prefetch
+    ::_pbi::TcParser::GetTable<::GrpcLibrary::GetPluginInfoReq>(),  // to_prefetch
     #endif  // PROTOBUF_PREFETCH_PARSE_TABLE
   }, {{
     // int32 limit = 2;
-    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(GetSkillInfoReq, _impl_.limit_), 1>(),
+    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(GetPluginInfoReq, _impl_.limit_), 1>(),
      {16, 1, 0,
-      PROTOBUF_FIELD_OFFSET(GetSkillInfoReq, _impl_.limit_)}},
+      PROTOBUF_FIELD_OFFSET(GetPluginInfoReq, _impl_.limit_)}},
     // string hash = 1;
     {::_pbi::TcParser::FastUS1,
      {10, 0, 0,
-      PROTOBUF_FIELD_OFFSET(GetSkillInfoReq, _impl_.hash_)}},
+      PROTOBUF_FIELD_OFFSET(GetPluginInfoReq, _impl_.hash_)}},
   }}, {{
     65535, 65535
   }}, {{
     // string hash = 1;
-    {PROTOBUF_FIELD_OFFSET(GetSkillInfoReq, _impl_.hash_), _Internal::kHasBitsOffset + 0, 0, (0 | ::_fl::kFcOptional | ::_fl::kUtf8String | ::_fl::kRepAString)},
+    {PROTOBUF_FIELD_OFFSET(GetPluginInfoReq, _impl_.hash_), _Internal::kHasBitsOffset + 0, 0, (0 | ::_fl::kFcOptional | ::_fl::kUtf8String | ::_fl::kRepAString)},
     // int32 limit = 2;
-    {PROTOBUF_FIELD_OFFSET(GetSkillInfoReq, _impl_.limit_), _Internal::kHasBitsOffset + 1, 0, (0 | ::_fl::kFcOptional | ::_fl::kInt32)},
+    {PROTOBUF_FIELD_OFFSET(GetPluginInfoReq, _impl_.limit_), _Internal::kHasBitsOffset + 1, 0, (0 | ::_fl::kFcOptional | ::_fl::kInt32)},
   }},
   // no aux_entries
   {{
-    "\33\4\0\0\0\0\0\0"
-    "GrpcLibrary.GetSkillInfoReq"
+    "\34\4\0\0\0\0\0\0"
+    "GrpcLibrary.GetPluginInfoReq"
     "hash"
   }},
 };
-PROTOBUF_NOINLINE void GetSkillInfoReq::Clear() {
-// @@protoc_insertion_point(message_clear_start:GrpcLibrary.GetSkillInfoReq)
+PROTOBUF_NOINLINE void GetPluginInfoReq::Clear() {
+// @@protoc_insertion_point(message_clear_start:GrpcLibrary.GetPluginInfoReq)
   ::google::protobuf::internal::TSanWrite(&_impl_);
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
@@ -16215,20 +16215,20 @@ PROTOBUF_NOINLINE void GetSkillInfoReq::Clear() {
 }
 
 #if defined(PROTOBUF_CUSTOM_VTABLE)
-::uint8_t* PROTOBUF_NONNULL GetSkillInfoReq::_InternalSerialize(
+::uint8_t* PROTOBUF_NONNULL GetPluginInfoReq::_InternalSerialize(
     const ::google::protobuf::MessageLite& base, ::uint8_t* PROTOBUF_NONNULL target,
     ::google::protobuf::io::EpsCopyOutputStream* PROTOBUF_NONNULL stream) {
-  const GetSkillInfoReq& this_ = static_cast<const GetSkillInfoReq&>(base);
+  const GetPluginInfoReq& this_ = static_cast<const GetPluginInfoReq&>(base);
 #else   // PROTOBUF_CUSTOM_VTABLE
-::uint8_t* PROTOBUF_NONNULL GetSkillInfoReq::_InternalSerialize(
+::uint8_t* PROTOBUF_NONNULL GetPluginInfoReq::_InternalSerialize(
     ::uint8_t* PROTOBUF_NONNULL target,
     ::google::protobuf::io::EpsCopyOutputStream* PROTOBUF_NONNULL stream) const {
-  const GetSkillInfoReq& this_ = *this;
+  const GetPluginInfoReq& this_ = *this;
 #endif  // PROTOBUF_CUSTOM_VTABLE
   if constexpr (::_pbi::DebugHardenCheckHasBitConsistency()) {
     this_.CheckHasBitConsistency();
   }
-  // @@protoc_insertion_point(serialize_to_array_start:GrpcLibrary.GetSkillInfoReq)
+  // @@protoc_insertion_point(serialize_to_array_start:GrpcLibrary.GetPluginInfoReq)
   ::uint32_t cached_has_bits = 0;
   (void)cached_has_bits;
 
@@ -16238,7 +16238,7 @@ PROTOBUF_NOINLINE void GetSkillInfoReq::Clear() {
     if (!this_._internal_hash().empty()) {
       const ::std::string& _s = this_._internal_hash();
       ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-          _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "GrpcLibrary.GetSkillInfoReq.hash");
+          _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "GrpcLibrary.GetPluginInfoReq.hash");
       target = stream->WriteStringMaybeAliased(1, _s, target);
     }
   }
@@ -16257,18 +16257,18 @@ PROTOBUF_NOINLINE void GetSkillInfoReq::Clear() {
         ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
             this_._internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:GrpcLibrary.GetSkillInfoReq)
+  // @@protoc_insertion_point(serialize_to_array_end:GrpcLibrary.GetPluginInfoReq)
   return target;
 }
 
 #if defined(PROTOBUF_CUSTOM_VTABLE)
-::size_t GetSkillInfoReq::ByteSizeLong(const MessageLite& base) {
-  const GetSkillInfoReq& this_ = static_cast<const GetSkillInfoReq&>(base);
+::size_t GetPluginInfoReq::ByteSizeLong(const MessageLite& base) {
+  const GetPluginInfoReq& this_ = static_cast<const GetPluginInfoReq&>(base);
 #else   // PROTOBUF_CUSTOM_VTABLE
-::size_t GetSkillInfoReq::ByteSizeLong() const {
-  const GetSkillInfoReq& this_ = *this;
+::size_t GetPluginInfoReq::ByteSizeLong() const {
+  const GetPluginInfoReq& this_ = *this;
 #endif  // PROTOBUF_CUSTOM_VTABLE
-  // @@protoc_insertion_point(message_byte_size_start:GrpcLibrary.GetSkillInfoReq)
+  // @@protoc_insertion_point(message_byte_size_start:GrpcLibrary.GetPluginInfoReq)
   ::size_t total_size = 0;
 
   ::uint32_t cached_has_bits = 0;
@@ -16297,15 +16297,15 @@ PROTOBUF_NOINLINE void GetSkillInfoReq::Clear() {
                                              &this_._impl_._cached_size_);
 }
 
-void GetSkillInfoReq::MergeImpl(::google::protobuf::MessageLite& to_msg,
+void GetPluginInfoReq::MergeImpl(::google::protobuf::MessageLite& to_msg,
                             const ::google::protobuf::MessageLite& from_msg) {
    auto* const _this =
-      static_cast<GetSkillInfoReq*>(&to_msg);
-  auto& from = static_cast<const GetSkillInfoReq&>(from_msg);
+      static_cast<GetPluginInfoReq*>(&to_msg);
+  auto& from = static_cast<const GetPluginInfoReq&>(from_msg);
   if constexpr (::_pbi::DebugHardenCheckHasBitConsistency()) {
     from.CheckHasBitConsistency();
   }
-  // @@protoc_insertion_point(class_specific_merge_from_start:GrpcLibrary.GetSkillInfoReq)
+  // @@protoc_insertion_point(class_specific_merge_from_start:GrpcLibrary.GetPluginInfoReq)
   ABSL_DCHECK_NE(&from, _this);
   ::uint32_t cached_has_bits = 0;
   (void)cached_has_bits;
@@ -16332,15 +16332,15 @@ void GetSkillInfoReq::MergeImpl(::google::protobuf::MessageLite& to_msg,
       from._internal_metadata_);
 }
 
-void GetSkillInfoReq::CopyFrom(const GetSkillInfoReq& from) {
-  // @@protoc_insertion_point(class_specific_copy_from_start:GrpcLibrary.GetSkillInfoReq)
+void GetPluginInfoReq::CopyFrom(const GetPluginInfoReq& from) {
+  // @@protoc_insertion_point(class_specific_copy_from_start:GrpcLibrary.GetPluginInfoReq)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
 
-void GetSkillInfoReq::InternalSwap(GetSkillInfoReq* PROTOBUF_RESTRICT PROTOBUF_NONNULL other) {
+void GetPluginInfoReq::InternalSwap(GetPluginInfoReq* PROTOBUF_RESTRICT PROTOBUF_NONNULL other) {
   using ::std::swap;
   auto* arena = GetArena();
   ABSL_DCHECK_EQ(arena, other->GetArena());
@@ -16350,69 +16350,69 @@ void GetSkillInfoReq::InternalSwap(GetSkillInfoReq* PROTOBUF_RESTRICT PROTOBUF_N
   swap(_impl_.limit_, other->_impl_.limit_);
 }
 
-::google::protobuf::Metadata GetSkillInfoReq::GetMetadata() const {
+::google::protobuf::Metadata GetPluginInfoReq::GetMetadata() const {
   return ::google::protobuf::Message::GetMetadataImpl(GetClassData()->full());
 }
 // ===================================================================
 
-class GetSkillInfoResp::_Internal {
+class GetPluginInfoResp::_Internal {
  public:
   using HasBits =
-      decltype(::std::declval<GetSkillInfoResp>()._impl_._has_bits_);
+      decltype(::std::declval<GetPluginInfoResp>()._impl_._has_bits_);
   static constexpr ::int32_t kHasBitsOffset =
-      8 * PROTOBUF_FIELD_OFFSET(GetSkillInfoResp, _impl_._has_bits_);
+      8 * PROTOBUF_FIELD_OFFSET(GetPluginInfoResp, _impl_._has_bits_);
 };
 
-GetSkillInfoResp::GetSkillInfoResp(::google::protobuf::Arena* PROTOBUF_NULLABLE arena)
+GetPluginInfoResp::GetPluginInfoResp(::google::protobuf::Arena* PROTOBUF_NULLABLE arena)
 #if defined(PROTOBUF_CUSTOM_VTABLE)
-    : ::google::protobuf::Message(arena, GetSkillInfoResp_class_data_.base()) {
+    : ::google::protobuf::Message(arena, GetPluginInfoResp_class_data_.base()) {
 #else   // PROTOBUF_CUSTOM_VTABLE
     : ::google::protobuf::Message(arena) {
 #endif  // PROTOBUF_CUSTOM_VTABLE
   SharedCtor(arena);
-  // @@protoc_insertion_point(arena_constructor:GrpcLibrary.GetSkillInfoResp)
+  // @@protoc_insertion_point(arena_constructor:GrpcLibrary.GetPluginInfoResp)
 }
-PROTOBUF_NDEBUG_INLINE GetSkillInfoResp::Impl_::Impl_(
+PROTOBUF_NDEBUG_INLINE GetPluginInfoResp::Impl_::Impl_(
     [[maybe_unused]] ::google::protobuf::internal::InternalVisibility visibility,
     [[maybe_unused]] ::google::protobuf::Arena* PROTOBUF_NULLABLE arena, const Impl_& from,
-    [[maybe_unused]] const ::GrpcLibrary::GetSkillInfoResp& from_msg)
+    [[maybe_unused]] const ::GrpcLibrary::GetPluginInfoResp& from_msg)
       : _has_bits_{from._has_bits_},
         _cached_size_{0},
-        skills_{visibility, arena, from.skills_} {}
+        plugins_{visibility, arena, from.plugins_} {}
 
-GetSkillInfoResp::GetSkillInfoResp(
+GetPluginInfoResp::GetPluginInfoResp(
     ::google::protobuf::Arena* PROTOBUF_NULLABLE arena,
-    const GetSkillInfoResp& from)
+    const GetPluginInfoResp& from)
 #if defined(PROTOBUF_CUSTOM_VTABLE)
-    : ::google::protobuf::Message(arena, GetSkillInfoResp_class_data_.base()) {
+    : ::google::protobuf::Message(arena, GetPluginInfoResp_class_data_.base()) {
 #else   // PROTOBUF_CUSTOM_VTABLE
     : ::google::protobuf::Message(arena) {
 #endif  // PROTOBUF_CUSTOM_VTABLE
-  GetSkillInfoResp* const _this = this;
+  GetPluginInfoResp* const _this = this;
   (void)_this;
   _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
       from._internal_metadata_);
   new (&_impl_) Impl_(internal_visibility(), arena, from._impl_, from);
   _impl_.error_code_ = from._impl_.error_code_;
 
-  // @@protoc_insertion_point(copy_constructor:GrpcLibrary.GetSkillInfoResp)
+  // @@protoc_insertion_point(copy_constructor:GrpcLibrary.GetPluginInfoResp)
 }
-PROTOBUF_NDEBUG_INLINE GetSkillInfoResp::Impl_::Impl_(
+PROTOBUF_NDEBUG_INLINE GetPluginInfoResp::Impl_::Impl_(
     [[maybe_unused]] ::google::protobuf::internal::InternalVisibility visibility,
     [[maybe_unused]] ::google::protobuf::Arena* PROTOBUF_NULLABLE arena)
       : _cached_size_{0},
-        skills_{visibility, arena} {}
+        plugins_{visibility, arena} {}
 
-inline void GetSkillInfoResp::SharedCtor(::_pb::Arena* PROTOBUF_NULLABLE arena) {
+inline void GetPluginInfoResp::SharedCtor(::_pb::Arena* PROTOBUF_NULLABLE arena) {
   new (&_impl_) Impl_(internal_visibility(), arena);
   _impl_.error_code_ = {};
 }
-GetSkillInfoResp::~GetSkillInfoResp() {
-  // @@protoc_insertion_point(destructor:GrpcLibrary.GetSkillInfoResp)
+GetPluginInfoResp::~GetPluginInfoResp() {
+  // @@protoc_insertion_point(destructor:GrpcLibrary.GetPluginInfoResp)
   SharedDtor(*this);
 }
-inline void GetSkillInfoResp::SharedDtor(MessageLite& self) {
-  GetSkillInfoResp& this_ = static_cast<GetSkillInfoResp&>(self);
+inline void GetPluginInfoResp::SharedDtor(MessageLite& self) {
+  GetPluginInfoResp& this_ = static_cast<GetPluginInfoResp&>(self);
   if constexpr (::_pbi::DebugHardenCheckHasBitConsistency()) {
     this_.CheckHasBitConsistency();
   }
@@ -16421,65 +16421,65 @@ inline void GetSkillInfoResp::SharedDtor(MessageLite& self) {
   this_._impl_.~Impl_();
 }
 
-inline void* PROTOBUF_NONNULL GetSkillInfoResp::PlacementNew_(
+inline void* PROTOBUF_NONNULL GetPluginInfoResp::PlacementNew_(
     const void* PROTOBUF_NONNULL, void* PROTOBUF_NONNULL mem,
     ::google::protobuf::Arena* PROTOBUF_NULLABLE arena) {
-  return ::new (mem) GetSkillInfoResp(arena);
+  return ::new (mem) GetPluginInfoResp(arena);
 }
-constexpr auto GetSkillInfoResp::InternalNewImpl_() {
+constexpr auto GetPluginInfoResp::InternalNewImpl_() {
   constexpr auto arena_bits = ::google::protobuf::internal::EncodePlacementArenaOffsets({
-      PROTOBUF_FIELD_OFFSET(GetSkillInfoResp, _impl_.skills_) +
-          decltype(GetSkillInfoResp::_impl_.skills_)::
+      PROTOBUF_FIELD_OFFSET(GetPluginInfoResp, _impl_.plugins_) +
+          decltype(GetPluginInfoResp::_impl_.plugins_)::
               InternalGetArenaOffset(
                   ::google::protobuf::Message::internal_visibility()),
   });
   if (arena_bits.has_value()) {
     return ::google::protobuf::internal::MessageCreator::ZeroInit(
-        sizeof(GetSkillInfoResp), alignof(GetSkillInfoResp), *arena_bits);
+        sizeof(GetPluginInfoResp), alignof(GetPluginInfoResp), *arena_bits);
   } else {
-    return ::google::protobuf::internal::MessageCreator(&GetSkillInfoResp::PlacementNew_,
-                                 sizeof(GetSkillInfoResp),
-                                 alignof(GetSkillInfoResp));
+    return ::google::protobuf::internal::MessageCreator(&GetPluginInfoResp::PlacementNew_,
+                                 sizeof(GetPluginInfoResp),
+                                 alignof(GetPluginInfoResp));
   }
 }
-constexpr auto GetSkillInfoResp::InternalGenerateClassData_() {
+constexpr auto GetPluginInfoResp::InternalGenerateClassData_() {
   return ::google::protobuf::internal::ClassDataFull{
       ::google::protobuf::internal::ClassData{
-          &_GetSkillInfoResp_default_instance_._instance,
+          &_GetPluginInfoResp_default_instance_._instance,
           &_table_.header,
           nullptr,  // OnDemandRegisterArenaDtor
           nullptr,  // IsInitialized
-          &GetSkillInfoResp::MergeImpl,
-          ::google::protobuf::Message::GetNewImpl<GetSkillInfoResp>(),
+          &GetPluginInfoResp::MergeImpl,
+          ::google::protobuf::Message::GetNewImpl<GetPluginInfoResp>(),
 #if defined(PROTOBUF_CUSTOM_VTABLE)
-          &GetSkillInfoResp::SharedDtor,
-          ::google::protobuf::Message::GetClearImpl<GetSkillInfoResp>(), &GetSkillInfoResp::ByteSizeLong,
-              &GetSkillInfoResp::_InternalSerialize,
+          &GetPluginInfoResp::SharedDtor,
+          ::google::protobuf::Message::GetClearImpl<GetPluginInfoResp>(), &GetPluginInfoResp::ByteSizeLong,
+              &GetPluginInfoResp::_InternalSerialize,
 #endif  // PROTOBUF_CUSTOM_VTABLE
-          PROTOBUF_FIELD_OFFSET(GetSkillInfoResp, _impl_._cached_size_),
+          PROTOBUF_FIELD_OFFSET(GetPluginInfoResp, _impl_._cached_size_),
           false,
       },
-      &GetSkillInfoResp::kDescriptorMethods,
+      &GetPluginInfoResp::kDescriptorMethods,
       &descriptor_table_src_2fapi_2eproto,
       nullptr,  // tracker
   };
 }
 
 PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 const
-    ::google::protobuf::internal::ClassDataFull GetSkillInfoResp_class_data_ =
-        GetSkillInfoResp::InternalGenerateClassData_();
+    ::google::protobuf::internal::ClassDataFull GetPluginInfoResp_class_data_ =
+        GetPluginInfoResp::InternalGenerateClassData_();
 
 PROTOBUF_ATTRIBUTE_WEAK const ::google::protobuf::internal::ClassData* PROTOBUF_NONNULL
-GetSkillInfoResp::GetClassData() const {
-  ::google::protobuf::internal::PrefetchToLocalCache(&GetSkillInfoResp_class_data_);
-  ::google::protobuf::internal::PrefetchToLocalCache(GetSkillInfoResp_class_data_.tc_table);
-  return GetSkillInfoResp_class_data_.base();
+GetPluginInfoResp::GetClassData() const {
+  ::google::protobuf::internal::PrefetchToLocalCache(&GetPluginInfoResp_class_data_);
+  ::google::protobuf::internal::PrefetchToLocalCache(GetPluginInfoResp_class_data_.tc_table);
+  return GetPluginInfoResp_class_data_.base();
 }
 PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
 const ::_pbi::TcParseTable<1, 2, 1, 0, 2>
-GetSkillInfoResp::_table_ = {
+GetPluginInfoResp::_table_ = {
   {
-    PROTOBUF_FIELD_OFFSET(GetSkillInfoResp, _impl_._has_bits_),
+    PROTOBUF_FIELD_OFFSET(GetPluginInfoResp, _impl_._has_bits_),
     0, // no _extensions_
     2, 8,  // max_field_number, fast_idx_mask
     offsetof(decltype(_table_), field_lookup_table),
@@ -16488,37 +16488,37 @@ GetSkillInfoResp::_table_ = {
     2,  // num_field_entries
     1,  // num_aux_entries
     offsetof(decltype(_table_), aux_entries),
-    GetSkillInfoResp_class_data_.base(),
+    GetPluginInfoResp_class_data_.base(),
     nullptr,  // post_loop_handler
     ::_pbi::TcParser::GenericFallback,  // fallback
     #ifdef PROTOBUF_PREFETCH_PARSE_TABLE
-    ::_pbi::TcParser::GetTable<::GrpcLibrary::GetSkillInfoResp>(),  // to_prefetch
+    ::_pbi::TcParser::GetTable<::GrpcLibrary::GetPluginInfoResp>(),  // to_prefetch
     #endif  // PROTOBUF_PREFETCH_PARSE_TABLE
   }, {{
-    // repeated .GrpcLibrary.Skill skills = 2;
+    // repeated .GrpcLibrary.Plugin plugins = 2;
     {::_pbi::TcParser::FastMtR1,
      {18, 0, 0,
-      PROTOBUF_FIELD_OFFSET(GetSkillInfoResp, _impl_.skills_)}},
+      PROTOBUF_FIELD_OFFSET(GetPluginInfoResp, _impl_.plugins_)}},
     // int32 error_code = 1;
-    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(GetSkillInfoResp, _impl_.error_code_), 1>(),
+    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(GetPluginInfoResp, _impl_.error_code_), 1>(),
      {8, 1, 0,
-      PROTOBUF_FIELD_OFFSET(GetSkillInfoResp, _impl_.error_code_)}},
+      PROTOBUF_FIELD_OFFSET(GetPluginInfoResp, _impl_.error_code_)}},
   }}, {{
     65535, 65535
   }}, {{
     // int32 error_code = 1;
-    {PROTOBUF_FIELD_OFFSET(GetSkillInfoResp, _impl_.error_code_), _Internal::kHasBitsOffset + 1, 0, (0 | ::_fl::kFcOptional | ::_fl::kInt32)},
-    // repeated .GrpcLibrary.Skill skills = 2;
-    {PROTOBUF_FIELD_OFFSET(GetSkillInfoResp, _impl_.skills_), _Internal::kHasBitsOffset + 0, 0, (0 | ::_fl::kFcRepeated | ::_fl::kMessage | ::_fl::kTvTable)},
+    {PROTOBUF_FIELD_OFFSET(GetPluginInfoResp, _impl_.error_code_), _Internal::kHasBitsOffset + 1, 0, (0 | ::_fl::kFcOptional | ::_fl::kInt32)},
+    // repeated .GrpcLibrary.Plugin plugins = 2;
+    {PROTOBUF_FIELD_OFFSET(GetPluginInfoResp, _impl_.plugins_), _Internal::kHasBitsOffset + 0, 0, (0 | ::_fl::kFcRepeated | ::_fl::kMessage | ::_fl::kTvTable)},
   }},
   {{
-      {::_pbi::TcParser::GetTable<::GrpcLibrary::Skill>()},
+      {::_pbi::TcParser::GetTable<::GrpcLibrary::Plugin>()},
   }},
   {{
   }},
 };
-PROTOBUF_NOINLINE void GetSkillInfoResp::Clear() {
-// @@protoc_insertion_point(message_clear_start:GrpcLibrary.GetSkillInfoResp)
+PROTOBUF_NOINLINE void GetPluginInfoResp::Clear() {
+// @@protoc_insertion_point(message_clear_start:GrpcLibrary.GetPluginInfoResp)
   ::google::protobuf::internal::TSanWrite(&_impl_);
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
@@ -16526,7 +16526,7 @@ PROTOBUF_NOINLINE void GetSkillInfoResp::Clear() {
 
   cached_has_bits = _impl_._has_bits_[0];
   if (CheckHasBitForRepeated(cached_has_bits, 0x00000001U)) {
-    _impl_.skills_.Clear();
+    _impl_.plugins_.Clear();
   }
   _impl_.error_code_ = 0;
   _impl_._has_bits_.Clear();
@@ -16534,20 +16534,20 @@ PROTOBUF_NOINLINE void GetSkillInfoResp::Clear() {
 }
 
 #if defined(PROTOBUF_CUSTOM_VTABLE)
-::uint8_t* PROTOBUF_NONNULL GetSkillInfoResp::_InternalSerialize(
+::uint8_t* PROTOBUF_NONNULL GetPluginInfoResp::_InternalSerialize(
     const ::google::protobuf::MessageLite& base, ::uint8_t* PROTOBUF_NONNULL target,
     ::google::protobuf::io::EpsCopyOutputStream* PROTOBUF_NONNULL stream) {
-  const GetSkillInfoResp& this_ = static_cast<const GetSkillInfoResp&>(base);
+  const GetPluginInfoResp& this_ = static_cast<const GetPluginInfoResp&>(base);
 #else   // PROTOBUF_CUSTOM_VTABLE
-::uint8_t* PROTOBUF_NONNULL GetSkillInfoResp::_InternalSerialize(
+::uint8_t* PROTOBUF_NONNULL GetPluginInfoResp::_InternalSerialize(
     ::uint8_t* PROTOBUF_NONNULL target,
     ::google::protobuf::io::EpsCopyOutputStream* PROTOBUF_NONNULL stream) const {
-  const GetSkillInfoResp& this_ = *this;
+  const GetPluginInfoResp& this_ = *this;
 #endif  // PROTOBUF_CUSTOM_VTABLE
   if constexpr (::_pbi::DebugHardenCheckHasBitConsistency()) {
     this_.CheckHasBitConsistency();
   }
-  // @@protoc_insertion_point(serialize_to_array_start:GrpcLibrary.GetSkillInfoResp)
+  // @@protoc_insertion_point(serialize_to_array_start:GrpcLibrary.GetPluginInfoResp)
   ::uint32_t cached_has_bits = 0;
   (void)cached_has_bits;
 
@@ -16561,12 +16561,12 @@ PROTOBUF_NOINLINE void GetSkillInfoResp::Clear() {
     }
   }
 
-  // repeated .GrpcLibrary.Skill skills = 2;
+  // repeated .GrpcLibrary.Plugin plugins = 2;
   if (CheckHasBitForRepeated(cached_has_bits, 0x00000001U)) {
     for (unsigned i = 0, n = static_cast<unsigned>(
-                             this_._internal_skills_size());
+                             this_._internal_plugins_size());
          i < n; i++) {
-      const auto& repfield = this_._internal_skills().Get(i);
+      const auto& repfield = this_._internal_plugins().Get(i);
       target =
           ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
               2, repfield, repfield.GetCachedSize(),
@@ -16579,18 +16579,18 @@ PROTOBUF_NOINLINE void GetSkillInfoResp::Clear() {
         ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
             this_._internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:GrpcLibrary.GetSkillInfoResp)
+  // @@protoc_insertion_point(serialize_to_array_end:GrpcLibrary.GetPluginInfoResp)
   return target;
 }
 
 #if defined(PROTOBUF_CUSTOM_VTABLE)
-::size_t GetSkillInfoResp::ByteSizeLong(const MessageLite& base) {
-  const GetSkillInfoResp& this_ = static_cast<const GetSkillInfoResp&>(base);
+::size_t GetPluginInfoResp::ByteSizeLong(const MessageLite& base) {
+  const GetPluginInfoResp& this_ = static_cast<const GetPluginInfoResp&>(base);
 #else   // PROTOBUF_CUSTOM_VTABLE
-::size_t GetSkillInfoResp::ByteSizeLong() const {
-  const GetSkillInfoResp& this_ = *this;
+::size_t GetPluginInfoResp::ByteSizeLong() const {
+  const GetPluginInfoResp& this_ = *this;
 #endif  // PROTOBUF_CUSTOM_VTABLE
-  // @@protoc_insertion_point(message_byte_size_start:GrpcLibrary.GetSkillInfoResp)
+  // @@protoc_insertion_point(message_byte_size_start:GrpcLibrary.GetPluginInfoResp)
   ::size_t total_size = 0;
 
   ::uint32_t cached_has_bits = 0;
@@ -16600,10 +16600,10 @@ PROTOBUF_NOINLINE void GetSkillInfoResp::Clear() {
   ::_pbi::Prefetch5LinesFrom7Lines(&this_);
   cached_has_bits = this_._impl_._has_bits_[0];
   if (BatchCheckHasBit(cached_has_bits, 0x00000003U)) {
-    // repeated .GrpcLibrary.Skill skills = 2;
+    // repeated .GrpcLibrary.Plugin plugins = 2;
     if (CheckHasBitForRepeated(cached_has_bits, 0x00000001U)) {
-      total_size += 1UL * this_._internal_skills_size();
-      for (const auto& msg : this_._internal_skills()) {
+      total_size += 1UL * this_._internal_plugins_size();
+      for (const auto& msg : this_._internal_plugins()) {
         total_size += ::google::protobuf::internal::WireFormatLite::MessageSize(msg);
       }
     }
@@ -16619,16 +16619,16 @@ PROTOBUF_NOINLINE void GetSkillInfoResp::Clear() {
                                              &this_._impl_._cached_size_);
 }
 
-void GetSkillInfoResp::MergeImpl(::google::protobuf::MessageLite& to_msg,
+void GetPluginInfoResp::MergeImpl(::google::protobuf::MessageLite& to_msg,
                             const ::google::protobuf::MessageLite& from_msg) {
    auto* const _this =
-      static_cast<GetSkillInfoResp*>(&to_msg);
-  auto& from = static_cast<const GetSkillInfoResp&>(from_msg);
+      static_cast<GetPluginInfoResp*>(&to_msg);
+  auto& from = static_cast<const GetPluginInfoResp&>(from_msg);
   if constexpr (::_pbi::DebugHardenCheckHasBitConsistency()) {
     from.CheckHasBitConsistency();
   }
   ::google::protobuf::Arena* arena = _this->GetArena();
-  // @@protoc_insertion_point(class_specific_merge_from_start:GrpcLibrary.GetSkillInfoResp)
+  // @@protoc_insertion_point(class_specific_merge_from_start:GrpcLibrary.GetPluginInfoResp)
   ABSL_DCHECK_NE(&from, _this);
   ::uint32_t cached_has_bits = 0;
   (void)cached_has_bits;
@@ -16636,9 +16636,9 @@ void GetSkillInfoResp::MergeImpl(::google::protobuf::MessageLite& to_msg,
   cached_has_bits = from._impl_._has_bits_[0];
   if (BatchCheckHasBit(cached_has_bits, 0x00000003U)) {
     if (CheckHasBitForRepeated(cached_has_bits, 0x00000001U)) {
-      _this->_internal_mutable_skills()->InternalMergeFromWithArena(
+      _this->_internal_mutable_plugins()->InternalMergeFromWithArena(
           ::google::protobuf::MessageLite::internal_visibility(), arena,
-          from._internal_skills());
+          from._internal_plugins());
     }
     if (CheckHasBit(cached_has_bits, 0x00000002U)) {
       if (from._internal_error_code() != 0) {
@@ -16651,23 +16651,23 @@ void GetSkillInfoResp::MergeImpl(::google::protobuf::MessageLite& to_msg,
       from._internal_metadata_);
 }
 
-void GetSkillInfoResp::CopyFrom(const GetSkillInfoResp& from) {
-  // @@protoc_insertion_point(class_specific_copy_from_start:GrpcLibrary.GetSkillInfoResp)
+void GetPluginInfoResp::CopyFrom(const GetPluginInfoResp& from) {
+  // @@protoc_insertion_point(class_specific_copy_from_start:GrpcLibrary.GetPluginInfoResp)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
 
-void GetSkillInfoResp::InternalSwap(GetSkillInfoResp* PROTOBUF_RESTRICT PROTOBUF_NONNULL other) {
+void GetPluginInfoResp::InternalSwap(GetPluginInfoResp* PROTOBUF_RESTRICT PROTOBUF_NONNULL other) {
   using ::std::swap;
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
-  _impl_.skills_.InternalSwap(&other->_impl_.skills_);
+  _impl_.plugins_.InternalSwap(&other->_impl_.plugins_);
   swap(_impl_.error_code_, other->_impl_.error_code_);
 }
 
-::google::protobuf::Metadata GetSkillInfoResp::GetMetadata() const {
+::google::protobuf::Metadata GetPluginInfoResp::GetMetadata() const {
   return ::google::protobuf::Message::GetMetadataImpl(GetClassData()->full());
 }
 // ===================================================================
