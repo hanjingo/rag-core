@@ -19,6 +19,8 @@ option(BUILD_STATIC "Build static object" OFF)
 # Options--build
 option(BUILD_TEST "Build test" OFF)
 option(BUILD_BENCHMARK "Build benchmark" OFF)
+# Options--release lite
+option(BUILD_RELEASE_LITE "Build release lite model" OFF)
 
 # import vcpkg module
 if(NOT DEFINED CMAKE_TOOLCHAIN_FILE)
@@ -53,10 +55,17 @@ endif()
 if (CMAKE_BUILD_TYPE STREQUAL "Debug")
     add_definitions(-DDEBUG)
 endif()
+if (BUILD_RELEASE_LITE)
+    set(CONFIG_FILES_PATH ${CMAKE_CURRENT_SOURCE_DIR}/res/Release-Lite)
+    set(OUTPUT_PATH ${CMAKE_CURRENT_SOURCE_DIR}/bin/Release-Lite)
+else()
+    set(CONFIG_FILES_PATH ${CMAKE_CURRENT_SOURCE_DIR}/res/${CMAKE_BUILD_TYPE})
+    set(OUTPUT_PATH ${CMAKE_CURRENT_SOURCE_DIR}/bin/${CMAKE_BUILD_TYPE})
+endif()
 
 # set output path
 if (NOT EXECUTABLE_OUTPUT_PATH)
-    set(EXECUTABLE_OUTPUT_PATH ${CMAKE_SOURCE_DIR}/bin)
+    set(EXECUTABLE_OUTPUT_PATH ${OUTPUT_PATH})
 endif()
 
 # Avoid use of compiler language extensions, i.e. -std=c++11 not -std=gnu++11
@@ -164,31 +173,31 @@ endif()
 target_link_libraries(${PROJECT_NAME} ${LINK_LIBS})
 
 file(GLOB RESOURCE_FILES CONFIGURE_DEPENDS
-    "${CMAKE_CURRENT_SOURCE_DIR}/res/*.ini"
-    "${CMAKE_CURRENT_SOURCE_DIR}/res/*.db"
-    "${CMAKE_CURRENT_SOURCE_DIR}/res/*.sql"
+    "${CONFIG_FILES_PATH}/*.ini"
+    "${CONFIG_FILES_PATH}/*.db"
+    "${CONFIG_FILES_PATH}/*.sql"
 )
 if (PROPERTY_ENABLE)
     # copy properties files
     file(GLOB PROPERTY_FILES CONFIGURE_DEPENDS
-        "${CMAKE_CURRENT_SOURCE_DIR}/res/*.properties"
+        "${CONFIG_FILES_PATH}/*.properties"
     )
     list(APPEND RESOURCE_FILES ${PROPERTY_FILES})
 endif()
 if (LIC_ENABLE)
     # copy license file
     file(GLOB LIC_FILES CONFIGURE_DEPENDS
-        "${CMAKE_CURRENT_SOURCE_DIR}/res/*.lic"
+        "${CONFIG_FILES_PATH}/*.lic"
     )
     list(APPEND RESOURCE_FILES ${LIC_FILES})
 endif()
 
 if (RESOURCE_FILES)
     add_custom_target(${PACKAGE_NAME}_copy_resources ALL
-        COMMAND ${CMAKE_COMMAND} -E make_directory "${EXECUTABLE_OUTPUT_PATH}"
+        COMMAND ${CMAKE_COMMAND} -E make_directory "${EXECUTABLE_OUTPUT_PATH}/configs"
         COMMAND ${CMAKE_COMMAND} -E copy_if_different
             ${RESOURCE_FILES}
-            "${EXECUTABLE_OUTPUT_PATH}"
+            "${EXECUTABLE_OUTPUT_PATH}/configs"
         DEPENDS ${RESOURCE_FILES}
         COMMENT "Copying resource files to output dir"
     )

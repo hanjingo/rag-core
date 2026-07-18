@@ -56,6 +56,8 @@ class conf
         return inst;
     }
 
+    static std::string core_config_file_path();
+
     hj::ini data();
 
     int         log_min_lvl();

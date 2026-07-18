@@ -11,16 +11,20 @@
 conf::conf()
     : _cfg{}
 {
-    if(!_cfg.read_file(
-           hj::filepath::join(hj::filepath::pwd(), CORE_CONFIG_FILE).c_str()))
+    if(!_cfg.read_file(core_config_file_path().c_str()))
         throw std::runtime_error("Failed to read config file: "
-                                 + std::string(CORE_CONFIG_FILE));
+                                 + core_config_file_path());
 
     _init();
 }
 
 conf::~conf()
 {
+}
+
+std::string conf::core_config_file_path()
+{
+    return hj::filepath::join(hj::filepath::pwd(), CORE_CONFIG_FILE);
 }
 
 hj::ini conf::data()
