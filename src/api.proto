@@ -300,7 +300,8 @@ message DelSessionResp {
 
 message GetPluginInfoReq {
     string hash = 1;
-    int32 limit = 2;
+    string publisher = 2;
+    int32 limit = 3;
 }
 
 message GetPluginInfoResp {

@@ -6850,7 +6850,8 @@ class GetPluginInfoReq final : public ::google::protobuf::Message
   // accessors -------------------------------------------------------
   enum : int {
     kHashFieldNumber = 1,
-    kLimitFieldNumber = 2,
+    kPublisherFieldNumber = 2,
+    kLimitFieldNumber = 3,
   };
   // string hash = 1;
   void clear_hash() ;
@@ -6867,7 +6868,22 @@ class GetPluginInfoReq final : public ::google::protobuf::Message
   ::std::string* PROTOBUF_NONNULL _internal_mutable_hash();
 
   public:
-  // int32 limit = 2;
+  // string publisher = 2;
+  void clear_publisher() ;
+  const ::std::string& publisher() const;
+  template <typename Arg_ = const ::std::string&, typename... Args_>
+  void set_publisher(Arg_&& arg, Args_... args);
+  ::std::string* PROTOBUF_NONNULL mutable_publisher();
+  [[nodiscard]] ::std::string* PROTOBUF_NULLABLE release_publisher();
+  void set_allocated_publisher(::std::string* PROTOBUF_NULLABLE value);
+
+  private:
+  const ::std::string& _internal_publisher() const;
+  PROTOBUF_ALWAYS_INLINE void _internal_set_publisher(const ::std::string& value);
+  ::std::string* PROTOBUF_NONNULL _internal_mutable_publisher();
+
+  public:
+  // int32 limit = 3;
   void clear_limit() ;
   ::int32_t limit() const;
   void set_limit(::int32_t value);
@@ -6881,8 +6897,8 @@ class GetPluginInfoReq final : public ::google::protobuf::Message
  private:
   class _Internal;
   friend class ::google::protobuf::internal::TcParser;
-  static const ::google::protobuf::internal::TcParseTable<1, 2,
-                                   0, 41,
+  static const ::google::protobuf::internal::TcParseTable<2, 3,
+                                   0, 50,
                                    2>
       _table_;
 
@@ -6904,6 +6920,7 @@ class GetPluginInfoReq final : public ::google::protobuf::Message
     ::google::protobuf::internal::HasBits<1> _has_bits_;
     ::google::protobuf::internal::CachedSize _cached_size_;
     ::google::protobuf::internal::ArenaStringPtr hash_;
+    ::google::protobuf::internal::ArenaStringPtr publisher_;
     ::int32_t limit_;
     PROTOBUF_TSAN_DECLARE_MEMBER
   };
@@ -17564,12 +17581,77 @@ inline void GetPluginInfoReq::set_allocated_hash(::std::string* PROTOBUF_NULLABL
   // @@protoc_insertion_point(field_set_allocated:GrpcLibrary.GetPluginInfoReq.hash)
 }
 
-// int32 limit = 2;
+// string publisher = 2;
+inline void GetPluginInfoReq::clear_publisher() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.publisher_.ClearToEmpty();
+  ClearHasBit(_impl_._has_bits_[0],
+                  0x00000002U);
+}
+inline const ::std::string& GetPluginInfoReq::publisher() const
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_get:GrpcLibrary.GetPluginInfoReq.publisher)
+  return _internal_publisher();
+}
+template <typename Arg_, typename... Args_>
+PROTOBUF_ALWAYS_INLINE void GetPluginInfoReq::set_publisher(Arg_&& arg, Args_... args) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  SetHasBit(_impl_._has_bits_[0], 0x00000002U);
+  _impl_.publisher_.Set(static_cast<Arg_&&>(arg), args..., GetArena());
+  // @@protoc_insertion_point(field_set:GrpcLibrary.GetPluginInfoReq.publisher)
+}
+inline ::std::string* PROTOBUF_NONNULL GetPluginInfoReq::mutable_publisher()
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  SetHasBit(_impl_._has_bits_[0], 0x00000002U);
+  ::std::string* _s = _internal_mutable_publisher();
+  // @@protoc_insertion_point(field_mutable:GrpcLibrary.GetPluginInfoReq.publisher)
+  return _s;
+}
+inline const ::std::string& GetPluginInfoReq::_internal_publisher() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.publisher_.Get();
+}
+inline void GetPluginInfoReq::_internal_set_publisher(const ::std::string& value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.publisher_.Set(value, GetArena());
+}
+inline ::std::string* PROTOBUF_NONNULL GetPluginInfoReq::_internal_mutable_publisher() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  return _impl_.publisher_.Mutable( GetArena());
+}
+inline ::std::string* PROTOBUF_NULLABLE GetPluginInfoReq::release_publisher() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  // @@protoc_insertion_point(field_release:GrpcLibrary.GetPluginInfoReq.publisher)
+  if (!CheckHasBit(_impl_._has_bits_[0], 0x00000002U)) {
+    return nullptr;
+  }
+  ClearHasBit(_impl_._has_bits_[0], 0x00000002U);
+  auto* released = _impl_.publisher_.Release();
+  if (::google::protobuf::internal::DebugHardenForceCopyDefaultString()) {
+    _impl_.publisher_.Set("", GetArena());
+  }
+  return released;
+}
+inline void GetPluginInfoReq::set_allocated_publisher(::std::string* PROTOBUF_NULLABLE value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  if (value != nullptr) {
+    SetHasBit(_impl_._has_bits_[0], 0x00000002U);
+  } else {
+    ClearHasBit(_impl_._has_bits_[0], 0x00000002U);
+  }
+  _impl_.publisher_.SetAllocated(value, GetArena());
+  if (::google::protobuf::internal::DebugHardenForceCopyDefaultString() && _impl_.publisher_.IsDefault()) {
+    _impl_.publisher_.Set("", GetArena());
+  }
+  // @@protoc_insertion_point(field_set_allocated:GrpcLibrary.GetPluginInfoReq.publisher)
+}
+
+// int32 limit = 3;
 inline void GetPluginInfoReq::clear_limit() {
   ::google::protobuf::internal::TSanWrite(&_impl_);
   _impl_.limit_ = 0;
   ClearHasBit(_impl_._has_bits_[0],
-                  0x00000002U);
+                  0x00000004U);
 }
 inline ::int32_t GetPluginInfoReq::limit() const {
   // @@protoc_insertion_point(field_get:GrpcLibrary.GetPluginInfoReq.limit)
@@ -17577,7 +17659,7 @@ inline ::int32_t GetPluginInfoReq::limit() const {
 }
 inline void GetPluginInfoReq::set_limit(::int32_t value) {
   _internal_set_limit(value);
-  SetHasBit(_impl_._has_bits_[0], 0x00000002U);
+  SetHasBit(_impl_._has_bits_[0], 0x00000004U);
   // @@protoc_insertion_point(field_set:GrpcLibrary.GetPluginInfoReq.limit)
 }
 inline ::int32_t GetPluginInfoReq::_internal_limit() const {

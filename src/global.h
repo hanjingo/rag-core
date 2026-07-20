@@ -73,7 +73,7 @@ static constexpr const char *SQL_DELETE_SESSION_BY_ID =
     R"(DELETE FROM session WHERE id = %lld)";
 
 static constexpr const char *SQL_SELECT_PLUGIN_INFO =
-    R"(SELECT hash, platform, name, desc, publisher, version, timestamp FROM plugin)";
+    R"(SELECT hash, platform, name, desc, publisher, version, timestamp FROM plugin WHERE 1=1)";
 
 static constexpr const char *SQL_SELECT_PLUGIN_INFO_BY_HASH =
     R"(SELECT hash, platform, name, desc, publisher, version, timestamp FROM plugin WHERE hash = %Q)";

@@ -516,21 +516,28 @@ api_handler::GetPluginInfo(ctx_t                                 *ctx,
                            const ::GrpcLibrary::GetPluginInfoReq *req,
                            ::GrpcLibrary::GetPluginInfoResp      *resp)
 {
-    std::string hash  = req->hash();
-    int         limit = req->limit();
-    limit             = limit < 0 || limit > 50 ? 50 : limit;
-    auto *reactor     = ctx->DefaultReactor();
+    // NOTE: wo should use ORM or prepared statement to avoid SQL injection,
+    // but for simplicity, we use string concatenation here.
+    std::string hash      = req->hash();
+    std::string publisher = req->publisher();
+    int         limit     = req->limit();
+    limit                 = (limit < 0 || limit > 50) ? 50 : limit;
+    auto *reactor         = ctx->DefaultReactor();
     resp->set_error_code(ERR_FAIL);
-    LOG_DEBUG("Received GetPluginInfo request. hash: {}, limit: {}",
-              hash,
-              limit);
+    LOG_DEBUG(
+        "Received GetPluginInfo request. hash: {}, publisher: {}, limit: {}",
+        hash,
+        publisher,
+        limit);
 
-    std::string sql;
-    if(hash.empty())
-        sql = SQL_SELECT_PLUGIN_INFO + hj::sqlite::mprintf(" LIMIT %d;", limit);
-    else
-        sql = hj::sqlite::mprintf(SQL_SELECT_PLUGIN_INFO_BY_HASH, hash.c_str())
-              + " LIMIT 1;";
+    std::string sql = SQL_SELECT_PLUGIN_INFO;
+    if(!hash.empty())
+        sql += hj::sqlite::mprintf(" AND hash = '%s'", hash.c_str());
+
+    if(!publisher.empty())
+        sql += hj::sqlite::mprintf(" AND publisher = '%s'", publisher.c_str());
+
+    sql += hj::sqlite::mprintf(" LIMIT %d;", limit);
 
     LOG_DEBUG("{}", sql);
     db_mgr::query_ret rows;

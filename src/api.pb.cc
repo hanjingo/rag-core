@@ -880,6 +880,9 @@ inline constexpr GetPluginInfoReq::Impl_::Impl_(
         hash_(
             &::google::protobuf::internal::fixed_address_empty_string,
             ::_pbi::ConstantInitialized()),
+        publisher_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
         limit_{0} {}
 
 template <typename>
@@ -1845,11 +1848,13 @@ const ::uint32_t
         0,
         0x081, // bitmap
         PROTOBUF_FIELD_OFFSET(::GrpcLibrary::GetPluginInfoReq, _impl_._has_bits_),
-        5, // hasbit index offset
+        6, // hasbit index offset
         PROTOBUF_FIELD_OFFSET(::GrpcLibrary::GetPluginInfoReq, _impl_.hash_),
+        PROTOBUF_FIELD_OFFSET(::GrpcLibrary::GetPluginInfoReq, _impl_.publisher_),
         PROTOBUF_FIELD_OFFSET(::GrpcLibrary::GetPluginInfoReq, _impl_.limit_),
         0,
         1,
+        2,
         0x081, // bitmap
         PROTOBUF_FIELD_OFFSET(::GrpcLibrary::GetPluginInfoResp, _impl_._has_bits_),
         5, // hasbit index offset
@@ -1974,15 +1979,15 @@ static const ::_pbi::MigrationSchema
         {424, sizeof(::GrpcLibrary::DelSessionReq)},
         {433, sizeof(::GrpcLibrary::DelSessionResp)},
         {440, sizeof(::GrpcLibrary::GetPluginInfoReq)},
-        {447, sizeof(::GrpcLibrary::GetPluginInfoResp)},
-        {454, sizeof(::GrpcLibrary::DownloadReq)},
-        {463, sizeof(::GrpcLibrary::DownloadResp)},
-        {474, sizeof(::GrpcLibrary::UploadReq)},
-        {487, sizeof(::GrpcLibrary::UploadResp)},
-        {494, sizeof(::GrpcLibrary::EmbeddingReq)},
-        {505, sizeof(::GrpcLibrary::EmbeddingResp)},
-        {516, sizeof(::GrpcLibrary::StopEmbeddingReq)},
-        {525, sizeof(::GrpcLibrary::StopEmbeddingResp)},
+        {449, sizeof(::GrpcLibrary::GetPluginInfoResp)},
+        {456, sizeof(::GrpcLibrary::DownloadReq)},
+        {465, sizeof(::GrpcLibrary::DownloadResp)},
+        {476, sizeof(::GrpcLibrary::UploadReq)},
+        {489, sizeof(::GrpcLibrary::UploadResp)},
+        {496, sizeof(::GrpcLibrary::EmbeddingReq)},
+        {507, sizeof(::GrpcLibrary::EmbeddingResp)},
+        {518, sizeof(::GrpcLibrary::StopEmbeddingReq)},
+        {527, sizeof(::GrpcLibrary::StopEmbeddingResp)},
 };
 static const ::_pb::Message* PROTOBUF_NONNULL const file_default_instances[] = {
     &::GrpcLibrary::_Session_default_instance_._instance,
@@ -2130,65 +2135,65 @@ const char descriptor_table_protodef_src_2fapi_2eproto[] ABSL_ATTRIBUTE_SECTION_
     " \001(\003\022\r\n\005title\030\003 \001(\t\";\n\rDelSessionReq\022\017\n\007"
     "user_id\030\001 \001(\003\022\014\n\004auth\030\002 \001(\t\022\013\n\003ids\030\003 \003(\003"
     "\"1\n\016DelSessionResp\022\022\n\nerror_code\030\001 \001(\005\022\013"
-    "\n\003ids\030\002 \003(\003\"/\n\020GetPluginInfoReq\022\014\n\004hash\030"
-    "\001 \001(\t\022\r\n\005limit\030\002 \001(\005\"M\n\021GetPluginInfoRes"
-    "p\022\022\n\nerror_code\030\001 \001(\005\022$\n\007plugins\030\002 \003(\0132\023"
-    ".GrpcLibrary.Plugin\":\n\013DownloadReq\022\014\n\004ha"
-    "sh\030\001 \001(\t\022\017\n\007user_id\030\002 \001(\003\022\014\n\004auth\030\003 \001(\t\""
-    "O\n\014DownloadResp\022\022\n\nerror_code\030\001 \001(\005\022\014\n\004h"
-    "ash\030\002 \001(\t\022\014\n\004addr\030\003 \001(\t\022\017\n\007size_kb\030\004 \001(\003"
-    "\"W\n\tUploadReq\022\014\n\004hash\030\001 \001(\t\022\017\n\007user_id\030\002"
-    " \001(\003\022\014\n\004auth\030\003 \001(\t\022\014\n\004addr\030\004 \001(\t\022\017\n\007size"
-    "_kb\030\005 \001(\003\".\n\nUploadResp\022\022\n\nerror_code\030\001 "
-    "\001(\005\022\014\n\004hash\030\002 \001(\t\"\206\001\n\014EmbeddingReq\022\017\n\007ta"
-    "sk_id\030\001 \001(\003\022,\n\005param\030\002 \001(\0132\033.GrpcLibrary"
-    ".EmbeddingParamH\000\022\'\n\005chunk\030\003 \001(\0132\026.GrpcL"
-    "ibrary.FileChunkH\000B\016\n\014request_type\"]\n\rEm"
-    "beddingResp\022\022\n\nerror_code\030\001 \001(\005\022\017\n\007task_"
-    "id\030\002 \001(\003\022\020\n\010chunk_id\030\003 \001(\003\022\025\n\rvector_ind"
-    "exs\030\004 \001(\014\"B\n\020StopEmbeddingReq\022\017\n\007task_id"
-    "\030\001 \001(\003\022\017\n\007user_id\030\002 \001(\003\022\014\n\004auth\030\003 \001(\t\"8\n"
-    "\021StopEmbeddingResp\022\022\n\nerror_code\030\001 \001(\005\022\017"
-    "\n\007task_id\030\002 \001(\0032\242\n\n\013GrpcService\0223\n\tHeart"
-    "beat\022\021.GrpcLibrary.Ping\032\021.GrpcLibrary.Po"
-    "ng\"\000\0228\n\005Login\022\025.GrpcLibrary.LoginReq\032\026.G"
-    "rpcLibrary.LoginResp\"\000\022;\n\006Logout\022\026.GrpcL"
-    "ibrary.LogoutReq\032\027.GrpcLibrary.LogoutRes"
-    "p\"\000\022G\n\nRegAccount\022\032.GrpcLibrary.RegAccou"
-    "ntReq\032\033.GrpcLibrary.RegAccountResp\"\000\022:\n\005"
-    "Query\022\025.GrpcLibrary.QueryReq\032\026.GrpcLibra"
-    "ry.QueryResp\"\0000\001\022G\n\nStopAnswer\022\032.GrpcLib"
-    "rary.StopAnswerReq\032\033.GrpcLibrary.StopAns"
-    "werResp\"\000\022H\n\tRecognize\022\031.GrpcLibrary.Rec"
-    "ognizeReq\032\032.GrpcLibrary.RecognizeResp\"\000("
-    "\0010\001\022P\n\rStopRecognize\022\035.GrpcLibrary.StopR"
-    "ecognizeReq\032\036.GrpcLibrary.StopRecognizeR"
-    "esp\"\000\022S\n\016GetMessageInfo\022\036.GrpcLibrary.Ge"
-    "tMessageInfoReq\032\037.GrpcLibrary.GetMessage"
-    "InfoResp\"\000\022G\n\nGetSession\022\032.GrpcLibrary.G"
-    "etSessionReq\032\033.GrpcLibrary.GetSessionRes"
-    "p\"\000\022G\n\nNewSession\022\032.GrpcLibrary.NewSessi"
-    "onReq\032\033.GrpcLibrary.NewSessionResp\"\000\022_\n\022"
-    "ModifySessionTitle\022\".GrpcLibrary.ModifyS"
-    "essionTitleReq\032#.GrpcLibrary.ModifySessi"
-    "onTitleResp\"\000\022G\n\nDelSession\022\032.GrpcLibrar"
-    "y.DelSessionReq\032\033.GrpcLibrary.DelSession"
-    "Resp\"\000\022P\n\rGetPluginInfo\022\035.GrpcLibrary.Ge"
-    "tPluginInfoReq\032\036.GrpcLibrary.GetPluginIn"
-    "foResp\"\000\022A\n\010Download\022\030.GrpcLibrary.Downl"
-    "oadReq\032\031.GrpcLibrary.DownloadResp\"\000\022;\n\006U"
-    "pload\022\026.GrpcLibrary.UploadReq\032\027.GrpcLibr"
-    "ary.UploadResp\"\000\022H\n\tEmbedding\022\031.GrpcLibr"
-    "ary.EmbeddingReq\032\032.GrpcLibrary.Embedding"
-    "Resp\"\000(\0010\001\022P\n\rStopEmbedding\022\035.GrpcLibrar"
-    "y.StopEmbeddingReq\032\036.GrpcLibrary.StopEmb"
-    "eddingResp\"\000b\006proto3"
+    "\n\003ids\030\002 \003(\003\"B\n\020GetPluginInfoReq\022\014\n\004hash\030"
+    "\001 \001(\t\022\021\n\tpublisher\030\002 \001(\t\022\r\n\005limit\030\003 \001(\005\""
+    "M\n\021GetPluginInfoResp\022\022\n\nerror_code\030\001 \001(\005"
+    "\022$\n\007plugins\030\002 \003(\0132\023.GrpcLibrary.Plugin\":"
+    "\n\013DownloadReq\022\014\n\004hash\030\001 \001(\t\022\017\n\007user_id\030\002"
+    " \001(\003\022\014\n\004auth\030\003 \001(\t\"O\n\014DownloadResp\022\022\n\ner"
+    "ror_code\030\001 \001(\005\022\014\n\004hash\030\002 \001(\t\022\014\n\004addr\030\003 \001"
+    "(\t\022\017\n\007size_kb\030\004 \001(\003\"W\n\tUploadReq\022\014\n\004hash"
+    "\030\001 \001(\t\022\017\n\007user_id\030\002 \001(\003\022\014\n\004auth\030\003 \001(\t\022\014\n"
+    "\004addr\030\004 \001(\t\022\017\n\007size_kb\030\005 \001(\003\".\n\nUploadRe"
+    "sp\022\022\n\nerror_code\030\001 \001(\005\022\014\n\004hash\030\002 \001(\t\"\206\001\n"
+    "\014EmbeddingReq\022\017\n\007task_id\030\001 \001(\003\022,\n\005param\030"
+    "\002 \001(\0132\033.GrpcLibrary.EmbeddingParamH\000\022\'\n\005"
+    "chunk\030\003 \001(\0132\026.GrpcLibrary.FileChunkH\000B\016\n"
+    "\014request_type\"]\n\rEmbeddingResp\022\022\n\nerror_"
+    "code\030\001 \001(\005\022\017\n\007task_id\030\002 \001(\003\022\020\n\010chunk_id\030"
+    "\003 \001(\003\022\025\n\rvector_indexs\030\004 \001(\014\"B\n\020StopEmbe"
+    "ddingReq\022\017\n\007task_id\030\001 \001(\003\022\017\n\007user_id\030\002 \001"
+    "(\003\022\014\n\004auth\030\003 \001(\t\"8\n\021StopEmbeddingResp\022\022\n"
+    "\nerror_code\030\001 \001(\005\022\017\n\007task_id\030\002 \001(\0032\242\n\n\013G"
+    "rpcService\0223\n\tHeartbeat\022\021.GrpcLibrary.Pi"
+    "ng\032\021.GrpcLibrary.Pong\"\000\0228\n\005Login\022\025.GrpcL"
+    "ibrary.LoginReq\032\026.GrpcLibrary.LoginResp\""
+    "\000\022;\n\006Logout\022\026.GrpcLibrary.LogoutReq\032\027.Gr"
+    "pcLibrary.LogoutResp\"\000\022G\n\nRegAccount\022\032.G"
+    "rpcLibrary.RegAccountReq\032\033.GrpcLibrary.R"
+    "egAccountResp\"\000\022:\n\005Query\022\025.GrpcLibrary.Q"
+    "ueryReq\032\026.GrpcLibrary.QueryResp\"\0000\001\022G\n\nS"
+    "topAnswer\022\032.GrpcLibrary.StopAnswerReq\032\033."
+    "GrpcLibrary.StopAnswerResp\"\000\022H\n\tRecogniz"
+    "e\022\031.GrpcLibrary.RecognizeReq\032\032.GrpcLibra"
+    "ry.RecognizeResp\"\000(\0010\001\022P\n\rStopRecognize\022"
+    "\035.GrpcLibrary.StopRecognizeReq\032\036.GrpcLib"
+    "rary.StopRecognizeResp\"\000\022S\n\016GetMessageIn"
+    "fo\022\036.GrpcLibrary.GetMessageInfoReq\032\037.Grp"
+    "cLibrary.GetMessageInfoResp\"\000\022G\n\nGetSess"
+    "ion\022\032.GrpcLibrary.GetSessionReq\032\033.GrpcLi"
+    "brary.GetSessionResp\"\000\022G\n\nNewSession\022\032.G"
+    "rpcLibrary.NewSessionReq\032\033.GrpcLibrary.N"
+    "ewSessionResp\"\000\022_\n\022ModifySessionTitle\022\"."
+    "GrpcLibrary.ModifySessionTitleReq\032#.Grpc"
+    "Library.ModifySessionTitleResp\"\000\022G\n\nDelS"
+    "ession\022\032.GrpcLibrary.DelSessionReq\032\033.Grp"
+    "cLibrary.DelSessionResp\"\000\022P\n\rGetPluginIn"
+    "fo\022\035.GrpcLibrary.GetPluginInfoReq\032\036.Grpc"
+    "Library.GetPluginInfoResp\"\000\022A\n\010Download\022"
+    "\030.GrpcLibrary.DownloadReq\032\031.GrpcLibrary."
+    "DownloadResp\"\000\022;\n\006Upload\022\026.GrpcLibrary.U"
+    "ploadReq\032\027.GrpcLibrary.UploadResp\"\000\022H\n\tE"
+    "mbedding\022\031.GrpcLibrary.EmbeddingReq\032\032.Gr"
+    "pcLibrary.EmbeddingResp\"\000(\0010\001\022P\n\rStopEmb"
+    "edding\022\035.GrpcLibrary.StopEmbeddingReq\032\036."
+    "GrpcLibrary.StopEmbeddingResp\"\000b\006proto3"
 };
 static ::absl::once_flag descriptor_table_src_2fapi_2eproto_once;
 PROTOBUF_CONSTINIT const ::_pbi::DescriptorTable descriptor_table_src_2fapi_2eproto = {
     false,
     false,
-    6020,
+    6039,
     descriptor_table_protodef_src_2fapi_2eproto,
     "src/api.proto",
     &descriptor_table_src_2fapi_2eproto_once,
@@ -16069,7 +16074,8 @@ PROTOBUF_NDEBUG_INLINE GetPluginInfoReq::Impl_::Impl_(
     [[maybe_unused]] const ::GrpcLibrary::GetPluginInfoReq& from_msg)
       : _has_bits_{from._has_bits_},
         _cached_size_{0},
-        hash_(arena, from.hash_) {}
+        hash_(arena, from.hash_),
+        publisher_(arena, from.publisher_) {}
 
 GetPluginInfoReq::GetPluginInfoReq(
     ::google::protobuf::Arena* PROTOBUF_NULLABLE arena,
@@ -16092,7 +16098,8 @@ PROTOBUF_NDEBUG_INLINE GetPluginInfoReq::Impl_::Impl_(
     [[maybe_unused]] ::google::protobuf::internal::InternalVisibility visibility,
     [[maybe_unused]] ::google::protobuf::Arena* PROTOBUF_NULLABLE arena)
       : _cached_size_{0},
-        hash_(arena) {}
+        hash_(arena),
+        publisher_(arena) {}
 
 inline void GetPluginInfoReq::SharedCtor(::_pb::Arena* PROTOBUF_NULLABLE arena) {
   new (&_impl_) Impl_(internal_visibility(), arena);
@@ -16110,6 +16117,7 @@ inline void GetPluginInfoReq::SharedDtor(MessageLite& self) {
   this_._internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
   ABSL_DCHECK(this_.GetArena() == nullptr);
   this_._impl_.hash_.Destroy();
+  this_._impl_.publisher_.Destroy();
   this_._impl_.~Impl_();
 }
 
@@ -16156,16 +16164,16 @@ GetPluginInfoReq::GetClassData() const {
   return GetPluginInfoReq_class_data_.base();
 }
 PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
-const ::_pbi::TcParseTable<1, 2, 0, 41, 2>
+const ::_pbi::TcParseTable<2, 3, 0, 50, 2>
 GetPluginInfoReq::_table_ = {
   {
     PROTOBUF_FIELD_OFFSET(GetPluginInfoReq, _impl_._has_bits_),
     0, // no _extensions_
-    2, 8,  // max_field_number, fast_idx_mask
+    3, 24,  // max_field_number, fast_idx_mask
     offsetof(decltype(_table_), field_lookup_table),
-    4294967292,  // skipmap
+    4294967288,  // skipmap
     offsetof(decltype(_table_), field_entries),
-    2,  // num_field_entries
+    3,  // num_field_entries
     0,  // num_aux_entries
     offsetof(decltype(_table_), field_names),  // no aux_entries
     GetPluginInfoReq_class_data_.base(),
@@ -16175,27 +16183,35 @@ GetPluginInfoReq::_table_ = {
     ::_pbi::TcParser::GetTable<::GrpcLibrary::GetPluginInfoReq>(),  // to_prefetch
     #endif  // PROTOBUF_PREFETCH_PARSE_TABLE
   }, {{
-    // int32 limit = 2;
-    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(GetPluginInfoReq, _impl_.limit_), 1>(),
-     {16, 1, 0,
-      PROTOBUF_FIELD_OFFSET(GetPluginInfoReq, _impl_.limit_)}},
+    {::_pbi::TcParser::MiniParse, {}},
     // string hash = 1;
     {::_pbi::TcParser::FastUS1,
      {10, 0, 0,
       PROTOBUF_FIELD_OFFSET(GetPluginInfoReq, _impl_.hash_)}},
+    // string publisher = 2;
+    {::_pbi::TcParser::FastUS1,
+     {18, 1, 0,
+      PROTOBUF_FIELD_OFFSET(GetPluginInfoReq, _impl_.publisher_)}},
+    // int32 limit = 3;
+    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(GetPluginInfoReq, _impl_.limit_), 2>(),
+     {24, 2, 0,
+      PROTOBUF_FIELD_OFFSET(GetPluginInfoReq, _impl_.limit_)}},
   }}, {{
     65535, 65535
   }}, {{
     // string hash = 1;
     {PROTOBUF_FIELD_OFFSET(GetPluginInfoReq, _impl_.hash_), _Internal::kHasBitsOffset + 0, 0, (0 | ::_fl::kFcOptional | ::_fl::kUtf8String | ::_fl::kRepAString)},
-    // int32 limit = 2;
-    {PROTOBUF_FIELD_OFFSET(GetPluginInfoReq, _impl_.limit_), _Internal::kHasBitsOffset + 1, 0, (0 | ::_fl::kFcOptional | ::_fl::kInt32)},
+    // string publisher = 2;
+    {PROTOBUF_FIELD_OFFSET(GetPluginInfoReq, _impl_.publisher_), _Internal::kHasBitsOffset + 1, 0, (0 | ::_fl::kFcOptional | ::_fl::kUtf8String | ::_fl::kRepAString)},
+    // int32 limit = 3;
+    {PROTOBUF_FIELD_OFFSET(GetPluginInfoReq, _impl_.limit_), _Internal::kHasBitsOffset + 2, 0, (0 | ::_fl::kFcOptional | ::_fl::kInt32)},
   }},
   // no aux_entries
   {{
-    "\34\4\0\0\0\0\0\0"
+    "\34\4\11\0\0\0\0\0"
     "GrpcLibrary.GetPluginInfoReq"
     "hash"
+    "publisher"
   }},
 };
 PROTOBUF_NOINLINE void GetPluginInfoReq::Clear() {
@@ -16206,8 +16222,13 @@ PROTOBUF_NOINLINE void GetPluginInfoReq::Clear() {
   (void) cached_has_bits;
 
   cached_has_bits = _impl_._has_bits_[0];
-  if (CheckHasBit(cached_has_bits, 0x00000001U)) {
-    _impl_.hash_.ClearNonDefaultToEmpty();
+  if (BatchCheckHasBit(cached_has_bits, 0x00000003U)) {
+    if (CheckHasBit(cached_has_bits, 0x00000001U)) {
+      _impl_.hash_.ClearNonDefaultToEmpty();
+    }
+    if (CheckHasBit(cached_has_bits, 0x00000002U)) {
+      _impl_.publisher_.ClearNonDefaultToEmpty();
+    }
   }
   _impl_.limit_ = 0;
   _impl_._has_bits_.Clear();
@@ -16243,11 +16264,21 @@ PROTOBUF_NOINLINE void GetPluginInfoReq::Clear() {
     }
   }
 
-  // int32 limit = 2;
+  // string publisher = 2;
   if (CheckHasBit(cached_has_bits, 0x00000002U)) {
+    if (!this_._internal_publisher().empty()) {
+      const ::std::string& _s = this_._internal_publisher();
+      ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+          _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "GrpcLibrary.GetPluginInfoReq.publisher");
+      target = stream->WriteStringMaybeAliased(2, _s, target);
+    }
+  }
+
+  // int32 limit = 3;
+  if (CheckHasBit(cached_has_bits, 0x00000004U)) {
     if (this_._internal_limit() != 0) {
       target =
-          ::google::protobuf::internal::WireFormatLite::WriteInt32ToArrayWithField<2>(
+          ::google::protobuf::internal::WireFormatLite::WriteInt32ToArrayWithField<3>(
               stream, this_._internal_limit(), target);
     }
   }
@@ -16277,7 +16308,7 @@ PROTOBUF_NOINLINE void GetPluginInfoReq::Clear() {
 
   ::_pbi::Prefetch5LinesFrom7Lines(&this_);
   cached_has_bits = this_._impl_._has_bits_[0];
-  if (BatchCheckHasBit(cached_has_bits, 0x00000003U)) {
+  if (BatchCheckHasBit(cached_has_bits, 0x00000007U)) {
     // string hash = 1;
     if (CheckHasBit(cached_has_bits, 0x00000001U)) {
       if (!this_._internal_hash().empty()) {
@@ -16285,8 +16316,15 @@ PROTOBUF_NOINLINE void GetPluginInfoReq::Clear() {
                                         this_._internal_hash());
       }
     }
-    // int32 limit = 2;
+    // string publisher = 2;
     if (CheckHasBit(cached_has_bits, 0x00000002U)) {
+      if (!this_._internal_publisher().empty()) {
+        total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
+                                        this_._internal_publisher());
+      }
+    }
+    // int32 limit = 3;
+    if (CheckHasBit(cached_has_bits, 0x00000004U)) {
       if (this_._internal_limit() != 0) {
         total_size += ::_pbi::WireFormatLite::Int32SizePlusOne(
             this_._internal_limit());
@@ -16311,7 +16349,7 @@ void GetPluginInfoReq::MergeImpl(::google::protobuf::MessageLite& to_msg,
   (void)cached_has_bits;
 
   cached_has_bits = from._impl_._has_bits_[0];
-  if (BatchCheckHasBit(cached_has_bits, 0x00000003U)) {
+  if (BatchCheckHasBit(cached_has_bits, 0x00000007U)) {
     if (CheckHasBit(cached_has_bits, 0x00000001U)) {
       if (!from._internal_hash().empty()) {
         _this->_internal_set_hash(from._internal_hash());
@@ -16322,6 +16360,15 @@ void GetPluginInfoReq::MergeImpl(::google::protobuf::MessageLite& to_msg,
       }
     }
     if (CheckHasBit(cached_has_bits, 0x00000002U)) {
+      if (!from._internal_publisher().empty()) {
+        _this->_internal_set_publisher(from._internal_publisher());
+      } else {
+        if (_this->_impl_.publisher_.IsDefault()) {
+          _this->_internal_set_publisher("");
+        }
+      }
+    }
+    if (CheckHasBit(cached_has_bits, 0x00000004U)) {
       if (from._internal_limit() != 0) {
         _this->_impl_.limit_ = from._impl_.limit_;
       }
@@ -16347,6 +16394,7 @@ void GetPluginInfoReq::InternalSwap(GetPluginInfoReq* PROTOBUF_RESTRICT PROTOBUF
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
   ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.hash_, &other->_impl_.hash_, arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.publisher_, &other->_impl_.publisher_, arena);
   swap(_impl_.limit_, other->_impl_.limit_);
 }
 
