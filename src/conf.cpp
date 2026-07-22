@@ -72,6 +72,11 @@ std::string conf::server_addr()
     return _cfg.get<std::string>("server/addr", "");
 }
 
+std::unordered_map<std::string, conf::client_config> conf::clients()
+{
+    return _clients;
+}
+
 std::string conf::sqlite_id()
 {
     return _cfg.get<std::string>("sqlite/id", "default");
@@ -121,12 +126,12 @@ std::vector<std::string> conf::issuer_keys()
 
 int conf::issuer_valid_times()
 {
-    return _cfg.get<int>("issuer/valid_times", 1000);
+    return _cfg.get<int>("issuer/valid_times", 10000000);
 }
 
-int conf::issuer_leeway()
+int conf::issuer_expired_days()
 {
-    return _cfg.get<int>("issuer/leeway", 1);
+    return _cfg.get<int>("issuer/expired_days", 30);
 }
 
 std::string conf::verifier_id()
@@ -302,6 +307,36 @@ void conf::_init()
         config.gpu_device = _cfg.get<int>(item + "/gpu_device", -1);
 
         _asr_ctxs[config.id] = config;
+    }
+
+    // init client
+    auto cli_str   = _cfg.get<std::string>("client/sub_class", "");
+    auto cli_items = hj::string_util::split(cli_str, std::string_view(",", 1));
+    _clients.clear();
+    for(const auto &item : cli_items)
+    {
+        client_config config;
+        config.platform = _cfg.get<std::string>(item + "/platform", "");
+        config.arch     = _cfg.get<std::string>(item + "/arch", "");
+        config.rollout_percent =
+            _cfg.get<uint32_t>(item + "/rollout_percent", 100);
+        config.version_major =
+            _cfg.get<uint8_t>(item + "/min_version_major", 0);
+        config.version_minor =
+            _cfg.get<uint8_t>(item + "/min_version_minor", 0);
+        config.version_patch =
+            _cfg.get<uint8_t>(item + "/min_version_patch", 0);
+
+        if(config.platform.empty() || config.arch.empty())
+        {
+            std::cerr << "config client: " << item
+                      << ", platform: " << config.platform
+                      << ", arch: " << config.arch << " INVALID!!!"
+                      << std::endl;
+            continue;
+        }
+
+        _clients["client_" + config.platform + "_" + config.arch] = config;
     }
 }
 

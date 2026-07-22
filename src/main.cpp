@@ -27,6 +27,7 @@
 #include "llm.h"
 #include "caller.h"
 #include "asr.h"
+#include "updater.h"
 
 int main(int argc, char *argv[])
 {
@@ -112,6 +113,14 @@ int main(int argc, char *argv[])
     if(subcmd == "run")
     {
         // ./rag-core run
+        // init env
+        LOG_INFO("Environment - version: {}, arch: {}, platform: {}, "
+                 "compiletime: {}",
+                 VERSION,
+                 ENV_ARCH,
+                 ENV_OS,
+                 COMPILE_TIME);
+
         // init dbs
         db_mgr::instance().init();
 
@@ -186,6 +195,12 @@ int main(int argc, char *argv[])
                      param.gpu_device);
         }
         LOG_INFO("init asr ctx finish");
+
+        // init updater
+        LOG_DEBUG("init updater clients size:{}",
+                  conf::instance().clients().size());
+        updater::instance()->init();
+        LOG_INFO("init updater finish");
 
         // run server
         auto   addr = conf::instance().server_addr();

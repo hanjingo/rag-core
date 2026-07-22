@@ -15,11 +15,11 @@
 #include "audio_buffer.h"
 #include "api.grpc.pb.h"
 
-class QueryReactor : public grpc::ServerWriteReactor<::GrpcLibrary::QueryResp>
+class QueryReactor : public grpc::ServerWriteReactor<::GrpcLibraryV1::QueryResp>
 {
   public:
-    QueryReactor(grpc::CallbackServerContext   *ctx,
-                 const ::GrpcLibrary::QueryReq *req);
+    QueryReactor(grpc::CallbackServerContext     *ctx,
+                 const ::GrpcLibraryV1::QueryReq *req);
     QueryReactor::~QueryReactor();
 
     void OnWriteDone(bool ok) override;
@@ -39,10 +39,10 @@ class QueryReactor : public grpc::ServerWriteReactor<::GrpcLibrary::QueryResp>
     void _flush();
 
   private:
-    grpc::CallbackServerContext          *_ctx;
-    std::atomic<bool>                     _is_cancelled{false};
-    std::atomic<bool>                     _is_writing{false};
-    hj::channel<::GrpcLibrary::QueryResp> _w_queue;
+    grpc::CallbackServerContext            *_ctx;
+    std::atomic<bool>                       _is_cancelled{false};
+    std::atomic<bool>                       _is_writing{false};
+    hj::channel<::GrpcLibraryV1::QueryResp> _w_queue;
 
     // base params
     int64_t     _session_id;
@@ -70,8 +70,8 @@ class QueryReactor : public grpc::ServerWriteReactor<::GrpcLibrary::QueryResp>
 };
 
 class RecognizeReactor
-    : public grpc::ServerBidiReactor<::GrpcLibrary::RecognizeReq,
-                                     ::GrpcLibrary::RecognizeResp>
+    : public grpc::ServerBidiReactor<::GrpcLibraryV1::RecognizeReq,
+                                     ::GrpcLibraryV1::RecognizeResp>
 {
   public:
     RecognizeReactor(grpc::CallbackServerContext *ctx);
@@ -86,7 +86,7 @@ class RecognizeReactor
     inline int64_t GetSessionId() const { return _session_id; }
 
   private:
-    void _process(const ::GrpcLibrary::RecognizeReq &req);
+    void _process(const ::GrpcLibraryV1::RecognizeReq &req);
     void _ensure_registered(int64_t session_id);
 
     void _send(const int          error_code,
@@ -97,11 +97,11 @@ class RecognizeReactor
     void _flush();
 
   private:
-    grpc::CallbackServerContext *_ctx;
-    ::GrpcLibrary::RecognizeReq  _req;
-    ::GrpcLibrary::RecognizeResp _resp;
+    grpc::CallbackServerContext   *_ctx;
+    ::GrpcLibraryV1::RecognizeReq  _req;
+    ::GrpcLibraryV1::RecognizeResp _resp;
 
-    hj::channel<::GrpcLibrary::RecognizeResp> _w_queue;
+    hj::channel<::GrpcLibraryV1::RecognizeResp> _w_queue;
 
     int64_t                _session_id;
     std::atomic<bool>      _is_cancelled{false};
@@ -115,8 +115,8 @@ class RecognizeReactor
 };
 
 class EmbeddingReactor
-    : public grpc::ServerBidiReactor<::GrpcLibrary::EmbeddingReq,
-                                     ::GrpcLibrary::EmbeddingResp>
+    : public grpc::ServerBidiReactor<::GrpcLibraryV1::EmbeddingReq,
+                                     ::GrpcLibraryV1::EmbeddingResp>
 {
   public:
     EmbeddingReactor(grpc::CallbackServerContext *ctx);
@@ -129,7 +129,7 @@ class EmbeddingReactor
     void Stop();
 
   private:
-    void _process(const ::GrpcLibrary::EmbeddingReq &req);
+    void _process(const ::GrpcLibraryV1::EmbeddingReq &req);
     void _ensure_registered(int64_t session_id);
 
     void _send(const int                   error_code,
@@ -140,12 +140,12 @@ class EmbeddingReactor
     void _convert(std::vector<unsigned char> &data, const std::string &src);
 
   private:
-    grpc::CallbackServerContext  *_ctx;
-    ::GrpcLibrary::EmbeddingReq   _req;
-    ::GrpcLibrary::EmbeddingResp  _resp;
-    ::GrpcLibrary::EmbeddingParam _param;
+    grpc::CallbackServerContext    *_ctx;
+    ::GrpcLibraryV1::EmbeddingReq   _req;
+    ::GrpcLibraryV1::EmbeddingResp  _resp;
+    ::GrpcLibraryV1::EmbeddingParam _param;
 
-    hj::channel<::GrpcLibrary::EmbeddingResp> _w_queue;
+    hj::channel<::GrpcLibraryV1::EmbeddingResp> _w_queue;
 
     int64_t           _task_id;
     std::atomic<bool> _is_cancelled{false};

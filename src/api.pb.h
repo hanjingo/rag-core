@@ -52,7 +52,7 @@ struct TableStruct_src_2fapi_2eproto {
 extern "C" {
 extern const ::google::protobuf::internal::DescriptorTable descriptor_table_src_2fapi_2eproto;
 }  // extern "C"
-namespace GrpcLibrary {
+namespace GrpcLibraryV1 {
 class ContextParam;
 struct ContextParamDefaultTypeInternal;
 extern ContextParamDefaultTypeInternal _ContextParam_default_instance_;
@@ -221,6 +221,10 @@ class StopRecognizeResp;
 struct StopRecognizeRespDefaultTypeInternal;
 extern StopRecognizeRespDefaultTypeInternal _StopRecognizeResp_default_instance_;
 extern const ::google::protobuf::internal::ClassDataFull StopRecognizeResp_class_data_;
+class UpdateInfo;
+struct UpdateInfoDefaultTypeInternal;
+extern UpdateInfoDefaultTypeInternal _UpdateInfo_default_instance_;
+extern const ::google::protobuf::internal::ClassDataFull UpdateInfo_class_data_;
 class UploadReq;
 struct UploadReqDefaultTypeInternal;
 extern UploadReqDefaultTypeInternal _UploadReq_default_instance_;
@@ -229,13 +233,13 @@ class UploadResp;
 struct UploadRespDefaultTypeInternal;
 extern UploadRespDefaultTypeInternal _UploadResp_default_instance_;
 extern const ::google::protobuf::internal::ClassDataFull UploadResp_class_data_;
-}  // namespace GrpcLibrary
+}  // namespace GrpcLibraryV1
 namespace google {
 namespace protobuf {
 }  // namespace protobuf
 }  // namespace google
 
-namespace GrpcLibrary {
+namespace GrpcLibraryV1 {
 
 // ===================================================================
 
@@ -243,7 +247,7 @@ namespace GrpcLibrary {
 // -------------------------------------------------------------------
 
 class UploadResp final : public ::google::protobuf::Message
-/* @@protoc_insertion_point(class_definition:GrpcLibrary.UploadResp) */ {
+/* @@protoc_insertion_point(class_definition:GrpcLibraryV1.UploadResp) */ {
  public:
   inline UploadResp() : UploadResp(nullptr) {}
   ~UploadResp() PROTOBUF_FINAL;
@@ -297,7 +301,7 @@ class UploadResp final : public ::google::protobuf::Message
     return *reinterpret_cast<const UploadResp*>(
         &_UploadResp_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 39;
+  static constexpr int kIndexInFileMessages = 40;
   friend void swap(UploadResp& a, UploadResp& b) { a.Swap(&b); }
   inline void Swap(UploadResp* PROTOBUF_NONNULL other) {
     if (other == this) return;
@@ -361,7 +365,7 @@ class UploadResp final : public ::google::protobuf::Message
  private:
   template <typename T>
   friend ::absl::string_view(::google::protobuf::internal::GetAnyMessageName)();
-  static ::absl::string_view FullMessageName() { return "GrpcLibrary.UploadResp"; }
+  static ::absl::string_view FullMessageName() { return "GrpcLibraryV1.UploadResp"; }
 
   explicit UploadResp(::google::protobuf::Arena* PROTOBUF_NULLABLE arena);
   UploadResp(::google::protobuf::Arena* PROTOBUF_NULLABLE arena, const UploadResp& from);
@@ -412,12 +416,12 @@ class UploadResp final : public ::google::protobuf::Message
   void _internal_set_error_code(::int32_t value);
 
   public:
-  // @@protoc_insertion_point(class_scope:GrpcLibrary.UploadResp)
+  // @@protoc_insertion_point(class_scope:GrpcLibraryV1.UploadResp)
  private:
   class _Internal;
   friend class ::google::protobuf::internal::TcParser;
   static const ::google::protobuf::internal::TcParseTable<1, 2,
-                                   0, 35,
+                                   0, 37,
                                    2>
       _table_;
 
@@ -450,7 +454,7 @@ extern const ::google::protobuf::internal::ClassDataFull UploadResp_class_data_;
 // -------------------------------------------------------------------
 
 class UploadReq final : public ::google::protobuf::Message
-/* @@protoc_insertion_point(class_definition:GrpcLibrary.UploadReq) */ {
+/* @@protoc_insertion_point(class_definition:GrpcLibraryV1.UploadReq) */ {
  public:
   inline UploadReq() : UploadReq(nullptr) {}
   ~UploadReq() PROTOBUF_FINAL;
@@ -504,7 +508,7 @@ class UploadReq final : public ::google::protobuf::Message
     return *reinterpret_cast<const UploadReq*>(
         &_UploadReq_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 38;
+  static constexpr int kIndexInFileMessages = 39;
   friend void swap(UploadReq& a, UploadReq& b) { a.Swap(&b); }
   inline void Swap(UploadReq* PROTOBUF_NONNULL other) {
     if (other == this) return;
@@ -568,7 +572,7 @@ class UploadReq final : public ::google::protobuf::Message
  private:
   template <typename T>
   friend ::absl::string_view(::google::protobuf::internal::GetAnyMessageName)();
-  static ::absl::string_view FullMessageName() { return "GrpcLibrary.UploadReq"; }
+  static ::absl::string_view FullMessageName() { return "GrpcLibraryV1.UploadReq"; }
 
   explicit UploadReq(::google::protobuf::Arena* PROTOBUF_NULLABLE arena);
   UploadReq(::google::protobuf::Arena* PROTOBUF_NULLABLE arena, const UploadReq& from);
@@ -662,12 +666,12 @@ class UploadReq final : public ::google::protobuf::Message
   void _internal_set_size_kb(::int64_t value);
 
   public:
-  // @@protoc_insertion_point(class_scope:GrpcLibrary.UploadReq)
+  // @@protoc_insertion_point(class_scope:GrpcLibraryV1.UploadReq)
  private:
   class _Internal;
   friend class ::google::protobuf::internal::TcParser;
   static const ::google::protobuf::internal::TcParseTable<3, 5,
-                                   0, 42,
+                                   0, 44,
                                    2>
       _table_;
 
@@ -702,8 +706,198 @@ class UploadReq final : public ::google::protobuf::Message
 extern const ::google::protobuf::internal::ClassDataFull UploadReq_class_data_;
 // -------------------------------------------------------------------
 
+class UpdateInfo final : public ::google::protobuf::Message
+/* @@protoc_insertion_point(class_definition:GrpcLibraryV1.UpdateInfo) */ {
+ public:
+  inline UpdateInfo() : UpdateInfo(nullptr) {}
+  ~UpdateInfo() PROTOBUF_FINAL;
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+  void operator delete(UpdateInfo* PROTOBUF_NONNULL msg, ::std::destroying_delete_t) {
+    SharedDtor(*msg);
+    ::google::protobuf::internal::SizedDelete(msg, sizeof(UpdateInfo));
+  }
+#endif
+
+  template <typename = void>
+  explicit PROTOBUF_CONSTEXPR UpdateInfo(::google::protobuf::internal::ConstantInitialized);
+
+  inline UpdateInfo(const UpdateInfo& from) : UpdateInfo(nullptr, from) {}
+  inline UpdateInfo(UpdateInfo&& from) noexcept
+      : UpdateInfo(nullptr, ::std::move(from)) {}
+  inline UpdateInfo& operator=(const UpdateInfo& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline UpdateInfo& operator=(UpdateInfo&& from) noexcept {
+    if (this == &from) return *this;
+    if (::google::protobuf::internal::CanMoveWithInternalSwap(GetArena(), from.GetArena())) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance);
+  }
+  inline ::google::protobuf::UnknownFieldSet* PROTOBUF_NONNULL mutable_unknown_fields()
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.mutable_unknown_fields<::google::protobuf::UnknownFieldSet>();
+  }
+
+  static const ::google::protobuf::Descriptor* PROTOBUF_NONNULL descriptor() {
+    return GetDescriptor();
+  }
+  static const ::google::protobuf::Descriptor* PROTOBUF_NONNULL GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::google::protobuf::Reflection* PROTOBUF_NONNULL GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const UpdateInfo& default_instance() {
+    return *reinterpret_cast<const UpdateInfo*>(
+        &_UpdateInfo_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages = 8;
+  friend void swap(UpdateInfo& a, UpdateInfo& b) { a.Swap(&b); }
+  inline void Swap(UpdateInfo* PROTOBUF_NONNULL other) {
+    if (other == this) return;
+    if (::google::protobuf::internal::CanUseInternalSwap(GetArena(), other->GetArena())) {
+      InternalSwap(other);
+    } else {
+      ::google::protobuf::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(UpdateInfo* PROTOBUF_NONNULL other) {
+    if (other == this) return;
+    ABSL_DCHECK(GetArena() == other->GetArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  UpdateInfo* PROTOBUF_NONNULL New(::google::protobuf::Arena* PROTOBUF_NULLABLE arena = nullptr) const {
+    return ::google::protobuf::Message::DefaultConstruct<UpdateInfo>(arena);
+  }
+  using ::google::protobuf::Message::CopyFrom;
+  void CopyFrom(const UpdateInfo& from);
+  using ::google::protobuf::Message::MergeFrom;
+  void MergeFrom(const UpdateInfo& from) { UpdateInfo::MergeImpl(*this, from); }
+
+  private:
+  static void MergeImpl(::google::protobuf::MessageLite& to_msg,
+                        const ::google::protobuf::MessageLite& from_msg);
+
+  public:
+  bool IsInitialized() const {
+    return true;
+  }
+  ABSL_ATTRIBUTE_REINITIALIZES void Clear() PROTOBUF_FINAL;
+  #if defined(PROTOBUF_CUSTOM_VTABLE)
+  private:
+  static ::size_t ByteSizeLong(const ::google::protobuf::MessageLite& msg);
+  static ::uint8_t* PROTOBUF_NONNULL _InternalSerialize(
+      const ::google::protobuf::MessageLite& msg, ::uint8_t* PROTOBUF_NONNULL target,
+      ::google::protobuf::io::EpsCopyOutputStream* PROTOBUF_NONNULL stream);
+
+  public:
+  ::size_t ByteSizeLong() const { return ByteSizeLong(*this); }
+  ::uint8_t* PROTOBUF_NONNULL _InternalSerialize(
+      ::uint8_t* PROTOBUF_NONNULL target,
+      ::google::protobuf::io::EpsCopyOutputStream* PROTOBUF_NONNULL stream) const {
+    return _InternalSerialize(*this, target, stream);
+  }
+  #else   // PROTOBUF_CUSTOM_VTABLE
+  ::size_t ByteSizeLong() const final;
+  ::uint8_t* PROTOBUF_NONNULL _InternalSerialize(
+      ::uint8_t* PROTOBUF_NONNULL target,
+      ::google::protobuf::io::EpsCopyOutputStream* PROTOBUF_NONNULL stream) const final;
+  #endif  // PROTOBUF_CUSTOM_VTABLE
+  int GetCachedSize() const { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::google::protobuf::Arena* PROTOBUF_NULLABLE arena);
+  static void SharedDtor(MessageLite& self);
+  void InternalSwap(UpdateInfo* PROTOBUF_NONNULL other);
+ private:
+  template <typename T>
+  friend ::absl::string_view(::google::protobuf::internal::GetAnyMessageName)();
+  static ::absl::string_view FullMessageName() { return "GrpcLibraryV1.UpdateInfo"; }
+
+  explicit UpdateInfo(::google::protobuf::Arena* PROTOBUF_NULLABLE arena);
+  UpdateInfo(::google::protobuf::Arena* PROTOBUF_NULLABLE arena, const UpdateInfo& from);
+  UpdateInfo(
+      ::google::protobuf::Arena* PROTOBUF_NULLABLE arena, UpdateInfo&& from) noexcept
+      : UpdateInfo(arena) {
+    *this = ::std::move(from);
+  }
+  const ::google::protobuf::internal::ClassData* PROTOBUF_NONNULL GetClassData() const PROTOBUF_FINAL;
+  static void* PROTOBUF_NONNULL PlacementNew_(
+      const void* PROTOBUF_NONNULL, void* PROTOBUF_NONNULL mem,
+      ::google::protobuf::Arena* PROTOBUF_NULLABLE arena);
+  static constexpr auto InternalNewImpl_();
+
+ public:
+  static constexpr auto InternalGenerateClassData_();
+
+  ::google::protobuf::Metadata GetMetadata() const;
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+  enum : int {
+    kForceUpdateFieldNumber = 1,
+  };
+  // bool force_update = 1;
+  void clear_force_update() ;
+  bool force_update() const;
+  void set_force_update(bool value);
+
+  private:
+  bool _internal_force_update() const;
+  void _internal_set_force_update(bool value);
+
+  public:
+  // @@protoc_insertion_point(class_scope:GrpcLibraryV1.UpdateInfo)
+ private:
+  class _Internal;
+  friend class ::google::protobuf::internal::TcParser;
+  static const ::google::protobuf::internal::TcParseTable<0, 1,
+                                   0, 0,
+                                   2>
+      _table_;
+
+  friend class ::google::protobuf::MessageLite;
+  friend class ::google::protobuf::Arena;
+  template <typename T>
+  friend class ::google::protobuf::Arena::InternalHelper;
+  using InternalArenaConstructable_ = void;
+  using DestructorSkippable_ = void;
+  struct Impl_ {
+    inline explicit constexpr Impl_(::google::protobuf::internal::ConstantInitialized) noexcept;
+    inline explicit Impl_(
+        ::google::protobuf::internal::InternalVisibility visibility,
+        ::google::protobuf::Arena* PROTOBUF_NULLABLE arena);
+    inline explicit Impl_(
+        ::google::protobuf::internal::InternalVisibility visibility,
+        ::google::protobuf::Arena* PROTOBUF_NULLABLE arena, const Impl_& from,
+        const UpdateInfo& from_msg);
+    ::google::protobuf::internal::HasBits<1> _has_bits_;
+    ::google::protobuf::internal::CachedSize _cached_size_;
+    bool force_update_;
+    PROTOBUF_TSAN_DECLARE_MEMBER
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_src_2fapi_2eproto;
+};
+
+extern const ::google::protobuf::internal::ClassDataFull UpdateInfo_class_data_;
+// -------------------------------------------------------------------
+
 class StopRecognizeResp final : public ::google::protobuf::Message
-/* @@protoc_insertion_point(class_definition:GrpcLibrary.StopRecognizeResp) */ {
+/* @@protoc_insertion_point(class_definition:GrpcLibraryV1.StopRecognizeResp) */ {
  public:
   inline StopRecognizeResp() : StopRecognizeResp(nullptr) {}
   ~StopRecognizeResp() PROTOBUF_FINAL;
@@ -757,7 +951,7 @@ class StopRecognizeResp final : public ::google::protobuf::Message
     return *reinterpret_cast<const StopRecognizeResp*>(
         &_StopRecognizeResp_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 23;
+  static constexpr int kIndexInFileMessages = 24;
   friend void swap(StopRecognizeResp& a, StopRecognizeResp& b) { a.Swap(&b); }
   inline void Swap(StopRecognizeResp* PROTOBUF_NONNULL other) {
     if (other == this) return;
@@ -821,7 +1015,7 @@ class StopRecognizeResp final : public ::google::protobuf::Message
  private:
   template <typename T>
   friend ::absl::string_view(::google::protobuf::internal::GetAnyMessageName)();
-  static ::absl::string_view FullMessageName() { return "GrpcLibrary.StopRecognizeResp"; }
+  static ::absl::string_view FullMessageName() { return "GrpcLibraryV1.StopRecognizeResp"; }
 
   explicit StopRecognizeResp(::google::protobuf::Arena* PROTOBUF_NULLABLE arena);
   StopRecognizeResp(::google::protobuf::Arena* PROTOBUF_NULLABLE arena, const StopRecognizeResp& from);
@@ -867,7 +1061,7 @@ class StopRecognizeResp final : public ::google::protobuf::Message
   void _internal_set_error_code(::int32_t value);
 
   public:
-  // @@protoc_insertion_point(class_scope:GrpcLibrary.StopRecognizeResp)
+  // @@protoc_insertion_point(class_scope:GrpcLibraryV1.StopRecognizeResp)
  private:
   class _Internal;
   friend class ::google::protobuf::internal::TcParser;
@@ -905,7 +1099,7 @@ extern const ::google::protobuf::internal::ClassDataFull StopRecognizeResp_class
 // -------------------------------------------------------------------
 
 class StopRecognizeReq final : public ::google::protobuf::Message
-/* @@protoc_insertion_point(class_definition:GrpcLibrary.StopRecognizeReq) */ {
+/* @@protoc_insertion_point(class_definition:GrpcLibraryV1.StopRecognizeReq) */ {
  public:
   inline StopRecognizeReq() : StopRecognizeReq(nullptr) {}
   ~StopRecognizeReq() PROTOBUF_FINAL;
@@ -959,7 +1153,7 @@ class StopRecognizeReq final : public ::google::protobuf::Message
     return *reinterpret_cast<const StopRecognizeReq*>(
         &_StopRecognizeReq_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 22;
+  static constexpr int kIndexInFileMessages = 23;
   friend void swap(StopRecognizeReq& a, StopRecognizeReq& b) { a.Swap(&b); }
   inline void Swap(StopRecognizeReq* PROTOBUF_NONNULL other) {
     if (other == this) return;
@@ -1023,7 +1217,7 @@ class StopRecognizeReq final : public ::google::protobuf::Message
  private:
   template <typename T>
   friend ::absl::string_view(::google::protobuf::internal::GetAnyMessageName)();
-  static ::absl::string_view FullMessageName() { return "GrpcLibrary.StopRecognizeReq"; }
+  static ::absl::string_view FullMessageName() { return "GrpcLibraryV1.StopRecognizeReq"; }
 
   explicit StopRecognizeReq(::google::protobuf::Arena* PROTOBUF_NULLABLE arena);
   StopRecognizeReq(::google::protobuf::Arena* PROTOBUF_NULLABLE arena, const StopRecognizeReq& from);
@@ -1085,12 +1279,12 @@ class StopRecognizeReq final : public ::google::protobuf::Message
   void _internal_set_user_id(::int64_t value);
 
   public:
-  // @@protoc_insertion_point(class_scope:GrpcLibrary.StopRecognizeReq)
+  // @@protoc_insertion_point(class_scope:GrpcLibraryV1.StopRecognizeReq)
  private:
   class _Internal;
   friend class ::google::protobuf::internal::TcParser;
   static const ::google::protobuf::internal::TcParseTable<2, 3,
-                                   0, 41,
+                                   0, 43,
                                    2>
       _table_;
 
@@ -1124,7 +1318,7 @@ extern const ::google::protobuf::internal::ClassDataFull StopRecognizeReq_class_
 // -------------------------------------------------------------------
 
 class StopEmbeddingResp final : public ::google::protobuf::Message
-/* @@protoc_insertion_point(class_definition:GrpcLibrary.StopEmbeddingResp) */ {
+/* @@protoc_insertion_point(class_definition:GrpcLibraryV1.StopEmbeddingResp) */ {
  public:
   inline StopEmbeddingResp() : StopEmbeddingResp(nullptr) {}
   ~StopEmbeddingResp() PROTOBUF_FINAL;
@@ -1178,7 +1372,7 @@ class StopEmbeddingResp final : public ::google::protobuf::Message
     return *reinterpret_cast<const StopEmbeddingResp*>(
         &_StopEmbeddingResp_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 43;
+  static constexpr int kIndexInFileMessages = 44;
   friend void swap(StopEmbeddingResp& a, StopEmbeddingResp& b) { a.Swap(&b); }
   inline void Swap(StopEmbeddingResp* PROTOBUF_NONNULL other) {
     if (other == this) return;
@@ -1242,7 +1436,7 @@ class StopEmbeddingResp final : public ::google::protobuf::Message
  private:
   template <typename T>
   friend ::absl::string_view(::google::protobuf::internal::GetAnyMessageName)();
-  static ::absl::string_view FullMessageName() { return "GrpcLibrary.StopEmbeddingResp"; }
+  static ::absl::string_view FullMessageName() { return "GrpcLibraryV1.StopEmbeddingResp"; }
 
   explicit StopEmbeddingResp(::google::protobuf::Arena* PROTOBUF_NULLABLE arena);
   StopEmbeddingResp(::google::protobuf::Arena* PROTOBUF_NULLABLE arena, const StopEmbeddingResp& from);
@@ -1288,7 +1482,7 @@ class StopEmbeddingResp final : public ::google::protobuf::Message
   void _internal_set_error_code(::int32_t value);
 
   public:
-  // @@protoc_insertion_point(class_scope:GrpcLibrary.StopEmbeddingResp)
+  // @@protoc_insertion_point(class_scope:GrpcLibraryV1.StopEmbeddingResp)
  private:
   class _Internal;
   friend class ::google::protobuf::internal::TcParser;
@@ -1326,7 +1520,7 @@ extern const ::google::protobuf::internal::ClassDataFull StopEmbeddingResp_class
 // -------------------------------------------------------------------
 
 class StopEmbeddingReq final : public ::google::protobuf::Message
-/* @@protoc_insertion_point(class_definition:GrpcLibrary.StopEmbeddingReq) */ {
+/* @@protoc_insertion_point(class_definition:GrpcLibraryV1.StopEmbeddingReq) */ {
  public:
   inline StopEmbeddingReq() : StopEmbeddingReq(nullptr) {}
   ~StopEmbeddingReq() PROTOBUF_FINAL;
@@ -1380,7 +1574,7 @@ class StopEmbeddingReq final : public ::google::protobuf::Message
     return *reinterpret_cast<const StopEmbeddingReq*>(
         &_StopEmbeddingReq_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 42;
+  static constexpr int kIndexInFileMessages = 43;
   friend void swap(StopEmbeddingReq& a, StopEmbeddingReq& b) { a.Swap(&b); }
   inline void Swap(StopEmbeddingReq* PROTOBUF_NONNULL other) {
     if (other == this) return;
@@ -1444,7 +1638,7 @@ class StopEmbeddingReq final : public ::google::protobuf::Message
  private:
   template <typename T>
   friend ::absl::string_view(::google::protobuf::internal::GetAnyMessageName)();
-  static ::absl::string_view FullMessageName() { return "GrpcLibrary.StopEmbeddingReq"; }
+  static ::absl::string_view FullMessageName() { return "GrpcLibraryV1.StopEmbeddingReq"; }
 
   explicit StopEmbeddingReq(::google::protobuf::Arena* PROTOBUF_NULLABLE arena);
   StopEmbeddingReq(::google::protobuf::Arena* PROTOBUF_NULLABLE arena, const StopEmbeddingReq& from);
@@ -1506,12 +1700,12 @@ class StopEmbeddingReq final : public ::google::protobuf::Message
   void _internal_set_user_id(::int64_t value);
 
   public:
-  // @@protoc_insertion_point(class_scope:GrpcLibrary.StopEmbeddingReq)
+  // @@protoc_insertion_point(class_scope:GrpcLibraryV1.StopEmbeddingReq)
  private:
   class _Internal;
   friend class ::google::protobuf::internal::TcParser;
   static const ::google::protobuf::internal::TcParseTable<2, 3,
-                                   0, 41,
+                                   0, 43,
                                    2>
       _table_;
 
@@ -1545,7 +1739,7 @@ extern const ::google::protobuf::internal::ClassDataFull StopEmbeddingReq_class_
 // -------------------------------------------------------------------
 
 class StopAnswerResp final : public ::google::protobuf::Message
-/* @@protoc_insertion_point(class_definition:GrpcLibrary.StopAnswerResp) */ {
+/* @@protoc_insertion_point(class_definition:GrpcLibraryV1.StopAnswerResp) */ {
  public:
   inline StopAnswerResp() : StopAnswerResp(nullptr) {}
   ~StopAnswerResp() PROTOBUF_FINAL;
@@ -1599,7 +1793,7 @@ class StopAnswerResp final : public ::google::protobuf::Message
     return *reinterpret_cast<const StopAnswerResp*>(
         &_StopAnswerResp_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 19;
+  static constexpr int kIndexInFileMessages = 20;
   friend void swap(StopAnswerResp& a, StopAnswerResp& b) { a.Swap(&b); }
   inline void Swap(StopAnswerResp* PROTOBUF_NONNULL other) {
     if (other == this) return;
@@ -1663,7 +1857,7 @@ class StopAnswerResp final : public ::google::protobuf::Message
  private:
   template <typename T>
   friend ::absl::string_view(::google::protobuf::internal::GetAnyMessageName)();
-  static ::absl::string_view FullMessageName() { return "GrpcLibrary.StopAnswerResp"; }
+  static ::absl::string_view FullMessageName() { return "GrpcLibraryV1.StopAnswerResp"; }
 
   explicit StopAnswerResp(::google::protobuf::Arena* PROTOBUF_NULLABLE arena);
   StopAnswerResp(::google::protobuf::Arena* PROTOBUF_NULLABLE arena, const StopAnswerResp& from);
@@ -1709,7 +1903,7 @@ class StopAnswerResp final : public ::google::protobuf::Message
   void _internal_set_error_code(::int32_t value);
 
   public:
-  // @@protoc_insertion_point(class_scope:GrpcLibrary.StopAnswerResp)
+  // @@protoc_insertion_point(class_scope:GrpcLibraryV1.StopAnswerResp)
  private:
   class _Internal;
   friend class ::google::protobuf::internal::TcParser;
@@ -1747,7 +1941,7 @@ extern const ::google::protobuf::internal::ClassDataFull StopAnswerResp_class_da
 // -------------------------------------------------------------------
 
 class StopAnswerReq final : public ::google::protobuf::Message
-/* @@protoc_insertion_point(class_definition:GrpcLibrary.StopAnswerReq) */ {
+/* @@protoc_insertion_point(class_definition:GrpcLibraryV1.StopAnswerReq) */ {
  public:
   inline StopAnswerReq() : StopAnswerReq(nullptr) {}
   ~StopAnswerReq() PROTOBUF_FINAL;
@@ -1801,7 +1995,7 @@ class StopAnswerReq final : public ::google::protobuf::Message
     return *reinterpret_cast<const StopAnswerReq*>(
         &_StopAnswerReq_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 18;
+  static constexpr int kIndexInFileMessages = 19;
   friend void swap(StopAnswerReq& a, StopAnswerReq& b) { a.Swap(&b); }
   inline void Swap(StopAnswerReq* PROTOBUF_NONNULL other) {
     if (other == this) return;
@@ -1865,7 +2059,7 @@ class StopAnswerReq final : public ::google::protobuf::Message
  private:
   template <typename T>
   friend ::absl::string_view(::google::protobuf::internal::GetAnyMessageName)();
-  static ::absl::string_view FullMessageName() { return "GrpcLibrary.StopAnswerReq"; }
+  static ::absl::string_view FullMessageName() { return "GrpcLibraryV1.StopAnswerReq"; }
 
   explicit StopAnswerReq(::google::protobuf::Arena* PROTOBUF_NULLABLE arena);
   StopAnswerReq(::google::protobuf::Arena* PROTOBUF_NULLABLE arena, const StopAnswerReq& from);
@@ -1927,12 +2121,12 @@ class StopAnswerReq final : public ::google::protobuf::Message
   void _internal_set_user_id(::int64_t value);
 
   public:
-  // @@protoc_insertion_point(class_scope:GrpcLibrary.StopAnswerReq)
+  // @@protoc_insertion_point(class_scope:GrpcLibraryV1.StopAnswerReq)
  private:
   class _Internal;
   friend class ::google::protobuf::internal::TcParser;
   static const ::google::protobuf::internal::TcParseTable<2, 3,
-                                   0, 38,
+                                   0, 40,
                                    2>
       _table_;
 
@@ -1966,7 +2160,7 @@ extern const ::google::protobuf::internal::ClassDataFull StopAnswerReq_class_dat
 // -------------------------------------------------------------------
 
 class Session final : public ::google::protobuf::Message
-/* @@protoc_insertion_point(class_definition:GrpcLibrary.Session) */ {
+/* @@protoc_insertion_point(class_definition:GrpcLibraryV1.Session) */ {
  public:
   inline Session() : Session(nullptr) {}
   ~Session() PROTOBUF_FINAL;
@@ -2084,7 +2278,7 @@ class Session final : public ::google::protobuf::Message
  private:
   template <typename T>
   friend ::absl::string_view(::google::protobuf::internal::GetAnyMessageName)();
-  static ::absl::string_view FullMessageName() { return "GrpcLibrary.Session"; }
+  static ::absl::string_view FullMessageName() { return "GrpcLibraryV1.Session"; }
 
   explicit Session(::google::protobuf::Arena* PROTOBUF_NULLABLE arena);
   Session(::google::protobuf::Arena* PROTOBUF_NULLABLE arena, const Session& from);
@@ -2162,12 +2356,12 @@ class Session final : public ::google::protobuf::Message
   void _internal_set_user_id(::int64_t value);
 
   public:
-  // @@protoc_insertion_point(class_scope:GrpcLibrary.Session)
+  // @@protoc_insertion_point(class_scope:GrpcLibraryV1.Session)
  private:
   class _Internal;
   friend class ::google::protobuf::internal::TcParser;
   static const ::google::protobuf::internal::TcParseTable<2, 4,
-                                   0, 42,
+                                   0, 44,
                                    2>
       _table_;
 
@@ -2202,7 +2396,7 @@ extern const ::google::protobuf::internal::ClassDataFull Session_class_data_;
 // -------------------------------------------------------------------
 
 class SamplingParam final : public ::google::protobuf::Message
-/* @@protoc_insertion_point(class_definition:GrpcLibrary.SamplingParam) */ {
+/* @@protoc_insertion_point(class_definition:GrpcLibraryV1.SamplingParam) */ {
  public:
   inline SamplingParam() : SamplingParam(nullptr) {}
   ~SamplingParam() PROTOBUF_FINAL;
@@ -2320,7 +2514,7 @@ class SamplingParam final : public ::google::protobuf::Message
  private:
   template <typename T>
   friend ::absl::string_view(::google::protobuf::internal::GetAnyMessageName)();
-  static ::absl::string_view FullMessageName() { return "GrpcLibrary.SamplingParam"; }
+  static ::absl::string_view FullMessageName() { return "GrpcLibraryV1.SamplingParam"; }
 
   explicit SamplingParam(::google::protobuf::Arena* PROTOBUF_NULLABLE arena);
   SamplingParam(::google::protobuf::Arena* PROTOBUF_NULLABLE arena, const SamplingParam& from);
@@ -2498,7 +2692,7 @@ class SamplingParam final : public ::google::protobuf::Message
   void _internal_set_min_p_min_keep(::int32_t value);
 
   public:
-  // @@protoc_insertion_point(class_scope:GrpcLibrary.SamplingParam)
+  // @@protoc_insertion_point(class_scope:GrpcLibraryV1.SamplingParam)
  private:
   class _Internal;
   friend class ::google::protobuf::internal::TcParser;
@@ -2548,7 +2742,7 @@ extern const ::google::protobuf::internal::ClassDataFull SamplingParam_class_dat
 // -------------------------------------------------------------------
 
 class RegAccountResp final : public ::google::protobuf::Message
-/* @@protoc_insertion_point(class_definition:GrpcLibrary.RegAccountResp) */ {
+/* @@protoc_insertion_point(class_definition:GrpcLibraryV1.RegAccountResp) */ {
  public:
   inline RegAccountResp() : RegAccountResp(nullptr) {}
   ~RegAccountResp() PROTOBUF_FINAL;
@@ -2602,7 +2796,7 @@ class RegAccountResp final : public ::google::protobuf::Message
     return *reinterpret_cast<const RegAccountResp*>(
         &_RegAccountResp_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 15;
+  static constexpr int kIndexInFileMessages = 16;
   friend void swap(RegAccountResp& a, RegAccountResp& b) { a.Swap(&b); }
   inline void Swap(RegAccountResp* PROTOBUF_NONNULL other) {
     if (other == this) return;
@@ -2666,7 +2860,7 @@ class RegAccountResp final : public ::google::protobuf::Message
  private:
   template <typename T>
   friend ::absl::string_view(::google::protobuf::internal::GetAnyMessageName)();
-  static ::absl::string_view FullMessageName() { return "GrpcLibrary.RegAccountResp"; }
+  static ::absl::string_view FullMessageName() { return "GrpcLibraryV1.RegAccountResp"; }
 
   explicit RegAccountResp(::google::protobuf::Arena* PROTOBUF_NULLABLE arena);
   RegAccountResp(::google::protobuf::Arena* PROTOBUF_NULLABLE arena, const RegAccountResp& from);
@@ -2712,7 +2906,7 @@ class RegAccountResp final : public ::google::protobuf::Message
   void _internal_set_error_code(::int32_t value);
 
   public:
-  // @@protoc_insertion_point(class_scope:GrpcLibrary.RegAccountResp)
+  // @@protoc_insertion_point(class_scope:GrpcLibraryV1.RegAccountResp)
  private:
   class _Internal;
   friend class ::google::protobuf::internal::TcParser;
@@ -2750,7 +2944,7 @@ extern const ::google::protobuf::internal::ClassDataFull RegAccountResp_class_da
 // -------------------------------------------------------------------
 
 class RegAccountReq final : public ::google::protobuf::Message
-/* @@protoc_insertion_point(class_definition:GrpcLibrary.RegAccountReq) */ {
+/* @@protoc_insertion_point(class_definition:GrpcLibraryV1.RegAccountReq) */ {
  public:
   inline RegAccountReq() : RegAccountReq(nullptr) {}
   ~RegAccountReq() PROTOBUF_FINAL;
@@ -2804,7 +2998,7 @@ class RegAccountReq final : public ::google::protobuf::Message
     return *reinterpret_cast<const RegAccountReq*>(
         &_RegAccountReq_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 14;
+  static constexpr int kIndexInFileMessages = 15;
   friend void swap(RegAccountReq& a, RegAccountReq& b) { a.Swap(&b); }
   inline void Swap(RegAccountReq* PROTOBUF_NONNULL other) {
     if (other == this) return;
@@ -2868,7 +3062,7 @@ class RegAccountReq final : public ::google::protobuf::Message
  private:
   template <typename T>
   friend ::absl::string_view(::google::protobuf::internal::GetAnyMessageName)();
-  static ::absl::string_view FullMessageName() { return "GrpcLibrary.RegAccountReq"; }
+  static ::absl::string_view FullMessageName() { return "GrpcLibraryV1.RegAccountReq"; }
 
   explicit RegAccountReq(::google::protobuf::Arena* PROTOBUF_NULLABLE arena);
   RegAccountReq(::google::protobuf::Arena* PROTOBUF_NULLABLE arena, const RegAccountReq& from);
@@ -2924,12 +3118,12 @@ class RegAccountReq final : public ::google::protobuf::Message
   ::std::string* PROTOBUF_NONNULL _internal_mutable_passwd();
 
   public:
-  // @@protoc_insertion_point(class_scope:GrpcLibrary.RegAccountReq)
+  // @@protoc_insertion_point(class_scope:GrpcLibraryV1.RegAccountReq)
  private:
   class _Internal;
   friend class ::google::protobuf::internal::TcParser;
   static const ::google::protobuf::internal::TcParseTable<1, 2,
-                                   0, 47,
+                                   0, 49,
                                    2>
       _table_;
 
@@ -2962,7 +3156,7 @@ extern const ::google::protobuf::internal::ClassDataFull RegAccountReq_class_dat
 // -------------------------------------------------------------------
 
 class RecognizeResp final : public ::google::protobuf::Message
-/* @@protoc_insertion_point(class_definition:GrpcLibrary.RecognizeResp) */ {
+/* @@protoc_insertion_point(class_definition:GrpcLibraryV1.RecognizeResp) */ {
  public:
   inline RecognizeResp() : RecognizeResp(nullptr) {}
   ~RecognizeResp() PROTOBUF_FINAL;
@@ -3016,7 +3210,7 @@ class RecognizeResp final : public ::google::protobuf::Message
     return *reinterpret_cast<const RecognizeResp*>(
         &_RecognizeResp_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 21;
+  static constexpr int kIndexInFileMessages = 22;
   friend void swap(RecognizeResp& a, RecognizeResp& b) { a.Swap(&b); }
   inline void Swap(RecognizeResp* PROTOBUF_NONNULL other) {
     if (other == this) return;
@@ -3080,7 +3274,7 @@ class RecognizeResp final : public ::google::protobuf::Message
  private:
   template <typename T>
   friend ::absl::string_view(::google::protobuf::internal::GetAnyMessageName)();
-  static ::absl::string_view FullMessageName() { return "GrpcLibrary.RecognizeResp"; }
+  static ::absl::string_view FullMessageName() { return "GrpcLibraryV1.RecognizeResp"; }
 
   explicit RecognizeResp(::google::protobuf::Arena* PROTOBUF_NULLABLE arena);
   RecognizeResp(::google::protobuf::Arena* PROTOBUF_NULLABLE arena, const RecognizeResp& from);
@@ -3164,12 +3358,12 @@ class RecognizeResp final : public ::google::protobuf::Message
   void _internal_set_confidence(double value);
 
   public:
-  // @@protoc_insertion_point(class_scope:GrpcLibrary.RecognizeResp)
+  // @@protoc_insertion_point(class_scope:GrpcLibraryV1.RecognizeResp)
  private:
   class _Internal;
   friend class ::google::protobuf::internal::TcParser;
   static const ::google::protobuf::internal::TcParseTable<3, 5,
-                                   0, 44,
+                                   0, 46,
                                    2>
       _table_;
 
@@ -3205,7 +3399,7 @@ extern const ::google::protobuf::internal::ClassDataFull RecognizeResp_class_dat
 // -------------------------------------------------------------------
 
 class RecognitionParam final : public ::google::protobuf::Message
-/* @@protoc_insertion_point(class_definition:GrpcLibrary.RecognitionParam) */ {
+/* @@protoc_insertion_point(class_definition:GrpcLibraryV1.RecognitionParam) */ {
  public:
   inline RecognitionParam() : RecognitionParam(nullptr) {}
   ~RecognitionParam() PROTOBUF_FINAL;
@@ -3323,7 +3517,7 @@ class RecognitionParam final : public ::google::protobuf::Message
  private:
   template <typename T>
   friend ::absl::string_view(::google::protobuf::internal::GetAnyMessageName)();
-  static ::absl::string_view FullMessageName() { return "GrpcLibrary.RecognitionParam"; }
+  static ::absl::string_view FullMessageName() { return "GrpcLibraryV1.RecognitionParam"; }
 
   explicit RecognitionParam(::google::protobuf::Arena* PROTOBUF_NULLABLE arena);
   RecognitionParam(::google::protobuf::Arena* PROTOBUF_NULLABLE arena, const RecognitionParam& from);
@@ -3648,12 +3842,12 @@ class RecognitionParam final : public ::google::protobuf::Message
   void _internal_set_no_speech_thold(float value);
 
   public:
-  // @@protoc_insertion_point(class_scope:GrpcLibrary.RecognitionParam)
+  // @@protoc_insertion_point(class_scope:GrpcLibraryV1.RecognitionParam)
  private:
   class _Internal;
   friend class ::google::protobuf::internal::TcParser;
   static const ::google::protobuf::internal::TcParseTable<5, 26,
-                                   0, 97,
+                                   0, 99,
                                    2>
       _table_;
 
@@ -3710,7 +3904,7 @@ extern const ::google::protobuf::internal::ClassDataFull RecognitionParam_class_
 // -------------------------------------------------------------------
 
 class QueryResp final : public ::google::protobuf::Message
-/* @@protoc_insertion_point(class_definition:GrpcLibrary.QueryResp) */ {
+/* @@protoc_insertion_point(class_definition:GrpcLibraryV1.QueryResp) */ {
  public:
   inline QueryResp() : QueryResp(nullptr) {}
   ~QueryResp() PROTOBUF_FINAL;
@@ -3764,7 +3958,7 @@ class QueryResp final : public ::google::protobuf::Message
     return *reinterpret_cast<const QueryResp*>(
         &_QueryResp_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 17;
+  static constexpr int kIndexInFileMessages = 18;
   friend void swap(QueryResp& a, QueryResp& b) { a.Swap(&b); }
   inline void Swap(QueryResp* PROTOBUF_NONNULL other) {
     if (other == this) return;
@@ -3828,7 +4022,7 @@ class QueryResp final : public ::google::protobuf::Message
  private:
   template <typename T>
   friend ::absl::string_view(::google::protobuf::internal::GetAnyMessageName)();
-  static ::absl::string_view FullMessageName() { return "GrpcLibrary.QueryResp"; }
+  static ::absl::string_view FullMessageName() { return "GrpcLibraryV1.QueryResp"; }
 
   explicit QueryResp(::google::protobuf::Arena* PROTOBUF_NULLABLE arena);
   QueryResp(::google::protobuf::Arena* PROTOBUF_NULLABLE arena, const QueryResp& from);
@@ -3901,12 +4095,12 @@ class QueryResp final : public ::google::protobuf::Message
   void _internal_set_is_finished(bool value);
 
   public:
-  // @@protoc_insertion_point(class_scope:GrpcLibrary.QueryResp)
+  // @@protoc_insertion_point(class_scope:GrpcLibraryV1.QueryResp)
  private:
   class _Internal;
   friend class ::google::protobuf::internal::TcParser;
   static const ::google::protobuf::internal::TcParseTable<2, 4,
-                                   0, 37,
+                                   0, 39,
                                    2>
       _table_;
 
@@ -3941,7 +4135,7 @@ extern const ::google::protobuf::internal::ClassDataFull QueryResp_class_data_;
 // -------------------------------------------------------------------
 
 class Pong final : public ::google::protobuf::Message
-/* @@protoc_insertion_point(class_definition:GrpcLibrary.Pong) */ {
+/* @@protoc_insertion_point(class_definition:GrpcLibraryV1.Pong) */ {
  public:
   inline Pong() : Pong(nullptr) {}
   ~Pong() PROTOBUF_FINAL;
@@ -3995,7 +4189,7 @@ class Pong final : public ::google::protobuf::Message
     return *reinterpret_cast<const Pong*>(
         &_Pong_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 9;
+  static constexpr int kIndexInFileMessages = 10;
   friend void swap(Pong& a, Pong& b) { a.Swap(&b); }
   inline void Swap(Pong* PROTOBUF_NONNULL other) {
     if (other == this) return;
@@ -4059,7 +4253,7 @@ class Pong final : public ::google::protobuf::Message
  private:
   template <typename T>
   friend ::absl::string_view(::google::protobuf::internal::GetAnyMessageName)();
-  static ::absl::string_view FullMessageName() { return "GrpcLibrary.Pong"; }
+  static ::absl::string_view FullMessageName() { return "GrpcLibraryV1.Pong"; }
 
   explicit Pong(::google::protobuf::Arena* PROTOBUF_NULLABLE arena);
   Pong(::google::protobuf::Arena* PROTOBUF_NULLABLE arena, const Pong& from);
@@ -4094,7 +4288,7 @@ class Pong final : public ::google::protobuf::Message
   void _internal_set_timestamp(::int64_t value);
 
   public:
-  // @@protoc_insertion_point(class_scope:GrpcLibrary.Pong)
+  // @@protoc_insertion_point(class_scope:GrpcLibraryV1.Pong)
  private:
   class _Internal;
   friend class ::google::protobuf::internal::TcParser;
@@ -4131,7 +4325,7 @@ extern const ::google::protobuf::internal::ClassDataFull Pong_class_data_;
 // -------------------------------------------------------------------
 
 class Plugin final : public ::google::protobuf::Message
-/* @@protoc_insertion_point(class_definition:GrpcLibrary.Plugin) */ {
+/* @@protoc_insertion_point(class_definition:GrpcLibraryV1.Plugin) */ {
  public:
   inline Plugin() : Plugin(nullptr) {}
   ~Plugin() PROTOBUF_FINAL;
@@ -4249,7 +4443,7 @@ class Plugin final : public ::google::protobuf::Message
  private:
   template <typename T>
   friend ::absl::string_view(::google::protobuf::internal::GetAnyMessageName)();
-  static ::absl::string_view FullMessageName() { return "GrpcLibrary.Plugin"; }
+  static ::absl::string_view FullMessageName() { return "GrpcLibraryV1.Plugin"; }
 
   explicit Plugin(::google::protobuf::Arena* PROTOBUF_NULLABLE arena);
   Plugin(::google::protobuf::Arena* PROTOBUF_NULLABLE arena, const Plugin& from);
@@ -4380,12 +4574,12 @@ class Plugin final : public ::google::protobuf::Message
   void _internal_set_platform(::int32_t value);
 
   public:
-  // @@protoc_insertion_point(class_scope:GrpcLibrary.Plugin)
+  // @@protoc_insertion_point(class_scope:GrpcLibraryV1.Plugin)
  private:
   class _Internal;
   friend class ::google::protobuf::internal::TcParser;
   static const ::google::protobuf::internal::TcParseTable<3, 7,
-                                   0, 64,
+                                   0, 66,
                                    2>
       _table_;
 
@@ -4423,7 +4617,7 @@ extern const ::google::protobuf::internal::ClassDataFull Plugin_class_data_;
 // -------------------------------------------------------------------
 
 class Ping final : public ::google::protobuf::Message
-/* @@protoc_insertion_point(class_definition:GrpcLibrary.Ping) */ {
+/* @@protoc_insertion_point(class_definition:GrpcLibraryV1.Ping) */ {
  public:
   inline Ping() : Ping(nullptr) {}
   ~Ping() PROTOBUF_FINAL;
@@ -4477,7 +4671,7 @@ class Ping final : public ::google::protobuf::Message
     return *reinterpret_cast<const Ping*>(
         &_Ping_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 8;
+  static constexpr int kIndexInFileMessages = 9;
   friend void swap(Ping& a, Ping& b) { a.Swap(&b); }
   inline void Swap(Ping* PROTOBUF_NONNULL other) {
     if (other == this) return;
@@ -4541,7 +4735,7 @@ class Ping final : public ::google::protobuf::Message
  private:
   template <typename T>
   friend ::absl::string_view(::google::protobuf::internal::GetAnyMessageName)();
-  static ::absl::string_view FullMessageName() { return "GrpcLibrary.Ping"; }
+  static ::absl::string_view FullMessageName() { return "GrpcLibraryV1.Ping"; }
 
   explicit Ping(::google::protobuf::Arena* PROTOBUF_NULLABLE arena);
   Ping(::google::protobuf::Arena* PROTOBUF_NULLABLE arena, const Ping& from);
@@ -4576,7 +4770,7 @@ class Ping final : public ::google::protobuf::Message
   void _internal_set_timestamp(::int64_t value);
 
   public:
-  // @@protoc_insertion_point(class_scope:GrpcLibrary.Ping)
+  // @@protoc_insertion_point(class_scope:GrpcLibraryV1.Ping)
  private:
   class _Internal;
   friend class ::google::protobuf::internal::TcParser;
@@ -4613,7 +4807,7 @@ extern const ::google::protobuf::internal::ClassDataFull Ping_class_data_;
 // -------------------------------------------------------------------
 
 class NewSessionReq final : public ::google::protobuf::Message
-/* @@protoc_insertion_point(class_definition:GrpcLibrary.NewSessionReq) */ {
+/* @@protoc_insertion_point(class_definition:GrpcLibraryV1.NewSessionReq) */ {
  public:
   inline NewSessionReq() : NewSessionReq(nullptr) {}
   ~NewSessionReq() PROTOBUF_FINAL;
@@ -4667,7 +4861,7 @@ class NewSessionReq final : public ::google::protobuf::Message
     return *reinterpret_cast<const NewSessionReq*>(
         &_NewSessionReq_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 28;
+  static constexpr int kIndexInFileMessages = 29;
   friend void swap(NewSessionReq& a, NewSessionReq& b) { a.Swap(&b); }
   inline void Swap(NewSessionReq* PROTOBUF_NONNULL other) {
     if (other == this) return;
@@ -4731,7 +4925,7 @@ class NewSessionReq final : public ::google::protobuf::Message
  private:
   template <typename T>
   friend ::absl::string_view(::google::protobuf::internal::GetAnyMessageName)();
-  static ::absl::string_view FullMessageName() { return "GrpcLibrary.NewSessionReq"; }
+  static ::absl::string_view FullMessageName() { return "GrpcLibraryV1.NewSessionReq"; }
 
   explicit NewSessionReq(::google::protobuf::Arena* PROTOBUF_NULLABLE arena);
   NewSessionReq(::google::protobuf::Arena* PROTOBUF_NULLABLE arena, const NewSessionReq& from);
@@ -4830,12 +5024,12 @@ class NewSessionReq final : public ::google::protobuf::Message
   void _internal_set_user_id(::int64_t value);
 
   public:
-  // @@protoc_insertion_point(class_scope:GrpcLibrary.NewSessionReq)
+  // @@protoc_insertion_point(class_scope:GrpcLibraryV1.NewSessionReq)
  private:
   class _Internal;
   friend class ::google::protobuf::internal::TcParser;
   static const ::google::protobuf::internal::TcParseTable<3, 5,
-                                   0, 55,
+                                   0, 57,
                                    2>
       _table_;
 
@@ -4871,7 +5065,7 @@ extern const ::google::protobuf::internal::ClassDataFull NewSessionReq_class_dat
 // -------------------------------------------------------------------
 
 class ModifySessionTitleResp final : public ::google::protobuf::Message
-/* @@protoc_insertion_point(class_definition:GrpcLibrary.ModifySessionTitleResp) */ {
+/* @@protoc_insertion_point(class_definition:GrpcLibraryV1.ModifySessionTitleResp) */ {
  public:
   inline ModifySessionTitleResp() : ModifySessionTitleResp(nullptr) {}
   ~ModifySessionTitleResp() PROTOBUF_FINAL;
@@ -4925,7 +5119,7 @@ class ModifySessionTitleResp final : public ::google::protobuf::Message
     return *reinterpret_cast<const ModifySessionTitleResp*>(
         &_ModifySessionTitleResp_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 31;
+  static constexpr int kIndexInFileMessages = 32;
   friend void swap(ModifySessionTitleResp& a, ModifySessionTitleResp& b) { a.Swap(&b); }
   inline void Swap(ModifySessionTitleResp* PROTOBUF_NONNULL other) {
     if (other == this) return;
@@ -4989,7 +5183,7 @@ class ModifySessionTitleResp final : public ::google::protobuf::Message
  private:
   template <typename T>
   friend ::absl::string_view(::google::protobuf::internal::GetAnyMessageName)();
-  static ::absl::string_view FullMessageName() { return "GrpcLibrary.ModifySessionTitleResp"; }
+  static ::absl::string_view FullMessageName() { return "GrpcLibraryV1.ModifySessionTitleResp"; }
 
   explicit ModifySessionTitleResp(::google::protobuf::Arena* PROTOBUF_NULLABLE arena);
   ModifySessionTitleResp(::google::protobuf::Arena* PROTOBUF_NULLABLE arena, const ModifySessionTitleResp& from);
@@ -5051,12 +5245,12 @@ class ModifySessionTitleResp final : public ::google::protobuf::Message
   void _internal_set_error_code(::int32_t value);
 
   public:
-  // @@protoc_insertion_point(class_scope:GrpcLibrary.ModifySessionTitleResp)
+  // @@protoc_insertion_point(class_scope:GrpcLibraryV1.ModifySessionTitleResp)
  private:
   class _Internal;
   friend class ::google::protobuf::internal::TcParser;
   static const ::google::protobuf::internal::TcParseTable<2, 3,
-                                   0, 48,
+                                   0, 50,
                                    2>
       _table_;
 
@@ -5090,7 +5284,7 @@ extern const ::google::protobuf::internal::ClassDataFull ModifySessionTitleResp_
 // -------------------------------------------------------------------
 
 class ModifySessionTitleReq final : public ::google::protobuf::Message
-/* @@protoc_insertion_point(class_definition:GrpcLibrary.ModifySessionTitleReq) */ {
+/* @@protoc_insertion_point(class_definition:GrpcLibraryV1.ModifySessionTitleReq) */ {
  public:
   inline ModifySessionTitleReq() : ModifySessionTitleReq(nullptr) {}
   ~ModifySessionTitleReq() PROTOBUF_FINAL;
@@ -5144,7 +5338,7 @@ class ModifySessionTitleReq final : public ::google::protobuf::Message
     return *reinterpret_cast<const ModifySessionTitleReq*>(
         &_ModifySessionTitleReq_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 30;
+  static constexpr int kIndexInFileMessages = 31;
   friend void swap(ModifySessionTitleReq& a, ModifySessionTitleReq& b) { a.Swap(&b); }
   inline void Swap(ModifySessionTitleReq* PROTOBUF_NONNULL other) {
     if (other == this) return;
@@ -5208,7 +5402,7 @@ class ModifySessionTitleReq final : public ::google::protobuf::Message
  private:
   template <typename T>
   friend ::absl::string_view(::google::protobuf::internal::GetAnyMessageName)();
-  static ::absl::string_view FullMessageName() { return "GrpcLibrary.ModifySessionTitleReq"; }
+  static ::absl::string_view FullMessageName() { return "GrpcLibraryV1.ModifySessionTitleReq"; }
 
   explicit ModifySessionTitleReq(::google::protobuf::Arena* PROTOBUF_NULLABLE arena);
   ModifySessionTitleReq(::google::protobuf::Arena* PROTOBUF_NULLABLE arena, const ModifySessionTitleReq& from);
@@ -5286,12 +5480,12 @@ class ModifySessionTitleReq final : public ::google::protobuf::Message
   void _internal_set_user_id(::int64_t value);
 
   public:
-  // @@protoc_insertion_point(class_scope:GrpcLibrary.ModifySessionTitleReq)
+  // @@protoc_insertion_point(class_scope:GrpcLibraryV1.ModifySessionTitleReq)
  private:
   class _Internal;
   friend class ::google::protobuf::internal::TcParser;
   static const ::google::protobuf::internal::TcParseTable<2, 4,
-                                   0, 51,
+                                   0, 53,
                                    2>
       _table_;
 
@@ -5326,7 +5520,7 @@ extern const ::google::protobuf::internal::ClassDataFull ModifySessionTitleReq_c
 // -------------------------------------------------------------------
 
 class MessageInfo final : public ::google::protobuf::Message
-/* @@protoc_insertion_point(class_definition:GrpcLibrary.MessageInfo) */ {
+/* @@protoc_insertion_point(class_definition:GrpcLibraryV1.MessageInfo) */ {
  public:
   inline MessageInfo() : MessageInfo(nullptr) {}
   ~MessageInfo() PROTOBUF_FINAL;
@@ -5444,7 +5638,7 @@ class MessageInfo final : public ::google::protobuf::Message
  private:
   template <typename T>
   friend ::absl::string_view(::google::protobuf::internal::GetAnyMessageName)();
-  static ::absl::string_view FullMessageName() { return "GrpcLibrary.MessageInfo"; }
+  static ::absl::string_view FullMessageName() { return "GrpcLibraryV1.MessageInfo"; }
 
   explicit MessageInfo(::google::protobuf::Arena* PROTOBUF_NULLABLE arena);
   MessageInfo(::google::protobuf::Arena* PROTOBUF_NULLABLE arena, const MessageInfo& from);
@@ -5549,12 +5743,12 @@ class MessageInfo final : public ::google::protobuf::Message
   void _internal_set_prev_message_id(::int64_t value);
 
   public:
-  // @@protoc_insertion_point(class_scope:GrpcLibrary.MessageInfo)
+  // @@protoc_insertion_point(class_scope:GrpcLibraryV1.MessageInfo)
  private:
   class _Internal;
   friend class ::google::protobuf::internal::TcParser;
   static const ::google::protobuf::internal::TcParseTable<3, 6,
-                                   0, 52,
+                                   0, 54,
                                    2>
       _table_;
 
@@ -5591,7 +5785,7 @@ extern const ::google::protobuf::internal::ClassDataFull MessageInfo_class_data_
 // -------------------------------------------------------------------
 
 class LogoutResp final : public ::google::protobuf::Message
-/* @@protoc_insertion_point(class_definition:GrpcLibrary.LogoutResp) */ {
+/* @@protoc_insertion_point(class_definition:GrpcLibraryV1.LogoutResp) */ {
  public:
   inline LogoutResp() : LogoutResp(nullptr) {}
   ~LogoutResp() PROTOBUF_FINAL;
@@ -5645,7 +5839,7 @@ class LogoutResp final : public ::google::protobuf::Message
     return *reinterpret_cast<const LogoutResp*>(
         &_LogoutResp_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 13;
+  static constexpr int kIndexInFileMessages = 14;
   friend void swap(LogoutResp& a, LogoutResp& b) { a.Swap(&b); }
   inline void Swap(LogoutResp* PROTOBUF_NONNULL other) {
     if (other == this) return;
@@ -5709,7 +5903,7 @@ class LogoutResp final : public ::google::protobuf::Message
  private:
   template <typename T>
   friend ::absl::string_view(::google::protobuf::internal::GetAnyMessageName)();
-  static ::absl::string_view FullMessageName() { return "GrpcLibrary.LogoutResp"; }
+  static ::absl::string_view FullMessageName() { return "GrpcLibraryV1.LogoutResp"; }
 
   explicit LogoutResp(::google::protobuf::Arena* PROTOBUF_NULLABLE arena);
   LogoutResp(::google::protobuf::Arena* PROTOBUF_NULLABLE arena, const LogoutResp& from);
@@ -5755,7 +5949,7 @@ class LogoutResp final : public ::google::protobuf::Message
   void _internal_set_error_code(::int32_t value);
 
   public:
-  // @@protoc_insertion_point(class_scope:GrpcLibrary.LogoutResp)
+  // @@protoc_insertion_point(class_scope:GrpcLibraryV1.LogoutResp)
  private:
   class _Internal;
   friend class ::google::protobuf::internal::TcParser;
@@ -5793,7 +5987,7 @@ extern const ::google::protobuf::internal::ClassDataFull LogoutResp_class_data_;
 // -------------------------------------------------------------------
 
 class LogoutReq final : public ::google::protobuf::Message
-/* @@protoc_insertion_point(class_definition:GrpcLibrary.LogoutReq) */ {
+/* @@protoc_insertion_point(class_definition:GrpcLibraryV1.LogoutReq) */ {
  public:
   inline LogoutReq() : LogoutReq(nullptr) {}
   ~LogoutReq() PROTOBUF_FINAL;
@@ -5847,7 +6041,7 @@ class LogoutReq final : public ::google::protobuf::Message
     return *reinterpret_cast<const LogoutReq*>(
         &_LogoutReq_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 12;
+  static constexpr int kIndexInFileMessages = 13;
   friend void swap(LogoutReq& a, LogoutReq& b) { a.Swap(&b); }
   inline void Swap(LogoutReq* PROTOBUF_NONNULL other) {
     if (other == this) return;
@@ -5911,7 +6105,7 @@ class LogoutReq final : public ::google::protobuf::Message
  private:
   template <typename T>
   friend ::absl::string_view(::google::protobuf::internal::GetAnyMessageName)();
-  static ::absl::string_view FullMessageName() { return "GrpcLibrary.LogoutReq"; }
+  static ::absl::string_view FullMessageName() { return "GrpcLibraryV1.LogoutReq"; }
 
   explicit LogoutReq(::google::protobuf::Arena* PROTOBUF_NULLABLE arena);
   LogoutReq(::google::protobuf::Arena* PROTOBUF_NULLABLE arena, const LogoutReq& from);
@@ -5962,12 +6156,12 @@ class LogoutReq final : public ::google::protobuf::Message
   void _internal_set_user_id(::int64_t value);
 
   public:
-  // @@protoc_insertion_point(class_scope:GrpcLibrary.LogoutReq)
+  // @@protoc_insertion_point(class_scope:GrpcLibraryV1.LogoutReq)
  private:
   class _Internal;
   friend class ::google::protobuf::internal::TcParser;
   static const ::google::protobuf::internal::TcParseTable<1, 2,
-                                   0, 34,
+                                   0, 36,
                                    2>
       _table_;
 
@@ -5999,273 +6193,8 @@ class LogoutReq final : public ::google::protobuf::Message
 extern const ::google::protobuf::internal::ClassDataFull LogoutReq_class_data_;
 // -------------------------------------------------------------------
 
-class LoginResp final : public ::google::protobuf::Message
-/* @@protoc_insertion_point(class_definition:GrpcLibrary.LoginResp) */ {
- public:
-  inline LoginResp() : LoginResp(nullptr) {}
-  ~LoginResp() PROTOBUF_FINAL;
-
-#if defined(PROTOBUF_CUSTOM_VTABLE)
-  void operator delete(LoginResp* PROTOBUF_NONNULL msg, ::std::destroying_delete_t) {
-    SharedDtor(*msg);
-    ::google::protobuf::internal::SizedDelete(msg, sizeof(LoginResp));
-  }
-#endif
-
-  template <typename = void>
-  explicit PROTOBUF_CONSTEXPR LoginResp(::google::protobuf::internal::ConstantInitialized);
-
-  inline LoginResp(const LoginResp& from) : LoginResp(nullptr, from) {}
-  inline LoginResp(LoginResp&& from) noexcept
-      : LoginResp(nullptr, ::std::move(from)) {}
-  inline LoginResp& operator=(const LoginResp& from) {
-    CopyFrom(from);
-    return *this;
-  }
-  inline LoginResp& operator=(LoginResp&& from) noexcept {
-    if (this == &from) return *this;
-    if (::google::protobuf::internal::CanMoveWithInternalSwap(GetArena(), from.GetArena())) {
-      InternalSwap(&from);
-    } else {
-      CopyFrom(from);
-    }
-    return *this;
-  }
-
-  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const
-      ABSL_ATTRIBUTE_LIFETIME_BOUND {
-    return _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance);
-  }
-  inline ::google::protobuf::UnknownFieldSet* PROTOBUF_NONNULL mutable_unknown_fields()
-      ABSL_ATTRIBUTE_LIFETIME_BOUND {
-    return _internal_metadata_.mutable_unknown_fields<::google::protobuf::UnknownFieldSet>();
-  }
-
-  static const ::google::protobuf::Descriptor* PROTOBUF_NONNULL descriptor() {
-    return GetDescriptor();
-  }
-  static const ::google::protobuf::Descriptor* PROTOBUF_NONNULL GetDescriptor() {
-    return default_instance().GetMetadata().descriptor;
-  }
-  static const ::google::protobuf::Reflection* PROTOBUF_NONNULL GetReflection() {
-    return default_instance().GetMetadata().reflection;
-  }
-  static const LoginResp& default_instance() {
-    return *reinterpret_cast<const LoginResp*>(
-        &_LoginResp_default_instance_);
-  }
-  static constexpr int kIndexInFileMessages = 11;
-  friend void swap(LoginResp& a, LoginResp& b) { a.Swap(&b); }
-  inline void Swap(LoginResp* PROTOBUF_NONNULL other) {
-    if (other == this) return;
-    if (::google::protobuf::internal::CanUseInternalSwap(GetArena(), other->GetArena())) {
-      InternalSwap(other);
-    } else {
-      ::google::protobuf::internal::GenericSwap(this, other);
-    }
-  }
-  void UnsafeArenaSwap(LoginResp* PROTOBUF_NONNULL other) {
-    if (other == this) return;
-    ABSL_DCHECK(GetArena() == other->GetArena());
-    InternalSwap(other);
-  }
-
-  // implements Message ----------------------------------------------
-
-  LoginResp* PROTOBUF_NONNULL New(::google::protobuf::Arena* PROTOBUF_NULLABLE arena = nullptr) const {
-    return ::google::protobuf::Message::DefaultConstruct<LoginResp>(arena);
-  }
-  using ::google::protobuf::Message::CopyFrom;
-  void CopyFrom(const LoginResp& from);
-  using ::google::protobuf::Message::MergeFrom;
-  void MergeFrom(const LoginResp& from) { LoginResp::MergeImpl(*this, from); }
-
-  private:
-  static void MergeImpl(::google::protobuf::MessageLite& to_msg,
-                        const ::google::protobuf::MessageLite& from_msg);
-
-  public:
-  bool IsInitialized() const {
-    return true;
-  }
-  ABSL_ATTRIBUTE_REINITIALIZES void Clear() PROTOBUF_FINAL;
-  #if defined(PROTOBUF_CUSTOM_VTABLE)
-  private:
-  static ::size_t ByteSizeLong(const ::google::protobuf::MessageLite& msg);
-  static ::uint8_t* PROTOBUF_NONNULL _InternalSerialize(
-      const ::google::protobuf::MessageLite& msg, ::uint8_t* PROTOBUF_NONNULL target,
-      ::google::protobuf::io::EpsCopyOutputStream* PROTOBUF_NONNULL stream);
-
-  public:
-  ::size_t ByteSizeLong() const { return ByteSizeLong(*this); }
-  ::uint8_t* PROTOBUF_NONNULL _InternalSerialize(
-      ::uint8_t* PROTOBUF_NONNULL target,
-      ::google::protobuf::io::EpsCopyOutputStream* PROTOBUF_NONNULL stream) const {
-    return _InternalSerialize(*this, target, stream);
-  }
-  #else   // PROTOBUF_CUSTOM_VTABLE
-  ::size_t ByteSizeLong() const final;
-  ::uint8_t* PROTOBUF_NONNULL _InternalSerialize(
-      ::uint8_t* PROTOBUF_NONNULL target,
-      ::google::protobuf::io::EpsCopyOutputStream* PROTOBUF_NONNULL stream) const final;
-  #endif  // PROTOBUF_CUSTOM_VTABLE
-  int GetCachedSize() const { return _impl_._cached_size_.Get(); }
-
-  private:
-  void SharedCtor(::google::protobuf::Arena* PROTOBUF_NULLABLE arena);
-  static void SharedDtor(MessageLite& self);
-  void InternalSwap(LoginResp* PROTOBUF_NONNULL other);
- private:
-  template <typename T>
-  friend ::absl::string_view(::google::protobuf::internal::GetAnyMessageName)();
-  static ::absl::string_view FullMessageName() { return "GrpcLibrary.LoginResp"; }
-
-  explicit LoginResp(::google::protobuf::Arena* PROTOBUF_NULLABLE arena);
-  LoginResp(::google::protobuf::Arena* PROTOBUF_NULLABLE arena, const LoginResp& from);
-  LoginResp(
-      ::google::protobuf::Arena* PROTOBUF_NULLABLE arena, LoginResp&& from) noexcept
-      : LoginResp(arena) {
-    *this = ::std::move(from);
-  }
-  const ::google::protobuf::internal::ClassData* PROTOBUF_NONNULL GetClassData() const PROTOBUF_FINAL;
-  static void* PROTOBUF_NONNULL PlacementNew_(
-      const void* PROTOBUF_NONNULL, void* PROTOBUF_NONNULL mem,
-      ::google::protobuf::Arena* PROTOBUF_NULLABLE arena);
-  static constexpr auto InternalNewImpl_();
-
- public:
-  static constexpr auto InternalGenerateClassData_();
-
-  ::google::protobuf::Metadata GetMetadata() const;
-  // nested types ----------------------------------------------------
-
-  // accessors -------------------------------------------------------
-  enum : int {
-    kAuthFieldNumber = 4,
-    kAccountFieldNumber = 5,
-    kLastLoginTimeFieldNumber = 6,
-    kUserIdFieldNumber = 2,
-    kErrorCodeFieldNumber = 1,
-    kPrivilegeFieldNumber = 3,
-  };
-  // string auth = 4;
-  void clear_auth() ;
-  const ::std::string& auth() const;
-  template <typename Arg_ = const ::std::string&, typename... Args_>
-  void set_auth(Arg_&& arg, Args_... args);
-  ::std::string* PROTOBUF_NONNULL mutable_auth();
-  [[nodiscard]] ::std::string* PROTOBUF_NULLABLE release_auth();
-  void set_allocated_auth(::std::string* PROTOBUF_NULLABLE value);
-
-  private:
-  const ::std::string& _internal_auth() const;
-  PROTOBUF_ALWAYS_INLINE void _internal_set_auth(const ::std::string& value);
-  ::std::string* PROTOBUF_NONNULL _internal_mutable_auth();
-
-  public:
-  // string account = 5;
-  void clear_account() ;
-  const ::std::string& account() const;
-  template <typename Arg_ = const ::std::string&, typename... Args_>
-  void set_account(Arg_&& arg, Args_... args);
-  ::std::string* PROTOBUF_NONNULL mutable_account();
-  [[nodiscard]] ::std::string* PROTOBUF_NULLABLE release_account();
-  void set_allocated_account(::std::string* PROTOBUF_NULLABLE value);
-
-  private:
-  const ::std::string& _internal_account() const;
-  PROTOBUF_ALWAYS_INLINE void _internal_set_account(const ::std::string& value);
-  ::std::string* PROTOBUF_NONNULL _internal_mutable_account();
-
-  public:
-  // string last_login_time = 6;
-  void clear_last_login_time() ;
-  const ::std::string& last_login_time() const;
-  template <typename Arg_ = const ::std::string&, typename... Args_>
-  void set_last_login_time(Arg_&& arg, Args_... args);
-  ::std::string* PROTOBUF_NONNULL mutable_last_login_time();
-  [[nodiscard]] ::std::string* PROTOBUF_NULLABLE release_last_login_time();
-  void set_allocated_last_login_time(::std::string* PROTOBUF_NULLABLE value);
-
-  private:
-  const ::std::string& _internal_last_login_time() const;
-  PROTOBUF_ALWAYS_INLINE void _internal_set_last_login_time(const ::std::string& value);
-  ::std::string* PROTOBUF_NONNULL _internal_mutable_last_login_time();
-
-  public:
-  // int64 user_id = 2;
-  void clear_user_id() ;
-  ::int64_t user_id() const;
-  void set_user_id(::int64_t value);
-
-  private:
-  ::int64_t _internal_user_id() const;
-  void _internal_set_user_id(::int64_t value);
-
-  public:
-  // int32 error_code = 1;
-  void clear_error_code() ;
-  ::int32_t error_code() const;
-  void set_error_code(::int32_t value);
-
-  private:
-  ::int32_t _internal_error_code() const;
-  void _internal_set_error_code(::int32_t value);
-
-  public:
-  // int32 privilege = 3;
-  void clear_privilege() ;
-  ::int32_t privilege() const;
-  void set_privilege(::int32_t value);
-
-  private:
-  ::int32_t _internal_privilege() const;
-  void _internal_set_privilege(::int32_t value);
-
-  public:
-  // @@protoc_insertion_point(class_scope:GrpcLibrary.LoginResp)
- private:
-  class _Internal;
-  friend class ::google::protobuf::internal::TcParser;
-  static const ::google::protobuf::internal::TcParseTable<3, 6,
-                                   0, 56,
-                                   2>
-      _table_;
-
-  friend class ::google::protobuf::MessageLite;
-  friend class ::google::protobuf::Arena;
-  template <typename T>
-  friend class ::google::protobuf::Arena::InternalHelper;
-  using InternalArenaConstructable_ = void;
-  using DestructorSkippable_ = void;
-  struct Impl_ {
-    inline explicit constexpr Impl_(::google::protobuf::internal::ConstantInitialized) noexcept;
-    inline explicit Impl_(
-        ::google::protobuf::internal::InternalVisibility visibility,
-        ::google::protobuf::Arena* PROTOBUF_NULLABLE arena);
-    inline explicit Impl_(
-        ::google::protobuf::internal::InternalVisibility visibility,
-        ::google::protobuf::Arena* PROTOBUF_NULLABLE arena, const Impl_& from,
-        const LoginResp& from_msg);
-    ::google::protobuf::internal::HasBits<1> _has_bits_;
-    ::google::protobuf::internal::CachedSize _cached_size_;
-    ::google::protobuf::internal::ArenaStringPtr auth_;
-    ::google::protobuf::internal::ArenaStringPtr account_;
-    ::google::protobuf::internal::ArenaStringPtr last_login_time_;
-    ::int64_t user_id_;
-    ::int32_t error_code_;
-    ::int32_t privilege_;
-    PROTOBUF_TSAN_DECLARE_MEMBER
-  };
-  union { Impl_ _impl_; };
-  friend struct ::TableStruct_src_2fapi_2eproto;
-};
-
-extern const ::google::protobuf::internal::ClassDataFull LoginResp_class_data_;
-// -------------------------------------------------------------------
-
 class LoginReq final : public ::google::protobuf::Message
-/* @@protoc_insertion_point(class_definition:GrpcLibrary.LoginReq) */ {
+/* @@protoc_insertion_point(class_definition:GrpcLibraryV1.LoginReq) */ {
  public:
   inline LoginReq() : LoginReq(nullptr) {}
   ~LoginReq() PROTOBUF_FINAL;
@@ -6319,7 +6248,7 @@ class LoginReq final : public ::google::protobuf::Message
     return *reinterpret_cast<const LoginReq*>(
         &_LoginReq_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 10;
+  static constexpr int kIndexInFileMessages = 11;
   friend void swap(LoginReq& a, LoginReq& b) { a.Swap(&b); }
   inline void Swap(LoginReq* PROTOBUF_NONNULL other) {
     if (other == this) return;
@@ -6383,7 +6312,7 @@ class LoginReq final : public ::google::protobuf::Message
  private:
   template <typename T>
   friend ::absl::string_view(::google::protobuf::internal::GetAnyMessageName)();
-  static ::absl::string_view FullMessageName() { return "GrpcLibrary.LoginReq"; }
+  static ::absl::string_view FullMessageName() { return "GrpcLibraryV1.LoginReq"; }
 
   explicit LoginReq(::google::protobuf::Arena* PROTOBUF_NULLABLE arena);
   LoginReq(::google::protobuf::Arena* PROTOBUF_NULLABLE arena, const LoginReq& from);
@@ -6408,6 +6337,9 @@ class LoginReq final : public ::google::protobuf::Message
   enum : int {
     kAccountFieldNumber = 1,
     kPasswdFieldNumber = 2,
+    kPlatformFieldNumber = 3,
+    kArchFieldNumber = 4,
+    kClientVersionFieldNumber = 5,
   };
   // string account = 1;
   void clear_account() ;
@@ -6439,12 +6371,57 @@ class LoginReq final : public ::google::protobuf::Message
   ::std::string* PROTOBUF_NONNULL _internal_mutable_passwd();
 
   public:
-  // @@protoc_insertion_point(class_scope:GrpcLibrary.LoginReq)
+  // string platform = 3;
+  void clear_platform() ;
+  const ::std::string& platform() const;
+  template <typename Arg_ = const ::std::string&, typename... Args_>
+  void set_platform(Arg_&& arg, Args_... args);
+  ::std::string* PROTOBUF_NONNULL mutable_platform();
+  [[nodiscard]] ::std::string* PROTOBUF_NULLABLE release_platform();
+  void set_allocated_platform(::std::string* PROTOBUF_NULLABLE value);
+
+  private:
+  const ::std::string& _internal_platform() const;
+  PROTOBUF_ALWAYS_INLINE void _internal_set_platform(const ::std::string& value);
+  ::std::string* PROTOBUF_NONNULL _internal_mutable_platform();
+
+  public:
+  // string arch = 4;
+  void clear_arch() ;
+  const ::std::string& arch() const;
+  template <typename Arg_ = const ::std::string&, typename... Args_>
+  void set_arch(Arg_&& arg, Args_... args);
+  ::std::string* PROTOBUF_NONNULL mutable_arch();
+  [[nodiscard]] ::std::string* PROTOBUF_NULLABLE release_arch();
+  void set_allocated_arch(::std::string* PROTOBUF_NULLABLE value);
+
+  private:
+  const ::std::string& _internal_arch() const;
+  PROTOBUF_ALWAYS_INLINE void _internal_set_arch(const ::std::string& value);
+  ::std::string* PROTOBUF_NONNULL _internal_mutable_arch();
+
+  public:
+  // string client_version = 5;
+  void clear_client_version() ;
+  const ::std::string& client_version() const;
+  template <typename Arg_ = const ::std::string&, typename... Args_>
+  void set_client_version(Arg_&& arg, Args_... args);
+  ::std::string* PROTOBUF_NONNULL mutable_client_version();
+  [[nodiscard]] ::std::string* PROTOBUF_NULLABLE release_client_version();
+  void set_allocated_client_version(::std::string* PROTOBUF_NULLABLE value);
+
+  private:
+  const ::std::string& _internal_client_version() const;
+  PROTOBUF_ALWAYS_INLINE void _internal_set_client_version(const ::std::string& value);
+  ::std::string* PROTOBUF_NONNULL _internal_mutable_client_version();
+
+  public:
+  // @@protoc_insertion_point(class_scope:GrpcLibraryV1.LoginReq)
  private:
   class _Internal;
   friend class ::google::protobuf::internal::TcParser;
-  static const ::google::protobuf::internal::TcParseTable<1, 2,
-                                   0, 42,
+  static const ::google::protobuf::internal::TcParseTable<3, 5,
+                                   0, 70,
                                    2>
       _table_;
 
@@ -6467,6 +6444,9 @@ class LoginReq final : public ::google::protobuf::Message
     ::google::protobuf::internal::CachedSize _cached_size_;
     ::google::protobuf::internal::ArenaStringPtr account_;
     ::google::protobuf::internal::ArenaStringPtr passwd_;
+    ::google::protobuf::internal::ArenaStringPtr platform_;
+    ::google::protobuf::internal::ArenaStringPtr arch_;
+    ::google::protobuf::internal::ArenaStringPtr client_version_;
     PROTOBUF_TSAN_DECLARE_MEMBER
   };
   union { Impl_ _impl_; };
@@ -6477,7 +6457,7 @@ extern const ::google::protobuf::internal::ClassDataFull LoginReq_class_data_;
 // -------------------------------------------------------------------
 
 class GetSessionReq final : public ::google::protobuf::Message
-/* @@protoc_insertion_point(class_definition:GrpcLibrary.GetSessionReq) */ {
+/* @@protoc_insertion_point(class_definition:GrpcLibraryV1.GetSessionReq) */ {
  public:
   inline GetSessionReq() : GetSessionReq(nullptr) {}
   ~GetSessionReq() PROTOBUF_FINAL;
@@ -6531,7 +6511,7 @@ class GetSessionReq final : public ::google::protobuf::Message
     return *reinterpret_cast<const GetSessionReq*>(
         &_GetSessionReq_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 26;
+  static constexpr int kIndexInFileMessages = 27;
   friend void swap(GetSessionReq& a, GetSessionReq& b) { a.Swap(&b); }
   inline void Swap(GetSessionReq* PROTOBUF_NONNULL other) {
     if (other == this) return;
@@ -6595,7 +6575,7 @@ class GetSessionReq final : public ::google::protobuf::Message
  private:
   template <typename T>
   friend ::absl::string_view(::google::protobuf::internal::GetAnyMessageName)();
-  static ::absl::string_view FullMessageName() { return "GrpcLibrary.GetSessionReq"; }
+  static ::absl::string_view FullMessageName() { return "GrpcLibraryV1.GetSessionReq"; }
 
   explicit GetSessionReq(::google::protobuf::Arena* PROTOBUF_NULLABLE arena);
   GetSessionReq(::google::protobuf::Arena* PROTOBUF_NULLABLE arena, const GetSessionReq& from);
@@ -6668,12 +6648,12 @@ class GetSessionReq final : public ::google::protobuf::Message
   void _internal_set_limit(::int32_t value);
 
   public:
-  // @@protoc_insertion_point(class_scope:GrpcLibrary.GetSessionReq)
+  // @@protoc_insertion_point(class_scope:GrpcLibraryV1.GetSessionReq)
  private:
   class _Internal;
   friend class ::google::protobuf::internal::TcParser;
   static const ::google::protobuf::internal::TcParseTable<2, 4,
-                                   0, 38,
+                                   0, 40,
                                    2>
       _table_;
 
@@ -6708,7 +6688,7 @@ extern const ::google::protobuf::internal::ClassDataFull GetSessionReq_class_dat
 // -------------------------------------------------------------------
 
 class GetPluginInfoReq final : public ::google::protobuf::Message
-/* @@protoc_insertion_point(class_definition:GrpcLibrary.GetPluginInfoReq) */ {
+/* @@protoc_insertion_point(class_definition:GrpcLibraryV1.GetPluginInfoReq) */ {
  public:
   inline GetPluginInfoReq() : GetPluginInfoReq(nullptr) {}
   ~GetPluginInfoReq() PROTOBUF_FINAL;
@@ -6762,7 +6742,7 @@ class GetPluginInfoReq final : public ::google::protobuf::Message
     return *reinterpret_cast<const GetPluginInfoReq*>(
         &_GetPluginInfoReq_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 34;
+  static constexpr int kIndexInFileMessages = 35;
   friend void swap(GetPluginInfoReq& a, GetPluginInfoReq& b) { a.Swap(&b); }
   inline void Swap(GetPluginInfoReq* PROTOBUF_NONNULL other) {
     if (other == this) return;
@@ -6826,7 +6806,7 @@ class GetPluginInfoReq final : public ::google::protobuf::Message
  private:
   template <typename T>
   friend ::absl::string_view(::google::protobuf::internal::GetAnyMessageName)();
-  static ::absl::string_view FullMessageName() { return "GrpcLibrary.GetPluginInfoReq"; }
+  static ::absl::string_view FullMessageName() { return "GrpcLibraryV1.GetPluginInfoReq"; }
 
   explicit GetPluginInfoReq(::google::protobuf::Arena* PROTOBUF_NULLABLE arena);
   GetPluginInfoReq(::google::protobuf::Arena* PROTOBUF_NULLABLE arena, const GetPluginInfoReq& from);
@@ -6893,12 +6873,12 @@ class GetPluginInfoReq final : public ::google::protobuf::Message
   void _internal_set_limit(::int32_t value);
 
   public:
-  // @@protoc_insertion_point(class_scope:GrpcLibrary.GetPluginInfoReq)
+  // @@protoc_insertion_point(class_scope:GrpcLibraryV1.GetPluginInfoReq)
  private:
   class _Internal;
   friend class ::google::protobuf::internal::TcParser;
   static const ::google::protobuf::internal::TcParseTable<2, 3,
-                                   0, 50,
+                                   0, 52,
                                    2>
       _table_;
 
@@ -6932,7 +6912,7 @@ extern const ::google::protobuf::internal::ClassDataFull GetPluginInfoReq_class_
 // -------------------------------------------------------------------
 
 class GetMessageInfoReq final : public ::google::protobuf::Message
-/* @@protoc_insertion_point(class_definition:GrpcLibrary.GetMessageInfoReq) */ {
+/* @@protoc_insertion_point(class_definition:GrpcLibraryV1.GetMessageInfoReq) */ {
  public:
   inline GetMessageInfoReq() : GetMessageInfoReq(nullptr) {}
   ~GetMessageInfoReq() PROTOBUF_FINAL;
@@ -6986,7 +6966,7 @@ class GetMessageInfoReq final : public ::google::protobuf::Message
     return *reinterpret_cast<const GetMessageInfoReq*>(
         &_GetMessageInfoReq_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 24;
+  static constexpr int kIndexInFileMessages = 25;
   friend void swap(GetMessageInfoReq& a, GetMessageInfoReq& b) { a.Swap(&b); }
   inline void Swap(GetMessageInfoReq* PROTOBUF_NONNULL other) {
     if (other == this) return;
@@ -7050,7 +7030,7 @@ class GetMessageInfoReq final : public ::google::protobuf::Message
  private:
   template <typename T>
   friend ::absl::string_view(::google::protobuf::internal::GetAnyMessageName)();
-  static ::absl::string_view FullMessageName() { return "GrpcLibrary.GetMessageInfoReq"; }
+  static ::absl::string_view FullMessageName() { return "GrpcLibraryV1.GetMessageInfoReq"; }
 
   explicit GetMessageInfoReq(::google::protobuf::Arena* PROTOBUF_NULLABLE arena);
   GetMessageInfoReq(::google::protobuf::Arena* PROTOBUF_NULLABLE arena, const GetMessageInfoReq& from);
@@ -7134,12 +7114,12 @@ class GetMessageInfoReq final : public ::google::protobuf::Message
   void _internal_set_limit(::int32_t value);
 
   public:
-  // @@protoc_insertion_point(class_scope:GrpcLibrary.GetMessageInfoReq)
+  // @@protoc_insertion_point(class_scope:GrpcLibraryV1.GetMessageInfoReq)
  private:
   class _Internal;
   friend class ::google::protobuf::internal::TcParser;
   static const ::google::protobuf::internal::TcParseTable<3, 5,
-                                   0, 42,
+                                   0, 44,
                                    2>
       _table_;
 
@@ -7175,7 +7155,7 @@ extern const ::google::protobuf::internal::ClassDataFull GetMessageInfoReq_class
 // -------------------------------------------------------------------
 
 class FileChunk final : public ::google::protobuf::Message
-/* @@protoc_insertion_point(class_definition:GrpcLibrary.FileChunk) */ {
+/* @@protoc_insertion_point(class_definition:GrpcLibraryV1.FileChunk) */ {
  public:
   inline FileChunk() : FileChunk(nullptr) {}
   ~FileChunk() PROTOBUF_FINAL;
@@ -7293,7 +7273,7 @@ class FileChunk final : public ::google::protobuf::Message
  private:
   template <typename T>
   friend ::absl::string_view(::google::protobuf::internal::GetAnyMessageName)();
-  static ::absl::string_view FullMessageName() { return "GrpcLibrary.FileChunk"; }
+  static ::absl::string_view FullMessageName() { return "GrpcLibraryV1.FileChunk"; }
 
   explicit FileChunk(::google::protobuf::Arena* PROTOBUF_NULLABLE arena);
   FileChunk(::google::protobuf::Arena* PROTOBUF_NULLABLE arena, const FileChunk& from);
@@ -7382,12 +7362,12 @@ class FileChunk final : public ::google::protobuf::Message
   void _internal_set_end_pos(::int64_t value);
 
   public:
-  // @@protoc_insertion_point(class_scope:GrpcLibrary.FileChunk)
+  // @@protoc_insertion_point(class_scope:GrpcLibraryV1.FileChunk)
  private:
   class _Internal;
   friend class ::google::protobuf::internal::TcParser;
   static const ::google::protobuf::internal::TcParseTable<3, 5,
-                                   0, 38,
+                                   0, 40,
                                    2>
       _table_;
 
@@ -7423,7 +7403,7 @@ extern const ::google::protobuf::internal::ClassDataFull FileChunk_class_data_;
 // -------------------------------------------------------------------
 
 class EmbeddingResp final : public ::google::protobuf::Message
-/* @@protoc_insertion_point(class_definition:GrpcLibrary.EmbeddingResp) */ {
+/* @@protoc_insertion_point(class_definition:GrpcLibraryV1.EmbeddingResp) */ {
  public:
   inline EmbeddingResp() : EmbeddingResp(nullptr) {}
   ~EmbeddingResp() PROTOBUF_FINAL;
@@ -7477,7 +7457,7 @@ class EmbeddingResp final : public ::google::protobuf::Message
     return *reinterpret_cast<const EmbeddingResp*>(
         &_EmbeddingResp_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 41;
+  static constexpr int kIndexInFileMessages = 42;
   friend void swap(EmbeddingResp& a, EmbeddingResp& b) { a.Swap(&b); }
   inline void Swap(EmbeddingResp* PROTOBUF_NONNULL other) {
     if (other == this) return;
@@ -7541,7 +7521,7 @@ class EmbeddingResp final : public ::google::protobuf::Message
  private:
   template <typename T>
   friend ::absl::string_view(::google::protobuf::internal::GetAnyMessageName)();
-  static ::absl::string_view FullMessageName() { return "GrpcLibrary.EmbeddingResp"; }
+  static ::absl::string_view FullMessageName() { return "GrpcLibraryV1.EmbeddingResp"; }
 
   explicit EmbeddingResp(::google::protobuf::Arena* PROTOBUF_NULLABLE arena);
   EmbeddingResp(::google::protobuf::Arena* PROTOBUF_NULLABLE arena, const EmbeddingResp& from);
@@ -7614,7 +7594,7 @@ class EmbeddingResp final : public ::google::protobuf::Message
   void _internal_set_error_code(::int32_t value);
 
   public:
-  // @@protoc_insertion_point(class_scope:GrpcLibrary.EmbeddingResp)
+  // @@protoc_insertion_point(class_scope:GrpcLibraryV1.EmbeddingResp)
  private:
   class _Internal;
   friend class ::google::protobuf::internal::TcParser;
@@ -7654,7 +7634,7 @@ extern const ::google::protobuf::internal::ClassDataFull EmbeddingResp_class_dat
 // -------------------------------------------------------------------
 
 class EmbeddingParam final : public ::google::protobuf::Message
-/* @@protoc_insertion_point(class_definition:GrpcLibrary.EmbeddingParam) */ {
+/* @@protoc_insertion_point(class_definition:GrpcLibraryV1.EmbeddingParam) */ {
  public:
   inline EmbeddingParam() : EmbeddingParam(nullptr) {}
   ~EmbeddingParam() PROTOBUF_FINAL;
@@ -7772,7 +7752,7 @@ class EmbeddingParam final : public ::google::protobuf::Message
  private:
   template <typename T>
   friend ::absl::string_view(::google::protobuf::internal::GetAnyMessageName)();
-  static ::absl::string_view FullMessageName() { return "GrpcLibrary.EmbeddingParam"; }
+  static ::absl::string_view FullMessageName() { return "GrpcLibraryV1.EmbeddingParam"; }
 
   explicit EmbeddingParam(::google::protobuf::Arena* PROTOBUF_NULLABLE arena);
   EmbeddingParam(::google::protobuf::Arena* PROTOBUF_NULLABLE arena, const EmbeddingParam& from);
@@ -7807,7 +7787,7 @@ class EmbeddingParam final : public ::google::protobuf::Message
   void _internal_set_dimension(::int32_t value);
 
   public:
-  // @@protoc_insertion_point(class_scope:GrpcLibrary.EmbeddingParam)
+  // @@protoc_insertion_point(class_scope:GrpcLibraryV1.EmbeddingParam)
  private:
   class _Internal;
   friend class ::google::protobuf::internal::TcParser;
@@ -7844,7 +7824,7 @@ extern const ::google::protobuf::internal::ClassDataFull EmbeddingParam_class_da
 // -------------------------------------------------------------------
 
 class DownloadResp final : public ::google::protobuf::Message
-/* @@protoc_insertion_point(class_definition:GrpcLibrary.DownloadResp) */ {
+/* @@protoc_insertion_point(class_definition:GrpcLibraryV1.DownloadResp) */ {
  public:
   inline DownloadResp() : DownloadResp(nullptr) {}
   ~DownloadResp() PROTOBUF_FINAL;
@@ -7898,7 +7878,7 @@ class DownloadResp final : public ::google::protobuf::Message
     return *reinterpret_cast<const DownloadResp*>(
         &_DownloadResp_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 37;
+  static constexpr int kIndexInFileMessages = 38;
   friend void swap(DownloadResp& a, DownloadResp& b) { a.Swap(&b); }
   inline void Swap(DownloadResp* PROTOBUF_NONNULL other) {
     if (other == this) return;
@@ -7962,7 +7942,7 @@ class DownloadResp final : public ::google::protobuf::Message
  private:
   template <typename T>
   friend ::absl::string_view(::google::protobuf::internal::GetAnyMessageName)();
-  static ::absl::string_view FullMessageName() { return "GrpcLibrary.DownloadResp"; }
+  static ::absl::string_view FullMessageName() { return "GrpcLibraryV1.DownloadResp"; }
 
   explicit DownloadResp(::google::protobuf::Arena* PROTOBUF_NULLABLE arena);
   DownloadResp(::google::protobuf::Arena* PROTOBUF_NULLABLE arena, const DownloadResp& from);
@@ -8040,12 +8020,12 @@ class DownloadResp final : public ::google::protobuf::Message
   void _internal_set_error_code(::int32_t value);
 
   public:
-  // @@protoc_insertion_point(class_scope:GrpcLibrary.DownloadResp)
+  // @@protoc_insertion_point(class_scope:GrpcLibraryV1.DownloadResp)
  private:
   class _Internal;
   friend class ::google::protobuf::internal::TcParser;
   static const ::google::protobuf::internal::TcParseTable<2, 4,
-                                   0, 41,
+                                   0, 43,
                                    2>
       _table_;
 
@@ -8080,7 +8060,7 @@ extern const ::google::protobuf::internal::ClassDataFull DownloadResp_class_data
 // -------------------------------------------------------------------
 
 class DownloadReq final : public ::google::protobuf::Message
-/* @@protoc_insertion_point(class_definition:GrpcLibrary.DownloadReq) */ {
+/* @@protoc_insertion_point(class_definition:GrpcLibraryV1.DownloadReq) */ {
  public:
   inline DownloadReq() : DownloadReq(nullptr) {}
   ~DownloadReq() PROTOBUF_FINAL;
@@ -8134,7 +8114,7 @@ class DownloadReq final : public ::google::protobuf::Message
     return *reinterpret_cast<const DownloadReq*>(
         &_DownloadReq_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 36;
+  static constexpr int kIndexInFileMessages = 37;
   friend void swap(DownloadReq& a, DownloadReq& b) { a.Swap(&b); }
   inline void Swap(DownloadReq* PROTOBUF_NONNULL other) {
     if (other == this) return;
@@ -8198,7 +8178,7 @@ class DownloadReq final : public ::google::protobuf::Message
  private:
   template <typename T>
   friend ::absl::string_view(::google::protobuf::internal::GetAnyMessageName)();
-  static ::absl::string_view FullMessageName() { return "GrpcLibrary.DownloadReq"; }
+  static ::absl::string_view FullMessageName() { return "GrpcLibraryV1.DownloadReq"; }
 
   explicit DownloadReq(::google::protobuf::Arena* PROTOBUF_NULLABLE arena);
   DownloadReq(::google::protobuf::Arena* PROTOBUF_NULLABLE arena, const DownloadReq& from);
@@ -8265,12 +8245,12 @@ class DownloadReq final : public ::google::protobuf::Message
   void _internal_set_user_id(::int64_t value);
 
   public:
-  // @@protoc_insertion_point(class_scope:GrpcLibrary.DownloadReq)
+  // @@protoc_insertion_point(class_scope:GrpcLibraryV1.DownloadReq)
  private:
   class _Internal;
   friend class ::google::protobuf::internal::TcParser;
   static const ::google::protobuf::internal::TcParseTable<2, 3,
-                                   0, 40,
+                                   0, 42,
                                    2>
       _table_;
 
@@ -8304,7 +8284,7 @@ extern const ::google::protobuf::internal::ClassDataFull DownloadReq_class_data_
 // -------------------------------------------------------------------
 
 class DelSessionResp final : public ::google::protobuf::Message
-/* @@protoc_insertion_point(class_definition:GrpcLibrary.DelSessionResp) */ {
+/* @@protoc_insertion_point(class_definition:GrpcLibraryV1.DelSessionResp) */ {
  public:
   inline DelSessionResp() : DelSessionResp(nullptr) {}
   ~DelSessionResp() PROTOBUF_FINAL;
@@ -8358,7 +8338,7 @@ class DelSessionResp final : public ::google::protobuf::Message
     return *reinterpret_cast<const DelSessionResp*>(
         &_DelSessionResp_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 33;
+  static constexpr int kIndexInFileMessages = 34;
   friend void swap(DelSessionResp& a, DelSessionResp& b) { a.Swap(&b); }
   inline void Swap(DelSessionResp* PROTOBUF_NONNULL other) {
     if (other == this) return;
@@ -8422,7 +8402,7 @@ class DelSessionResp final : public ::google::protobuf::Message
  private:
   template <typename T>
   friend ::absl::string_view(::google::protobuf::internal::GetAnyMessageName)();
-  static ::absl::string_view FullMessageName() { return "GrpcLibrary.DelSessionResp"; }
+  static ::absl::string_view FullMessageName() { return "GrpcLibraryV1.DelSessionResp"; }
 
   explicit DelSessionResp(::google::protobuf::Arena* PROTOBUF_NULLABLE arena);
   DelSessionResp(::google::protobuf::Arena* PROTOBUF_NULLABLE arena, const DelSessionResp& from);
@@ -8476,7 +8456,7 @@ class DelSessionResp final : public ::google::protobuf::Message
   void _internal_set_error_code(::int32_t value);
 
   public:
-  // @@protoc_insertion_point(class_scope:GrpcLibrary.DelSessionResp)
+  // @@protoc_insertion_point(class_scope:GrpcLibraryV1.DelSessionResp)
  private:
   class _Internal;
   friend class ::google::protobuf::internal::TcParser;
@@ -8515,7 +8495,7 @@ extern const ::google::protobuf::internal::ClassDataFull DelSessionResp_class_da
 // -------------------------------------------------------------------
 
 class DelSessionReq final : public ::google::protobuf::Message
-/* @@protoc_insertion_point(class_definition:GrpcLibrary.DelSessionReq) */ {
+/* @@protoc_insertion_point(class_definition:GrpcLibraryV1.DelSessionReq) */ {
  public:
   inline DelSessionReq() : DelSessionReq(nullptr) {}
   ~DelSessionReq() PROTOBUF_FINAL;
@@ -8569,7 +8549,7 @@ class DelSessionReq final : public ::google::protobuf::Message
     return *reinterpret_cast<const DelSessionReq*>(
         &_DelSessionReq_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 32;
+  static constexpr int kIndexInFileMessages = 33;
   friend void swap(DelSessionReq& a, DelSessionReq& b) { a.Swap(&b); }
   inline void Swap(DelSessionReq* PROTOBUF_NONNULL other) {
     if (other == this) return;
@@ -8633,7 +8613,7 @@ class DelSessionReq final : public ::google::protobuf::Message
  private:
   template <typename T>
   friend ::absl::string_view(::google::protobuf::internal::GetAnyMessageName)();
-  static ::absl::string_view FullMessageName() { return "GrpcLibrary.DelSessionReq"; }
+  static ::absl::string_view FullMessageName() { return "GrpcLibraryV1.DelSessionReq"; }
 
   explicit DelSessionReq(::google::protobuf::Arena* PROTOBUF_NULLABLE arena);
   DelSessionReq(::google::protobuf::Arena* PROTOBUF_NULLABLE arena, const DelSessionReq& from);
@@ -8703,12 +8683,12 @@ class DelSessionReq final : public ::google::protobuf::Message
   void _internal_set_user_id(::int64_t value);
 
   public:
-  // @@protoc_insertion_point(class_scope:GrpcLibrary.DelSessionReq)
+  // @@protoc_insertion_point(class_scope:GrpcLibraryV1.DelSessionReq)
  private:
   class _Internal;
   friend class ::google::protobuf::internal::TcParser;
   static const ::google::protobuf::internal::TcParseTable<2, 3,
-                                   0, 38,
+                                   0, 40,
                                    2>
       _table_;
 
@@ -8743,7 +8723,7 @@ extern const ::google::protobuf::internal::ClassDataFull DelSessionReq_class_dat
 // -------------------------------------------------------------------
 
 class ContextParam final : public ::google::protobuf::Message
-/* @@protoc_insertion_point(class_definition:GrpcLibrary.ContextParam) */ {
+/* @@protoc_insertion_point(class_definition:GrpcLibraryV1.ContextParam) */ {
  public:
   inline ContextParam() : ContextParam(nullptr) {}
   ~ContextParam() PROTOBUF_FINAL;
@@ -8861,7 +8841,7 @@ class ContextParam final : public ::google::protobuf::Message
  private:
   template <typename T>
   friend ::absl::string_view(::google::protobuf::internal::GetAnyMessageName)();
-  static ::absl::string_view FullMessageName() { return "GrpcLibrary.ContextParam"; }
+  static ::absl::string_view FullMessageName() { return "GrpcLibraryV1.ContextParam"; }
 
   explicit ContextParam(::google::protobuf::Arena* PROTOBUF_NULLABLE arena);
   ContextParam(::google::protobuf::Arena* PROTOBUF_NULLABLE arena, const ContextParam& from);
@@ -9148,12 +9128,12 @@ class ContextParam final : public ::google::protobuf::Message
   void _internal_set_kv_unified(bool value);
 
   public:
-  // @@protoc_insertion_point(class_scope:GrpcLibrary.ContextParam)
+  // @@protoc_insertion_point(class_scope:GrpcLibraryV1.ContextParam)
  private:
   class _Internal;
   friend class ::google::protobuf::internal::TcParser;
   static const ::google::protobuf::internal::TcParseTable<5, 23,
-                                   0, 65,
+                                   0, 67,
                                    2>
       _table_;
 
@@ -9207,7 +9187,7 @@ extern const ::google::protobuf::internal::ClassDataFull ContextParam_class_data
 // -------------------------------------------------------------------
 
 class RecognizeReq final : public ::google::protobuf::Message
-/* @@protoc_insertion_point(class_definition:GrpcLibrary.RecognizeReq) */ {
+/* @@protoc_insertion_point(class_definition:GrpcLibraryV1.RecognizeReq) */ {
  public:
   inline RecognizeReq() : RecognizeReq(nullptr) {}
   ~RecognizeReq() PROTOBUF_FINAL;
@@ -9266,7 +9246,7 @@ class RecognizeReq final : public ::google::protobuf::Message
     kAudioChunk = 4,
     REQUEST_TYPE_NOT_SET = 0,
   };
-  static constexpr int kIndexInFileMessages = 20;
+  static constexpr int kIndexInFileMessages = 21;
   friend void swap(RecognizeReq& a, RecognizeReq& b) { a.Swap(&b); }
   inline void Swap(RecognizeReq* PROTOBUF_NONNULL other) {
     if (other == this) return;
@@ -9330,7 +9310,7 @@ class RecognizeReq final : public ::google::protobuf::Message
  private:
   template <typename T>
   friend ::absl::string_view(::google::protobuf::internal::GetAnyMessageName)();
-  static ::absl::string_view FullMessageName() { return "GrpcLibrary.RecognizeReq"; }
+  static ::absl::string_view FullMessageName() { return "GrpcLibraryV1.RecognizeReq"; }
 
   explicit RecognizeReq(::google::protobuf::Arena* PROTOBUF_NULLABLE arena);
   RecognizeReq(::google::protobuf::Arena* PROTOBUF_NULLABLE arena, const RecognizeReq& from);
@@ -9383,23 +9363,23 @@ class RecognizeReq final : public ::google::protobuf::Message
   void _internal_set_session_id(::int64_t value);
 
   public:
-  // .GrpcLibrary.RecognitionParam param = 3;
+  // .GrpcLibraryV1.RecognitionParam param = 3;
   bool has_param() const;
   private:
   bool _internal_has_param() const;
 
   public:
   void clear_param() ;
-  const ::GrpcLibrary::RecognitionParam& param() const;
-  [[nodiscard]] ::GrpcLibrary::RecognitionParam* PROTOBUF_NULLABLE release_param();
-  ::GrpcLibrary::RecognitionParam* PROTOBUF_NONNULL mutable_param();
-  void set_allocated_param(::GrpcLibrary::RecognitionParam* PROTOBUF_NULLABLE value);
-  void unsafe_arena_set_allocated_param(::GrpcLibrary::RecognitionParam* PROTOBUF_NULLABLE value);
-  ::GrpcLibrary::RecognitionParam* PROTOBUF_NULLABLE unsafe_arena_release_param();
+  const ::GrpcLibraryV1::RecognitionParam& param() const;
+  [[nodiscard]] ::GrpcLibraryV1::RecognitionParam* PROTOBUF_NULLABLE release_param();
+  ::GrpcLibraryV1::RecognitionParam* PROTOBUF_NONNULL mutable_param();
+  void set_allocated_param(::GrpcLibraryV1::RecognitionParam* PROTOBUF_NULLABLE value);
+  void unsafe_arena_set_allocated_param(::GrpcLibraryV1::RecognitionParam* PROTOBUF_NULLABLE value);
+  ::GrpcLibraryV1::RecognitionParam* PROTOBUF_NULLABLE unsafe_arena_release_param();
 
   private:
-  const ::GrpcLibrary::RecognitionParam& _internal_param() const;
-  ::GrpcLibrary::RecognitionParam* PROTOBUF_NONNULL _internal_mutable_param();
+  const ::GrpcLibraryV1::RecognitionParam& _internal_param() const;
+  ::GrpcLibraryV1::RecognitionParam* PROTOBUF_NONNULL _internal_mutable_param();
 
   public:
   // bytes audio_chunk = 4;
@@ -9420,7 +9400,7 @@ class RecognizeReq final : public ::google::protobuf::Message
   public:
   void clear_request_type();
   RequestTypeCase request_type_case() const;
-  // @@protoc_insertion_point(class_scope:GrpcLibrary.RecognizeReq)
+  // @@protoc_insertion_point(class_scope:GrpcLibraryV1.RecognizeReq)
  private:
   class _Internal;
   void set_has_param();
@@ -9429,7 +9409,7 @@ class RecognizeReq final : public ::google::protobuf::Message
   inline void clear_has_request_type();
   friend class ::google::protobuf::internal::TcParser;
   static const ::google::protobuf::internal::TcParseTable<1, 4,
-                                   1, 39,
+                                   1, 41,
                                    2>
       _table_;
 
@@ -9455,7 +9435,7 @@ class RecognizeReq final : public ::google::protobuf::Message
     union RequestTypeUnion {
       constexpr RequestTypeUnion() : _constinit_{} {}
       ::google::protobuf::internal::ConstantInitialized _constinit_;
-      ::GrpcLibrary::RecognitionParam* PROTOBUF_NULLABLE param_;
+      ::GrpcLibraryV1::RecognitionParam* PROTOBUF_NULLABLE param_;
       ::google::protobuf::internal::ArenaStringPtr audio_chunk_;
     } request_type_;
     ::uint32_t _oneof_case_[1];
@@ -9469,7 +9449,7 @@ extern const ::google::protobuf::internal::ClassDataFull RecognizeReq_class_data
 // -------------------------------------------------------------------
 
 class QueryReq final : public ::google::protobuf::Message
-/* @@protoc_insertion_point(class_definition:GrpcLibrary.QueryReq) */ {
+/* @@protoc_insertion_point(class_definition:GrpcLibraryV1.QueryReq) */ {
  public:
   inline QueryReq() : QueryReq(nullptr) {}
   ~QueryReq() PROTOBUF_FINAL;
@@ -9523,7 +9503,7 @@ class QueryReq final : public ::google::protobuf::Message
     return *reinterpret_cast<const QueryReq*>(
         &_QueryReq_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 16;
+  static constexpr int kIndexInFileMessages = 17;
   friend void swap(QueryReq& a, QueryReq& b) { a.Swap(&b); }
   inline void Swap(QueryReq* PROTOBUF_NONNULL other) {
     if (other == this) return;
@@ -9587,7 +9567,7 @@ class QueryReq final : public ::google::protobuf::Message
  private:
   template <typename T>
   friend ::absl::string_view(::google::protobuf::internal::GetAnyMessageName)();
-  static ::absl::string_view FullMessageName() { return "GrpcLibrary.QueryReq"; }
+  static ::absl::string_view FullMessageName() { return "GrpcLibraryV1.QueryReq"; }
 
   explicit QueryReq(::google::protobuf::Arena* PROTOBUF_NULLABLE arena);
   QueryReq(::google::protobuf::Arena* PROTOBUF_NULLABLE arena, const QueryReq& from);
@@ -9695,34 +9675,34 @@ class QueryReq final : public ::google::protobuf::Message
   ::std::string* PROTOBUF_NONNULL _internal_mutable_api_key();
 
   public:
-  // .GrpcLibrary.SamplingParam sampling = 8;
+  // .GrpcLibraryV1.SamplingParam sampling = 8;
   bool has_sampling() const;
   void clear_sampling() ;
-  const ::GrpcLibrary::SamplingParam& sampling() const;
-  [[nodiscard]] ::GrpcLibrary::SamplingParam* PROTOBUF_NULLABLE release_sampling();
-  ::GrpcLibrary::SamplingParam* PROTOBUF_NONNULL mutable_sampling();
-  void set_allocated_sampling(::GrpcLibrary::SamplingParam* PROTOBUF_NULLABLE value);
-  void unsafe_arena_set_allocated_sampling(::GrpcLibrary::SamplingParam* PROTOBUF_NULLABLE value);
-  ::GrpcLibrary::SamplingParam* PROTOBUF_NULLABLE unsafe_arena_release_sampling();
+  const ::GrpcLibraryV1::SamplingParam& sampling() const;
+  [[nodiscard]] ::GrpcLibraryV1::SamplingParam* PROTOBUF_NULLABLE release_sampling();
+  ::GrpcLibraryV1::SamplingParam* PROTOBUF_NONNULL mutable_sampling();
+  void set_allocated_sampling(::GrpcLibraryV1::SamplingParam* PROTOBUF_NULLABLE value);
+  void unsafe_arena_set_allocated_sampling(::GrpcLibraryV1::SamplingParam* PROTOBUF_NULLABLE value);
+  ::GrpcLibraryV1::SamplingParam* PROTOBUF_NULLABLE unsafe_arena_release_sampling();
 
   private:
-  const ::GrpcLibrary::SamplingParam& _internal_sampling() const;
-  ::GrpcLibrary::SamplingParam* PROTOBUF_NONNULL _internal_mutable_sampling();
+  const ::GrpcLibraryV1::SamplingParam& _internal_sampling() const;
+  ::GrpcLibraryV1::SamplingParam* PROTOBUF_NONNULL _internal_mutable_sampling();
 
   public:
-  // .GrpcLibrary.ContextParam ctx = 9;
+  // .GrpcLibraryV1.ContextParam ctx = 9;
   bool has_ctx() const;
   void clear_ctx() ;
-  const ::GrpcLibrary::ContextParam& ctx() const;
-  [[nodiscard]] ::GrpcLibrary::ContextParam* PROTOBUF_NULLABLE release_ctx();
-  ::GrpcLibrary::ContextParam* PROTOBUF_NONNULL mutable_ctx();
-  void set_allocated_ctx(::GrpcLibrary::ContextParam* PROTOBUF_NULLABLE value);
-  void unsafe_arena_set_allocated_ctx(::GrpcLibrary::ContextParam* PROTOBUF_NULLABLE value);
-  ::GrpcLibrary::ContextParam* PROTOBUF_NULLABLE unsafe_arena_release_ctx();
+  const ::GrpcLibraryV1::ContextParam& ctx() const;
+  [[nodiscard]] ::GrpcLibraryV1::ContextParam* PROTOBUF_NULLABLE release_ctx();
+  ::GrpcLibraryV1::ContextParam* PROTOBUF_NONNULL mutable_ctx();
+  void set_allocated_ctx(::GrpcLibraryV1::ContextParam* PROTOBUF_NULLABLE value);
+  void unsafe_arena_set_allocated_ctx(::GrpcLibraryV1::ContextParam* PROTOBUF_NULLABLE value);
+  ::GrpcLibraryV1::ContextParam* PROTOBUF_NULLABLE unsafe_arena_release_ctx();
 
   private:
-  const ::GrpcLibrary::ContextParam& _internal_ctx() const;
-  ::GrpcLibrary::ContextParam* PROTOBUF_NONNULL _internal_mutable_ctx();
+  const ::GrpcLibraryV1::ContextParam& _internal_ctx() const;
+  ::GrpcLibraryV1::ContextParam* PROTOBUF_NONNULL _internal_mutable_ctx();
 
   public:
   // int64 id = 1;
@@ -9745,12 +9725,12 @@ class QueryReq final : public ::google::protobuf::Message
   void _internal_set_user_id(::int64_t value);
 
   public:
-  // @@protoc_insertion_point(class_scope:GrpcLibrary.QueryReq)
+  // @@protoc_insertion_point(class_scope:GrpcLibraryV1.QueryReq)
  private:
   class _Internal;
   friend class ::google::protobuf::internal::TcParser;
   static const ::google::protobuf::internal::TcParseTable<4, 9,
-                                   2, 68,
+                                   2, 70,
                                    2>
       _table_;
 
@@ -9776,8 +9756,8 @@ class QueryReq final : public ::google::protobuf::Message
     ::google::protobuf::internal::ArenaStringPtr model_;
     ::google::protobuf::internal::ArenaStringPtr pipeline_;
     ::google::protobuf::internal::ArenaStringPtr api_key_;
-    ::GrpcLibrary::SamplingParam* PROTOBUF_NULLABLE sampling_;
-    ::GrpcLibrary::ContextParam* PROTOBUF_NULLABLE ctx_;
+    ::GrpcLibraryV1::SamplingParam* PROTOBUF_NULLABLE sampling_;
+    ::GrpcLibraryV1::ContextParam* PROTOBUF_NULLABLE ctx_;
     ::int64_t id_;
     ::int64_t user_id_;
     PROTOBUF_TSAN_DECLARE_MEMBER
@@ -9790,7 +9770,7 @@ extern const ::google::protobuf::internal::ClassDataFull QueryReq_class_data_;
 // -------------------------------------------------------------------
 
 class NewSessionResp final : public ::google::protobuf::Message
-/* @@protoc_insertion_point(class_definition:GrpcLibrary.NewSessionResp) */ {
+/* @@protoc_insertion_point(class_definition:GrpcLibraryV1.NewSessionResp) */ {
  public:
   inline NewSessionResp() : NewSessionResp(nullptr) {}
   ~NewSessionResp() PROTOBUF_FINAL;
@@ -9844,7 +9824,7 @@ class NewSessionResp final : public ::google::protobuf::Message
     return *reinterpret_cast<const NewSessionResp*>(
         &_NewSessionResp_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 29;
+  static constexpr int kIndexInFileMessages = 30;
   friend void swap(NewSessionResp& a, NewSessionResp& b) { a.Swap(&b); }
   inline void Swap(NewSessionResp* PROTOBUF_NONNULL other) {
     if (other == this) return;
@@ -9908,7 +9888,7 @@ class NewSessionResp final : public ::google::protobuf::Message
  private:
   template <typename T>
   friend ::absl::string_view(::google::protobuf::internal::GetAnyMessageName)();
-  static ::absl::string_view FullMessageName() { return "GrpcLibrary.NewSessionResp"; }
+  static ::absl::string_view FullMessageName() { return "GrpcLibraryV1.NewSessionResp"; }
 
   explicit NewSessionResp(::google::protobuf::Arena* PROTOBUF_NULLABLE arena);
   NewSessionResp(::google::protobuf::Arena* PROTOBUF_NULLABLE arena, const NewSessionResp& from);
@@ -9934,19 +9914,19 @@ class NewSessionResp final : public ::google::protobuf::Message
     kSessionFieldNumber = 2,
     kErrorCodeFieldNumber = 1,
   };
-  // .GrpcLibrary.Session session = 2;
+  // .GrpcLibraryV1.Session session = 2;
   bool has_session() const;
   void clear_session() ;
-  const ::GrpcLibrary::Session& session() const;
-  [[nodiscard]] ::GrpcLibrary::Session* PROTOBUF_NULLABLE release_session();
-  ::GrpcLibrary::Session* PROTOBUF_NONNULL mutable_session();
-  void set_allocated_session(::GrpcLibrary::Session* PROTOBUF_NULLABLE value);
-  void unsafe_arena_set_allocated_session(::GrpcLibrary::Session* PROTOBUF_NULLABLE value);
-  ::GrpcLibrary::Session* PROTOBUF_NULLABLE unsafe_arena_release_session();
+  const ::GrpcLibraryV1::Session& session() const;
+  [[nodiscard]] ::GrpcLibraryV1::Session* PROTOBUF_NULLABLE release_session();
+  ::GrpcLibraryV1::Session* PROTOBUF_NONNULL mutable_session();
+  void set_allocated_session(::GrpcLibraryV1::Session* PROTOBUF_NULLABLE value);
+  void unsafe_arena_set_allocated_session(::GrpcLibraryV1::Session* PROTOBUF_NULLABLE value);
+  ::GrpcLibraryV1::Session* PROTOBUF_NULLABLE unsafe_arena_release_session();
 
   private:
-  const ::GrpcLibrary::Session& _internal_session() const;
-  ::GrpcLibrary::Session* PROTOBUF_NONNULL _internal_mutable_session();
+  const ::GrpcLibraryV1::Session& _internal_session() const;
+  ::GrpcLibraryV1::Session* PROTOBUF_NONNULL _internal_mutable_session();
 
   public:
   // int32 error_code = 1;
@@ -9959,7 +9939,7 @@ class NewSessionResp final : public ::google::protobuf::Message
   void _internal_set_error_code(::int32_t value);
 
   public:
-  // @@protoc_insertion_point(class_scope:GrpcLibrary.NewSessionResp)
+  // @@protoc_insertion_point(class_scope:GrpcLibraryV1.NewSessionResp)
  private:
   class _Internal;
   friend class ::google::protobuf::internal::TcParser;
@@ -9985,7 +9965,7 @@ class NewSessionResp final : public ::google::protobuf::Message
         const NewSessionResp& from_msg);
     ::google::protobuf::internal::HasBits<1> _has_bits_;
     ::google::protobuf::internal::CachedSize _cached_size_;
-    ::GrpcLibrary::Session* PROTOBUF_NULLABLE session_;
+    ::GrpcLibraryV1::Session* PROTOBUF_NULLABLE session_;
     ::int32_t error_code_;
     PROTOBUF_TSAN_DECLARE_MEMBER
   };
@@ -9996,8 +9976,290 @@ class NewSessionResp final : public ::google::protobuf::Message
 extern const ::google::protobuf::internal::ClassDataFull NewSessionResp_class_data_;
 // -------------------------------------------------------------------
 
+class LoginResp final : public ::google::protobuf::Message
+/* @@protoc_insertion_point(class_definition:GrpcLibraryV1.LoginResp) */ {
+ public:
+  inline LoginResp() : LoginResp(nullptr) {}
+  ~LoginResp() PROTOBUF_FINAL;
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+  void operator delete(LoginResp* PROTOBUF_NONNULL msg, ::std::destroying_delete_t) {
+    SharedDtor(*msg);
+    ::google::protobuf::internal::SizedDelete(msg, sizeof(LoginResp));
+  }
+#endif
+
+  template <typename = void>
+  explicit PROTOBUF_CONSTEXPR LoginResp(::google::protobuf::internal::ConstantInitialized);
+
+  inline LoginResp(const LoginResp& from) : LoginResp(nullptr, from) {}
+  inline LoginResp(LoginResp&& from) noexcept
+      : LoginResp(nullptr, ::std::move(from)) {}
+  inline LoginResp& operator=(const LoginResp& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline LoginResp& operator=(LoginResp&& from) noexcept {
+    if (this == &from) return *this;
+    if (::google::protobuf::internal::CanMoveWithInternalSwap(GetArena(), from.GetArena())) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance);
+  }
+  inline ::google::protobuf::UnknownFieldSet* PROTOBUF_NONNULL mutable_unknown_fields()
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.mutable_unknown_fields<::google::protobuf::UnknownFieldSet>();
+  }
+
+  static const ::google::protobuf::Descriptor* PROTOBUF_NONNULL descriptor() {
+    return GetDescriptor();
+  }
+  static const ::google::protobuf::Descriptor* PROTOBUF_NONNULL GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::google::protobuf::Reflection* PROTOBUF_NONNULL GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const LoginResp& default_instance() {
+    return *reinterpret_cast<const LoginResp*>(
+        &_LoginResp_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages = 12;
+  friend void swap(LoginResp& a, LoginResp& b) { a.Swap(&b); }
+  inline void Swap(LoginResp* PROTOBUF_NONNULL other) {
+    if (other == this) return;
+    if (::google::protobuf::internal::CanUseInternalSwap(GetArena(), other->GetArena())) {
+      InternalSwap(other);
+    } else {
+      ::google::protobuf::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(LoginResp* PROTOBUF_NONNULL other) {
+    if (other == this) return;
+    ABSL_DCHECK(GetArena() == other->GetArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  LoginResp* PROTOBUF_NONNULL New(::google::protobuf::Arena* PROTOBUF_NULLABLE arena = nullptr) const {
+    return ::google::protobuf::Message::DefaultConstruct<LoginResp>(arena);
+  }
+  using ::google::protobuf::Message::CopyFrom;
+  void CopyFrom(const LoginResp& from);
+  using ::google::protobuf::Message::MergeFrom;
+  void MergeFrom(const LoginResp& from) { LoginResp::MergeImpl(*this, from); }
+
+  private:
+  static void MergeImpl(::google::protobuf::MessageLite& to_msg,
+                        const ::google::protobuf::MessageLite& from_msg);
+
+  public:
+  bool IsInitialized() const {
+    return true;
+  }
+  ABSL_ATTRIBUTE_REINITIALIZES void Clear() PROTOBUF_FINAL;
+  #if defined(PROTOBUF_CUSTOM_VTABLE)
+  private:
+  static ::size_t ByteSizeLong(const ::google::protobuf::MessageLite& msg);
+  static ::uint8_t* PROTOBUF_NONNULL _InternalSerialize(
+      const ::google::protobuf::MessageLite& msg, ::uint8_t* PROTOBUF_NONNULL target,
+      ::google::protobuf::io::EpsCopyOutputStream* PROTOBUF_NONNULL stream);
+
+  public:
+  ::size_t ByteSizeLong() const { return ByteSizeLong(*this); }
+  ::uint8_t* PROTOBUF_NONNULL _InternalSerialize(
+      ::uint8_t* PROTOBUF_NONNULL target,
+      ::google::protobuf::io::EpsCopyOutputStream* PROTOBUF_NONNULL stream) const {
+    return _InternalSerialize(*this, target, stream);
+  }
+  #else   // PROTOBUF_CUSTOM_VTABLE
+  ::size_t ByteSizeLong() const final;
+  ::uint8_t* PROTOBUF_NONNULL _InternalSerialize(
+      ::uint8_t* PROTOBUF_NONNULL target,
+      ::google::protobuf::io::EpsCopyOutputStream* PROTOBUF_NONNULL stream) const final;
+  #endif  // PROTOBUF_CUSTOM_VTABLE
+  int GetCachedSize() const { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::google::protobuf::Arena* PROTOBUF_NULLABLE arena);
+  static void SharedDtor(MessageLite& self);
+  void InternalSwap(LoginResp* PROTOBUF_NONNULL other);
+ private:
+  template <typename T>
+  friend ::absl::string_view(::google::protobuf::internal::GetAnyMessageName)();
+  static ::absl::string_view FullMessageName() { return "GrpcLibraryV1.LoginResp"; }
+
+  explicit LoginResp(::google::protobuf::Arena* PROTOBUF_NULLABLE arena);
+  LoginResp(::google::protobuf::Arena* PROTOBUF_NULLABLE arena, const LoginResp& from);
+  LoginResp(
+      ::google::protobuf::Arena* PROTOBUF_NULLABLE arena, LoginResp&& from) noexcept
+      : LoginResp(arena) {
+    *this = ::std::move(from);
+  }
+  const ::google::protobuf::internal::ClassData* PROTOBUF_NONNULL GetClassData() const PROTOBUF_FINAL;
+  static void* PROTOBUF_NONNULL PlacementNew_(
+      const void* PROTOBUF_NONNULL, void* PROTOBUF_NONNULL mem,
+      ::google::protobuf::Arena* PROTOBUF_NULLABLE arena);
+  static constexpr auto InternalNewImpl_();
+
+ public:
+  static constexpr auto InternalGenerateClassData_();
+
+  ::google::protobuf::Metadata GetMetadata() const;
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+  enum : int {
+    kAuthFieldNumber = 4,
+    kAccountFieldNumber = 5,
+    kLastLoginTimeFieldNumber = 6,
+    kUpdateInfoFieldNumber = 7,
+    kUserIdFieldNumber = 2,
+    kErrorCodeFieldNumber = 1,
+    kPrivilegeFieldNumber = 3,
+  };
+  // string auth = 4;
+  void clear_auth() ;
+  const ::std::string& auth() const;
+  template <typename Arg_ = const ::std::string&, typename... Args_>
+  void set_auth(Arg_&& arg, Args_... args);
+  ::std::string* PROTOBUF_NONNULL mutable_auth();
+  [[nodiscard]] ::std::string* PROTOBUF_NULLABLE release_auth();
+  void set_allocated_auth(::std::string* PROTOBUF_NULLABLE value);
+
+  private:
+  const ::std::string& _internal_auth() const;
+  PROTOBUF_ALWAYS_INLINE void _internal_set_auth(const ::std::string& value);
+  ::std::string* PROTOBUF_NONNULL _internal_mutable_auth();
+
+  public:
+  // string account = 5;
+  void clear_account() ;
+  const ::std::string& account() const;
+  template <typename Arg_ = const ::std::string&, typename... Args_>
+  void set_account(Arg_&& arg, Args_... args);
+  ::std::string* PROTOBUF_NONNULL mutable_account();
+  [[nodiscard]] ::std::string* PROTOBUF_NULLABLE release_account();
+  void set_allocated_account(::std::string* PROTOBUF_NULLABLE value);
+
+  private:
+  const ::std::string& _internal_account() const;
+  PROTOBUF_ALWAYS_INLINE void _internal_set_account(const ::std::string& value);
+  ::std::string* PROTOBUF_NONNULL _internal_mutable_account();
+
+  public:
+  // string last_login_time = 6;
+  void clear_last_login_time() ;
+  const ::std::string& last_login_time() const;
+  template <typename Arg_ = const ::std::string&, typename... Args_>
+  void set_last_login_time(Arg_&& arg, Args_... args);
+  ::std::string* PROTOBUF_NONNULL mutable_last_login_time();
+  [[nodiscard]] ::std::string* PROTOBUF_NULLABLE release_last_login_time();
+  void set_allocated_last_login_time(::std::string* PROTOBUF_NULLABLE value);
+
+  private:
+  const ::std::string& _internal_last_login_time() const;
+  PROTOBUF_ALWAYS_INLINE void _internal_set_last_login_time(const ::std::string& value);
+  ::std::string* PROTOBUF_NONNULL _internal_mutable_last_login_time();
+
+  public:
+  // .GrpcLibraryV1.UpdateInfo update_info = 7;
+  bool has_update_info() const;
+  void clear_update_info() ;
+  const ::GrpcLibraryV1::UpdateInfo& update_info() const;
+  [[nodiscard]] ::GrpcLibraryV1::UpdateInfo* PROTOBUF_NULLABLE release_update_info();
+  ::GrpcLibraryV1::UpdateInfo* PROTOBUF_NONNULL mutable_update_info();
+  void set_allocated_update_info(::GrpcLibraryV1::UpdateInfo* PROTOBUF_NULLABLE value);
+  void unsafe_arena_set_allocated_update_info(::GrpcLibraryV1::UpdateInfo* PROTOBUF_NULLABLE value);
+  ::GrpcLibraryV1::UpdateInfo* PROTOBUF_NULLABLE unsafe_arena_release_update_info();
+
+  private:
+  const ::GrpcLibraryV1::UpdateInfo& _internal_update_info() const;
+  ::GrpcLibraryV1::UpdateInfo* PROTOBUF_NONNULL _internal_mutable_update_info();
+
+  public:
+  // int64 user_id = 2;
+  void clear_user_id() ;
+  ::int64_t user_id() const;
+  void set_user_id(::int64_t value);
+
+  private:
+  ::int64_t _internal_user_id() const;
+  void _internal_set_user_id(::int64_t value);
+
+  public:
+  // int32 error_code = 1;
+  void clear_error_code() ;
+  ::int32_t error_code() const;
+  void set_error_code(::int32_t value);
+
+  private:
+  ::int32_t _internal_error_code() const;
+  void _internal_set_error_code(::int32_t value);
+
+  public:
+  // int32 privilege = 3;
+  void clear_privilege() ;
+  ::int32_t privilege() const;
+  void set_privilege(::int32_t value);
+
+  private:
+  ::int32_t _internal_privilege() const;
+  void _internal_set_privilege(::int32_t value);
+
+  public:
+  // @@protoc_insertion_point(class_scope:GrpcLibraryV1.LoginResp)
+ private:
+  class _Internal;
+  friend class ::google::protobuf::internal::TcParser;
+  static const ::google::protobuf::internal::TcParseTable<3, 7,
+                                   1, 58,
+                                   2>
+      _table_;
+
+  friend class ::google::protobuf::MessageLite;
+  friend class ::google::protobuf::Arena;
+  template <typename T>
+  friend class ::google::protobuf::Arena::InternalHelper;
+  using InternalArenaConstructable_ = void;
+  using DestructorSkippable_ = void;
+  struct Impl_ {
+    inline explicit constexpr Impl_(::google::protobuf::internal::ConstantInitialized) noexcept;
+    inline explicit Impl_(
+        ::google::protobuf::internal::InternalVisibility visibility,
+        ::google::protobuf::Arena* PROTOBUF_NULLABLE arena);
+    inline explicit Impl_(
+        ::google::protobuf::internal::InternalVisibility visibility,
+        ::google::protobuf::Arena* PROTOBUF_NULLABLE arena, const Impl_& from,
+        const LoginResp& from_msg);
+    ::google::protobuf::internal::HasBits<1> _has_bits_;
+    ::google::protobuf::internal::CachedSize _cached_size_;
+    ::google::protobuf::internal::ArenaStringPtr auth_;
+    ::google::protobuf::internal::ArenaStringPtr account_;
+    ::google::protobuf::internal::ArenaStringPtr last_login_time_;
+    ::GrpcLibraryV1::UpdateInfo* PROTOBUF_NULLABLE update_info_;
+    ::int64_t user_id_;
+    ::int32_t error_code_;
+    ::int32_t privilege_;
+    PROTOBUF_TSAN_DECLARE_MEMBER
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_src_2fapi_2eproto;
+};
+
+extern const ::google::protobuf::internal::ClassDataFull LoginResp_class_data_;
+// -------------------------------------------------------------------
+
 class GetSessionResp final : public ::google::protobuf::Message
-/* @@protoc_insertion_point(class_definition:GrpcLibrary.GetSessionResp) */ {
+/* @@protoc_insertion_point(class_definition:GrpcLibraryV1.GetSessionResp) */ {
  public:
   inline GetSessionResp() : GetSessionResp(nullptr) {}
   ~GetSessionResp() PROTOBUF_FINAL;
@@ -10051,7 +10313,7 @@ class GetSessionResp final : public ::google::protobuf::Message
     return *reinterpret_cast<const GetSessionResp*>(
         &_GetSessionResp_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 27;
+  static constexpr int kIndexInFileMessages = 28;
   friend void swap(GetSessionResp& a, GetSessionResp& b) { a.Swap(&b); }
   inline void Swap(GetSessionResp* PROTOBUF_NONNULL other) {
     if (other == this) return;
@@ -10115,7 +10377,7 @@ class GetSessionResp final : public ::google::protobuf::Message
  private:
   template <typename T>
   friend ::absl::string_view(::google::protobuf::internal::GetAnyMessageName)();
-  static ::absl::string_view FullMessageName() { return "GrpcLibrary.GetSessionResp"; }
+  static ::absl::string_view FullMessageName() { return "GrpcLibraryV1.GetSessionResp"; }
 
   explicit GetSessionResp(::google::protobuf::Arena* PROTOBUF_NULLABLE arena);
   GetSessionResp(::google::protobuf::Arena* PROTOBUF_NULLABLE arena, const GetSessionResp& from);
@@ -10141,23 +10403,23 @@ class GetSessionResp final : public ::google::protobuf::Message
     kSessionsFieldNumber = 2,
     kErrorCodeFieldNumber = 1,
   };
-  // repeated .GrpcLibrary.Session sessions = 2;
+  // repeated .GrpcLibraryV1.Session sessions = 2;
   int sessions_size() const;
   private:
   int _internal_sessions_size() const;
 
   public:
   void clear_sessions() ;
-  ::GrpcLibrary::Session* PROTOBUF_NONNULL mutable_sessions(int index);
-  ::google::protobuf::RepeatedPtrField<::GrpcLibrary::Session>* PROTOBUF_NONNULL mutable_sessions();
+  ::GrpcLibraryV1::Session* PROTOBUF_NONNULL mutable_sessions(int index);
+  ::google::protobuf::RepeatedPtrField<::GrpcLibraryV1::Session>* PROTOBUF_NONNULL mutable_sessions();
 
   private:
-  const ::google::protobuf::RepeatedPtrField<::GrpcLibrary::Session>& _internal_sessions() const;
-  ::google::protobuf::RepeatedPtrField<::GrpcLibrary::Session>* PROTOBUF_NONNULL _internal_mutable_sessions();
+  const ::google::protobuf::RepeatedPtrField<::GrpcLibraryV1::Session>& _internal_sessions() const;
+  ::google::protobuf::RepeatedPtrField<::GrpcLibraryV1::Session>* PROTOBUF_NONNULL _internal_mutable_sessions();
   public:
-  const ::GrpcLibrary::Session& sessions(int index) const;
-  ::GrpcLibrary::Session* PROTOBUF_NONNULL add_sessions();
-  const ::google::protobuf::RepeatedPtrField<::GrpcLibrary::Session>& sessions() const;
+  const ::GrpcLibraryV1::Session& sessions(int index) const;
+  ::GrpcLibraryV1::Session* PROTOBUF_NONNULL add_sessions();
+  const ::google::protobuf::RepeatedPtrField<::GrpcLibraryV1::Session>& sessions() const;
   // int32 error_code = 1;
   void clear_error_code() ;
   ::int32_t error_code() const;
@@ -10168,7 +10430,7 @@ class GetSessionResp final : public ::google::protobuf::Message
   void _internal_set_error_code(::int32_t value);
 
   public:
-  // @@protoc_insertion_point(class_scope:GrpcLibrary.GetSessionResp)
+  // @@protoc_insertion_point(class_scope:GrpcLibraryV1.GetSessionResp)
  private:
   class _Internal;
   friend class ::google::protobuf::internal::TcParser;
@@ -10194,7 +10456,7 @@ class GetSessionResp final : public ::google::protobuf::Message
         const GetSessionResp& from_msg);
     ::google::protobuf::internal::HasBits<1> _has_bits_;
     ::google::protobuf::internal::CachedSize _cached_size_;
-    ::google::protobuf::RepeatedPtrField< ::GrpcLibrary::Session > sessions_;
+    ::google::protobuf::RepeatedPtrField< ::GrpcLibraryV1::Session > sessions_;
     ::int32_t error_code_;
     PROTOBUF_TSAN_DECLARE_MEMBER
   };
@@ -10206,7 +10468,7 @@ extern const ::google::protobuf::internal::ClassDataFull GetSessionResp_class_da
 // -------------------------------------------------------------------
 
 class GetPluginInfoResp final : public ::google::protobuf::Message
-/* @@protoc_insertion_point(class_definition:GrpcLibrary.GetPluginInfoResp) */ {
+/* @@protoc_insertion_point(class_definition:GrpcLibraryV1.GetPluginInfoResp) */ {
  public:
   inline GetPluginInfoResp() : GetPluginInfoResp(nullptr) {}
   ~GetPluginInfoResp() PROTOBUF_FINAL;
@@ -10260,7 +10522,7 @@ class GetPluginInfoResp final : public ::google::protobuf::Message
     return *reinterpret_cast<const GetPluginInfoResp*>(
         &_GetPluginInfoResp_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 35;
+  static constexpr int kIndexInFileMessages = 36;
   friend void swap(GetPluginInfoResp& a, GetPluginInfoResp& b) { a.Swap(&b); }
   inline void Swap(GetPluginInfoResp* PROTOBUF_NONNULL other) {
     if (other == this) return;
@@ -10324,7 +10586,7 @@ class GetPluginInfoResp final : public ::google::protobuf::Message
  private:
   template <typename T>
   friend ::absl::string_view(::google::protobuf::internal::GetAnyMessageName)();
-  static ::absl::string_view FullMessageName() { return "GrpcLibrary.GetPluginInfoResp"; }
+  static ::absl::string_view FullMessageName() { return "GrpcLibraryV1.GetPluginInfoResp"; }
 
   explicit GetPluginInfoResp(::google::protobuf::Arena* PROTOBUF_NULLABLE arena);
   GetPluginInfoResp(::google::protobuf::Arena* PROTOBUF_NULLABLE arena, const GetPluginInfoResp& from);
@@ -10350,23 +10612,23 @@ class GetPluginInfoResp final : public ::google::protobuf::Message
     kPluginsFieldNumber = 2,
     kErrorCodeFieldNumber = 1,
   };
-  // repeated .GrpcLibrary.Plugin plugins = 2;
+  // repeated .GrpcLibraryV1.Plugin plugins = 2;
   int plugins_size() const;
   private:
   int _internal_plugins_size() const;
 
   public:
   void clear_plugins() ;
-  ::GrpcLibrary::Plugin* PROTOBUF_NONNULL mutable_plugins(int index);
-  ::google::protobuf::RepeatedPtrField<::GrpcLibrary::Plugin>* PROTOBUF_NONNULL mutable_plugins();
+  ::GrpcLibraryV1::Plugin* PROTOBUF_NONNULL mutable_plugins(int index);
+  ::google::protobuf::RepeatedPtrField<::GrpcLibraryV1::Plugin>* PROTOBUF_NONNULL mutable_plugins();
 
   private:
-  const ::google::protobuf::RepeatedPtrField<::GrpcLibrary::Plugin>& _internal_plugins() const;
-  ::google::protobuf::RepeatedPtrField<::GrpcLibrary::Plugin>* PROTOBUF_NONNULL _internal_mutable_plugins();
+  const ::google::protobuf::RepeatedPtrField<::GrpcLibraryV1::Plugin>& _internal_plugins() const;
+  ::google::protobuf::RepeatedPtrField<::GrpcLibraryV1::Plugin>* PROTOBUF_NONNULL _internal_mutable_plugins();
   public:
-  const ::GrpcLibrary::Plugin& plugins(int index) const;
-  ::GrpcLibrary::Plugin* PROTOBUF_NONNULL add_plugins();
-  const ::google::protobuf::RepeatedPtrField<::GrpcLibrary::Plugin>& plugins() const;
+  const ::GrpcLibraryV1::Plugin& plugins(int index) const;
+  ::GrpcLibraryV1::Plugin* PROTOBUF_NONNULL add_plugins();
+  const ::google::protobuf::RepeatedPtrField<::GrpcLibraryV1::Plugin>& plugins() const;
   // int32 error_code = 1;
   void clear_error_code() ;
   ::int32_t error_code() const;
@@ -10377,7 +10639,7 @@ class GetPluginInfoResp final : public ::google::protobuf::Message
   void _internal_set_error_code(::int32_t value);
 
   public:
-  // @@protoc_insertion_point(class_scope:GrpcLibrary.GetPluginInfoResp)
+  // @@protoc_insertion_point(class_scope:GrpcLibraryV1.GetPluginInfoResp)
  private:
   class _Internal;
   friend class ::google::protobuf::internal::TcParser;
@@ -10403,7 +10665,7 @@ class GetPluginInfoResp final : public ::google::protobuf::Message
         const GetPluginInfoResp& from_msg);
     ::google::protobuf::internal::HasBits<1> _has_bits_;
     ::google::protobuf::internal::CachedSize _cached_size_;
-    ::google::protobuf::RepeatedPtrField< ::GrpcLibrary::Plugin > plugins_;
+    ::google::protobuf::RepeatedPtrField< ::GrpcLibraryV1::Plugin > plugins_;
     ::int32_t error_code_;
     PROTOBUF_TSAN_DECLARE_MEMBER
   };
@@ -10415,7 +10677,7 @@ extern const ::google::protobuf::internal::ClassDataFull GetPluginInfoResp_class
 // -------------------------------------------------------------------
 
 class GetMessageInfoResp final : public ::google::protobuf::Message
-/* @@protoc_insertion_point(class_definition:GrpcLibrary.GetMessageInfoResp) */ {
+/* @@protoc_insertion_point(class_definition:GrpcLibraryV1.GetMessageInfoResp) */ {
  public:
   inline GetMessageInfoResp() : GetMessageInfoResp(nullptr) {}
   ~GetMessageInfoResp() PROTOBUF_FINAL;
@@ -10469,7 +10731,7 @@ class GetMessageInfoResp final : public ::google::protobuf::Message
     return *reinterpret_cast<const GetMessageInfoResp*>(
         &_GetMessageInfoResp_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 25;
+  static constexpr int kIndexInFileMessages = 26;
   friend void swap(GetMessageInfoResp& a, GetMessageInfoResp& b) { a.Swap(&b); }
   inline void Swap(GetMessageInfoResp* PROTOBUF_NONNULL other) {
     if (other == this) return;
@@ -10533,7 +10795,7 @@ class GetMessageInfoResp final : public ::google::protobuf::Message
  private:
   template <typename T>
   friend ::absl::string_view(::google::protobuf::internal::GetAnyMessageName)();
-  static ::absl::string_view FullMessageName() { return "GrpcLibrary.GetMessageInfoResp"; }
+  static ::absl::string_view FullMessageName() { return "GrpcLibraryV1.GetMessageInfoResp"; }
 
   explicit GetMessageInfoResp(::google::protobuf::Arena* PROTOBUF_NULLABLE arena);
   GetMessageInfoResp(::google::protobuf::Arena* PROTOBUF_NULLABLE arena, const GetMessageInfoResp& from);
@@ -10559,23 +10821,23 @@ class GetMessageInfoResp final : public ::google::protobuf::Message
     kMessagesFieldNumber = 2,
     kErrorCodeFieldNumber = 1,
   };
-  // repeated .GrpcLibrary.MessageInfo messages = 2;
+  // repeated .GrpcLibraryV1.MessageInfo messages = 2;
   int messages_size() const;
   private:
   int _internal_messages_size() const;
 
   public:
   void clear_messages() ;
-  ::GrpcLibrary::MessageInfo* PROTOBUF_NONNULL mutable_messages(int index);
-  ::google::protobuf::RepeatedPtrField<::GrpcLibrary::MessageInfo>* PROTOBUF_NONNULL mutable_messages();
+  ::GrpcLibraryV1::MessageInfo* PROTOBUF_NONNULL mutable_messages(int index);
+  ::google::protobuf::RepeatedPtrField<::GrpcLibraryV1::MessageInfo>* PROTOBUF_NONNULL mutable_messages();
 
   private:
-  const ::google::protobuf::RepeatedPtrField<::GrpcLibrary::MessageInfo>& _internal_messages() const;
-  ::google::protobuf::RepeatedPtrField<::GrpcLibrary::MessageInfo>* PROTOBUF_NONNULL _internal_mutable_messages();
+  const ::google::protobuf::RepeatedPtrField<::GrpcLibraryV1::MessageInfo>& _internal_messages() const;
+  ::google::protobuf::RepeatedPtrField<::GrpcLibraryV1::MessageInfo>* PROTOBUF_NONNULL _internal_mutable_messages();
   public:
-  const ::GrpcLibrary::MessageInfo& messages(int index) const;
-  ::GrpcLibrary::MessageInfo* PROTOBUF_NONNULL add_messages();
-  const ::google::protobuf::RepeatedPtrField<::GrpcLibrary::MessageInfo>& messages() const;
+  const ::GrpcLibraryV1::MessageInfo& messages(int index) const;
+  ::GrpcLibraryV1::MessageInfo* PROTOBUF_NONNULL add_messages();
+  const ::google::protobuf::RepeatedPtrField<::GrpcLibraryV1::MessageInfo>& messages() const;
   // int32 error_code = 1;
   void clear_error_code() ;
   ::int32_t error_code() const;
@@ -10586,7 +10848,7 @@ class GetMessageInfoResp final : public ::google::protobuf::Message
   void _internal_set_error_code(::int32_t value);
 
   public:
-  // @@protoc_insertion_point(class_scope:GrpcLibrary.GetMessageInfoResp)
+  // @@protoc_insertion_point(class_scope:GrpcLibraryV1.GetMessageInfoResp)
  private:
   class _Internal;
   friend class ::google::protobuf::internal::TcParser;
@@ -10612,7 +10874,7 @@ class GetMessageInfoResp final : public ::google::protobuf::Message
         const GetMessageInfoResp& from_msg);
     ::google::protobuf::internal::HasBits<1> _has_bits_;
     ::google::protobuf::internal::CachedSize _cached_size_;
-    ::google::protobuf::RepeatedPtrField< ::GrpcLibrary::MessageInfo > messages_;
+    ::google::protobuf::RepeatedPtrField< ::GrpcLibraryV1::MessageInfo > messages_;
     ::int32_t error_code_;
     PROTOBUF_TSAN_DECLARE_MEMBER
   };
@@ -10624,7 +10886,7 @@ extern const ::google::protobuf::internal::ClassDataFull GetMessageInfoResp_clas
 // -------------------------------------------------------------------
 
 class EmbeddingReq final : public ::google::protobuf::Message
-/* @@protoc_insertion_point(class_definition:GrpcLibrary.EmbeddingReq) */ {
+/* @@protoc_insertion_point(class_definition:GrpcLibraryV1.EmbeddingReq) */ {
  public:
   inline EmbeddingReq() : EmbeddingReq(nullptr) {}
   ~EmbeddingReq() PROTOBUF_FINAL;
@@ -10683,7 +10945,7 @@ class EmbeddingReq final : public ::google::protobuf::Message
     kChunk = 3,
     REQUEST_TYPE_NOT_SET = 0,
   };
-  static constexpr int kIndexInFileMessages = 40;
+  static constexpr int kIndexInFileMessages = 41;
   friend void swap(EmbeddingReq& a, EmbeddingReq& b) { a.Swap(&b); }
   inline void Swap(EmbeddingReq* PROTOBUF_NONNULL other) {
     if (other == this) return;
@@ -10747,7 +11009,7 @@ class EmbeddingReq final : public ::google::protobuf::Message
  private:
   template <typename T>
   friend ::absl::string_view(::google::protobuf::internal::GetAnyMessageName)();
-  static ::absl::string_view FullMessageName() { return "GrpcLibrary.EmbeddingReq"; }
+  static ::absl::string_view FullMessageName() { return "GrpcLibraryV1.EmbeddingReq"; }
 
   explicit EmbeddingReq(::google::protobuf::Arena* PROTOBUF_NULLABLE arena);
   EmbeddingReq(::google::protobuf::Arena* PROTOBUF_NULLABLE arena, const EmbeddingReq& from);
@@ -10784,47 +11046,47 @@ class EmbeddingReq final : public ::google::protobuf::Message
   void _internal_set_task_id(::int64_t value);
 
   public:
-  // .GrpcLibrary.EmbeddingParam param = 2;
+  // .GrpcLibraryV1.EmbeddingParam param = 2;
   bool has_param() const;
   private:
   bool _internal_has_param() const;
 
   public:
   void clear_param() ;
-  const ::GrpcLibrary::EmbeddingParam& param() const;
-  [[nodiscard]] ::GrpcLibrary::EmbeddingParam* PROTOBUF_NULLABLE release_param();
-  ::GrpcLibrary::EmbeddingParam* PROTOBUF_NONNULL mutable_param();
-  void set_allocated_param(::GrpcLibrary::EmbeddingParam* PROTOBUF_NULLABLE value);
-  void unsafe_arena_set_allocated_param(::GrpcLibrary::EmbeddingParam* PROTOBUF_NULLABLE value);
-  ::GrpcLibrary::EmbeddingParam* PROTOBUF_NULLABLE unsafe_arena_release_param();
+  const ::GrpcLibraryV1::EmbeddingParam& param() const;
+  [[nodiscard]] ::GrpcLibraryV1::EmbeddingParam* PROTOBUF_NULLABLE release_param();
+  ::GrpcLibraryV1::EmbeddingParam* PROTOBUF_NONNULL mutable_param();
+  void set_allocated_param(::GrpcLibraryV1::EmbeddingParam* PROTOBUF_NULLABLE value);
+  void unsafe_arena_set_allocated_param(::GrpcLibraryV1::EmbeddingParam* PROTOBUF_NULLABLE value);
+  ::GrpcLibraryV1::EmbeddingParam* PROTOBUF_NULLABLE unsafe_arena_release_param();
 
   private:
-  const ::GrpcLibrary::EmbeddingParam& _internal_param() const;
-  ::GrpcLibrary::EmbeddingParam* PROTOBUF_NONNULL _internal_mutable_param();
+  const ::GrpcLibraryV1::EmbeddingParam& _internal_param() const;
+  ::GrpcLibraryV1::EmbeddingParam* PROTOBUF_NONNULL _internal_mutable_param();
 
   public:
-  // .GrpcLibrary.FileChunk chunk = 3;
+  // .GrpcLibraryV1.FileChunk chunk = 3;
   bool has_chunk() const;
   private:
   bool _internal_has_chunk() const;
 
   public:
   void clear_chunk() ;
-  const ::GrpcLibrary::FileChunk& chunk() const;
-  [[nodiscard]] ::GrpcLibrary::FileChunk* PROTOBUF_NULLABLE release_chunk();
-  ::GrpcLibrary::FileChunk* PROTOBUF_NONNULL mutable_chunk();
-  void set_allocated_chunk(::GrpcLibrary::FileChunk* PROTOBUF_NULLABLE value);
-  void unsafe_arena_set_allocated_chunk(::GrpcLibrary::FileChunk* PROTOBUF_NULLABLE value);
-  ::GrpcLibrary::FileChunk* PROTOBUF_NULLABLE unsafe_arena_release_chunk();
+  const ::GrpcLibraryV1::FileChunk& chunk() const;
+  [[nodiscard]] ::GrpcLibraryV1::FileChunk* PROTOBUF_NULLABLE release_chunk();
+  ::GrpcLibraryV1::FileChunk* PROTOBUF_NONNULL mutable_chunk();
+  void set_allocated_chunk(::GrpcLibraryV1::FileChunk* PROTOBUF_NULLABLE value);
+  void unsafe_arena_set_allocated_chunk(::GrpcLibraryV1::FileChunk* PROTOBUF_NULLABLE value);
+  ::GrpcLibraryV1::FileChunk* PROTOBUF_NULLABLE unsafe_arena_release_chunk();
 
   private:
-  const ::GrpcLibrary::FileChunk& _internal_chunk() const;
-  ::GrpcLibrary::FileChunk* PROTOBUF_NONNULL _internal_mutable_chunk();
+  const ::GrpcLibraryV1::FileChunk& _internal_chunk() const;
+  ::GrpcLibraryV1::FileChunk* PROTOBUF_NONNULL _internal_mutable_chunk();
 
   public:
   void clear_request_type();
   RequestTypeCase request_type_case() const;
-  // @@protoc_insertion_point(class_scope:GrpcLibrary.EmbeddingReq)
+  // @@protoc_insertion_point(class_scope:GrpcLibraryV1.EmbeddingReq)
  private:
   class _Internal;
   void set_has_param();
@@ -10858,8 +11120,8 @@ class EmbeddingReq final : public ::google::protobuf::Message
     union RequestTypeUnion {
       constexpr RequestTypeUnion() : _constinit_{} {}
       ::google::protobuf::internal::ConstantInitialized _constinit_;
-      ::GrpcLibrary::EmbeddingParam* PROTOBUF_NULLABLE param_;
-      ::GrpcLibrary::FileChunk* PROTOBUF_NULLABLE chunk_;
+      ::GrpcLibraryV1::EmbeddingParam* PROTOBUF_NULLABLE param_;
+      ::GrpcLibraryV1::FileChunk* PROTOBUF_NULLABLE chunk_;
     } request_type_;
     ::uint32_t _oneof_case_[1];
     PROTOBUF_TSAN_DECLARE_MEMBER
@@ -10894,13 +11156,13 @@ inline void Session::clear_id() {
                   0x00000004U);
 }
 inline ::int64_t Session::id() const {
-  // @@protoc_insertion_point(field_get:GrpcLibrary.Session.id)
+  // @@protoc_insertion_point(field_get:GrpcLibraryV1.Session.id)
   return _internal_id();
 }
 inline void Session::set_id(::int64_t value) {
   _internal_set_id(value);
   SetHasBit(_impl_._has_bits_[0], 0x00000004U);
-  // @@protoc_insertion_point(field_set:GrpcLibrary.Session.id)
+  // @@protoc_insertion_point(field_set:GrpcLibraryV1.Session.id)
 }
 inline ::int64_t Session::_internal_id() const {
   ::google::protobuf::internal::TSanRead(&_impl_);
@@ -10919,13 +11181,13 @@ inline void Session::clear_user_id() {
                   0x00000008U);
 }
 inline ::int64_t Session::user_id() const {
-  // @@protoc_insertion_point(field_get:GrpcLibrary.Session.user_id)
+  // @@protoc_insertion_point(field_get:GrpcLibraryV1.Session.user_id)
   return _internal_user_id();
 }
 inline void Session::set_user_id(::int64_t value) {
   _internal_set_user_id(value);
   SetHasBit(_impl_._has_bits_[0], 0x00000008U);
-  // @@protoc_insertion_point(field_set:GrpcLibrary.Session.user_id)
+  // @@protoc_insertion_point(field_set:GrpcLibraryV1.Session.user_id)
 }
 inline ::int64_t Session::_internal_user_id() const {
   ::google::protobuf::internal::TSanRead(&_impl_);
@@ -10945,7 +11207,7 @@ inline void Session::clear_title() {
 }
 inline const ::std::string& Session::title() const
     ABSL_ATTRIBUTE_LIFETIME_BOUND {
-  // @@protoc_insertion_point(field_get:GrpcLibrary.Session.title)
+  // @@protoc_insertion_point(field_get:GrpcLibraryV1.Session.title)
   return _internal_title();
 }
 template <typename Arg_, typename... Args_>
@@ -10953,13 +11215,13 @@ PROTOBUF_ALWAYS_INLINE void Session::set_title(Arg_&& arg, Args_... args) {
   ::google::protobuf::internal::TSanWrite(&_impl_);
   SetHasBit(_impl_._has_bits_[0], 0x00000001U);
   _impl_.title_.Set(static_cast<Arg_&&>(arg), args..., GetArena());
-  // @@protoc_insertion_point(field_set:GrpcLibrary.Session.title)
+  // @@protoc_insertion_point(field_set:GrpcLibraryV1.Session.title)
 }
 inline ::std::string* PROTOBUF_NONNULL Session::mutable_title()
     ABSL_ATTRIBUTE_LIFETIME_BOUND {
   SetHasBit(_impl_._has_bits_[0], 0x00000001U);
   ::std::string* _s = _internal_mutable_title();
-  // @@protoc_insertion_point(field_mutable:GrpcLibrary.Session.title)
+  // @@protoc_insertion_point(field_mutable:GrpcLibraryV1.Session.title)
   return _s;
 }
 inline const ::std::string& Session::_internal_title() const {
@@ -10976,7 +11238,7 @@ inline ::std::string* PROTOBUF_NONNULL Session::_internal_mutable_title() {
 }
 inline ::std::string* PROTOBUF_NULLABLE Session::release_title() {
   ::google::protobuf::internal::TSanWrite(&_impl_);
-  // @@protoc_insertion_point(field_release:GrpcLibrary.Session.title)
+  // @@protoc_insertion_point(field_release:GrpcLibraryV1.Session.title)
   if (!CheckHasBit(_impl_._has_bits_[0], 0x00000001U)) {
     return nullptr;
   }
@@ -10998,7 +11260,7 @@ inline void Session::set_allocated_title(::std::string* PROTOBUF_NULLABLE value)
   if (::google::protobuf::internal::DebugHardenForceCopyDefaultString() && _impl_.title_.IsDefault()) {
     _impl_.title_.Set("", GetArena());
   }
-  // @@protoc_insertion_point(field_set_allocated:GrpcLibrary.Session.title)
+  // @@protoc_insertion_point(field_set_allocated:GrpcLibraryV1.Session.title)
 }
 
 // string timestamp = 4;
@@ -11010,7 +11272,7 @@ inline void Session::clear_timestamp() {
 }
 inline const ::std::string& Session::timestamp() const
     ABSL_ATTRIBUTE_LIFETIME_BOUND {
-  // @@protoc_insertion_point(field_get:GrpcLibrary.Session.timestamp)
+  // @@protoc_insertion_point(field_get:GrpcLibraryV1.Session.timestamp)
   return _internal_timestamp();
 }
 template <typename Arg_, typename... Args_>
@@ -11018,13 +11280,13 @@ PROTOBUF_ALWAYS_INLINE void Session::set_timestamp(Arg_&& arg, Args_... args) {
   ::google::protobuf::internal::TSanWrite(&_impl_);
   SetHasBit(_impl_._has_bits_[0], 0x00000002U);
   _impl_.timestamp_.Set(static_cast<Arg_&&>(arg), args..., GetArena());
-  // @@protoc_insertion_point(field_set:GrpcLibrary.Session.timestamp)
+  // @@protoc_insertion_point(field_set:GrpcLibraryV1.Session.timestamp)
 }
 inline ::std::string* PROTOBUF_NONNULL Session::mutable_timestamp()
     ABSL_ATTRIBUTE_LIFETIME_BOUND {
   SetHasBit(_impl_._has_bits_[0], 0x00000002U);
   ::std::string* _s = _internal_mutable_timestamp();
-  // @@protoc_insertion_point(field_mutable:GrpcLibrary.Session.timestamp)
+  // @@protoc_insertion_point(field_mutable:GrpcLibraryV1.Session.timestamp)
   return _s;
 }
 inline const ::std::string& Session::_internal_timestamp() const {
@@ -11041,7 +11303,7 @@ inline ::std::string* PROTOBUF_NONNULL Session::_internal_mutable_timestamp() {
 }
 inline ::std::string* PROTOBUF_NULLABLE Session::release_timestamp() {
   ::google::protobuf::internal::TSanWrite(&_impl_);
-  // @@protoc_insertion_point(field_release:GrpcLibrary.Session.timestamp)
+  // @@protoc_insertion_point(field_release:GrpcLibraryV1.Session.timestamp)
   if (!CheckHasBit(_impl_._has_bits_[0], 0x00000002U)) {
     return nullptr;
   }
@@ -11063,7 +11325,7 @@ inline void Session::set_allocated_timestamp(::std::string* PROTOBUF_NULLABLE va
   if (::google::protobuf::internal::DebugHardenForceCopyDefaultString() && _impl_.timestamp_.IsDefault()) {
     _impl_.timestamp_.Set("", GetArena());
   }
-  // @@protoc_insertion_point(field_set_allocated:GrpcLibrary.Session.timestamp)
+  // @@protoc_insertion_point(field_set_allocated:GrpcLibraryV1.Session.timestamp)
 }
 
 // -------------------------------------------------------------------
@@ -11079,7 +11341,7 @@ inline void Plugin::clear_hash() {
 }
 inline const ::std::string& Plugin::hash() const
     ABSL_ATTRIBUTE_LIFETIME_BOUND {
-  // @@protoc_insertion_point(field_get:GrpcLibrary.Plugin.hash)
+  // @@protoc_insertion_point(field_get:GrpcLibraryV1.Plugin.hash)
   return _internal_hash();
 }
 template <typename Arg_, typename... Args_>
@@ -11087,13 +11349,13 @@ PROTOBUF_ALWAYS_INLINE void Plugin::set_hash(Arg_&& arg, Args_... args) {
   ::google::protobuf::internal::TSanWrite(&_impl_);
   SetHasBit(_impl_._has_bits_[0], 0x00000001U);
   _impl_.hash_.Set(static_cast<Arg_&&>(arg), args..., GetArena());
-  // @@protoc_insertion_point(field_set:GrpcLibrary.Plugin.hash)
+  // @@protoc_insertion_point(field_set:GrpcLibraryV1.Plugin.hash)
 }
 inline ::std::string* PROTOBUF_NONNULL Plugin::mutable_hash()
     ABSL_ATTRIBUTE_LIFETIME_BOUND {
   SetHasBit(_impl_._has_bits_[0], 0x00000001U);
   ::std::string* _s = _internal_mutable_hash();
-  // @@protoc_insertion_point(field_mutable:GrpcLibrary.Plugin.hash)
+  // @@protoc_insertion_point(field_mutable:GrpcLibraryV1.Plugin.hash)
   return _s;
 }
 inline const ::std::string& Plugin::_internal_hash() const {
@@ -11110,7 +11372,7 @@ inline ::std::string* PROTOBUF_NONNULL Plugin::_internal_mutable_hash() {
 }
 inline ::std::string* PROTOBUF_NULLABLE Plugin::release_hash() {
   ::google::protobuf::internal::TSanWrite(&_impl_);
-  // @@protoc_insertion_point(field_release:GrpcLibrary.Plugin.hash)
+  // @@protoc_insertion_point(field_release:GrpcLibraryV1.Plugin.hash)
   if (!CheckHasBit(_impl_._has_bits_[0], 0x00000001U)) {
     return nullptr;
   }
@@ -11132,7 +11394,7 @@ inline void Plugin::set_allocated_hash(::std::string* PROTOBUF_NULLABLE value) {
   if (::google::protobuf::internal::DebugHardenForceCopyDefaultString() && _impl_.hash_.IsDefault()) {
     _impl_.hash_.Set("", GetArena());
   }
-  // @@protoc_insertion_point(field_set_allocated:GrpcLibrary.Plugin.hash)
+  // @@protoc_insertion_point(field_set_allocated:GrpcLibraryV1.Plugin.hash)
 }
 
 // string name = 2;
@@ -11144,7 +11406,7 @@ inline void Plugin::clear_name() {
 }
 inline const ::std::string& Plugin::name() const
     ABSL_ATTRIBUTE_LIFETIME_BOUND {
-  // @@protoc_insertion_point(field_get:GrpcLibrary.Plugin.name)
+  // @@protoc_insertion_point(field_get:GrpcLibraryV1.Plugin.name)
   return _internal_name();
 }
 template <typename Arg_, typename... Args_>
@@ -11152,13 +11414,13 @@ PROTOBUF_ALWAYS_INLINE void Plugin::set_name(Arg_&& arg, Args_... args) {
   ::google::protobuf::internal::TSanWrite(&_impl_);
   SetHasBit(_impl_._has_bits_[0], 0x00000002U);
   _impl_.name_.Set(static_cast<Arg_&&>(arg), args..., GetArena());
-  // @@protoc_insertion_point(field_set:GrpcLibrary.Plugin.name)
+  // @@protoc_insertion_point(field_set:GrpcLibraryV1.Plugin.name)
 }
 inline ::std::string* PROTOBUF_NONNULL Plugin::mutable_name()
     ABSL_ATTRIBUTE_LIFETIME_BOUND {
   SetHasBit(_impl_._has_bits_[0], 0x00000002U);
   ::std::string* _s = _internal_mutable_name();
-  // @@protoc_insertion_point(field_mutable:GrpcLibrary.Plugin.name)
+  // @@protoc_insertion_point(field_mutable:GrpcLibraryV1.Plugin.name)
   return _s;
 }
 inline const ::std::string& Plugin::_internal_name() const {
@@ -11175,7 +11437,7 @@ inline ::std::string* PROTOBUF_NONNULL Plugin::_internal_mutable_name() {
 }
 inline ::std::string* PROTOBUF_NULLABLE Plugin::release_name() {
   ::google::protobuf::internal::TSanWrite(&_impl_);
-  // @@protoc_insertion_point(field_release:GrpcLibrary.Plugin.name)
+  // @@protoc_insertion_point(field_release:GrpcLibraryV1.Plugin.name)
   if (!CheckHasBit(_impl_._has_bits_[0], 0x00000002U)) {
     return nullptr;
   }
@@ -11197,7 +11459,7 @@ inline void Plugin::set_allocated_name(::std::string* PROTOBUF_NULLABLE value) {
   if (::google::protobuf::internal::DebugHardenForceCopyDefaultString() && _impl_.name_.IsDefault()) {
     _impl_.name_.Set("", GetArena());
   }
-  // @@protoc_insertion_point(field_set_allocated:GrpcLibrary.Plugin.name)
+  // @@protoc_insertion_point(field_set_allocated:GrpcLibraryV1.Plugin.name)
 }
 
 // string desc = 3;
@@ -11209,7 +11471,7 @@ inline void Plugin::clear_desc() {
 }
 inline const ::std::string& Plugin::desc() const
     ABSL_ATTRIBUTE_LIFETIME_BOUND {
-  // @@protoc_insertion_point(field_get:GrpcLibrary.Plugin.desc)
+  // @@protoc_insertion_point(field_get:GrpcLibraryV1.Plugin.desc)
   return _internal_desc();
 }
 template <typename Arg_, typename... Args_>
@@ -11217,13 +11479,13 @@ PROTOBUF_ALWAYS_INLINE void Plugin::set_desc(Arg_&& arg, Args_... args) {
   ::google::protobuf::internal::TSanWrite(&_impl_);
   SetHasBit(_impl_._has_bits_[0], 0x00000004U);
   _impl_.desc_.Set(static_cast<Arg_&&>(arg), args..., GetArena());
-  // @@protoc_insertion_point(field_set:GrpcLibrary.Plugin.desc)
+  // @@protoc_insertion_point(field_set:GrpcLibraryV1.Plugin.desc)
 }
 inline ::std::string* PROTOBUF_NONNULL Plugin::mutable_desc()
     ABSL_ATTRIBUTE_LIFETIME_BOUND {
   SetHasBit(_impl_._has_bits_[0], 0x00000004U);
   ::std::string* _s = _internal_mutable_desc();
-  // @@protoc_insertion_point(field_mutable:GrpcLibrary.Plugin.desc)
+  // @@protoc_insertion_point(field_mutable:GrpcLibraryV1.Plugin.desc)
   return _s;
 }
 inline const ::std::string& Plugin::_internal_desc() const {
@@ -11240,7 +11502,7 @@ inline ::std::string* PROTOBUF_NONNULL Plugin::_internal_mutable_desc() {
 }
 inline ::std::string* PROTOBUF_NULLABLE Plugin::release_desc() {
   ::google::protobuf::internal::TSanWrite(&_impl_);
-  // @@protoc_insertion_point(field_release:GrpcLibrary.Plugin.desc)
+  // @@protoc_insertion_point(field_release:GrpcLibraryV1.Plugin.desc)
   if (!CheckHasBit(_impl_._has_bits_[0], 0x00000004U)) {
     return nullptr;
   }
@@ -11262,7 +11524,7 @@ inline void Plugin::set_allocated_desc(::std::string* PROTOBUF_NULLABLE value) {
   if (::google::protobuf::internal::DebugHardenForceCopyDefaultString() && _impl_.desc_.IsDefault()) {
     _impl_.desc_.Set("", GetArena());
   }
-  // @@protoc_insertion_point(field_set_allocated:GrpcLibrary.Plugin.desc)
+  // @@protoc_insertion_point(field_set_allocated:GrpcLibraryV1.Plugin.desc)
 }
 
 // string publisher = 4;
@@ -11274,7 +11536,7 @@ inline void Plugin::clear_publisher() {
 }
 inline const ::std::string& Plugin::publisher() const
     ABSL_ATTRIBUTE_LIFETIME_BOUND {
-  // @@protoc_insertion_point(field_get:GrpcLibrary.Plugin.publisher)
+  // @@protoc_insertion_point(field_get:GrpcLibraryV1.Plugin.publisher)
   return _internal_publisher();
 }
 template <typename Arg_, typename... Args_>
@@ -11282,13 +11544,13 @@ PROTOBUF_ALWAYS_INLINE void Plugin::set_publisher(Arg_&& arg, Args_... args) {
   ::google::protobuf::internal::TSanWrite(&_impl_);
   SetHasBit(_impl_._has_bits_[0], 0x00000008U);
   _impl_.publisher_.Set(static_cast<Arg_&&>(arg), args..., GetArena());
-  // @@protoc_insertion_point(field_set:GrpcLibrary.Plugin.publisher)
+  // @@protoc_insertion_point(field_set:GrpcLibraryV1.Plugin.publisher)
 }
 inline ::std::string* PROTOBUF_NONNULL Plugin::mutable_publisher()
     ABSL_ATTRIBUTE_LIFETIME_BOUND {
   SetHasBit(_impl_._has_bits_[0], 0x00000008U);
   ::std::string* _s = _internal_mutable_publisher();
-  // @@protoc_insertion_point(field_mutable:GrpcLibrary.Plugin.publisher)
+  // @@protoc_insertion_point(field_mutable:GrpcLibraryV1.Plugin.publisher)
   return _s;
 }
 inline const ::std::string& Plugin::_internal_publisher() const {
@@ -11305,7 +11567,7 @@ inline ::std::string* PROTOBUF_NONNULL Plugin::_internal_mutable_publisher() {
 }
 inline ::std::string* PROTOBUF_NULLABLE Plugin::release_publisher() {
   ::google::protobuf::internal::TSanWrite(&_impl_);
-  // @@protoc_insertion_point(field_release:GrpcLibrary.Plugin.publisher)
+  // @@protoc_insertion_point(field_release:GrpcLibraryV1.Plugin.publisher)
   if (!CheckHasBit(_impl_._has_bits_[0], 0x00000008U)) {
     return nullptr;
   }
@@ -11327,7 +11589,7 @@ inline void Plugin::set_allocated_publisher(::std::string* PROTOBUF_NULLABLE val
   if (::google::protobuf::internal::DebugHardenForceCopyDefaultString() && _impl_.publisher_.IsDefault()) {
     _impl_.publisher_.Set("", GetArena());
   }
-  // @@protoc_insertion_point(field_set_allocated:GrpcLibrary.Plugin.publisher)
+  // @@protoc_insertion_point(field_set_allocated:GrpcLibraryV1.Plugin.publisher)
 }
 
 // string version = 5;
@@ -11339,7 +11601,7 @@ inline void Plugin::clear_version() {
 }
 inline const ::std::string& Plugin::version() const
     ABSL_ATTRIBUTE_LIFETIME_BOUND {
-  // @@protoc_insertion_point(field_get:GrpcLibrary.Plugin.version)
+  // @@protoc_insertion_point(field_get:GrpcLibraryV1.Plugin.version)
   return _internal_version();
 }
 template <typename Arg_, typename... Args_>
@@ -11347,13 +11609,13 @@ PROTOBUF_ALWAYS_INLINE void Plugin::set_version(Arg_&& arg, Args_... args) {
   ::google::protobuf::internal::TSanWrite(&_impl_);
   SetHasBit(_impl_._has_bits_[0], 0x00000010U);
   _impl_.version_.Set(static_cast<Arg_&&>(arg), args..., GetArena());
-  // @@protoc_insertion_point(field_set:GrpcLibrary.Plugin.version)
+  // @@protoc_insertion_point(field_set:GrpcLibraryV1.Plugin.version)
 }
 inline ::std::string* PROTOBUF_NONNULL Plugin::mutable_version()
     ABSL_ATTRIBUTE_LIFETIME_BOUND {
   SetHasBit(_impl_._has_bits_[0], 0x00000010U);
   ::std::string* _s = _internal_mutable_version();
-  // @@protoc_insertion_point(field_mutable:GrpcLibrary.Plugin.version)
+  // @@protoc_insertion_point(field_mutable:GrpcLibraryV1.Plugin.version)
   return _s;
 }
 inline const ::std::string& Plugin::_internal_version() const {
@@ -11370,7 +11632,7 @@ inline ::std::string* PROTOBUF_NONNULL Plugin::_internal_mutable_version() {
 }
 inline ::std::string* PROTOBUF_NULLABLE Plugin::release_version() {
   ::google::protobuf::internal::TSanWrite(&_impl_);
-  // @@protoc_insertion_point(field_release:GrpcLibrary.Plugin.version)
+  // @@protoc_insertion_point(field_release:GrpcLibraryV1.Plugin.version)
   if (!CheckHasBit(_impl_._has_bits_[0], 0x00000010U)) {
     return nullptr;
   }
@@ -11392,7 +11654,7 @@ inline void Plugin::set_allocated_version(::std::string* PROTOBUF_NULLABLE value
   if (::google::protobuf::internal::DebugHardenForceCopyDefaultString() && _impl_.version_.IsDefault()) {
     _impl_.version_.Set("", GetArena());
   }
-  // @@protoc_insertion_point(field_set_allocated:GrpcLibrary.Plugin.version)
+  // @@protoc_insertion_point(field_set_allocated:GrpcLibraryV1.Plugin.version)
 }
 
 // string timestamp = 6;
@@ -11404,7 +11666,7 @@ inline void Plugin::clear_timestamp() {
 }
 inline const ::std::string& Plugin::timestamp() const
     ABSL_ATTRIBUTE_LIFETIME_BOUND {
-  // @@protoc_insertion_point(field_get:GrpcLibrary.Plugin.timestamp)
+  // @@protoc_insertion_point(field_get:GrpcLibraryV1.Plugin.timestamp)
   return _internal_timestamp();
 }
 template <typename Arg_, typename... Args_>
@@ -11412,13 +11674,13 @@ PROTOBUF_ALWAYS_INLINE void Plugin::set_timestamp(Arg_&& arg, Args_... args) {
   ::google::protobuf::internal::TSanWrite(&_impl_);
   SetHasBit(_impl_._has_bits_[0], 0x00000020U);
   _impl_.timestamp_.Set(static_cast<Arg_&&>(arg), args..., GetArena());
-  // @@protoc_insertion_point(field_set:GrpcLibrary.Plugin.timestamp)
+  // @@protoc_insertion_point(field_set:GrpcLibraryV1.Plugin.timestamp)
 }
 inline ::std::string* PROTOBUF_NONNULL Plugin::mutable_timestamp()
     ABSL_ATTRIBUTE_LIFETIME_BOUND {
   SetHasBit(_impl_._has_bits_[0], 0x00000020U);
   ::std::string* _s = _internal_mutable_timestamp();
-  // @@protoc_insertion_point(field_mutable:GrpcLibrary.Plugin.timestamp)
+  // @@protoc_insertion_point(field_mutable:GrpcLibraryV1.Plugin.timestamp)
   return _s;
 }
 inline const ::std::string& Plugin::_internal_timestamp() const {
@@ -11435,7 +11697,7 @@ inline ::std::string* PROTOBUF_NONNULL Plugin::_internal_mutable_timestamp() {
 }
 inline ::std::string* PROTOBUF_NULLABLE Plugin::release_timestamp() {
   ::google::protobuf::internal::TSanWrite(&_impl_);
-  // @@protoc_insertion_point(field_release:GrpcLibrary.Plugin.timestamp)
+  // @@protoc_insertion_point(field_release:GrpcLibraryV1.Plugin.timestamp)
   if (!CheckHasBit(_impl_._has_bits_[0], 0x00000020U)) {
     return nullptr;
   }
@@ -11457,7 +11719,7 @@ inline void Plugin::set_allocated_timestamp(::std::string* PROTOBUF_NULLABLE val
   if (::google::protobuf::internal::DebugHardenForceCopyDefaultString() && _impl_.timestamp_.IsDefault()) {
     _impl_.timestamp_.Set("", GetArena());
   }
-  // @@protoc_insertion_point(field_set_allocated:GrpcLibrary.Plugin.timestamp)
+  // @@protoc_insertion_point(field_set_allocated:GrpcLibraryV1.Plugin.timestamp)
 }
 
 // int32 platform = 7;
@@ -11468,13 +11730,13 @@ inline void Plugin::clear_platform() {
                   0x00000040U);
 }
 inline ::int32_t Plugin::platform() const {
-  // @@protoc_insertion_point(field_get:GrpcLibrary.Plugin.platform)
+  // @@protoc_insertion_point(field_get:GrpcLibraryV1.Plugin.platform)
   return _internal_platform();
 }
 inline void Plugin::set_platform(::int32_t value) {
   _internal_set_platform(value);
   SetHasBit(_impl_._has_bits_[0], 0x00000040U);
-  // @@protoc_insertion_point(field_set:GrpcLibrary.Plugin.platform)
+  // @@protoc_insertion_point(field_set:GrpcLibraryV1.Plugin.platform)
 }
 inline ::int32_t Plugin::_internal_platform() const {
   ::google::protobuf::internal::TSanRead(&_impl_);
@@ -11497,13 +11759,13 @@ inline void MessageInfo::clear_id() {
                   0x00000008U);
 }
 inline ::int64_t MessageInfo::id() const {
-  // @@protoc_insertion_point(field_get:GrpcLibrary.MessageInfo.id)
+  // @@protoc_insertion_point(field_get:GrpcLibraryV1.MessageInfo.id)
   return _internal_id();
 }
 inline void MessageInfo::set_id(::int64_t value) {
   _internal_set_id(value);
   SetHasBit(_impl_._has_bits_[0], 0x00000008U);
-  // @@protoc_insertion_point(field_set:GrpcLibrary.MessageInfo.id)
+  // @@protoc_insertion_point(field_set:GrpcLibraryV1.MessageInfo.id)
 }
 inline ::int64_t MessageInfo::_internal_id() const {
   ::google::protobuf::internal::TSanRead(&_impl_);
@@ -11522,13 +11784,13 @@ inline void MessageInfo::clear_session_id() {
                   0x00000010U);
 }
 inline ::int64_t MessageInfo::session_id() const {
-  // @@protoc_insertion_point(field_get:GrpcLibrary.MessageInfo.session_id)
+  // @@protoc_insertion_point(field_get:GrpcLibraryV1.MessageInfo.session_id)
   return _internal_session_id();
 }
 inline void MessageInfo::set_session_id(::int64_t value) {
   _internal_set_session_id(value);
   SetHasBit(_impl_._has_bits_[0], 0x00000010U);
-  // @@protoc_insertion_point(field_set:GrpcLibrary.MessageInfo.session_id)
+  // @@protoc_insertion_point(field_set:GrpcLibraryV1.MessageInfo.session_id)
 }
 inline ::int64_t MessageInfo::_internal_session_id() const {
   ::google::protobuf::internal::TSanRead(&_impl_);
@@ -11548,7 +11810,7 @@ inline void MessageInfo::clear_role() {
 }
 inline const ::std::string& MessageInfo::role() const
     ABSL_ATTRIBUTE_LIFETIME_BOUND {
-  // @@protoc_insertion_point(field_get:GrpcLibrary.MessageInfo.role)
+  // @@protoc_insertion_point(field_get:GrpcLibraryV1.MessageInfo.role)
   return _internal_role();
 }
 template <typename Arg_, typename... Args_>
@@ -11556,13 +11818,13 @@ PROTOBUF_ALWAYS_INLINE void MessageInfo::set_role(Arg_&& arg, Args_... args) {
   ::google::protobuf::internal::TSanWrite(&_impl_);
   SetHasBit(_impl_._has_bits_[0], 0x00000001U);
   _impl_.role_.Set(static_cast<Arg_&&>(arg), args..., GetArena());
-  // @@protoc_insertion_point(field_set:GrpcLibrary.MessageInfo.role)
+  // @@protoc_insertion_point(field_set:GrpcLibraryV1.MessageInfo.role)
 }
 inline ::std::string* PROTOBUF_NONNULL MessageInfo::mutable_role()
     ABSL_ATTRIBUTE_LIFETIME_BOUND {
   SetHasBit(_impl_._has_bits_[0], 0x00000001U);
   ::std::string* _s = _internal_mutable_role();
-  // @@protoc_insertion_point(field_mutable:GrpcLibrary.MessageInfo.role)
+  // @@protoc_insertion_point(field_mutable:GrpcLibraryV1.MessageInfo.role)
   return _s;
 }
 inline const ::std::string& MessageInfo::_internal_role() const {
@@ -11579,7 +11841,7 @@ inline ::std::string* PROTOBUF_NONNULL MessageInfo::_internal_mutable_role() {
 }
 inline ::std::string* PROTOBUF_NULLABLE MessageInfo::release_role() {
   ::google::protobuf::internal::TSanWrite(&_impl_);
-  // @@protoc_insertion_point(field_release:GrpcLibrary.MessageInfo.role)
+  // @@protoc_insertion_point(field_release:GrpcLibraryV1.MessageInfo.role)
   if (!CheckHasBit(_impl_._has_bits_[0], 0x00000001U)) {
     return nullptr;
   }
@@ -11601,7 +11863,7 @@ inline void MessageInfo::set_allocated_role(::std::string* PROTOBUF_NULLABLE val
   if (::google::protobuf::internal::DebugHardenForceCopyDefaultString() && _impl_.role_.IsDefault()) {
     _impl_.role_.Set("", GetArena());
   }
-  // @@protoc_insertion_point(field_set_allocated:GrpcLibrary.MessageInfo.role)
+  // @@protoc_insertion_point(field_set_allocated:GrpcLibraryV1.MessageInfo.role)
 }
 
 // string content = 4;
@@ -11613,7 +11875,7 @@ inline void MessageInfo::clear_content() {
 }
 inline const ::std::string& MessageInfo::content() const
     ABSL_ATTRIBUTE_LIFETIME_BOUND {
-  // @@protoc_insertion_point(field_get:GrpcLibrary.MessageInfo.content)
+  // @@protoc_insertion_point(field_get:GrpcLibraryV1.MessageInfo.content)
   return _internal_content();
 }
 template <typename Arg_, typename... Args_>
@@ -11621,13 +11883,13 @@ PROTOBUF_ALWAYS_INLINE void MessageInfo::set_content(Arg_&& arg, Args_... args) 
   ::google::protobuf::internal::TSanWrite(&_impl_);
   SetHasBit(_impl_._has_bits_[0], 0x00000002U);
   _impl_.content_.Set(static_cast<Arg_&&>(arg), args..., GetArena());
-  // @@protoc_insertion_point(field_set:GrpcLibrary.MessageInfo.content)
+  // @@protoc_insertion_point(field_set:GrpcLibraryV1.MessageInfo.content)
 }
 inline ::std::string* PROTOBUF_NONNULL MessageInfo::mutable_content()
     ABSL_ATTRIBUTE_LIFETIME_BOUND {
   SetHasBit(_impl_._has_bits_[0], 0x00000002U);
   ::std::string* _s = _internal_mutable_content();
-  // @@protoc_insertion_point(field_mutable:GrpcLibrary.MessageInfo.content)
+  // @@protoc_insertion_point(field_mutable:GrpcLibraryV1.MessageInfo.content)
   return _s;
 }
 inline const ::std::string& MessageInfo::_internal_content() const {
@@ -11644,7 +11906,7 @@ inline ::std::string* PROTOBUF_NONNULL MessageInfo::_internal_mutable_content() 
 }
 inline ::std::string* PROTOBUF_NULLABLE MessageInfo::release_content() {
   ::google::protobuf::internal::TSanWrite(&_impl_);
-  // @@protoc_insertion_point(field_release:GrpcLibrary.MessageInfo.content)
+  // @@protoc_insertion_point(field_release:GrpcLibraryV1.MessageInfo.content)
   if (!CheckHasBit(_impl_._has_bits_[0], 0x00000002U)) {
     return nullptr;
   }
@@ -11666,7 +11928,7 @@ inline void MessageInfo::set_allocated_content(::std::string* PROTOBUF_NULLABLE 
   if (::google::protobuf::internal::DebugHardenForceCopyDefaultString() && _impl_.content_.IsDefault()) {
     _impl_.content_.Set("", GetArena());
   }
-  // @@protoc_insertion_point(field_set_allocated:GrpcLibrary.MessageInfo.content)
+  // @@protoc_insertion_point(field_set_allocated:GrpcLibraryV1.MessageInfo.content)
 }
 
 // int64 prev_message_id = 5;
@@ -11677,13 +11939,13 @@ inline void MessageInfo::clear_prev_message_id() {
                   0x00000020U);
 }
 inline ::int64_t MessageInfo::prev_message_id() const {
-  // @@protoc_insertion_point(field_get:GrpcLibrary.MessageInfo.prev_message_id)
+  // @@protoc_insertion_point(field_get:GrpcLibraryV1.MessageInfo.prev_message_id)
   return _internal_prev_message_id();
 }
 inline void MessageInfo::set_prev_message_id(::int64_t value) {
   _internal_set_prev_message_id(value);
   SetHasBit(_impl_._has_bits_[0], 0x00000020U);
-  // @@protoc_insertion_point(field_set:GrpcLibrary.MessageInfo.prev_message_id)
+  // @@protoc_insertion_point(field_set:GrpcLibraryV1.MessageInfo.prev_message_id)
 }
 inline ::int64_t MessageInfo::_internal_prev_message_id() const {
   ::google::protobuf::internal::TSanRead(&_impl_);
@@ -11703,7 +11965,7 @@ inline void MessageInfo::clear_timestamp() {
 }
 inline const ::std::string& MessageInfo::timestamp() const
     ABSL_ATTRIBUTE_LIFETIME_BOUND {
-  // @@protoc_insertion_point(field_get:GrpcLibrary.MessageInfo.timestamp)
+  // @@protoc_insertion_point(field_get:GrpcLibraryV1.MessageInfo.timestamp)
   return _internal_timestamp();
 }
 template <typename Arg_, typename... Args_>
@@ -11711,13 +11973,13 @@ PROTOBUF_ALWAYS_INLINE void MessageInfo::set_timestamp(Arg_&& arg, Args_... args
   ::google::protobuf::internal::TSanWrite(&_impl_);
   SetHasBit(_impl_._has_bits_[0], 0x00000004U);
   _impl_.timestamp_.Set(static_cast<Arg_&&>(arg), args..., GetArena());
-  // @@protoc_insertion_point(field_set:GrpcLibrary.MessageInfo.timestamp)
+  // @@protoc_insertion_point(field_set:GrpcLibraryV1.MessageInfo.timestamp)
 }
 inline ::std::string* PROTOBUF_NONNULL MessageInfo::mutable_timestamp()
     ABSL_ATTRIBUTE_LIFETIME_BOUND {
   SetHasBit(_impl_._has_bits_[0], 0x00000004U);
   ::std::string* _s = _internal_mutable_timestamp();
-  // @@protoc_insertion_point(field_mutable:GrpcLibrary.MessageInfo.timestamp)
+  // @@protoc_insertion_point(field_mutable:GrpcLibraryV1.MessageInfo.timestamp)
   return _s;
 }
 inline const ::std::string& MessageInfo::_internal_timestamp() const {
@@ -11734,7 +11996,7 @@ inline ::std::string* PROTOBUF_NONNULL MessageInfo::_internal_mutable_timestamp(
 }
 inline ::std::string* PROTOBUF_NULLABLE MessageInfo::release_timestamp() {
   ::google::protobuf::internal::TSanWrite(&_impl_);
-  // @@protoc_insertion_point(field_release:GrpcLibrary.MessageInfo.timestamp)
+  // @@protoc_insertion_point(field_release:GrpcLibraryV1.MessageInfo.timestamp)
   if (!CheckHasBit(_impl_._has_bits_[0], 0x00000004U)) {
     return nullptr;
   }
@@ -11756,7 +12018,7 @@ inline void MessageInfo::set_allocated_timestamp(::std::string* PROTOBUF_NULLABL
   if (::google::protobuf::internal::DebugHardenForceCopyDefaultString() && _impl_.timestamp_.IsDefault()) {
     _impl_.timestamp_.Set("", GetArena());
   }
-  // @@protoc_insertion_point(field_set_allocated:GrpcLibrary.MessageInfo.timestamp)
+  // @@protoc_insertion_point(field_set_allocated:GrpcLibraryV1.MessageInfo.timestamp)
 }
 
 // -------------------------------------------------------------------
@@ -11771,13 +12033,13 @@ inline void SamplingParam::clear_penalty_last_n() {
                   0x00000001U);
 }
 inline ::int32_t SamplingParam::penalty_last_n() const {
-  // @@protoc_insertion_point(field_get:GrpcLibrary.SamplingParam.penalty_last_n)
+  // @@protoc_insertion_point(field_get:GrpcLibraryV1.SamplingParam.penalty_last_n)
   return _internal_penalty_last_n();
 }
 inline void SamplingParam::set_penalty_last_n(::int32_t value) {
   _internal_set_penalty_last_n(value);
   SetHasBit(_impl_._has_bits_[0], 0x00000001U);
-  // @@protoc_insertion_point(field_set:GrpcLibrary.SamplingParam.penalty_last_n)
+  // @@protoc_insertion_point(field_set:GrpcLibraryV1.SamplingParam.penalty_last_n)
 }
 inline ::int32_t SamplingParam::_internal_penalty_last_n() const {
   ::google::protobuf::internal::TSanRead(&_impl_);
@@ -11796,13 +12058,13 @@ inline void SamplingParam::clear_penalty_repeat() {
                   0x00000002U);
 }
 inline float SamplingParam::penalty_repeat() const {
-  // @@protoc_insertion_point(field_get:GrpcLibrary.SamplingParam.penalty_repeat)
+  // @@protoc_insertion_point(field_get:GrpcLibraryV1.SamplingParam.penalty_repeat)
   return _internal_penalty_repeat();
 }
 inline void SamplingParam::set_penalty_repeat(float value) {
   _internal_set_penalty_repeat(value);
   SetHasBit(_impl_._has_bits_[0], 0x00000002U);
-  // @@protoc_insertion_point(field_set:GrpcLibrary.SamplingParam.penalty_repeat)
+  // @@protoc_insertion_point(field_set:GrpcLibraryV1.SamplingParam.penalty_repeat)
 }
 inline float SamplingParam::_internal_penalty_repeat() const {
   ::google::protobuf::internal::TSanRead(&_impl_);
@@ -11821,13 +12083,13 @@ inline void SamplingParam::clear_penalty_freq() {
                   0x00000004U);
 }
 inline float SamplingParam::penalty_freq() const {
-  // @@protoc_insertion_point(field_get:GrpcLibrary.SamplingParam.penalty_freq)
+  // @@protoc_insertion_point(field_get:GrpcLibraryV1.SamplingParam.penalty_freq)
   return _internal_penalty_freq();
 }
 inline void SamplingParam::set_penalty_freq(float value) {
   _internal_set_penalty_freq(value);
   SetHasBit(_impl_._has_bits_[0], 0x00000004U);
-  // @@protoc_insertion_point(field_set:GrpcLibrary.SamplingParam.penalty_freq)
+  // @@protoc_insertion_point(field_set:GrpcLibraryV1.SamplingParam.penalty_freq)
 }
 inline float SamplingParam::_internal_penalty_freq() const {
   ::google::protobuf::internal::TSanRead(&_impl_);
@@ -11846,13 +12108,13 @@ inline void SamplingParam::clear_penalty_present() {
                   0x00000008U);
 }
 inline float SamplingParam::penalty_present() const {
-  // @@protoc_insertion_point(field_get:GrpcLibrary.SamplingParam.penalty_present)
+  // @@protoc_insertion_point(field_get:GrpcLibraryV1.SamplingParam.penalty_present)
   return _internal_penalty_present();
 }
 inline void SamplingParam::set_penalty_present(float value) {
   _internal_set_penalty_present(value);
   SetHasBit(_impl_._has_bits_[0], 0x00000008U);
-  // @@protoc_insertion_point(field_set:GrpcLibrary.SamplingParam.penalty_present)
+  // @@protoc_insertion_point(field_set:GrpcLibraryV1.SamplingParam.penalty_present)
 }
 inline float SamplingParam::_internal_penalty_present() const {
   ::google::protobuf::internal::TSanRead(&_impl_);
@@ -11871,13 +12133,13 @@ inline void SamplingParam::clear_temperature() {
                   0x00000010U);
 }
 inline float SamplingParam::temperature() const {
-  // @@protoc_insertion_point(field_get:GrpcLibrary.SamplingParam.temperature)
+  // @@protoc_insertion_point(field_get:GrpcLibraryV1.SamplingParam.temperature)
   return _internal_temperature();
 }
 inline void SamplingParam::set_temperature(float value) {
   _internal_set_temperature(value);
   SetHasBit(_impl_._has_bits_[0], 0x00000010U);
-  // @@protoc_insertion_point(field_set:GrpcLibrary.SamplingParam.temperature)
+  // @@protoc_insertion_point(field_set:GrpcLibraryV1.SamplingParam.temperature)
 }
 inline float SamplingParam::_internal_temperature() const {
   ::google::protobuf::internal::TSanRead(&_impl_);
@@ -11896,13 +12158,13 @@ inline void SamplingParam::clear_temperature_ext() {
                   0x00000020U);
 }
 inline float SamplingParam::temperature_ext() const {
-  // @@protoc_insertion_point(field_get:GrpcLibrary.SamplingParam.temperature_ext)
+  // @@protoc_insertion_point(field_get:GrpcLibraryV1.SamplingParam.temperature_ext)
   return _internal_temperature_ext();
 }
 inline void SamplingParam::set_temperature_ext(float value) {
   _internal_set_temperature_ext(value);
   SetHasBit(_impl_._has_bits_[0], 0x00000020U);
-  // @@protoc_insertion_point(field_set:GrpcLibrary.SamplingParam.temperature_ext)
+  // @@protoc_insertion_point(field_set:GrpcLibraryV1.SamplingParam.temperature_ext)
 }
 inline float SamplingParam::_internal_temperature_ext() const {
   ::google::protobuf::internal::TSanRead(&_impl_);
@@ -11921,13 +12183,13 @@ inline void SamplingParam::clear_temperature_ext_delta() {
                   0x00000040U);
 }
 inline float SamplingParam::temperature_ext_delta() const {
-  // @@protoc_insertion_point(field_get:GrpcLibrary.SamplingParam.temperature_ext_delta)
+  // @@protoc_insertion_point(field_get:GrpcLibraryV1.SamplingParam.temperature_ext_delta)
   return _internal_temperature_ext_delta();
 }
 inline void SamplingParam::set_temperature_ext_delta(float value) {
   _internal_set_temperature_ext_delta(value);
   SetHasBit(_impl_._has_bits_[0], 0x00000040U);
-  // @@protoc_insertion_point(field_set:GrpcLibrary.SamplingParam.temperature_ext_delta)
+  // @@protoc_insertion_point(field_set:GrpcLibraryV1.SamplingParam.temperature_ext_delta)
 }
 inline float SamplingParam::_internal_temperature_ext_delta() const {
   ::google::protobuf::internal::TSanRead(&_impl_);
@@ -11946,13 +12208,13 @@ inline void SamplingParam::clear_temperature_ext_exponent() {
                   0x00000080U);
 }
 inline float SamplingParam::temperature_ext_exponent() const {
-  // @@protoc_insertion_point(field_get:GrpcLibrary.SamplingParam.temperature_ext_exponent)
+  // @@protoc_insertion_point(field_get:GrpcLibraryV1.SamplingParam.temperature_ext_exponent)
   return _internal_temperature_ext_exponent();
 }
 inline void SamplingParam::set_temperature_ext_exponent(float value) {
   _internal_set_temperature_ext_exponent(value);
   SetHasBit(_impl_._has_bits_[0], 0x00000080U);
-  // @@protoc_insertion_point(field_set:GrpcLibrary.SamplingParam.temperature_ext_exponent)
+  // @@protoc_insertion_point(field_set:GrpcLibraryV1.SamplingParam.temperature_ext_exponent)
 }
 inline float SamplingParam::_internal_temperature_ext_exponent() const {
   ::google::protobuf::internal::TSanRead(&_impl_);
@@ -11971,13 +12233,13 @@ inline void SamplingParam::clear_seed() {
                   0x00000100U);
 }
 inline ::uint32_t SamplingParam::seed() const {
-  // @@protoc_insertion_point(field_get:GrpcLibrary.SamplingParam.seed)
+  // @@protoc_insertion_point(field_get:GrpcLibraryV1.SamplingParam.seed)
   return _internal_seed();
 }
 inline void SamplingParam::set_seed(::uint32_t value) {
   _internal_set_seed(value);
   SetHasBit(_impl_._has_bits_[0], 0x00000100U);
-  // @@protoc_insertion_point(field_set:GrpcLibrary.SamplingParam.seed)
+  // @@protoc_insertion_point(field_set:GrpcLibraryV1.SamplingParam.seed)
 }
 inline ::uint32_t SamplingParam::_internal_seed() const {
   ::google::protobuf::internal::TSanRead(&_impl_);
@@ -11996,13 +12258,13 @@ inline void SamplingParam::clear_top_k() {
                   0x00000200U);
 }
 inline ::int32_t SamplingParam::top_k() const {
-  // @@protoc_insertion_point(field_get:GrpcLibrary.SamplingParam.top_k)
+  // @@protoc_insertion_point(field_get:GrpcLibraryV1.SamplingParam.top_k)
   return _internal_top_k();
 }
 inline void SamplingParam::set_top_k(::int32_t value) {
   _internal_set_top_k(value);
   SetHasBit(_impl_._has_bits_[0], 0x00000200U);
-  // @@protoc_insertion_point(field_set:GrpcLibrary.SamplingParam.top_k)
+  // @@protoc_insertion_point(field_set:GrpcLibraryV1.SamplingParam.top_k)
 }
 inline ::int32_t SamplingParam::_internal_top_k() const {
   ::google::protobuf::internal::TSanRead(&_impl_);
@@ -12021,13 +12283,13 @@ inline void SamplingParam::clear_top_p() {
                   0x00000400U);
 }
 inline float SamplingParam::top_p() const {
-  // @@protoc_insertion_point(field_get:GrpcLibrary.SamplingParam.top_p)
+  // @@protoc_insertion_point(field_get:GrpcLibraryV1.SamplingParam.top_p)
   return _internal_top_p();
 }
 inline void SamplingParam::set_top_p(float value) {
   _internal_set_top_p(value);
   SetHasBit(_impl_._has_bits_[0], 0x00000400U);
-  // @@protoc_insertion_point(field_set:GrpcLibrary.SamplingParam.top_p)
+  // @@protoc_insertion_point(field_set:GrpcLibraryV1.SamplingParam.top_p)
 }
 inline float SamplingParam::_internal_top_p() const {
   ::google::protobuf::internal::TSanRead(&_impl_);
@@ -12046,13 +12308,13 @@ inline void SamplingParam::clear_top_p_min_keep() {
                   0x00000800U);
 }
 inline ::int32_t SamplingParam::top_p_min_keep() const {
-  // @@protoc_insertion_point(field_get:GrpcLibrary.SamplingParam.top_p_min_keep)
+  // @@protoc_insertion_point(field_get:GrpcLibraryV1.SamplingParam.top_p_min_keep)
   return _internal_top_p_min_keep();
 }
 inline void SamplingParam::set_top_p_min_keep(::int32_t value) {
   _internal_set_top_p_min_keep(value);
   SetHasBit(_impl_._has_bits_[0], 0x00000800U);
-  // @@protoc_insertion_point(field_set:GrpcLibrary.SamplingParam.top_p_min_keep)
+  // @@protoc_insertion_point(field_set:GrpcLibraryV1.SamplingParam.top_p_min_keep)
 }
 inline ::int32_t SamplingParam::_internal_top_p_min_keep() const {
   ::google::protobuf::internal::TSanRead(&_impl_);
@@ -12071,13 +12333,13 @@ inline void SamplingParam::clear_min_p() {
                   0x00001000U);
 }
 inline float SamplingParam::min_p() const {
-  // @@protoc_insertion_point(field_get:GrpcLibrary.SamplingParam.min_p)
+  // @@protoc_insertion_point(field_get:GrpcLibraryV1.SamplingParam.min_p)
   return _internal_min_p();
 }
 inline void SamplingParam::set_min_p(float value) {
   _internal_set_min_p(value);
   SetHasBit(_impl_._has_bits_[0], 0x00001000U);
-  // @@protoc_insertion_point(field_set:GrpcLibrary.SamplingParam.min_p)
+  // @@protoc_insertion_point(field_set:GrpcLibraryV1.SamplingParam.min_p)
 }
 inline float SamplingParam::_internal_min_p() const {
   ::google::protobuf::internal::TSanRead(&_impl_);
@@ -12096,13 +12358,13 @@ inline void SamplingParam::clear_min_p_min_keep() {
                   0x00002000U);
 }
 inline ::int32_t SamplingParam::min_p_min_keep() const {
-  // @@protoc_insertion_point(field_get:GrpcLibrary.SamplingParam.min_p_min_keep)
+  // @@protoc_insertion_point(field_get:GrpcLibraryV1.SamplingParam.min_p_min_keep)
   return _internal_min_p_min_keep();
 }
 inline void SamplingParam::set_min_p_min_keep(::int32_t value) {
   _internal_set_min_p_min_keep(value);
   SetHasBit(_impl_._has_bits_[0], 0x00002000U);
-  // @@protoc_insertion_point(field_set:GrpcLibrary.SamplingParam.min_p_min_keep)
+  // @@protoc_insertion_point(field_set:GrpcLibraryV1.SamplingParam.min_p_min_keep)
 }
 inline ::int32_t SamplingParam::_internal_min_p_min_keep() const {
   ::google::protobuf::internal::TSanRead(&_impl_);
@@ -12125,13 +12387,13 @@ inline void ContextParam::clear_window_size() {
                   0x00000004U);
 }
 inline ::int32_t ContextParam::window_size() const {
-  // @@protoc_insertion_point(field_get:GrpcLibrary.ContextParam.window_size)
+  // @@protoc_insertion_point(field_get:GrpcLibraryV1.ContextParam.window_size)
   return _internal_window_size();
 }
 inline void ContextParam::set_window_size(::int32_t value) {
   _internal_set_window_size(value);
   SetHasBit(_impl_._has_bits_[0], 0x00000004U);
-  // @@protoc_insertion_point(field_set:GrpcLibrary.ContextParam.window_size)
+  // @@protoc_insertion_point(field_set:GrpcLibraryV1.ContextParam.window_size)
 }
 inline ::int32_t ContextParam::_internal_window_size() const {
   ::google::protobuf::internal::TSanRead(&_impl_);
@@ -12151,7 +12413,7 @@ inline void ContextParam::clear_stop_words() {
 }
 inline const ::std::string& ContextParam::stop_words() const
     ABSL_ATTRIBUTE_LIFETIME_BOUND {
-  // @@protoc_insertion_point(field_get:GrpcLibrary.ContextParam.stop_words)
+  // @@protoc_insertion_point(field_get:GrpcLibraryV1.ContextParam.stop_words)
   return _internal_stop_words();
 }
 template <typename Arg_, typename... Args_>
@@ -12159,13 +12421,13 @@ PROTOBUF_ALWAYS_INLINE void ContextParam::set_stop_words(Arg_&& arg, Args_... ar
   ::google::protobuf::internal::TSanWrite(&_impl_);
   SetHasBit(_impl_._has_bits_[0], 0x00000001U);
   _impl_.stop_words_.Set(static_cast<Arg_&&>(arg), args..., GetArena());
-  // @@protoc_insertion_point(field_set:GrpcLibrary.ContextParam.stop_words)
+  // @@protoc_insertion_point(field_set:GrpcLibraryV1.ContextParam.stop_words)
 }
 inline ::std::string* PROTOBUF_NONNULL ContextParam::mutable_stop_words()
     ABSL_ATTRIBUTE_LIFETIME_BOUND {
   SetHasBit(_impl_._has_bits_[0], 0x00000001U);
   ::std::string* _s = _internal_mutable_stop_words();
-  // @@protoc_insertion_point(field_mutable:GrpcLibrary.ContextParam.stop_words)
+  // @@protoc_insertion_point(field_mutable:GrpcLibraryV1.ContextParam.stop_words)
   return _s;
 }
 inline const ::std::string& ContextParam::_internal_stop_words() const {
@@ -12182,7 +12444,7 @@ inline ::std::string* PROTOBUF_NONNULL ContextParam::_internal_mutable_stop_word
 }
 inline ::std::string* PROTOBUF_NULLABLE ContextParam::release_stop_words() {
   ::google::protobuf::internal::TSanWrite(&_impl_);
-  // @@protoc_insertion_point(field_release:GrpcLibrary.ContextParam.stop_words)
+  // @@protoc_insertion_point(field_release:GrpcLibraryV1.ContextParam.stop_words)
   if (!CheckHasBit(_impl_._has_bits_[0], 0x00000001U)) {
     return nullptr;
   }
@@ -12204,7 +12466,7 @@ inline void ContextParam::set_allocated_stop_words(::std::string* PROTOBUF_NULLA
   if (::google::protobuf::internal::DebugHardenForceCopyDefaultString() && _impl_.stop_words_.IsDefault()) {
     _impl_.stop_words_.Set("", GetArena());
   }
-  // @@protoc_insertion_point(field_set_allocated:GrpcLibrary.ContextParam.stop_words)
+  // @@protoc_insertion_point(field_set_allocated:GrpcLibraryV1.ContextParam.stop_words)
 }
 
 // int32 n_ctx = 3;
@@ -12215,13 +12477,13 @@ inline void ContextParam::clear_n_ctx() {
                   0x00000008U);
 }
 inline ::int32_t ContextParam::n_ctx() const {
-  // @@protoc_insertion_point(field_get:GrpcLibrary.ContextParam.n_ctx)
+  // @@protoc_insertion_point(field_get:GrpcLibraryV1.ContextParam.n_ctx)
   return _internal_n_ctx();
 }
 inline void ContextParam::set_n_ctx(::int32_t value) {
   _internal_set_n_ctx(value);
   SetHasBit(_impl_._has_bits_[0], 0x00000008U);
-  // @@protoc_insertion_point(field_set:GrpcLibrary.ContextParam.n_ctx)
+  // @@protoc_insertion_point(field_set:GrpcLibraryV1.ContextParam.n_ctx)
 }
 inline ::int32_t ContextParam::_internal_n_ctx() const {
   ::google::protobuf::internal::TSanRead(&_impl_);
@@ -12240,13 +12502,13 @@ inline void ContextParam::clear_n_batch() {
                   0x00000010U);
 }
 inline ::int32_t ContextParam::n_batch() const {
-  // @@protoc_insertion_point(field_get:GrpcLibrary.ContextParam.n_batch)
+  // @@protoc_insertion_point(field_get:GrpcLibraryV1.ContextParam.n_batch)
   return _internal_n_batch();
 }
 inline void ContextParam::set_n_batch(::int32_t value) {
   _internal_set_n_batch(value);
   SetHasBit(_impl_._has_bits_[0], 0x00000010U);
-  // @@protoc_insertion_point(field_set:GrpcLibrary.ContextParam.n_batch)
+  // @@protoc_insertion_point(field_set:GrpcLibraryV1.ContextParam.n_batch)
 }
 inline ::int32_t ContextParam::_internal_n_batch() const {
   ::google::protobuf::internal::TSanRead(&_impl_);
@@ -12265,13 +12527,13 @@ inline void ContextParam::clear_n_ubatch() {
                   0x00000020U);
 }
 inline ::int32_t ContextParam::n_ubatch() const {
-  // @@protoc_insertion_point(field_get:GrpcLibrary.ContextParam.n_ubatch)
+  // @@protoc_insertion_point(field_get:GrpcLibraryV1.ContextParam.n_ubatch)
   return _internal_n_ubatch();
 }
 inline void ContextParam::set_n_ubatch(::int32_t value) {
   _internal_set_n_ubatch(value);
   SetHasBit(_impl_._has_bits_[0], 0x00000020U);
-  // @@protoc_insertion_point(field_set:GrpcLibrary.ContextParam.n_ubatch)
+  // @@protoc_insertion_point(field_set:GrpcLibraryV1.ContextParam.n_ubatch)
 }
 inline ::int32_t ContextParam::_internal_n_ubatch() const {
   ::google::protobuf::internal::TSanRead(&_impl_);
@@ -12290,13 +12552,13 @@ inline void ContextParam::clear_n_seq_max() {
                   0x00000040U);
 }
 inline ::int32_t ContextParam::n_seq_max() const {
-  // @@protoc_insertion_point(field_get:GrpcLibrary.ContextParam.n_seq_max)
+  // @@protoc_insertion_point(field_get:GrpcLibraryV1.ContextParam.n_seq_max)
   return _internal_n_seq_max();
 }
 inline void ContextParam::set_n_seq_max(::int32_t value) {
   _internal_set_n_seq_max(value);
   SetHasBit(_impl_._has_bits_[0], 0x00000040U);
-  // @@protoc_insertion_point(field_set:GrpcLibrary.ContextParam.n_seq_max)
+  // @@protoc_insertion_point(field_set:GrpcLibraryV1.ContextParam.n_seq_max)
 }
 inline ::int32_t ContextParam::_internal_n_seq_max() const {
   ::google::protobuf::internal::TSanRead(&_impl_);
@@ -12315,13 +12577,13 @@ inline void ContextParam::clear_n_threads() {
                   0x00000080U);
 }
 inline ::int32_t ContextParam::n_threads() const {
-  // @@protoc_insertion_point(field_get:GrpcLibrary.ContextParam.n_threads)
+  // @@protoc_insertion_point(field_get:GrpcLibraryV1.ContextParam.n_threads)
   return _internal_n_threads();
 }
 inline void ContextParam::set_n_threads(::int32_t value) {
   _internal_set_n_threads(value);
   SetHasBit(_impl_._has_bits_[0], 0x00000080U);
-  // @@protoc_insertion_point(field_set:GrpcLibrary.ContextParam.n_threads)
+  // @@protoc_insertion_point(field_set:GrpcLibraryV1.ContextParam.n_threads)
 }
 inline ::int32_t ContextParam::_internal_n_threads() const {
   ::google::protobuf::internal::TSanRead(&_impl_);
@@ -12340,13 +12602,13 @@ inline void ContextParam::clear_n_threads_batch() {
                   0x00000100U);
 }
 inline ::int32_t ContextParam::n_threads_batch() const {
-  // @@protoc_insertion_point(field_get:GrpcLibrary.ContextParam.n_threads_batch)
+  // @@protoc_insertion_point(field_get:GrpcLibraryV1.ContextParam.n_threads_batch)
   return _internal_n_threads_batch();
 }
 inline void ContextParam::set_n_threads_batch(::int32_t value) {
   _internal_set_n_threads_batch(value);
   SetHasBit(_impl_._has_bits_[0], 0x00000100U);
-  // @@protoc_insertion_point(field_set:GrpcLibrary.ContextParam.n_threads_batch)
+  // @@protoc_insertion_point(field_set:GrpcLibraryV1.ContextParam.n_threads_batch)
 }
 inline ::int32_t ContextParam::_internal_n_threads_batch() const {
   ::google::protobuf::internal::TSanRead(&_impl_);
@@ -12365,13 +12627,13 @@ inline void ContextParam::clear_rope_freq_base() {
                   0x00000200U);
 }
 inline float ContextParam::rope_freq_base() const {
-  // @@protoc_insertion_point(field_get:GrpcLibrary.ContextParam.rope_freq_base)
+  // @@protoc_insertion_point(field_get:GrpcLibraryV1.ContextParam.rope_freq_base)
   return _internal_rope_freq_base();
 }
 inline void ContextParam::set_rope_freq_base(float value) {
   _internal_set_rope_freq_base(value);
   SetHasBit(_impl_._has_bits_[0], 0x00000200U);
-  // @@protoc_insertion_point(field_set:GrpcLibrary.ContextParam.rope_freq_base)
+  // @@protoc_insertion_point(field_set:GrpcLibraryV1.ContextParam.rope_freq_base)
 }
 inline float ContextParam::_internal_rope_freq_base() const {
   ::google::protobuf::internal::TSanRead(&_impl_);
@@ -12390,13 +12652,13 @@ inline void ContextParam::clear_rope_freq_scale() {
                   0x00000400U);
 }
 inline float ContextParam::rope_freq_scale() const {
-  // @@protoc_insertion_point(field_get:GrpcLibrary.ContextParam.rope_freq_scale)
+  // @@protoc_insertion_point(field_get:GrpcLibraryV1.ContextParam.rope_freq_scale)
   return _internal_rope_freq_scale();
 }
 inline void ContextParam::set_rope_freq_scale(float value) {
   _internal_set_rope_freq_scale(value);
   SetHasBit(_impl_._has_bits_[0], 0x00000400U);
-  // @@protoc_insertion_point(field_set:GrpcLibrary.ContextParam.rope_freq_scale)
+  // @@protoc_insertion_point(field_set:GrpcLibraryV1.ContextParam.rope_freq_scale)
 }
 inline float ContextParam::_internal_rope_freq_scale() const {
   ::google::protobuf::internal::TSanRead(&_impl_);
@@ -12415,13 +12677,13 @@ inline void ContextParam::clear_yarn_ext_factor() {
                   0x00000800U);
 }
 inline float ContextParam::yarn_ext_factor() const {
-  // @@protoc_insertion_point(field_get:GrpcLibrary.ContextParam.yarn_ext_factor)
+  // @@protoc_insertion_point(field_get:GrpcLibraryV1.ContextParam.yarn_ext_factor)
   return _internal_yarn_ext_factor();
 }
 inline void ContextParam::set_yarn_ext_factor(float value) {
   _internal_set_yarn_ext_factor(value);
   SetHasBit(_impl_._has_bits_[0], 0x00000800U);
-  // @@protoc_insertion_point(field_set:GrpcLibrary.ContextParam.yarn_ext_factor)
+  // @@protoc_insertion_point(field_set:GrpcLibraryV1.ContextParam.yarn_ext_factor)
 }
 inline float ContextParam::_internal_yarn_ext_factor() const {
   ::google::protobuf::internal::TSanRead(&_impl_);
@@ -12440,13 +12702,13 @@ inline void ContextParam::clear_yarn_attn_factor() {
                   0x00001000U);
 }
 inline float ContextParam::yarn_attn_factor() const {
-  // @@protoc_insertion_point(field_get:GrpcLibrary.ContextParam.yarn_attn_factor)
+  // @@protoc_insertion_point(field_get:GrpcLibraryV1.ContextParam.yarn_attn_factor)
   return _internal_yarn_attn_factor();
 }
 inline void ContextParam::set_yarn_attn_factor(float value) {
   _internal_set_yarn_attn_factor(value);
   SetHasBit(_impl_._has_bits_[0], 0x00001000U);
-  // @@protoc_insertion_point(field_set:GrpcLibrary.ContextParam.yarn_attn_factor)
+  // @@protoc_insertion_point(field_set:GrpcLibraryV1.ContextParam.yarn_attn_factor)
 }
 inline float ContextParam::_internal_yarn_attn_factor() const {
   ::google::protobuf::internal::TSanRead(&_impl_);
@@ -12465,13 +12727,13 @@ inline void ContextParam::clear_yarn_beta_fast() {
                   0x00002000U);
 }
 inline float ContextParam::yarn_beta_fast() const {
-  // @@protoc_insertion_point(field_get:GrpcLibrary.ContextParam.yarn_beta_fast)
+  // @@protoc_insertion_point(field_get:GrpcLibraryV1.ContextParam.yarn_beta_fast)
   return _internal_yarn_beta_fast();
 }
 inline void ContextParam::set_yarn_beta_fast(float value) {
   _internal_set_yarn_beta_fast(value);
   SetHasBit(_impl_._has_bits_[0], 0x00002000U);
-  // @@protoc_insertion_point(field_set:GrpcLibrary.ContextParam.yarn_beta_fast)
+  // @@protoc_insertion_point(field_set:GrpcLibraryV1.ContextParam.yarn_beta_fast)
 }
 inline float ContextParam::_internal_yarn_beta_fast() const {
   ::google::protobuf::internal::TSanRead(&_impl_);
@@ -12490,13 +12752,13 @@ inline void ContextParam::clear_yarn_beta_slow() {
                   0x00004000U);
 }
 inline float ContextParam::yarn_beta_slow() const {
-  // @@protoc_insertion_point(field_get:GrpcLibrary.ContextParam.yarn_beta_slow)
+  // @@protoc_insertion_point(field_get:GrpcLibraryV1.ContextParam.yarn_beta_slow)
   return _internal_yarn_beta_slow();
 }
 inline void ContextParam::set_yarn_beta_slow(float value) {
   _internal_set_yarn_beta_slow(value);
   SetHasBit(_impl_._has_bits_[0], 0x00004000U);
-  // @@protoc_insertion_point(field_set:GrpcLibrary.ContextParam.yarn_beta_slow)
+  // @@protoc_insertion_point(field_set:GrpcLibraryV1.ContextParam.yarn_beta_slow)
 }
 inline float ContextParam::_internal_yarn_beta_slow() const {
   ::google::protobuf::internal::TSanRead(&_impl_);
@@ -12515,13 +12777,13 @@ inline void ContextParam::clear_yarn_orig_ctx() {
                   0x00008000U);
 }
 inline ::int32_t ContextParam::yarn_orig_ctx() const {
-  // @@protoc_insertion_point(field_get:GrpcLibrary.ContextParam.yarn_orig_ctx)
+  // @@protoc_insertion_point(field_get:GrpcLibraryV1.ContextParam.yarn_orig_ctx)
   return _internal_yarn_orig_ctx();
 }
 inline void ContextParam::set_yarn_orig_ctx(::int32_t value) {
   _internal_set_yarn_orig_ctx(value);
   SetHasBit(_impl_._has_bits_[0], 0x00008000U);
-  // @@protoc_insertion_point(field_set:GrpcLibrary.ContextParam.yarn_orig_ctx)
+  // @@protoc_insertion_point(field_set:GrpcLibraryV1.ContextParam.yarn_orig_ctx)
 }
 inline ::int32_t ContextParam::_internal_yarn_orig_ctx() const {
   ::google::protobuf::internal::TSanRead(&_impl_);
@@ -12540,13 +12802,13 @@ inline void ContextParam::clear_defrag_thold() {
                   0x00010000U);
 }
 inline float ContextParam::defrag_thold() const {
-  // @@protoc_insertion_point(field_get:GrpcLibrary.ContextParam.defrag_thold)
+  // @@protoc_insertion_point(field_get:GrpcLibraryV1.ContextParam.defrag_thold)
   return _internal_defrag_thold();
 }
 inline void ContextParam::set_defrag_thold(float value) {
   _internal_set_defrag_thold(value);
   SetHasBit(_impl_._has_bits_[0], 0x00010000U);
-  // @@protoc_insertion_point(field_set:GrpcLibrary.ContextParam.defrag_thold)
+  // @@protoc_insertion_point(field_set:GrpcLibraryV1.ContextParam.defrag_thold)
 }
 inline float ContextParam::_internal_defrag_thold() const {
   ::google::protobuf::internal::TSanRead(&_impl_);
@@ -12565,13 +12827,13 @@ inline void ContextParam::clear_embeddings() {
                   0x00020000U);
 }
 inline bool ContextParam::embeddings() const {
-  // @@protoc_insertion_point(field_get:GrpcLibrary.ContextParam.embeddings)
+  // @@protoc_insertion_point(field_get:GrpcLibraryV1.ContextParam.embeddings)
   return _internal_embeddings();
 }
 inline void ContextParam::set_embeddings(bool value) {
   _internal_set_embeddings(value);
   SetHasBit(_impl_._has_bits_[0], 0x00020000U);
-  // @@protoc_insertion_point(field_set:GrpcLibrary.ContextParam.embeddings)
+  // @@protoc_insertion_point(field_set:GrpcLibraryV1.ContextParam.embeddings)
 }
 inline bool ContextParam::_internal_embeddings() const {
   ::google::protobuf::internal::TSanRead(&_impl_);
@@ -12590,13 +12852,13 @@ inline void ContextParam::clear_offload_kqv() {
                   0x00040000U);
 }
 inline bool ContextParam::offload_kqv() const {
-  // @@protoc_insertion_point(field_get:GrpcLibrary.ContextParam.offload_kqv)
+  // @@protoc_insertion_point(field_get:GrpcLibraryV1.ContextParam.offload_kqv)
   return _internal_offload_kqv();
 }
 inline void ContextParam::set_offload_kqv(bool value) {
   _internal_set_offload_kqv(value);
   SetHasBit(_impl_._has_bits_[0], 0x00040000U);
-  // @@protoc_insertion_point(field_set:GrpcLibrary.ContextParam.offload_kqv)
+  // @@protoc_insertion_point(field_set:GrpcLibraryV1.ContextParam.offload_kqv)
 }
 inline bool ContextParam::_internal_offload_kqv() const {
   ::google::protobuf::internal::TSanRead(&_impl_);
@@ -12615,13 +12877,13 @@ inline void ContextParam::clear_no_perf() {
                   0x00080000U);
 }
 inline bool ContextParam::no_perf() const {
-  // @@protoc_insertion_point(field_get:GrpcLibrary.ContextParam.no_perf)
+  // @@protoc_insertion_point(field_get:GrpcLibraryV1.ContextParam.no_perf)
   return _internal_no_perf();
 }
 inline void ContextParam::set_no_perf(bool value) {
   _internal_set_no_perf(value);
   SetHasBit(_impl_._has_bits_[0], 0x00080000U);
-  // @@protoc_insertion_point(field_set:GrpcLibrary.ContextParam.no_perf)
+  // @@protoc_insertion_point(field_set:GrpcLibraryV1.ContextParam.no_perf)
 }
 inline bool ContextParam::_internal_no_perf() const {
   ::google::protobuf::internal::TSanRead(&_impl_);
@@ -12640,13 +12902,13 @@ inline void ContextParam::clear_op_offload() {
                   0x00100000U);
 }
 inline bool ContextParam::op_offload() const {
-  // @@protoc_insertion_point(field_get:GrpcLibrary.ContextParam.op_offload)
+  // @@protoc_insertion_point(field_get:GrpcLibraryV1.ContextParam.op_offload)
   return _internal_op_offload();
 }
 inline void ContextParam::set_op_offload(bool value) {
   _internal_set_op_offload(value);
   SetHasBit(_impl_._has_bits_[0], 0x00100000U);
-  // @@protoc_insertion_point(field_set:GrpcLibrary.ContextParam.op_offload)
+  // @@protoc_insertion_point(field_set:GrpcLibraryV1.ContextParam.op_offload)
 }
 inline bool ContextParam::_internal_op_offload() const {
   ::google::protobuf::internal::TSanRead(&_impl_);
@@ -12665,13 +12927,13 @@ inline void ContextParam::clear_swa_full() {
                   0x00200000U);
 }
 inline bool ContextParam::swa_full() const {
-  // @@protoc_insertion_point(field_get:GrpcLibrary.ContextParam.swa_full)
+  // @@protoc_insertion_point(field_get:GrpcLibraryV1.ContextParam.swa_full)
   return _internal_swa_full();
 }
 inline void ContextParam::set_swa_full(bool value) {
   _internal_set_swa_full(value);
   SetHasBit(_impl_._has_bits_[0], 0x00200000U);
-  // @@protoc_insertion_point(field_set:GrpcLibrary.ContextParam.swa_full)
+  // @@protoc_insertion_point(field_set:GrpcLibraryV1.ContextParam.swa_full)
 }
 inline bool ContextParam::_internal_swa_full() const {
   ::google::protobuf::internal::TSanRead(&_impl_);
@@ -12690,13 +12952,13 @@ inline void ContextParam::clear_kv_unified() {
                   0x00400000U);
 }
 inline bool ContextParam::kv_unified() const {
-  // @@protoc_insertion_point(field_get:GrpcLibrary.ContextParam.kv_unified)
+  // @@protoc_insertion_point(field_get:GrpcLibraryV1.ContextParam.kv_unified)
   return _internal_kv_unified();
 }
 inline void ContextParam::set_kv_unified(bool value) {
   _internal_set_kv_unified(value);
   SetHasBit(_impl_._has_bits_[0], 0x00400000U);
-  // @@protoc_insertion_point(field_set:GrpcLibrary.ContextParam.kv_unified)
+  // @@protoc_insertion_point(field_set:GrpcLibraryV1.ContextParam.kv_unified)
 }
 inline bool ContextParam::_internal_kv_unified() const {
   ::google::protobuf::internal::TSanRead(&_impl_);
@@ -12716,7 +12978,7 @@ inline void ContextParam::clear_prompt() {
 }
 inline const ::std::string& ContextParam::prompt() const
     ABSL_ATTRIBUTE_LIFETIME_BOUND {
-  // @@protoc_insertion_point(field_get:GrpcLibrary.ContextParam.prompt)
+  // @@protoc_insertion_point(field_get:GrpcLibraryV1.ContextParam.prompt)
   return _internal_prompt();
 }
 template <typename Arg_, typename... Args_>
@@ -12724,13 +12986,13 @@ PROTOBUF_ALWAYS_INLINE void ContextParam::set_prompt(Arg_&& arg, Args_... args) 
   ::google::protobuf::internal::TSanWrite(&_impl_);
   SetHasBit(_impl_._has_bits_[0], 0x00000002U);
   _impl_.prompt_.Set(static_cast<Arg_&&>(arg), args..., GetArena());
-  // @@protoc_insertion_point(field_set:GrpcLibrary.ContextParam.prompt)
+  // @@protoc_insertion_point(field_set:GrpcLibraryV1.ContextParam.prompt)
 }
 inline ::std::string* PROTOBUF_NONNULL ContextParam::mutable_prompt()
     ABSL_ATTRIBUTE_LIFETIME_BOUND {
   SetHasBit(_impl_._has_bits_[0], 0x00000002U);
   ::std::string* _s = _internal_mutable_prompt();
-  // @@protoc_insertion_point(field_mutable:GrpcLibrary.ContextParam.prompt)
+  // @@protoc_insertion_point(field_mutable:GrpcLibraryV1.ContextParam.prompt)
   return _s;
 }
 inline const ::std::string& ContextParam::_internal_prompt() const {
@@ -12747,7 +13009,7 @@ inline ::std::string* PROTOBUF_NONNULL ContextParam::_internal_mutable_prompt() 
 }
 inline ::std::string* PROTOBUF_NULLABLE ContextParam::release_prompt() {
   ::google::protobuf::internal::TSanWrite(&_impl_);
-  // @@protoc_insertion_point(field_release:GrpcLibrary.ContextParam.prompt)
+  // @@protoc_insertion_point(field_release:GrpcLibraryV1.ContextParam.prompt)
   if (!CheckHasBit(_impl_._has_bits_[0], 0x00000002U)) {
     return nullptr;
   }
@@ -12769,7 +13031,7 @@ inline void ContextParam::set_allocated_prompt(::std::string* PROTOBUF_NULLABLE 
   if (::google::protobuf::internal::DebugHardenForceCopyDefaultString() && _impl_.prompt_.IsDefault()) {
     _impl_.prompt_.Set("", GetArena());
   }
-  // @@protoc_insertion_point(field_set_allocated:GrpcLibrary.ContextParam.prompt)
+  // @@protoc_insertion_point(field_set_allocated:GrpcLibraryV1.ContextParam.prompt)
 }
 
 // -------------------------------------------------------------------
@@ -12784,13 +13046,13 @@ inline void RecognitionParam::clear_n_threads() {
                   0x00000008U);
 }
 inline ::int32_t RecognitionParam::n_threads() const {
-  // @@protoc_insertion_point(field_get:GrpcLibrary.RecognitionParam.n_threads)
+  // @@protoc_insertion_point(field_get:GrpcLibraryV1.RecognitionParam.n_threads)
   return _internal_n_threads();
 }
 inline void RecognitionParam::set_n_threads(::int32_t value) {
   _internal_set_n_threads(value);
   SetHasBit(_impl_._has_bits_[0], 0x00000008U);
-  // @@protoc_insertion_point(field_set:GrpcLibrary.RecognitionParam.n_threads)
+  // @@protoc_insertion_point(field_set:GrpcLibraryV1.RecognitionParam.n_threads)
 }
 inline ::int32_t RecognitionParam::_internal_n_threads() const {
   ::google::protobuf::internal::TSanRead(&_impl_);
@@ -12809,13 +13071,13 @@ inline void RecognitionParam::clear_n_max_text_ctx() {
                   0x00000010U);
 }
 inline ::int32_t RecognitionParam::n_max_text_ctx() const {
-  // @@protoc_insertion_point(field_get:GrpcLibrary.RecognitionParam.n_max_text_ctx)
+  // @@protoc_insertion_point(field_get:GrpcLibraryV1.RecognitionParam.n_max_text_ctx)
   return _internal_n_max_text_ctx();
 }
 inline void RecognitionParam::set_n_max_text_ctx(::int32_t value) {
   _internal_set_n_max_text_ctx(value);
   SetHasBit(_impl_._has_bits_[0], 0x00000010U);
-  // @@protoc_insertion_point(field_set:GrpcLibrary.RecognitionParam.n_max_text_ctx)
+  // @@protoc_insertion_point(field_set:GrpcLibraryV1.RecognitionParam.n_max_text_ctx)
 }
 inline ::int32_t RecognitionParam::_internal_n_max_text_ctx() const {
   ::google::protobuf::internal::TSanRead(&_impl_);
@@ -12834,13 +13096,13 @@ inline void RecognitionParam::clear_offset_ms() {
                   0x00000020U);
 }
 inline ::int32_t RecognitionParam::offset_ms() const {
-  // @@protoc_insertion_point(field_get:GrpcLibrary.RecognitionParam.offset_ms)
+  // @@protoc_insertion_point(field_get:GrpcLibraryV1.RecognitionParam.offset_ms)
   return _internal_offset_ms();
 }
 inline void RecognitionParam::set_offset_ms(::int32_t value) {
   _internal_set_offset_ms(value);
   SetHasBit(_impl_._has_bits_[0], 0x00000020U);
-  // @@protoc_insertion_point(field_set:GrpcLibrary.RecognitionParam.offset_ms)
+  // @@protoc_insertion_point(field_set:GrpcLibraryV1.RecognitionParam.offset_ms)
 }
 inline ::int32_t RecognitionParam::_internal_offset_ms() const {
   ::google::protobuf::internal::TSanRead(&_impl_);
@@ -12859,13 +13121,13 @@ inline void RecognitionParam::clear_duration_ms() {
                   0x00000040U);
 }
 inline ::int32_t RecognitionParam::duration_ms() const {
-  // @@protoc_insertion_point(field_get:GrpcLibrary.RecognitionParam.duration_ms)
+  // @@protoc_insertion_point(field_get:GrpcLibraryV1.RecognitionParam.duration_ms)
   return _internal_duration_ms();
 }
 inline void RecognitionParam::set_duration_ms(::int32_t value) {
   _internal_set_duration_ms(value);
   SetHasBit(_impl_._has_bits_[0], 0x00000040U);
-  // @@protoc_insertion_point(field_set:GrpcLibrary.RecognitionParam.duration_ms)
+  // @@protoc_insertion_point(field_set:GrpcLibraryV1.RecognitionParam.duration_ms)
 }
 inline ::int32_t RecognitionParam::_internal_duration_ms() const {
   ::google::protobuf::internal::TSanRead(&_impl_);
@@ -12884,13 +13146,13 @@ inline void RecognitionParam::clear_translate() {
                   0x00000080U);
 }
 inline bool RecognitionParam::translate() const {
-  // @@protoc_insertion_point(field_get:GrpcLibrary.RecognitionParam.translate)
+  // @@protoc_insertion_point(field_get:GrpcLibraryV1.RecognitionParam.translate)
   return _internal_translate();
 }
 inline void RecognitionParam::set_translate(bool value) {
   _internal_set_translate(value);
   SetHasBit(_impl_._has_bits_[0], 0x00000080U);
-  // @@protoc_insertion_point(field_set:GrpcLibrary.RecognitionParam.translate)
+  // @@protoc_insertion_point(field_set:GrpcLibraryV1.RecognitionParam.translate)
 }
 inline bool RecognitionParam::_internal_translate() const {
   ::google::protobuf::internal::TSanRead(&_impl_);
@@ -12909,13 +13171,13 @@ inline void RecognitionParam::clear_detect_language() {
                   0x00000100U);
 }
 inline bool RecognitionParam::detect_language() const {
-  // @@protoc_insertion_point(field_get:GrpcLibrary.RecognitionParam.detect_language)
+  // @@protoc_insertion_point(field_get:GrpcLibraryV1.RecognitionParam.detect_language)
   return _internal_detect_language();
 }
 inline void RecognitionParam::set_detect_language(bool value) {
   _internal_set_detect_language(value);
   SetHasBit(_impl_._has_bits_[0], 0x00000100U);
-  // @@protoc_insertion_point(field_set:GrpcLibrary.RecognitionParam.detect_language)
+  // @@protoc_insertion_point(field_set:GrpcLibraryV1.RecognitionParam.detect_language)
 }
 inline bool RecognitionParam::_internal_detect_language() const {
   ::google::protobuf::internal::TSanRead(&_impl_);
@@ -12935,7 +13197,7 @@ inline void RecognitionParam::clear_language() {
 }
 inline const ::std::string& RecognitionParam::language() const
     ABSL_ATTRIBUTE_LIFETIME_BOUND {
-  // @@protoc_insertion_point(field_get:GrpcLibrary.RecognitionParam.language)
+  // @@protoc_insertion_point(field_get:GrpcLibraryV1.RecognitionParam.language)
   return _internal_language();
 }
 template <typename Arg_, typename... Args_>
@@ -12943,13 +13205,13 @@ PROTOBUF_ALWAYS_INLINE void RecognitionParam::set_language(Arg_&& arg, Args_... 
   ::google::protobuf::internal::TSanWrite(&_impl_);
   SetHasBit(_impl_._has_bits_[0], 0x00000001U);
   _impl_.language_.Set(static_cast<Arg_&&>(arg), args..., GetArena());
-  // @@protoc_insertion_point(field_set:GrpcLibrary.RecognitionParam.language)
+  // @@protoc_insertion_point(field_set:GrpcLibraryV1.RecognitionParam.language)
 }
 inline ::std::string* PROTOBUF_NONNULL RecognitionParam::mutable_language()
     ABSL_ATTRIBUTE_LIFETIME_BOUND {
   SetHasBit(_impl_._has_bits_[0], 0x00000001U);
   ::std::string* _s = _internal_mutable_language();
-  // @@protoc_insertion_point(field_mutable:GrpcLibrary.RecognitionParam.language)
+  // @@protoc_insertion_point(field_mutable:GrpcLibraryV1.RecognitionParam.language)
   return _s;
 }
 inline const ::std::string& RecognitionParam::_internal_language() const {
@@ -12966,7 +13228,7 @@ inline ::std::string* PROTOBUF_NONNULL RecognitionParam::_internal_mutable_langu
 }
 inline ::std::string* PROTOBUF_NULLABLE RecognitionParam::release_language() {
   ::google::protobuf::internal::TSanWrite(&_impl_);
-  // @@protoc_insertion_point(field_release:GrpcLibrary.RecognitionParam.language)
+  // @@protoc_insertion_point(field_release:GrpcLibraryV1.RecognitionParam.language)
   if (!CheckHasBit(_impl_._has_bits_[0], 0x00000001U)) {
     return nullptr;
   }
@@ -12988,7 +13250,7 @@ inline void RecognitionParam::set_allocated_language(::std::string* PROTOBUF_NUL
   if (::google::protobuf::internal::DebugHardenForceCopyDefaultString() && _impl_.language_.IsDefault()) {
     _impl_.language_.Set("", GetArena());
   }
-  // @@protoc_insertion_point(field_set_allocated:GrpcLibrary.RecognitionParam.language)
+  // @@protoc_insertion_point(field_set_allocated:GrpcLibraryV1.RecognitionParam.language)
 }
 
 // bool no_ctx = 8;
@@ -12999,13 +13261,13 @@ inline void RecognitionParam::clear_no_ctx() {
                   0x00000200U);
 }
 inline bool RecognitionParam::no_ctx() const {
-  // @@protoc_insertion_point(field_get:GrpcLibrary.RecognitionParam.no_ctx)
+  // @@protoc_insertion_point(field_get:GrpcLibraryV1.RecognitionParam.no_ctx)
   return _internal_no_ctx();
 }
 inline void RecognitionParam::set_no_ctx(bool value) {
   _internal_set_no_ctx(value);
   SetHasBit(_impl_._has_bits_[0], 0x00000200U);
-  // @@protoc_insertion_point(field_set:GrpcLibrary.RecognitionParam.no_ctx)
+  // @@protoc_insertion_point(field_set:GrpcLibraryV1.RecognitionParam.no_ctx)
 }
 inline bool RecognitionParam::_internal_no_ctx() const {
   ::google::protobuf::internal::TSanRead(&_impl_);
@@ -13024,13 +13286,13 @@ inline void RecognitionParam::clear_no_timestamps() {
                   0x00000400U);
 }
 inline bool RecognitionParam::no_timestamps() const {
-  // @@protoc_insertion_point(field_get:GrpcLibrary.RecognitionParam.no_timestamps)
+  // @@protoc_insertion_point(field_get:GrpcLibraryV1.RecognitionParam.no_timestamps)
   return _internal_no_timestamps();
 }
 inline void RecognitionParam::set_no_timestamps(bool value) {
   _internal_set_no_timestamps(value);
   SetHasBit(_impl_._has_bits_[0], 0x00000400U);
-  // @@protoc_insertion_point(field_set:GrpcLibrary.RecognitionParam.no_timestamps)
+  // @@protoc_insertion_point(field_set:GrpcLibraryV1.RecognitionParam.no_timestamps)
 }
 inline bool RecognitionParam::_internal_no_timestamps() const {
   ::google::protobuf::internal::TSanRead(&_impl_);
@@ -13049,13 +13311,13 @@ inline void RecognitionParam::clear_single_segment() {
                   0x00000800U);
 }
 inline bool RecognitionParam::single_segment() const {
-  // @@protoc_insertion_point(field_get:GrpcLibrary.RecognitionParam.single_segment)
+  // @@protoc_insertion_point(field_get:GrpcLibraryV1.RecognitionParam.single_segment)
   return _internal_single_segment();
 }
 inline void RecognitionParam::set_single_segment(bool value) {
   _internal_set_single_segment(value);
   SetHasBit(_impl_._has_bits_[0], 0x00000800U);
-  // @@protoc_insertion_point(field_set:GrpcLibrary.RecognitionParam.single_segment)
+  // @@protoc_insertion_point(field_set:GrpcLibraryV1.RecognitionParam.single_segment)
 }
 inline bool RecognitionParam::_internal_single_segment() const {
   ::google::protobuf::internal::TSanRead(&_impl_);
@@ -13074,13 +13336,13 @@ inline void RecognitionParam::clear_print_special() {
                   0x00001000U);
 }
 inline bool RecognitionParam::print_special() const {
-  // @@protoc_insertion_point(field_get:GrpcLibrary.RecognitionParam.print_special)
+  // @@protoc_insertion_point(field_get:GrpcLibraryV1.RecognitionParam.print_special)
   return _internal_print_special();
 }
 inline void RecognitionParam::set_print_special(bool value) {
   _internal_set_print_special(value);
   SetHasBit(_impl_._has_bits_[0], 0x00001000U);
-  // @@protoc_insertion_point(field_set:GrpcLibrary.RecognitionParam.print_special)
+  // @@protoc_insertion_point(field_set:GrpcLibraryV1.RecognitionParam.print_special)
 }
 inline bool RecognitionParam::_internal_print_special() const {
   ::google::protobuf::internal::TSanRead(&_impl_);
@@ -13099,13 +13361,13 @@ inline void RecognitionParam::clear_print_progress() {
                   0x00002000U);
 }
 inline bool RecognitionParam::print_progress() const {
-  // @@protoc_insertion_point(field_get:GrpcLibrary.RecognitionParam.print_progress)
+  // @@protoc_insertion_point(field_get:GrpcLibraryV1.RecognitionParam.print_progress)
   return _internal_print_progress();
 }
 inline void RecognitionParam::set_print_progress(bool value) {
   _internal_set_print_progress(value);
   SetHasBit(_impl_._has_bits_[0], 0x00002000U);
-  // @@protoc_insertion_point(field_set:GrpcLibrary.RecognitionParam.print_progress)
+  // @@protoc_insertion_point(field_set:GrpcLibraryV1.RecognitionParam.print_progress)
 }
 inline bool RecognitionParam::_internal_print_progress() const {
   ::google::protobuf::internal::TSanRead(&_impl_);
@@ -13124,13 +13386,13 @@ inline void RecognitionParam::clear_print_realtime() {
                   0x00004000U);
 }
 inline bool RecognitionParam::print_realtime() const {
-  // @@protoc_insertion_point(field_get:GrpcLibrary.RecognitionParam.print_realtime)
+  // @@protoc_insertion_point(field_get:GrpcLibraryV1.RecognitionParam.print_realtime)
   return _internal_print_realtime();
 }
 inline void RecognitionParam::set_print_realtime(bool value) {
   _internal_set_print_realtime(value);
   SetHasBit(_impl_._has_bits_[0], 0x00004000U);
-  // @@protoc_insertion_point(field_set:GrpcLibrary.RecognitionParam.print_realtime)
+  // @@protoc_insertion_point(field_set:GrpcLibraryV1.RecognitionParam.print_realtime)
 }
 inline bool RecognitionParam::_internal_print_realtime() const {
   ::google::protobuf::internal::TSanRead(&_impl_);
@@ -13149,13 +13411,13 @@ inline void RecognitionParam::clear_print_timestamps() {
                   0x00008000U);
 }
 inline bool RecognitionParam::print_timestamps() const {
-  // @@protoc_insertion_point(field_get:GrpcLibrary.RecognitionParam.print_timestamps)
+  // @@protoc_insertion_point(field_get:GrpcLibraryV1.RecognitionParam.print_timestamps)
   return _internal_print_timestamps();
 }
 inline void RecognitionParam::set_print_timestamps(bool value) {
   _internal_set_print_timestamps(value);
   SetHasBit(_impl_._has_bits_[0], 0x00008000U);
-  // @@protoc_insertion_point(field_set:GrpcLibrary.RecognitionParam.print_timestamps)
+  // @@protoc_insertion_point(field_set:GrpcLibraryV1.RecognitionParam.print_timestamps)
 }
 inline bool RecognitionParam::_internal_print_timestamps() const {
   ::google::protobuf::internal::TSanRead(&_impl_);
@@ -13174,13 +13436,13 @@ inline void RecognitionParam::clear_carry_initial_prompt() {
                   0x00010000U);
 }
 inline bool RecognitionParam::carry_initial_prompt() const {
-  // @@protoc_insertion_point(field_get:GrpcLibrary.RecognitionParam.carry_initial_prompt)
+  // @@protoc_insertion_point(field_get:GrpcLibraryV1.RecognitionParam.carry_initial_prompt)
   return _internal_carry_initial_prompt();
 }
 inline void RecognitionParam::set_carry_initial_prompt(bool value) {
   _internal_set_carry_initial_prompt(value);
   SetHasBit(_impl_._has_bits_[0], 0x00010000U);
-  // @@protoc_insertion_point(field_set:GrpcLibrary.RecognitionParam.carry_initial_prompt)
+  // @@protoc_insertion_point(field_set:GrpcLibraryV1.RecognitionParam.carry_initial_prompt)
 }
 inline bool RecognitionParam::_internal_carry_initial_prompt() const {
   ::google::protobuf::internal::TSanRead(&_impl_);
@@ -13200,7 +13462,7 @@ inline void RecognitionParam::clear_initial_prompt() {
 }
 inline const ::std::string& RecognitionParam::initial_prompt() const
     ABSL_ATTRIBUTE_LIFETIME_BOUND {
-  // @@protoc_insertion_point(field_get:GrpcLibrary.RecognitionParam.initial_prompt)
+  // @@protoc_insertion_point(field_get:GrpcLibraryV1.RecognitionParam.initial_prompt)
   return _internal_initial_prompt();
 }
 template <typename Arg_, typename... Args_>
@@ -13208,13 +13470,13 @@ PROTOBUF_ALWAYS_INLINE void RecognitionParam::set_initial_prompt(Arg_&& arg, Arg
   ::google::protobuf::internal::TSanWrite(&_impl_);
   SetHasBit(_impl_._has_bits_[0], 0x00000002U);
   _impl_.initial_prompt_.Set(static_cast<Arg_&&>(arg), args..., GetArena());
-  // @@protoc_insertion_point(field_set:GrpcLibrary.RecognitionParam.initial_prompt)
+  // @@protoc_insertion_point(field_set:GrpcLibraryV1.RecognitionParam.initial_prompt)
 }
 inline ::std::string* PROTOBUF_NONNULL RecognitionParam::mutable_initial_prompt()
     ABSL_ATTRIBUTE_LIFETIME_BOUND {
   SetHasBit(_impl_._has_bits_[0], 0x00000002U);
   ::std::string* _s = _internal_mutable_initial_prompt();
-  // @@protoc_insertion_point(field_mutable:GrpcLibrary.RecognitionParam.initial_prompt)
+  // @@protoc_insertion_point(field_mutable:GrpcLibraryV1.RecognitionParam.initial_prompt)
   return _s;
 }
 inline const ::std::string& RecognitionParam::_internal_initial_prompt() const {
@@ -13231,7 +13493,7 @@ inline ::std::string* PROTOBUF_NONNULL RecognitionParam::_internal_mutable_initi
 }
 inline ::std::string* PROTOBUF_NULLABLE RecognitionParam::release_initial_prompt() {
   ::google::protobuf::internal::TSanWrite(&_impl_);
-  // @@protoc_insertion_point(field_release:GrpcLibrary.RecognitionParam.initial_prompt)
+  // @@protoc_insertion_point(field_release:GrpcLibraryV1.RecognitionParam.initial_prompt)
   if (!CheckHasBit(_impl_._has_bits_[0], 0x00000002U)) {
     return nullptr;
   }
@@ -13253,7 +13515,7 @@ inline void RecognitionParam::set_allocated_initial_prompt(::std::string* PROTOB
   if (::google::protobuf::internal::DebugHardenForceCopyDefaultString() && _impl_.initial_prompt_.IsDefault()) {
     _impl_.initial_prompt_.Set("", GetArena());
   }
-  // @@protoc_insertion_point(field_set_allocated:GrpcLibrary.RecognitionParam.initial_prompt)
+  // @@protoc_insertion_point(field_set_allocated:GrpcLibraryV1.RecognitionParam.initial_prompt)
 }
 
 // string suppress_regex = 17;
@@ -13265,7 +13527,7 @@ inline void RecognitionParam::clear_suppress_regex() {
 }
 inline const ::std::string& RecognitionParam::suppress_regex() const
     ABSL_ATTRIBUTE_LIFETIME_BOUND {
-  // @@protoc_insertion_point(field_get:GrpcLibrary.RecognitionParam.suppress_regex)
+  // @@protoc_insertion_point(field_get:GrpcLibraryV1.RecognitionParam.suppress_regex)
   return _internal_suppress_regex();
 }
 template <typename Arg_, typename... Args_>
@@ -13273,13 +13535,13 @@ PROTOBUF_ALWAYS_INLINE void RecognitionParam::set_suppress_regex(Arg_&& arg, Arg
   ::google::protobuf::internal::TSanWrite(&_impl_);
   SetHasBit(_impl_._has_bits_[0], 0x00000004U);
   _impl_.suppress_regex_.Set(static_cast<Arg_&&>(arg), args..., GetArena());
-  // @@protoc_insertion_point(field_set:GrpcLibrary.RecognitionParam.suppress_regex)
+  // @@protoc_insertion_point(field_set:GrpcLibraryV1.RecognitionParam.suppress_regex)
 }
 inline ::std::string* PROTOBUF_NONNULL RecognitionParam::mutable_suppress_regex()
     ABSL_ATTRIBUTE_LIFETIME_BOUND {
   SetHasBit(_impl_._has_bits_[0], 0x00000004U);
   ::std::string* _s = _internal_mutable_suppress_regex();
-  // @@protoc_insertion_point(field_mutable:GrpcLibrary.RecognitionParam.suppress_regex)
+  // @@protoc_insertion_point(field_mutable:GrpcLibraryV1.RecognitionParam.suppress_regex)
   return _s;
 }
 inline const ::std::string& RecognitionParam::_internal_suppress_regex() const {
@@ -13296,7 +13558,7 @@ inline ::std::string* PROTOBUF_NONNULL RecognitionParam::_internal_mutable_suppr
 }
 inline ::std::string* PROTOBUF_NULLABLE RecognitionParam::release_suppress_regex() {
   ::google::protobuf::internal::TSanWrite(&_impl_);
-  // @@protoc_insertion_point(field_release:GrpcLibrary.RecognitionParam.suppress_regex)
+  // @@protoc_insertion_point(field_release:GrpcLibraryV1.RecognitionParam.suppress_regex)
   if (!CheckHasBit(_impl_._has_bits_[0], 0x00000004U)) {
     return nullptr;
   }
@@ -13318,7 +13580,7 @@ inline void RecognitionParam::set_allocated_suppress_regex(::std::string* PROTOB
   if (::google::protobuf::internal::DebugHardenForceCopyDefaultString() && _impl_.suppress_regex_.IsDefault()) {
     _impl_.suppress_regex_.Set("", GetArena());
   }
-  // @@protoc_insertion_point(field_set_allocated:GrpcLibrary.RecognitionParam.suppress_regex)
+  // @@protoc_insertion_point(field_set_allocated:GrpcLibraryV1.RecognitionParam.suppress_regex)
 }
 
 // bool suppress_blank = 18;
@@ -13329,13 +13591,13 @@ inline void RecognitionParam::clear_suppress_blank() {
                   0x00020000U);
 }
 inline bool RecognitionParam::suppress_blank() const {
-  // @@protoc_insertion_point(field_get:GrpcLibrary.RecognitionParam.suppress_blank)
+  // @@protoc_insertion_point(field_get:GrpcLibraryV1.RecognitionParam.suppress_blank)
   return _internal_suppress_blank();
 }
 inline void RecognitionParam::set_suppress_blank(bool value) {
   _internal_set_suppress_blank(value);
   SetHasBit(_impl_._has_bits_[0], 0x00020000U);
-  // @@protoc_insertion_point(field_set:GrpcLibrary.RecognitionParam.suppress_blank)
+  // @@protoc_insertion_point(field_set:GrpcLibraryV1.RecognitionParam.suppress_blank)
 }
 inline bool RecognitionParam::_internal_suppress_blank() const {
   ::google::protobuf::internal::TSanRead(&_impl_);
@@ -13354,13 +13616,13 @@ inline void RecognitionParam::clear_suppress_nst() {
                   0x00040000U);
 }
 inline bool RecognitionParam::suppress_nst() const {
-  // @@protoc_insertion_point(field_get:GrpcLibrary.RecognitionParam.suppress_nst)
+  // @@protoc_insertion_point(field_get:GrpcLibraryV1.RecognitionParam.suppress_nst)
   return _internal_suppress_nst();
 }
 inline void RecognitionParam::set_suppress_nst(bool value) {
   _internal_set_suppress_nst(value);
   SetHasBit(_impl_._has_bits_[0], 0x00040000U);
-  // @@protoc_insertion_point(field_set:GrpcLibrary.RecognitionParam.suppress_nst)
+  // @@protoc_insertion_point(field_set:GrpcLibraryV1.RecognitionParam.suppress_nst)
 }
 inline bool RecognitionParam::_internal_suppress_nst() const {
   ::google::protobuf::internal::TSanRead(&_impl_);
@@ -13379,13 +13641,13 @@ inline void RecognitionParam::clear_temperature() {
                   0x00080000U);
 }
 inline float RecognitionParam::temperature() const {
-  // @@protoc_insertion_point(field_get:GrpcLibrary.RecognitionParam.temperature)
+  // @@protoc_insertion_point(field_get:GrpcLibraryV1.RecognitionParam.temperature)
   return _internal_temperature();
 }
 inline void RecognitionParam::set_temperature(float value) {
   _internal_set_temperature(value);
   SetHasBit(_impl_._has_bits_[0], 0x00080000U);
-  // @@protoc_insertion_point(field_set:GrpcLibrary.RecognitionParam.temperature)
+  // @@protoc_insertion_point(field_set:GrpcLibraryV1.RecognitionParam.temperature)
 }
 inline float RecognitionParam::_internal_temperature() const {
   ::google::protobuf::internal::TSanRead(&_impl_);
@@ -13404,13 +13666,13 @@ inline void RecognitionParam::clear_temperature_inc() {
                   0x00100000U);
 }
 inline float RecognitionParam::temperature_inc() const {
-  // @@protoc_insertion_point(field_get:GrpcLibrary.RecognitionParam.temperature_inc)
+  // @@protoc_insertion_point(field_get:GrpcLibraryV1.RecognitionParam.temperature_inc)
   return _internal_temperature_inc();
 }
 inline void RecognitionParam::set_temperature_inc(float value) {
   _internal_set_temperature_inc(value);
   SetHasBit(_impl_._has_bits_[0], 0x00100000U);
-  // @@protoc_insertion_point(field_set:GrpcLibrary.RecognitionParam.temperature_inc)
+  // @@protoc_insertion_point(field_set:GrpcLibraryV1.RecognitionParam.temperature_inc)
 }
 inline float RecognitionParam::_internal_temperature_inc() const {
   ::google::protobuf::internal::TSanRead(&_impl_);
@@ -13429,13 +13691,13 @@ inline void RecognitionParam::clear_max_initial_ts() {
                   0x00200000U);
 }
 inline float RecognitionParam::max_initial_ts() const {
-  // @@protoc_insertion_point(field_get:GrpcLibrary.RecognitionParam.max_initial_ts)
+  // @@protoc_insertion_point(field_get:GrpcLibraryV1.RecognitionParam.max_initial_ts)
   return _internal_max_initial_ts();
 }
 inline void RecognitionParam::set_max_initial_ts(float value) {
   _internal_set_max_initial_ts(value);
   SetHasBit(_impl_._has_bits_[0], 0x00200000U);
-  // @@protoc_insertion_point(field_set:GrpcLibrary.RecognitionParam.max_initial_ts)
+  // @@protoc_insertion_point(field_set:GrpcLibraryV1.RecognitionParam.max_initial_ts)
 }
 inline float RecognitionParam::_internal_max_initial_ts() const {
   ::google::protobuf::internal::TSanRead(&_impl_);
@@ -13454,13 +13716,13 @@ inline void RecognitionParam::clear_length_penalty() {
                   0x00400000U);
 }
 inline float RecognitionParam::length_penalty() const {
-  // @@protoc_insertion_point(field_get:GrpcLibrary.RecognitionParam.length_penalty)
+  // @@protoc_insertion_point(field_get:GrpcLibraryV1.RecognitionParam.length_penalty)
   return _internal_length_penalty();
 }
 inline void RecognitionParam::set_length_penalty(float value) {
   _internal_set_length_penalty(value);
   SetHasBit(_impl_._has_bits_[0], 0x00400000U);
-  // @@protoc_insertion_point(field_set:GrpcLibrary.RecognitionParam.length_penalty)
+  // @@protoc_insertion_point(field_set:GrpcLibraryV1.RecognitionParam.length_penalty)
 }
 inline float RecognitionParam::_internal_length_penalty() const {
   ::google::protobuf::internal::TSanRead(&_impl_);
@@ -13479,13 +13741,13 @@ inline void RecognitionParam::clear_entropy_thold() {
                   0x00800000U);
 }
 inline float RecognitionParam::entropy_thold() const {
-  // @@protoc_insertion_point(field_get:GrpcLibrary.RecognitionParam.entropy_thold)
+  // @@protoc_insertion_point(field_get:GrpcLibraryV1.RecognitionParam.entropy_thold)
   return _internal_entropy_thold();
 }
 inline void RecognitionParam::set_entropy_thold(float value) {
   _internal_set_entropy_thold(value);
   SetHasBit(_impl_._has_bits_[0], 0x00800000U);
-  // @@protoc_insertion_point(field_set:GrpcLibrary.RecognitionParam.entropy_thold)
+  // @@protoc_insertion_point(field_set:GrpcLibraryV1.RecognitionParam.entropy_thold)
 }
 inline float RecognitionParam::_internal_entropy_thold() const {
   ::google::protobuf::internal::TSanRead(&_impl_);
@@ -13504,13 +13766,13 @@ inline void RecognitionParam::clear_logprob_thold() {
                   0x01000000U);
 }
 inline float RecognitionParam::logprob_thold() const {
-  // @@protoc_insertion_point(field_get:GrpcLibrary.RecognitionParam.logprob_thold)
+  // @@protoc_insertion_point(field_get:GrpcLibraryV1.RecognitionParam.logprob_thold)
   return _internal_logprob_thold();
 }
 inline void RecognitionParam::set_logprob_thold(float value) {
   _internal_set_logprob_thold(value);
   SetHasBit(_impl_._has_bits_[0], 0x01000000U);
-  // @@protoc_insertion_point(field_set:GrpcLibrary.RecognitionParam.logprob_thold)
+  // @@protoc_insertion_point(field_set:GrpcLibraryV1.RecognitionParam.logprob_thold)
 }
 inline float RecognitionParam::_internal_logprob_thold() const {
   ::google::protobuf::internal::TSanRead(&_impl_);
@@ -13529,13 +13791,13 @@ inline void RecognitionParam::clear_no_speech_thold() {
                   0x02000000U);
 }
 inline float RecognitionParam::no_speech_thold() const {
-  // @@protoc_insertion_point(field_get:GrpcLibrary.RecognitionParam.no_speech_thold)
+  // @@protoc_insertion_point(field_get:GrpcLibraryV1.RecognitionParam.no_speech_thold)
   return _internal_no_speech_thold();
 }
 inline void RecognitionParam::set_no_speech_thold(float value) {
   _internal_set_no_speech_thold(value);
   SetHasBit(_impl_._has_bits_[0], 0x02000000U);
-  // @@protoc_insertion_point(field_set:GrpcLibrary.RecognitionParam.no_speech_thold)
+  // @@protoc_insertion_point(field_set:GrpcLibraryV1.RecognitionParam.no_speech_thold)
 }
 inline float RecognitionParam::_internal_no_speech_thold() const {
   ::google::protobuf::internal::TSanRead(&_impl_);
@@ -13558,13 +13820,13 @@ inline void EmbeddingParam::clear_dimension() {
                   0x00000001U);
 }
 inline ::int32_t EmbeddingParam::dimension() const {
-  // @@protoc_insertion_point(field_get:GrpcLibrary.EmbeddingParam.dimension)
+  // @@protoc_insertion_point(field_get:GrpcLibraryV1.EmbeddingParam.dimension)
   return _internal_dimension();
 }
 inline void EmbeddingParam::set_dimension(::int32_t value) {
   _internal_set_dimension(value);
   SetHasBit(_impl_._has_bits_[0], 0x00000001U);
-  // @@protoc_insertion_point(field_set:GrpcLibrary.EmbeddingParam.dimension)
+  // @@protoc_insertion_point(field_set:GrpcLibraryV1.EmbeddingParam.dimension)
 }
 inline ::int32_t EmbeddingParam::_internal_dimension() const {
   ::google::protobuf::internal::TSanRead(&_impl_);
@@ -13587,13 +13849,13 @@ inline void FileChunk::clear_id() {
                   0x00000004U);
 }
 inline ::int64_t FileChunk::id() const {
-  // @@protoc_insertion_point(field_get:GrpcLibrary.FileChunk.id)
+  // @@protoc_insertion_point(field_get:GrpcLibraryV1.FileChunk.id)
   return _internal_id();
 }
 inline void FileChunk::set_id(::int64_t value) {
   _internal_set_id(value);
   SetHasBit(_impl_._has_bits_[0], 0x00000004U);
-  // @@protoc_insertion_point(field_set:GrpcLibrary.FileChunk.id)
+  // @@protoc_insertion_point(field_set:GrpcLibraryV1.FileChunk.id)
 }
 inline ::int64_t FileChunk::_internal_id() const {
   ::google::protobuf::internal::TSanRead(&_impl_);
@@ -13613,7 +13875,7 @@ inline void FileChunk::clear_data() {
 }
 inline const ::std::string& FileChunk::data() const
     ABSL_ATTRIBUTE_LIFETIME_BOUND {
-  // @@protoc_insertion_point(field_get:GrpcLibrary.FileChunk.data)
+  // @@protoc_insertion_point(field_get:GrpcLibraryV1.FileChunk.data)
   return _internal_data();
 }
 template <typename Arg_, typename... Args_>
@@ -13621,13 +13883,13 @@ PROTOBUF_ALWAYS_INLINE void FileChunk::set_data(Arg_&& arg, Args_... args) {
   ::google::protobuf::internal::TSanWrite(&_impl_);
   SetHasBit(_impl_._has_bits_[0], 0x00000001U);
   _impl_.data_.SetBytes(static_cast<Arg_&&>(arg), args..., GetArena());
-  // @@protoc_insertion_point(field_set:GrpcLibrary.FileChunk.data)
+  // @@protoc_insertion_point(field_set:GrpcLibraryV1.FileChunk.data)
 }
 inline ::std::string* PROTOBUF_NONNULL FileChunk::mutable_data()
     ABSL_ATTRIBUTE_LIFETIME_BOUND {
   SetHasBit(_impl_._has_bits_[0], 0x00000001U);
   ::std::string* _s = _internal_mutable_data();
-  // @@protoc_insertion_point(field_mutable:GrpcLibrary.FileChunk.data)
+  // @@protoc_insertion_point(field_mutable:GrpcLibraryV1.FileChunk.data)
   return _s;
 }
 inline const ::std::string& FileChunk::_internal_data() const {
@@ -13644,7 +13906,7 @@ inline ::std::string* PROTOBUF_NONNULL FileChunk::_internal_mutable_data() {
 }
 inline ::std::string* PROTOBUF_NULLABLE FileChunk::release_data() {
   ::google::protobuf::internal::TSanWrite(&_impl_);
-  // @@protoc_insertion_point(field_release:GrpcLibrary.FileChunk.data)
+  // @@protoc_insertion_point(field_release:GrpcLibraryV1.FileChunk.data)
   if (!CheckHasBit(_impl_._has_bits_[0], 0x00000001U)) {
     return nullptr;
   }
@@ -13666,7 +13928,7 @@ inline void FileChunk::set_allocated_data(::std::string* PROTOBUF_NULLABLE value
   if (::google::protobuf::internal::DebugHardenForceCopyDefaultString() && _impl_.data_.IsDefault()) {
     _impl_.data_.Set("", GetArena());
   }
-  // @@protoc_insertion_point(field_set_allocated:GrpcLibrary.FileChunk.data)
+  // @@protoc_insertion_point(field_set_allocated:GrpcLibraryV1.FileChunk.data)
 }
 
 // int64 start_pos = 3;
@@ -13677,13 +13939,13 @@ inline void FileChunk::clear_start_pos() {
                   0x00000008U);
 }
 inline ::int64_t FileChunk::start_pos() const {
-  // @@protoc_insertion_point(field_get:GrpcLibrary.FileChunk.start_pos)
+  // @@protoc_insertion_point(field_get:GrpcLibraryV1.FileChunk.start_pos)
   return _internal_start_pos();
 }
 inline void FileChunk::set_start_pos(::int64_t value) {
   _internal_set_start_pos(value);
   SetHasBit(_impl_._has_bits_[0], 0x00000008U);
-  // @@protoc_insertion_point(field_set:GrpcLibrary.FileChunk.start_pos)
+  // @@protoc_insertion_point(field_set:GrpcLibraryV1.FileChunk.start_pos)
 }
 inline ::int64_t FileChunk::_internal_start_pos() const {
   ::google::protobuf::internal::TSanRead(&_impl_);
@@ -13702,13 +13964,13 @@ inline void FileChunk::clear_end_pos() {
                   0x00000010U);
 }
 inline ::int64_t FileChunk::end_pos() const {
-  // @@protoc_insertion_point(field_get:GrpcLibrary.FileChunk.end_pos)
+  // @@protoc_insertion_point(field_get:GrpcLibraryV1.FileChunk.end_pos)
   return _internal_end_pos();
 }
 inline void FileChunk::set_end_pos(::int64_t value) {
   _internal_set_end_pos(value);
   SetHasBit(_impl_._has_bits_[0], 0x00000010U);
-  // @@protoc_insertion_point(field_set:GrpcLibrary.FileChunk.end_pos)
+  // @@protoc_insertion_point(field_set:GrpcLibraryV1.FileChunk.end_pos)
 }
 inline ::int64_t FileChunk::_internal_end_pos() const {
   ::google::protobuf::internal::TSanRead(&_impl_);
@@ -13728,7 +13990,7 @@ inline void FileChunk::clear_filename() {
 }
 inline const ::std::string& FileChunk::filename() const
     ABSL_ATTRIBUTE_LIFETIME_BOUND {
-  // @@protoc_insertion_point(field_get:GrpcLibrary.FileChunk.filename)
+  // @@protoc_insertion_point(field_get:GrpcLibraryV1.FileChunk.filename)
   return _internal_filename();
 }
 template <typename Arg_, typename... Args_>
@@ -13736,13 +13998,13 @@ PROTOBUF_ALWAYS_INLINE void FileChunk::set_filename(Arg_&& arg, Args_... args) {
   ::google::protobuf::internal::TSanWrite(&_impl_);
   SetHasBit(_impl_._has_bits_[0], 0x00000002U);
   _impl_.filename_.Set(static_cast<Arg_&&>(arg), args..., GetArena());
-  // @@protoc_insertion_point(field_set:GrpcLibrary.FileChunk.filename)
+  // @@protoc_insertion_point(field_set:GrpcLibraryV1.FileChunk.filename)
 }
 inline ::std::string* PROTOBUF_NONNULL FileChunk::mutable_filename()
     ABSL_ATTRIBUTE_LIFETIME_BOUND {
   SetHasBit(_impl_._has_bits_[0], 0x00000002U);
   ::std::string* _s = _internal_mutable_filename();
-  // @@protoc_insertion_point(field_mutable:GrpcLibrary.FileChunk.filename)
+  // @@protoc_insertion_point(field_mutable:GrpcLibraryV1.FileChunk.filename)
   return _s;
 }
 inline const ::std::string& FileChunk::_internal_filename() const {
@@ -13759,7 +14021,7 @@ inline ::std::string* PROTOBUF_NONNULL FileChunk::_internal_mutable_filename() {
 }
 inline ::std::string* PROTOBUF_NULLABLE FileChunk::release_filename() {
   ::google::protobuf::internal::TSanWrite(&_impl_);
-  // @@protoc_insertion_point(field_release:GrpcLibrary.FileChunk.filename)
+  // @@protoc_insertion_point(field_release:GrpcLibraryV1.FileChunk.filename)
   if (!CheckHasBit(_impl_._has_bits_[0], 0x00000002U)) {
     return nullptr;
   }
@@ -13781,7 +14043,36 @@ inline void FileChunk::set_allocated_filename(::std::string* PROTOBUF_NULLABLE v
   if (::google::protobuf::internal::DebugHardenForceCopyDefaultString() && _impl_.filename_.IsDefault()) {
     _impl_.filename_.Set("", GetArena());
   }
-  // @@protoc_insertion_point(field_set_allocated:GrpcLibrary.FileChunk.filename)
+  // @@protoc_insertion_point(field_set_allocated:GrpcLibraryV1.FileChunk.filename)
+}
+
+// -------------------------------------------------------------------
+
+// UpdateInfo
+
+// bool force_update = 1;
+inline void UpdateInfo::clear_force_update() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.force_update_ = false;
+  ClearHasBit(_impl_._has_bits_[0],
+                  0x00000001U);
+}
+inline bool UpdateInfo::force_update() const {
+  // @@protoc_insertion_point(field_get:GrpcLibraryV1.UpdateInfo.force_update)
+  return _internal_force_update();
+}
+inline void UpdateInfo::set_force_update(bool value) {
+  _internal_set_force_update(value);
+  SetHasBit(_impl_._has_bits_[0], 0x00000001U);
+  // @@protoc_insertion_point(field_set:GrpcLibraryV1.UpdateInfo.force_update)
+}
+inline bool UpdateInfo::_internal_force_update() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.force_update_;
+}
+inline void UpdateInfo::_internal_set_force_update(bool value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.force_update_ = value;
 }
 
 // -------------------------------------------------------------------
@@ -13796,13 +14087,13 @@ inline void Ping::clear_timestamp() {
                   0x00000001U);
 }
 inline ::int64_t Ping::timestamp() const {
-  // @@protoc_insertion_point(field_get:GrpcLibrary.Ping.timestamp)
+  // @@protoc_insertion_point(field_get:GrpcLibraryV1.Ping.timestamp)
   return _internal_timestamp();
 }
 inline void Ping::set_timestamp(::int64_t value) {
   _internal_set_timestamp(value);
   SetHasBit(_impl_._has_bits_[0], 0x00000001U);
-  // @@protoc_insertion_point(field_set:GrpcLibrary.Ping.timestamp)
+  // @@protoc_insertion_point(field_set:GrpcLibraryV1.Ping.timestamp)
 }
 inline ::int64_t Ping::_internal_timestamp() const {
   ::google::protobuf::internal::TSanRead(&_impl_);
@@ -13825,13 +14116,13 @@ inline void Pong::clear_timestamp() {
                   0x00000001U);
 }
 inline ::int64_t Pong::timestamp() const {
-  // @@protoc_insertion_point(field_get:GrpcLibrary.Pong.timestamp)
+  // @@protoc_insertion_point(field_get:GrpcLibraryV1.Pong.timestamp)
   return _internal_timestamp();
 }
 inline void Pong::set_timestamp(::int64_t value) {
   _internal_set_timestamp(value);
   SetHasBit(_impl_._has_bits_[0], 0x00000001U);
-  // @@protoc_insertion_point(field_set:GrpcLibrary.Pong.timestamp)
+  // @@protoc_insertion_point(field_set:GrpcLibraryV1.Pong.timestamp)
 }
 inline ::int64_t Pong::_internal_timestamp() const {
   ::google::protobuf::internal::TSanRead(&_impl_);
@@ -13855,7 +14146,7 @@ inline void LoginReq::clear_account() {
 }
 inline const ::std::string& LoginReq::account() const
     ABSL_ATTRIBUTE_LIFETIME_BOUND {
-  // @@protoc_insertion_point(field_get:GrpcLibrary.LoginReq.account)
+  // @@protoc_insertion_point(field_get:GrpcLibraryV1.LoginReq.account)
   return _internal_account();
 }
 template <typename Arg_, typename... Args_>
@@ -13863,13 +14154,13 @@ PROTOBUF_ALWAYS_INLINE void LoginReq::set_account(Arg_&& arg, Args_... args) {
   ::google::protobuf::internal::TSanWrite(&_impl_);
   SetHasBit(_impl_._has_bits_[0], 0x00000001U);
   _impl_.account_.Set(static_cast<Arg_&&>(arg), args..., GetArena());
-  // @@protoc_insertion_point(field_set:GrpcLibrary.LoginReq.account)
+  // @@protoc_insertion_point(field_set:GrpcLibraryV1.LoginReq.account)
 }
 inline ::std::string* PROTOBUF_NONNULL LoginReq::mutable_account()
     ABSL_ATTRIBUTE_LIFETIME_BOUND {
   SetHasBit(_impl_._has_bits_[0], 0x00000001U);
   ::std::string* _s = _internal_mutable_account();
-  // @@protoc_insertion_point(field_mutable:GrpcLibrary.LoginReq.account)
+  // @@protoc_insertion_point(field_mutable:GrpcLibraryV1.LoginReq.account)
   return _s;
 }
 inline const ::std::string& LoginReq::_internal_account() const {
@@ -13886,7 +14177,7 @@ inline ::std::string* PROTOBUF_NONNULL LoginReq::_internal_mutable_account() {
 }
 inline ::std::string* PROTOBUF_NULLABLE LoginReq::release_account() {
   ::google::protobuf::internal::TSanWrite(&_impl_);
-  // @@protoc_insertion_point(field_release:GrpcLibrary.LoginReq.account)
+  // @@protoc_insertion_point(field_release:GrpcLibraryV1.LoginReq.account)
   if (!CheckHasBit(_impl_._has_bits_[0], 0x00000001U)) {
     return nullptr;
   }
@@ -13908,7 +14199,7 @@ inline void LoginReq::set_allocated_account(::std::string* PROTOBUF_NULLABLE val
   if (::google::protobuf::internal::DebugHardenForceCopyDefaultString() && _impl_.account_.IsDefault()) {
     _impl_.account_.Set("", GetArena());
   }
-  // @@protoc_insertion_point(field_set_allocated:GrpcLibrary.LoginReq.account)
+  // @@protoc_insertion_point(field_set_allocated:GrpcLibraryV1.LoginReq.account)
 }
 
 // string passwd = 2;
@@ -13920,7 +14211,7 @@ inline void LoginReq::clear_passwd() {
 }
 inline const ::std::string& LoginReq::passwd() const
     ABSL_ATTRIBUTE_LIFETIME_BOUND {
-  // @@protoc_insertion_point(field_get:GrpcLibrary.LoginReq.passwd)
+  // @@protoc_insertion_point(field_get:GrpcLibraryV1.LoginReq.passwd)
   return _internal_passwd();
 }
 template <typename Arg_, typename... Args_>
@@ -13928,13 +14219,13 @@ PROTOBUF_ALWAYS_INLINE void LoginReq::set_passwd(Arg_&& arg, Args_... args) {
   ::google::protobuf::internal::TSanWrite(&_impl_);
   SetHasBit(_impl_._has_bits_[0], 0x00000002U);
   _impl_.passwd_.Set(static_cast<Arg_&&>(arg), args..., GetArena());
-  // @@protoc_insertion_point(field_set:GrpcLibrary.LoginReq.passwd)
+  // @@protoc_insertion_point(field_set:GrpcLibraryV1.LoginReq.passwd)
 }
 inline ::std::string* PROTOBUF_NONNULL LoginReq::mutable_passwd()
     ABSL_ATTRIBUTE_LIFETIME_BOUND {
   SetHasBit(_impl_._has_bits_[0], 0x00000002U);
   ::std::string* _s = _internal_mutable_passwd();
-  // @@protoc_insertion_point(field_mutable:GrpcLibrary.LoginReq.passwd)
+  // @@protoc_insertion_point(field_mutable:GrpcLibraryV1.LoginReq.passwd)
   return _s;
 }
 inline const ::std::string& LoginReq::_internal_passwd() const {
@@ -13951,7 +14242,7 @@ inline ::std::string* PROTOBUF_NONNULL LoginReq::_internal_mutable_passwd() {
 }
 inline ::std::string* PROTOBUF_NULLABLE LoginReq::release_passwd() {
   ::google::protobuf::internal::TSanWrite(&_impl_);
-  // @@protoc_insertion_point(field_release:GrpcLibrary.LoginReq.passwd)
+  // @@protoc_insertion_point(field_release:GrpcLibraryV1.LoginReq.passwd)
   if (!CheckHasBit(_impl_._has_bits_[0], 0x00000002U)) {
     return nullptr;
   }
@@ -13973,7 +14264,202 @@ inline void LoginReq::set_allocated_passwd(::std::string* PROTOBUF_NULLABLE valu
   if (::google::protobuf::internal::DebugHardenForceCopyDefaultString() && _impl_.passwd_.IsDefault()) {
     _impl_.passwd_.Set("", GetArena());
   }
-  // @@protoc_insertion_point(field_set_allocated:GrpcLibrary.LoginReq.passwd)
+  // @@protoc_insertion_point(field_set_allocated:GrpcLibraryV1.LoginReq.passwd)
+}
+
+// string platform = 3;
+inline void LoginReq::clear_platform() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.platform_.ClearToEmpty();
+  ClearHasBit(_impl_._has_bits_[0],
+                  0x00000004U);
+}
+inline const ::std::string& LoginReq::platform() const
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_get:GrpcLibraryV1.LoginReq.platform)
+  return _internal_platform();
+}
+template <typename Arg_, typename... Args_>
+PROTOBUF_ALWAYS_INLINE void LoginReq::set_platform(Arg_&& arg, Args_... args) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  SetHasBit(_impl_._has_bits_[0], 0x00000004U);
+  _impl_.platform_.Set(static_cast<Arg_&&>(arg), args..., GetArena());
+  // @@protoc_insertion_point(field_set:GrpcLibraryV1.LoginReq.platform)
+}
+inline ::std::string* PROTOBUF_NONNULL LoginReq::mutable_platform()
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  SetHasBit(_impl_._has_bits_[0], 0x00000004U);
+  ::std::string* _s = _internal_mutable_platform();
+  // @@protoc_insertion_point(field_mutable:GrpcLibraryV1.LoginReq.platform)
+  return _s;
+}
+inline const ::std::string& LoginReq::_internal_platform() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.platform_.Get();
+}
+inline void LoginReq::_internal_set_platform(const ::std::string& value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.platform_.Set(value, GetArena());
+}
+inline ::std::string* PROTOBUF_NONNULL LoginReq::_internal_mutable_platform() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  return _impl_.platform_.Mutable( GetArena());
+}
+inline ::std::string* PROTOBUF_NULLABLE LoginReq::release_platform() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  // @@protoc_insertion_point(field_release:GrpcLibraryV1.LoginReq.platform)
+  if (!CheckHasBit(_impl_._has_bits_[0], 0x00000004U)) {
+    return nullptr;
+  }
+  ClearHasBit(_impl_._has_bits_[0], 0x00000004U);
+  auto* released = _impl_.platform_.Release();
+  if (::google::protobuf::internal::DebugHardenForceCopyDefaultString()) {
+    _impl_.platform_.Set("", GetArena());
+  }
+  return released;
+}
+inline void LoginReq::set_allocated_platform(::std::string* PROTOBUF_NULLABLE value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  if (value != nullptr) {
+    SetHasBit(_impl_._has_bits_[0], 0x00000004U);
+  } else {
+    ClearHasBit(_impl_._has_bits_[0], 0x00000004U);
+  }
+  _impl_.platform_.SetAllocated(value, GetArena());
+  if (::google::protobuf::internal::DebugHardenForceCopyDefaultString() && _impl_.platform_.IsDefault()) {
+    _impl_.platform_.Set("", GetArena());
+  }
+  // @@protoc_insertion_point(field_set_allocated:GrpcLibraryV1.LoginReq.platform)
+}
+
+// string arch = 4;
+inline void LoginReq::clear_arch() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.arch_.ClearToEmpty();
+  ClearHasBit(_impl_._has_bits_[0],
+                  0x00000008U);
+}
+inline const ::std::string& LoginReq::arch() const
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_get:GrpcLibraryV1.LoginReq.arch)
+  return _internal_arch();
+}
+template <typename Arg_, typename... Args_>
+PROTOBUF_ALWAYS_INLINE void LoginReq::set_arch(Arg_&& arg, Args_... args) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  SetHasBit(_impl_._has_bits_[0], 0x00000008U);
+  _impl_.arch_.Set(static_cast<Arg_&&>(arg), args..., GetArena());
+  // @@protoc_insertion_point(field_set:GrpcLibraryV1.LoginReq.arch)
+}
+inline ::std::string* PROTOBUF_NONNULL LoginReq::mutable_arch()
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  SetHasBit(_impl_._has_bits_[0], 0x00000008U);
+  ::std::string* _s = _internal_mutable_arch();
+  // @@protoc_insertion_point(field_mutable:GrpcLibraryV1.LoginReq.arch)
+  return _s;
+}
+inline const ::std::string& LoginReq::_internal_arch() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.arch_.Get();
+}
+inline void LoginReq::_internal_set_arch(const ::std::string& value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.arch_.Set(value, GetArena());
+}
+inline ::std::string* PROTOBUF_NONNULL LoginReq::_internal_mutable_arch() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  return _impl_.arch_.Mutable( GetArena());
+}
+inline ::std::string* PROTOBUF_NULLABLE LoginReq::release_arch() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  // @@protoc_insertion_point(field_release:GrpcLibraryV1.LoginReq.arch)
+  if (!CheckHasBit(_impl_._has_bits_[0], 0x00000008U)) {
+    return nullptr;
+  }
+  ClearHasBit(_impl_._has_bits_[0], 0x00000008U);
+  auto* released = _impl_.arch_.Release();
+  if (::google::protobuf::internal::DebugHardenForceCopyDefaultString()) {
+    _impl_.arch_.Set("", GetArena());
+  }
+  return released;
+}
+inline void LoginReq::set_allocated_arch(::std::string* PROTOBUF_NULLABLE value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  if (value != nullptr) {
+    SetHasBit(_impl_._has_bits_[0], 0x00000008U);
+  } else {
+    ClearHasBit(_impl_._has_bits_[0], 0x00000008U);
+  }
+  _impl_.arch_.SetAllocated(value, GetArena());
+  if (::google::protobuf::internal::DebugHardenForceCopyDefaultString() && _impl_.arch_.IsDefault()) {
+    _impl_.arch_.Set("", GetArena());
+  }
+  // @@protoc_insertion_point(field_set_allocated:GrpcLibraryV1.LoginReq.arch)
+}
+
+// string client_version = 5;
+inline void LoginReq::clear_client_version() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.client_version_.ClearToEmpty();
+  ClearHasBit(_impl_._has_bits_[0],
+                  0x00000010U);
+}
+inline const ::std::string& LoginReq::client_version() const
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_get:GrpcLibraryV1.LoginReq.client_version)
+  return _internal_client_version();
+}
+template <typename Arg_, typename... Args_>
+PROTOBUF_ALWAYS_INLINE void LoginReq::set_client_version(Arg_&& arg, Args_... args) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  SetHasBit(_impl_._has_bits_[0], 0x00000010U);
+  _impl_.client_version_.Set(static_cast<Arg_&&>(arg), args..., GetArena());
+  // @@protoc_insertion_point(field_set:GrpcLibraryV1.LoginReq.client_version)
+}
+inline ::std::string* PROTOBUF_NONNULL LoginReq::mutable_client_version()
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  SetHasBit(_impl_._has_bits_[0], 0x00000010U);
+  ::std::string* _s = _internal_mutable_client_version();
+  // @@protoc_insertion_point(field_mutable:GrpcLibraryV1.LoginReq.client_version)
+  return _s;
+}
+inline const ::std::string& LoginReq::_internal_client_version() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.client_version_.Get();
+}
+inline void LoginReq::_internal_set_client_version(const ::std::string& value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.client_version_.Set(value, GetArena());
+}
+inline ::std::string* PROTOBUF_NONNULL LoginReq::_internal_mutable_client_version() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  return _impl_.client_version_.Mutable( GetArena());
+}
+inline ::std::string* PROTOBUF_NULLABLE LoginReq::release_client_version() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  // @@protoc_insertion_point(field_release:GrpcLibraryV1.LoginReq.client_version)
+  if (!CheckHasBit(_impl_._has_bits_[0], 0x00000010U)) {
+    return nullptr;
+  }
+  ClearHasBit(_impl_._has_bits_[0], 0x00000010U);
+  auto* released = _impl_.client_version_.Release();
+  if (::google::protobuf::internal::DebugHardenForceCopyDefaultString()) {
+    _impl_.client_version_.Set("", GetArena());
+  }
+  return released;
+}
+inline void LoginReq::set_allocated_client_version(::std::string* PROTOBUF_NULLABLE value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  if (value != nullptr) {
+    SetHasBit(_impl_._has_bits_[0], 0x00000010U);
+  } else {
+    ClearHasBit(_impl_._has_bits_[0], 0x00000010U);
+  }
+  _impl_.client_version_.SetAllocated(value, GetArena());
+  if (::google::protobuf::internal::DebugHardenForceCopyDefaultString() && _impl_.client_version_.IsDefault()) {
+    _impl_.client_version_.Set("", GetArena());
+  }
+  // @@protoc_insertion_point(field_set_allocated:GrpcLibraryV1.LoginReq.client_version)
 }
 
 // -------------------------------------------------------------------
@@ -13985,16 +14471,16 @@ inline void LoginResp::clear_error_code() {
   ::google::protobuf::internal::TSanWrite(&_impl_);
   _impl_.error_code_ = 0;
   ClearHasBit(_impl_._has_bits_[0],
-                  0x00000010U);
+                  0x00000020U);
 }
 inline ::int32_t LoginResp::error_code() const {
-  // @@protoc_insertion_point(field_get:GrpcLibrary.LoginResp.error_code)
+  // @@protoc_insertion_point(field_get:GrpcLibraryV1.LoginResp.error_code)
   return _internal_error_code();
 }
 inline void LoginResp::set_error_code(::int32_t value) {
   _internal_set_error_code(value);
-  SetHasBit(_impl_._has_bits_[0], 0x00000010U);
-  // @@protoc_insertion_point(field_set:GrpcLibrary.LoginResp.error_code)
+  SetHasBit(_impl_._has_bits_[0], 0x00000020U);
+  // @@protoc_insertion_point(field_set:GrpcLibraryV1.LoginResp.error_code)
 }
 inline ::int32_t LoginResp::_internal_error_code() const {
   ::google::protobuf::internal::TSanRead(&_impl_);
@@ -14010,16 +14496,16 @@ inline void LoginResp::clear_user_id() {
   ::google::protobuf::internal::TSanWrite(&_impl_);
   _impl_.user_id_ = ::int64_t{0};
   ClearHasBit(_impl_._has_bits_[0],
-                  0x00000008U);
+                  0x00000010U);
 }
 inline ::int64_t LoginResp::user_id() const {
-  // @@protoc_insertion_point(field_get:GrpcLibrary.LoginResp.user_id)
+  // @@protoc_insertion_point(field_get:GrpcLibraryV1.LoginResp.user_id)
   return _internal_user_id();
 }
 inline void LoginResp::set_user_id(::int64_t value) {
   _internal_set_user_id(value);
-  SetHasBit(_impl_._has_bits_[0], 0x00000008U);
-  // @@protoc_insertion_point(field_set:GrpcLibrary.LoginResp.user_id)
+  SetHasBit(_impl_._has_bits_[0], 0x00000010U);
+  // @@protoc_insertion_point(field_set:GrpcLibraryV1.LoginResp.user_id)
 }
 inline ::int64_t LoginResp::_internal_user_id() const {
   ::google::protobuf::internal::TSanRead(&_impl_);
@@ -14035,16 +14521,16 @@ inline void LoginResp::clear_privilege() {
   ::google::protobuf::internal::TSanWrite(&_impl_);
   _impl_.privilege_ = 0;
   ClearHasBit(_impl_._has_bits_[0],
-                  0x00000020U);
+                  0x00000040U);
 }
 inline ::int32_t LoginResp::privilege() const {
-  // @@protoc_insertion_point(field_get:GrpcLibrary.LoginResp.privilege)
+  // @@protoc_insertion_point(field_get:GrpcLibraryV1.LoginResp.privilege)
   return _internal_privilege();
 }
 inline void LoginResp::set_privilege(::int32_t value) {
   _internal_set_privilege(value);
-  SetHasBit(_impl_._has_bits_[0], 0x00000020U);
-  // @@protoc_insertion_point(field_set:GrpcLibrary.LoginResp.privilege)
+  SetHasBit(_impl_._has_bits_[0], 0x00000040U);
+  // @@protoc_insertion_point(field_set:GrpcLibraryV1.LoginResp.privilege)
 }
 inline ::int32_t LoginResp::_internal_privilege() const {
   ::google::protobuf::internal::TSanRead(&_impl_);
@@ -14064,7 +14550,7 @@ inline void LoginResp::clear_auth() {
 }
 inline const ::std::string& LoginResp::auth() const
     ABSL_ATTRIBUTE_LIFETIME_BOUND {
-  // @@protoc_insertion_point(field_get:GrpcLibrary.LoginResp.auth)
+  // @@protoc_insertion_point(field_get:GrpcLibraryV1.LoginResp.auth)
   return _internal_auth();
 }
 template <typename Arg_, typename... Args_>
@@ -14072,13 +14558,13 @@ PROTOBUF_ALWAYS_INLINE void LoginResp::set_auth(Arg_&& arg, Args_... args) {
   ::google::protobuf::internal::TSanWrite(&_impl_);
   SetHasBit(_impl_._has_bits_[0], 0x00000001U);
   _impl_.auth_.Set(static_cast<Arg_&&>(arg), args..., GetArena());
-  // @@protoc_insertion_point(field_set:GrpcLibrary.LoginResp.auth)
+  // @@protoc_insertion_point(field_set:GrpcLibraryV1.LoginResp.auth)
 }
 inline ::std::string* PROTOBUF_NONNULL LoginResp::mutable_auth()
     ABSL_ATTRIBUTE_LIFETIME_BOUND {
   SetHasBit(_impl_._has_bits_[0], 0x00000001U);
   ::std::string* _s = _internal_mutable_auth();
-  // @@protoc_insertion_point(field_mutable:GrpcLibrary.LoginResp.auth)
+  // @@protoc_insertion_point(field_mutable:GrpcLibraryV1.LoginResp.auth)
   return _s;
 }
 inline const ::std::string& LoginResp::_internal_auth() const {
@@ -14095,7 +14581,7 @@ inline ::std::string* PROTOBUF_NONNULL LoginResp::_internal_mutable_auth() {
 }
 inline ::std::string* PROTOBUF_NULLABLE LoginResp::release_auth() {
   ::google::protobuf::internal::TSanWrite(&_impl_);
-  // @@protoc_insertion_point(field_release:GrpcLibrary.LoginResp.auth)
+  // @@protoc_insertion_point(field_release:GrpcLibraryV1.LoginResp.auth)
   if (!CheckHasBit(_impl_._has_bits_[0], 0x00000001U)) {
     return nullptr;
   }
@@ -14117,7 +14603,7 @@ inline void LoginResp::set_allocated_auth(::std::string* PROTOBUF_NULLABLE value
   if (::google::protobuf::internal::DebugHardenForceCopyDefaultString() && _impl_.auth_.IsDefault()) {
     _impl_.auth_.Set("", GetArena());
   }
-  // @@protoc_insertion_point(field_set_allocated:GrpcLibrary.LoginResp.auth)
+  // @@protoc_insertion_point(field_set_allocated:GrpcLibraryV1.LoginResp.auth)
 }
 
 // string account = 5;
@@ -14129,7 +14615,7 @@ inline void LoginResp::clear_account() {
 }
 inline const ::std::string& LoginResp::account() const
     ABSL_ATTRIBUTE_LIFETIME_BOUND {
-  // @@protoc_insertion_point(field_get:GrpcLibrary.LoginResp.account)
+  // @@protoc_insertion_point(field_get:GrpcLibraryV1.LoginResp.account)
   return _internal_account();
 }
 template <typename Arg_, typename... Args_>
@@ -14137,13 +14623,13 @@ PROTOBUF_ALWAYS_INLINE void LoginResp::set_account(Arg_&& arg, Args_... args) {
   ::google::protobuf::internal::TSanWrite(&_impl_);
   SetHasBit(_impl_._has_bits_[0], 0x00000002U);
   _impl_.account_.Set(static_cast<Arg_&&>(arg), args..., GetArena());
-  // @@protoc_insertion_point(field_set:GrpcLibrary.LoginResp.account)
+  // @@protoc_insertion_point(field_set:GrpcLibraryV1.LoginResp.account)
 }
 inline ::std::string* PROTOBUF_NONNULL LoginResp::mutable_account()
     ABSL_ATTRIBUTE_LIFETIME_BOUND {
   SetHasBit(_impl_._has_bits_[0], 0x00000002U);
   ::std::string* _s = _internal_mutable_account();
-  // @@protoc_insertion_point(field_mutable:GrpcLibrary.LoginResp.account)
+  // @@protoc_insertion_point(field_mutable:GrpcLibraryV1.LoginResp.account)
   return _s;
 }
 inline const ::std::string& LoginResp::_internal_account() const {
@@ -14160,7 +14646,7 @@ inline ::std::string* PROTOBUF_NONNULL LoginResp::_internal_mutable_account() {
 }
 inline ::std::string* PROTOBUF_NULLABLE LoginResp::release_account() {
   ::google::protobuf::internal::TSanWrite(&_impl_);
-  // @@protoc_insertion_point(field_release:GrpcLibrary.LoginResp.account)
+  // @@protoc_insertion_point(field_release:GrpcLibraryV1.LoginResp.account)
   if (!CheckHasBit(_impl_._has_bits_[0], 0x00000002U)) {
     return nullptr;
   }
@@ -14182,7 +14668,7 @@ inline void LoginResp::set_allocated_account(::std::string* PROTOBUF_NULLABLE va
   if (::google::protobuf::internal::DebugHardenForceCopyDefaultString() && _impl_.account_.IsDefault()) {
     _impl_.account_.Set("", GetArena());
   }
-  // @@protoc_insertion_point(field_set_allocated:GrpcLibrary.LoginResp.account)
+  // @@protoc_insertion_point(field_set_allocated:GrpcLibraryV1.LoginResp.account)
 }
 
 // string last_login_time = 6;
@@ -14194,7 +14680,7 @@ inline void LoginResp::clear_last_login_time() {
 }
 inline const ::std::string& LoginResp::last_login_time() const
     ABSL_ATTRIBUTE_LIFETIME_BOUND {
-  // @@protoc_insertion_point(field_get:GrpcLibrary.LoginResp.last_login_time)
+  // @@protoc_insertion_point(field_get:GrpcLibraryV1.LoginResp.last_login_time)
   return _internal_last_login_time();
 }
 template <typename Arg_, typename... Args_>
@@ -14202,13 +14688,13 @@ PROTOBUF_ALWAYS_INLINE void LoginResp::set_last_login_time(Arg_&& arg, Args_... 
   ::google::protobuf::internal::TSanWrite(&_impl_);
   SetHasBit(_impl_._has_bits_[0], 0x00000004U);
   _impl_.last_login_time_.Set(static_cast<Arg_&&>(arg), args..., GetArena());
-  // @@protoc_insertion_point(field_set:GrpcLibrary.LoginResp.last_login_time)
+  // @@protoc_insertion_point(field_set:GrpcLibraryV1.LoginResp.last_login_time)
 }
 inline ::std::string* PROTOBUF_NONNULL LoginResp::mutable_last_login_time()
     ABSL_ATTRIBUTE_LIFETIME_BOUND {
   SetHasBit(_impl_._has_bits_[0], 0x00000004U);
   ::std::string* _s = _internal_mutable_last_login_time();
-  // @@protoc_insertion_point(field_mutable:GrpcLibrary.LoginResp.last_login_time)
+  // @@protoc_insertion_point(field_mutable:GrpcLibraryV1.LoginResp.last_login_time)
   return _s;
 }
 inline const ::std::string& LoginResp::_internal_last_login_time() const {
@@ -14225,7 +14711,7 @@ inline ::std::string* PROTOBUF_NONNULL LoginResp::_internal_mutable_last_login_t
 }
 inline ::std::string* PROTOBUF_NULLABLE LoginResp::release_last_login_time() {
   ::google::protobuf::internal::TSanWrite(&_impl_);
-  // @@protoc_insertion_point(field_release:GrpcLibrary.LoginResp.last_login_time)
+  // @@protoc_insertion_point(field_release:GrpcLibraryV1.LoginResp.last_login_time)
   if (!CheckHasBit(_impl_._has_bits_[0], 0x00000004U)) {
     return nullptr;
   }
@@ -14247,7 +14733,106 @@ inline void LoginResp::set_allocated_last_login_time(::std::string* PROTOBUF_NUL
   if (::google::protobuf::internal::DebugHardenForceCopyDefaultString() && _impl_.last_login_time_.IsDefault()) {
     _impl_.last_login_time_.Set("", GetArena());
   }
-  // @@protoc_insertion_point(field_set_allocated:GrpcLibrary.LoginResp.last_login_time)
+  // @@protoc_insertion_point(field_set_allocated:GrpcLibraryV1.LoginResp.last_login_time)
+}
+
+// .GrpcLibraryV1.UpdateInfo update_info = 7;
+inline bool LoginResp::has_update_info() const {
+  bool value = CheckHasBit(_impl_._has_bits_[0], 0x00000008U);
+  PROTOBUF_ASSUME(!value || _impl_.update_info_ != nullptr);
+  return value;
+}
+inline void LoginResp::clear_update_info() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  if (_impl_.update_info_ != nullptr) _impl_.update_info_->Clear();
+  ClearHasBit(_impl_._has_bits_[0],
+                  0x00000008U);
+}
+inline const ::GrpcLibraryV1::UpdateInfo& LoginResp::_internal_update_info() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  const ::GrpcLibraryV1::UpdateInfo* p = _impl_.update_info_;
+  return p != nullptr ? *p : reinterpret_cast<const ::GrpcLibraryV1::UpdateInfo&>(::GrpcLibraryV1::_UpdateInfo_default_instance_);
+}
+inline const ::GrpcLibraryV1::UpdateInfo& LoginResp::update_info() const ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_get:GrpcLibraryV1.LoginResp.update_info)
+  return _internal_update_info();
+}
+inline void LoginResp::unsafe_arena_set_allocated_update_info(
+    ::GrpcLibraryV1::UpdateInfo* PROTOBUF_NULLABLE value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  if (GetArena() == nullptr) {
+    delete reinterpret_cast<::google::protobuf::MessageLite*>(_impl_.update_info_);
+  }
+  _impl_.update_info_ = reinterpret_cast<::GrpcLibraryV1::UpdateInfo*>(value);
+  if (value != nullptr) {
+    SetHasBit(_impl_._has_bits_[0], 0x00000008U);
+  } else {
+    ClearHasBit(_impl_._has_bits_[0], 0x00000008U);
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:GrpcLibraryV1.LoginResp.update_info)
+}
+inline ::GrpcLibraryV1::UpdateInfo* PROTOBUF_NULLABLE LoginResp::release_update_info() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+
+  ClearHasBit(_impl_._has_bits_[0], 0x00000008U);
+  ::GrpcLibraryV1::UpdateInfo* released = _impl_.update_info_;
+  _impl_.update_info_ = nullptr;
+  if (::google::protobuf::internal::DebugHardenForceCopyInRelease()) {
+    auto* old = reinterpret_cast<::google::protobuf::MessageLite*>(released);
+    released = ::google::protobuf::internal::DuplicateIfNonNull(released);
+    if (GetArena() == nullptr) {
+      delete old;
+    }
+  } else {
+    if (GetArena() != nullptr) {
+      released = ::google::protobuf::internal::DuplicateIfNonNull(released);
+    }
+  }
+  return released;
+}
+inline ::GrpcLibraryV1::UpdateInfo* PROTOBUF_NULLABLE LoginResp::unsafe_arena_release_update_info() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  // @@protoc_insertion_point(field_release:GrpcLibraryV1.LoginResp.update_info)
+
+  ClearHasBit(_impl_._has_bits_[0], 0x00000008U);
+  ::GrpcLibraryV1::UpdateInfo* temp = _impl_.update_info_;
+  _impl_.update_info_ = nullptr;
+  return temp;
+}
+inline ::GrpcLibraryV1::UpdateInfo* PROTOBUF_NONNULL LoginResp::_internal_mutable_update_info() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  if (_impl_.update_info_ == nullptr) {
+    auto* p = ::google::protobuf::Message::DefaultConstruct<::GrpcLibraryV1::UpdateInfo>(GetArena());
+    _impl_.update_info_ = reinterpret_cast<::GrpcLibraryV1::UpdateInfo*>(p);
+  }
+  return _impl_.update_info_;
+}
+inline ::GrpcLibraryV1::UpdateInfo* PROTOBUF_NONNULL LoginResp::mutable_update_info()
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  SetHasBit(_impl_._has_bits_[0], 0x00000008U);
+  ::GrpcLibraryV1::UpdateInfo* _msg = _internal_mutable_update_info();
+  // @@protoc_insertion_point(field_mutable:GrpcLibraryV1.LoginResp.update_info)
+  return _msg;
+}
+inline void LoginResp::set_allocated_update_info(::GrpcLibraryV1::UpdateInfo* PROTOBUF_NULLABLE value) {
+  ::google::protobuf::Arena* message_arena = GetArena();
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  if (message_arena == nullptr) {
+    delete reinterpret_cast<::google::protobuf::MessageLite*>(_impl_.update_info_);
+  }
+
+  if (value != nullptr) {
+    ::google::protobuf::Arena* submessage_arena = value->GetArena();
+    if (message_arena != submessage_arena) {
+      value = ::google::protobuf::internal::GetOwnedMessage(message_arena, value, submessage_arena);
+    }
+    SetHasBit(_impl_._has_bits_[0], 0x00000008U);
+  } else {
+    ClearHasBit(_impl_._has_bits_[0], 0x00000008U);
+  }
+
+  _impl_.update_info_ = reinterpret_cast<::GrpcLibraryV1::UpdateInfo*>(value);
+  // @@protoc_insertion_point(field_set_allocated:GrpcLibraryV1.LoginResp.update_info)
 }
 
 // -------------------------------------------------------------------
@@ -14262,13 +14847,13 @@ inline void LogoutReq::clear_user_id() {
                   0x00000002U);
 }
 inline ::int64_t LogoutReq::user_id() const {
-  // @@protoc_insertion_point(field_get:GrpcLibrary.LogoutReq.user_id)
+  // @@protoc_insertion_point(field_get:GrpcLibraryV1.LogoutReq.user_id)
   return _internal_user_id();
 }
 inline void LogoutReq::set_user_id(::int64_t value) {
   _internal_set_user_id(value);
   SetHasBit(_impl_._has_bits_[0], 0x00000002U);
-  // @@protoc_insertion_point(field_set:GrpcLibrary.LogoutReq.user_id)
+  // @@protoc_insertion_point(field_set:GrpcLibraryV1.LogoutReq.user_id)
 }
 inline ::int64_t LogoutReq::_internal_user_id() const {
   ::google::protobuf::internal::TSanRead(&_impl_);
@@ -14288,7 +14873,7 @@ inline void LogoutReq::clear_auth() {
 }
 inline const ::std::string& LogoutReq::auth() const
     ABSL_ATTRIBUTE_LIFETIME_BOUND {
-  // @@protoc_insertion_point(field_get:GrpcLibrary.LogoutReq.auth)
+  // @@protoc_insertion_point(field_get:GrpcLibraryV1.LogoutReq.auth)
   return _internal_auth();
 }
 template <typename Arg_, typename... Args_>
@@ -14296,13 +14881,13 @@ PROTOBUF_ALWAYS_INLINE void LogoutReq::set_auth(Arg_&& arg, Args_... args) {
   ::google::protobuf::internal::TSanWrite(&_impl_);
   SetHasBit(_impl_._has_bits_[0], 0x00000001U);
   _impl_.auth_.Set(static_cast<Arg_&&>(arg), args..., GetArena());
-  // @@protoc_insertion_point(field_set:GrpcLibrary.LogoutReq.auth)
+  // @@protoc_insertion_point(field_set:GrpcLibraryV1.LogoutReq.auth)
 }
 inline ::std::string* PROTOBUF_NONNULL LogoutReq::mutable_auth()
     ABSL_ATTRIBUTE_LIFETIME_BOUND {
   SetHasBit(_impl_._has_bits_[0], 0x00000001U);
   ::std::string* _s = _internal_mutable_auth();
-  // @@protoc_insertion_point(field_mutable:GrpcLibrary.LogoutReq.auth)
+  // @@protoc_insertion_point(field_mutable:GrpcLibraryV1.LogoutReq.auth)
   return _s;
 }
 inline const ::std::string& LogoutReq::_internal_auth() const {
@@ -14319,7 +14904,7 @@ inline ::std::string* PROTOBUF_NONNULL LogoutReq::_internal_mutable_auth() {
 }
 inline ::std::string* PROTOBUF_NULLABLE LogoutReq::release_auth() {
   ::google::protobuf::internal::TSanWrite(&_impl_);
-  // @@protoc_insertion_point(field_release:GrpcLibrary.LogoutReq.auth)
+  // @@protoc_insertion_point(field_release:GrpcLibraryV1.LogoutReq.auth)
   if (!CheckHasBit(_impl_._has_bits_[0], 0x00000001U)) {
     return nullptr;
   }
@@ -14341,7 +14926,7 @@ inline void LogoutReq::set_allocated_auth(::std::string* PROTOBUF_NULLABLE value
   if (::google::protobuf::internal::DebugHardenForceCopyDefaultString() && _impl_.auth_.IsDefault()) {
     _impl_.auth_.Set("", GetArena());
   }
-  // @@protoc_insertion_point(field_set_allocated:GrpcLibrary.LogoutReq.auth)
+  // @@protoc_insertion_point(field_set_allocated:GrpcLibraryV1.LogoutReq.auth)
 }
 
 // -------------------------------------------------------------------
@@ -14356,13 +14941,13 @@ inline void LogoutResp::clear_error_code() {
                   0x00000002U);
 }
 inline ::int32_t LogoutResp::error_code() const {
-  // @@protoc_insertion_point(field_get:GrpcLibrary.LogoutResp.error_code)
+  // @@protoc_insertion_point(field_get:GrpcLibraryV1.LogoutResp.error_code)
   return _internal_error_code();
 }
 inline void LogoutResp::set_error_code(::int32_t value) {
   _internal_set_error_code(value);
   SetHasBit(_impl_._has_bits_[0], 0x00000002U);
-  // @@protoc_insertion_point(field_set:GrpcLibrary.LogoutResp.error_code)
+  // @@protoc_insertion_point(field_set:GrpcLibraryV1.LogoutResp.error_code)
 }
 inline ::int32_t LogoutResp::_internal_error_code() const {
   ::google::protobuf::internal::TSanRead(&_impl_);
@@ -14381,13 +14966,13 @@ inline void LogoutResp::clear_user_id() {
                   0x00000001U);
 }
 inline ::int64_t LogoutResp::user_id() const {
-  // @@protoc_insertion_point(field_get:GrpcLibrary.LogoutResp.user_id)
+  // @@protoc_insertion_point(field_get:GrpcLibraryV1.LogoutResp.user_id)
   return _internal_user_id();
 }
 inline void LogoutResp::set_user_id(::int64_t value) {
   _internal_set_user_id(value);
   SetHasBit(_impl_._has_bits_[0], 0x00000001U);
-  // @@protoc_insertion_point(field_set:GrpcLibrary.LogoutResp.user_id)
+  // @@protoc_insertion_point(field_set:GrpcLibraryV1.LogoutResp.user_id)
 }
 inline ::int64_t LogoutResp::_internal_user_id() const {
   ::google::protobuf::internal::TSanRead(&_impl_);
@@ -14411,7 +14996,7 @@ inline void RegAccountReq::clear_account() {
 }
 inline const ::std::string& RegAccountReq::account() const
     ABSL_ATTRIBUTE_LIFETIME_BOUND {
-  // @@protoc_insertion_point(field_get:GrpcLibrary.RegAccountReq.account)
+  // @@protoc_insertion_point(field_get:GrpcLibraryV1.RegAccountReq.account)
   return _internal_account();
 }
 template <typename Arg_, typename... Args_>
@@ -14419,13 +15004,13 @@ PROTOBUF_ALWAYS_INLINE void RegAccountReq::set_account(Arg_&& arg, Args_... args
   ::google::protobuf::internal::TSanWrite(&_impl_);
   SetHasBit(_impl_._has_bits_[0], 0x00000001U);
   _impl_.account_.Set(static_cast<Arg_&&>(arg), args..., GetArena());
-  // @@protoc_insertion_point(field_set:GrpcLibrary.RegAccountReq.account)
+  // @@protoc_insertion_point(field_set:GrpcLibraryV1.RegAccountReq.account)
 }
 inline ::std::string* PROTOBUF_NONNULL RegAccountReq::mutable_account()
     ABSL_ATTRIBUTE_LIFETIME_BOUND {
   SetHasBit(_impl_._has_bits_[0], 0x00000001U);
   ::std::string* _s = _internal_mutable_account();
-  // @@protoc_insertion_point(field_mutable:GrpcLibrary.RegAccountReq.account)
+  // @@protoc_insertion_point(field_mutable:GrpcLibraryV1.RegAccountReq.account)
   return _s;
 }
 inline const ::std::string& RegAccountReq::_internal_account() const {
@@ -14442,7 +15027,7 @@ inline ::std::string* PROTOBUF_NONNULL RegAccountReq::_internal_mutable_account(
 }
 inline ::std::string* PROTOBUF_NULLABLE RegAccountReq::release_account() {
   ::google::protobuf::internal::TSanWrite(&_impl_);
-  // @@protoc_insertion_point(field_release:GrpcLibrary.RegAccountReq.account)
+  // @@protoc_insertion_point(field_release:GrpcLibraryV1.RegAccountReq.account)
   if (!CheckHasBit(_impl_._has_bits_[0], 0x00000001U)) {
     return nullptr;
   }
@@ -14464,7 +15049,7 @@ inline void RegAccountReq::set_allocated_account(::std::string* PROTOBUF_NULLABL
   if (::google::protobuf::internal::DebugHardenForceCopyDefaultString() && _impl_.account_.IsDefault()) {
     _impl_.account_.Set("", GetArena());
   }
-  // @@protoc_insertion_point(field_set_allocated:GrpcLibrary.RegAccountReq.account)
+  // @@protoc_insertion_point(field_set_allocated:GrpcLibraryV1.RegAccountReq.account)
 }
 
 // string passwd = 2;
@@ -14476,7 +15061,7 @@ inline void RegAccountReq::clear_passwd() {
 }
 inline const ::std::string& RegAccountReq::passwd() const
     ABSL_ATTRIBUTE_LIFETIME_BOUND {
-  // @@protoc_insertion_point(field_get:GrpcLibrary.RegAccountReq.passwd)
+  // @@protoc_insertion_point(field_get:GrpcLibraryV1.RegAccountReq.passwd)
   return _internal_passwd();
 }
 template <typename Arg_, typename... Args_>
@@ -14484,13 +15069,13 @@ PROTOBUF_ALWAYS_INLINE void RegAccountReq::set_passwd(Arg_&& arg, Args_... args)
   ::google::protobuf::internal::TSanWrite(&_impl_);
   SetHasBit(_impl_._has_bits_[0], 0x00000002U);
   _impl_.passwd_.Set(static_cast<Arg_&&>(arg), args..., GetArena());
-  // @@protoc_insertion_point(field_set:GrpcLibrary.RegAccountReq.passwd)
+  // @@protoc_insertion_point(field_set:GrpcLibraryV1.RegAccountReq.passwd)
 }
 inline ::std::string* PROTOBUF_NONNULL RegAccountReq::mutable_passwd()
     ABSL_ATTRIBUTE_LIFETIME_BOUND {
   SetHasBit(_impl_._has_bits_[0], 0x00000002U);
   ::std::string* _s = _internal_mutable_passwd();
-  // @@protoc_insertion_point(field_mutable:GrpcLibrary.RegAccountReq.passwd)
+  // @@protoc_insertion_point(field_mutable:GrpcLibraryV1.RegAccountReq.passwd)
   return _s;
 }
 inline const ::std::string& RegAccountReq::_internal_passwd() const {
@@ -14507,7 +15092,7 @@ inline ::std::string* PROTOBUF_NONNULL RegAccountReq::_internal_mutable_passwd()
 }
 inline ::std::string* PROTOBUF_NULLABLE RegAccountReq::release_passwd() {
   ::google::protobuf::internal::TSanWrite(&_impl_);
-  // @@protoc_insertion_point(field_release:GrpcLibrary.RegAccountReq.passwd)
+  // @@protoc_insertion_point(field_release:GrpcLibraryV1.RegAccountReq.passwd)
   if (!CheckHasBit(_impl_._has_bits_[0], 0x00000002U)) {
     return nullptr;
   }
@@ -14529,7 +15114,7 @@ inline void RegAccountReq::set_allocated_passwd(::std::string* PROTOBUF_NULLABLE
   if (::google::protobuf::internal::DebugHardenForceCopyDefaultString() && _impl_.passwd_.IsDefault()) {
     _impl_.passwd_.Set("", GetArena());
   }
-  // @@protoc_insertion_point(field_set_allocated:GrpcLibrary.RegAccountReq.passwd)
+  // @@protoc_insertion_point(field_set_allocated:GrpcLibraryV1.RegAccountReq.passwd)
 }
 
 // -------------------------------------------------------------------
@@ -14544,13 +15129,13 @@ inline void RegAccountResp::clear_error_code() {
                   0x00000002U);
 }
 inline ::int32_t RegAccountResp::error_code() const {
-  // @@protoc_insertion_point(field_get:GrpcLibrary.RegAccountResp.error_code)
+  // @@protoc_insertion_point(field_get:GrpcLibraryV1.RegAccountResp.error_code)
   return _internal_error_code();
 }
 inline void RegAccountResp::set_error_code(::int32_t value) {
   _internal_set_error_code(value);
   SetHasBit(_impl_._has_bits_[0], 0x00000002U);
-  // @@protoc_insertion_point(field_set:GrpcLibrary.RegAccountResp.error_code)
+  // @@protoc_insertion_point(field_set:GrpcLibraryV1.RegAccountResp.error_code)
 }
 inline ::int32_t RegAccountResp::_internal_error_code() const {
   ::google::protobuf::internal::TSanRead(&_impl_);
@@ -14569,13 +15154,13 @@ inline void RegAccountResp::clear_user_id() {
                   0x00000001U);
 }
 inline ::int64_t RegAccountResp::user_id() const {
-  // @@protoc_insertion_point(field_get:GrpcLibrary.RegAccountResp.user_id)
+  // @@protoc_insertion_point(field_get:GrpcLibraryV1.RegAccountResp.user_id)
   return _internal_user_id();
 }
 inline void RegAccountResp::set_user_id(::int64_t value) {
   _internal_set_user_id(value);
   SetHasBit(_impl_._has_bits_[0], 0x00000001U);
-  // @@protoc_insertion_point(field_set:GrpcLibrary.RegAccountResp.user_id)
+  // @@protoc_insertion_point(field_set:GrpcLibraryV1.RegAccountResp.user_id)
 }
 inline ::int64_t RegAccountResp::_internal_user_id() const {
   ::google::protobuf::internal::TSanRead(&_impl_);
@@ -14598,13 +15183,13 @@ inline void QueryReq::clear_id() {
                   0x00000080U);
 }
 inline ::int64_t QueryReq::id() const {
-  // @@protoc_insertion_point(field_get:GrpcLibrary.QueryReq.id)
+  // @@protoc_insertion_point(field_get:GrpcLibraryV1.QueryReq.id)
   return _internal_id();
 }
 inline void QueryReq::set_id(::int64_t value) {
   _internal_set_id(value);
   SetHasBit(_impl_._has_bits_[0], 0x00000080U);
-  // @@protoc_insertion_point(field_set:GrpcLibrary.QueryReq.id)
+  // @@protoc_insertion_point(field_set:GrpcLibraryV1.QueryReq.id)
 }
 inline ::int64_t QueryReq::_internal_id() const {
   ::google::protobuf::internal::TSanRead(&_impl_);
@@ -14623,13 +15208,13 @@ inline void QueryReq::clear_user_id() {
                   0x00000100U);
 }
 inline ::int64_t QueryReq::user_id() const {
-  // @@protoc_insertion_point(field_get:GrpcLibrary.QueryReq.user_id)
+  // @@protoc_insertion_point(field_get:GrpcLibraryV1.QueryReq.user_id)
   return _internal_user_id();
 }
 inline void QueryReq::set_user_id(::int64_t value) {
   _internal_set_user_id(value);
   SetHasBit(_impl_._has_bits_[0], 0x00000100U);
-  // @@protoc_insertion_point(field_set:GrpcLibrary.QueryReq.user_id)
+  // @@protoc_insertion_point(field_set:GrpcLibraryV1.QueryReq.user_id)
 }
 inline ::int64_t QueryReq::_internal_user_id() const {
   ::google::protobuf::internal::TSanRead(&_impl_);
@@ -14649,7 +15234,7 @@ inline void QueryReq::clear_auth() {
 }
 inline const ::std::string& QueryReq::auth() const
     ABSL_ATTRIBUTE_LIFETIME_BOUND {
-  // @@protoc_insertion_point(field_get:GrpcLibrary.QueryReq.auth)
+  // @@protoc_insertion_point(field_get:GrpcLibraryV1.QueryReq.auth)
   return _internal_auth();
 }
 template <typename Arg_, typename... Args_>
@@ -14657,13 +15242,13 @@ PROTOBUF_ALWAYS_INLINE void QueryReq::set_auth(Arg_&& arg, Args_... args) {
   ::google::protobuf::internal::TSanWrite(&_impl_);
   SetHasBit(_impl_._has_bits_[0], 0x00000001U);
   _impl_.auth_.Set(static_cast<Arg_&&>(arg), args..., GetArena());
-  // @@protoc_insertion_point(field_set:GrpcLibrary.QueryReq.auth)
+  // @@protoc_insertion_point(field_set:GrpcLibraryV1.QueryReq.auth)
 }
 inline ::std::string* PROTOBUF_NONNULL QueryReq::mutable_auth()
     ABSL_ATTRIBUTE_LIFETIME_BOUND {
   SetHasBit(_impl_._has_bits_[0], 0x00000001U);
   ::std::string* _s = _internal_mutable_auth();
-  // @@protoc_insertion_point(field_mutable:GrpcLibrary.QueryReq.auth)
+  // @@protoc_insertion_point(field_mutable:GrpcLibraryV1.QueryReq.auth)
   return _s;
 }
 inline const ::std::string& QueryReq::_internal_auth() const {
@@ -14680,7 +15265,7 @@ inline ::std::string* PROTOBUF_NONNULL QueryReq::_internal_mutable_auth() {
 }
 inline ::std::string* PROTOBUF_NULLABLE QueryReq::release_auth() {
   ::google::protobuf::internal::TSanWrite(&_impl_);
-  // @@protoc_insertion_point(field_release:GrpcLibrary.QueryReq.auth)
+  // @@protoc_insertion_point(field_release:GrpcLibraryV1.QueryReq.auth)
   if (!CheckHasBit(_impl_._has_bits_[0], 0x00000001U)) {
     return nullptr;
   }
@@ -14702,7 +15287,7 @@ inline void QueryReq::set_allocated_auth(::std::string* PROTOBUF_NULLABLE value)
   if (::google::protobuf::internal::DebugHardenForceCopyDefaultString() && _impl_.auth_.IsDefault()) {
     _impl_.auth_.Set("", GetArena());
   }
-  // @@protoc_insertion_point(field_set_allocated:GrpcLibrary.QueryReq.auth)
+  // @@protoc_insertion_point(field_set_allocated:GrpcLibraryV1.QueryReq.auth)
 }
 
 // string content = 4;
@@ -14714,7 +15299,7 @@ inline void QueryReq::clear_content() {
 }
 inline const ::std::string& QueryReq::content() const
     ABSL_ATTRIBUTE_LIFETIME_BOUND {
-  // @@protoc_insertion_point(field_get:GrpcLibrary.QueryReq.content)
+  // @@protoc_insertion_point(field_get:GrpcLibraryV1.QueryReq.content)
   return _internal_content();
 }
 template <typename Arg_, typename... Args_>
@@ -14722,13 +15307,13 @@ PROTOBUF_ALWAYS_INLINE void QueryReq::set_content(Arg_&& arg, Args_... args) {
   ::google::protobuf::internal::TSanWrite(&_impl_);
   SetHasBit(_impl_._has_bits_[0], 0x00000002U);
   _impl_.content_.Set(static_cast<Arg_&&>(arg), args..., GetArena());
-  // @@protoc_insertion_point(field_set:GrpcLibrary.QueryReq.content)
+  // @@protoc_insertion_point(field_set:GrpcLibraryV1.QueryReq.content)
 }
 inline ::std::string* PROTOBUF_NONNULL QueryReq::mutable_content()
     ABSL_ATTRIBUTE_LIFETIME_BOUND {
   SetHasBit(_impl_._has_bits_[0], 0x00000002U);
   ::std::string* _s = _internal_mutable_content();
-  // @@protoc_insertion_point(field_mutable:GrpcLibrary.QueryReq.content)
+  // @@protoc_insertion_point(field_mutable:GrpcLibraryV1.QueryReq.content)
   return _s;
 }
 inline const ::std::string& QueryReq::_internal_content() const {
@@ -14745,7 +15330,7 @@ inline ::std::string* PROTOBUF_NONNULL QueryReq::_internal_mutable_content() {
 }
 inline ::std::string* PROTOBUF_NULLABLE QueryReq::release_content() {
   ::google::protobuf::internal::TSanWrite(&_impl_);
-  // @@protoc_insertion_point(field_release:GrpcLibrary.QueryReq.content)
+  // @@protoc_insertion_point(field_release:GrpcLibraryV1.QueryReq.content)
   if (!CheckHasBit(_impl_._has_bits_[0], 0x00000002U)) {
     return nullptr;
   }
@@ -14767,7 +15352,7 @@ inline void QueryReq::set_allocated_content(::std::string* PROTOBUF_NULLABLE val
   if (::google::protobuf::internal::DebugHardenForceCopyDefaultString() && _impl_.content_.IsDefault()) {
     _impl_.content_.Set("", GetArena());
   }
-  // @@protoc_insertion_point(field_set_allocated:GrpcLibrary.QueryReq.content)
+  // @@protoc_insertion_point(field_set_allocated:GrpcLibraryV1.QueryReq.content)
 }
 
 // string model = 5;
@@ -14779,7 +15364,7 @@ inline void QueryReq::clear_model() {
 }
 inline const ::std::string& QueryReq::model() const
     ABSL_ATTRIBUTE_LIFETIME_BOUND {
-  // @@protoc_insertion_point(field_get:GrpcLibrary.QueryReq.model)
+  // @@protoc_insertion_point(field_get:GrpcLibraryV1.QueryReq.model)
   return _internal_model();
 }
 template <typename Arg_, typename... Args_>
@@ -14787,13 +15372,13 @@ PROTOBUF_ALWAYS_INLINE void QueryReq::set_model(Arg_&& arg, Args_... args) {
   ::google::protobuf::internal::TSanWrite(&_impl_);
   SetHasBit(_impl_._has_bits_[0], 0x00000004U);
   _impl_.model_.Set(static_cast<Arg_&&>(arg), args..., GetArena());
-  // @@protoc_insertion_point(field_set:GrpcLibrary.QueryReq.model)
+  // @@protoc_insertion_point(field_set:GrpcLibraryV1.QueryReq.model)
 }
 inline ::std::string* PROTOBUF_NONNULL QueryReq::mutable_model()
     ABSL_ATTRIBUTE_LIFETIME_BOUND {
   SetHasBit(_impl_._has_bits_[0], 0x00000004U);
   ::std::string* _s = _internal_mutable_model();
-  // @@protoc_insertion_point(field_mutable:GrpcLibrary.QueryReq.model)
+  // @@protoc_insertion_point(field_mutable:GrpcLibraryV1.QueryReq.model)
   return _s;
 }
 inline const ::std::string& QueryReq::_internal_model() const {
@@ -14810,7 +15395,7 @@ inline ::std::string* PROTOBUF_NONNULL QueryReq::_internal_mutable_model() {
 }
 inline ::std::string* PROTOBUF_NULLABLE QueryReq::release_model() {
   ::google::protobuf::internal::TSanWrite(&_impl_);
-  // @@protoc_insertion_point(field_release:GrpcLibrary.QueryReq.model)
+  // @@protoc_insertion_point(field_release:GrpcLibraryV1.QueryReq.model)
   if (!CheckHasBit(_impl_._has_bits_[0], 0x00000004U)) {
     return nullptr;
   }
@@ -14832,7 +15417,7 @@ inline void QueryReq::set_allocated_model(::std::string* PROTOBUF_NULLABLE value
   if (::google::protobuf::internal::DebugHardenForceCopyDefaultString() && _impl_.model_.IsDefault()) {
     _impl_.model_.Set("", GetArena());
   }
-  // @@protoc_insertion_point(field_set_allocated:GrpcLibrary.QueryReq.model)
+  // @@protoc_insertion_point(field_set_allocated:GrpcLibraryV1.QueryReq.model)
 }
 
 // string pipeline = 6;
@@ -14844,7 +15429,7 @@ inline void QueryReq::clear_pipeline() {
 }
 inline const ::std::string& QueryReq::pipeline() const
     ABSL_ATTRIBUTE_LIFETIME_BOUND {
-  // @@protoc_insertion_point(field_get:GrpcLibrary.QueryReq.pipeline)
+  // @@protoc_insertion_point(field_get:GrpcLibraryV1.QueryReq.pipeline)
   return _internal_pipeline();
 }
 template <typename Arg_, typename... Args_>
@@ -14852,13 +15437,13 @@ PROTOBUF_ALWAYS_INLINE void QueryReq::set_pipeline(Arg_&& arg, Args_... args) {
   ::google::protobuf::internal::TSanWrite(&_impl_);
   SetHasBit(_impl_._has_bits_[0], 0x00000008U);
   _impl_.pipeline_.Set(static_cast<Arg_&&>(arg), args..., GetArena());
-  // @@protoc_insertion_point(field_set:GrpcLibrary.QueryReq.pipeline)
+  // @@protoc_insertion_point(field_set:GrpcLibraryV1.QueryReq.pipeline)
 }
 inline ::std::string* PROTOBUF_NONNULL QueryReq::mutable_pipeline()
     ABSL_ATTRIBUTE_LIFETIME_BOUND {
   SetHasBit(_impl_._has_bits_[0], 0x00000008U);
   ::std::string* _s = _internal_mutable_pipeline();
-  // @@protoc_insertion_point(field_mutable:GrpcLibrary.QueryReq.pipeline)
+  // @@protoc_insertion_point(field_mutable:GrpcLibraryV1.QueryReq.pipeline)
   return _s;
 }
 inline const ::std::string& QueryReq::_internal_pipeline() const {
@@ -14875,7 +15460,7 @@ inline ::std::string* PROTOBUF_NONNULL QueryReq::_internal_mutable_pipeline() {
 }
 inline ::std::string* PROTOBUF_NULLABLE QueryReq::release_pipeline() {
   ::google::protobuf::internal::TSanWrite(&_impl_);
-  // @@protoc_insertion_point(field_release:GrpcLibrary.QueryReq.pipeline)
+  // @@protoc_insertion_point(field_release:GrpcLibraryV1.QueryReq.pipeline)
   if (!CheckHasBit(_impl_._has_bits_[0], 0x00000008U)) {
     return nullptr;
   }
@@ -14897,7 +15482,7 @@ inline void QueryReq::set_allocated_pipeline(::std::string* PROTOBUF_NULLABLE va
   if (::google::protobuf::internal::DebugHardenForceCopyDefaultString() && _impl_.pipeline_.IsDefault()) {
     _impl_.pipeline_.Set("", GetArena());
   }
-  // @@protoc_insertion_point(field_set_allocated:GrpcLibrary.QueryReq.pipeline)
+  // @@protoc_insertion_point(field_set_allocated:GrpcLibraryV1.QueryReq.pipeline)
 }
 
 // string api_key = 7;
@@ -14909,7 +15494,7 @@ inline void QueryReq::clear_api_key() {
 }
 inline const ::std::string& QueryReq::api_key() const
     ABSL_ATTRIBUTE_LIFETIME_BOUND {
-  // @@protoc_insertion_point(field_get:GrpcLibrary.QueryReq.api_key)
+  // @@protoc_insertion_point(field_get:GrpcLibraryV1.QueryReq.api_key)
   return _internal_api_key();
 }
 template <typename Arg_, typename... Args_>
@@ -14917,13 +15502,13 @@ PROTOBUF_ALWAYS_INLINE void QueryReq::set_api_key(Arg_&& arg, Args_... args) {
   ::google::protobuf::internal::TSanWrite(&_impl_);
   SetHasBit(_impl_._has_bits_[0], 0x00000010U);
   _impl_.api_key_.Set(static_cast<Arg_&&>(arg), args..., GetArena());
-  // @@protoc_insertion_point(field_set:GrpcLibrary.QueryReq.api_key)
+  // @@protoc_insertion_point(field_set:GrpcLibraryV1.QueryReq.api_key)
 }
 inline ::std::string* PROTOBUF_NONNULL QueryReq::mutable_api_key()
     ABSL_ATTRIBUTE_LIFETIME_BOUND {
   SetHasBit(_impl_._has_bits_[0], 0x00000010U);
   ::std::string* _s = _internal_mutable_api_key();
-  // @@protoc_insertion_point(field_mutable:GrpcLibrary.QueryReq.api_key)
+  // @@protoc_insertion_point(field_mutable:GrpcLibraryV1.QueryReq.api_key)
   return _s;
 }
 inline const ::std::string& QueryReq::_internal_api_key() const {
@@ -14940,7 +15525,7 @@ inline ::std::string* PROTOBUF_NONNULL QueryReq::_internal_mutable_api_key() {
 }
 inline ::std::string* PROTOBUF_NULLABLE QueryReq::release_api_key() {
   ::google::protobuf::internal::TSanWrite(&_impl_);
-  // @@protoc_insertion_point(field_release:GrpcLibrary.QueryReq.api_key)
+  // @@protoc_insertion_point(field_release:GrpcLibraryV1.QueryReq.api_key)
   if (!CheckHasBit(_impl_._has_bits_[0], 0x00000010U)) {
     return nullptr;
   }
@@ -14962,10 +15547,10 @@ inline void QueryReq::set_allocated_api_key(::std::string* PROTOBUF_NULLABLE val
   if (::google::protobuf::internal::DebugHardenForceCopyDefaultString() && _impl_.api_key_.IsDefault()) {
     _impl_.api_key_.Set("", GetArena());
   }
-  // @@protoc_insertion_point(field_set_allocated:GrpcLibrary.QueryReq.api_key)
+  // @@protoc_insertion_point(field_set_allocated:GrpcLibraryV1.QueryReq.api_key)
 }
 
-// .GrpcLibrary.SamplingParam sampling = 8;
+// .GrpcLibraryV1.SamplingParam sampling = 8;
 inline bool QueryReq::has_sampling() const {
   bool value = CheckHasBit(_impl_._has_bits_[0], 0x00000020U);
   PROTOBUF_ASSUME(!value || _impl_.sampling_ != nullptr);
@@ -14977,34 +15562,34 @@ inline void QueryReq::clear_sampling() {
   ClearHasBit(_impl_._has_bits_[0],
                   0x00000020U);
 }
-inline const ::GrpcLibrary::SamplingParam& QueryReq::_internal_sampling() const {
+inline const ::GrpcLibraryV1::SamplingParam& QueryReq::_internal_sampling() const {
   ::google::protobuf::internal::TSanRead(&_impl_);
-  const ::GrpcLibrary::SamplingParam* p = _impl_.sampling_;
-  return p != nullptr ? *p : reinterpret_cast<const ::GrpcLibrary::SamplingParam&>(::GrpcLibrary::_SamplingParam_default_instance_);
+  const ::GrpcLibraryV1::SamplingParam* p = _impl_.sampling_;
+  return p != nullptr ? *p : reinterpret_cast<const ::GrpcLibraryV1::SamplingParam&>(::GrpcLibraryV1::_SamplingParam_default_instance_);
 }
-inline const ::GrpcLibrary::SamplingParam& QueryReq::sampling() const ABSL_ATTRIBUTE_LIFETIME_BOUND {
-  // @@protoc_insertion_point(field_get:GrpcLibrary.QueryReq.sampling)
+inline const ::GrpcLibraryV1::SamplingParam& QueryReq::sampling() const ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_get:GrpcLibraryV1.QueryReq.sampling)
   return _internal_sampling();
 }
 inline void QueryReq::unsafe_arena_set_allocated_sampling(
-    ::GrpcLibrary::SamplingParam* PROTOBUF_NULLABLE value) {
+    ::GrpcLibraryV1::SamplingParam* PROTOBUF_NULLABLE value) {
   ::google::protobuf::internal::TSanWrite(&_impl_);
   if (GetArena() == nullptr) {
     delete reinterpret_cast<::google::protobuf::MessageLite*>(_impl_.sampling_);
   }
-  _impl_.sampling_ = reinterpret_cast<::GrpcLibrary::SamplingParam*>(value);
+  _impl_.sampling_ = reinterpret_cast<::GrpcLibraryV1::SamplingParam*>(value);
   if (value != nullptr) {
     SetHasBit(_impl_._has_bits_[0], 0x00000020U);
   } else {
     ClearHasBit(_impl_._has_bits_[0], 0x00000020U);
   }
-  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:GrpcLibrary.QueryReq.sampling)
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:GrpcLibraryV1.QueryReq.sampling)
 }
-inline ::GrpcLibrary::SamplingParam* PROTOBUF_NULLABLE QueryReq::release_sampling() {
+inline ::GrpcLibraryV1::SamplingParam* PROTOBUF_NULLABLE QueryReq::release_sampling() {
   ::google::protobuf::internal::TSanWrite(&_impl_);
 
   ClearHasBit(_impl_._has_bits_[0], 0x00000020U);
-  ::GrpcLibrary::SamplingParam* released = _impl_.sampling_;
+  ::GrpcLibraryV1::SamplingParam* released = _impl_.sampling_;
   _impl_.sampling_ = nullptr;
   if (::google::protobuf::internal::DebugHardenForceCopyInRelease()) {
     auto* old = reinterpret_cast<::google::protobuf::MessageLite*>(released);
@@ -15019,31 +15604,31 @@ inline ::GrpcLibrary::SamplingParam* PROTOBUF_NULLABLE QueryReq::release_samplin
   }
   return released;
 }
-inline ::GrpcLibrary::SamplingParam* PROTOBUF_NULLABLE QueryReq::unsafe_arena_release_sampling() {
+inline ::GrpcLibraryV1::SamplingParam* PROTOBUF_NULLABLE QueryReq::unsafe_arena_release_sampling() {
   ::google::protobuf::internal::TSanWrite(&_impl_);
-  // @@protoc_insertion_point(field_release:GrpcLibrary.QueryReq.sampling)
+  // @@protoc_insertion_point(field_release:GrpcLibraryV1.QueryReq.sampling)
 
   ClearHasBit(_impl_._has_bits_[0], 0x00000020U);
-  ::GrpcLibrary::SamplingParam* temp = _impl_.sampling_;
+  ::GrpcLibraryV1::SamplingParam* temp = _impl_.sampling_;
   _impl_.sampling_ = nullptr;
   return temp;
 }
-inline ::GrpcLibrary::SamplingParam* PROTOBUF_NONNULL QueryReq::_internal_mutable_sampling() {
+inline ::GrpcLibraryV1::SamplingParam* PROTOBUF_NONNULL QueryReq::_internal_mutable_sampling() {
   ::google::protobuf::internal::TSanWrite(&_impl_);
   if (_impl_.sampling_ == nullptr) {
-    auto* p = ::google::protobuf::Message::DefaultConstruct<::GrpcLibrary::SamplingParam>(GetArena());
-    _impl_.sampling_ = reinterpret_cast<::GrpcLibrary::SamplingParam*>(p);
+    auto* p = ::google::protobuf::Message::DefaultConstruct<::GrpcLibraryV1::SamplingParam>(GetArena());
+    _impl_.sampling_ = reinterpret_cast<::GrpcLibraryV1::SamplingParam*>(p);
   }
   return _impl_.sampling_;
 }
-inline ::GrpcLibrary::SamplingParam* PROTOBUF_NONNULL QueryReq::mutable_sampling()
+inline ::GrpcLibraryV1::SamplingParam* PROTOBUF_NONNULL QueryReq::mutable_sampling()
     ABSL_ATTRIBUTE_LIFETIME_BOUND {
   SetHasBit(_impl_._has_bits_[0], 0x00000020U);
-  ::GrpcLibrary::SamplingParam* _msg = _internal_mutable_sampling();
-  // @@protoc_insertion_point(field_mutable:GrpcLibrary.QueryReq.sampling)
+  ::GrpcLibraryV1::SamplingParam* _msg = _internal_mutable_sampling();
+  // @@protoc_insertion_point(field_mutable:GrpcLibraryV1.QueryReq.sampling)
   return _msg;
 }
-inline void QueryReq::set_allocated_sampling(::GrpcLibrary::SamplingParam* PROTOBUF_NULLABLE value) {
+inline void QueryReq::set_allocated_sampling(::GrpcLibraryV1::SamplingParam* PROTOBUF_NULLABLE value) {
   ::google::protobuf::Arena* message_arena = GetArena();
   ::google::protobuf::internal::TSanWrite(&_impl_);
   if (message_arena == nullptr) {
@@ -15060,11 +15645,11 @@ inline void QueryReq::set_allocated_sampling(::GrpcLibrary::SamplingParam* PROTO
     ClearHasBit(_impl_._has_bits_[0], 0x00000020U);
   }
 
-  _impl_.sampling_ = reinterpret_cast<::GrpcLibrary::SamplingParam*>(value);
-  // @@protoc_insertion_point(field_set_allocated:GrpcLibrary.QueryReq.sampling)
+  _impl_.sampling_ = reinterpret_cast<::GrpcLibraryV1::SamplingParam*>(value);
+  // @@protoc_insertion_point(field_set_allocated:GrpcLibraryV1.QueryReq.sampling)
 }
 
-// .GrpcLibrary.ContextParam ctx = 9;
+// .GrpcLibraryV1.ContextParam ctx = 9;
 inline bool QueryReq::has_ctx() const {
   bool value = CheckHasBit(_impl_._has_bits_[0], 0x00000040U);
   PROTOBUF_ASSUME(!value || _impl_.ctx_ != nullptr);
@@ -15076,34 +15661,34 @@ inline void QueryReq::clear_ctx() {
   ClearHasBit(_impl_._has_bits_[0],
                   0x00000040U);
 }
-inline const ::GrpcLibrary::ContextParam& QueryReq::_internal_ctx() const {
+inline const ::GrpcLibraryV1::ContextParam& QueryReq::_internal_ctx() const {
   ::google::protobuf::internal::TSanRead(&_impl_);
-  const ::GrpcLibrary::ContextParam* p = _impl_.ctx_;
-  return p != nullptr ? *p : reinterpret_cast<const ::GrpcLibrary::ContextParam&>(::GrpcLibrary::_ContextParam_default_instance_);
+  const ::GrpcLibraryV1::ContextParam* p = _impl_.ctx_;
+  return p != nullptr ? *p : reinterpret_cast<const ::GrpcLibraryV1::ContextParam&>(::GrpcLibraryV1::_ContextParam_default_instance_);
 }
-inline const ::GrpcLibrary::ContextParam& QueryReq::ctx() const ABSL_ATTRIBUTE_LIFETIME_BOUND {
-  // @@protoc_insertion_point(field_get:GrpcLibrary.QueryReq.ctx)
+inline const ::GrpcLibraryV1::ContextParam& QueryReq::ctx() const ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_get:GrpcLibraryV1.QueryReq.ctx)
   return _internal_ctx();
 }
 inline void QueryReq::unsafe_arena_set_allocated_ctx(
-    ::GrpcLibrary::ContextParam* PROTOBUF_NULLABLE value) {
+    ::GrpcLibraryV1::ContextParam* PROTOBUF_NULLABLE value) {
   ::google::protobuf::internal::TSanWrite(&_impl_);
   if (GetArena() == nullptr) {
     delete reinterpret_cast<::google::protobuf::MessageLite*>(_impl_.ctx_);
   }
-  _impl_.ctx_ = reinterpret_cast<::GrpcLibrary::ContextParam*>(value);
+  _impl_.ctx_ = reinterpret_cast<::GrpcLibraryV1::ContextParam*>(value);
   if (value != nullptr) {
     SetHasBit(_impl_._has_bits_[0], 0x00000040U);
   } else {
     ClearHasBit(_impl_._has_bits_[0], 0x00000040U);
   }
-  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:GrpcLibrary.QueryReq.ctx)
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:GrpcLibraryV1.QueryReq.ctx)
 }
-inline ::GrpcLibrary::ContextParam* PROTOBUF_NULLABLE QueryReq::release_ctx() {
+inline ::GrpcLibraryV1::ContextParam* PROTOBUF_NULLABLE QueryReq::release_ctx() {
   ::google::protobuf::internal::TSanWrite(&_impl_);
 
   ClearHasBit(_impl_._has_bits_[0], 0x00000040U);
-  ::GrpcLibrary::ContextParam* released = _impl_.ctx_;
+  ::GrpcLibraryV1::ContextParam* released = _impl_.ctx_;
   _impl_.ctx_ = nullptr;
   if (::google::protobuf::internal::DebugHardenForceCopyInRelease()) {
     auto* old = reinterpret_cast<::google::protobuf::MessageLite*>(released);
@@ -15118,31 +15703,31 @@ inline ::GrpcLibrary::ContextParam* PROTOBUF_NULLABLE QueryReq::release_ctx() {
   }
   return released;
 }
-inline ::GrpcLibrary::ContextParam* PROTOBUF_NULLABLE QueryReq::unsafe_arena_release_ctx() {
+inline ::GrpcLibraryV1::ContextParam* PROTOBUF_NULLABLE QueryReq::unsafe_arena_release_ctx() {
   ::google::protobuf::internal::TSanWrite(&_impl_);
-  // @@protoc_insertion_point(field_release:GrpcLibrary.QueryReq.ctx)
+  // @@protoc_insertion_point(field_release:GrpcLibraryV1.QueryReq.ctx)
 
   ClearHasBit(_impl_._has_bits_[0], 0x00000040U);
-  ::GrpcLibrary::ContextParam* temp = _impl_.ctx_;
+  ::GrpcLibraryV1::ContextParam* temp = _impl_.ctx_;
   _impl_.ctx_ = nullptr;
   return temp;
 }
-inline ::GrpcLibrary::ContextParam* PROTOBUF_NONNULL QueryReq::_internal_mutable_ctx() {
+inline ::GrpcLibraryV1::ContextParam* PROTOBUF_NONNULL QueryReq::_internal_mutable_ctx() {
   ::google::protobuf::internal::TSanWrite(&_impl_);
   if (_impl_.ctx_ == nullptr) {
-    auto* p = ::google::protobuf::Message::DefaultConstruct<::GrpcLibrary::ContextParam>(GetArena());
-    _impl_.ctx_ = reinterpret_cast<::GrpcLibrary::ContextParam*>(p);
+    auto* p = ::google::protobuf::Message::DefaultConstruct<::GrpcLibraryV1::ContextParam>(GetArena());
+    _impl_.ctx_ = reinterpret_cast<::GrpcLibraryV1::ContextParam*>(p);
   }
   return _impl_.ctx_;
 }
-inline ::GrpcLibrary::ContextParam* PROTOBUF_NONNULL QueryReq::mutable_ctx()
+inline ::GrpcLibraryV1::ContextParam* PROTOBUF_NONNULL QueryReq::mutable_ctx()
     ABSL_ATTRIBUTE_LIFETIME_BOUND {
   SetHasBit(_impl_._has_bits_[0], 0x00000040U);
-  ::GrpcLibrary::ContextParam* _msg = _internal_mutable_ctx();
-  // @@protoc_insertion_point(field_mutable:GrpcLibrary.QueryReq.ctx)
+  ::GrpcLibraryV1::ContextParam* _msg = _internal_mutable_ctx();
+  // @@protoc_insertion_point(field_mutable:GrpcLibraryV1.QueryReq.ctx)
   return _msg;
 }
-inline void QueryReq::set_allocated_ctx(::GrpcLibrary::ContextParam* PROTOBUF_NULLABLE value) {
+inline void QueryReq::set_allocated_ctx(::GrpcLibraryV1::ContextParam* PROTOBUF_NULLABLE value) {
   ::google::protobuf::Arena* message_arena = GetArena();
   ::google::protobuf::internal::TSanWrite(&_impl_);
   if (message_arena == nullptr) {
@@ -15159,8 +15744,8 @@ inline void QueryReq::set_allocated_ctx(::GrpcLibrary::ContextParam* PROTOBUF_NU
     ClearHasBit(_impl_._has_bits_[0], 0x00000040U);
   }
 
-  _impl_.ctx_ = reinterpret_cast<::GrpcLibrary::ContextParam*>(value);
-  // @@protoc_insertion_point(field_set_allocated:GrpcLibrary.QueryReq.ctx)
+  _impl_.ctx_ = reinterpret_cast<::GrpcLibraryV1::ContextParam*>(value);
+  // @@protoc_insertion_point(field_set_allocated:GrpcLibraryV1.QueryReq.ctx)
 }
 
 // -------------------------------------------------------------------
@@ -15175,13 +15760,13 @@ inline void QueryResp::clear_error_code() {
                   0x00000004U);
 }
 inline ::int32_t QueryResp::error_code() const {
-  // @@protoc_insertion_point(field_get:GrpcLibrary.QueryResp.error_code)
+  // @@protoc_insertion_point(field_get:GrpcLibraryV1.QueryResp.error_code)
   return _internal_error_code();
 }
 inline void QueryResp::set_error_code(::int32_t value) {
   _internal_set_error_code(value);
   SetHasBit(_impl_._has_bits_[0], 0x00000004U);
-  // @@protoc_insertion_point(field_set:GrpcLibrary.QueryResp.error_code)
+  // @@protoc_insertion_point(field_set:GrpcLibraryV1.QueryResp.error_code)
 }
 inline ::int32_t QueryResp::_internal_error_code() const {
   ::google::protobuf::internal::TSanRead(&_impl_);
@@ -15200,13 +15785,13 @@ inline void QueryResp::clear_id() {
                   0x00000002U);
 }
 inline ::int64_t QueryResp::id() const {
-  // @@protoc_insertion_point(field_get:GrpcLibrary.QueryResp.id)
+  // @@protoc_insertion_point(field_get:GrpcLibraryV1.QueryResp.id)
   return _internal_id();
 }
 inline void QueryResp::set_id(::int64_t value) {
   _internal_set_id(value);
   SetHasBit(_impl_._has_bits_[0], 0x00000002U);
-  // @@protoc_insertion_point(field_set:GrpcLibrary.QueryResp.id)
+  // @@protoc_insertion_point(field_set:GrpcLibraryV1.QueryResp.id)
 }
 inline ::int64_t QueryResp::_internal_id() const {
   ::google::protobuf::internal::TSanRead(&_impl_);
@@ -15226,7 +15811,7 @@ inline void QueryResp::clear_content() {
 }
 inline const ::std::string& QueryResp::content() const
     ABSL_ATTRIBUTE_LIFETIME_BOUND {
-  // @@protoc_insertion_point(field_get:GrpcLibrary.QueryResp.content)
+  // @@protoc_insertion_point(field_get:GrpcLibraryV1.QueryResp.content)
   return _internal_content();
 }
 template <typename Arg_, typename... Args_>
@@ -15234,13 +15819,13 @@ PROTOBUF_ALWAYS_INLINE void QueryResp::set_content(Arg_&& arg, Args_... args) {
   ::google::protobuf::internal::TSanWrite(&_impl_);
   SetHasBit(_impl_._has_bits_[0], 0x00000001U);
   _impl_.content_.Set(static_cast<Arg_&&>(arg), args..., GetArena());
-  // @@protoc_insertion_point(field_set:GrpcLibrary.QueryResp.content)
+  // @@protoc_insertion_point(field_set:GrpcLibraryV1.QueryResp.content)
 }
 inline ::std::string* PROTOBUF_NONNULL QueryResp::mutable_content()
     ABSL_ATTRIBUTE_LIFETIME_BOUND {
   SetHasBit(_impl_._has_bits_[0], 0x00000001U);
   ::std::string* _s = _internal_mutable_content();
-  // @@protoc_insertion_point(field_mutable:GrpcLibrary.QueryResp.content)
+  // @@protoc_insertion_point(field_mutable:GrpcLibraryV1.QueryResp.content)
   return _s;
 }
 inline const ::std::string& QueryResp::_internal_content() const {
@@ -15257,7 +15842,7 @@ inline ::std::string* PROTOBUF_NONNULL QueryResp::_internal_mutable_content() {
 }
 inline ::std::string* PROTOBUF_NULLABLE QueryResp::release_content() {
   ::google::protobuf::internal::TSanWrite(&_impl_);
-  // @@protoc_insertion_point(field_release:GrpcLibrary.QueryResp.content)
+  // @@protoc_insertion_point(field_release:GrpcLibraryV1.QueryResp.content)
   if (!CheckHasBit(_impl_._has_bits_[0], 0x00000001U)) {
     return nullptr;
   }
@@ -15279,7 +15864,7 @@ inline void QueryResp::set_allocated_content(::std::string* PROTOBUF_NULLABLE va
   if (::google::protobuf::internal::DebugHardenForceCopyDefaultString() && _impl_.content_.IsDefault()) {
     _impl_.content_.Set("", GetArena());
   }
-  // @@protoc_insertion_point(field_set_allocated:GrpcLibrary.QueryResp.content)
+  // @@protoc_insertion_point(field_set_allocated:GrpcLibraryV1.QueryResp.content)
 }
 
 // bool is_finished = 4;
@@ -15290,13 +15875,13 @@ inline void QueryResp::clear_is_finished() {
                   0x00000008U);
 }
 inline bool QueryResp::is_finished() const {
-  // @@protoc_insertion_point(field_get:GrpcLibrary.QueryResp.is_finished)
+  // @@protoc_insertion_point(field_get:GrpcLibraryV1.QueryResp.is_finished)
   return _internal_is_finished();
 }
 inline void QueryResp::set_is_finished(bool value) {
   _internal_set_is_finished(value);
   SetHasBit(_impl_._has_bits_[0], 0x00000008U);
-  // @@protoc_insertion_point(field_set:GrpcLibrary.QueryResp.is_finished)
+  // @@protoc_insertion_point(field_set:GrpcLibraryV1.QueryResp.is_finished)
 }
 inline bool QueryResp::_internal_is_finished() const {
   ::google::protobuf::internal::TSanRead(&_impl_);
@@ -15319,13 +15904,13 @@ inline void StopAnswerReq::clear_session_id() {
                   0x00000002U);
 }
 inline ::int64_t StopAnswerReq::session_id() const {
-  // @@protoc_insertion_point(field_get:GrpcLibrary.StopAnswerReq.session_id)
+  // @@protoc_insertion_point(field_get:GrpcLibraryV1.StopAnswerReq.session_id)
   return _internal_session_id();
 }
 inline void StopAnswerReq::set_session_id(::int64_t value) {
   _internal_set_session_id(value);
   SetHasBit(_impl_._has_bits_[0], 0x00000002U);
-  // @@protoc_insertion_point(field_set:GrpcLibrary.StopAnswerReq.session_id)
+  // @@protoc_insertion_point(field_set:GrpcLibraryV1.StopAnswerReq.session_id)
 }
 inline ::int64_t StopAnswerReq::_internal_session_id() const {
   ::google::protobuf::internal::TSanRead(&_impl_);
@@ -15344,13 +15929,13 @@ inline void StopAnswerReq::clear_user_id() {
                   0x00000004U);
 }
 inline ::int64_t StopAnswerReq::user_id() const {
-  // @@protoc_insertion_point(field_get:GrpcLibrary.StopAnswerReq.user_id)
+  // @@protoc_insertion_point(field_get:GrpcLibraryV1.StopAnswerReq.user_id)
   return _internal_user_id();
 }
 inline void StopAnswerReq::set_user_id(::int64_t value) {
   _internal_set_user_id(value);
   SetHasBit(_impl_._has_bits_[0], 0x00000004U);
-  // @@protoc_insertion_point(field_set:GrpcLibrary.StopAnswerReq.user_id)
+  // @@protoc_insertion_point(field_set:GrpcLibraryV1.StopAnswerReq.user_id)
 }
 inline ::int64_t StopAnswerReq::_internal_user_id() const {
   ::google::protobuf::internal::TSanRead(&_impl_);
@@ -15370,7 +15955,7 @@ inline void StopAnswerReq::clear_auth() {
 }
 inline const ::std::string& StopAnswerReq::auth() const
     ABSL_ATTRIBUTE_LIFETIME_BOUND {
-  // @@protoc_insertion_point(field_get:GrpcLibrary.StopAnswerReq.auth)
+  // @@protoc_insertion_point(field_get:GrpcLibraryV1.StopAnswerReq.auth)
   return _internal_auth();
 }
 template <typename Arg_, typename... Args_>
@@ -15378,13 +15963,13 @@ PROTOBUF_ALWAYS_INLINE void StopAnswerReq::set_auth(Arg_&& arg, Args_... args) {
   ::google::protobuf::internal::TSanWrite(&_impl_);
   SetHasBit(_impl_._has_bits_[0], 0x00000001U);
   _impl_.auth_.Set(static_cast<Arg_&&>(arg), args..., GetArena());
-  // @@protoc_insertion_point(field_set:GrpcLibrary.StopAnswerReq.auth)
+  // @@protoc_insertion_point(field_set:GrpcLibraryV1.StopAnswerReq.auth)
 }
 inline ::std::string* PROTOBUF_NONNULL StopAnswerReq::mutable_auth()
     ABSL_ATTRIBUTE_LIFETIME_BOUND {
   SetHasBit(_impl_._has_bits_[0], 0x00000001U);
   ::std::string* _s = _internal_mutable_auth();
-  // @@protoc_insertion_point(field_mutable:GrpcLibrary.StopAnswerReq.auth)
+  // @@protoc_insertion_point(field_mutable:GrpcLibraryV1.StopAnswerReq.auth)
   return _s;
 }
 inline const ::std::string& StopAnswerReq::_internal_auth() const {
@@ -15401,7 +15986,7 @@ inline ::std::string* PROTOBUF_NONNULL StopAnswerReq::_internal_mutable_auth() {
 }
 inline ::std::string* PROTOBUF_NULLABLE StopAnswerReq::release_auth() {
   ::google::protobuf::internal::TSanWrite(&_impl_);
-  // @@protoc_insertion_point(field_release:GrpcLibrary.StopAnswerReq.auth)
+  // @@protoc_insertion_point(field_release:GrpcLibraryV1.StopAnswerReq.auth)
   if (!CheckHasBit(_impl_._has_bits_[0], 0x00000001U)) {
     return nullptr;
   }
@@ -15423,7 +16008,7 @@ inline void StopAnswerReq::set_allocated_auth(::std::string* PROTOBUF_NULLABLE v
   if (::google::protobuf::internal::DebugHardenForceCopyDefaultString() && _impl_.auth_.IsDefault()) {
     _impl_.auth_.Set("", GetArena());
   }
-  // @@protoc_insertion_point(field_set_allocated:GrpcLibrary.StopAnswerReq.auth)
+  // @@protoc_insertion_point(field_set_allocated:GrpcLibraryV1.StopAnswerReq.auth)
 }
 
 // -------------------------------------------------------------------
@@ -15438,13 +16023,13 @@ inline void StopAnswerResp::clear_error_code() {
                   0x00000002U);
 }
 inline ::int32_t StopAnswerResp::error_code() const {
-  // @@protoc_insertion_point(field_get:GrpcLibrary.StopAnswerResp.error_code)
+  // @@protoc_insertion_point(field_get:GrpcLibraryV1.StopAnswerResp.error_code)
   return _internal_error_code();
 }
 inline void StopAnswerResp::set_error_code(::int32_t value) {
   _internal_set_error_code(value);
   SetHasBit(_impl_._has_bits_[0], 0x00000002U);
-  // @@protoc_insertion_point(field_set:GrpcLibrary.StopAnswerResp.error_code)
+  // @@protoc_insertion_point(field_set:GrpcLibraryV1.StopAnswerResp.error_code)
 }
 inline ::int32_t StopAnswerResp::_internal_error_code() const {
   ::google::protobuf::internal::TSanRead(&_impl_);
@@ -15463,13 +16048,13 @@ inline void StopAnswerResp::clear_session_id() {
                   0x00000001U);
 }
 inline ::int64_t StopAnswerResp::session_id() const {
-  // @@protoc_insertion_point(field_get:GrpcLibrary.StopAnswerResp.session_id)
+  // @@protoc_insertion_point(field_get:GrpcLibraryV1.StopAnswerResp.session_id)
   return _internal_session_id();
 }
 inline void StopAnswerResp::set_session_id(::int64_t value) {
   _internal_set_session_id(value);
   SetHasBit(_impl_._has_bits_[0], 0x00000001U);
-  // @@protoc_insertion_point(field_set:GrpcLibrary.StopAnswerResp.session_id)
+  // @@protoc_insertion_point(field_set:GrpcLibraryV1.StopAnswerResp.session_id)
 }
 inline ::int64_t StopAnswerResp::_internal_session_id() const {
   ::google::protobuf::internal::TSanRead(&_impl_);
@@ -15493,7 +16078,7 @@ inline void RecognizeReq::clear_ctx_id() {
 }
 inline const ::std::string& RecognizeReq::ctx_id() const
     ABSL_ATTRIBUTE_LIFETIME_BOUND {
-  // @@protoc_insertion_point(field_get:GrpcLibrary.RecognizeReq.ctx_id)
+  // @@protoc_insertion_point(field_get:GrpcLibraryV1.RecognizeReq.ctx_id)
   return _internal_ctx_id();
 }
 template <typename Arg_, typename... Args_>
@@ -15501,13 +16086,13 @@ PROTOBUF_ALWAYS_INLINE void RecognizeReq::set_ctx_id(Arg_&& arg, Args_... args) 
   ::google::protobuf::internal::TSanWrite(&_impl_);
   SetHasBit(_impl_._has_bits_[0], 0x00000001U);
   _impl_.ctx_id_.Set(static_cast<Arg_&&>(arg), args..., GetArena());
-  // @@protoc_insertion_point(field_set:GrpcLibrary.RecognizeReq.ctx_id)
+  // @@protoc_insertion_point(field_set:GrpcLibraryV1.RecognizeReq.ctx_id)
 }
 inline ::std::string* PROTOBUF_NONNULL RecognizeReq::mutable_ctx_id()
     ABSL_ATTRIBUTE_LIFETIME_BOUND {
   SetHasBit(_impl_._has_bits_[0], 0x00000001U);
   ::std::string* _s = _internal_mutable_ctx_id();
-  // @@protoc_insertion_point(field_mutable:GrpcLibrary.RecognizeReq.ctx_id)
+  // @@protoc_insertion_point(field_mutable:GrpcLibraryV1.RecognizeReq.ctx_id)
   return _s;
 }
 inline const ::std::string& RecognizeReq::_internal_ctx_id() const {
@@ -15524,7 +16109,7 @@ inline ::std::string* PROTOBUF_NONNULL RecognizeReq::_internal_mutable_ctx_id() 
 }
 inline ::std::string* PROTOBUF_NULLABLE RecognizeReq::release_ctx_id() {
   ::google::protobuf::internal::TSanWrite(&_impl_);
-  // @@protoc_insertion_point(field_release:GrpcLibrary.RecognizeReq.ctx_id)
+  // @@protoc_insertion_point(field_release:GrpcLibraryV1.RecognizeReq.ctx_id)
   if (!CheckHasBit(_impl_._has_bits_[0], 0x00000001U)) {
     return nullptr;
   }
@@ -15546,7 +16131,7 @@ inline void RecognizeReq::set_allocated_ctx_id(::std::string* PROTOBUF_NULLABLE 
   if (::google::protobuf::internal::DebugHardenForceCopyDefaultString() && _impl_.ctx_id_.IsDefault()) {
     _impl_.ctx_id_.Set("", GetArena());
   }
-  // @@protoc_insertion_point(field_set_allocated:GrpcLibrary.RecognizeReq.ctx_id)
+  // @@protoc_insertion_point(field_set_allocated:GrpcLibraryV1.RecognizeReq.ctx_id)
 }
 
 // int64 session_id = 2;
@@ -15557,13 +16142,13 @@ inline void RecognizeReq::clear_session_id() {
                   0x00000002U);
 }
 inline ::int64_t RecognizeReq::session_id() const {
-  // @@protoc_insertion_point(field_get:GrpcLibrary.RecognizeReq.session_id)
+  // @@protoc_insertion_point(field_get:GrpcLibraryV1.RecognizeReq.session_id)
   return _internal_session_id();
 }
 inline void RecognizeReq::set_session_id(::int64_t value) {
   _internal_set_session_id(value);
   SetHasBit(_impl_._has_bits_[0], 0x00000002U);
-  // @@protoc_insertion_point(field_set:GrpcLibrary.RecognizeReq.session_id)
+  // @@protoc_insertion_point(field_set:GrpcLibraryV1.RecognizeReq.session_id)
 }
 inline ::int64_t RecognizeReq::_internal_session_id() const {
   ::google::protobuf::internal::TSanRead(&_impl_);
@@ -15574,7 +16159,7 @@ inline void RecognizeReq::_internal_set_session_id(::int64_t value) {
   _impl_.session_id_ = value;
 }
 
-// .GrpcLibrary.RecognitionParam param = 3;
+// .GrpcLibraryV1.RecognitionParam param = 3;
 inline bool RecognizeReq::has_param() const {
   return request_type_case() == kParam;
 }
@@ -15595,8 +16180,8 @@ inline void RecognizeReq::clear_param() {
     clear_has_request_type();
   }
 }
-inline ::GrpcLibrary::RecognitionParam* PROTOBUF_NULLABLE RecognizeReq::release_param() {
-  // @@protoc_insertion_point(field_release:GrpcLibrary.RecognizeReq.param)
+inline ::GrpcLibraryV1::RecognitionParam* PROTOBUF_NULLABLE RecognizeReq::release_param() {
+  // @@protoc_insertion_point(field_release:GrpcLibraryV1.RecognizeReq.param)
   if (request_type_case() == kParam) {
     clear_has_request_type();
     auto* temp = _impl_.request_type_.param_;
@@ -15609,16 +16194,16 @@ inline ::GrpcLibrary::RecognitionParam* PROTOBUF_NULLABLE RecognizeReq::release_
     return nullptr;
   }
 }
-inline const ::GrpcLibrary::RecognitionParam& RecognizeReq::_internal_param() const {
-  return request_type_case() == kParam ? static_cast<const ::GrpcLibrary::RecognitionParam&>(*_impl_.request_type_.param_)
-                     : reinterpret_cast<const ::GrpcLibrary::RecognitionParam&>(::GrpcLibrary::_RecognitionParam_default_instance_);
+inline const ::GrpcLibraryV1::RecognitionParam& RecognizeReq::_internal_param() const {
+  return request_type_case() == kParam ? static_cast<const ::GrpcLibraryV1::RecognitionParam&>(*_impl_.request_type_.param_)
+                     : reinterpret_cast<const ::GrpcLibraryV1::RecognitionParam&>(::GrpcLibraryV1::_RecognitionParam_default_instance_);
 }
-inline const ::GrpcLibrary::RecognitionParam& RecognizeReq::param() const ABSL_ATTRIBUTE_LIFETIME_BOUND {
-  // @@protoc_insertion_point(field_get:GrpcLibrary.RecognizeReq.param)
+inline const ::GrpcLibraryV1::RecognitionParam& RecognizeReq::param() const ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_get:GrpcLibraryV1.RecognizeReq.param)
   return _internal_param();
 }
-inline ::GrpcLibrary::RecognitionParam* PROTOBUF_NULLABLE RecognizeReq::unsafe_arena_release_param() {
-  // @@protoc_insertion_point(field_unsafe_arena_release:GrpcLibrary.RecognizeReq.param)
+inline ::GrpcLibraryV1::RecognitionParam* PROTOBUF_NULLABLE RecognizeReq::unsafe_arena_release_param() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:GrpcLibraryV1.RecognizeReq.param)
   if (request_type_case() == kParam) {
     clear_has_request_type();
     auto* temp = _impl_.request_type_.param_;
@@ -15629,7 +16214,7 @@ inline ::GrpcLibrary::RecognitionParam* PROTOBUF_NULLABLE RecognizeReq::unsafe_a
   }
 }
 inline void RecognizeReq::unsafe_arena_set_allocated_param(
-    ::GrpcLibrary::RecognitionParam* PROTOBUF_NULLABLE value) {
+    ::GrpcLibraryV1::RecognitionParam* PROTOBUF_NULLABLE value) {
   // We rely on the oneof clear method to free the earlier contents
   // of this oneof. We can directly use the pointer we're given to
   // set the new value.
@@ -15638,21 +16223,21 @@ inline void RecognizeReq::unsafe_arena_set_allocated_param(
     set_has_param();
     _impl_.request_type_.param_ = value;
   }
-  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:GrpcLibrary.RecognizeReq.param)
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:GrpcLibraryV1.RecognizeReq.param)
 }
-inline ::GrpcLibrary::RecognitionParam* PROTOBUF_NONNULL RecognizeReq::_internal_mutable_param() {
+inline ::GrpcLibraryV1::RecognitionParam* PROTOBUF_NONNULL RecognizeReq::_internal_mutable_param() {
   if (request_type_case() != kParam) {
     clear_request_type();
     set_has_param();
     _impl_.request_type_.param_ = 
-        ::google::protobuf::Message::DefaultConstruct<::GrpcLibrary::RecognitionParam>(GetArena());
+        ::google::protobuf::Message::DefaultConstruct<::GrpcLibraryV1::RecognitionParam>(GetArena());
   }
   return _impl_.request_type_.param_;
 }
-inline ::GrpcLibrary::RecognitionParam* PROTOBUF_NONNULL RecognizeReq::mutable_param()
+inline ::GrpcLibraryV1::RecognitionParam* PROTOBUF_NONNULL RecognizeReq::mutable_param()
     ABSL_ATTRIBUTE_LIFETIME_BOUND {
-  ::GrpcLibrary::RecognitionParam* _msg = _internal_mutable_param();
-  // @@protoc_insertion_point(field_mutable:GrpcLibrary.RecognizeReq.param)
+  ::GrpcLibraryV1::RecognitionParam* _msg = _internal_mutable_param();
+  // @@protoc_insertion_point(field_mutable:GrpcLibraryV1.RecognizeReq.param)
   return _msg;
 }
 
@@ -15672,7 +16257,7 @@ inline void RecognizeReq::clear_audio_chunk() {
 }
 inline const ::std::string& RecognizeReq::audio_chunk() const
     ABSL_ATTRIBUTE_LIFETIME_BOUND {
-  // @@protoc_insertion_point(field_get:GrpcLibrary.RecognizeReq.audio_chunk)
+  // @@protoc_insertion_point(field_get:GrpcLibraryV1.RecognizeReq.audio_chunk)
   return _internal_audio_chunk();
 }
 template <typename Arg_, typename... Args_>
@@ -15685,7 +16270,7 @@ PROTOBUF_ALWAYS_INLINE void RecognizeReq::set_audio_chunk(Arg_&& arg, Args_... a
     _impl_.request_type_.audio_chunk_.InitDefault();
   }
   _impl_.request_type_.audio_chunk_.SetBytes(static_cast<Arg_&&>(arg), args..., GetArena());
-  // @@protoc_insertion_point(field_set:GrpcLibrary.RecognizeReq.audio_chunk)
+  // @@protoc_insertion_point(field_set:GrpcLibraryV1.RecognizeReq.audio_chunk)
 }
 inline ::std::string* PROTOBUF_NONNULL RecognizeReq::mutable_audio_chunk()
     ABSL_ATTRIBUTE_LIFETIME_BOUND {
@@ -15696,7 +16281,7 @@ inline ::std::string* PROTOBUF_NONNULL RecognizeReq::mutable_audio_chunk()
     _impl_.request_type_.audio_chunk_.InitDefault();
   }
   ::std::string* _s = _internal_mutable_audio_chunk();
-  // @@protoc_insertion_point(field_mutable:GrpcLibrary.RecognizeReq.audio_chunk)
+  // @@protoc_insertion_point(field_mutable:GrpcLibraryV1.RecognizeReq.audio_chunk)
   return _s;
 }
 inline const ::std::string& RecognizeReq::_internal_audio_chunk() const {
@@ -15716,7 +16301,7 @@ inline ::std::string* PROTOBUF_NONNULL RecognizeReq::_internal_mutable_audio_chu
 }
 inline ::std::string* PROTOBUF_NULLABLE RecognizeReq::release_audio_chunk() {
   ::google::protobuf::internal::TSanWrite(&_impl_);
-  // @@protoc_insertion_point(field_release:GrpcLibrary.RecognizeReq.audio_chunk)
+  // @@protoc_insertion_point(field_release:GrpcLibraryV1.RecognizeReq.audio_chunk)
   if (request_type_case() != kAudioChunk) {
     return nullptr;
   }
@@ -15732,7 +16317,7 @@ inline void RecognizeReq::set_allocated_audio_chunk(::std::string* PROTOBUF_NULL
     set_has_audio_chunk();
     _impl_.request_type_.audio_chunk_.InitAllocated(value, GetArena());
   }
-  // @@protoc_insertion_point(field_set_allocated:GrpcLibrary.RecognizeReq.audio_chunk)
+  // @@protoc_insertion_point(field_set_allocated:GrpcLibraryV1.RecognizeReq.audio_chunk)
 }
 
 inline bool RecognizeReq::has_request_type() const {
@@ -15756,13 +16341,13 @@ inline void RecognizeResp::clear_error_code() {
                   0x00000004U);
 }
 inline ::int32_t RecognizeResp::error_code() const {
-  // @@protoc_insertion_point(field_get:GrpcLibrary.RecognizeResp.error_code)
+  // @@protoc_insertion_point(field_get:GrpcLibraryV1.RecognizeResp.error_code)
   return _internal_error_code();
 }
 inline void RecognizeResp::set_error_code(::int32_t value) {
   _internal_set_error_code(value);
   SetHasBit(_impl_._has_bits_[0], 0x00000004U);
-  // @@protoc_insertion_point(field_set:GrpcLibrary.RecognizeResp.error_code)
+  // @@protoc_insertion_point(field_set:GrpcLibraryV1.RecognizeResp.error_code)
 }
 inline ::int32_t RecognizeResp::_internal_error_code() const {
   ::google::protobuf::internal::TSanRead(&_impl_);
@@ -15781,13 +16366,13 @@ inline void RecognizeResp::clear_session_id() {
                   0x00000002U);
 }
 inline ::int64_t RecognizeResp::session_id() const {
-  // @@protoc_insertion_point(field_get:GrpcLibrary.RecognizeResp.session_id)
+  // @@protoc_insertion_point(field_get:GrpcLibraryV1.RecognizeResp.session_id)
   return _internal_session_id();
 }
 inline void RecognizeResp::set_session_id(::int64_t value) {
   _internal_set_session_id(value);
   SetHasBit(_impl_._has_bits_[0], 0x00000002U);
-  // @@protoc_insertion_point(field_set:GrpcLibrary.RecognizeResp.session_id)
+  // @@protoc_insertion_point(field_set:GrpcLibraryV1.RecognizeResp.session_id)
 }
 inline ::int64_t RecognizeResp::_internal_session_id() const {
   ::google::protobuf::internal::TSanRead(&_impl_);
@@ -15807,7 +16392,7 @@ inline void RecognizeResp::clear_transcript() {
 }
 inline const ::std::string& RecognizeResp::transcript() const
     ABSL_ATTRIBUTE_LIFETIME_BOUND {
-  // @@protoc_insertion_point(field_get:GrpcLibrary.RecognizeResp.transcript)
+  // @@protoc_insertion_point(field_get:GrpcLibraryV1.RecognizeResp.transcript)
   return _internal_transcript();
 }
 template <typename Arg_, typename... Args_>
@@ -15815,13 +16400,13 @@ PROTOBUF_ALWAYS_INLINE void RecognizeResp::set_transcript(Arg_&& arg, Args_... a
   ::google::protobuf::internal::TSanWrite(&_impl_);
   SetHasBit(_impl_._has_bits_[0], 0x00000001U);
   _impl_.transcript_.Set(static_cast<Arg_&&>(arg), args..., GetArena());
-  // @@protoc_insertion_point(field_set:GrpcLibrary.RecognizeResp.transcript)
+  // @@protoc_insertion_point(field_set:GrpcLibraryV1.RecognizeResp.transcript)
 }
 inline ::std::string* PROTOBUF_NONNULL RecognizeResp::mutable_transcript()
     ABSL_ATTRIBUTE_LIFETIME_BOUND {
   SetHasBit(_impl_._has_bits_[0], 0x00000001U);
   ::std::string* _s = _internal_mutable_transcript();
-  // @@protoc_insertion_point(field_mutable:GrpcLibrary.RecognizeResp.transcript)
+  // @@protoc_insertion_point(field_mutable:GrpcLibraryV1.RecognizeResp.transcript)
   return _s;
 }
 inline const ::std::string& RecognizeResp::_internal_transcript() const {
@@ -15838,7 +16423,7 @@ inline ::std::string* PROTOBUF_NONNULL RecognizeResp::_internal_mutable_transcri
 }
 inline ::std::string* PROTOBUF_NULLABLE RecognizeResp::release_transcript() {
   ::google::protobuf::internal::TSanWrite(&_impl_);
-  // @@protoc_insertion_point(field_release:GrpcLibrary.RecognizeResp.transcript)
+  // @@protoc_insertion_point(field_release:GrpcLibraryV1.RecognizeResp.transcript)
   if (!CheckHasBit(_impl_._has_bits_[0], 0x00000001U)) {
     return nullptr;
   }
@@ -15860,7 +16445,7 @@ inline void RecognizeResp::set_allocated_transcript(::std::string* PROTOBUF_NULL
   if (::google::protobuf::internal::DebugHardenForceCopyDefaultString() && _impl_.transcript_.IsDefault()) {
     _impl_.transcript_.Set("", GetArena());
   }
-  // @@protoc_insertion_point(field_set_allocated:GrpcLibrary.RecognizeResp.transcript)
+  // @@protoc_insertion_point(field_set_allocated:GrpcLibraryV1.RecognizeResp.transcript)
 }
 
 // bool is_finished = 4;
@@ -15871,13 +16456,13 @@ inline void RecognizeResp::clear_is_finished() {
                   0x00000008U);
 }
 inline bool RecognizeResp::is_finished() const {
-  // @@protoc_insertion_point(field_get:GrpcLibrary.RecognizeResp.is_finished)
+  // @@protoc_insertion_point(field_get:GrpcLibraryV1.RecognizeResp.is_finished)
   return _internal_is_finished();
 }
 inline void RecognizeResp::set_is_finished(bool value) {
   _internal_set_is_finished(value);
   SetHasBit(_impl_._has_bits_[0], 0x00000008U);
-  // @@protoc_insertion_point(field_set:GrpcLibrary.RecognizeResp.is_finished)
+  // @@protoc_insertion_point(field_set:GrpcLibraryV1.RecognizeResp.is_finished)
 }
 inline bool RecognizeResp::_internal_is_finished() const {
   ::google::protobuf::internal::TSanRead(&_impl_);
@@ -15896,13 +16481,13 @@ inline void RecognizeResp::clear_confidence() {
                   0x00000010U);
 }
 inline double RecognizeResp::confidence() const {
-  // @@protoc_insertion_point(field_get:GrpcLibrary.RecognizeResp.confidence)
+  // @@protoc_insertion_point(field_get:GrpcLibraryV1.RecognizeResp.confidence)
   return _internal_confidence();
 }
 inline void RecognizeResp::set_confidence(double value) {
   _internal_set_confidence(value);
   SetHasBit(_impl_._has_bits_[0], 0x00000010U);
-  // @@protoc_insertion_point(field_set:GrpcLibrary.RecognizeResp.confidence)
+  // @@protoc_insertion_point(field_set:GrpcLibraryV1.RecognizeResp.confidence)
 }
 inline double RecognizeResp::_internal_confidence() const {
   ::google::protobuf::internal::TSanRead(&_impl_);
@@ -15925,13 +16510,13 @@ inline void StopRecognizeReq::clear_session_id() {
                   0x00000002U);
 }
 inline ::int64_t StopRecognizeReq::session_id() const {
-  // @@protoc_insertion_point(field_get:GrpcLibrary.StopRecognizeReq.session_id)
+  // @@protoc_insertion_point(field_get:GrpcLibraryV1.StopRecognizeReq.session_id)
   return _internal_session_id();
 }
 inline void StopRecognizeReq::set_session_id(::int64_t value) {
   _internal_set_session_id(value);
   SetHasBit(_impl_._has_bits_[0], 0x00000002U);
-  // @@protoc_insertion_point(field_set:GrpcLibrary.StopRecognizeReq.session_id)
+  // @@protoc_insertion_point(field_set:GrpcLibraryV1.StopRecognizeReq.session_id)
 }
 inline ::int64_t StopRecognizeReq::_internal_session_id() const {
   ::google::protobuf::internal::TSanRead(&_impl_);
@@ -15950,13 +16535,13 @@ inline void StopRecognizeReq::clear_user_id() {
                   0x00000004U);
 }
 inline ::int64_t StopRecognizeReq::user_id() const {
-  // @@protoc_insertion_point(field_get:GrpcLibrary.StopRecognizeReq.user_id)
+  // @@protoc_insertion_point(field_get:GrpcLibraryV1.StopRecognizeReq.user_id)
   return _internal_user_id();
 }
 inline void StopRecognizeReq::set_user_id(::int64_t value) {
   _internal_set_user_id(value);
   SetHasBit(_impl_._has_bits_[0], 0x00000004U);
-  // @@protoc_insertion_point(field_set:GrpcLibrary.StopRecognizeReq.user_id)
+  // @@protoc_insertion_point(field_set:GrpcLibraryV1.StopRecognizeReq.user_id)
 }
 inline ::int64_t StopRecognizeReq::_internal_user_id() const {
   ::google::protobuf::internal::TSanRead(&_impl_);
@@ -15976,7 +16561,7 @@ inline void StopRecognizeReq::clear_auth() {
 }
 inline const ::std::string& StopRecognizeReq::auth() const
     ABSL_ATTRIBUTE_LIFETIME_BOUND {
-  // @@protoc_insertion_point(field_get:GrpcLibrary.StopRecognizeReq.auth)
+  // @@protoc_insertion_point(field_get:GrpcLibraryV1.StopRecognizeReq.auth)
   return _internal_auth();
 }
 template <typename Arg_, typename... Args_>
@@ -15984,13 +16569,13 @@ PROTOBUF_ALWAYS_INLINE void StopRecognizeReq::set_auth(Arg_&& arg, Args_... args
   ::google::protobuf::internal::TSanWrite(&_impl_);
   SetHasBit(_impl_._has_bits_[0], 0x00000001U);
   _impl_.auth_.Set(static_cast<Arg_&&>(arg), args..., GetArena());
-  // @@protoc_insertion_point(field_set:GrpcLibrary.StopRecognizeReq.auth)
+  // @@protoc_insertion_point(field_set:GrpcLibraryV1.StopRecognizeReq.auth)
 }
 inline ::std::string* PROTOBUF_NONNULL StopRecognizeReq::mutable_auth()
     ABSL_ATTRIBUTE_LIFETIME_BOUND {
   SetHasBit(_impl_._has_bits_[0], 0x00000001U);
   ::std::string* _s = _internal_mutable_auth();
-  // @@protoc_insertion_point(field_mutable:GrpcLibrary.StopRecognizeReq.auth)
+  // @@protoc_insertion_point(field_mutable:GrpcLibraryV1.StopRecognizeReq.auth)
   return _s;
 }
 inline const ::std::string& StopRecognizeReq::_internal_auth() const {
@@ -16007,7 +16592,7 @@ inline ::std::string* PROTOBUF_NONNULL StopRecognizeReq::_internal_mutable_auth(
 }
 inline ::std::string* PROTOBUF_NULLABLE StopRecognizeReq::release_auth() {
   ::google::protobuf::internal::TSanWrite(&_impl_);
-  // @@protoc_insertion_point(field_release:GrpcLibrary.StopRecognizeReq.auth)
+  // @@protoc_insertion_point(field_release:GrpcLibraryV1.StopRecognizeReq.auth)
   if (!CheckHasBit(_impl_._has_bits_[0], 0x00000001U)) {
     return nullptr;
   }
@@ -16029,7 +16614,7 @@ inline void StopRecognizeReq::set_allocated_auth(::std::string* PROTOBUF_NULLABL
   if (::google::protobuf::internal::DebugHardenForceCopyDefaultString() && _impl_.auth_.IsDefault()) {
     _impl_.auth_.Set("", GetArena());
   }
-  // @@protoc_insertion_point(field_set_allocated:GrpcLibrary.StopRecognizeReq.auth)
+  // @@protoc_insertion_point(field_set_allocated:GrpcLibraryV1.StopRecognizeReq.auth)
 }
 
 // -------------------------------------------------------------------
@@ -16044,13 +16629,13 @@ inline void StopRecognizeResp::clear_error_code() {
                   0x00000002U);
 }
 inline ::int32_t StopRecognizeResp::error_code() const {
-  // @@protoc_insertion_point(field_get:GrpcLibrary.StopRecognizeResp.error_code)
+  // @@protoc_insertion_point(field_get:GrpcLibraryV1.StopRecognizeResp.error_code)
   return _internal_error_code();
 }
 inline void StopRecognizeResp::set_error_code(::int32_t value) {
   _internal_set_error_code(value);
   SetHasBit(_impl_._has_bits_[0], 0x00000002U);
-  // @@protoc_insertion_point(field_set:GrpcLibrary.StopRecognizeResp.error_code)
+  // @@protoc_insertion_point(field_set:GrpcLibraryV1.StopRecognizeResp.error_code)
 }
 inline ::int32_t StopRecognizeResp::_internal_error_code() const {
   ::google::protobuf::internal::TSanRead(&_impl_);
@@ -16069,13 +16654,13 @@ inline void StopRecognizeResp::clear_session_id() {
                   0x00000001U);
 }
 inline ::int64_t StopRecognizeResp::session_id() const {
-  // @@protoc_insertion_point(field_get:GrpcLibrary.StopRecognizeResp.session_id)
+  // @@protoc_insertion_point(field_get:GrpcLibraryV1.StopRecognizeResp.session_id)
   return _internal_session_id();
 }
 inline void StopRecognizeResp::set_session_id(::int64_t value) {
   _internal_set_session_id(value);
   SetHasBit(_impl_._has_bits_[0], 0x00000001U);
-  // @@protoc_insertion_point(field_set:GrpcLibrary.StopRecognizeResp.session_id)
+  // @@protoc_insertion_point(field_set:GrpcLibraryV1.StopRecognizeResp.session_id)
 }
 inline ::int64_t StopRecognizeResp::_internal_session_id() const {
   ::google::protobuf::internal::TSanRead(&_impl_);
@@ -16098,13 +16683,13 @@ inline void GetMessageInfoReq::clear_id() {
                   0x00000002U);
 }
 inline ::int64_t GetMessageInfoReq::id() const {
-  // @@protoc_insertion_point(field_get:GrpcLibrary.GetMessageInfoReq.id)
+  // @@protoc_insertion_point(field_get:GrpcLibraryV1.GetMessageInfoReq.id)
   return _internal_id();
 }
 inline void GetMessageInfoReq::set_id(::int64_t value) {
   _internal_set_id(value);
   SetHasBit(_impl_._has_bits_[0], 0x00000002U);
-  // @@protoc_insertion_point(field_set:GrpcLibrary.GetMessageInfoReq.id)
+  // @@protoc_insertion_point(field_set:GrpcLibraryV1.GetMessageInfoReq.id)
 }
 inline ::int64_t GetMessageInfoReq::_internal_id() const {
   ::google::protobuf::internal::TSanRead(&_impl_);
@@ -16123,13 +16708,13 @@ inline void GetMessageInfoReq::clear_session_id() {
                   0x00000004U);
 }
 inline ::int64_t GetMessageInfoReq::session_id() const {
-  // @@protoc_insertion_point(field_get:GrpcLibrary.GetMessageInfoReq.session_id)
+  // @@protoc_insertion_point(field_get:GrpcLibraryV1.GetMessageInfoReq.session_id)
   return _internal_session_id();
 }
 inline void GetMessageInfoReq::set_session_id(::int64_t value) {
   _internal_set_session_id(value);
   SetHasBit(_impl_._has_bits_[0], 0x00000004U);
-  // @@protoc_insertion_point(field_set:GrpcLibrary.GetMessageInfoReq.session_id)
+  // @@protoc_insertion_point(field_set:GrpcLibraryV1.GetMessageInfoReq.session_id)
 }
 inline ::int64_t GetMessageInfoReq::_internal_session_id() const {
   ::google::protobuf::internal::TSanRead(&_impl_);
@@ -16148,13 +16733,13 @@ inline void GetMessageInfoReq::clear_limit() {
                   0x00000010U);
 }
 inline ::int32_t GetMessageInfoReq::limit() const {
-  // @@protoc_insertion_point(field_get:GrpcLibrary.GetMessageInfoReq.limit)
+  // @@protoc_insertion_point(field_get:GrpcLibraryV1.GetMessageInfoReq.limit)
   return _internal_limit();
 }
 inline void GetMessageInfoReq::set_limit(::int32_t value) {
   _internal_set_limit(value);
   SetHasBit(_impl_._has_bits_[0], 0x00000010U);
-  // @@protoc_insertion_point(field_set:GrpcLibrary.GetMessageInfoReq.limit)
+  // @@protoc_insertion_point(field_set:GrpcLibraryV1.GetMessageInfoReq.limit)
 }
 inline ::int32_t GetMessageInfoReq::_internal_limit() const {
   ::google::protobuf::internal::TSanRead(&_impl_);
@@ -16173,13 +16758,13 @@ inline void GetMessageInfoReq::clear_user_id() {
                   0x00000008U);
 }
 inline ::int64_t GetMessageInfoReq::user_id() const {
-  // @@protoc_insertion_point(field_get:GrpcLibrary.GetMessageInfoReq.user_id)
+  // @@protoc_insertion_point(field_get:GrpcLibraryV1.GetMessageInfoReq.user_id)
   return _internal_user_id();
 }
 inline void GetMessageInfoReq::set_user_id(::int64_t value) {
   _internal_set_user_id(value);
   SetHasBit(_impl_._has_bits_[0], 0x00000008U);
-  // @@protoc_insertion_point(field_set:GrpcLibrary.GetMessageInfoReq.user_id)
+  // @@protoc_insertion_point(field_set:GrpcLibraryV1.GetMessageInfoReq.user_id)
 }
 inline ::int64_t GetMessageInfoReq::_internal_user_id() const {
   ::google::protobuf::internal::TSanRead(&_impl_);
@@ -16199,7 +16784,7 @@ inline void GetMessageInfoReq::clear_auth() {
 }
 inline const ::std::string& GetMessageInfoReq::auth() const
     ABSL_ATTRIBUTE_LIFETIME_BOUND {
-  // @@protoc_insertion_point(field_get:GrpcLibrary.GetMessageInfoReq.auth)
+  // @@protoc_insertion_point(field_get:GrpcLibraryV1.GetMessageInfoReq.auth)
   return _internal_auth();
 }
 template <typename Arg_, typename... Args_>
@@ -16207,13 +16792,13 @@ PROTOBUF_ALWAYS_INLINE void GetMessageInfoReq::set_auth(Arg_&& arg, Args_... arg
   ::google::protobuf::internal::TSanWrite(&_impl_);
   SetHasBit(_impl_._has_bits_[0], 0x00000001U);
   _impl_.auth_.Set(static_cast<Arg_&&>(arg), args..., GetArena());
-  // @@protoc_insertion_point(field_set:GrpcLibrary.GetMessageInfoReq.auth)
+  // @@protoc_insertion_point(field_set:GrpcLibraryV1.GetMessageInfoReq.auth)
 }
 inline ::std::string* PROTOBUF_NONNULL GetMessageInfoReq::mutable_auth()
     ABSL_ATTRIBUTE_LIFETIME_BOUND {
   SetHasBit(_impl_._has_bits_[0], 0x00000001U);
   ::std::string* _s = _internal_mutable_auth();
-  // @@protoc_insertion_point(field_mutable:GrpcLibrary.GetMessageInfoReq.auth)
+  // @@protoc_insertion_point(field_mutable:GrpcLibraryV1.GetMessageInfoReq.auth)
   return _s;
 }
 inline const ::std::string& GetMessageInfoReq::_internal_auth() const {
@@ -16230,7 +16815,7 @@ inline ::std::string* PROTOBUF_NONNULL GetMessageInfoReq::_internal_mutable_auth
 }
 inline ::std::string* PROTOBUF_NULLABLE GetMessageInfoReq::release_auth() {
   ::google::protobuf::internal::TSanWrite(&_impl_);
-  // @@protoc_insertion_point(field_release:GrpcLibrary.GetMessageInfoReq.auth)
+  // @@protoc_insertion_point(field_release:GrpcLibraryV1.GetMessageInfoReq.auth)
   if (!CheckHasBit(_impl_._has_bits_[0], 0x00000001U)) {
     return nullptr;
   }
@@ -16252,7 +16837,7 @@ inline void GetMessageInfoReq::set_allocated_auth(::std::string* PROTOBUF_NULLAB
   if (::google::protobuf::internal::DebugHardenForceCopyDefaultString() && _impl_.auth_.IsDefault()) {
     _impl_.auth_.Set("", GetArena());
   }
-  // @@protoc_insertion_point(field_set_allocated:GrpcLibrary.GetMessageInfoReq.auth)
+  // @@protoc_insertion_point(field_set_allocated:GrpcLibraryV1.GetMessageInfoReq.auth)
 }
 
 // -------------------------------------------------------------------
@@ -16267,13 +16852,13 @@ inline void GetMessageInfoResp::clear_error_code() {
                   0x00000002U);
 }
 inline ::int32_t GetMessageInfoResp::error_code() const {
-  // @@protoc_insertion_point(field_get:GrpcLibrary.GetMessageInfoResp.error_code)
+  // @@protoc_insertion_point(field_get:GrpcLibraryV1.GetMessageInfoResp.error_code)
   return _internal_error_code();
 }
 inline void GetMessageInfoResp::set_error_code(::int32_t value) {
   _internal_set_error_code(value);
   SetHasBit(_impl_._has_bits_[0], 0x00000002U);
-  // @@protoc_insertion_point(field_set:GrpcLibrary.GetMessageInfoResp.error_code)
+  // @@protoc_insertion_point(field_set:GrpcLibraryV1.GetMessageInfoResp.error_code)
 }
 inline ::int32_t GetMessageInfoResp::_internal_error_code() const {
   ::google::protobuf::internal::TSanRead(&_impl_);
@@ -16284,7 +16869,7 @@ inline void GetMessageInfoResp::_internal_set_error_code(::int32_t value) {
   _impl_.error_code_ = value;
 }
 
-// repeated .GrpcLibrary.MessageInfo messages = 2;
+// repeated .GrpcLibraryV1.MessageInfo messages = 2;
 inline int GetMessageInfoResp::_internal_messages_size() const {
   return _internal_messages().size();
 }
@@ -16297,44 +16882,44 @@ inline void GetMessageInfoResp::clear_messages() {
   ClearHasBitForRepeated(_impl_._has_bits_[0],
                   0x00000001U);
 }
-inline ::GrpcLibrary::MessageInfo* PROTOBUF_NONNULL GetMessageInfoResp::mutable_messages(int index)
+inline ::GrpcLibraryV1::MessageInfo* PROTOBUF_NONNULL GetMessageInfoResp::mutable_messages(int index)
     ABSL_ATTRIBUTE_LIFETIME_BOUND {
-  // @@protoc_insertion_point(field_mutable:GrpcLibrary.GetMessageInfoResp.messages)
+  // @@protoc_insertion_point(field_mutable:GrpcLibraryV1.GetMessageInfoResp.messages)
   return _internal_mutable_messages()->Mutable(index);
 }
-inline ::google::protobuf::RepeatedPtrField<::GrpcLibrary::MessageInfo>* PROTOBUF_NONNULL GetMessageInfoResp::mutable_messages()
+inline ::google::protobuf::RepeatedPtrField<::GrpcLibraryV1::MessageInfo>* PROTOBUF_NONNULL GetMessageInfoResp::mutable_messages()
     ABSL_ATTRIBUTE_LIFETIME_BOUND {
   SetHasBitForRepeated(_impl_._has_bits_[0], 0x00000001U);
-  // @@protoc_insertion_point(field_mutable_list:GrpcLibrary.GetMessageInfoResp.messages)
+  // @@protoc_insertion_point(field_mutable_list:GrpcLibraryV1.GetMessageInfoResp.messages)
   ::google::protobuf::internal::TSanWrite(&_impl_);
   return _internal_mutable_messages();
 }
-inline const ::GrpcLibrary::MessageInfo& GetMessageInfoResp::messages(int index) const
+inline const ::GrpcLibraryV1::MessageInfo& GetMessageInfoResp::messages(int index) const
     ABSL_ATTRIBUTE_LIFETIME_BOUND {
-  // @@protoc_insertion_point(field_get:GrpcLibrary.GetMessageInfoResp.messages)
+  // @@protoc_insertion_point(field_get:GrpcLibraryV1.GetMessageInfoResp.messages)
   return _internal_messages().Get(index);
 }
-inline ::GrpcLibrary::MessageInfo* PROTOBUF_NONNULL GetMessageInfoResp::add_messages()
+inline ::GrpcLibraryV1::MessageInfo* PROTOBUF_NONNULL GetMessageInfoResp::add_messages()
     ABSL_ATTRIBUTE_LIFETIME_BOUND {
   ::google::protobuf::internal::TSanWrite(&_impl_);
-  ::GrpcLibrary::MessageInfo* _add =
+  ::GrpcLibraryV1::MessageInfo* _add =
       _internal_mutable_messages()->InternalAddWithArena(
           ::google::protobuf::MessageLite::internal_visibility(), GetArena());
   SetHasBitForRepeated(_impl_._has_bits_[0], 0x00000001U);
-  // @@protoc_insertion_point(field_add:GrpcLibrary.GetMessageInfoResp.messages)
+  // @@protoc_insertion_point(field_add:GrpcLibraryV1.GetMessageInfoResp.messages)
   return _add;
 }
-inline const ::google::protobuf::RepeatedPtrField<::GrpcLibrary::MessageInfo>& GetMessageInfoResp::messages() const
+inline const ::google::protobuf::RepeatedPtrField<::GrpcLibraryV1::MessageInfo>& GetMessageInfoResp::messages() const
     ABSL_ATTRIBUTE_LIFETIME_BOUND {
-  // @@protoc_insertion_point(field_list:GrpcLibrary.GetMessageInfoResp.messages)
+  // @@protoc_insertion_point(field_list:GrpcLibraryV1.GetMessageInfoResp.messages)
   return _internal_messages();
 }
-inline const ::google::protobuf::RepeatedPtrField<::GrpcLibrary::MessageInfo>&
+inline const ::google::protobuf::RepeatedPtrField<::GrpcLibraryV1::MessageInfo>&
 GetMessageInfoResp::_internal_messages() const {
   ::google::protobuf::internal::TSanRead(&_impl_);
   return _impl_.messages_;
 }
-inline ::google::protobuf::RepeatedPtrField<::GrpcLibrary::MessageInfo>* PROTOBUF_NONNULL
+inline ::google::protobuf::RepeatedPtrField<::GrpcLibraryV1::MessageInfo>* PROTOBUF_NONNULL
 GetMessageInfoResp::_internal_mutable_messages() {
   ::google::protobuf::internal::TSanRead(&_impl_);
   return &_impl_.messages_;
@@ -16352,13 +16937,13 @@ inline void GetSessionReq::clear_id() {
                   0x00000002U);
 }
 inline ::int64_t GetSessionReq::id() const {
-  // @@protoc_insertion_point(field_get:GrpcLibrary.GetSessionReq.id)
+  // @@protoc_insertion_point(field_get:GrpcLibraryV1.GetSessionReq.id)
   return _internal_id();
 }
 inline void GetSessionReq::set_id(::int64_t value) {
   _internal_set_id(value);
   SetHasBit(_impl_._has_bits_[0], 0x00000002U);
-  // @@protoc_insertion_point(field_set:GrpcLibrary.GetSessionReq.id)
+  // @@protoc_insertion_point(field_set:GrpcLibraryV1.GetSessionReq.id)
 }
 inline ::int64_t GetSessionReq::_internal_id() const {
   ::google::protobuf::internal::TSanRead(&_impl_);
@@ -16377,13 +16962,13 @@ inline void GetSessionReq::clear_user_id() {
                   0x00000004U);
 }
 inline ::int64_t GetSessionReq::user_id() const {
-  // @@protoc_insertion_point(field_get:GrpcLibrary.GetSessionReq.user_id)
+  // @@protoc_insertion_point(field_get:GrpcLibraryV1.GetSessionReq.user_id)
   return _internal_user_id();
 }
 inline void GetSessionReq::set_user_id(::int64_t value) {
   _internal_set_user_id(value);
   SetHasBit(_impl_._has_bits_[0], 0x00000004U);
-  // @@protoc_insertion_point(field_set:GrpcLibrary.GetSessionReq.user_id)
+  // @@protoc_insertion_point(field_set:GrpcLibraryV1.GetSessionReq.user_id)
 }
 inline ::int64_t GetSessionReq::_internal_user_id() const {
   ::google::protobuf::internal::TSanRead(&_impl_);
@@ -16403,7 +16988,7 @@ inline void GetSessionReq::clear_auth() {
 }
 inline const ::std::string& GetSessionReq::auth() const
     ABSL_ATTRIBUTE_LIFETIME_BOUND {
-  // @@protoc_insertion_point(field_get:GrpcLibrary.GetSessionReq.auth)
+  // @@protoc_insertion_point(field_get:GrpcLibraryV1.GetSessionReq.auth)
   return _internal_auth();
 }
 template <typename Arg_, typename... Args_>
@@ -16411,13 +16996,13 @@ PROTOBUF_ALWAYS_INLINE void GetSessionReq::set_auth(Arg_&& arg, Args_... args) {
   ::google::protobuf::internal::TSanWrite(&_impl_);
   SetHasBit(_impl_._has_bits_[0], 0x00000001U);
   _impl_.auth_.Set(static_cast<Arg_&&>(arg), args..., GetArena());
-  // @@protoc_insertion_point(field_set:GrpcLibrary.GetSessionReq.auth)
+  // @@protoc_insertion_point(field_set:GrpcLibraryV1.GetSessionReq.auth)
 }
 inline ::std::string* PROTOBUF_NONNULL GetSessionReq::mutable_auth()
     ABSL_ATTRIBUTE_LIFETIME_BOUND {
   SetHasBit(_impl_._has_bits_[0], 0x00000001U);
   ::std::string* _s = _internal_mutable_auth();
-  // @@protoc_insertion_point(field_mutable:GrpcLibrary.GetSessionReq.auth)
+  // @@protoc_insertion_point(field_mutable:GrpcLibraryV1.GetSessionReq.auth)
   return _s;
 }
 inline const ::std::string& GetSessionReq::_internal_auth() const {
@@ -16434,7 +17019,7 @@ inline ::std::string* PROTOBUF_NONNULL GetSessionReq::_internal_mutable_auth() {
 }
 inline ::std::string* PROTOBUF_NULLABLE GetSessionReq::release_auth() {
   ::google::protobuf::internal::TSanWrite(&_impl_);
-  // @@protoc_insertion_point(field_release:GrpcLibrary.GetSessionReq.auth)
+  // @@protoc_insertion_point(field_release:GrpcLibraryV1.GetSessionReq.auth)
   if (!CheckHasBit(_impl_._has_bits_[0], 0x00000001U)) {
     return nullptr;
   }
@@ -16456,7 +17041,7 @@ inline void GetSessionReq::set_allocated_auth(::std::string* PROTOBUF_NULLABLE v
   if (::google::protobuf::internal::DebugHardenForceCopyDefaultString() && _impl_.auth_.IsDefault()) {
     _impl_.auth_.Set("", GetArena());
   }
-  // @@protoc_insertion_point(field_set_allocated:GrpcLibrary.GetSessionReq.auth)
+  // @@protoc_insertion_point(field_set_allocated:GrpcLibraryV1.GetSessionReq.auth)
 }
 
 // int32 limit = 4;
@@ -16467,13 +17052,13 @@ inline void GetSessionReq::clear_limit() {
                   0x00000008U);
 }
 inline ::int32_t GetSessionReq::limit() const {
-  // @@protoc_insertion_point(field_get:GrpcLibrary.GetSessionReq.limit)
+  // @@protoc_insertion_point(field_get:GrpcLibraryV1.GetSessionReq.limit)
   return _internal_limit();
 }
 inline void GetSessionReq::set_limit(::int32_t value) {
   _internal_set_limit(value);
   SetHasBit(_impl_._has_bits_[0], 0x00000008U);
-  // @@protoc_insertion_point(field_set:GrpcLibrary.GetSessionReq.limit)
+  // @@protoc_insertion_point(field_set:GrpcLibraryV1.GetSessionReq.limit)
 }
 inline ::int32_t GetSessionReq::_internal_limit() const {
   ::google::protobuf::internal::TSanRead(&_impl_);
@@ -16496,13 +17081,13 @@ inline void GetSessionResp::clear_error_code() {
                   0x00000002U);
 }
 inline ::int32_t GetSessionResp::error_code() const {
-  // @@protoc_insertion_point(field_get:GrpcLibrary.GetSessionResp.error_code)
+  // @@protoc_insertion_point(field_get:GrpcLibraryV1.GetSessionResp.error_code)
   return _internal_error_code();
 }
 inline void GetSessionResp::set_error_code(::int32_t value) {
   _internal_set_error_code(value);
   SetHasBit(_impl_._has_bits_[0], 0x00000002U);
-  // @@protoc_insertion_point(field_set:GrpcLibrary.GetSessionResp.error_code)
+  // @@protoc_insertion_point(field_set:GrpcLibraryV1.GetSessionResp.error_code)
 }
 inline ::int32_t GetSessionResp::_internal_error_code() const {
   ::google::protobuf::internal::TSanRead(&_impl_);
@@ -16513,7 +17098,7 @@ inline void GetSessionResp::_internal_set_error_code(::int32_t value) {
   _impl_.error_code_ = value;
 }
 
-// repeated .GrpcLibrary.Session sessions = 2;
+// repeated .GrpcLibraryV1.Session sessions = 2;
 inline int GetSessionResp::_internal_sessions_size() const {
   return _internal_sessions().size();
 }
@@ -16526,44 +17111,44 @@ inline void GetSessionResp::clear_sessions() {
   ClearHasBitForRepeated(_impl_._has_bits_[0],
                   0x00000001U);
 }
-inline ::GrpcLibrary::Session* PROTOBUF_NONNULL GetSessionResp::mutable_sessions(int index)
+inline ::GrpcLibraryV1::Session* PROTOBUF_NONNULL GetSessionResp::mutable_sessions(int index)
     ABSL_ATTRIBUTE_LIFETIME_BOUND {
-  // @@protoc_insertion_point(field_mutable:GrpcLibrary.GetSessionResp.sessions)
+  // @@protoc_insertion_point(field_mutable:GrpcLibraryV1.GetSessionResp.sessions)
   return _internal_mutable_sessions()->Mutable(index);
 }
-inline ::google::protobuf::RepeatedPtrField<::GrpcLibrary::Session>* PROTOBUF_NONNULL GetSessionResp::mutable_sessions()
+inline ::google::protobuf::RepeatedPtrField<::GrpcLibraryV1::Session>* PROTOBUF_NONNULL GetSessionResp::mutable_sessions()
     ABSL_ATTRIBUTE_LIFETIME_BOUND {
   SetHasBitForRepeated(_impl_._has_bits_[0], 0x00000001U);
-  // @@protoc_insertion_point(field_mutable_list:GrpcLibrary.GetSessionResp.sessions)
+  // @@protoc_insertion_point(field_mutable_list:GrpcLibraryV1.GetSessionResp.sessions)
   ::google::protobuf::internal::TSanWrite(&_impl_);
   return _internal_mutable_sessions();
 }
-inline const ::GrpcLibrary::Session& GetSessionResp::sessions(int index) const
+inline const ::GrpcLibraryV1::Session& GetSessionResp::sessions(int index) const
     ABSL_ATTRIBUTE_LIFETIME_BOUND {
-  // @@protoc_insertion_point(field_get:GrpcLibrary.GetSessionResp.sessions)
+  // @@protoc_insertion_point(field_get:GrpcLibraryV1.GetSessionResp.sessions)
   return _internal_sessions().Get(index);
 }
-inline ::GrpcLibrary::Session* PROTOBUF_NONNULL GetSessionResp::add_sessions()
+inline ::GrpcLibraryV1::Session* PROTOBUF_NONNULL GetSessionResp::add_sessions()
     ABSL_ATTRIBUTE_LIFETIME_BOUND {
   ::google::protobuf::internal::TSanWrite(&_impl_);
-  ::GrpcLibrary::Session* _add =
+  ::GrpcLibraryV1::Session* _add =
       _internal_mutable_sessions()->InternalAddWithArena(
           ::google::protobuf::MessageLite::internal_visibility(), GetArena());
   SetHasBitForRepeated(_impl_._has_bits_[0], 0x00000001U);
-  // @@protoc_insertion_point(field_add:GrpcLibrary.GetSessionResp.sessions)
+  // @@protoc_insertion_point(field_add:GrpcLibraryV1.GetSessionResp.sessions)
   return _add;
 }
-inline const ::google::protobuf::RepeatedPtrField<::GrpcLibrary::Session>& GetSessionResp::sessions() const
+inline const ::google::protobuf::RepeatedPtrField<::GrpcLibraryV1::Session>& GetSessionResp::sessions() const
     ABSL_ATTRIBUTE_LIFETIME_BOUND {
-  // @@protoc_insertion_point(field_list:GrpcLibrary.GetSessionResp.sessions)
+  // @@protoc_insertion_point(field_list:GrpcLibraryV1.GetSessionResp.sessions)
   return _internal_sessions();
 }
-inline const ::google::protobuf::RepeatedPtrField<::GrpcLibrary::Session>&
+inline const ::google::protobuf::RepeatedPtrField<::GrpcLibraryV1::Session>&
 GetSessionResp::_internal_sessions() const {
   ::google::protobuf::internal::TSanRead(&_impl_);
   return _impl_.sessions_;
 }
-inline ::google::protobuf::RepeatedPtrField<::GrpcLibrary::Session>* PROTOBUF_NONNULL
+inline ::google::protobuf::RepeatedPtrField<::GrpcLibraryV1::Session>* PROTOBUF_NONNULL
 GetSessionResp::_internal_mutable_sessions() {
   ::google::protobuf::internal::TSanRead(&_impl_);
   return &_impl_.sessions_;
@@ -16581,13 +17166,13 @@ inline void NewSessionReq::clear_user_id() {
                   0x00000010U);
 }
 inline ::int64_t NewSessionReq::user_id() const {
-  // @@protoc_insertion_point(field_get:GrpcLibrary.NewSessionReq.user_id)
+  // @@protoc_insertion_point(field_get:GrpcLibraryV1.NewSessionReq.user_id)
   return _internal_user_id();
 }
 inline void NewSessionReq::set_user_id(::int64_t value) {
   _internal_set_user_id(value);
   SetHasBit(_impl_._has_bits_[0], 0x00000010U);
-  // @@protoc_insertion_point(field_set:GrpcLibrary.NewSessionReq.user_id)
+  // @@protoc_insertion_point(field_set:GrpcLibraryV1.NewSessionReq.user_id)
 }
 inline ::int64_t NewSessionReq::_internal_user_id() const {
   ::google::protobuf::internal::TSanRead(&_impl_);
@@ -16607,7 +17192,7 @@ inline void NewSessionReq::clear_auth() {
 }
 inline const ::std::string& NewSessionReq::auth() const
     ABSL_ATTRIBUTE_LIFETIME_BOUND {
-  // @@protoc_insertion_point(field_get:GrpcLibrary.NewSessionReq.auth)
+  // @@protoc_insertion_point(field_get:GrpcLibraryV1.NewSessionReq.auth)
   return _internal_auth();
 }
 template <typename Arg_, typename... Args_>
@@ -16615,13 +17200,13 @@ PROTOBUF_ALWAYS_INLINE void NewSessionReq::set_auth(Arg_&& arg, Args_... args) {
   ::google::protobuf::internal::TSanWrite(&_impl_);
   SetHasBit(_impl_._has_bits_[0], 0x00000001U);
   _impl_.auth_.Set(static_cast<Arg_&&>(arg), args..., GetArena());
-  // @@protoc_insertion_point(field_set:GrpcLibrary.NewSessionReq.auth)
+  // @@protoc_insertion_point(field_set:GrpcLibraryV1.NewSessionReq.auth)
 }
 inline ::std::string* PROTOBUF_NONNULL NewSessionReq::mutable_auth()
     ABSL_ATTRIBUTE_LIFETIME_BOUND {
   SetHasBit(_impl_._has_bits_[0], 0x00000001U);
   ::std::string* _s = _internal_mutable_auth();
-  // @@protoc_insertion_point(field_mutable:GrpcLibrary.NewSessionReq.auth)
+  // @@protoc_insertion_point(field_mutable:GrpcLibraryV1.NewSessionReq.auth)
   return _s;
 }
 inline const ::std::string& NewSessionReq::_internal_auth() const {
@@ -16638,7 +17223,7 @@ inline ::std::string* PROTOBUF_NONNULL NewSessionReq::_internal_mutable_auth() {
 }
 inline ::std::string* PROTOBUF_NULLABLE NewSessionReq::release_auth() {
   ::google::protobuf::internal::TSanWrite(&_impl_);
-  // @@protoc_insertion_point(field_release:GrpcLibrary.NewSessionReq.auth)
+  // @@protoc_insertion_point(field_release:GrpcLibraryV1.NewSessionReq.auth)
   if (!CheckHasBit(_impl_._has_bits_[0], 0x00000001U)) {
     return nullptr;
   }
@@ -16660,7 +17245,7 @@ inline void NewSessionReq::set_allocated_auth(::std::string* PROTOBUF_NULLABLE v
   if (::google::protobuf::internal::DebugHardenForceCopyDefaultString() && _impl_.auth_.IsDefault()) {
     _impl_.auth_.Set("", GetArena());
   }
-  // @@protoc_insertion_point(field_set_allocated:GrpcLibrary.NewSessionReq.auth)
+  // @@protoc_insertion_point(field_set_allocated:GrpcLibraryV1.NewSessionReq.auth)
 }
 
 // string title = 3;
@@ -16672,7 +17257,7 @@ inline void NewSessionReq::clear_title() {
 }
 inline const ::std::string& NewSessionReq::title() const
     ABSL_ATTRIBUTE_LIFETIME_BOUND {
-  // @@protoc_insertion_point(field_get:GrpcLibrary.NewSessionReq.title)
+  // @@protoc_insertion_point(field_get:GrpcLibraryV1.NewSessionReq.title)
   return _internal_title();
 }
 template <typename Arg_, typename... Args_>
@@ -16680,13 +17265,13 @@ PROTOBUF_ALWAYS_INLINE void NewSessionReq::set_title(Arg_&& arg, Args_... args) 
   ::google::protobuf::internal::TSanWrite(&_impl_);
   SetHasBit(_impl_._has_bits_[0], 0x00000002U);
   _impl_.title_.Set(static_cast<Arg_&&>(arg), args..., GetArena());
-  // @@protoc_insertion_point(field_set:GrpcLibrary.NewSessionReq.title)
+  // @@protoc_insertion_point(field_set:GrpcLibraryV1.NewSessionReq.title)
 }
 inline ::std::string* PROTOBUF_NONNULL NewSessionReq::mutable_title()
     ABSL_ATTRIBUTE_LIFETIME_BOUND {
   SetHasBit(_impl_._has_bits_[0], 0x00000002U);
   ::std::string* _s = _internal_mutable_title();
-  // @@protoc_insertion_point(field_mutable:GrpcLibrary.NewSessionReq.title)
+  // @@protoc_insertion_point(field_mutable:GrpcLibraryV1.NewSessionReq.title)
   return _s;
 }
 inline const ::std::string& NewSessionReq::_internal_title() const {
@@ -16703,7 +17288,7 @@ inline ::std::string* PROTOBUF_NONNULL NewSessionReq::_internal_mutable_title() 
 }
 inline ::std::string* PROTOBUF_NULLABLE NewSessionReq::release_title() {
   ::google::protobuf::internal::TSanWrite(&_impl_);
-  // @@protoc_insertion_point(field_release:GrpcLibrary.NewSessionReq.title)
+  // @@protoc_insertion_point(field_release:GrpcLibraryV1.NewSessionReq.title)
   if (!CheckHasBit(_impl_._has_bits_[0], 0x00000002U)) {
     return nullptr;
   }
@@ -16725,7 +17310,7 @@ inline void NewSessionReq::set_allocated_title(::std::string* PROTOBUF_NULLABLE 
   if (::google::protobuf::internal::DebugHardenForceCopyDefaultString() && _impl_.title_.IsDefault()) {
     _impl_.title_.Set("", GetArena());
   }
-  // @@protoc_insertion_point(field_set_allocated:GrpcLibrary.NewSessionReq.title)
+  // @@protoc_insertion_point(field_set_allocated:GrpcLibraryV1.NewSessionReq.title)
 }
 
 // string content = 4;
@@ -16737,7 +17322,7 @@ inline void NewSessionReq::clear_content() {
 }
 inline const ::std::string& NewSessionReq::content() const
     ABSL_ATTRIBUTE_LIFETIME_BOUND {
-  // @@protoc_insertion_point(field_get:GrpcLibrary.NewSessionReq.content)
+  // @@protoc_insertion_point(field_get:GrpcLibraryV1.NewSessionReq.content)
   return _internal_content();
 }
 template <typename Arg_, typename... Args_>
@@ -16745,13 +17330,13 @@ PROTOBUF_ALWAYS_INLINE void NewSessionReq::set_content(Arg_&& arg, Args_... args
   ::google::protobuf::internal::TSanWrite(&_impl_);
   SetHasBit(_impl_._has_bits_[0], 0x00000004U);
   _impl_.content_.Set(static_cast<Arg_&&>(arg), args..., GetArena());
-  // @@protoc_insertion_point(field_set:GrpcLibrary.NewSessionReq.content)
+  // @@protoc_insertion_point(field_set:GrpcLibraryV1.NewSessionReq.content)
 }
 inline ::std::string* PROTOBUF_NONNULL NewSessionReq::mutable_content()
     ABSL_ATTRIBUTE_LIFETIME_BOUND {
   SetHasBit(_impl_._has_bits_[0], 0x00000004U);
   ::std::string* _s = _internal_mutable_content();
-  // @@protoc_insertion_point(field_mutable:GrpcLibrary.NewSessionReq.content)
+  // @@protoc_insertion_point(field_mutable:GrpcLibraryV1.NewSessionReq.content)
   return _s;
 }
 inline const ::std::string& NewSessionReq::_internal_content() const {
@@ -16768,7 +17353,7 @@ inline ::std::string* PROTOBUF_NONNULL NewSessionReq::_internal_mutable_content(
 }
 inline ::std::string* PROTOBUF_NULLABLE NewSessionReq::release_content() {
   ::google::protobuf::internal::TSanWrite(&_impl_);
-  // @@protoc_insertion_point(field_release:GrpcLibrary.NewSessionReq.content)
+  // @@protoc_insertion_point(field_release:GrpcLibraryV1.NewSessionReq.content)
   if (!CheckHasBit(_impl_._has_bits_[0], 0x00000004U)) {
     return nullptr;
   }
@@ -16790,7 +17375,7 @@ inline void NewSessionReq::set_allocated_content(::std::string* PROTOBUF_NULLABL
   if (::google::protobuf::internal::DebugHardenForceCopyDefaultString() && _impl_.content_.IsDefault()) {
     _impl_.content_.Set("", GetArena());
   }
-  // @@protoc_insertion_point(field_set_allocated:GrpcLibrary.NewSessionReq.content)
+  // @@protoc_insertion_point(field_set_allocated:GrpcLibraryV1.NewSessionReq.content)
 }
 
 // string model = 5;
@@ -16802,7 +17387,7 @@ inline void NewSessionReq::clear_model() {
 }
 inline const ::std::string& NewSessionReq::model() const
     ABSL_ATTRIBUTE_LIFETIME_BOUND {
-  // @@protoc_insertion_point(field_get:GrpcLibrary.NewSessionReq.model)
+  // @@protoc_insertion_point(field_get:GrpcLibraryV1.NewSessionReq.model)
   return _internal_model();
 }
 template <typename Arg_, typename... Args_>
@@ -16810,13 +17395,13 @@ PROTOBUF_ALWAYS_INLINE void NewSessionReq::set_model(Arg_&& arg, Args_... args) 
   ::google::protobuf::internal::TSanWrite(&_impl_);
   SetHasBit(_impl_._has_bits_[0], 0x00000008U);
   _impl_.model_.Set(static_cast<Arg_&&>(arg), args..., GetArena());
-  // @@protoc_insertion_point(field_set:GrpcLibrary.NewSessionReq.model)
+  // @@protoc_insertion_point(field_set:GrpcLibraryV1.NewSessionReq.model)
 }
 inline ::std::string* PROTOBUF_NONNULL NewSessionReq::mutable_model()
     ABSL_ATTRIBUTE_LIFETIME_BOUND {
   SetHasBit(_impl_._has_bits_[0], 0x00000008U);
   ::std::string* _s = _internal_mutable_model();
-  // @@protoc_insertion_point(field_mutable:GrpcLibrary.NewSessionReq.model)
+  // @@protoc_insertion_point(field_mutable:GrpcLibraryV1.NewSessionReq.model)
   return _s;
 }
 inline const ::std::string& NewSessionReq::_internal_model() const {
@@ -16833,7 +17418,7 @@ inline ::std::string* PROTOBUF_NONNULL NewSessionReq::_internal_mutable_model() 
 }
 inline ::std::string* PROTOBUF_NULLABLE NewSessionReq::release_model() {
   ::google::protobuf::internal::TSanWrite(&_impl_);
-  // @@protoc_insertion_point(field_release:GrpcLibrary.NewSessionReq.model)
+  // @@protoc_insertion_point(field_release:GrpcLibraryV1.NewSessionReq.model)
   if (!CheckHasBit(_impl_._has_bits_[0], 0x00000008U)) {
     return nullptr;
   }
@@ -16855,7 +17440,7 @@ inline void NewSessionReq::set_allocated_model(::std::string* PROTOBUF_NULLABLE 
   if (::google::protobuf::internal::DebugHardenForceCopyDefaultString() && _impl_.model_.IsDefault()) {
     _impl_.model_.Set("", GetArena());
   }
-  // @@protoc_insertion_point(field_set_allocated:GrpcLibrary.NewSessionReq.model)
+  // @@protoc_insertion_point(field_set_allocated:GrpcLibraryV1.NewSessionReq.model)
 }
 
 // -------------------------------------------------------------------
@@ -16870,13 +17455,13 @@ inline void NewSessionResp::clear_error_code() {
                   0x00000002U);
 }
 inline ::int32_t NewSessionResp::error_code() const {
-  // @@protoc_insertion_point(field_get:GrpcLibrary.NewSessionResp.error_code)
+  // @@protoc_insertion_point(field_get:GrpcLibraryV1.NewSessionResp.error_code)
   return _internal_error_code();
 }
 inline void NewSessionResp::set_error_code(::int32_t value) {
   _internal_set_error_code(value);
   SetHasBit(_impl_._has_bits_[0], 0x00000002U);
-  // @@protoc_insertion_point(field_set:GrpcLibrary.NewSessionResp.error_code)
+  // @@protoc_insertion_point(field_set:GrpcLibraryV1.NewSessionResp.error_code)
 }
 inline ::int32_t NewSessionResp::_internal_error_code() const {
   ::google::protobuf::internal::TSanRead(&_impl_);
@@ -16887,7 +17472,7 @@ inline void NewSessionResp::_internal_set_error_code(::int32_t value) {
   _impl_.error_code_ = value;
 }
 
-// .GrpcLibrary.Session session = 2;
+// .GrpcLibraryV1.Session session = 2;
 inline bool NewSessionResp::has_session() const {
   bool value = CheckHasBit(_impl_._has_bits_[0], 0x00000001U);
   PROTOBUF_ASSUME(!value || _impl_.session_ != nullptr);
@@ -16899,34 +17484,34 @@ inline void NewSessionResp::clear_session() {
   ClearHasBit(_impl_._has_bits_[0],
                   0x00000001U);
 }
-inline const ::GrpcLibrary::Session& NewSessionResp::_internal_session() const {
+inline const ::GrpcLibraryV1::Session& NewSessionResp::_internal_session() const {
   ::google::protobuf::internal::TSanRead(&_impl_);
-  const ::GrpcLibrary::Session* p = _impl_.session_;
-  return p != nullptr ? *p : reinterpret_cast<const ::GrpcLibrary::Session&>(::GrpcLibrary::_Session_default_instance_);
+  const ::GrpcLibraryV1::Session* p = _impl_.session_;
+  return p != nullptr ? *p : reinterpret_cast<const ::GrpcLibraryV1::Session&>(::GrpcLibraryV1::_Session_default_instance_);
 }
-inline const ::GrpcLibrary::Session& NewSessionResp::session() const ABSL_ATTRIBUTE_LIFETIME_BOUND {
-  // @@protoc_insertion_point(field_get:GrpcLibrary.NewSessionResp.session)
+inline const ::GrpcLibraryV1::Session& NewSessionResp::session() const ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_get:GrpcLibraryV1.NewSessionResp.session)
   return _internal_session();
 }
 inline void NewSessionResp::unsafe_arena_set_allocated_session(
-    ::GrpcLibrary::Session* PROTOBUF_NULLABLE value) {
+    ::GrpcLibraryV1::Session* PROTOBUF_NULLABLE value) {
   ::google::protobuf::internal::TSanWrite(&_impl_);
   if (GetArena() == nullptr) {
     delete reinterpret_cast<::google::protobuf::MessageLite*>(_impl_.session_);
   }
-  _impl_.session_ = reinterpret_cast<::GrpcLibrary::Session*>(value);
+  _impl_.session_ = reinterpret_cast<::GrpcLibraryV1::Session*>(value);
   if (value != nullptr) {
     SetHasBit(_impl_._has_bits_[0], 0x00000001U);
   } else {
     ClearHasBit(_impl_._has_bits_[0], 0x00000001U);
   }
-  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:GrpcLibrary.NewSessionResp.session)
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:GrpcLibraryV1.NewSessionResp.session)
 }
-inline ::GrpcLibrary::Session* PROTOBUF_NULLABLE NewSessionResp::release_session() {
+inline ::GrpcLibraryV1::Session* PROTOBUF_NULLABLE NewSessionResp::release_session() {
   ::google::protobuf::internal::TSanWrite(&_impl_);
 
   ClearHasBit(_impl_._has_bits_[0], 0x00000001U);
-  ::GrpcLibrary::Session* released = _impl_.session_;
+  ::GrpcLibraryV1::Session* released = _impl_.session_;
   _impl_.session_ = nullptr;
   if (::google::protobuf::internal::DebugHardenForceCopyInRelease()) {
     auto* old = reinterpret_cast<::google::protobuf::MessageLite*>(released);
@@ -16941,31 +17526,31 @@ inline ::GrpcLibrary::Session* PROTOBUF_NULLABLE NewSessionResp::release_session
   }
   return released;
 }
-inline ::GrpcLibrary::Session* PROTOBUF_NULLABLE NewSessionResp::unsafe_arena_release_session() {
+inline ::GrpcLibraryV1::Session* PROTOBUF_NULLABLE NewSessionResp::unsafe_arena_release_session() {
   ::google::protobuf::internal::TSanWrite(&_impl_);
-  // @@protoc_insertion_point(field_release:GrpcLibrary.NewSessionResp.session)
+  // @@protoc_insertion_point(field_release:GrpcLibraryV1.NewSessionResp.session)
 
   ClearHasBit(_impl_._has_bits_[0], 0x00000001U);
-  ::GrpcLibrary::Session* temp = _impl_.session_;
+  ::GrpcLibraryV1::Session* temp = _impl_.session_;
   _impl_.session_ = nullptr;
   return temp;
 }
-inline ::GrpcLibrary::Session* PROTOBUF_NONNULL NewSessionResp::_internal_mutable_session() {
+inline ::GrpcLibraryV1::Session* PROTOBUF_NONNULL NewSessionResp::_internal_mutable_session() {
   ::google::protobuf::internal::TSanWrite(&_impl_);
   if (_impl_.session_ == nullptr) {
-    auto* p = ::google::protobuf::Message::DefaultConstruct<::GrpcLibrary::Session>(GetArena());
-    _impl_.session_ = reinterpret_cast<::GrpcLibrary::Session*>(p);
+    auto* p = ::google::protobuf::Message::DefaultConstruct<::GrpcLibraryV1::Session>(GetArena());
+    _impl_.session_ = reinterpret_cast<::GrpcLibraryV1::Session*>(p);
   }
   return _impl_.session_;
 }
-inline ::GrpcLibrary::Session* PROTOBUF_NONNULL NewSessionResp::mutable_session()
+inline ::GrpcLibraryV1::Session* PROTOBUF_NONNULL NewSessionResp::mutable_session()
     ABSL_ATTRIBUTE_LIFETIME_BOUND {
   SetHasBit(_impl_._has_bits_[0], 0x00000001U);
-  ::GrpcLibrary::Session* _msg = _internal_mutable_session();
-  // @@protoc_insertion_point(field_mutable:GrpcLibrary.NewSessionResp.session)
+  ::GrpcLibraryV1::Session* _msg = _internal_mutable_session();
+  // @@protoc_insertion_point(field_mutable:GrpcLibraryV1.NewSessionResp.session)
   return _msg;
 }
-inline void NewSessionResp::set_allocated_session(::GrpcLibrary::Session* PROTOBUF_NULLABLE value) {
+inline void NewSessionResp::set_allocated_session(::GrpcLibraryV1::Session* PROTOBUF_NULLABLE value) {
   ::google::protobuf::Arena* message_arena = GetArena();
   ::google::protobuf::internal::TSanWrite(&_impl_);
   if (message_arena == nullptr) {
@@ -16982,8 +17567,8 @@ inline void NewSessionResp::set_allocated_session(::GrpcLibrary::Session* PROTOB
     ClearHasBit(_impl_._has_bits_[0], 0x00000001U);
   }
 
-  _impl_.session_ = reinterpret_cast<::GrpcLibrary::Session*>(value);
-  // @@protoc_insertion_point(field_set_allocated:GrpcLibrary.NewSessionResp.session)
+  _impl_.session_ = reinterpret_cast<::GrpcLibraryV1::Session*>(value);
+  // @@protoc_insertion_point(field_set_allocated:GrpcLibraryV1.NewSessionResp.session)
 }
 
 // -------------------------------------------------------------------
@@ -16998,13 +17583,13 @@ inline void ModifySessionTitleReq::clear_id() {
                   0x00000004U);
 }
 inline ::int64_t ModifySessionTitleReq::id() const {
-  // @@protoc_insertion_point(field_get:GrpcLibrary.ModifySessionTitleReq.id)
+  // @@protoc_insertion_point(field_get:GrpcLibraryV1.ModifySessionTitleReq.id)
   return _internal_id();
 }
 inline void ModifySessionTitleReq::set_id(::int64_t value) {
   _internal_set_id(value);
   SetHasBit(_impl_._has_bits_[0], 0x00000004U);
-  // @@protoc_insertion_point(field_set:GrpcLibrary.ModifySessionTitleReq.id)
+  // @@protoc_insertion_point(field_set:GrpcLibraryV1.ModifySessionTitleReq.id)
 }
 inline ::int64_t ModifySessionTitleReq::_internal_id() const {
   ::google::protobuf::internal::TSanRead(&_impl_);
@@ -17023,13 +17608,13 @@ inline void ModifySessionTitleReq::clear_user_id() {
                   0x00000008U);
 }
 inline ::int64_t ModifySessionTitleReq::user_id() const {
-  // @@protoc_insertion_point(field_get:GrpcLibrary.ModifySessionTitleReq.user_id)
+  // @@protoc_insertion_point(field_get:GrpcLibraryV1.ModifySessionTitleReq.user_id)
   return _internal_user_id();
 }
 inline void ModifySessionTitleReq::set_user_id(::int64_t value) {
   _internal_set_user_id(value);
   SetHasBit(_impl_._has_bits_[0], 0x00000008U);
-  // @@protoc_insertion_point(field_set:GrpcLibrary.ModifySessionTitleReq.user_id)
+  // @@protoc_insertion_point(field_set:GrpcLibraryV1.ModifySessionTitleReq.user_id)
 }
 inline ::int64_t ModifySessionTitleReq::_internal_user_id() const {
   ::google::protobuf::internal::TSanRead(&_impl_);
@@ -17049,7 +17634,7 @@ inline void ModifySessionTitleReq::clear_auth() {
 }
 inline const ::std::string& ModifySessionTitleReq::auth() const
     ABSL_ATTRIBUTE_LIFETIME_BOUND {
-  // @@protoc_insertion_point(field_get:GrpcLibrary.ModifySessionTitleReq.auth)
+  // @@protoc_insertion_point(field_get:GrpcLibraryV1.ModifySessionTitleReq.auth)
   return _internal_auth();
 }
 template <typename Arg_, typename... Args_>
@@ -17057,13 +17642,13 @@ PROTOBUF_ALWAYS_INLINE void ModifySessionTitleReq::set_auth(Arg_&& arg, Args_...
   ::google::protobuf::internal::TSanWrite(&_impl_);
   SetHasBit(_impl_._has_bits_[0], 0x00000001U);
   _impl_.auth_.Set(static_cast<Arg_&&>(arg), args..., GetArena());
-  // @@protoc_insertion_point(field_set:GrpcLibrary.ModifySessionTitleReq.auth)
+  // @@protoc_insertion_point(field_set:GrpcLibraryV1.ModifySessionTitleReq.auth)
 }
 inline ::std::string* PROTOBUF_NONNULL ModifySessionTitleReq::mutable_auth()
     ABSL_ATTRIBUTE_LIFETIME_BOUND {
   SetHasBit(_impl_._has_bits_[0], 0x00000001U);
   ::std::string* _s = _internal_mutable_auth();
-  // @@protoc_insertion_point(field_mutable:GrpcLibrary.ModifySessionTitleReq.auth)
+  // @@protoc_insertion_point(field_mutable:GrpcLibraryV1.ModifySessionTitleReq.auth)
   return _s;
 }
 inline const ::std::string& ModifySessionTitleReq::_internal_auth() const {
@@ -17080,7 +17665,7 @@ inline ::std::string* PROTOBUF_NONNULL ModifySessionTitleReq::_internal_mutable_
 }
 inline ::std::string* PROTOBUF_NULLABLE ModifySessionTitleReq::release_auth() {
   ::google::protobuf::internal::TSanWrite(&_impl_);
-  // @@protoc_insertion_point(field_release:GrpcLibrary.ModifySessionTitleReq.auth)
+  // @@protoc_insertion_point(field_release:GrpcLibraryV1.ModifySessionTitleReq.auth)
   if (!CheckHasBit(_impl_._has_bits_[0], 0x00000001U)) {
     return nullptr;
   }
@@ -17102,7 +17687,7 @@ inline void ModifySessionTitleReq::set_allocated_auth(::std::string* PROTOBUF_NU
   if (::google::protobuf::internal::DebugHardenForceCopyDefaultString() && _impl_.auth_.IsDefault()) {
     _impl_.auth_.Set("", GetArena());
   }
-  // @@protoc_insertion_point(field_set_allocated:GrpcLibrary.ModifySessionTitleReq.auth)
+  // @@protoc_insertion_point(field_set_allocated:GrpcLibraryV1.ModifySessionTitleReq.auth)
 }
 
 // string title = 4;
@@ -17114,7 +17699,7 @@ inline void ModifySessionTitleReq::clear_title() {
 }
 inline const ::std::string& ModifySessionTitleReq::title() const
     ABSL_ATTRIBUTE_LIFETIME_BOUND {
-  // @@protoc_insertion_point(field_get:GrpcLibrary.ModifySessionTitleReq.title)
+  // @@protoc_insertion_point(field_get:GrpcLibraryV1.ModifySessionTitleReq.title)
   return _internal_title();
 }
 template <typename Arg_, typename... Args_>
@@ -17122,13 +17707,13 @@ PROTOBUF_ALWAYS_INLINE void ModifySessionTitleReq::set_title(Arg_&& arg, Args_..
   ::google::protobuf::internal::TSanWrite(&_impl_);
   SetHasBit(_impl_._has_bits_[0], 0x00000002U);
   _impl_.title_.Set(static_cast<Arg_&&>(arg), args..., GetArena());
-  // @@protoc_insertion_point(field_set:GrpcLibrary.ModifySessionTitleReq.title)
+  // @@protoc_insertion_point(field_set:GrpcLibraryV1.ModifySessionTitleReq.title)
 }
 inline ::std::string* PROTOBUF_NONNULL ModifySessionTitleReq::mutable_title()
     ABSL_ATTRIBUTE_LIFETIME_BOUND {
   SetHasBit(_impl_._has_bits_[0], 0x00000002U);
   ::std::string* _s = _internal_mutable_title();
-  // @@protoc_insertion_point(field_mutable:GrpcLibrary.ModifySessionTitleReq.title)
+  // @@protoc_insertion_point(field_mutable:GrpcLibraryV1.ModifySessionTitleReq.title)
   return _s;
 }
 inline const ::std::string& ModifySessionTitleReq::_internal_title() const {
@@ -17145,7 +17730,7 @@ inline ::std::string* PROTOBUF_NONNULL ModifySessionTitleReq::_internal_mutable_
 }
 inline ::std::string* PROTOBUF_NULLABLE ModifySessionTitleReq::release_title() {
   ::google::protobuf::internal::TSanWrite(&_impl_);
-  // @@protoc_insertion_point(field_release:GrpcLibrary.ModifySessionTitleReq.title)
+  // @@protoc_insertion_point(field_release:GrpcLibraryV1.ModifySessionTitleReq.title)
   if (!CheckHasBit(_impl_._has_bits_[0], 0x00000002U)) {
     return nullptr;
   }
@@ -17167,7 +17752,7 @@ inline void ModifySessionTitleReq::set_allocated_title(::std::string* PROTOBUF_N
   if (::google::protobuf::internal::DebugHardenForceCopyDefaultString() && _impl_.title_.IsDefault()) {
     _impl_.title_.Set("", GetArena());
   }
-  // @@protoc_insertion_point(field_set_allocated:GrpcLibrary.ModifySessionTitleReq.title)
+  // @@protoc_insertion_point(field_set_allocated:GrpcLibraryV1.ModifySessionTitleReq.title)
 }
 
 // -------------------------------------------------------------------
@@ -17182,13 +17767,13 @@ inline void ModifySessionTitleResp::clear_error_code() {
                   0x00000004U);
 }
 inline ::int32_t ModifySessionTitleResp::error_code() const {
-  // @@protoc_insertion_point(field_get:GrpcLibrary.ModifySessionTitleResp.error_code)
+  // @@protoc_insertion_point(field_get:GrpcLibraryV1.ModifySessionTitleResp.error_code)
   return _internal_error_code();
 }
 inline void ModifySessionTitleResp::set_error_code(::int32_t value) {
   _internal_set_error_code(value);
   SetHasBit(_impl_._has_bits_[0], 0x00000004U);
-  // @@protoc_insertion_point(field_set:GrpcLibrary.ModifySessionTitleResp.error_code)
+  // @@protoc_insertion_point(field_set:GrpcLibraryV1.ModifySessionTitleResp.error_code)
 }
 inline ::int32_t ModifySessionTitleResp::_internal_error_code() const {
   ::google::protobuf::internal::TSanRead(&_impl_);
@@ -17207,13 +17792,13 @@ inline void ModifySessionTitleResp::clear_id() {
                   0x00000002U);
 }
 inline ::int64_t ModifySessionTitleResp::id() const {
-  // @@protoc_insertion_point(field_get:GrpcLibrary.ModifySessionTitleResp.id)
+  // @@protoc_insertion_point(field_get:GrpcLibraryV1.ModifySessionTitleResp.id)
   return _internal_id();
 }
 inline void ModifySessionTitleResp::set_id(::int64_t value) {
   _internal_set_id(value);
   SetHasBit(_impl_._has_bits_[0], 0x00000002U);
-  // @@protoc_insertion_point(field_set:GrpcLibrary.ModifySessionTitleResp.id)
+  // @@protoc_insertion_point(field_set:GrpcLibraryV1.ModifySessionTitleResp.id)
 }
 inline ::int64_t ModifySessionTitleResp::_internal_id() const {
   ::google::protobuf::internal::TSanRead(&_impl_);
@@ -17233,7 +17818,7 @@ inline void ModifySessionTitleResp::clear_title() {
 }
 inline const ::std::string& ModifySessionTitleResp::title() const
     ABSL_ATTRIBUTE_LIFETIME_BOUND {
-  // @@protoc_insertion_point(field_get:GrpcLibrary.ModifySessionTitleResp.title)
+  // @@protoc_insertion_point(field_get:GrpcLibraryV1.ModifySessionTitleResp.title)
   return _internal_title();
 }
 template <typename Arg_, typename... Args_>
@@ -17241,13 +17826,13 @@ PROTOBUF_ALWAYS_INLINE void ModifySessionTitleResp::set_title(Arg_&& arg, Args_.
   ::google::protobuf::internal::TSanWrite(&_impl_);
   SetHasBit(_impl_._has_bits_[0], 0x00000001U);
   _impl_.title_.Set(static_cast<Arg_&&>(arg), args..., GetArena());
-  // @@protoc_insertion_point(field_set:GrpcLibrary.ModifySessionTitleResp.title)
+  // @@protoc_insertion_point(field_set:GrpcLibraryV1.ModifySessionTitleResp.title)
 }
 inline ::std::string* PROTOBUF_NONNULL ModifySessionTitleResp::mutable_title()
     ABSL_ATTRIBUTE_LIFETIME_BOUND {
   SetHasBit(_impl_._has_bits_[0], 0x00000001U);
   ::std::string* _s = _internal_mutable_title();
-  // @@protoc_insertion_point(field_mutable:GrpcLibrary.ModifySessionTitleResp.title)
+  // @@protoc_insertion_point(field_mutable:GrpcLibraryV1.ModifySessionTitleResp.title)
   return _s;
 }
 inline const ::std::string& ModifySessionTitleResp::_internal_title() const {
@@ -17264,7 +17849,7 @@ inline ::std::string* PROTOBUF_NONNULL ModifySessionTitleResp::_internal_mutable
 }
 inline ::std::string* PROTOBUF_NULLABLE ModifySessionTitleResp::release_title() {
   ::google::protobuf::internal::TSanWrite(&_impl_);
-  // @@protoc_insertion_point(field_release:GrpcLibrary.ModifySessionTitleResp.title)
+  // @@protoc_insertion_point(field_release:GrpcLibraryV1.ModifySessionTitleResp.title)
   if (!CheckHasBit(_impl_._has_bits_[0], 0x00000001U)) {
     return nullptr;
   }
@@ -17286,7 +17871,7 @@ inline void ModifySessionTitleResp::set_allocated_title(::std::string* PROTOBUF_
   if (::google::protobuf::internal::DebugHardenForceCopyDefaultString() && _impl_.title_.IsDefault()) {
     _impl_.title_.Set("", GetArena());
   }
-  // @@protoc_insertion_point(field_set_allocated:GrpcLibrary.ModifySessionTitleResp.title)
+  // @@protoc_insertion_point(field_set_allocated:GrpcLibraryV1.ModifySessionTitleResp.title)
 }
 
 // -------------------------------------------------------------------
@@ -17301,13 +17886,13 @@ inline void DelSessionReq::clear_user_id() {
                   0x00000004U);
 }
 inline ::int64_t DelSessionReq::user_id() const {
-  // @@protoc_insertion_point(field_get:GrpcLibrary.DelSessionReq.user_id)
+  // @@protoc_insertion_point(field_get:GrpcLibraryV1.DelSessionReq.user_id)
   return _internal_user_id();
 }
 inline void DelSessionReq::set_user_id(::int64_t value) {
   _internal_set_user_id(value);
   SetHasBit(_impl_._has_bits_[0], 0x00000004U);
-  // @@protoc_insertion_point(field_set:GrpcLibrary.DelSessionReq.user_id)
+  // @@protoc_insertion_point(field_set:GrpcLibraryV1.DelSessionReq.user_id)
 }
 inline ::int64_t DelSessionReq::_internal_user_id() const {
   ::google::protobuf::internal::TSanRead(&_impl_);
@@ -17327,7 +17912,7 @@ inline void DelSessionReq::clear_auth() {
 }
 inline const ::std::string& DelSessionReq::auth() const
     ABSL_ATTRIBUTE_LIFETIME_BOUND {
-  // @@protoc_insertion_point(field_get:GrpcLibrary.DelSessionReq.auth)
+  // @@protoc_insertion_point(field_get:GrpcLibraryV1.DelSessionReq.auth)
   return _internal_auth();
 }
 template <typename Arg_, typename... Args_>
@@ -17335,13 +17920,13 @@ PROTOBUF_ALWAYS_INLINE void DelSessionReq::set_auth(Arg_&& arg, Args_... args) {
   ::google::protobuf::internal::TSanWrite(&_impl_);
   SetHasBit(_impl_._has_bits_[0], 0x00000002U);
   _impl_.auth_.Set(static_cast<Arg_&&>(arg), args..., GetArena());
-  // @@protoc_insertion_point(field_set:GrpcLibrary.DelSessionReq.auth)
+  // @@protoc_insertion_point(field_set:GrpcLibraryV1.DelSessionReq.auth)
 }
 inline ::std::string* PROTOBUF_NONNULL DelSessionReq::mutable_auth()
     ABSL_ATTRIBUTE_LIFETIME_BOUND {
   SetHasBit(_impl_._has_bits_[0], 0x00000002U);
   ::std::string* _s = _internal_mutable_auth();
-  // @@protoc_insertion_point(field_mutable:GrpcLibrary.DelSessionReq.auth)
+  // @@protoc_insertion_point(field_mutable:GrpcLibraryV1.DelSessionReq.auth)
   return _s;
 }
 inline const ::std::string& DelSessionReq::_internal_auth() const {
@@ -17358,7 +17943,7 @@ inline ::std::string* PROTOBUF_NONNULL DelSessionReq::_internal_mutable_auth() {
 }
 inline ::std::string* PROTOBUF_NULLABLE DelSessionReq::release_auth() {
   ::google::protobuf::internal::TSanWrite(&_impl_);
-  // @@protoc_insertion_point(field_release:GrpcLibrary.DelSessionReq.auth)
+  // @@protoc_insertion_point(field_release:GrpcLibraryV1.DelSessionReq.auth)
   if (!CheckHasBit(_impl_._has_bits_[0], 0x00000002U)) {
     return nullptr;
   }
@@ -17380,7 +17965,7 @@ inline void DelSessionReq::set_allocated_auth(::std::string* PROTOBUF_NULLABLE v
   if (::google::protobuf::internal::DebugHardenForceCopyDefaultString() && _impl_.auth_.IsDefault()) {
     _impl_.auth_.Set("", GetArena());
   }
-  // @@protoc_insertion_point(field_set_allocated:GrpcLibrary.DelSessionReq.auth)
+  // @@protoc_insertion_point(field_set_allocated:GrpcLibraryV1.DelSessionReq.auth)
 }
 
 // repeated int64 ids = 3;
@@ -17397,28 +17982,28 @@ inline void DelSessionReq::clear_ids() {
                   0x00000001U);
 }
 inline ::int64_t DelSessionReq::ids(int index) const {
-  // @@protoc_insertion_point(field_get:GrpcLibrary.DelSessionReq.ids)
+  // @@protoc_insertion_point(field_get:GrpcLibraryV1.DelSessionReq.ids)
   return _internal_ids().Get(index);
 }
 inline void DelSessionReq::set_ids(int index, ::int64_t value) {
   _internal_mutable_ids()->Set(index, value);
-  // @@protoc_insertion_point(field_set:GrpcLibrary.DelSessionReq.ids)
+  // @@protoc_insertion_point(field_set:GrpcLibraryV1.DelSessionReq.ids)
 }
 inline void DelSessionReq::add_ids(::int64_t value) {
   ::google::protobuf::internal::TSanWrite(&_impl_);
   _internal_mutable_ids()->Add(value);
   SetHasBitForRepeated(_impl_._has_bits_[0], 0x00000001U);
-  // @@protoc_insertion_point(field_add:GrpcLibrary.DelSessionReq.ids)
+  // @@protoc_insertion_point(field_add:GrpcLibraryV1.DelSessionReq.ids)
 }
 inline const ::google::protobuf::RepeatedField<::int64_t>& DelSessionReq::ids() const
     ABSL_ATTRIBUTE_LIFETIME_BOUND {
-  // @@protoc_insertion_point(field_list:GrpcLibrary.DelSessionReq.ids)
+  // @@protoc_insertion_point(field_list:GrpcLibraryV1.DelSessionReq.ids)
   return _internal_ids();
 }
 inline ::google::protobuf::RepeatedField<::int64_t>* PROTOBUF_NONNULL DelSessionReq::mutable_ids()
     ABSL_ATTRIBUTE_LIFETIME_BOUND {
   SetHasBitForRepeated(_impl_._has_bits_[0], 0x00000001U);
-  // @@protoc_insertion_point(field_mutable_list:GrpcLibrary.DelSessionReq.ids)
+  // @@protoc_insertion_point(field_mutable_list:GrpcLibraryV1.DelSessionReq.ids)
   ::google::protobuf::internal::TSanWrite(&_impl_);
   return _internal_mutable_ids();
 }
@@ -17445,13 +18030,13 @@ inline void DelSessionResp::clear_error_code() {
                   0x00000002U);
 }
 inline ::int32_t DelSessionResp::error_code() const {
-  // @@protoc_insertion_point(field_get:GrpcLibrary.DelSessionResp.error_code)
+  // @@protoc_insertion_point(field_get:GrpcLibraryV1.DelSessionResp.error_code)
   return _internal_error_code();
 }
 inline void DelSessionResp::set_error_code(::int32_t value) {
   _internal_set_error_code(value);
   SetHasBit(_impl_._has_bits_[0], 0x00000002U);
-  // @@protoc_insertion_point(field_set:GrpcLibrary.DelSessionResp.error_code)
+  // @@protoc_insertion_point(field_set:GrpcLibraryV1.DelSessionResp.error_code)
 }
 inline ::int32_t DelSessionResp::_internal_error_code() const {
   ::google::protobuf::internal::TSanRead(&_impl_);
@@ -17476,28 +18061,28 @@ inline void DelSessionResp::clear_ids() {
                   0x00000001U);
 }
 inline ::int64_t DelSessionResp::ids(int index) const {
-  // @@protoc_insertion_point(field_get:GrpcLibrary.DelSessionResp.ids)
+  // @@protoc_insertion_point(field_get:GrpcLibraryV1.DelSessionResp.ids)
   return _internal_ids().Get(index);
 }
 inline void DelSessionResp::set_ids(int index, ::int64_t value) {
   _internal_mutable_ids()->Set(index, value);
-  // @@protoc_insertion_point(field_set:GrpcLibrary.DelSessionResp.ids)
+  // @@protoc_insertion_point(field_set:GrpcLibraryV1.DelSessionResp.ids)
 }
 inline void DelSessionResp::add_ids(::int64_t value) {
   ::google::protobuf::internal::TSanWrite(&_impl_);
   _internal_mutable_ids()->Add(value);
   SetHasBitForRepeated(_impl_._has_bits_[0], 0x00000001U);
-  // @@protoc_insertion_point(field_add:GrpcLibrary.DelSessionResp.ids)
+  // @@protoc_insertion_point(field_add:GrpcLibraryV1.DelSessionResp.ids)
 }
 inline const ::google::protobuf::RepeatedField<::int64_t>& DelSessionResp::ids() const
     ABSL_ATTRIBUTE_LIFETIME_BOUND {
-  // @@protoc_insertion_point(field_list:GrpcLibrary.DelSessionResp.ids)
+  // @@protoc_insertion_point(field_list:GrpcLibraryV1.DelSessionResp.ids)
   return _internal_ids();
 }
 inline ::google::protobuf::RepeatedField<::int64_t>* PROTOBUF_NONNULL DelSessionResp::mutable_ids()
     ABSL_ATTRIBUTE_LIFETIME_BOUND {
   SetHasBitForRepeated(_impl_._has_bits_[0], 0x00000001U);
-  // @@protoc_insertion_point(field_mutable_list:GrpcLibrary.DelSessionResp.ids)
+  // @@protoc_insertion_point(field_mutable_list:GrpcLibraryV1.DelSessionResp.ids)
   ::google::protobuf::internal::TSanWrite(&_impl_);
   return _internal_mutable_ids();
 }
@@ -17525,7 +18110,7 @@ inline void GetPluginInfoReq::clear_hash() {
 }
 inline const ::std::string& GetPluginInfoReq::hash() const
     ABSL_ATTRIBUTE_LIFETIME_BOUND {
-  // @@protoc_insertion_point(field_get:GrpcLibrary.GetPluginInfoReq.hash)
+  // @@protoc_insertion_point(field_get:GrpcLibraryV1.GetPluginInfoReq.hash)
   return _internal_hash();
 }
 template <typename Arg_, typename... Args_>
@@ -17533,13 +18118,13 @@ PROTOBUF_ALWAYS_INLINE void GetPluginInfoReq::set_hash(Arg_&& arg, Args_... args
   ::google::protobuf::internal::TSanWrite(&_impl_);
   SetHasBit(_impl_._has_bits_[0], 0x00000001U);
   _impl_.hash_.Set(static_cast<Arg_&&>(arg), args..., GetArena());
-  // @@protoc_insertion_point(field_set:GrpcLibrary.GetPluginInfoReq.hash)
+  // @@protoc_insertion_point(field_set:GrpcLibraryV1.GetPluginInfoReq.hash)
 }
 inline ::std::string* PROTOBUF_NONNULL GetPluginInfoReq::mutable_hash()
     ABSL_ATTRIBUTE_LIFETIME_BOUND {
   SetHasBit(_impl_._has_bits_[0], 0x00000001U);
   ::std::string* _s = _internal_mutable_hash();
-  // @@protoc_insertion_point(field_mutable:GrpcLibrary.GetPluginInfoReq.hash)
+  // @@protoc_insertion_point(field_mutable:GrpcLibraryV1.GetPluginInfoReq.hash)
   return _s;
 }
 inline const ::std::string& GetPluginInfoReq::_internal_hash() const {
@@ -17556,7 +18141,7 @@ inline ::std::string* PROTOBUF_NONNULL GetPluginInfoReq::_internal_mutable_hash(
 }
 inline ::std::string* PROTOBUF_NULLABLE GetPluginInfoReq::release_hash() {
   ::google::protobuf::internal::TSanWrite(&_impl_);
-  // @@protoc_insertion_point(field_release:GrpcLibrary.GetPluginInfoReq.hash)
+  // @@protoc_insertion_point(field_release:GrpcLibraryV1.GetPluginInfoReq.hash)
   if (!CheckHasBit(_impl_._has_bits_[0], 0x00000001U)) {
     return nullptr;
   }
@@ -17578,7 +18163,7 @@ inline void GetPluginInfoReq::set_allocated_hash(::std::string* PROTOBUF_NULLABL
   if (::google::protobuf::internal::DebugHardenForceCopyDefaultString() && _impl_.hash_.IsDefault()) {
     _impl_.hash_.Set("", GetArena());
   }
-  // @@protoc_insertion_point(field_set_allocated:GrpcLibrary.GetPluginInfoReq.hash)
+  // @@protoc_insertion_point(field_set_allocated:GrpcLibraryV1.GetPluginInfoReq.hash)
 }
 
 // string publisher = 2;
@@ -17590,7 +18175,7 @@ inline void GetPluginInfoReq::clear_publisher() {
 }
 inline const ::std::string& GetPluginInfoReq::publisher() const
     ABSL_ATTRIBUTE_LIFETIME_BOUND {
-  // @@protoc_insertion_point(field_get:GrpcLibrary.GetPluginInfoReq.publisher)
+  // @@protoc_insertion_point(field_get:GrpcLibraryV1.GetPluginInfoReq.publisher)
   return _internal_publisher();
 }
 template <typename Arg_, typename... Args_>
@@ -17598,13 +18183,13 @@ PROTOBUF_ALWAYS_INLINE void GetPluginInfoReq::set_publisher(Arg_&& arg, Args_...
   ::google::protobuf::internal::TSanWrite(&_impl_);
   SetHasBit(_impl_._has_bits_[0], 0x00000002U);
   _impl_.publisher_.Set(static_cast<Arg_&&>(arg), args..., GetArena());
-  // @@protoc_insertion_point(field_set:GrpcLibrary.GetPluginInfoReq.publisher)
+  // @@protoc_insertion_point(field_set:GrpcLibraryV1.GetPluginInfoReq.publisher)
 }
 inline ::std::string* PROTOBUF_NONNULL GetPluginInfoReq::mutable_publisher()
     ABSL_ATTRIBUTE_LIFETIME_BOUND {
   SetHasBit(_impl_._has_bits_[0], 0x00000002U);
   ::std::string* _s = _internal_mutable_publisher();
-  // @@protoc_insertion_point(field_mutable:GrpcLibrary.GetPluginInfoReq.publisher)
+  // @@protoc_insertion_point(field_mutable:GrpcLibraryV1.GetPluginInfoReq.publisher)
   return _s;
 }
 inline const ::std::string& GetPluginInfoReq::_internal_publisher() const {
@@ -17621,7 +18206,7 @@ inline ::std::string* PROTOBUF_NONNULL GetPluginInfoReq::_internal_mutable_publi
 }
 inline ::std::string* PROTOBUF_NULLABLE GetPluginInfoReq::release_publisher() {
   ::google::protobuf::internal::TSanWrite(&_impl_);
-  // @@protoc_insertion_point(field_release:GrpcLibrary.GetPluginInfoReq.publisher)
+  // @@protoc_insertion_point(field_release:GrpcLibraryV1.GetPluginInfoReq.publisher)
   if (!CheckHasBit(_impl_._has_bits_[0], 0x00000002U)) {
     return nullptr;
   }
@@ -17643,7 +18228,7 @@ inline void GetPluginInfoReq::set_allocated_publisher(::std::string* PROTOBUF_NU
   if (::google::protobuf::internal::DebugHardenForceCopyDefaultString() && _impl_.publisher_.IsDefault()) {
     _impl_.publisher_.Set("", GetArena());
   }
-  // @@protoc_insertion_point(field_set_allocated:GrpcLibrary.GetPluginInfoReq.publisher)
+  // @@protoc_insertion_point(field_set_allocated:GrpcLibraryV1.GetPluginInfoReq.publisher)
 }
 
 // int32 limit = 3;
@@ -17654,13 +18239,13 @@ inline void GetPluginInfoReq::clear_limit() {
                   0x00000004U);
 }
 inline ::int32_t GetPluginInfoReq::limit() const {
-  // @@protoc_insertion_point(field_get:GrpcLibrary.GetPluginInfoReq.limit)
+  // @@protoc_insertion_point(field_get:GrpcLibraryV1.GetPluginInfoReq.limit)
   return _internal_limit();
 }
 inline void GetPluginInfoReq::set_limit(::int32_t value) {
   _internal_set_limit(value);
   SetHasBit(_impl_._has_bits_[0], 0x00000004U);
-  // @@protoc_insertion_point(field_set:GrpcLibrary.GetPluginInfoReq.limit)
+  // @@protoc_insertion_point(field_set:GrpcLibraryV1.GetPluginInfoReq.limit)
 }
 inline ::int32_t GetPluginInfoReq::_internal_limit() const {
   ::google::protobuf::internal::TSanRead(&_impl_);
@@ -17683,13 +18268,13 @@ inline void GetPluginInfoResp::clear_error_code() {
                   0x00000002U);
 }
 inline ::int32_t GetPluginInfoResp::error_code() const {
-  // @@protoc_insertion_point(field_get:GrpcLibrary.GetPluginInfoResp.error_code)
+  // @@protoc_insertion_point(field_get:GrpcLibraryV1.GetPluginInfoResp.error_code)
   return _internal_error_code();
 }
 inline void GetPluginInfoResp::set_error_code(::int32_t value) {
   _internal_set_error_code(value);
   SetHasBit(_impl_._has_bits_[0], 0x00000002U);
-  // @@protoc_insertion_point(field_set:GrpcLibrary.GetPluginInfoResp.error_code)
+  // @@protoc_insertion_point(field_set:GrpcLibraryV1.GetPluginInfoResp.error_code)
 }
 inline ::int32_t GetPluginInfoResp::_internal_error_code() const {
   ::google::protobuf::internal::TSanRead(&_impl_);
@@ -17700,7 +18285,7 @@ inline void GetPluginInfoResp::_internal_set_error_code(::int32_t value) {
   _impl_.error_code_ = value;
 }
 
-// repeated .GrpcLibrary.Plugin plugins = 2;
+// repeated .GrpcLibraryV1.Plugin plugins = 2;
 inline int GetPluginInfoResp::_internal_plugins_size() const {
   return _internal_plugins().size();
 }
@@ -17713,44 +18298,44 @@ inline void GetPluginInfoResp::clear_plugins() {
   ClearHasBitForRepeated(_impl_._has_bits_[0],
                   0x00000001U);
 }
-inline ::GrpcLibrary::Plugin* PROTOBUF_NONNULL GetPluginInfoResp::mutable_plugins(int index)
+inline ::GrpcLibraryV1::Plugin* PROTOBUF_NONNULL GetPluginInfoResp::mutable_plugins(int index)
     ABSL_ATTRIBUTE_LIFETIME_BOUND {
-  // @@protoc_insertion_point(field_mutable:GrpcLibrary.GetPluginInfoResp.plugins)
+  // @@protoc_insertion_point(field_mutable:GrpcLibraryV1.GetPluginInfoResp.plugins)
   return _internal_mutable_plugins()->Mutable(index);
 }
-inline ::google::protobuf::RepeatedPtrField<::GrpcLibrary::Plugin>* PROTOBUF_NONNULL GetPluginInfoResp::mutable_plugins()
+inline ::google::protobuf::RepeatedPtrField<::GrpcLibraryV1::Plugin>* PROTOBUF_NONNULL GetPluginInfoResp::mutable_plugins()
     ABSL_ATTRIBUTE_LIFETIME_BOUND {
   SetHasBitForRepeated(_impl_._has_bits_[0], 0x00000001U);
-  // @@protoc_insertion_point(field_mutable_list:GrpcLibrary.GetPluginInfoResp.plugins)
+  // @@protoc_insertion_point(field_mutable_list:GrpcLibraryV1.GetPluginInfoResp.plugins)
   ::google::protobuf::internal::TSanWrite(&_impl_);
   return _internal_mutable_plugins();
 }
-inline const ::GrpcLibrary::Plugin& GetPluginInfoResp::plugins(int index) const
+inline const ::GrpcLibraryV1::Plugin& GetPluginInfoResp::plugins(int index) const
     ABSL_ATTRIBUTE_LIFETIME_BOUND {
-  // @@protoc_insertion_point(field_get:GrpcLibrary.GetPluginInfoResp.plugins)
+  // @@protoc_insertion_point(field_get:GrpcLibraryV1.GetPluginInfoResp.plugins)
   return _internal_plugins().Get(index);
 }
-inline ::GrpcLibrary::Plugin* PROTOBUF_NONNULL GetPluginInfoResp::add_plugins()
+inline ::GrpcLibraryV1::Plugin* PROTOBUF_NONNULL GetPluginInfoResp::add_plugins()
     ABSL_ATTRIBUTE_LIFETIME_BOUND {
   ::google::protobuf::internal::TSanWrite(&_impl_);
-  ::GrpcLibrary::Plugin* _add =
+  ::GrpcLibraryV1::Plugin* _add =
       _internal_mutable_plugins()->InternalAddWithArena(
           ::google::protobuf::MessageLite::internal_visibility(), GetArena());
   SetHasBitForRepeated(_impl_._has_bits_[0], 0x00000001U);
-  // @@protoc_insertion_point(field_add:GrpcLibrary.GetPluginInfoResp.plugins)
+  // @@protoc_insertion_point(field_add:GrpcLibraryV1.GetPluginInfoResp.plugins)
   return _add;
 }
-inline const ::google::protobuf::RepeatedPtrField<::GrpcLibrary::Plugin>& GetPluginInfoResp::plugins() const
+inline const ::google::protobuf::RepeatedPtrField<::GrpcLibraryV1::Plugin>& GetPluginInfoResp::plugins() const
     ABSL_ATTRIBUTE_LIFETIME_BOUND {
-  // @@protoc_insertion_point(field_list:GrpcLibrary.GetPluginInfoResp.plugins)
+  // @@protoc_insertion_point(field_list:GrpcLibraryV1.GetPluginInfoResp.plugins)
   return _internal_plugins();
 }
-inline const ::google::protobuf::RepeatedPtrField<::GrpcLibrary::Plugin>&
+inline const ::google::protobuf::RepeatedPtrField<::GrpcLibraryV1::Plugin>&
 GetPluginInfoResp::_internal_plugins() const {
   ::google::protobuf::internal::TSanRead(&_impl_);
   return _impl_.plugins_;
 }
-inline ::google::protobuf::RepeatedPtrField<::GrpcLibrary::Plugin>* PROTOBUF_NONNULL
+inline ::google::protobuf::RepeatedPtrField<::GrpcLibraryV1::Plugin>* PROTOBUF_NONNULL
 GetPluginInfoResp::_internal_mutable_plugins() {
   ::google::protobuf::internal::TSanRead(&_impl_);
   return &_impl_.plugins_;
@@ -17769,7 +18354,7 @@ inline void DownloadReq::clear_hash() {
 }
 inline const ::std::string& DownloadReq::hash() const
     ABSL_ATTRIBUTE_LIFETIME_BOUND {
-  // @@protoc_insertion_point(field_get:GrpcLibrary.DownloadReq.hash)
+  // @@protoc_insertion_point(field_get:GrpcLibraryV1.DownloadReq.hash)
   return _internal_hash();
 }
 template <typename Arg_, typename... Args_>
@@ -17777,13 +18362,13 @@ PROTOBUF_ALWAYS_INLINE void DownloadReq::set_hash(Arg_&& arg, Args_... args) {
   ::google::protobuf::internal::TSanWrite(&_impl_);
   SetHasBit(_impl_._has_bits_[0], 0x00000001U);
   _impl_.hash_.Set(static_cast<Arg_&&>(arg), args..., GetArena());
-  // @@protoc_insertion_point(field_set:GrpcLibrary.DownloadReq.hash)
+  // @@protoc_insertion_point(field_set:GrpcLibraryV1.DownloadReq.hash)
 }
 inline ::std::string* PROTOBUF_NONNULL DownloadReq::mutable_hash()
     ABSL_ATTRIBUTE_LIFETIME_BOUND {
   SetHasBit(_impl_._has_bits_[0], 0x00000001U);
   ::std::string* _s = _internal_mutable_hash();
-  // @@protoc_insertion_point(field_mutable:GrpcLibrary.DownloadReq.hash)
+  // @@protoc_insertion_point(field_mutable:GrpcLibraryV1.DownloadReq.hash)
   return _s;
 }
 inline const ::std::string& DownloadReq::_internal_hash() const {
@@ -17800,7 +18385,7 @@ inline ::std::string* PROTOBUF_NONNULL DownloadReq::_internal_mutable_hash() {
 }
 inline ::std::string* PROTOBUF_NULLABLE DownloadReq::release_hash() {
   ::google::protobuf::internal::TSanWrite(&_impl_);
-  // @@protoc_insertion_point(field_release:GrpcLibrary.DownloadReq.hash)
+  // @@protoc_insertion_point(field_release:GrpcLibraryV1.DownloadReq.hash)
   if (!CheckHasBit(_impl_._has_bits_[0], 0x00000001U)) {
     return nullptr;
   }
@@ -17822,7 +18407,7 @@ inline void DownloadReq::set_allocated_hash(::std::string* PROTOBUF_NULLABLE val
   if (::google::protobuf::internal::DebugHardenForceCopyDefaultString() && _impl_.hash_.IsDefault()) {
     _impl_.hash_.Set("", GetArena());
   }
-  // @@protoc_insertion_point(field_set_allocated:GrpcLibrary.DownloadReq.hash)
+  // @@protoc_insertion_point(field_set_allocated:GrpcLibraryV1.DownloadReq.hash)
 }
 
 // int64 user_id = 2;
@@ -17833,13 +18418,13 @@ inline void DownloadReq::clear_user_id() {
                   0x00000004U);
 }
 inline ::int64_t DownloadReq::user_id() const {
-  // @@protoc_insertion_point(field_get:GrpcLibrary.DownloadReq.user_id)
+  // @@protoc_insertion_point(field_get:GrpcLibraryV1.DownloadReq.user_id)
   return _internal_user_id();
 }
 inline void DownloadReq::set_user_id(::int64_t value) {
   _internal_set_user_id(value);
   SetHasBit(_impl_._has_bits_[0], 0x00000004U);
-  // @@protoc_insertion_point(field_set:GrpcLibrary.DownloadReq.user_id)
+  // @@protoc_insertion_point(field_set:GrpcLibraryV1.DownloadReq.user_id)
 }
 inline ::int64_t DownloadReq::_internal_user_id() const {
   ::google::protobuf::internal::TSanRead(&_impl_);
@@ -17859,7 +18444,7 @@ inline void DownloadReq::clear_auth() {
 }
 inline const ::std::string& DownloadReq::auth() const
     ABSL_ATTRIBUTE_LIFETIME_BOUND {
-  // @@protoc_insertion_point(field_get:GrpcLibrary.DownloadReq.auth)
+  // @@protoc_insertion_point(field_get:GrpcLibraryV1.DownloadReq.auth)
   return _internal_auth();
 }
 template <typename Arg_, typename... Args_>
@@ -17867,13 +18452,13 @@ PROTOBUF_ALWAYS_INLINE void DownloadReq::set_auth(Arg_&& arg, Args_... args) {
   ::google::protobuf::internal::TSanWrite(&_impl_);
   SetHasBit(_impl_._has_bits_[0], 0x00000002U);
   _impl_.auth_.Set(static_cast<Arg_&&>(arg), args..., GetArena());
-  // @@protoc_insertion_point(field_set:GrpcLibrary.DownloadReq.auth)
+  // @@protoc_insertion_point(field_set:GrpcLibraryV1.DownloadReq.auth)
 }
 inline ::std::string* PROTOBUF_NONNULL DownloadReq::mutable_auth()
     ABSL_ATTRIBUTE_LIFETIME_BOUND {
   SetHasBit(_impl_._has_bits_[0], 0x00000002U);
   ::std::string* _s = _internal_mutable_auth();
-  // @@protoc_insertion_point(field_mutable:GrpcLibrary.DownloadReq.auth)
+  // @@protoc_insertion_point(field_mutable:GrpcLibraryV1.DownloadReq.auth)
   return _s;
 }
 inline const ::std::string& DownloadReq::_internal_auth() const {
@@ -17890,7 +18475,7 @@ inline ::std::string* PROTOBUF_NONNULL DownloadReq::_internal_mutable_auth() {
 }
 inline ::std::string* PROTOBUF_NULLABLE DownloadReq::release_auth() {
   ::google::protobuf::internal::TSanWrite(&_impl_);
-  // @@protoc_insertion_point(field_release:GrpcLibrary.DownloadReq.auth)
+  // @@protoc_insertion_point(field_release:GrpcLibraryV1.DownloadReq.auth)
   if (!CheckHasBit(_impl_._has_bits_[0], 0x00000002U)) {
     return nullptr;
   }
@@ -17912,7 +18497,7 @@ inline void DownloadReq::set_allocated_auth(::std::string* PROTOBUF_NULLABLE val
   if (::google::protobuf::internal::DebugHardenForceCopyDefaultString() && _impl_.auth_.IsDefault()) {
     _impl_.auth_.Set("", GetArena());
   }
-  // @@protoc_insertion_point(field_set_allocated:GrpcLibrary.DownloadReq.auth)
+  // @@protoc_insertion_point(field_set_allocated:GrpcLibraryV1.DownloadReq.auth)
 }
 
 // -------------------------------------------------------------------
@@ -17927,13 +18512,13 @@ inline void DownloadResp::clear_error_code() {
                   0x00000008U);
 }
 inline ::int32_t DownloadResp::error_code() const {
-  // @@protoc_insertion_point(field_get:GrpcLibrary.DownloadResp.error_code)
+  // @@protoc_insertion_point(field_get:GrpcLibraryV1.DownloadResp.error_code)
   return _internal_error_code();
 }
 inline void DownloadResp::set_error_code(::int32_t value) {
   _internal_set_error_code(value);
   SetHasBit(_impl_._has_bits_[0], 0x00000008U);
-  // @@protoc_insertion_point(field_set:GrpcLibrary.DownloadResp.error_code)
+  // @@protoc_insertion_point(field_set:GrpcLibraryV1.DownloadResp.error_code)
 }
 inline ::int32_t DownloadResp::_internal_error_code() const {
   ::google::protobuf::internal::TSanRead(&_impl_);
@@ -17953,7 +18538,7 @@ inline void DownloadResp::clear_hash() {
 }
 inline const ::std::string& DownloadResp::hash() const
     ABSL_ATTRIBUTE_LIFETIME_BOUND {
-  // @@protoc_insertion_point(field_get:GrpcLibrary.DownloadResp.hash)
+  // @@protoc_insertion_point(field_get:GrpcLibraryV1.DownloadResp.hash)
   return _internal_hash();
 }
 template <typename Arg_, typename... Args_>
@@ -17961,13 +18546,13 @@ PROTOBUF_ALWAYS_INLINE void DownloadResp::set_hash(Arg_&& arg, Args_... args) {
   ::google::protobuf::internal::TSanWrite(&_impl_);
   SetHasBit(_impl_._has_bits_[0], 0x00000001U);
   _impl_.hash_.Set(static_cast<Arg_&&>(arg), args..., GetArena());
-  // @@protoc_insertion_point(field_set:GrpcLibrary.DownloadResp.hash)
+  // @@protoc_insertion_point(field_set:GrpcLibraryV1.DownloadResp.hash)
 }
 inline ::std::string* PROTOBUF_NONNULL DownloadResp::mutable_hash()
     ABSL_ATTRIBUTE_LIFETIME_BOUND {
   SetHasBit(_impl_._has_bits_[0], 0x00000001U);
   ::std::string* _s = _internal_mutable_hash();
-  // @@protoc_insertion_point(field_mutable:GrpcLibrary.DownloadResp.hash)
+  // @@protoc_insertion_point(field_mutable:GrpcLibraryV1.DownloadResp.hash)
   return _s;
 }
 inline const ::std::string& DownloadResp::_internal_hash() const {
@@ -17984,7 +18569,7 @@ inline ::std::string* PROTOBUF_NONNULL DownloadResp::_internal_mutable_hash() {
 }
 inline ::std::string* PROTOBUF_NULLABLE DownloadResp::release_hash() {
   ::google::protobuf::internal::TSanWrite(&_impl_);
-  // @@protoc_insertion_point(field_release:GrpcLibrary.DownloadResp.hash)
+  // @@protoc_insertion_point(field_release:GrpcLibraryV1.DownloadResp.hash)
   if (!CheckHasBit(_impl_._has_bits_[0], 0x00000001U)) {
     return nullptr;
   }
@@ -18006,7 +18591,7 @@ inline void DownloadResp::set_allocated_hash(::std::string* PROTOBUF_NULLABLE va
   if (::google::protobuf::internal::DebugHardenForceCopyDefaultString() && _impl_.hash_.IsDefault()) {
     _impl_.hash_.Set("", GetArena());
   }
-  // @@protoc_insertion_point(field_set_allocated:GrpcLibrary.DownloadResp.hash)
+  // @@protoc_insertion_point(field_set_allocated:GrpcLibraryV1.DownloadResp.hash)
 }
 
 // string addr = 3;
@@ -18018,7 +18603,7 @@ inline void DownloadResp::clear_addr() {
 }
 inline const ::std::string& DownloadResp::addr() const
     ABSL_ATTRIBUTE_LIFETIME_BOUND {
-  // @@protoc_insertion_point(field_get:GrpcLibrary.DownloadResp.addr)
+  // @@protoc_insertion_point(field_get:GrpcLibraryV1.DownloadResp.addr)
   return _internal_addr();
 }
 template <typename Arg_, typename... Args_>
@@ -18026,13 +18611,13 @@ PROTOBUF_ALWAYS_INLINE void DownloadResp::set_addr(Arg_&& arg, Args_... args) {
   ::google::protobuf::internal::TSanWrite(&_impl_);
   SetHasBit(_impl_._has_bits_[0], 0x00000002U);
   _impl_.addr_.Set(static_cast<Arg_&&>(arg), args..., GetArena());
-  // @@protoc_insertion_point(field_set:GrpcLibrary.DownloadResp.addr)
+  // @@protoc_insertion_point(field_set:GrpcLibraryV1.DownloadResp.addr)
 }
 inline ::std::string* PROTOBUF_NONNULL DownloadResp::mutable_addr()
     ABSL_ATTRIBUTE_LIFETIME_BOUND {
   SetHasBit(_impl_._has_bits_[0], 0x00000002U);
   ::std::string* _s = _internal_mutable_addr();
-  // @@protoc_insertion_point(field_mutable:GrpcLibrary.DownloadResp.addr)
+  // @@protoc_insertion_point(field_mutable:GrpcLibraryV1.DownloadResp.addr)
   return _s;
 }
 inline const ::std::string& DownloadResp::_internal_addr() const {
@@ -18049,7 +18634,7 @@ inline ::std::string* PROTOBUF_NONNULL DownloadResp::_internal_mutable_addr() {
 }
 inline ::std::string* PROTOBUF_NULLABLE DownloadResp::release_addr() {
   ::google::protobuf::internal::TSanWrite(&_impl_);
-  // @@protoc_insertion_point(field_release:GrpcLibrary.DownloadResp.addr)
+  // @@protoc_insertion_point(field_release:GrpcLibraryV1.DownloadResp.addr)
   if (!CheckHasBit(_impl_._has_bits_[0], 0x00000002U)) {
     return nullptr;
   }
@@ -18071,7 +18656,7 @@ inline void DownloadResp::set_allocated_addr(::std::string* PROTOBUF_NULLABLE va
   if (::google::protobuf::internal::DebugHardenForceCopyDefaultString() && _impl_.addr_.IsDefault()) {
     _impl_.addr_.Set("", GetArena());
   }
-  // @@protoc_insertion_point(field_set_allocated:GrpcLibrary.DownloadResp.addr)
+  // @@protoc_insertion_point(field_set_allocated:GrpcLibraryV1.DownloadResp.addr)
 }
 
 // int64 size_kb = 4;
@@ -18082,13 +18667,13 @@ inline void DownloadResp::clear_size_kb() {
                   0x00000004U);
 }
 inline ::int64_t DownloadResp::size_kb() const {
-  // @@protoc_insertion_point(field_get:GrpcLibrary.DownloadResp.size_kb)
+  // @@protoc_insertion_point(field_get:GrpcLibraryV1.DownloadResp.size_kb)
   return _internal_size_kb();
 }
 inline void DownloadResp::set_size_kb(::int64_t value) {
   _internal_set_size_kb(value);
   SetHasBit(_impl_._has_bits_[0], 0x00000004U);
-  // @@protoc_insertion_point(field_set:GrpcLibrary.DownloadResp.size_kb)
+  // @@protoc_insertion_point(field_set:GrpcLibraryV1.DownloadResp.size_kb)
 }
 inline ::int64_t DownloadResp::_internal_size_kb() const {
   ::google::protobuf::internal::TSanRead(&_impl_);
@@ -18112,7 +18697,7 @@ inline void UploadReq::clear_hash() {
 }
 inline const ::std::string& UploadReq::hash() const
     ABSL_ATTRIBUTE_LIFETIME_BOUND {
-  // @@protoc_insertion_point(field_get:GrpcLibrary.UploadReq.hash)
+  // @@protoc_insertion_point(field_get:GrpcLibraryV1.UploadReq.hash)
   return _internal_hash();
 }
 template <typename Arg_, typename... Args_>
@@ -18120,13 +18705,13 @@ PROTOBUF_ALWAYS_INLINE void UploadReq::set_hash(Arg_&& arg, Args_... args) {
   ::google::protobuf::internal::TSanWrite(&_impl_);
   SetHasBit(_impl_._has_bits_[0], 0x00000001U);
   _impl_.hash_.Set(static_cast<Arg_&&>(arg), args..., GetArena());
-  // @@protoc_insertion_point(field_set:GrpcLibrary.UploadReq.hash)
+  // @@protoc_insertion_point(field_set:GrpcLibraryV1.UploadReq.hash)
 }
 inline ::std::string* PROTOBUF_NONNULL UploadReq::mutable_hash()
     ABSL_ATTRIBUTE_LIFETIME_BOUND {
   SetHasBit(_impl_._has_bits_[0], 0x00000001U);
   ::std::string* _s = _internal_mutable_hash();
-  // @@protoc_insertion_point(field_mutable:GrpcLibrary.UploadReq.hash)
+  // @@protoc_insertion_point(field_mutable:GrpcLibraryV1.UploadReq.hash)
   return _s;
 }
 inline const ::std::string& UploadReq::_internal_hash() const {
@@ -18143,7 +18728,7 @@ inline ::std::string* PROTOBUF_NONNULL UploadReq::_internal_mutable_hash() {
 }
 inline ::std::string* PROTOBUF_NULLABLE UploadReq::release_hash() {
   ::google::protobuf::internal::TSanWrite(&_impl_);
-  // @@protoc_insertion_point(field_release:GrpcLibrary.UploadReq.hash)
+  // @@protoc_insertion_point(field_release:GrpcLibraryV1.UploadReq.hash)
   if (!CheckHasBit(_impl_._has_bits_[0], 0x00000001U)) {
     return nullptr;
   }
@@ -18165,7 +18750,7 @@ inline void UploadReq::set_allocated_hash(::std::string* PROTOBUF_NULLABLE value
   if (::google::protobuf::internal::DebugHardenForceCopyDefaultString() && _impl_.hash_.IsDefault()) {
     _impl_.hash_.Set("", GetArena());
   }
-  // @@protoc_insertion_point(field_set_allocated:GrpcLibrary.UploadReq.hash)
+  // @@protoc_insertion_point(field_set_allocated:GrpcLibraryV1.UploadReq.hash)
 }
 
 // int64 user_id = 2;
@@ -18176,13 +18761,13 @@ inline void UploadReq::clear_user_id() {
                   0x00000008U);
 }
 inline ::int64_t UploadReq::user_id() const {
-  // @@protoc_insertion_point(field_get:GrpcLibrary.UploadReq.user_id)
+  // @@protoc_insertion_point(field_get:GrpcLibraryV1.UploadReq.user_id)
   return _internal_user_id();
 }
 inline void UploadReq::set_user_id(::int64_t value) {
   _internal_set_user_id(value);
   SetHasBit(_impl_._has_bits_[0], 0x00000008U);
-  // @@protoc_insertion_point(field_set:GrpcLibrary.UploadReq.user_id)
+  // @@protoc_insertion_point(field_set:GrpcLibraryV1.UploadReq.user_id)
 }
 inline ::int64_t UploadReq::_internal_user_id() const {
   ::google::protobuf::internal::TSanRead(&_impl_);
@@ -18202,7 +18787,7 @@ inline void UploadReq::clear_auth() {
 }
 inline const ::std::string& UploadReq::auth() const
     ABSL_ATTRIBUTE_LIFETIME_BOUND {
-  // @@protoc_insertion_point(field_get:GrpcLibrary.UploadReq.auth)
+  // @@protoc_insertion_point(field_get:GrpcLibraryV1.UploadReq.auth)
   return _internal_auth();
 }
 template <typename Arg_, typename... Args_>
@@ -18210,13 +18795,13 @@ PROTOBUF_ALWAYS_INLINE void UploadReq::set_auth(Arg_&& arg, Args_... args) {
   ::google::protobuf::internal::TSanWrite(&_impl_);
   SetHasBit(_impl_._has_bits_[0], 0x00000002U);
   _impl_.auth_.Set(static_cast<Arg_&&>(arg), args..., GetArena());
-  // @@protoc_insertion_point(field_set:GrpcLibrary.UploadReq.auth)
+  // @@protoc_insertion_point(field_set:GrpcLibraryV1.UploadReq.auth)
 }
 inline ::std::string* PROTOBUF_NONNULL UploadReq::mutable_auth()
     ABSL_ATTRIBUTE_LIFETIME_BOUND {
   SetHasBit(_impl_._has_bits_[0], 0x00000002U);
   ::std::string* _s = _internal_mutable_auth();
-  // @@protoc_insertion_point(field_mutable:GrpcLibrary.UploadReq.auth)
+  // @@protoc_insertion_point(field_mutable:GrpcLibraryV1.UploadReq.auth)
   return _s;
 }
 inline const ::std::string& UploadReq::_internal_auth() const {
@@ -18233,7 +18818,7 @@ inline ::std::string* PROTOBUF_NONNULL UploadReq::_internal_mutable_auth() {
 }
 inline ::std::string* PROTOBUF_NULLABLE UploadReq::release_auth() {
   ::google::protobuf::internal::TSanWrite(&_impl_);
-  // @@protoc_insertion_point(field_release:GrpcLibrary.UploadReq.auth)
+  // @@protoc_insertion_point(field_release:GrpcLibraryV1.UploadReq.auth)
   if (!CheckHasBit(_impl_._has_bits_[0], 0x00000002U)) {
     return nullptr;
   }
@@ -18255,7 +18840,7 @@ inline void UploadReq::set_allocated_auth(::std::string* PROTOBUF_NULLABLE value
   if (::google::protobuf::internal::DebugHardenForceCopyDefaultString() && _impl_.auth_.IsDefault()) {
     _impl_.auth_.Set("", GetArena());
   }
-  // @@protoc_insertion_point(field_set_allocated:GrpcLibrary.UploadReq.auth)
+  // @@protoc_insertion_point(field_set_allocated:GrpcLibraryV1.UploadReq.auth)
 }
 
 // string addr = 4;
@@ -18267,7 +18852,7 @@ inline void UploadReq::clear_addr() {
 }
 inline const ::std::string& UploadReq::addr() const
     ABSL_ATTRIBUTE_LIFETIME_BOUND {
-  // @@protoc_insertion_point(field_get:GrpcLibrary.UploadReq.addr)
+  // @@protoc_insertion_point(field_get:GrpcLibraryV1.UploadReq.addr)
   return _internal_addr();
 }
 template <typename Arg_, typename... Args_>
@@ -18275,13 +18860,13 @@ PROTOBUF_ALWAYS_INLINE void UploadReq::set_addr(Arg_&& arg, Args_... args) {
   ::google::protobuf::internal::TSanWrite(&_impl_);
   SetHasBit(_impl_._has_bits_[0], 0x00000004U);
   _impl_.addr_.Set(static_cast<Arg_&&>(arg), args..., GetArena());
-  // @@protoc_insertion_point(field_set:GrpcLibrary.UploadReq.addr)
+  // @@protoc_insertion_point(field_set:GrpcLibraryV1.UploadReq.addr)
 }
 inline ::std::string* PROTOBUF_NONNULL UploadReq::mutable_addr()
     ABSL_ATTRIBUTE_LIFETIME_BOUND {
   SetHasBit(_impl_._has_bits_[0], 0x00000004U);
   ::std::string* _s = _internal_mutable_addr();
-  // @@protoc_insertion_point(field_mutable:GrpcLibrary.UploadReq.addr)
+  // @@protoc_insertion_point(field_mutable:GrpcLibraryV1.UploadReq.addr)
   return _s;
 }
 inline const ::std::string& UploadReq::_internal_addr() const {
@@ -18298,7 +18883,7 @@ inline ::std::string* PROTOBUF_NONNULL UploadReq::_internal_mutable_addr() {
 }
 inline ::std::string* PROTOBUF_NULLABLE UploadReq::release_addr() {
   ::google::protobuf::internal::TSanWrite(&_impl_);
-  // @@protoc_insertion_point(field_release:GrpcLibrary.UploadReq.addr)
+  // @@protoc_insertion_point(field_release:GrpcLibraryV1.UploadReq.addr)
   if (!CheckHasBit(_impl_._has_bits_[0], 0x00000004U)) {
     return nullptr;
   }
@@ -18320,7 +18905,7 @@ inline void UploadReq::set_allocated_addr(::std::string* PROTOBUF_NULLABLE value
   if (::google::protobuf::internal::DebugHardenForceCopyDefaultString() && _impl_.addr_.IsDefault()) {
     _impl_.addr_.Set("", GetArena());
   }
-  // @@protoc_insertion_point(field_set_allocated:GrpcLibrary.UploadReq.addr)
+  // @@protoc_insertion_point(field_set_allocated:GrpcLibraryV1.UploadReq.addr)
 }
 
 // int64 size_kb = 5;
@@ -18331,13 +18916,13 @@ inline void UploadReq::clear_size_kb() {
                   0x00000010U);
 }
 inline ::int64_t UploadReq::size_kb() const {
-  // @@protoc_insertion_point(field_get:GrpcLibrary.UploadReq.size_kb)
+  // @@protoc_insertion_point(field_get:GrpcLibraryV1.UploadReq.size_kb)
   return _internal_size_kb();
 }
 inline void UploadReq::set_size_kb(::int64_t value) {
   _internal_set_size_kb(value);
   SetHasBit(_impl_._has_bits_[0], 0x00000010U);
-  // @@protoc_insertion_point(field_set:GrpcLibrary.UploadReq.size_kb)
+  // @@protoc_insertion_point(field_set:GrpcLibraryV1.UploadReq.size_kb)
 }
 inline ::int64_t UploadReq::_internal_size_kb() const {
   ::google::protobuf::internal::TSanRead(&_impl_);
@@ -18360,13 +18945,13 @@ inline void UploadResp::clear_error_code() {
                   0x00000002U);
 }
 inline ::int32_t UploadResp::error_code() const {
-  // @@protoc_insertion_point(field_get:GrpcLibrary.UploadResp.error_code)
+  // @@protoc_insertion_point(field_get:GrpcLibraryV1.UploadResp.error_code)
   return _internal_error_code();
 }
 inline void UploadResp::set_error_code(::int32_t value) {
   _internal_set_error_code(value);
   SetHasBit(_impl_._has_bits_[0], 0x00000002U);
-  // @@protoc_insertion_point(field_set:GrpcLibrary.UploadResp.error_code)
+  // @@protoc_insertion_point(field_set:GrpcLibraryV1.UploadResp.error_code)
 }
 inline ::int32_t UploadResp::_internal_error_code() const {
   ::google::protobuf::internal::TSanRead(&_impl_);
@@ -18386,7 +18971,7 @@ inline void UploadResp::clear_hash() {
 }
 inline const ::std::string& UploadResp::hash() const
     ABSL_ATTRIBUTE_LIFETIME_BOUND {
-  // @@protoc_insertion_point(field_get:GrpcLibrary.UploadResp.hash)
+  // @@protoc_insertion_point(field_get:GrpcLibraryV1.UploadResp.hash)
   return _internal_hash();
 }
 template <typename Arg_, typename... Args_>
@@ -18394,13 +18979,13 @@ PROTOBUF_ALWAYS_INLINE void UploadResp::set_hash(Arg_&& arg, Args_... args) {
   ::google::protobuf::internal::TSanWrite(&_impl_);
   SetHasBit(_impl_._has_bits_[0], 0x00000001U);
   _impl_.hash_.Set(static_cast<Arg_&&>(arg), args..., GetArena());
-  // @@protoc_insertion_point(field_set:GrpcLibrary.UploadResp.hash)
+  // @@protoc_insertion_point(field_set:GrpcLibraryV1.UploadResp.hash)
 }
 inline ::std::string* PROTOBUF_NONNULL UploadResp::mutable_hash()
     ABSL_ATTRIBUTE_LIFETIME_BOUND {
   SetHasBit(_impl_._has_bits_[0], 0x00000001U);
   ::std::string* _s = _internal_mutable_hash();
-  // @@protoc_insertion_point(field_mutable:GrpcLibrary.UploadResp.hash)
+  // @@protoc_insertion_point(field_mutable:GrpcLibraryV1.UploadResp.hash)
   return _s;
 }
 inline const ::std::string& UploadResp::_internal_hash() const {
@@ -18417,7 +19002,7 @@ inline ::std::string* PROTOBUF_NONNULL UploadResp::_internal_mutable_hash() {
 }
 inline ::std::string* PROTOBUF_NULLABLE UploadResp::release_hash() {
   ::google::protobuf::internal::TSanWrite(&_impl_);
-  // @@protoc_insertion_point(field_release:GrpcLibrary.UploadResp.hash)
+  // @@protoc_insertion_point(field_release:GrpcLibraryV1.UploadResp.hash)
   if (!CheckHasBit(_impl_._has_bits_[0], 0x00000001U)) {
     return nullptr;
   }
@@ -18439,7 +19024,7 @@ inline void UploadResp::set_allocated_hash(::std::string* PROTOBUF_NULLABLE valu
   if (::google::protobuf::internal::DebugHardenForceCopyDefaultString() && _impl_.hash_.IsDefault()) {
     _impl_.hash_.Set("", GetArena());
   }
-  // @@protoc_insertion_point(field_set_allocated:GrpcLibrary.UploadResp.hash)
+  // @@protoc_insertion_point(field_set_allocated:GrpcLibraryV1.UploadResp.hash)
 }
 
 // -------------------------------------------------------------------
@@ -18454,13 +19039,13 @@ inline void EmbeddingReq::clear_task_id() {
                   0x00000001U);
 }
 inline ::int64_t EmbeddingReq::task_id() const {
-  // @@protoc_insertion_point(field_get:GrpcLibrary.EmbeddingReq.task_id)
+  // @@protoc_insertion_point(field_get:GrpcLibraryV1.EmbeddingReq.task_id)
   return _internal_task_id();
 }
 inline void EmbeddingReq::set_task_id(::int64_t value) {
   _internal_set_task_id(value);
   SetHasBit(_impl_._has_bits_[0], 0x00000001U);
-  // @@protoc_insertion_point(field_set:GrpcLibrary.EmbeddingReq.task_id)
+  // @@protoc_insertion_point(field_set:GrpcLibraryV1.EmbeddingReq.task_id)
 }
 inline ::int64_t EmbeddingReq::_internal_task_id() const {
   ::google::protobuf::internal::TSanRead(&_impl_);
@@ -18471,7 +19056,7 @@ inline void EmbeddingReq::_internal_set_task_id(::int64_t value) {
   _impl_.task_id_ = value;
 }
 
-// .GrpcLibrary.EmbeddingParam param = 2;
+// .GrpcLibraryV1.EmbeddingParam param = 2;
 inline bool EmbeddingReq::has_param() const {
   return request_type_case() == kParam;
 }
@@ -18492,8 +19077,8 @@ inline void EmbeddingReq::clear_param() {
     clear_has_request_type();
   }
 }
-inline ::GrpcLibrary::EmbeddingParam* PROTOBUF_NULLABLE EmbeddingReq::release_param() {
-  // @@protoc_insertion_point(field_release:GrpcLibrary.EmbeddingReq.param)
+inline ::GrpcLibraryV1::EmbeddingParam* PROTOBUF_NULLABLE EmbeddingReq::release_param() {
+  // @@protoc_insertion_point(field_release:GrpcLibraryV1.EmbeddingReq.param)
   if (request_type_case() == kParam) {
     clear_has_request_type();
     auto* temp = _impl_.request_type_.param_;
@@ -18506,16 +19091,16 @@ inline ::GrpcLibrary::EmbeddingParam* PROTOBUF_NULLABLE EmbeddingReq::release_pa
     return nullptr;
   }
 }
-inline const ::GrpcLibrary::EmbeddingParam& EmbeddingReq::_internal_param() const {
-  return request_type_case() == kParam ? static_cast<const ::GrpcLibrary::EmbeddingParam&>(*_impl_.request_type_.param_)
-                     : reinterpret_cast<const ::GrpcLibrary::EmbeddingParam&>(::GrpcLibrary::_EmbeddingParam_default_instance_);
+inline const ::GrpcLibraryV1::EmbeddingParam& EmbeddingReq::_internal_param() const {
+  return request_type_case() == kParam ? static_cast<const ::GrpcLibraryV1::EmbeddingParam&>(*_impl_.request_type_.param_)
+                     : reinterpret_cast<const ::GrpcLibraryV1::EmbeddingParam&>(::GrpcLibraryV1::_EmbeddingParam_default_instance_);
 }
-inline const ::GrpcLibrary::EmbeddingParam& EmbeddingReq::param() const ABSL_ATTRIBUTE_LIFETIME_BOUND {
-  // @@protoc_insertion_point(field_get:GrpcLibrary.EmbeddingReq.param)
+inline const ::GrpcLibraryV1::EmbeddingParam& EmbeddingReq::param() const ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_get:GrpcLibraryV1.EmbeddingReq.param)
   return _internal_param();
 }
-inline ::GrpcLibrary::EmbeddingParam* PROTOBUF_NULLABLE EmbeddingReq::unsafe_arena_release_param() {
-  // @@protoc_insertion_point(field_unsafe_arena_release:GrpcLibrary.EmbeddingReq.param)
+inline ::GrpcLibraryV1::EmbeddingParam* PROTOBUF_NULLABLE EmbeddingReq::unsafe_arena_release_param() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:GrpcLibraryV1.EmbeddingReq.param)
   if (request_type_case() == kParam) {
     clear_has_request_type();
     auto* temp = _impl_.request_type_.param_;
@@ -18526,7 +19111,7 @@ inline ::GrpcLibrary::EmbeddingParam* PROTOBUF_NULLABLE EmbeddingReq::unsafe_are
   }
 }
 inline void EmbeddingReq::unsafe_arena_set_allocated_param(
-    ::GrpcLibrary::EmbeddingParam* PROTOBUF_NULLABLE value) {
+    ::GrpcLibraryV1::EmbeddingParam* PROTOBUF_NULLABLE value) {
   // We rely on the oneof clear method to free the earlier contents
   // of this oneof. We can directly use the pointer we're given to
   // set the new value.
@@ -18535,25 +19120,25 @@ inline void EmbeddingReq::unsafe_arena_set_allocated_param(
     set_has_param();
     _impl_.request_type_.param_ = value;
   }
-  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:GrpcLibrary.EmbeddingReq.param)
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:GrpcLibraryV1.EmbeddingReq.param)
 }
-inline ::GrpcLibrary::EmbeddingParam* PROTOBUF_NONNULL EmbeddingReq::_internal_mutable_param() {
+inline ::GrpcLibraryV1::EmbeddingParam* PROTOBUF_NONNULL EmbeddingReq::_internal_mutable_param() {
   if (request_type_case() != kParam) {
     clear_request_type();
     set_has_param();
     _impl_.request_type_.param_ = 
-        ::google::protobuf::Message::DefaultConstruct<::GrpcLibrary::EmbeddingParam>(GetArena());
+        ::google::protobuf::Message::DefaultConstruct<::GrpcLibraryV1::EmbeddingParam>(GetArena());
   }
   return _impl_.request_type_.param_;
 }
-inline ::GrpcLibrary::EmbeddingParam* PROTOBUF_NONNULL EmbeddingReq::mutable_param()
+inline ::GrpcLibraryV1::EmbeddingParam* PROTOBUF_NONNULL EmbeddingReq::mutable_param()
     ABSL_ATTRIBUTE_LIFETIME_BOUND {
-  ::GrpcLibrary::EmbeddingParam* _msg = _internal_mutable_param();
-  // @@protoc_insertion_point(field_mutable:GrpcLibrary.EmbeddingReq.param)
+  ::GrpcLibraryV1::EmbeddingParam* _msg = _internal_mutable_param();
+  // @@protoc_insertion_point(field_mutable:GrpcLibraryV1.EmbeddingReq.param)
   return _msg;
 }
 
-// .GrpcLibrary.FileChunk chunk = 3;
+// .GrpcLibraryV1.FileChunk chunk = 3;
 inline bool EmbeddingReq::has_chunk() const {
   return request_type_case() == kChunk;
 }
@@ -18574,8 +19159,8 @@ inline void EmbeddingReq::clear_chunk() {
     clear_has_request_type();
   }
 }
-inline ::GrpcLibrary::FileChunk* PROTOBUF_NULLABLE EmbeddingReq::release_chunk() {
-  // @@protoc_insertion_point(field_release:GrpcLibrary.EmbeddingReq.chunk)
+inline ::GrpcLibraryV1::FileChunk* PROTOBUF_NULLABLE EmbeddingReq::release_chunk() {
+  // @@protoc_insertion_point(field_release:GrpcLibraryV1.EmbeddingReq.chunk)
   if (request_type_case() == kChunk) {
     clear_has_request_type();
     auto* temp = _impl_.request_type_.chunk_;
@@ -18588,16 +19173,16 @@ inline ::GrpcLibrary::FileChunk* PROTOBUF_NULLABLE EmbeddingReq::release_chunk()
     return nullptr;
   }
 }
-inline const ::GrpcLibrary::FileChunk& EmbeddingReq::_internal_chunk() const {
-  return request_type_case() == kChunk ? static_cast<const ::GrpcLibrary::FileChunk&>(*_impl_.request_type_.chunk_)
-                     : reinterpret_cast<const ::GrpcLibrary::FileChunk&>(::GrpcLibrary::_FileChunk_default_instance_);
+inline const ::GrpcLibraryV1::FileChunk& EmbeddingReq::_internal_chunk() const {
+  return request_type_case() == kChunk ? static_cast<const ::GrpcLibraryV1::FileChunk&>(*_impl_.request_type_.chunk_)
+                     : reinterpret_cast<const ::GrpcLibraryV1::FileChunk&>(::GrpcLibraryV1::_FileChunk_default_instance_);
 }
-inline const ::GrpcLibrary::FileChunk& EmbeddingReq::chunk() const ABSL_ATTRIBUTE_LIFETIME_BOUND {
-  // @@protoc_insertion_point(field_get:GrpcLibrary.EmbeddingReq.chunk)
+inline const ::GrpcLibraryV1::FileChunk& EmbeddingReq::chunk() const ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_get:GrpcLibraryV1.EmbeddingReq.chunk)
   return _internal_chunk();
 }
-inline ::GrpcLibrary::FileChunk* PROTOBUF_NULLABLE EmbeddingReq::unsafe_arena_release_chunk() {
-  // @@protoc_insertion_point(field_unsafe_arena_release:GrpcLibrary.EmbeddingReq.chunk)
+inline ::GrpcLibraryV1::FileChunk* PROTOBUF_NULLABLE EmbeddingReq::unsafe_arena_release_chunk() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:GrpcLibraryV1.EmbeddingReq.chunk)
   if (request_type_case() == kChunk) {
     clear_has_request_type();
     auto* temp = _impl_.request_type_.chunk_;
@@ -18608,7 +19193,7 @@ inline ::GrpcLibrary::FileChunk* PROTOBUF_NULLABLE EmbeddingReq::unsafe_arena_re
   }
 }
 inline void EmbeddingReq::unsafe_arena_set_allocated_chunk(
-    ::GrpcLibrary::FileChunk* PROTOBUF_NULLABLE value) {
+    ::GrpcLibraryV1::FileChunk* PROTOBUF_NULLABLE value) {
   // We rely on the oneof clear method to free the earlier contents
   // of this oneof. We can directly use the pointer we're given to
   // set the new value.
@@ -18617,21 +19202,21 @@ inline void EmbeddingReq::unsafe_arena_set_allocated_chunk(
     set_has_chunk();
     _impl_.request_type_.chunk_ = value;
   }
-  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:GrpcLibrary.EmbeddingReq.chunk)
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:GrpcLibraryV1.EmbeddingReq.chunk)
 }
-inline ::GrpcLibrary::FileChunk* PROTOBUF_NONNULL EmbeddingReq::_internal_mutable_chunk() {
+inline ::GrpcLibraryV1::FileChunk* PROTOBUF_NONNULL EmbeddingReq::_internal_mutable_chunk() {
   if (request_type_case() != kChunk) {
     clear_request_type();
     set_has_chunk();
     _impl_.request_type_.chunk_ = 
-        ::google::protobuf::Message::DefaultConstruct<::GrpcLibrary::FileChunk>(GetArena());
+        ::google::protobuf::Message::DefaultConstruct<::GrpcLibraryV1::FileChunk>(GetArena());
   }
   return _impl_.request_type_.chunk_;
 }
-inline ::GrpcLibrary::FileChunk* PROTOBUF_NONNULL EmbeddingReq::mutable_chunk()
+inline ::GrpcLibraryV1::FileChunk* PROTOBUF_NONNULL EmbeddingReq::mutable_chunk()
     ABSL_ATTRIBUTE_LIFETIME_BOUND {
-  ::GrpcLibrary::FileChunk* _msg = _internal_mutable_chunk();
-  // @@protoc_insertion_point(field_mutable:GrpcLibrary.EmbeddingReq.chunk)
+  ::GrpcLibraryV1::FileChunk* _msg = _internal_mutable_chunk();
+  // @@protoc_insertion_point(field_mutable:GrpcLibraryV1.EmbeddingReq.chunk)
   return _msg;
 }
 
@@ -18656,13 +19241,13 @@ inline void EmbeddingResp::clear_error_code() {
                   0x00000008U);
 }
 inline ::int32_t EmbeddingResp::error_code() const {
-  // @@protoc_insertion_point(field_get:GrpcLibrary.EmbeddingResp.error_code)
+  // @@protoc_insertion_point(field_get:GrpcLibraryV1.EmbeddingResp.error_code)
   return _internal_error_code();
 }
 inline void EmbeddingResp::set_error_code(::int32_t value) {
   _internal_set_error_code(value);
   SetHasBit(_impl_._has_bits_[0], 0x00000008U);
-  // @@protoc_insertion_point(field_set:GrpcLibrary.EmbeddingResp.error_code)
+  // @@protoc_insertion_point(field_set:GrpcLibraryV1.EmbeddingResp.error_code)
 }
 inline ::int32_t EmbeddingResp::_internal_error_code() const {
   ::google::protobuf::internal::TSanRead(&_impl_);
@@ -18681,13 +19266,13 @@ inline void EmbeddingResp::clear_task_id() {
                   0x00000002U);
 }
 inline ::int64_t EmbeddingResp::task_id() const {
-  // @@protoc_insertion_point(field_get:GrpcLibrary.EmbeddingResp.task_id)
+  // @@protoc_insertion_point(field_get:GrpcLibraryV1.EmbeddingResp.task_id)
   return _internal_task_id();
 }
 inline void EmbeddingResp::set_task_id(::int64_t value) {
   _internal_set_task_id(value);
   SetHasBit(_impl_._has_bits_[0], 0x00000002U);
-  // @@protoc_insertion_point(field_set:GrpcLibrary.EmbeddingResp.task_id)
+  // @@protoc_insertion_point(field_set:GrpcLibraryV1.EmbeddingResp.task_id)
 }
 inline ::int64_t EmbeddingResp::_internal_task_id() const {
   ::google::protobuf::internal::TSanRead(&_impl_);
@@ -18706,13 +19291,13 @@ inline void EmbeddingResp::clear_chunk_id() {
                   0x00000004U);
 }
 inline ::int64_t EmbeddingResp::chunk_id() const {
-  // @@protoc_insertion_point(field_get:GrpcLibrary.EmbeddingResp.chunk_id)
+  // @@protoc_insertion_point(field_get:GrpcLibraryV1.EmbeddingResp.chunk_id)
   return _internal_chunk_id();
 }
 inline void EmbeddingResp::set_chunk_id(::int64_t value) {
   _internal_set_chunk_id(value);
   SetHasBit(_impl_._has_bits_[0], 0x00000004U);
-  // @@protoc_insertion_point(field_set:GrpcLibrary.EmbeddingResp.chunk_id)
+  // @@protoc_insertion_point(field_set:GrpcLibraryV1.EmbeddingResp.chunk_id)
 }
 inline ::int64_t EmbeddingResp::_internal_chunk_id() const {
   ::google::protobuf::internal::TSanRead(&_impl_);
@@ -18732,7 +19317,7 @@ inline void EmbeddingResp::clear_vector_indexs() {
 }
 inline const ::std::string& EmbeddingResp::vector_indexs() const
     ABSL_ATTRIBUTE_LIFETIME_BOUND {
-  // @@protoc_insertion_point(field_get:GrpcLibrary.EmbeddingResp.vector_indexs)
+  // @@protoc_insertion_point(field_get:GrpcLibraryV1.EmbeddingResp.vector_indexs)
   return _internal_vector_indexs();
 }
 template <typename Arg_, typename... Args_>
@@ -18740,13 +19325,13 @@ PROTOBUF_ALWAYS_INLINE void EmbeddingResp::set_vector_indexs(Arg_&& arg, Args_..
   ::google::protobuf::internal::TSanWrite(&_impl_);
   SetHasBit(_impl_._has_bits_[0], 0x00000001U);
   _impl_.vector_indexs_.SetBytes(static_cast<Arg_&&>(arg), args..., GetArena());
-  // @@protoc_insertion_point(field_set:GrpcLibrary.EmbeddingResp.vector_indexs)
+  // @@protoc_insertion_point(field_set:GrpcLibraryV1.EmbeddingResp.vector_indexs)
 }
 inline ::std::string* PROTOBUF_NONNULL EmbeddingResp::mutable_vector_indexs()
     ABSL_ATTRIBUTE_LIFETIME_BOUND {
   SetHasBit(_impl_._has_bits_[0], 0x00000001U);
   ::std::string* _s = _internal_mutable_vector_indexs();
-  // @@protoc_insertion_point(field_mutable:GrpcLibrary.EmbeddingResp.vector_indexs)
+  // @@protoc_insertion_point(field_mutable:GrpcLibraryV1.EmbeddingResp.vector_indexs)
   return _s;
 }
 inline const ::std::string& EmbeddingResp::_internal_vector_indexs() const {
@@ -18763,7 +19348,7 @@ inline ::std::string* PROTOBUF_NONNULL EmbeddingResp::_internal_mutable_vector_i
 }
 inline ::std::string* PROTOBUF_NULLABLE EmbeddingResp::release_vector_indexs() {
   ::google::protobuf::internal::TSanWrite(&_impl_);
-  // @@protoc_insertion_point(field_release:GrpcLibrary.EmbeddingResp.vector_indexs)
+  // @@protoc_insertion_point(field_release:GrpcLibraryV1.EmbeddingResp.vector_indexs)
   if (!CheckHasBit(_impl_._has_bits_[0], 0x00000001U)) {
     return nullptr;
   }
@@ -18785,7 +19370,7 @@ inline void EmbeddingResp::set_allocated_vector_indexs(::std::string* PROTOBUF_N
   if (::google::protobuf::internal::DebugHardenForceCopyDefaultString() && _impl_.vector_indexs_.IsDefault()) {
     _impl_.vector_indexs_.Set("", GetArena());
   }
-  // @@protoc_insertion_point(field_set_allocated:GrpcLibrary.EmbeddingResp.vector_indexs)
+  // @@protoc_insertion_point(field_set_allocated:GrpcLibraryV1.EmbeddingResp.vector_indexs)
 }
 
 // -------------------------------------------------------------------
@@ -18800,13 +19385,13 @@ inline void StopEmbeddingReq::clear_task_id() {
                   0x00000002U);
 }
 inline ::int64_t StopEmbeddingReq::task_id() const {
-  // @@protoc_insertion_point(field_get:GrpcLibrary.StopEmbeddingReq.task_id)
+  // @@protoc_insertion_point(field_get:GrpcLibraryV1.StopEmbeddingReq.task_id)
   return _internal_task_id();
 }
 inline void StopEmbeddingReq::set_task_id(::int64_t value) {
   _internal_set_task_id(value);
   SetHasBit(_impl_._has_bits_[0], 0x00000002U);
-  // @@protoc_insertion_point(field_set:GrpcLibrary.StopEmbeddingReq.task_id)
+  // @@protoc_insertion_point(field_set:GrpcLibraryV1.StopEmbeddingReq.task_id)
 }
 inline ::int64_t StopEmbeddingReq::_internal_task_id() const {
   ::google::protobuf::internal::TSanRead(&_impl_);
@@ -18825,13 +19410,13 @@ inline void StopEmbeddingReq::clear_user_id() {
                   0x00000004U);
 }
 inline ::int64_t StopEmbeddingReq::user_id() const {
-  // @@protoc_insertion_point(field_get:GrpcLibrary.StopEmbeddingReq.user_id)
+  // @@protoc_insertion_point(field_get:GrpcLibraryV1.StopEmbeddingReq.user_id)
   return _internal_user_id();
 }
 inline void StopEmbeddingReq::set_user_id(::int64_t value) {
   _internal_set_user_id(value);
   SetHasBit(_impl_._has_bits_[0], 0x00000004U);
-  // @@protoc_insertion_point(field_set:GrpcLibrary.StopEmbeddingReq.user_id)
+  // @@protoc_insertion_point(field_set:GrpcLibraryV1.StopEmbeddingReq.user_id)
 }
 inline ::int64_t StopEmbeddingReq::_internal_user_id() const {
   ::google::protobuf::internal::TSanRead(&_impl_);
@@ -18851,7 +19436,7 @@ inline void StopEmbeddingReq::clear_auth() {
 }
 inline const ::std::string& StopEmbeddingReq::auth() const
     ABSL_ATTRIBUTE_LIFETIME_BOUND {
-  // @@protoc_insertion_point(field_get:GrpcLibrary.StopEmbeddingReq.auth)
+  // @@protoc_insertion_point(field_get:GrpcLibraryV1.StopEmbeddingReq.auth)
   return _internal_auth();
 }
 template <typename Arg_, typename... Args_>
@@ -18859,13 +19444,13 @@ PROTOBUF_ALWAYS_INLINE void StopEmbeddingReq::set_auth(Arg_&& arg, Args_... args
   ::google::protobuf::internal::TSanWrite(&_impl_);
   SetHasBit(_impl_._has_bits_[0], 0x00000001U);
   _impl_.auth_.Set(static_cast<Arg_&&>(arg), args..., GetArena());
-  // @@protoc_insertion_point(field_set:GrpcLibrary.StopEmbeddingReq.auth)
+  // @@protoc_insertion_point(field_set:GrpcLibraryV1.StopEmbeddingReq.auth)
 }
 inline ::std::string* PROTOBUF_NONNULL StopEmbeddingReq::mutable_auth()
     ABSL_ATTRIBUTE_LIFETIME_BOUND {
   SetHasBit(_impl_._has_bits_[0], 0x00000001U);
   ::std::string* _s = _internal_mutable_auth();
-  // @@protoc_insertion_point(field_mutable:GrpcLibrary.StopEmbeddingReq.auth)
+  // @@protoc_insertion_point(field_mutable:GrpcLibraryV1.StopEmbeddingReq.auth)
   return _s;
 }
 inline const ::std::string& StopEmbeddingReq::_internal_auth() const {
@@ -18882,7 +19467,7 @@ inline ::std::string* PROTOBUF_NONNULL StopEmbeddingReq::_internal_mutable_auth(
 }
 inline ::std::string* PROTOBUF_NULLABLE StopEmbeddingReq::release_auth() {
   ::google::protobuf::internal::TSanWrite(&_impl_);
-  // @@protoc_insertion_point(field_release:GrpcLibrary.StopEmbeddingReq.auth)
+  // @@protoc_insertion_point(field_release:GrpcLibraryV1.StopEmbeddingReq.auth)
   if (!CheckHasBit(_impl_._has_bits_[0], 0x00000001U)) {
     return nullptr;
   }
@@ -18904,7 +19489,7 @@ inline void StopEmbeddingReq::set_allocated_auth(::std::string* PROTOBUF_NULLABL
   if (::google::protobuf::internal::DebugHardenForceCopyDefaultString() && _impl_.auth_.IsDefault()) {
     _impl_.auth_.Set("", GetArena());
   }
-  // @@protoc_insertion_point(field_set_allocated:GrpcLibrary.StopEmbeddingReq.auth)
+  // @@protoc_insertion_point(field_set_allocated:GrpcLibraryV1.StopEmbeddingReq.auth)
 }
 
 // -------------------------------------------------------------------
@@ -18919,13 +19504,13 @@ inline void StopEmbeddingResp::clear_error_code() {
                   0x00000002U);
 }
 inline ::int32_t StopEmbeddingResp::error_code() const {
-  // @@protoc_insertion_point(field_get:GrpcLibrary.StopEmbeddingResp.error_code)
+  // @@protoc_insertion_point(field_get:GrpcLibraryV1.StopEmbeddingResp.error_code)
   return _internal_error_code();
 }
 inline void StopEmbeddingResp::set_error_code(::int32_t value) {
   _internal_set_error_code(value);
   SetHasBit(_impl_._has_bits_[0], 0x00000002U);
-  // @@protoc_insertion_point(field_set:GrpcLibrary.StopEmbeddingResp.error_code)
+  // @@protoc_insertion_point(field_set:GrpcLibraryV1.StopEmbeddingResp.error_code)
 }
 inline ::int32_t StopEmbeddingResp::_internal_error_code() const {
   ::google::protobuf::internal::TSanRead(&_impl_);
@@ -18944,13 +19529,13 @@ inline void StopEmbeddingResp::clear_task_id() {
                   0x00000001U);
 }
 inline ::int64_t StopEmbeddingResp::task_id() const {
-  // @@protoc_insertion_point(field_get:GrpcLibrary.StopEmbeddingResp.task_id)
+  // @@protoc_insertion_point(field_get:GrpcLibraryV1.StopEmbeddingResp.task_id)
   return _internal_task_id();
 }
 inline void StopEmbeddingResp::set_task_id(::int64_t value) {
   _internal_set_task_id(value);
   SetHasBit(_impl_._has_bits_[0], 0x00000001U);
-  // @@protoc_insertion_point(field_set:GrpcLibrary.StopEmbeddingResp.task_id)
+  // @@protoc_insertion_point(field_set:GrpcLibraryV1.StopEmbeddingResp.task_id)
 }
 inline ::int64_t StopEmbeddingResp::_internal_task_id() const {
   ::google::protobuf::internal::TSanRead(&_impl_);
@@ -18966,7 +19551,7 @@ inline void StopEmbeddingResp::_internal_set_task_id(::int64_t value) {
 #endif  // __GNUC__
 
 // @@protoc_insertion_point(namespace_scope)
-}  // namespace GrpcLibrary
+}  // namespace GrpcLibraryV1
 
 
 // @@protoc_insertion_point(global_scope)

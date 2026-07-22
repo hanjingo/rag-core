@@ -13,6 +13,16 @@
 class conf
 {
   public:
+    struct client_config
+    {
+        std::string platform;
+        std::string arch;
+        uint32_t    rollout_percent;
+        uint8_t     version_major;
+        uint8_t     version_minor;
+        uint8_t     version_patch;
+    };
+
     struct remote_api_config
     {
         std::string id;
@@ -71,6 +81,8 @@ class conf
 
     std::string server_addr();
 
+    std::unordered_map<std::string, conf::client_config> clients();
+
     std::string sqlite_id();
     std::string sqlite_path();
     int         sqlite_pool();
@@ -81,7 +93,7 @@ class conf
     hj::license::sign_algo   issuer_algo();
     std::vector<std::string> issuer_keys();
     int                      issuer_valid_times();
-    int                      issuer_leeway();
+    int                      issuer_expired_days();
 
     std::string              verifier_id();
     hj::license::sign_algo   verifier_algo();
@@ -115,6 +127,7 @@ class conf
     std::unordered_map<std::string, remote_api_config>    _remote_apis;
     std::unordered_map<std::string, conf::model_config>   _models;
     std::unordered_map<std::string, conf::asr_ctx_config> _asr_ctxs;
+    std::unordered_map<std::string, conf::client_config>  _clients;
 };
 
 #endif

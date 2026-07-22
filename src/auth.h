@@ -30,7 +30,7 @@ class issuer
 
     int issue(std::string                            &output,
               const std::string                      &licensee,
-              const std::size_t                       leeway_days,
+              const std::size_t                       expired_days,
               const std::vector<hj::license::pair_t> &claims = {});
 
   private:
@@ -60,7 +60,6 @@ class verifier
 
     int verify(const hj::license::token_t             &token,
                const std::string                      &licensee,
-               const std::size_t                       leeway_days,
                const std::vector<hj::license::pair_t> &claims = {});
 
   private:

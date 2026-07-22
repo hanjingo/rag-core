@@ -19,8 +19,8 @@
 #include "audio_buffer.h"
 #include "memory.h"
 
-QueryReactor::QueryReactor(grpc::CallbackServerContext   *ctx,
-                           const ::GrpcLibrary::QueryReq *req)
+QueryReactor::QueryReactor(grpc::CallbackServerContext     *ctx,
+                           const ::GrpcLibraryV1::QueryReq *req)
     : _ctx(ctx)
     , _w_queue{conf::instance().sync_write_queue_size()}
     , _ctx_params{hj::llama::context::default_params()}
@@ -198,7 +198,7 @@ void QueryReactor::Stop()
     _is_cancelled.store(true);
     _is_writing.store(false);
 
-    ::GrpcLibrary::QueryResp resp;
+    ::GrpcLibraryV1::QueryResp resp;
     while(_w_queue.try_dequeue(resp))
     {
     }
@@ -345,7 +345,7 @@ void QueryReactor::_send(const std::string &text,
     if(_is_cancelled.load())
         return;
 
-    ::GrpcLibrary::QueryResp resp;
+    ::GrpcLibraryV1::QueryResp resp;
     resp.set_error_code(error_code);
     resp.set_id(_session_id);
     resp.set_content(text);
@@ -363,7 +363,7 @@ void QueryReactor::_flush()
     if(_is_cancelled.load())
         return;
 
-    ::GrpcLibrary::QueryResp resp;
+    ::GrpcLibraryV1::QueryResp resp;
     if(!_w_queue.try_dequeue(resp))
         return;
 
@@ -452,7 +452,7 @@ void RecognizeReactor::OnWriteDone(bool ok)
         LOG_WARN("Write failed for session_id: {}", _session_id);
         _is_cancelled.store(true);
 
-        ::GrpcLibrary::RecognizeResp resp;
+        ::GrpcLibraryV1::RecognizeResp resp;
         while(_w_queue.try_dequeue(resp))
         {
         }
@@ -476,7 +476,7 @@ void RecognizeReactor::OnCancel()
     _is_cancelled.store(true);
     _is_writing.store(false);
 
-    ::GrpcLibrary::RecognizeResp resp;
+    ::GrpcLibraryV1::RecognizeResp resp;
     while(_w_queue.try_dequeue(resp))
     {
     }
@@ -488,13 +488,13 @@ void RecognizeReactor::Stop()
     _is_cancelled.store(true);
     _is_writing.store(false);
 
-    ::GrpcLibrary::RecognizeResp resp;
+    ::GrpcLibraryV1::RecognizeResp resp;
     while(_w_queue.try_dequeue(resp))
     {
     }
 }
 
-void RecognizeReactor::_process(const ::GrpcLibrary::RecognizeReq &req)
+void RecognizeReactor::_process(const ::GrpcLibraryV1::RecognizeReq &req)
 {
     // check if registered
     if(!_is_registered.load() && req.session_id() != 0)
@@ -640,7 +640,7 @@ void RecognizeReactor::_send(const int          error_code,
     if(_is_cancelled.load())
         return;
 
-    ::GrpcLibrary::RecognizeResp resp;
+    ::GrpcLibraryV1::RecognizeResp resp;
     resp.set_error_code(error_code);
     resp.set_session_id(session_id);
     resp.set_transcript(text);
@@ -659,7 +659,7 @@ void RecognizeReactor::_flush()
     if(_is_cancelled.load())
         return;
 
-    ::GrpcLibrary::RecognizeResp resp;
+    ::GrpcLibraryV1::RecognizeResp resp;
     if(!_w_queue.try_dequeue(resp))
         return;
 
@@ -750,7 +750,7 @@ void EmbeddingReactor::OnWriteDone(bool ok)
         LOG_WARN("EmbeddingReactor write failed for task_id: {}", _task_id);
         _is_cancelled.store(true);
 
-        ::GrpcLibrary::EmbeddingResp resp;
+        ::GrpcLibraryV1::EmbeddingResp resp;
         while(_w_queue.try_dequeue(resp))
         {
         }
@@ -763,7 +763,7 @@ void EmbeddingReactor::OnWriteDone(bool ok)
     {
         LOG_DEBUG("Cancelled in OnWriteDone, finishing for task_id: {}",
                   _task_id);
-        ::GrpcLibrary::EmbeddingResp resp;
+        ::GrpcLibraryV1::EmbeddingResp resp;
         while(_w_queue.try_dequeue(resp))
         {
         }
@@ -787,7 +787,7 @@ void EmbeddingReactor::OnCancel()
     _is_cancelled.store(true);
     _is_writing.store(false);
 
-    ::GrpcLibrary::EmbeddingResp resp;
+    ::GrpcLibraryV1::EmbeddingResp resp;
     while(_w_queue.try_dequeue(resp))
     {
     }
@@ -799,7 +799,7 @@ void EmbeddingReactor::Stop()
     _is_cancelled.store(true);
     _is_writing.store(false);
 
-    ::GrpcLibrary::EmbeddingResp resp;
+    ::GrpcLibraryV1::EmbeddingResp resp;
     while(_w_queue.try_dequeue(resp))
     {
     }
@@ -807,7 +807,7 @@ void EmbeddingReactor::Stop()
     _ctx->TryCancel();
 }
 
-void EmbeddingReactor::_process(const ::GrpcLibrary::EmbeddingReq &req)
+void EmbeddingReactor::_process(const ::GrpcLibraryV1::EmbeddingReq &req)
 {
     // check if registered
     if(!_is_registered.load() && req.task_id() != 0)
@@ -894,7 +894,7 @@ void EmbeddingReactor::_send(const int                   error_code,
     if(_is_cancelled.load())
         return;
 
-    ::GrpcLibrary::EmbeddingResp resp;
+    ::GrpcLibraryV1::EmbeddingResp resp;
     resp.set_error_code(error_code);
     resp.set_task_id(task_id);
     resp.set_chunk_id(chunk_id);
@@ -923,7 +923,7 @@ void EmbeddingReactor::_flush()
     if(_is_cancelled.load())
         return;
 
-    ::GrpcLibrary::EmbeddingResp resp;
+    ::GrpcLibraryV1::EmbeddingResp resp;
     if(!_w_queue.try_dequeue(resp))
         return;
 

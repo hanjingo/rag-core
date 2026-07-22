@@ -13,10 +13,11 @@
 #include "router.h"
 #include "watch_dog.h"
 #include "reactor_mgr.h"
+#include "updater.h"
 
-reactor_t *api_handler::Heartbeat(ctx_t                     *ctx,
-                                  const ::GrpcLibrary::Ping *req,
-                                  ::GrpcLibrary::Pong       *resp)
+reactor_t *api_handler::Heartbeat(ctx_t                       *ctx,
+                                  const ::GrpcLibraryV1::Ping *req,
+                                  ::GrpcLibraryV1::Pong       *resp)
 {
     int64_t timestamp = req->timestamp();
     LOG_DEBUG("Received Heartbeat request. timestamp: {}", timestamp);
@@ -26,19 +27,31 @@ reactor_t *api_handler::Heartbeat(ctx_t                     *ctx,
     return reactor;
 }
 
-reactor_t *api_handler::Login(ctx_t                         *ctx,
-                              const ::GrpcLibrary::LoginReq *req,
-                              ::GrpcLibrary::LoginResp      *resp)
+reactor_t *api_handler::Login(ctx_t                           *ctx,
+                              const ::GrpcLibraryV1::LoginReq *req,
+                              ::GrpcLibraryV1::LoginResp      *resp)
 {
     std::string account          = req->account();
     std::string encrypted_passwd = req->passwd();
+    std::string platform         = req->platform();
+    std::string arch             = req->arch();
+    std::string version          = req->client_version();
     int64_t     user_id          = -1;
     int         privilege        = -1;
     auto       *reactor          = ctx->DefaultReactor();
+
+    GrpcLibraryV1::UpdateInfo info;
+    auto ok = updater::instance()->check(platform, arch, version);
+    info.set_force_update(!ok);
+
     resp->set_error_code(ERR_FAIL);
-    LOG_DEBUG("Received Login request. account: {}, passwd: {}",
+    resp->mutable_update_info()->CopyFrom(info);
+    LOG_DEBUG("Received Login request. account: {}, platform: {}, "
+              "arch: {}, version: {}",
               account,
-              encrypted_passwd);
+              platform,
+              arch,
+              version);
 
     std::string sql = hj::sqlite::mprintf(SQL_SELECT_USER_BY_USERNAME_PASSWD,
                                           account.c_str(),
@@ -61,11 +74,12 @@ reactor_t *api_handler::Login(ctx_t                         *ctx,
         break;
     }
 
+    auto                 expired_days = conf::instance().issuer_expired_days();
     hj::license::token_t token;
     if(OK
        != issuer::instance().issue(token,
                                    std::to_string(user_id),
-                                   conf::instance().issuer_leeway(),
+                                   expired_days,
                                    {}))
     {
         LOG_ERROR("Failed to issue license for account: {}", account);
@@ -75,6 +89,10 @@ reactor_t *api_handler::Login(ctx_t                         *ctx,
         return reactor;
     }
 
+    LOG_DEBUG("Issued license for user_id: {}, token: {}, expired_days: {}",
+              user_id,
+              token,
+              expired_days);
     resp->set_error_code(OK);
     resp->set_user_id(user_id);
     resp->set_privilege(privilege);
@@ -87,9 +105,9 @@ reactor_t *api_handler::Login(ctx_t                         *ctx,
     return reactor;
 }
 
-reactor_t *api_handler::Logout(ctx_t                          *ctx,
-                               const ::GrpcLibrary::LogoutReq *req,
-                               ::GrpcLibrary::LogoutResp      *resp)
+reactor_t *api_handler::Logout(ctx_t                            *ctx,
+                               const ::GrpcLibraryV1::LogoutReq *req,
+                               ::GrpcLibraryV1::LogoutResp      *resp)
 {
     int64_t     user_id = req->user_id();
     std::string auth    = req->auth();
@@ -97,9 +115,7 @@ reactor_t *api_handler::Logout(ctx_t                          *ctx,
     resp->set_error_code(ERR_FAIL);
     LOG_DEBUG("Received Logout request. user_id: {}, auth: {}", user_id, auth);
 
-    bool success =
-        (verifier::instance().verify(auth, std::to_string(user_id), {}) == OK);
-    if(!success)
+    if(verifier::instance().verify(auth, std::to_string(user_id), {}) != OK)
     {
         LOG_ERROR("Failed to verify auth for user_id: {}, auth: {}",
                   user_id,
@@ -116,9 +132,9 @@ reactor_t *api_handler::Logout(ctx_t                          *ctx,
     return reactor;
 }
 
-reactor_t *api_handler::RegAccount(ctx_t                              *ctx,
-                                   const ::GrpcLibrary::RegAccountReq *req,
-                                   ::GrpcLibrary::RegAccountResp      *resp)
+reactor_t *api_handler::RegAccount(ctx_t                                *ctx,
+                                   const ::GrpcLibraryV1::RegAccountReq *req,
+                                   ::GrpcLibraryV1::RegAccountResp      *resp)
 {
     std::string account          = req->account();
     std::string encrypted_passwd = req->passwd();
@@ -152,9 +168,9 @@ reactor_t *api_handler::RegAccount(ctx_t                              *ctx,
     return reactor;
 }
 
-reactor_t *api_handler::StopAnswer(ctx_t                              *ctx,
-                                   const ::GrpcLibrary::StopAnswerReq *req,
-                                   ::GrpcLibrary::StopAnswerResp      *resp)
+reactor_t *api_handler::StopAnswer(ctx_t                                *ctx,
+                                   const ::GrpcLibraryV1::StopAnswerReq *req,
+                                   ::GrpcLibraryV1::StopAnswerResp      *resp)
 {
     auto session_id = req->session_id();
     auto user_id    = req->user_id();
@@ -189,14 +205,15 @@ reactor_t *api_handler::StopAnswer(ctx_t                              *ctx,
     return reactor;
 }
 
-grpc::ServerWriteReactor<::GrpcLibrary::QueryResp> *
-api_handler::Query(grpc::CallbackServerContext   *ctx,
-                   const ::GrpcLibrary::QueryReq *req)
+grpc::ServerWriteReactor<::GrpcLibraryV1::QueryResp> *
+api_handler::Query(grpc::CallbackServerContext     *ctx,
+                   const ::GrpcLibraryV1::QueryReq *req)
 {
     return new QueryReactor(ctx, req);
 }
 
-grpc::ServerBidiReactor<GrpcLibrary::RecognizeReq, GrpcLibrary::RecognizeResp> *
+grpc::ServerBidiReactor<GrpcLibraryV1::RecognizeReq,
+                        GrpcLibraryV1::RecognizeResp> *
 api_handler::Recognize(grpc::CallbackServerContext *context)
 {
     LOG_INFO("Received Recognize bidirectional stream request from peer: {}",
@@ -206,9 +223,9 @@ api_handler::Recognize(grpc::CallbackServerContext *context)
 }
 
 reactor_t *
-api_handler::StopRecognize(ctx_t                                 *ctx,
-                           const ::GrpcLibrary::StopRecognizeReq *req,
-                           ::GrpcLibrary::StopRecognizeResp      *resp)
+api_handler::StopRecognize(ctx_t                                   *ctx,
+                           const ::GrpcLibraryV1::StopRecognizeReq *req,
+                           ::GrpcLibraryV1::StopRecognizeResp      *resp)
 {
     auto session_id = req->session_id();
     auto user_id    = req->user_id();
@@ -240,9 +257,9 @@ api_handler::StopRecognize(ctx_t                                 *ctx,
 }
 
 reactor_t *
-api_handler::GetMessageInfo(ctx_t                                  *ctx,
-                            const ::GrpcLibrary::GetMessageInfoReq *req,
-                            ::GrpcLibrary::GetMessageInfoResp      *resp)
+api_handler::GetMessageInfo(ctx_t                                    *ctx,
+                            const ::GrpcLibraryV1::GetMessageInfoReq *req,
+                            ::GrpcLibraryV1::GetMessageInfoResp      *resp)
 {
     int64_t     id         = req->id();
     int64_t     session_id = req->session_id();
@@ -308,9 +325,9 @@ api_handler::GetMessageInfo(ctx_t                                  *ctx,
     return reactor;
 }
 
-reactor_t *api_handler::GetSession(ctx_t                              *ctx,
-                                   const ::GrpcLibrary::GetSessionReq *req,
-                                   ::GrpcLibrary::GetSessionResp      *resp)
+reactor_t *api_handler::GetSession(ctx_t                                *ctx,
+                                   const ::GrpcLibraryV1::GetSessionReq *req,
+                                   ::GrpcLibraryV1::GetSessionResp      *resp)
 {
     int64_t     id      = req->id();
     int64_t     user_id = req->user_id();
@@ -369,9 +386,9 @@ reactor_t *api_handler::GetSession(ctx_t                              *ctx,
     return reactor;
 }
 
-reactor_t *api_handler::NewSession(ctx_t                              *ctx,
-                                   const ::GrpcLibrary::NewSessionReq *req,
-                                   ::GrpcLibrary::NewSessionResp      *resp)
+reactor_t *api_handler::NewSession(ctx_t                                *ctx,
+                                   const ::GrpcLibraryV1::NewSessionReq *req,
+                                   ::GrpcLibraryV1::NewSessionResp      *resp)
 {
     resp->set_error_code(ERR_FAIL);
     int64_t     user_id = req->user_id();
@@ -418,10 +435,10 @@ reactor_t *api_handler::NewSession(ctx_t                              *ctx,
     return reactor;
 }
 
-reactor_t *
-api_handler::ModifySessionTitle(ctx_t                                      *ctx,
-                                const ::GrpcLibrary::ModifySessionTitleReq *req,
-                                ::GrpcLibrary::ModifySessionTitleResp *resp)
+reactor_t *api_handler::ModifySessionTitle(
+    ctx_t                                        *ctx,
+    const ::GrpcLibraryV1::ModifySessionTitleReq *req,
+    ::GrpcLibraryV1::ModifySessionTitleResp      *resp)
 {
     int64_t     id      = req->id();
     int64_t     user_id = req->user_id();
@@ -460,9 +477,9 @@ api_handler::ModifySessionTitle(ctx_t                                      *ctx,
     return reactor;
 }
 
-reactor_t *api_handler::DelSession(ctx_t                              *ctx,
-                                   const ::GrpcLibrary::DelSessionReq *req,
-                                   ::GrpcLibrary::DelSessionResp      *resp)
+reactor_t *api_handler::DelSession(ctx_t                                *ctx,
+                                   const ::GrpcLibraryV1::DelSessionReq *req,
+                                   ::GrpcLibraryV1::DelSessionResp      *resp)
 {
     auto        ids     = req->ids();
     int64_t     user_id = req->user_id();
@@ -512,9 +529,9 @@ reactor_t *api_handler::DelSession(ctx_t                              *ctx,
 }
 
 reactor_t *
-api_handler::GetPluginInfo(ctx_t                                 *ctx,
-                           const ::GrpcLibrary::GetPluginInfoReq *req,
-                           ::GrpcLibrary::GetPluginInfoResp      *resp)
+api_handler::GetPluginInfo(ctx_t                                   *ctx,
+                           const ::GrpcLibraryV1::GetPluginInfoReq *req,
+                           ::GrpcLibraryV1::GetPluginInfoResp      *resp)
 {
     // NOTE: wo should use ORM or prepared statement to avoid SQL injection,
     // but for simplicity, we use string concatenation here.
@@ -580,9 +597,9 @@ api_handler::GetPluginInfo(ctx_t                                 *ctx,
     return reactor;
 }
 
-reactor_t *api_handler::Download(ctx_t                            *ctx,
-                                 const ::GrpcLibrary::DownloadReq *req,
-                                 ::GrpcLibrary::DownloadResp      *resp)
+reactor_t *api_handler::Download(ctx_t                              *ctx,
+                                 const ::GrpcLibraryV1::DownloadReq *req,
+                                 ::GrpcLibraryV1::DownloadResp      *resp)
 {
     std::string hash    = req->hash();
     int64_t     user_id = req->user_id();
@@ -621,9 +638,9 @@ reactor_t *api_handler::Download(ctx_t                            *ctx,
     return reactor;
 }
 
-reactor_t *api_handler::Upload(ctx_t                          *ctx,
-                               const ::GrpcLibrary::UploadReq *req,
-                               ::GrpcLibrary::UploadResp      *resp)
+reactor_t *api_handler::Upload(ctx_t                            *ctx,
+                               const ::GrpcLibraryV1::UploadReq *req,
+                               ::GrpcLibraryV1::UploadResp      *resp)
 {
     std::string hash    = req->hash();
     int64_t     user_id = req->user_id();
@@ -662,7 +679,8 @@ reactor_t *api_handler::Upload(ctx_t                          *ctx,
     return reactor;
 }
 
-grpc::ServerBidiReactor<GrpcLibrary::EmbeddingReq, GrpcLibrary::EmbeddingResp> *
+grpc::ServerBidiReactor<GrpcLibraryV1::EmbeddingReq,
+                        GrpcLibraryV1::EmbeddingResp> *
 api_handler::Embedding(grpc::CallbackServerContext *context)
 {
     LOG_INFO("Received Embedding bidirectional stream request from peer: {}",
@@ -672,9 +690,9 @@ api_handler::Embedding(grpc::CallbackServerContext *context)
 }
 
 reactor_t *
-api_handler::StopEmbedding(ctx_t                                 *ctx,
-                           const ::GrpcLibrary::StopEmbeddingReq *req,
-                           ::GrpcLibrary::StopEmbeddingResp      *resp)
+api_handler::StopEmbedding(ctx_t                                   *ctx,
+                           const ::GrpcLibraryV1::StopEmbeddingReq *req,
+                           ::GrpcLibraryV1::StopEmbeddingResp      *resp)
 {
     auto task_id = req->task_id();
     auto user_id = req->user_id();
