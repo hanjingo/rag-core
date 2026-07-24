@@ -1,7 +1,7 @@
 #include "db_mgr.h"
 
 #include "conf.h"
-#include <hj/log/log.hpp>
+#include <hj/log/logger.hpp>
 
 void db_mgr::init()
 {

@@ -2,7 +2,7 @@
 
 #include "err.h"
 
-#include <hj/log/log.hpp>
+#include <hj/log/logger.hpp>
 
 llm_mgr::llm_mgr()
 {

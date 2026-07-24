@@ -1,6 +1,6 @@
 #include "server.h"
 
-#include <hj/log/log.hpp>
+#include <hj/log/logger.hpp>
 #include <hj/time/date_time.hpp>
 #include <hj/algo/uuid.hpp>
 #include <hj/db/sqlite.hpp>

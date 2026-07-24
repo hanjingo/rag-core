@@ -12,7 +12,7 @@
 #endif
 
 // add your code here...
-#include <hj/log/log.hpp>
+#include <hj/log/logger.hpp>
 #include <hj/os/env.h>
 #include <hj/os/options.hpp>
 #include <hj/os/signal.hpp>
