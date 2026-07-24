@@ -205,12 +205,12 @@ else()
     message(STATUS "No resource files to copy for ${PROJECT_NAME}")
 endif()
 
-# Crash Trace
-if (CRASH_HANDLER_ENABLE AND UNIX)
-    include(${CMAKE_CURRENT_SOURCE_DIR}/cmake/triplet.cmake)
-    include(${CMAKE_CURRENT_SOURCE_DIR}/cmake/crash.cmake)
-    generate_sym(${PACKAGE_NAME} "${EXECUTABLE_OUTPUT_PATH}/symbols/${PACKAGE_NAME}")
-endif()
+# # Crash Trace
+# if (CRASH_HANDLER_ENABLE AND UNIX)
+#     include(${CMAKE_CURRENT_SOURCE_DIR}/cmake/triplet.cmake)
+#     include(${CMAKE_CURRENT_SOURCE_DIR}/cmake/crash.cmake)
+#     generate_sym(${PACKAGE_NAME} "${EXECUTABLE_OUTPUT_PATH}/symbols/${PACKAGE_NAME}")
+# endif()
 
 # Deploy dependencies
 # for windows + vs2019:
