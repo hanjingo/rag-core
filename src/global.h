@@ -19,6 +19,8 @@ static constexpr const char *PATTERN_GET_CMD_PARAM = "[;]+";
 class db
 {
   public:
+    virtual ~db() = default;
+
     virtual const std::string id()                  = 0;
     virtual int               exec(const char *sql) = 0;
     virtual int               query(std::vector<std::vector<std::string>> &outs,

@@ -20,7 +20,7 @@ class QueryReactor : public grpc::ServerWriteReactor<::GrpcLibraryV1::QueryResp>
   public:
     QueryReactor(grpc::CallbackServerContext     *ctx,
                  const ::GrpcLibraryV1::QueryReq *req);
-    QueryReactor::~QueryReactor();
+    ~QueryReactor();
 
     void OnWriteDone(bool ok) override;
 

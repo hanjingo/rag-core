@@ -4,9 +4,11 @@
 #include <vector>
 #include <random>
 
+#include <hj/log/logger.hpp>
 #include <hj/ai/vector_index.hpp>
 
 #include "llm.h"
+#include "err.h"
 
 class memory_mgr
 {
@@ -26,7 +28,7 @@ class memory_mgr
     }
 
     void distribution(std::vector<float> &dst,
-                      std::mt19937 &rng = std::mt19937(std::random_device{}()));
+                      std::mt19937 rng = std::mt19937(std::random_device{}()));
 
     template <typename T>
     int build_index(hj::vector_index<T>        &index,
