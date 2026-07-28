@@ -63,8 +63,6 @@ else()
     set(OUTPUT_PATH ${CMAKE_CURRENT_SOURCE_DIR}/bin/${CMAKE_BUILD_TYPE})
 endif()
 
-# 【关键修改点】：加入守护条件
-# 如果独立编译该模块，使用自己的 OUTPUT_PATH；如果被 rag-qt 包含，则服从 rag-qt 传入的内联 Bundle 路径
 if (NOT EXECUTABLE_OUTPUT_PATH)
     set(EXECUTABLE_OUTPUT_PATH ${OUTPUT_PATH})
 endif()
@@ -194,11 +192,15 @@ if (LIC_ENABLE)
 endif()
 
 if (RESOURCE_FILES)
+    if (NOT RAG_CORE_CONFIG_OUTPUT_DIRECTORY)
+        set(RAG_CORE_CONFIG_OUTPUT_DIRECTORY "${EXECUTABLE_OUTPUT_PATH}/configs")
+    endif()
+
     add_custom_target(${PACKAGE_NAME}_copy_resources ALL
-        COMMAND ${CMAKE_COMMAND} -E make_directory "${EXECUTABLE_OUTPUT_PATH}/configs"
+        COMMAND ${CMAKE_COMMAND} -E make_directory "${RAG_CORE_CONFIG_OUTPUT_DIRECTORY}"
         COMMAND ${CMAKE_COMMAND} -E copy_if_different
             ${RESOURCE_FILES}
-            "${EXECUTABLE_OUTPUT_PATH}/configs"
+            "${RAG_CORE_CONFIG_OUTPUT_DIRECTORY}"
         DEPENDS ${RESOURCE_FILES}
         COMMENT "Copying resource files to output dir"
     )

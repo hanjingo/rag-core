@@ -5,6 +5,7 @@
 
 #include <hj/log/logger.hpp>
 #include <hj/io/filepath.hpp>
+#include <hj/os/env.h>
 
 #include "global.h"
 
@@ -24,7 +25,12 @@ conf::~conf()
 
 std::string conf::core_config_file_path()
 {
+#if defined(__APPLE__) // standard macOS bundle structure
+    return hj::filepath::join(hj::filepath::pwd() + "/../Resources",
+                              CORE_CONFIG_FILE);
+#else
     return hj::filepath::join(hj::filepath::pwd(), CORE_CONFIG_FILE);
+#endif
 }
 
 hj::ini conf::data()
@@ -84,7 +90,13 @@ std::string conf::sqlite_id()
 
 std::string conf::sqlite_path()
 {
+#if defined(__APPLE__) // standard macOS bundle structure
+    return hj::filepath::join(
+        hj::filepath::pwd() + "/../Resources",
+        _cfg.get<std::string>("sqlite/path", "default.db"));
+#else
     return _cfg.get<std::string>("sqlite/path", "default.db");
+#endif
 }
 
 int conf::sqlite_pool()
