@@ -63,7 +63,8 @@ else()
     set(OUTPUT_PATH ${CMAKE_CURRENT_SOURCE_DIR}/bin/${CMAKE_BUILD_TYPE})
 endif()
 
-# set output path
+# 【关键修改点】：加入守护条件
+# 如果独立编译该模块，使用自己的 OUTPUT_PATH；如果被 rag-qt 包含，则服从 rag-qt 传入的内联 Bundle 路径
 if (NOT EXECUTABLE_OUTPUT_PATH)
     set(EXECUTABLE_OUTPUT_PATH ${OUTPUT_PATH})
 endif()
@@ -205,20 +206,7 @@ else()
     message(STATUS "No resource files to copy for ${PROJECT_NAME}")
 endif()
 
-# # Crash Trace
-# if (CRASH_HANDLER_ENABLE AND UNIX)
-#     include(${CMAKE_CURRENT_SOURCE_DIR}/cmake/triplet.cmake)
-#     include(${CMAKE_CURRENT_SOURCE_DIR}/cmake/crash.cmake)
-#     generate_sym(${PACKAGE_NAME} "${EXECUTABLE_OUTPUT_PATH}/symbols/${PACKAGE_NAME}")
-# endif()
-
 # Deploy dependencies
-# for windows + vs2019:
-# cmake .. -DCMAKE_TOOLCHAIN_FILE="$env:VCPKG_ROOT/scripts/buildsystems/vcpkg.cmake" -G "Visual Studio 16 2019"
-# for *nix:
-# cmake .. -DCMAKE_TOOLCHAIN_FILE="${VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake"
-#
-# cmake --build .
 include(${CMAKE_CURRENT_SOURCE_DIR}/cmake/deploy.cmake)
 if(WIN32)
     win_deploy(${PROJECT_NAME} 
@@ -235,12 +223,4 @@ else()
 endif()
 
 # Package
-# for windows + NSIS:
-# cpack -G NSIS -C Debug
-#
-# for linux + DEB:
-# cpack -G DEB -C Debug
-#
-# for mac + dmg:
-# cpack -G DragNDrop -C Debug
 include(${CMAKE_CURRENT_SOURCE_DIR}/cmake/pack.cmake)
