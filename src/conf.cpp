@@ -12,25 +12,19 @@
 conf::conf()
     : _cfg{}
 {
-    if(!_cfg.read_file(core_config_file_path().c_str()))
-        throw std::runtime_error("Failed to read config file: "
-                                 + core_config_file_path());
-
-    _init();
 }
 
 conf::~conf()
 {
 }
 
-std::string conf::core_config_file_path()
+void conf::init(const std::string &config_file_path)
 {
-#if defined(__APPLE__) // standard macOS bundle structure
-    return hj::filepath::join(hj::filepath::pwd() + "/../Resources",
-                              CORE_CONFIG_FILE);
-#else
-    return hj::filepath::join(hj::filepath::pwd(), CORE_CONFIG_FILE);
-#endif
+    if(_inited.load())
+        return;
+
+    _inited.store(true);
+    _init(config_file_path);
 }
 
 hj::ini conf::data()
@@ -243,8 +237,13 @@ int conf::asr_audio_min_chunk_size()
     return _cfg.get<int>("asr/audio_min_chunk_size", 16000 * 0.2);
 }
 
-void conf::_init()
+void conf::_init(const std::string &config_file_path)
 {
+    // read config file
+    if(!_cfg.read_file(config_file_path.c_str()))
+        throw std::runtime_error("Failed to read config file: "
+                                 + config_file_path);
+
     // init models
     auto             str = _cfg.get<std::string>("llm/models", "");
     std::string_view tag{";", 1};

@@ -63,29 +63,6 @@ int main(int argc, char *argv[])
     // catch signals
     hj::sighandler::instance().sigcatch({SIGABRT, SIGTERM}, [](int sig) {});
 
-    // log config
-    auto filename  = conf::instance().log_filename();
-    auto max_size  = MB(conf::instance().log_max_size());
-    auto max_files = conf::instance().log_max_files();
-    auto min_lvl   = conf::instance().log_min_lvl();
-    auto flush_on  = conf::instance().log_flush_on();
-    hj::log::logger::instance()->add_sink(
-        hj::log::logger::instance()->create_rotate_file_sink(filename,
-                                                             max_size,
-                                                             max_files,
-                                                             true));
-    hj::log::logger::instance()->set_level(
-        static_cast<hj::log::level>(min_lvl));
-    hj::log::logger::instance()->flush_on(
-        static_cast<hj::log::level>(flush_on));
-    LOG_INFO("init log with filename:{}, max_size:{}, max_files:{}, "
-             "min_lvl:{}, flush_on:{}",
-             filename,
-             max_size,
-             max_files,
-             min_lvl,
-             flush_on);
-
     // add options parse support
     hj::options              opts;
     hj::error_handler<err_t> h{[](const char *src, const char *dst) {
@@ -104,15 +81,42 @@ int main(int argc, char *argv[])
     opts.add_positional("subcmd", 1);
 
     opts.add<std::string>("content", "", "input content");
+    opts.add<std::string>("config", "./core.ini", "config file path");
     opts.add_positional("content", 2);
 
     std::string subcmd  = opts.parse<std::string>(argc, argv, "subcmd");
     auto        content = opts.parse<std::string>(argc, argv, "content");
+    auto        config  = opts.parse<std::string>(argc, argv, "config");
 
     // load config file
     if(subcmd == "run")
     {
-        // ./rag-core run
+        // ./rag-core run --config ./core.ini
+        conf::instance().init(config);
+
+        // init log
+        auto filename  = conf::instance().log_filename();
+        auto max_size  = MB(conf::instance().log_max_size());
+        auto max_files = conf::instance().log_max_files();
+        auto min_lvl   = conf::instance().log_min_lvl();
+        auto flush_on  = conf::instance().log_flush_on();
+        hj::log::logger::instance()->add_sink(
+            hj::log::logger::instance()->create_rotate_file_sink(filename,
+                                                                 max_size,
+                                                                 max_files,
+                                                                 true));
+        hj::log::logger::instance()->set_level(
+            static_cast<hj::log::level>(min_lvl));
+        hj::log::logger::instance()->flush_on(
+            static_cast<hj::log::level>(flush_on));
+        LOG_INFO("init log with filename:{}, max_size:{}, max_files:{}, "
+                 "min_lvl:{}, flush_on:{}",
+                 filename,
+                 max_size,
+                 max_files,
+                 min_lvl,
+                 flush_on);
+
         // init env
         LOG_INFO("Environment - version: {}, arch: {}, platform: {}, "
                  "compiletime: {}",
@@ -120,6 +124,7 @@ int main(int argc, char *argv[])
                  ENV_ARCH,
                  ENV_OS,
                  COMPILE_TIME);
+        LOG_DEBUG("Init config:{}", conf::instance().data().str());
 
         // init dbs
         db_mgr::instance().init();

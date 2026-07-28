@@ -1,6 +1,7 @@
 #ifndef CONF_H
 #define CONF_H
 
+#include <atomic>
 #include <vector>
 #include <string>
 #include <unordered_set>
@@ -66,8 +67,7 @@ class conf
         return inst;
     }
 
-    static std::string core_config_file_path();
-
+    void    init(const std::string &config_file_path);
     hj::ini data();
 
     int         log_min_lvl();
@@ -119,10 +119,11 @@ class conf
     std::string regex_hard_prompt();
 
   private:
-    void _init();
+    void _init(const std::string &config_file_path);
 
   private:
-    hj::ini _cfg;
+    std::atomic<bool> _inited{false};
+    hj::ini           _cfg;
 
     std::unordered_map<std::string, remote_api_config>    _remote_apis;
     std::unordered_map<std::string, conf::model_config>   _models;
