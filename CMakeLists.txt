@@ -132,9 +132,8 @@ if (BUILD_BENCHMARK)
 endif()
 
 # add vcpkg library
+find_package(OpenMP QUIET COMPONENTS CXX)
 find_package(hj REQUIRED)
-
-find_package(whisper REQUIRED)
 
 find_package(httplib CONFIG REQUIRED)
 
@@ -150,8 +149,6 @@ add_executable(${PROJECT_NAME} ${SRC})
 set(LINK_LIBS 
     ${CMAKE_DL_LIBS} 
     ${hj_LIBRARIES}
-
-    whisper
 
     httplib::httplib
 )
