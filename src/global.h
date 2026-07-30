@@ -40,10 +40,10 @@ static constexpr const char *SQL_SELECT_USER_ID_BY_USERNAME_PASSWD =
     R"(SELECT id FROM user WHERE username = %Q AND encrypted_passwd = %Q)";
 
 static constexpr const char *SQL_SELECT_USER_BY_USERNAME_PASSWD =
-    R"(SELECT id, username, encrypted_passwd, privilege FROM user WHERE username = %Q AND encrypted_passwd = %Q)";
+    R"(SELECT id, username, encrypted_passwd FROM user WHERE username = %Q AND encrypted_passwd = %Q)";
 
 static constexpr const char *SQL_INSERT_USER =
-    R"(INSERT INTO user (id, username, encrypted_passwd, privilege) VALUES (%lld, %Q, %Q, %d))";
+    R"(INSERT INTO user (id, username, encrypted_passwd) VALUES (%lld, %Q, %Q))";
 
 static constexpr const char *SQL_SELECT_MESSAGE_BY_ID =
     R"(SELECT id, session_id, role, content, prev_message_id, timestamp FROM message WHERE id = %lld ORDER BY timestamp DESC)";

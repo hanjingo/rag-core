@@ -37,7 +37,6 @@ reactor_t *api_handler::Login(ctx_t                           *ctx,
     std::string arch             = req->arch();
     std::string version          = req->client_version();
     int64_t     user_id          = -1;
-    int         privilege        = -1;
     auto       *reactor          = ctx->DefaultReactor();
 
     GrpcLibraryV1::UpdateInfo info;
@@ -57,7 +56,7 @@ reactor_t *api_handler::Login(ctx_t                           *ctx,
                                           account.c_str(),
                                           encrypted_passwd.c_str())
                       + " LIMIT 1;";
-    LOG_DEBUG("{}", sql);
+    // LOG_DEBUG("{}", sql);
     db_mgr::query_ret rows;
     if(db_mgr::instance().query(rows, DB_SQLITE, sql) != OK || rows.empty())
     {
@@ -69,8 +68,7 @@ reactor_t *api_handler::Login(ctx_t                           *ctx,
     }
     for(const auto row : rows)
     {
-        user_id   = std::stoll(row[0]);
-        privilege = std::stoi(row[3]);
+        user_id = std::stoll(row[0]);
         break;
     }
 
@@ -95,7 +93,6 @@ reactor_t *api_handler::Login(ctx_t                           *ctx,
               expired_days);
     resp->set_error_code(OK);
     resp->set_user_id(user_id);
-    resp->set_privilege(privilege);
     resp->set_auth(token);
     resp->set_account(account);
     resp->set_last_login_time(
@@ -140,18 +137,14 @@ reactor_t *api_handler::RegAccount(ctx_t                                *ctx,
     std::string encrypted_passwd = req->passwd();
     auto       *reactor          = ctx->DefaultReactor();
     resp->set_error_code(ERR_FAIL);
-    LOG_DEBUG("Received RegAccount request. account: {}, passwd: {}",
-              account,
-              encrypted_passwd);
+    LOG_DEBUG("Received RegAccount request. account: {}", account);
 
-    const int64_t id        = static_cast<int64_t>(hj::uuid::gen_u64());
-    const int     privilege = 0; // default privilege for new account
-    auto          sql       = hj::sqlite::mprintf(SQL_INSERT_USER,
-                                                  id,
-                                                  account.c_str(),
-                                                  encrypted_passwd.c_str(),
-                                                  privilege);
-    LOG_DEBUG("{}", sql);
+    const int64_t id  = static_cast<int64_t>(hj::uuid::gen_u64());
+    auto          sql = hj::sqlite::mprintf(SQL_INSERT_USER,
+                                            id,
+                                            account.c_str(),
+                                            encrypted_passwd.c_str());
+    // LOG_DEBUG("{}", sql);
     if(db_mgr::instance().exec(DB_SQLITE, sql) != OK)
     {
         resp->set_error_code(ERR_SQLITE_EXEC_FAIL);
@@ -457,8 +450,6 @@ reactor_t *api_handler::ModifySessionTitle(
         auth,
         title);
 
-    // TODO check privilege
-
     auto sql =
         hj::sqlite::mprintf(SQL_UPDATE_SESSION_TITLE_BY_ID, title.c_str(), id);
     LOG_DEBUG("{}", sql);
@@ -491,8 +482,6 @@ reactor_t *api_handler::DelSession(ctx_t                                *ctx,
         ids.size(),
         user_id,
         auth);
-
-    // TODO check privilege
 
     for(auto id : ids)
     {
@@ -612,8 +601,6 @@ reactor_t *api_handler::Download(ctx_t                              *ctx,
               user_id,
               auth);
 
-    // TODO check privilege
-
     auto sql = hj::sqlite::mprintf(SQL_SELECT_FILE_BY_HASH, hash.c_str())
                + " LIMIT 1;";
     LOG_DEBUG("{}", sql);
@@ -654,8 +641,6 @@ reactor_t *api_handler::Upload(ctx_t                            *ctx,
               hash,
               user_id,
               auth);
-
-    // TODO check privilege
 
     auto sql = hj::sqlite::mprintf(SQL_INSERT_FILE,
                                    hash.c_str(),

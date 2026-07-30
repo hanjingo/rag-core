@@ -10118,15 +10118,14 @@ class LoginResp final : public ::google::protobuf::Message
 
   // accessors -------------------------------------------------------
   enum : int {
-    kAuthFieldNumber = 4,
-    kAccountFieldNumber = 5,
-    kLastLoginTimeFieldNumber = 6,
-    kUpdateInfoFieldNumber = 7,
+    kAuthFieldNumber = 3,
+    kAccountFieldNumber = 4,
+    kLastLoginTimeFieldNumber = 5,
+    kUpdateInfoFieldNumber = 6,
     kUserIdFieldNumber = 2,
     kErrorCodeFieldNumber = 1,
-    kPrivilegeFieldNumber = 3,
   };
-  // string auth = 4;
+  // string auth = 3;
   void clear_auth() ;
   const ::std::string& auth() const;
   template <typename Arg_ = const ::std::string&, typename... Args_>
@@ -10141,7 +10140,7 @@ class LoginResp final : public ::google::protobuf::Message
   ::std::string* PROTOBUF_NONNULL _internal_mutable_auth();
 
   public:
-  // string account = 5;
+  // string account = 4;
   void clear_account() ;
   const ::std::string& account() const;
   template <typename Arg_ = const ::std::string&, typename... Args_>
@@ -10156,7 +10155,7 @@ class LoginResp final : public ::google::protobuf::Message
   ::std::string* PROTOBUF_NONNULL _internal_mutable_account();
 
   public:
-  // string last_login_time = 6;
+  // string last_login_time = 5;
   void clear_last_login_time() ;
   const ::std::string& last_login_time() const;
   template <typename Arg_ = const ::std::string&, typename... Args_>
@@ -10171,7 +10170,7 @@ class LoginResp final : public ::google::protobuf::Message
   ::std::string* PROTOBUF_NONNULL _internal_mutable_last_login_time();
 
   public:
-  // .GrpcLibraryV1.UpdateInfo update_info = 7;
+  // .GrpcLibraryV1.UpdateInfo update_info = 6;
   bool has_update_info() const;
   void clear_update_info() ;
   const ::GrpcLibraryV1::UpdateInfo& update_info() const;
@@ -10206,21 +10205,11 @@ class LoginResp final : public ::google::protobuf::Message
   void _internal_set_error_code(::int32_t value);
 
   public:
-  // int32 privilege = 3;
-  void clear_privilege() ;
-  ::int32_t privilege() const;
-  void set_privilege(::int32_t value);
-
-  private:
-  ::int32_t _internal_privilege() const;
-  void _internal_set_privilege(::int32_t value);
-
-  public:
   // @@protoc_insertion_point(class_scope:GrpcLibraryV1.LoginResp)
  private:
   class _Internal;
   friend class ::google::protobuf::internal::TcParser;
-  static const ::google::protobuf::internal::TcParseTable<3, 7,
+  static const ::google::protobuf::internal::TcParseTable<3, 6,
                                    1, 58,
                                    2>
       _table_;
@@ -10248,7 +10237,6 @@ class LoginResp final : public ::google::protobuf::Message
     ::GrpcLibraryV1::UpdateInfo* PROTOBUF_NULLABLE update_info_;
     ::int64_t user_id_;
     ::int32_t error_code_;
-    ::int32_t privilege_;
     PROTOBUF_TSAN_DECLARE_MEMBER
   };
   union { Impl_ _impl_; };
@@ -14516,32 +14504,7 @@ inline void LoginResp::_internal_set_user_id(::int64_t value) {
   _impl_.user_id_ = value;
 }
 
-// int32 privilege = 3;
-inline void LoginResp::clear_privilege() {
-  ::google::protobuf::internal::TSanWrite(&_impl_);
-  _impl_.privilege_ = 0;
-  ClearHasBit(_impl_._has_bits_[0],
-                  0x00000040U);
-}
-inline ::int32_t LoginResp::privilege() const {
-  // @@protoc_insertion_point(field_get:GrpcLibraryV1.LoginResp.privilege)
-  return _internal_privilege();
-}
-inline void LoginResp::set_privilege(::int32_t value) {
-  _internal_set_privilege(value);
-  SetHasBit(_impl_._has_bits_[0], 0x00000040U);
-  // @@protoc_insertion_point(field_set:GrpcLibraryV1.LoginResp.privilege)
-}
-inline ::int32_t LoginResp::_internal_privilege() const {
-  ::google::protobuf::internal::TSanRead(&_impl_);
-  return _impl_.privilege_;
-}
-inline void LoginResp::_internal_set_privilege(::int32_t value) {
-  ::google::protobuf::internal::TSanWrite(&_impl_);
-  _impl_.privilege_ = value;
-}
-
-// string auth = 4;
+// string auth = 3;
 inline void LoginResp::clear_auth() {
   ::google::protobuf::internal::TSanWrite(&_impl_);
   _impl_.auth_.ClearToEmpty();
@@ -14606,7 +14569,7 @@ inline void LoginResp::set_allocated_auth(::std::string* PROTOBUF_NULLABLE value
   // @@protoc_insertion_point(field_set_allocated:GrpcLibraryV1.LoginResp.auth)
 }
 
-// string account = 5;
+// string account = 4;
 inline void LoginResp::clear_account() {
   ::google::protobuf::internal::TSanWrite(&_impl_);
   _impl_.account_.ClearToEmpty();
@@ -14671,7 +14634,7 @@ inline void LoginResp::set_allocated_account(::std::string* PROTOBUF_NULLABLE va
   // @@protoc_insertion_point(field_set_allocated:GrpcLibraryV1.LoginResp.account)
 }
 
-// string last_login_time = 6;
+// string last_login_time = 5;
 inline void LoginResp::clear_last_login_time() {
   ::google::protobuf::internal::TSanWrite(&_impl_);
   _impl_.last_login_time_.ClearToEmpty();
@@ -14736,7 +14699,7 @@ inline void LoginResp::set_allocated_last_login_time(::std::string* PROTOBUF_NUL
   // @@protoc_insertion_point(field_set_allocated:GrpcLibraryV1.LoginResp.last_login_time)
 }
 
-// .GrpcLibraryV1.UpdateInfo update_info = 7;
+// .GrpcLibraryV1.UpdateInfo update_info = 6;
 inline bool LoginResp::has_update_info() const {
   bool value = CheckHasBit(_impl_._has_bits_[0], 0x00000008U);
   PROTOBUF_ASSUME(!value || _impl_.update_info_ != nullptr);

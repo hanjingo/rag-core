@@ -29,8 +29,7 @@ CREATE TABLE IF NOT EXISTS message (
 CREATE TABLE IF NOT EXISTS user (
     id BIGINT PRIMARY KEY,
     username TEXT NOT NULL UNIQUE,
-    encrypted_passwd TEXT NOT NULL,
-    privilege INTEGER DEFAULT 0 -- 0: normal user, 1: developer, 2: admin, ...
+    encrypted_passwd TEXT NOT NULL
 );
 
 CREATE TABLE IF NOT EXISTS plugin (
@@ -51,7 +50,7 @@ CREATE TABLE IF NOT EXISTS file (
     FOREIGN KEY (owner) REFERENCES user(id)
 );
 
-INSERT INTO user (id, username, encrypted_passwd, privilege) VALUES (1, 'admin', 'admin', 2);
+INSERT INTO user (id, username, encrypted_passwd) VALUES (1, 'admin', 'admin');
 
 INSERT INTO session (id, user_id, title, timestamp) VALUES (
     1, 1, 'x', 0);
@@ -82,13 +81,13 @@ INSERT INTO plugin (hash, name, platform, desc, publisher, version, timestamp) V
 
 INSERT INTO file (hash, addr, owner, size_kb) VALUES (
     'sha256:a05c13fcd95e7305526d8a70820247046335f461356271b4eaee0919ee340f2a', 
-    'http://8.134.87.167/downloads/plugins/chatbox-windows-x64-v0.0.3.zip', 1, 152);
+    'http://www.hango.fun/downloads/plugins/chatbox-windows-x64-v0.0.3.zip', 1, 152);
 INSERT INTO file (hash, addr, owner, size_kb) VALUES (
     'sha256:4135b32bf4257a54aabeabd416b53dbd1bc411c50257688f0073eeb9aa785d16', 
-    'http://8.134.87.167/downloads/plugins/grammar-windows-x64-v0.0.2.zip', 1, 87);
+    'http://www.hango.fun/downloads/plugins/grammar-windows-x64-v0.0.2.zip', 1, 87);
 INSERT INTO file (hash, addr, owner, size_kb) VALUES (
     'sha256:cdfcc494cf944a74a06985688063197513295e6c3c876521ea184da11b6f0076', 
-    'http://8.134.87.167/downloads/plugins/ielts-writer-windows-x64-v0.0.2.zip', 1, 49);
+    'http://www.hango.fun/downloads/plugins/ielts-writer-windows-x64-v0.0.2.zip', 1, 49);
 INSERT INTO file (hash, addr, owner, size_kb) VALUES (
     'sha256:cac176b447f4dd995677d1ee998b9bc37d49feed0fe5125020110ad7f52edfb5', 
-    'http://8.134.87.167/downloads/plugins/stock-windows-x64-v0.0.2.zip', 1, 45);
+    'http://www.hango.fun/downloads/plugins/stock-windows-x64-v0.0.2.zip', 1, 45);
