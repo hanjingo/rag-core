@@ -59,7 +59,7 @@ reactor_t *api_handler::Login(ctx_t                           *ctx,
                       + " LIMIT 1;";
     LOG_DEBUG("{}", sql);
     db_mgr::query_ret rows;
-    if(db_mgr::instance().query(rows, DB_SQLITE, sql) != OK)
+    if(db_mgr::instance().query(rows, DB_SQLITE, sql) != OK || rows.empty())
     {
         LOG_ERROR("Failed to authenticate account: {}, sql: {}", account, sql);
         resp->set_error_code(ACCOUNT_INVALID);
