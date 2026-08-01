@@ -26,6 +26,36 @@ namespace _pbi = ::google::protobuf::internal;
 namespace _fl = ::google::protobuf::internal::field_layout;
 namespace GrpcLibraryV1 {
 
+inline constexpr VadParam::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : _cached_size_{0},
+        threshold_{0},
+        min_speech_dur_ms_{0},
+        min_silence_dur_ms_{0},
+        max_speech_dur_s_{0},
+        speech_pad_ms_{0},
+        samples_overlap_{0} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR VadParam::VadParam(::_pbi::ConstantInitialized)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(VadParam_class_data_.base()),
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(),
+#endif  // PROTOBUF_CUSTOM_VTABLE
+      _impl_(::_pbi::ConstantInitialized()) {
+}
+struct VadParamDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR VadParamDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~VadParamDefaultTypeInternal() {}
+  union {
+    VadParam _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 VadParamDefaultTypeInternal _VadParam_default_instance_;
+
 inline constexpr UploadResp::Impl_::Impl_(
     ::_pbi::ConstantInitialized) noexcept
       : _cached_size_{0},
@@ -435,62 +465,6 @@ struct RecognizeRespDefaultTypeInternal {
 
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
     PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 RecognizeRespDefaultTypeInternal _RecognizeResp_default_instance_;
-
-inline constexpr RecognitionParam::Impl_::Impl_(
-    ::_pbi::ConstantInitialized) noexcept
-      : _cached_size_{0},
-        language_(
-            &::google::protobuf::internal::fixed_address_empty_string,
-            ::_pbi::ConstantInitialized()),
-        initial_prompt_(
-            &::google::protobuf::internal::fixed_address_empty_string,
-            ::_pbi::ConstantInitialized()),
-        suppress_regex_(
-            &::google::protobuf::internal::fixed_address_empty_string,
-            ::_pbi::ConstantInitialized()),
-        n_threads_{0},
-        n_max_text_ctx_{0},
-        offset_ms_{0},
-        duration_ms_{0},
-        translate_{false},
-        detect_language_{false},
-        no_ctx_{false},
-        no_timestamps_{false},
-        single_segment_{false},
-        print_special_{false},
-        print_progress_{false},
-        print_realtime_{false},
-        print_timestamps_{false},
-        carry_initial_prompt_{false},
-        suppress_blank_{false},
-        suppress_nst_{false},
-        temperature_{0},
-        temperature_inc_{0},
-        max_initial_ts_{0},
-        length_penalty_{0},
-        entropy_thold_{0},
-        logprob_thold_{0},
-        no_speech_thold_{0} {}
-
-template <typename>
-PROTOBUF_CONSTEXPR RecognitionParam::RecognitionParam(::_pbi::ConstantInitialized)
-#if defined(PROTOBUF_CUSTOM_VTABLE)
-    : ::google::protobuf::Message(RecognitionParam_class_data_.base()),
-#else   // PROTOBUF_CUSTOM_VTABLE
-    : ::google::protobuf::Message(),
-#endif  // PROTOBUF_CUSTOM_VTABLE
-      _impl_(::_pbi::ConstantInitialized()) {
-}
-struct RecognitionParamDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR RecognitionParamDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
-  ~RecognitionParamDefaultTypeInternal() {}
-  union {
-    RecognitionParam _instance;
-  };
-};
-
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 RecognitionParamDefaultTypeInternal _RecognitionParam_default_instance_;
 
 inline constexpr QueryResp::Impl_::Impl_(
     ::_pbi::ConstantInitialized) noexcept
@@ -1193,35 +1167,66 @@ struct ContextParamDefaultTypeInternal {
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
     PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 ContextParamDefaultTypeInternal _ContextParam_default_instance_;
 
-inline constexpr RecognizeReq::Impl_::Impl_(
+inline constexpr RecognitionParam::Impl_::Impl_(
     ::_pbi::ConstantInitialized) noexcept
       : _cached_size_{0},
-        ctx_id_(
+        language_(
             &::google::protobuf::internal::fixed_address_empty_string,
             ::_pbi::ConstantInitialized()),
-        session_id_{::int64_t{0}},
-        request_type_{},
-        _oneof_case_{} {}
+        initial_prompt_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        suppress_regex_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        vad_model_path_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        vad_params_{nullptr},
+        n_threads_{0},
+        n_max_text_ctx_{0},
+        offset_ms_{0},
+        duration_ms_{0},
+        translate_{false},
+        detect_language_{false},
+        no_ctx_{false},
+        no_timestamps_{false},
+        single_segment_{false},
+        print_special_{false},
+        print_progress_{false},
+        print_realtime_{false},
+        print_timestamps_{false},
+        carry_initial_prompt_{false},
+        suppress_blank_{false},
+        suppress_nst_{false},
+        temperature_{0},
+        temperature_inc_{0},
+        max_initial_ts_{0},
+        length_penalty_{0},
+        entropy_thold_{0},
+        logprob_thold_{0},
+        no_speech_thold_{0},
+        vad_{false} {}
 
 template <typename>
-PROTOBUF_CONSTEXPR RecognizeReq::RecognizeReq(::_pbi::ConstantInitialized)
+PROTOBUF_CONSTEXPR RecognitionParam::RecognitionParam(::_pbi::ConstantInitialized)
 #if defined(PROTOBUF_CUSTOM_VTABLE)
-    : ::google::protobuf::Message(RecognizeReq_class_data_.base()),
+    : ::google::protobuf::Message(RecognitionParam_class_data_.base()),
 #else   // PROTOBUF_CUSTOM_VTABLE
     : ::google::protobuf::Message(),
 #endif  // PROTOBUF_CUSTOM_VTABLE
       _impl_(::_pbi::ConstantInitialized()) {
 }
-struct RecognizeReqDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR RecognizeReqDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
-  ~RecognizeReqDefaultTypeInternal() {}
+struct RecognitionParamDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR RecognitionParamDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~RecognitionParamDefaultTypeInternal() {}
   union {
-    RecognizeReq _instance;
+    RecognitionParam _instance;
   };
 };
 
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 RecognizeReqDefaultTypeInternal _RecognizeReq_default_instance_;
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 RecognitionParamDefaultTypeInternal _RecognitionParam_default_instance_;
 
 inline constexpr QueryReq::Impl_::Impl_(
     ::_pbi::ConstantInitialized) noexcept
@@ -1432,6 +1437,36 @@ struct EmbeddingReqDefaultTypeInternal {
 
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
     PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 EmbeddingReqDefaultTypeInternal _EmbeddingReq_default_instance_;
+
+inline constexpr RecognizeReq::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : _cached_size_{0},
+        ctx_id_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        session_id_{::int64_t{0}},
+        request_type_{},
+        _oneof_case_{} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR RecognizeReq::RecognizeReq(::_pbi::ConstantInitialized)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(RecognizeReq_class_data_.base()),
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(),
+#endif  // PROTOBUF_CUSTOM_VTABLE
+      _impl_(::_pbi::ConstantInitialized()) {
+}
+struct RecognizeReqDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR RecognizeReqDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~RecognizeReqDefaultTypeInternal() {}
+  union {
+    RecognizeReq _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 RecognizeReqDefaultTypeInternal _RecognizeReq_default_instance_;
 }  // namespace GrpcLibraryV1
 static constexpr const ::_pb::EnumDescriptor* PROTOBUF_NONNULL* PROTOBUF_NULLABLE
     file_level_enum_descriptors_src_2fapi_2eproto = nullptr;
@@ -1564,8 +1599,23 @@ const ::uint32_t
         22,
         1,
         0x081, // bitmap
+        PROTOBUF_FIELD_OFFSET(::GrpcLibraryV1::VadParam, _impl_._has_bits_),
+        9, // hasbit index offset
+        PROTOBUF_FIELD_OFFSET(::GrpcLibraryV1::VadParam, _impl_.threshold_),
+        PROTOBUF_FIELD_OFFSET(::GrpcLibraryV1::VadParam, _impl_.min_speech_dur_ms_),
+        PROTOBUF_FIELD_OFFSET(::GrpcLibraryV1::VadParam, _impl_.min_silence_dur_ms_),
+        PROTOBUF_FIELD_OFFSET(::GrpcLibraryV1::VadParam, _impl_.max_speech_dur_s_),
+        PROTOBUF_FIELD_OFFSET(::GrpcLibraryV1::VadParam, _impl_.speech_pad_ms_),
+        PROTOBUF_FIELD_OFFSET(::GrpcLibraryV1::VadParam, _impl_.samples_overlap_),
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        0x081, // bitmap
         PROTOBUF_FIELD_OFFSET(::GrpcLibraryV1::RecognitionParam, _impl_._has_bits_),
-        29, // hasbit index offset
+        32, // hasbit index offset
         PROTOBUF_FIELD_OFFSET(::GrpcLibraryV1::RecognitionParam, _impl_.n_threads_),
         PROTOBUF_FIELD_OFFSET(::GrpcLibraryV1::RecognitionParam, _impl_.n_max_text_ctx_),
         PROTOBUF_FIELD_OFFSET(::GrpcLibraryV1::RecognitionParam, _impl_.offset_ms_),
@@ -1592,25 +1642,26 @@ const ::uint32_t
         PROTOBUF_FIELD_OFFSET(::GrpcLibraryV1::RecognitionParam, _impl_.entropy_thold_),
         PROTOBUF_FIELD_OFFSET(::GrpcLibraryV1::RecognitionParam, _impl_.logprob_thold_),
         PROTOBUF_FIELD_OFFSET(::GrpcLibraryV1::RecognitionParam, _impl_.no_speech_thold_),
-        3,
-        4,
+        PROTOBUF_FIELD_OFFSET(::GrpcLibraryV1::RecognitionParam, _impl_.vad_),
+        PROTOBUF_FIELD_OFFSET(::GrpcLibraryV1::RecognitionParam, _impl_.vad_model_path_),
+        PROTOBUF_FIELD_OFFSET(::GrpcLibraryV1::RecognitionParam, _impl_.vad_params_),
         5,
         6,
         7,
         8,
-        0,
         9,
         10,
+        0,
         11,
         12,
         13,
         14,
         15,
         16,
-        1,
-        2,
         17,
         18,
+        1,
+        2,
         19,
         20,
         21,
@@ -1618,6 +1669,11 @@ const ::uint32_t
         23,
         24,
         25,
+        26,
+        27,
+        28,
+        3,
+        4,
         0x081, // bitmap
         PROTOBUF_FIELD_OFFSET(::GrpcLibraryV1::EmbeddingParam, _impl_._has_bits_),
         4, // hasbit index offset
@@ -1994,46 +2050,47 @@ static const ::_pbi::MigrationSchema
         {28, sizeof(::GrpcLibraryV1::MessageInfo)},
         {43, sizeof(::GrpcLibraryV1::SamplingParam)},
         {74, sizeof(::GrpcLibraryV1::ContextParam)},
-        {123, sizeof(::GrpcLibraryV1::RecognitionParam)},
-        {178, sizeof(::GrpcLibraryV1::EmbeddingParam)},
-        {183, sizeof(::GrpcLibraryV1::FileChunk)},
-        {196, sizeof(::GrpcLibraryV1::UpdateInfo)},
-        {201, sizeof(::GrpcLibraryV1::Ping)},
-        {206, sizeof(::GrpcLibraryV1::Pong)},
-        {211, sizeof(::GrpcLibraryV1::LoginReq)},
-        {224, sizeof(::GrpcLibraryV1::LoginResp)},
-        {239, sizeof(::GrpcLibraryV1::LogoutReq)},
-        {246, sizeof(::GrpcLibraryV1::LogoutResp)},
-        {253, sizeof(::GrpcLibraryV1::RegAccountReq)},
-        {260, sizeof(::GrpcLibraryV1::RegAccountResp)},
-        {267, sizeof(::GrpcLibraryV1::QueryReq)},
-        {288, sizeof(::GrpcLibraryV1::QueryResp)},
-        {299, sizeof(::GrpcLibraryV1::StopAnswerReq)},
-        {308, sizeof(::GrpcLibraryV1::StopAnswerResp)},
-        {315, sizeof(::GrpcLibraryV1::RecognizeReq)},
-        {328, sizeof(::GrpcLibraryV1::RecognizeResp)},
-        {341, sizeof(::GrpcLibraryV1::StopRecognizeReq)},
-        {350, sizeof(::GrpcLibraryV1::StopRecognizeResp)},
-        {357, sizeof(::GrpcLibraryV1::GetMessageInfoReq)},
-        {370, sizeof(::GrpcLibraryV1::GetMessageInfoResp)},
-        {377, sizeof(::GrpcLibraryV1::GetSessionReq)},
-        {388, sizeof(::GrpcLibraryV1::GetSessionResp)},
-        {395, sizeof(::GrpcLibraryV1::NewSessionReq)},
-        {408, sizeof(::GrpcLibraryV1::NewSessionResp)},
-        {415, sizeof(::GrpcLibraryV1::ModifySessionTitleReq)},
-        {426, sizeof(::GrpcLibraryV1::ModifySessionTitleResp)},
-        {435, sizeof(::GrpcLibraryV1::DelSessionReq)},
-        {444, sizeof(::GrpcLibraryV1::DelSessionResp)},
-        {451, sizeof(::GrpcLibraryV1::GetPluginInfoReq)},
-        {460, sizeof(::GrpcLibraryV1::GetPluginInfoResp)},
-        {467, sizeof(::GrpcLibraryV1::DownloadReq)},
-        {476, sizeof(::GrpcLibraryV1::DownloadResp)},
-        {487, sizeof(::GrpcLibraryV1::UploadReq)},
-        {500, sizeof(::GrpcLibraryV1::UploadResp)},
-        {507, sizeof(::GrpcLibraryV1::EmbeddingReq)},
-        {518, sizeof(::GrpcLibraryV1::EmbeddingResp)},
-        {529, sizeof(::GrpcLibraryV1::StopEmbeddingReq)},
-        {538, sizeof(::GrpcLibraryV1::StopEmbeddingResp)},
+        {123, sizeof(::GrpcLibraryV1::VadParam)},
+        {138, sizeof(::GrpcLibraryV1::RecognitionParam)},
+        {199, sizeof(::GrpcLibraryV1::EmbeddingParam)},
+        {204, sizeof(::GrpcLibraryV1::FileChunk)},
+        {217, sizeof(::GrpcLibraryV1::UpdateInfo)},
+        {222, sizeof(::GrpcLibraryV1::Ping)},
+        {227, sizeof(::GrpcLibraryV1::Pong)},
+        {232, sizeof(::GrpcLibraryV1::LoginReq)},
+        {245, sizeof(::GrpcLibraryV1::LoginResp)},
+        {260, sizeof(::GrpcLibraryV1::LogoutReq)},
+        {267, sizeof(::GrpcLibraryV1::LogoutResp)},
+        {274, sizeof(::GrpcLibraryV1::RegAccountReq)},
+        {281, sizeof(::GrpcLibraryV1::RegAccountResp)},
+        {288, sizeof(::GrpcLibraryV1::QueryReq)},
+        {309, sizeof(::GrpcLibraryV1::QueryResp)},
+        {320, sizeof(::GrpcLibraryV1::StopAnswerReq)},
+        {329, sizeof(::GrpcLibraryV1::StopAnswerResp)},
+        {336, sizeof(::GrpcLibraryV1::RecognizeReq)},
+        {349, sizeof(::GrpcLibraryV1::RecognizeResp)},
+        {362, sizeof(::GrpcLibraryV1::StopRecognizeReq)},
+        {371, sizeof(::GrpcLibraryV1::StopRecognizeResp)},
+        {378, sizeof(::GrpcLibraryV1::GetMessageInfoReq)},
+        {391, sizeof(::GrpcLibraryV1::GetMessageInfoResp)},
+        {398, sizeof(::GrpcLibraryV1::GetSessionReq)},
+        {409, sizeof(::GrpcLibraryV1::GetSessionResp)},
+        {416, sizeof(::GrpcLibraryV1::NewSessionReq)},
+        {429, sizeof(::GrpcLibraryV1::NewSessionResp)},
+        {436, sizeof(::GrpcLibraryV1::ModifySessionTitleReq)},
+        {447, sizeof(::GrpcLibraryV1::ModifySessionTitleResp)},
+        {456, sizeof(::GrpcLibraryV1::DelSessionReq)},
+        {465, sizeof(::GrpcLibraryV1::DelSessionResp)},
+        {472, sizeof(::GrpcLibraryV1::GetPluginInfoReq)},
+        {481, sizeof(::GrpcLibraryV1::GetPluginInfoResp)},
+        {488, sizeof(::GrpcLibraryV1::DownloadReq)},
+        {497, sizeof(::GrpcLibraryV1::DownloadResp)},
+        {508, sizeof(::GrpcLibraryV1::UploadReq)},
+        {521, sizeof(::GrpcLibraryV1::UploadResp)},
+        {528, sizeof(::GrpcLibraryV1::EmbeddingReq)},
+        {539, sizeof(::GrpcLibraryV1::EmbeddingResp)},
+        {550, sizeof(::GrpcLibraryV1::StopEmbeddingReq)},
+        {559, sizeof(::GrpcLibraryV1::StopEmbeddingResp)},
 };
 static const ::_pb::Message* PROTOBUF_NONNULL const file_default_instances[] = {
     &::GrpcLibraryV1::_Session_default_instance_._instance,
@@ -2041,6 +2098,7 @@ static const ::_pb::Message* PROTOBUF_NONNULL const file_default_instances[] = {
     &::GrpcLibraryV1::_MessageInfo_default_instance_._instance,
     &::GrpcLibraryV1::_SamplingParam_default_instance_._instance,
     &::GrpcLibraryV1::_ContextParam_default_instance_._instance,
+    &::GrpcLibraryV1::_VadParam_default_instance_._instance,
     &::GrpcLibraryV1::_RecognitionParam_default_instance_._instance,
     &::GrpcLibraryV1::_EmbeddingParam_default_instance_._instance,
     &::GrpcLibraryV1::_FileChunk_default_instance_._instance,
@@ -2113,146 +2171,152 @@ const char descriptor_table_protodef_src_2fapi_2eproto[] ABSL_ATTRIBUTE_SECTION_
     "\030\020 \001(\002\022\022\n\nembeddings\030\021 \001(\010\022\023\n\013offload_kq"
     "v\030\022 \001(\010\022\017\n\007no_perf\030\023 \001(\010\022\022\n\nop_offload\030\024"
     " \001(\010\022\020\n\010swa_full\030\025 \001(\010\022\022\n\nkv_unified\030\026 \001"
-    "(\010\022\016\n\006prompt\030\027 \001(\t\"\344\004\n\020RecognitionParam\022"
-    "\021\n\tn_threads\030\001 \001(\005\022\026\n\016n_max_text_ctx\030\002 \001"
-    "(\005\022\021\n\toffset_ms\030\003 \001(\005\022\023\n\013duration_ms\030\004 \001"
-    "(\005\022\021\n\ttranslate\030\005 \001(\010\022\027\n\017detect_language"
-    "\030\006 \001(\010\022\020\n\010language\030\007 \001(\t\022\016\n\006no_ctx\030\010 \001(\010"
-    "\022\025\n\rno_timestamps\030\t \001(\010\022\026\n\016single_segmen"
-    "t\030\n \001(\010\022\025\n\rprint_special\030\013 \001(\010\022\026\n\016print_"
-    "progress\030\014 \001(\010\022\026\n\016print_realtime\030\r \001(\010\022\030"
-    "\n\020print_timestamps\030\016 \001(\010\022\034\n\024carry_initia"
-    "l_prompt\030\017 \001(\010\022\026\n\016initial_prompt\030\020 \001(\t\022\026"
-    "\n\016suppress_regex\030\021 \001(\t\022\026\n\016suppress_blank"
-    "\030\022 \001(\010\022\024\n\014suppress_nst\030\023 \001(\010\022\023\n\013temperat"
-    "ure\030\024 \001(\002\022\027\n\017temperature_inc\030\025 \001(\002\022\026\n\016ma"
-    "x_initial_ts\030\026 \001(\002\022\026\n\016length_penalty\030\027 \001"
-    "(\002\022\025\n\rentropy_thold\030\030 \001(\002\022\025\n\rlogprob_tho"
-    "ld\030\031 \001(\002\022\027\n\017no_speech_thold\030\032 \001(\002\"#\n\016Emb"
-    "eddingParam\022\021\n\tdimension\030\001 \001(\005\"[\n\tFileCh"
-    "unk\022\n\n\002id\030\001 \001(\003\022\014\n\004data\030\002 \001(\014\022\021\n\tstart_p"
-    "os\030\003 \001(\003\022\017\n\007end_pos\030\004 \001(\003\022\020\n\010filename\030\005 "
-    "\001(\t\"\"\n\nUpdateInfo\022\024\n\014force_update\030\001 \001(\010\""
-    "\031\n\004Ping\022\021\n\ttimestamp\030\001 \001(\003\"\031\n\004Pong\022\021\n\tti"
-    "mestamp\030\001 \001(\003\"c\n\010LoginReq\022\017\n\007account\030\001 \001"
-    "(\t\022\016\n\006passwd\030\002 \001(\t\022\020\n\010platform\030\003 \001(\t\022\014\n\004"
-    "arch\030\004 \001(\t\022\026\n\016client_version\030\005 \001(\t\"\230\001\n\tL"
-    "oginResp\022\022\n\nerror_code\030\001 \001(\005\022\017\n\007user_id\030"
-    "\002 \001(\003\022\014\n\004auth\030\003 \001(\t\022\017\n\007account\030\004 \001(\t\022\027\n\017"
-    "last_login_time\030\005 \001(\t\022.\n\013update_info\030\006 \001"
-    "(\0132\031.GrpcLibraryV1.UpdateInfo\"*\n\tLogoutR"
-    "eq\022\017\n\007user_id\030\001 \001(\003\022\014\n\004auth\030\002 \001(\t\"1\n\nLog"
-    "outResp\022\022\n\nerror_code\030\001 \001(\005\022\017\n\007user_id\030\002"
-    " \001(\003\"0\n\rRegAccountReq\022\017\n\007account\030\001 \001(\t\022\016"
-    "\n\006passwd\030\002 \001(\t\"5\n\016RegAccountResp\022\022\n\nerro"
-    "r_code\030\001 \001(\005\022\017\n\007user_id\030\002 \001(\003\"\322\001\n\010QueryR"
-    "eq\022\n\n\002id\030\001 \001(\003\022\017\n\007user_id\030\002 \001(\003\022\014\n\004auth\030"
-    "\003 \001(\t\022\017\n\007content\030\004 \001(\t\022\r\n\005model\030\005 \001(\t\022\020\n"
-    "\010pipeline\030\006 \001(\t\022\017\n\007api_key\030\007 \001(\t\022.\n\010samp"
-    "ling\030\010 \001(\0132\034.GrpcLibraryV1.SamplingParam"
-    "\022(\n\003ctx\030\t \001(\0132\033.GrpcLibraryV1.ContextPar"
-    "am\"Q\n\tQueryResp\022\022\n\nerror_code\030\001 \001(\005\022\n\n\002i"
-    "d\030\002 \001(\003\022\017\n\007content\030\003 \001(\t\022\023\n\013is_finished\030"
-    "\004 \001(\010\"B\n\rStopAnswerReq\022\022\n\nsession_id\030\001 \001"
-    "(\003\022\017\n\007user_id\030\002 \001(\003\022\014\n\004auth\030\003 \001(\t\"8\n\016Sto"
-    "pAnswerResp\022\022\n\nerror_code\030\001 \001(\005\022\022\n\nsessi"
-    "on_id\030\002 \001(\003\"\213\001\n\014RecognizeReq\022\016\n\006ctx_id\030\001"
-    " \001(\t\022\022\n\nsession_id\030\002 \001(\003\0220\n\005param\030\003 \001(\0132"
-    "\037.GrpcLibraryV1.RecognitionParamH\000\022\025\n\013au"
-    "dio_chunk\030\004 \001(\014H\000B\016\n\014request_type\"t\n\rRec"
-    "ognizeResp\022\022\n\nerror_code\030\001 \001(\005\022\022\n\nsessio"
-    "n_id\030\002 \001(\003\022\022\n\ntranscript\030\003 \001(\t\022\023\n\013is_fin"
-    "ished\030\004 \001(\010\022\022\n\nconfidence\030\005 \001(\001\"E\n\020StopR"
-    "ecognizeReq\022\022\n\nsession_id\030\001 \001(\003\022\017\n\007user_"
-    "id\030\002 \001(\003\022\014\n\004auth\030\003 \001(\t\";\n\021StopRecognizeR"
-    "esp\022\022\n\nerror_code\030\001 \001(\005\022\022\n\nsession_id\030\002 "
-    "\001(\003\"a\n\021GetMessageInfoReq\022\n\n\002id\030\001 \001(\003\022\022\n\n"
-    "session_id\030\002 \001(\003\022\r\n\005limit\030\003 \001(\005\022\017\n\007user_"
-    "id\030\004 \001(\003\022\014\n\004auth\030\005 \001(\t\"V\n\022GetMessageInfo"
-    "Resp\022\022\n\nerror_code\030\001 \001(\005\022,\n\010messages\030\002 \003"
-    "(\0132\032.GrpcLibraryV1.MessageInfo\"I\n\rGetSes"
-    "sionReq\022\n\n\002id\030\001 \001(\003\022\017\n\007user_id\030\002 \001(\003\022\014\n\004"
-    "auth\030\003 \001(\t\022\r\n\005limit\030\004 \001(\005\"N\n\016GetSessionR"
-    "esp\022\022\n\nerror_code\030\001 \001(\005\022(\n\010sessions\030\002 \003("
-    "\0132\026.GrpcLibraryV1.Session\"]\n\rNewSessionR"
-    "eq\022\017\n\007user_id\030\001 \001(\003\022\014\n\004auth\030\002 \001(\t\022\r\n\005tit"
-    "le\030\003 \001(\t\022\017\n\007content\030\004 \001(\t\022\r\n\005model\030\005 \001(\t"
-    "\"M\n\016NewSessionResp\022\022\n\nerror_code\030\001 \001(\005\022\'"
-    "\n\007session\030\002 \001(\0132\026.GrpcLibraryV1.Session\""
-    "Q\n\025ModifySessionTitleReq\022\n\n\002id\030\001 \001(\003\022\017\n\007"
-    "user_id\030\002 \001(\003\022\014\n\004auth\030\003 \001(\t\022\r\n\005title\030\004 \001"
-    "(\t\"G\n\026ModifySessionTitleResp\022\022\n\nerror_co"
-    "de\030\001 \001(\005\022\n\n\002id\030\002 \001(\003\022\r\n\005title\030\003 \001(\t\";\n\rD"
-    "elSessionReq\022\017\n\007user_id\030\001 \001(\003\022\014\n\004auth\030\002 "
-    "\001(\t\022\013\n\003ids\030\003 \003(\003\"1\n\016DelSessionResp\022\022\n\ner"
-    "ror_code\030\001 \001(\005\022\013\n\003ids\030\002 \003(\003\"B\n\020GetPlugin"
-    "InfoReq\022\014\n\004hash\030\001 \001(\t\022\021\n\tpublisher\030\002 \001(\t"
-    "\022\r\n\005limit\030\003 \001(\005\"O\n\021GetPluginInfoResp\022\022\n\n"
-    "error_code\030\001 \001(\005\022&\n\007plugins\030\002 \003(\0132\025.Grpc"
-    "LibraryV1.Plugin\":\n\013DownloadReq\022\014\n\004hash\030"
-    "\001 \001(\t\022\017\n\007user_id\030\002 \001(\003\022\014\n\004auth\030\003 \001(\t\"O\n\014"
-    "DownloadResp\022\022\n\nerror_code\030\001 \001(\005\022\014\n\004hash"
-    "\030\002 \001(\t\022\014\n\004addr\030\003 \001(\t\022\017\n\007size_kb\030\004 \001(\003\"W\n"
-    "\tUploadReq\022\014\n\004hash\030\001 \001(\t\022\017\n\007user_id\030\002 \001("
-    "\003\022\014\n\004auth\030\003 \001(\t\022\014\n\004addr\030\004 \001(\t\022\017\n\007size_kb"
-    "\030\005 \001(\003\".\n\nUploadResp\022\022\n\nerror_code\030\001 \001(\005"
-    "\022\014\n\004hash\030\002 \001(\t\"\212\001\n\014EmbeddingReq\022\017\n\007task_"
-    "id\030\001 \001(\003\022.\n\005param\030\002 \001(\0132\035.GrpcLibraryV1."
-    "EmbeddingParamH\000\022)\n\005chunk\030\003 \001(\0132\030.GrpcLi"
-    "braryV1.FileChunkH\000B\016\n\014request_type\"]\n\rE"
-    "mbeddingResp\022\022\n\nerror_code\030\001 \001(\005\022\017\n\007task"
-    "_id\030\002 \001(\003\022\020\n\010chunk_id\030\003 \001(\003\022\025\n\rvector_in"
-    "dexs\030\004 \001(\014\"B\n\020StopEmbeddingReq\022\017\n\007task_i"
-    "d\030\001 \001(\003\022\017\n\007user_id\030\002 \001(\003\022\014\n\004auth\030\003 \001(\t\"8"
-    "\n\021StopEmbeddingResp\022\022\n\nerror_code\030\001 \001(\005\022"
-    "\017\n\007task_id\030\002 \001(\0032\352\n\n\013GrpcService\0227\n\tHear"
-    "tbeat\022\023.GrpcLibraryV1.Ping\032\023.GrpcLibrary"
-    "V1.Pong\"\000\022<\n\005Login\022\027.GrpcLibraryV1.Login"
-    "Req\032\030.GrpcLibraryV1.LoginResp\"\000\022\?\n\006Logou"
-    "t\022\030.GrpcLibraryV1.LogoutReq\032\031.GrpcLibrar"
-    "yV1.LogoutResp\"\000\022K\n\nRegAccount\022\034.GrpcLib"
-    "raryV1.RegAccountReq\032\035.GrpcLibraryV1.Reg"
-    "AccountResp\"\000\022>\n\005Query\022\027.GrpcLibraryV1.Q"
-    "ueryReq\032\030.GrpcLibraryV1.QueryResp\"\0000\001\022K\n"
-    "\nStopAnswer\022\034.GrpcLibraryV1.StopAnswerRe"
-    "q\032\035.GrpcLibraryV1.StopAnswerResp\"\000\022L\n\tRe"
-    "cognize\022\033.GrpcLibraryV1.RecognizeReq\032\034.G"
-    "rpcLibraryV1.RecognizeResp\"\000(\0010\001\022T\n\rStop"
-    "Recognize\022\037.GrpcLibraryV1.StopRecognizeR"
-    "eq\032 .GrpcLibraryV1.StopRecognizeResp\"\000\022W"
-    "\n\016GetMessageInfo\022 .GrpcLibraryV1.GetMess"
-    "ageInfoReq\032!.GrpcLibraryV1.GetMessageInf"
-    "oResp\"\000\022K\n\nGetSession\022\034.GrpcLibraryV1.Ge"
-    "tSessionReq\032\035.GrpcLibraryV1.GetSessionRe"
-    "sp\"\000\022K\n\nNewSession\022\034.GrpcLibraryV1.NewSe"
-    "ssionReq\032\035.GrpcLibraryV1.NewSessionResp\""
-    "\000\022c\n\022ModifySessionTitle\022$.GrpcLibraryV1."
-    "ModifySessionTitleReq\032%.GrpcLibraryV1.Mo"
-    "difySessionTitleResp\"\000\022K\n\nDelSession\022\034.G"
-    "rpcLibraryV1.DelSessionReq\032\035.GrpcLibrary"
-    "V1.DelSessionResp\"\000\022T\n\rGetPluginInfo\022\037.G"
-    "rpcLibraryV1.GetPluginInfoReq\032 .GrpcLibr"
-    "aryV1.GetPluginInfoResp\"\000\022E\n\010Download\022\032."
-    "GrpcLibraryV1.DownloadReq\032\033.GrpcLibraryV"
-    "1.DownloadResp\"\000\022\?\n\006Upload\022\030.GrpcLibrary"
-    "V1.UploadReq\032\031.GrpcLibraryV1.UploadResp\""
-    "\000\022L\n\tEmbedding\022\033.GrpcLibraryV1.Embedding"
-    "Req\032\034.GrpcLibraryV1.EmbeddingResp\"\000(\0010\001\022"
-    "T\n\rStopEmbedding\022\037.GrpcLibraryV1.StopEmb"
-    "eddingReq\032 .GrpcLibraryV1.StopEmbeddingR"
-    "esp\"\000b\006proto3"
+    "(\010\022\016\n\006prompt\030\027 \001(\t\"\236\001\n\010VadParam\022\021\n\tthres"
+    "hold\030\001 \001(\002\022\031\n\021min_speech_dur_ms\030\002 \001(\005\022\032\n"
+    "\022min_silence_dur_ms\030\003 \001(\005\022\030\n\020max_speech_"
+    "dur_s\030\004 \001(\002\022\025\n\rspeech_pad_ms\030\005 \001(\005\022\027\n\017sa"
+    "mples_overlap\030\006 \001(\002\"\266\005\n\020RecognitionParam"
+    "\022\021\n\tn_threads\030\001 \001(\005\022\026\n\016n_max_text_ctx\030\002 "
+    "\001(\005\022\021\n\toffset_ms\030\003 \001(\005\022\023\n\013duration_ms\030\004 "
+    "\001(\005\022\021\n\ttranslate\030\005 \001(\010\022\027\n\017detect_languag"
+    "e\030\006 \001(\010\022\020\n\010language\030\007 \001(\t\022\016\n\006no_ctx\030\010 \001("
+    "\010\022\025\n\rno_timestamps\030\t \001(\010\022\026\n\016single_segme"
+    "nt\030\n \001(\010\022\025\n\rprint_special\030\013 \001(\010\022\026\n\016print"
+    "_progress\030\014 \001(\010\022\026\n\016print_realtime\030\r \001(\010\022"
+    "\030\n\020print_timestamps\030\016 \001(\010\022\034\n\024carry_initi"
+    "al_prompt\030\017 \001(\010\022\026\n\016initial_prompt\030\020 \001(\t\022"
+    "\026\n\016suppress_regex\030\021 \001(\t\022\026\n\016suppress_blan"
+    "k\030\022 \001(\010\022\024\n\014suppress_nst\030\023 \001(\010\022\023\n\013tempera"
+    "ture\030\024 \001(\002\022\027\n\017temperature_inc\030\025 \001(\002\022\026\n\016m"
+    "ax_initial_ts\030\026 \001(\002\022\026\n\016length_penalty\030\027 "
+    "\001(\002\022\025\n\rentropy_thold\030\030 \001(\002\022\025\n\rlogprob_th"
+    "old\030\031 \001(\002\022\027\n\017no_speech_thold\030\032 \001(\002\022\013\n\003va"
+    "d\030\033 \001(\010\022\026\n\016vad_model_path\030\034 \001(\t\022+\n\nvad_p"
+    "arams\030\035 \001(\0132\027.GrpcLibraryV1.VadParam\"#\n\016"
+    "EmbeddingParam\022\021\n\tdimension\030\001 \001(\005\"[\n\tFil"
+    "eChunk\022\n\n\002id\030\001 \001(\003\022\014\n\004data\030\002 \001(\014\022\021\n\tstar"
+    "t_pos\030\003 \001(\003\022\017\n\007end_pos\030\004 \001(\003\022\020\n\010filename"
+    "\030\005 \001(\t\"\"\n\nUpdateInfo\022\024\n\014force_update\030\001 \001"
+    "(\010\"\031\n\004Ping\022\021\n\ttimestamp\030\001 \001(\003\"\031\n\004Pong\022\021\n"
+    "\ttimestamp\030\001 \001(\003\"c\n\010LoginReq\022\017\n\007account\030"
+    "\001 \001(\t\022\016\n\006passwd\030\002 \001(\t\022\020\n\010platform\030\003 \001(\t\022"
+    "\014\n\004arch\030\004 \001(\t\022\026\n\016client_version\030\005 \001(\t\"\230\001"
+    "\n\tLoginResp\022\022\n\nerror_code\030\001 \001(\005\022\017\n\007user_"
+    "id\030\002 \001(\003\022\014\n\004auth\030\003 \001(\t\022\017\n\007account\030\004 \001(\t\022"
+    "\027\n\017last_login_time\030\005 \001(\t\022.\n\013update_info\030"
+    "\006 \001(\0132\031.GrpcLibraryV1.UpdateInfo\"*\n\tLogo"
+    "utReq\022\017\n\007user_id\030\001 \001(\003\022\014\n\004auth\030\002 \001(\t\"1\n\n"
+    "LogoutResp\022\022\n\nerror_code\030\001 \001(\005\022\017\n\007user_i"
+    "d\030\002 \001(\003\"0\n\rRegAccountReq\022\017\n\007account\030\001 \001("
+    "\t\022\016\n\006passwd\030\002 \001(\t\"5\n\016RegAccountResp\022\022\n\ne"
+    "rror_code\030\001 \001(\005\022\017\n\007user_id\030\002 \001(\003\"\322\001\n\010Que"
+    "ryReq\022\n\n\002id\030\001 \001(\003\022\017\n\007user_id\030\002 \001(\003\022\014\n\004au"
+    "th\030\003 \001(\t\022\017\n\007content\030\004 \001(\t\022\r\n\005model\030\005 \001(\t"
+    "\022\020\n\010pipeline\030\006 \001(\t\022\017\n\007api_key\030\007 \001(\t\022.\n\010s"
+    "ampling\030\010 \001(\0132\034.GrpcLibraryV1.SamplingPa"
+    "ram\022(\n\003ctx\030\t \001(\0132\033.GrpcLibraryV1.Context"
+    "Param\"Q\n\tQueryResp\022\022\n\nerror_code\030\001 \001(\005\022\n"
+    "\n\002id\030\002 \001(\003\022\017\n\007content\030\003 \001(\t\022\023\n\013is_finish"
+    "ed\030\004 \001(\010\"B\n\rStopAnswerReq\022\022\n\nsession_id\030"
+    "\001 \001(\003\022\017\n\007user_id\030\002 \001(\003\022\014\n\004auth\030\003 \001(\t\"8\n\016"
+    "StopAnswerResp\022\022\n\nerror_code\030\001 \001(\005\022\022\n\nse"
+    "ssion_id\030\002 \001(\003\"\213\001\n\014RecognizeReq\022\016\n\006ctx_i"
+    "d\030\001 \001(\t\022\022\n\nsession_id\030\002 \001(\003\0220\n\005param\030\003 \001"
+    "(\0132\037.GrpcLibraryV1.RecognitionParamH\000\022\025\n"
+    "\013audio_chunk\030\004 \001(\014H\000B\016\n\014request_type\"t\n\r"
+    "RecognizeResp\022\022\n\nerror_code\030\001 \001(\005\022\022\n\nses"
+    "sion_id\030\002 \001(\003\022\022\n\ntranscript\030\003 \001(\t\022\023\n\013is_"
+    "finished\030\004 \001(\010\022\022\n\nconfidence\030\005 \001(\001\"E\n\020St"
+    "opRecognizeReq\022\022\n\nsession_id\030\001 \001(\003\022\017\n\007us"
+    "er_id\030\002 \001(\003\022\014\n\004auth\030\003 \001(\t\";\n\021StopRecogni"
+    "zeResp\022\022\n\nerror_code\030\001 \001(\005\022\022\n\nsession_id"
+    "\030\002 \001(\003\"a\n\021GetMessageInfoReq\022\n\n\002id\030\001 \001(\003\022"
+    "\022\n\nsession_id\030\002 \001(\003\022\r\n\005limit\030\003 \001(\005\022\017\n\007us"
+    "er_id\030\004 \001(\003\022\014\n\004auth\030\005 \001(\t\"V\n\022GetMessageI"
+    "nfoResp\022\022\n\nerror_code\030\001 \001(\005\022,\n\010messages\030"
+    "\002 \003(\0132\032.GrpcLibraryV1.MessageInfo\"I\n\rGet"
+    "SessionReq\022\n\n\002id\030\001 \001(\003\022\017\n\007user_id\030\002 \001(\003\022"
+    "\014\n\004auth\030\003 \001(\t\022\r\n\005limit\030\004 \001(\005\"N\n\016GetSessi"
+    "onResp\022\022\n\nerror_code\030\001 \001(\005\022(\n\010sessions\030\002"
+    " \003(\0132\026.GrpcLibraryV1.Session\"]\n\rNewSessi"
+    "onReq\022\017\n\007user_id\030\001 \001(\003\022\014\n\004auth\030\002 \001(\t\022\r\n\005"
+    "title\030\003 \001(\t\022\017\n\007content\030\004 \001(\t\022\r\n\005model\030\005 "
+    "\001(\t\"M\n\016NewSessionResp\022\022\n\nerror_code\030\001 \001("
+    "\005\022\'\n\007session\030\002 \001(\0132\026.GrpcLibraryV1.Sessi"
+    "on\"Q\n\025ModifySessionTitleReq\022\n\n\002id\030\001 \001(\003\022"
+    "\017\n\007user_id\030\002 \001(\003\022\014\n\004auth\030\003 \001(\t\022\r\n\005title\030"
+    "\004 \001(\t\"G\n\026ModifySessionTitleResp\022\022\n\nerror"
+    "_code\030\001 \001(\005\022\n\n\002id\030\002 \001(\003\022\r\n\005title\030\003 \001(\t\";"
+    "\n\rDelSessionReq\022\017\n\007user_id\030\001 \001(\003\022\014\n\004auth"
+    "\030\002 \001(\t\022\013\n\003ids\030\003 \003(\003\"1\n\016DelSessionResp\022\022\n"
+    "\nerror_code\030\001 \001(\005\022\013\n\003ids\030\002 \003(\003\"B\n\020GetPlu"
+    "ginInfoReq\022\014\n\004hash\030\001 \001(\t\022\021\n\tpublisher\030\002 "
+    "\001(\t\022\r\n\005limit\030\003 \001(\005\"O\n\021GetPluginInfoResp\022"
+    "\022\n\nerror_code\030\001 \001(\005\022&\n\007plugins\030\002 \003(\0132\025.G"
+    "rpcLibraryV1.Plugin\":\n\013DownloadReq\022\014\n\004ha"
+    "sh\030\001 \001(\t\022\017\n\007user_id\030\002 \001(\003\022\014\n\004auth\030\003 \001(\t\""
+    "O\n\014DownloadResp\022\022\n\nerror_code\030\001 \001(\005\022\014\n\004h"
+    "ash\030\002 \001(\t\022\014\n\004addr\030\003 \001(\t\022\017\n\007size_kb\030\004 \001(\003"
+    "\"W\n\tUploadReq\022\014\n\004hash\030\001 \001(\t\022\017\n\007user_id\030\002"
+    " \001(\003\022\014\n\004auth\030\003 \001(\t\022\014\n\004addr\030\004 \001(\t\022\017\n\007size"
+    "_kb\030\005 \001(\003\".\n\nUploadResp\022\022\n\nerror_code\030\001 "
+    "\001(\005\022\014\n\004hash\030\002 \001(\t\"\212\001\n\014EmbeddingReq\022\017\n\007ta"
+    "sk_id\030\001 \001(\003\022.\n\005param\030\002 \001(\0132\035.GrpcLibrary"
+    "V1.EmbeddingParamH\000\022)\n\005chunk\030\003 \001(\0132\030.Grp"
+    "cLibraryV1.FileChunkH\000B\016\n\014request_type\"]"
+    "\n\rEmbeddingResp\022\022\n\nerror_code\030\001 \001(\005\022\017\n\007t"
+    "ask_id\030\002 \001(\003\022\020\n\010chunk_id\030\003 \001(\003\022\025\n\rvector"
+    "_indexs\030\004 \001(\014\"B\n\020StopEmbeddingReq\022\017\n\007tas"
+    "k_id\030\001 \001(\003\022\017\n\007user_id\030\002 \001(\003\022\014\n\004auth\030\003 \001("
+    "\t\"8\n\021StopEmbeddingResp\022\022\n\nerror_code\030\001 \001"
+    "(\005\022\017\n\007task_id\030\002 \001(\0032\352\n\n\013GrpcService\0227\n\tH"
+    "eartbeat\022\023.GrpcLibraryV1.Ping\032\023.GrpcLibr"
+    "aryV1.Pong\"\000\022<\n\005Login\022\027.GrpcLibraryV1.Lo"
+    "ginReq\032\030.GrpcLibraryV1.LoginResp\"\000\022\?\n\006Lo"
+    "gout\022\030.GrpcLibraryV1.LogoutReq\032\031.GrpcLib"
+    "raryV1.LogoutResp\"\000\022K\n\nRegAccount\022\034.Grpc"
+    "LibraryV1.RegAccountReq\032\035.GrpcLibraryV1."
+    "RegAccountResp\"\000\022>\n\005Query\022\027.GrpcLibraryV"
+    "1.QueryReq\032\030.GrpcLibraryV1.QueryResp\"\0000\001"
+    "\022K\n\nStopAnswer\022\034.GrpcLibraryV1.StopAnswe"
+    "rReq\032\035.GrpcLibraryV1.StopAnswerResp\"\000\022L\n"
+    "\tRecognize\022\033.GrpcLibraryV1.RecognizeReq\032"
+    "\034.GrpcLibraryV1.RecognizeResp\"\000(\0010\001\022T\n\rS"
+    "topRecognize\022\037.GrpcLibraryV1.StopRecogni"
+    "zeReq\032 .GrpcLibraryV1.StopRecognizeResp\""
+    "\000\022W\n\016GetMessageInfo\022 .GrpcLibraryV1.GetM"
+    "essageInfoReq\032!.GrpcLibraryV1.GetMessage"
+    "InfoResp\"\000\022K\n\nGetSession\022\034.GrpcLibraryV1"
+    ".GetSessionReq\032\035.GrpcLibraryV1.GetSessio"
+    "nResp\"\000\022K\n\nNewSession\022\034.GrpcLibraryV1.Ne"
+    "wSessionReq\032\035.GrpcLibraryV1.NewSessionRe"
+    "sp\"\000\022c\n\022ModifySessionTitle\022$.GrpcLibrary"
+    "V1.ModifySessionTitleReq\032%.GrpcLibraryV1"
+    ".ModifySessionTitleResp\"\000\022K\n\nDelSession\022"
+    "\034.GrpcLibraryV1.DelSessionReq\032\035.GrpcLibr"
+    "aryV1.DelSessionResp\"\000\022T\n\rGetPluginInfo\022"
+    "\037.GrpcLibraryV1.GetPluginInfoReq\032 .GrpcL"
+    "ibraryV1.GetPluginInfoResp\"\000\022E\n\010Download"
+    "\022\032.GrpcLibraryV1.DownloadReq\032\033.GrpcLibra"
+    "ryV1.DownloadResp\"\000\022\?\n\006Upload\022\030.GrpcLibr"
+    "aryV1.UploadReq\032\031.GrpcLibraryV1.UploadRe"
+    "sp\"\000\022L\n\tEmbedding\022\033.GrpcLibraryV1.Embedd"
+    "ingReq\032\034.GrpcLibraryV1.EmbeddingResp\"\000(\001"
+    "0\001\022T\n\rStopEmbedding\022\037.GrpcLibraryV1.Stop"
+    "EmbeddingReq\032 .GrpcLibraryV1.StopEmbeddi"
+    "ngResp\"\000b\006proto3"
 };
 static ::absl::once_flag descriptor_table_src_2fapi_2eproto_once;
 PROTOBUF_CONSTINIT const ::_pbi::DescriptorTable descriptor_table_src_2fapi_2eproto = {
     false,
     false,
-    6253,
+    6496,
     descriptor_table_protodef_src_2fapi_2eproto,
     "src/api.proto",
     &descriptor_table_src_2fapi_2eproto_once,
     nullptr,
     0,
-    45,
+    46,
     schemas,
     file_default_instances,
     TableStruct_src_2fapi_2eproto::offsets,
@@ -5183,6 +5247,406 @@ void ContextParam::InternalSwap(ContextParam* PROTOBUF_RESTRICT PROTOBUF_NONNULL
 }
 // ===================================================================
 
+class VadParam::_Internal {
+ public:
+  using HasBits =
+      decltype(::std::declval<VadParam>()._impl_._has_bits_);
+  static constexpr ::int32_t kHasBitsOffset =
+      8 * PROTOBUF_FIELD_OFFSET(VadParam, _impl_._has_bits_);
+};
+
+VadParam::VadParam(::google::protobuf::Arena* PROTOBUF_NULLABLE arena)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(arena, VadParam_class_data_.base()) {
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(arena) {
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  SharedCtor(arena);
+  // @@protoc_insertion_point(arena_constructor:GrpcLibraryV1.VadParam)
+}
+VadParam::VadParam(
+    ::google::protobuf::Arena* PROTOBUF_NULLABLE arena, const VadParam& from)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(arena, VadParam_class_data_.base()),
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(arena),
+#endif  // PROTOBUF_CUSTOM_VTABLE
+      _impl_(from._impl_) {
+  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
+      from._internal_metadata_);
+}
+PROTOBUF_NDEBUG_INLINE VadParam::Impl_::Impl_(
+    [[maybe_unused]] ::google::protobuf::internal::InternalVisibility visibility,
+    [[maybe_unused]] ::google::protobuf::Arena* PROTOBUF_NULLABLE arena)
+      : _cached_size_{0} {}
+
+inline void VadParam::SharedCtor(::_pb::Arena* PROTOBUF_NULLABLE arena) {
+  new (&_impl_) Impl_(internal_visibility(), arena);
+  ::memset(reinterpret_cast<char*>(&_impl_) +
+               offsetof(Impl_, threshold_),
+           0,
+           offsetof(Impl_, samples_overlap_) -
+               offsetof(Impl_, threshold_) +
+               sizeof(Impl_::samples_overlap_));
+}
+VadParam::~VadParam() {
+  // @@protoc_insertion_point(destructor:GrpcLibraryV1.VadParam)
+  SharedDtor(*this);
+}
+inline void VadParam::SharedDtor(MessageLite& self) {
+  VadParam& this_ = static_cast<VadParam&>(self);
+  if constexpr (::_pbi::DebugHardenCheckHasBitConsistency()) {
+    this_.CheckHasBitConsistency();
+  }
+  this_._internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
+  ABSL_DCHECK(this_.GetArena() == nullptr);
+  this_._impl_.~Impl_();
+}
+
+inline void* PROTOBUF_NONNULL VadParam::PlacementNew_(
+    const void* PROTOBUF_NONNULL, void* PROTOBUF_NONNULL mem,
+    ::google::protobuf::Arena* PROTOBUF_NULLABLE arena) {
+  return ::new (mem) VadParam(arena);
+}
+constexpr auto VadParam::InternalNewImpl_() {
+  return ::google::protobuf::internal::MessageCreator::ZeroInit(sizeof(VadParam),
+                                            alignof(VadParam));
+}
+constexpr auto VadParam::InternalGenerateClassData_() {
+  return ::google::protobuf::internal::ClassDataFull{
+      ::google::protobuf::internal::ClassData{
+          &_VadParam_default_instance_._instance,
+          &_table_.header,
+          nullptr,  // OnDemandRegisterArenaDtor
+          nullptr,  // IsInitialized
+          &VadParam::MergeImpl,
+          ::google::protobuf::Message::GetNewImpl<VadParam>(),
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+          &VadParam::SharedDtor,
+          ::google::protobuf::Message::GetClearImpl<VadParam>(), &VadParam::ByteSizeLong,
+              &VadParam::_InternalSerialize,
+#endif  // PROTOBUF_CUSTOM_VTABLE
+          PROTOBUF_FIELD_OFFSET(VadParam, _impl_._cached_size_),
+          false,
+      },
+      &VadParam::kDescriptorMethods,
+      &descriptor_table_src_2fapi_2eproto,
+      nullptr,  // tracker
+  };
+}
+
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 const
+    ::google::protobuf::internal::ClassDataFull VadParam_class_data_ =
+        VadParam::InternalGenerateClassData_();
+
+PROTOBUF_ATTRIBUTE_WEAK const ::google::protobuf::internal::ClassData* PROTOBUF_NONNULL
+VadParam::GetClassData() const {
+  ::google::protobuf::internal::PrefetchToLocalCache(&VadParam_class_data_);
+  ::google::protobuf::internal::PrefetchToLocalCache(VadParam_class_data_.tc_table);
+  return VadParam_class_data_.base();
+}
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::_pbi::TcParseTable<3, 6, 0, 0, 2>
+VadParam::_table_ = {
+  {
+    PROTOBUF_FIELD_OFFSET(VadParam, _impl_._has_bits_),
+    0, // no _extensions_
+    6, 56,  // max_field_number, fast_idx_mask
+    offsetof(decltype(_table_), field_lookup_table),
+    4294967232,  // skipmap
+    offsetof(decltype(_table_), field_entries),
+    6,  // num_field_entries
+    0,  // num_aux_entries
+    offsetof(decltype(_table_), field_names),  // no aux_entries
+    VadParam_class_data_.base(),
+    nullptr,  // post_loop_handler
+    ::_pbi::TcParser::GenericFallback,  // fallback
+    #ifdef PROTOBUF_PREFETCH_PARSE_TABLE
+    ::_pbi::TcParser::GetTable<::GrpcLibraryV1::VadParam>(),  // to_prefetch
+    #endif  // PROTOBUF_PREFETCH_PARSE_TABLE
+  }, {{
+    {::_pbi::TcParser::MiniParse, {}},
+    // float threshold = 1;
+    {::_pbi::TcParser::FastF32S1,
+     {13, 0, 0,
+      PROTOBUF_FIELD_OFFSET(VadParam, _impl_.threshold_)}},
+    // int32 min_speech_dur_ms = 2;
+    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(VadParam, _impl_.min_speech_dur_ms_), 1>(),
+     {16, 1, 0,
+      PROTOBUF_FIELD_OFFSET(VadParam, _impl_.min_speech_dur_ms_)}},
+    // int32 min_silence_dur_ms = 3;
+    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(VadParam, _impl_.min_silence_dur_ms_), 2>(),
+     {24, 2, 0,
+      PROTOBUF_FIELD_OFFSET(VadParam, _impl_.min_silence_dur_ms_)}},
+    // float max_speech_dur_s = 4;
+    {::_pbi::TcParser::FastF32S1,
+     {37, 3, 0,
+      PROTOBUF_FIELD_OFFSET(VadParam, _impl_.max_speech_dur_s_)}},
+    // int32 speech_pad_ms = 5;
+    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(VadParam, _impl_.speech_pad_ms_), 4>(),
+     {40, 4, 0,
+      PROTOBUF_FIELD_OFFSET(VadParam, _impl_.speech_pad_ms_)}},
+    // float samples_overlap = 6;
+    {::_pbi::TcParser::FastF32S1,
+     {53, 5, 0,
+      PROTOBUF_FIELD_OFFSET(VadParam, _impl_.samples_overlap_)}},
+    {::_pbi::TcParser::MiniParse, {}},
+  }}, {{
+    65535, 65535
+  }}, {{
+    // float threshold = 1;
+    {PROTOBUF_FIELD_OFFSET(VadParam, _impl_.threshold_), _Internal::kHasBitsOffset + 0, 0, (0 | ::_fl::kFcOptional | ::_fl::kFloat)},
+    // int32 min_speech_dur_ms = 2;
+    {PROTOBUF_FIELD_OFFSET(VadParam, _impl_.min_speech_dur_ms_), _Internal::kHasBitsOffset + 1, 0, (0 | ::_fl::kFcOptional | ::_fl::kInt32)},
+    // int32 min_silence_dur_ms = 3;
+    {PROTOBUF_FIELD_OFFSET(VadParam, _impl_.min_silence_dur_ms_), _Internal::kHasBitsOffset + 2, 0, (0 | ::_fl::kFcOptional | ::_fl::kInt32)},
+    // float max_speech_dur_s = 4;
+    {PROTOBUF_FIELD_OFFSET(VadParam, _impl_.max_speech_dur_s_), _Internal::kHasBitsOffset + 3, 0, (0 | ::_fl::kFcOptional | ::_fl::kFloat)},
+    // int32 speech_pad_ms = 5;
+    {PROTOBUF_FIELD_OFFSET(VadParam, _impl_.speech_pad_ms_), _Internal::kHasBitsOffset + 4, 0, (0 | ::_fl::kFcOptional | ::_fl::kInt32)},
+    // float samples_overlap = 6;
+    {PROTOBUF_FIELD_OFFSET(VadParam, _impl_.samples_overlap_), _Internal::kHasBitsOffset + 5, 0, (0 | ::_fl::kFcOptional | ::_fl::kFloat)},
+  }},
+  // no aux_entries
+  {{
+  }},
+};
+PROTOBUF_NOINLINE void VadParam::Clear() {
+// @@protoc_insertion_point(message_clear_start:GrpcLibraryV1.VadParam)
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  ::uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  cached_has_bits = _impl_._has_bits_[0];
+  if (BatchCheckHasBit(cached_has_bits, 0x0000003fU)) {
+    ::memset(&_impl_.threshold_, 0, static_cast<::size_t>(
+        reinterpret_cast<char*>(&_impl_.samples_overlap_) -
+        reinterpret_cast<char*>(&_impl_.threshold_)) + sizeof(_impl_.samples_overlap_));
+  }
+  _impl_._has_bits_.Clear();
+  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
+}
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+::uint8_t* PROTOBUF_NONNULL VadParam::_InternalSerialize(
+    const ::google::protobuf::MessageLite& base, ::uint8_t* PROTOBUF_NONNULL target,
+    ::google::protobuf::io::EpsCopyOutputStream* PROTOBUF_NONNULL stream) {
+  const VadParam& this_ = static_cast<const VadParam&>(base);
+#else   // PROTOBUF_CUSTOM_VTABLE
+::uint8_t* PROTOBUF_NONNULL VadParam::_InternalSerialize(
+    ::uint8_t* PROTOBUF_NONNULL target,
+    ::google::protobuf::io::EpsCopyOutputStream* PROTOBUF_NONNULL stream) const {
+  const VadParam& this_ = *this;
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  if constexpr (::_pbi::DebugHardenCheckHasBitConsistency()) {
+    this_.CheckHasBitConsistency();
+  }
+  // @@protoc_insertion_point(serialize_to_array_start:GrpcLibraryV1.VadParam)
+  ::uint32_t cached_has_bits = 0;
+  (void)cached_has_bits;
+
+  cached_has_bits = this_._impl_._has_bits_[0];
+  // float threshold = 1;
+  if (CheckHasBit(cached_has_bits, 0x00000001U)) {
+    if (::absl::bit_cast<::uint32_t>(this_._internal_threshold()) != 0) {
+      target = stream->EnsureSpace(target);
+      target = ::_pbi::WireFormatLite::WriteFloatToArray(
+          1, this_._internal_threshold(), target);
+    }
+  }
+
+  // int32 min_speech_dur_ms = 2;
+  if (CheckHasBit(cached_has_bits, 0x00000002U)) {
+    if (this_._internal_min_speech_dur_ms() != 0) {
+      target =
+          ::google::protobuf::internal::WireFormatLite::WriteInt32ToArrayWithField<2>(
+              stream, this_._internal_min_speech_dur_ms(), target);
+    }
+  }
+
+  // int32 min_silence_dur_ms = 3;
+  if (CheckHasBit(cached_has_bits, 0x00000004U)) {
+    if (this_._internal_min_silence_dur_ms() != 0) {
+      target =
+          ::google::protobuf::internal::WireFormatLite::WriteInt32ToArrayWithField<3>(
+              stream, this_._internal_min_silence_dur_ms(), target);
+    }
+  }
+
+  // float max_speech_dur_s = 4;
+  if (CheckHasBit(cached_has_bits, 0x00000008U)) {
+    if (::absl::bit_cast<::uint32_t>(this_._internal_max_speech_dur_s()) != 0) {
+      target = stream->EnsureSpace(target);
+      target = ::_pbi::WireFormatLite::WriteFloatToArray(
+          4, this_._internal_max_speech_dur_s(), target);
+    }
+  }
+
+  // int32 speech_pad_ms = 5;
+  if (CheckHasBit(cached_has_bits, 0x00000010U)) {
+    if (this_._internal_speech_pad_ms() != 0) {
+      target =
+          ::google::protobuf::internal::WireFormatLite::WriteInt32ToArrayWithField<5>(
+              stream, this_._internal_speech_pad_ms(), target);
+    }
+  }
+
+  // float samples_overlap = 6;
+  if (CheckHasBit(cached_has_bits, 0x00000020U)) {
+    if (::absl::bit_cast<::uint32_t>(this_._internal_samples_overlap()) != 0) {
+      target = stream->EnsureSpace(target);
+      target = ::_pbi::WireFormatLite::WriteFloatToArray(
+          6, this_._internal_samples_overlap(), target);
+    }
+  }
+
+  if (ABSL_PREDICT_FALSE(this_._internal_metadata_.have_unknown_fields())) {
+    target =
+        ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+            this_._internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:GrpcLibraryV1.VadParam)
+  return target;
+}
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+::size_t VadParam::ByteSizeLong(const MessageLite& base) {
+  const VadParam& this_ = static_cast<const VadParam&>(base);
+#else   // PROTOBUF_CUSTOM_VTABLE
+::size_t VadParam::ByteSizeLong() const {
+  const VadParam& this_ = *this;
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  // @@protoc_insertion_point(message_byte_size_start:GrpcLibraryV1.VadParam)
+  ::size_t total_size = 0;
+
+  ::uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void)cached_has_bits;
+
+  ::_pbi::Prefetch5LinesFrom7Lines(&this_);
+  cached_has_bits = this_._impl_._has_bits_[0];
+  if (BatchCheckHasBit(cached_has_bits, 0x0000003fU)) {
+    // float threshold = 1;
+    if (CheckHasBit(cached_has_bits, 0x00000001U)) {
+      if (::absl::bit_cast<::uint32_t>(this_._internal_threshold()) != 0) {
+        total_size += 5;
+      }
+    }
+    // int32 min_speech_dur_ms = 2;
+    if (CheckHasBit(cached_has_bits, 0x00000002U)) {
+      if (this_._internal_min_speech_dur_ms() != 0) {
+        total_size += ::_pbi::WireFormatLite::Int32SizePlusOne(
+            this_._internal_min_speech_dur_ms());
+      }
+    }
+    // int32 min_silence_dur_ms = 3;
+    if (CheckHasBit(cached_has_bits, 0x00000004U)) {
+      if (this_._internal_min_silence_dur_ms() != 0) {
+        total_size += ::_pbi::WireFormatLite::Int32SizePlusOne(
+            this_._internal_min_silence_dur_ms());
+      }
+    }
+    // float max_speech_dur_s = 4;
+    if (CheckHasBit(cached_has_bits, 0x00000008U)) {
+      if (::absl::bit_cast<::uint32_t>(this_._internal_max_speech_dur_s()) != 0) {
+        total_size += 5;
+      }
+    }
+    // int32 speech_pad_ms = 5;
+    if (CheckHasBit(cached_has_bits, 0x00000010U)) {
+      if (this_._internal_speech_pad_ms() != 0) {
+        total_size += ::_pbi::WireFormatLite::Int32SizePlusOne(
+            this_._internal_speech_pad_ms());
+      }
+    }
+    // float samples_overlap = 6;
+    if (CheckHasBit(cached_has_bits, 0x00000020U)) {
+      if (::absl::bit_cast<::uint32_t>(this_._internal_samples_overlap()) != 0) {
+        total_size += 5;
+      }
+    }
+  }
+  return this_.MaybeComputeUnknownFieldsSize(total_size,
+                                             &this_._impl_._cached_size_);
+}
+
+void VadParam::MergeImpl(::google::protobuf::MessageLite& to_msg,
+                            const ::google::protobuf::MessageLite& from_msg) {
+   auto* const _this =
+      static_cast<VadParam*>(&to_msg);
+  auto& from = static_cast<const VadParam&>(from_msg);
+  if constexpr (::_pbi::DebugHardenCheckHasBitConsistency()) {
+    from.CheckHasBitConsistency();
+  }
+  // @@protoc_insertion_point(class_specific_merge_from_start:GrpcLibraryV1.VadParam)
+  ABSL_DCHECK_NE(&from, _this);
+  ::uint32_t cached_has_bits = 0;
+  (void)cached_has_bits;
+
+  cached_has_bits = from._impl_._has_bits_[0];
+  if (BatchCheckHasBit(cached_has_bits, 0x0000003fU)) {
+    if (CheckHasBit(cached_has_bits, 0x00000001U)) {
+      if (::absl::bit_cast<::uint32_t>(from._internal_threshold()) != 0) {
+        _this->_impl_.threshold_ = from._impl_.threshold_;
+      }
+    }
+    if (CheckHasBit(cached_has_bits, 0x00000002U)) {
+      if (from._internal_min_speech_dur_ms() != 0) {
+        _this->_impl_.min_speech_dur_ms_ = from._impl_.min_speech_dur_ms_;
+      }
+    }
+    if (CheckHasBit(cached_has_bits, 0x00000004U)) {
+      if (from._internal_min_silence_dur_ms() != 0) {
+        _this->_impl_.min_silence_dur_ms_ = from._impl_.min_silence_dur_ms_;
+      }
+    }
+    if (CheckHasBit(cached_has_bits, 0x00000008U)) {
+      if (::absl::bit_cast<::uint32_t>(from._internal_max_speech_dur_s()) != 0) {
+        _this->_impl_.max_speech_dur_s_ = from._impl_.max_speech_dur_s_;
+      }
+    }
+    if (CheckHasBit(cached_has_bits, 0x00000010U)) {
+      if (from._internal_speech_pad_ms() != 0) {
+        _this->_impl_.speech_pad_ms_ = from._impl_.speech_pad_ms_;
+      }
+    }
+    if (CheckHasBit(cached_has_bits, 0x00000020U)) {
+      if (::absl::bit_cast<::uint32_t>(from._internal_samples_overlap()) != 0) {
+        _this->_impl_.samples_overlap_ = from._impl_.samples_overlap_;
+      }
+    }
+  }
+  _this->_impl_._has_bits_[0] |= cached_has_bits;
+  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
+      from._internal_metadata_);
+}
+
+void VadParam::CopyFrom(const VadParam& from) {
+  // @@protoc_insertion_point(class_specific_copy_from_start:GrpcLibraryV1.VadParam)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+
+void VadParam::InternalSwap(VadParam* PROTOBUF_RESTRICT PROTOBUF_NONNULL other) {
+  using ::std::swap;
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
+  ::google::protobuf::internal::memswap<
+      PROTOBUF_FIELD_OFFSET(VadParam, _impl_.samples_overlap_)
+      + sizeof(VadParam::_impl_.samples_overlap_)
+      - PROTOBUF_FIELD_OFFSET(VadParam, _impl_.threshold_)>(
+          reinterpret_cast<char*>(&_impl_.threshold_),
+          reinterpret_cast<char*>(&other->_impl_.threshold_));
+}
+
+::google::protobuf::Metadata VadParam::GetMetadata() const {
+  return ::google::protobuf::Message::GetMetadataImpl(GetClassData()->full());
+}
+// ===================================================================
+
 class RecognitionParam::_Internal {
  public:
   using HasBits =
@@ -5208,7 +5672,8 @@ PROTOBUF_NDEBUG_INLINE RecognitionParam::Impl_::Impl_(
         _cached_size_{0},
         language_(arena, from.language_),
         initial_prompt_(arena, from.initial_prompt_),
-        suppress_regex_(arena, from.suppress_regex_) {}
+        suppress_regex_(arena, from.suppress_regex_),
+        vad_model_path_(arena, from.vad_model_path_) {}
 
 RecognitionParam::RecognitionParam(
     ::google::protobuf::Arena* PROTOBUF_NULLABLE arena,
@@ -5223,13 +5688,17 @@ RecognitionParam::RecognitionParam(
   _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
       from._internal_metadata_);
   new (&_impl_) Impl_(internal_visibility(), arena, from._impl_, from);
+  ::uint32_t cached_has_bits = _impl_._has_bits_[0];
+  _impl_.vad_params_ = (CheckHasBit(cached_has_bits, 0x00000010U))
+                ? ::google::protobuf::Message::CopyConstruct(arena, *from._impl_.vad_params_)
+                : nullptr;
   ::memcpy(reinterpret_cast<char*>(&_impl_) +
                offsetof(Impl_, n_threads_),
            reinterpret_cast<const char*>(&from._impl_) +
                offsetof(Impl_, n_threads_),
-           offsetof(Impl_, no_speech_thold_) -
+           offsetof(Impl_, vad_) -
                offsetof(Impl_, n_threads_) +
-               sizeof(Impl_::no_speech_thold_));
+               sizeof(Impl_::vad_));
 
   // @@protoc_insertion_point(copy_constructor:GrpcLibraryV1.RecognitionParam)
 }
@@ -5239,16 +5708,17 @@ PROTOBUF_NDEBUG_INLINE RecognitionParam::Impl_::Impl_(
       : _cached_size_{0},
         language_(arena),
         initial_prompt_(arena),
-        suppress_regex_(arena) {}
+        suppress_regex_(arena),
+        vad_model_path_(arena) {}
 
 inline void RecognitionParam::SharedCtor(::_pb::Arena* PROTOBUF_NULLABLE arena) {
   new (&_impl_) Impl_(internal_visibility(), arena);
   ::memset(reinterpret_cast<char*>(&_impl_) +
-               offsetof(Impl_, n_threads_),
+               offsetof(Impl_, vad_params_),
            0,
-           offsetof(Impl_, no_speech_thold_) -
-               offsetof(Impl_, n_threads_) +
-               sizeof(Impl_::no_speech_thold_));
+           offsetof(Impl_, vad_) -
+               offsetof(Impl_, vad_params_) +
+               sizeof(Impl_::vad_));
 }
 RecognitionParam::~RecognitionParam() {
   // @@protoc_insertion_point(destructor:GrpcLibraryV1.RecognitionParam)
@@ -5264,6 +5734,8 @@ inline void RecognitionParam::SharedDtor(MessageLite& self) {
   this_._impl_.language_.Destroy();
   this_._impl_.initial_prompt_.Destroy();
   this_._impl_.suppress_regex_.Destroy();
+  this_._impl_.vad_model_path_.Destroy();
+  delete this_._impl_.vad_params_;
   this_._impl_.~Impl_();
 }
 
@@ -5310,18 +5782,18 @@ RecognitionParam::GetClassData() const {
   return RecognitionParam_class_data_.base();
 }
 PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
-const ::_pbi::TcParseTable<5, 26, 0, 99, 2>
+const ::_pbi::TcParseTable<5, 29, 1, 113, 2>
 RecognitionParam::_table_ = {
   {
     PROTOBUF_FIELD_OFFSET(RecognitionParam, _impl_._has_bits_),
     0, // no _extensions_
-    26, 248,  // max_field_number, fast_idx_mask
+    29, 248,  // max_field_number, fast_idx_mask
     offsetof(decltype(_table_), field_lookup_table),
-    4227858432,  // skipmap
+    3758096384,  // skipmap
     offsetof(decltype(_table_), field_entries),
-    26,  // num_field_entries
-    0,  // num_aux_entries
-    offsetof(decltype(_table_), field_names),  // no aux_entries
+    29,  // num_field_entries
+    1,  // num_aux_entries
+    offsetof(decltype(_table_), aux_entries),
     RecognitionParam_class_data_.base(),
     nullptr,  // post_loop_handler
     ::_pbi::TcParser::GenericFallback,  // fallback
@@ -5331,64 +5803,64 @@ RecognitionParam::_table_ = {
   }, {{
     {::_pbi::TcParser::MiniParse, {}},
     // int32 n_threads = 1;
-    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(RecognitionParam, _impl_.n_threads_), 3>(),
-     {8, 3, 0,
+    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(RecognitionParam, _impl_.n_threads_), 5>(),
+     {8, 5, 0,
       PROTOBUF_FIELD_OFFSET(RecognitionParam, _impl_.n_threads_)}},
     // int32 n_max_text_ctx = 2;
-    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(RecognitionParam, _impl_.n_max_text_ctx_), 4>(),
-     {16, 4, 0,
+    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(RecognitionParam, _impl_.n_max_text_ctx_), 6>(),
+     {16, 6, 0,
       PROTOBUF_FIELD_OFFSET(RecognitionParam, _impl_.n_max_text_ctx_)}},
     // int32 offset_ms = 3;
-    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(RecognitionParam, _impl_.offset_ms_), 5>(),
-     {24, 5, 0,
+    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(RecognitionParam, _impl_.offset_ms_), 7>(),
+     {24, 7, 0,
       PROTOBUF_FIELD_OFFSET(RecognitionParam, _impl_.offset_ms_)}},
     // int32 duration_ms = 4;
-    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(RecognitionParam, _impl_.duration_ms_), 6>(),
-     {32, 6, 0,
+    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(RecognitionParam, _impl_.duration_ms_), 8>(),
+     {32, 8, 0,
       PROTOBUF_FIELD_OFFSET(RecognitionParam, _impl_.duration_ms_)}},
     // bool translate = 5;
-    {::_pbi::TcParser::SingularVarintNoZag1<bool, offsetof(RecognitionParam, _impl_.translate_), 7>(),
-     {40, 7, 0,
+    {::_pbi::TcParser::SingularVarintNoZag1<bool, offsetof(RecognitionParam, _impl_.translate_), 9>(),
+     {40, 9, 0,
       PROTOBUF_FIELD_OFFSET(RecognitionParam, _impl_.translate_)}},
     // bool detect_language = 6;
-    {::_pbi::TcParser::SingularVarintNoZag1<bool, offsetof(RecognitionParam, _impl_.detect_language_), 8>(),
-     {48, 8, 0,
+    {::_pbi::TcParser::SingularVarintNoZag1<bool, offsetof(RecognitionParam, _impl_.detect_language_), 10>(),
+     {48, 10, 0,
       PROTOBUF_FIELD_OFFSET(RecognitionParam, _impl_.detect_language_)}},
     // string language = 7;
     {::_pbi::TcParser::FastUS1,
      {58, 0, 0,
       PROTOBUF_FIELD_OFFSET(RecognitionParam, _impl_.language_)}},
     // bool no_ctx = 8;
-    {::_pbi::TcParser::SingularVarintNoZag1<bool, offsetof(RecognitionParam, _impl_.no_ctx_), 9>(),
-     {64, 9, 0,
+    {::_pbi::TcParser::SingularVarintNoZag1<bool, offsetof(RecognitionParam, _impl_.no_ctx_), 11>(),
+     {64, 11, 0,
       PROTOBUF_FIELD_OFFSET(RecognitionParam, _impl_.no_ctx_)}},
     // bool no_timestamps = 9;
-    {::_pbi::TcParser::SingularVarintNoZag1<bool, offsetof(RecognitionParam, _impl_.no_timestamps_), 10>(),
-     {72, 10, 0,
+    {::_pbi::TcParser::SingularVarintNoZag1<bool, offsetof(RecognitionParam, _impl_.no_timestamps_), 12>(),
+     {72, 12, 0,
       PROTOBUF_FIELD_OFFSET(RecognitionParam, _impl_.no_timestamps_)}},
     // bool single_segment = 10;
-    {::_pbi::TcParser::SingularVarintNoZag1<bool, offsetof(RecognitionParam, _impl_.single_segment_), 11>(),
-     {80, 11, 0,
+    {::_pbi::TcParser::SingularVarintNoZag1<bool, offsetof(RecognitionParam, _impl_.single_segment_), 13>(),
+     {80, 13, 0,
       PROTOBUF_FIELD_OFFSET(RecognitionParam, _impl_.single_segment_)}},
     // bool print_special = 11;
-    {::_pbi::TcParser::SingularVarintNoZag1<bool, offsetof(RecognitionParam, _impl_.print_special_), 12>(),
-     {88, 12, 0,
+    {::_pbi::TcParser::SingularVarintNoZag1<bool, offsetof(RecognitionParam, _impl_.print_special_), 14>(),
+     {88, 14, 0,
       PROTOBUF_FIELD_OFFSET(RecognitionParam, _impl_.print_special_)}},
     // bool print_progress = 12;
-    {::_pbi::TcParser::SingularVarintNoZag1<bool, offsetof(RecognitionParam, _impl_.print_progress_), 13>(),
-     {96, 13, 0,
+    {::_pbi::TcParser::SingularVarintNoZag1<bool, offsetof(RecognitionParam, _impl_.print_progress_), 15>(),
+     {96, 15, 0,
       PROTOBUF_FIELD_OFFSET(RecognitionParam, _impl_.print_progress_)}},
     // bool print_realtime = 13;
-    {::_pbi::TcParser::SingularVarintNoZag1<bool, offsetof(RecognitionParam, _impl_.print_realtime_), 14>(),
-     {104, 14, 0,
+    {::_pbi::TcParser::SingularVarintNoZag1<bool, offsetof(RecognitionParam, _impl_.print_realtime_), 16>(),
+     {104, 16, 0,
       PROTOBUF_FIELD_OFFSET(RecognitionParam, _impl_.print_realtime_)}},
     // bool print_timestamps = 14;
-    {::_pbi::TcParser::SingularVarintNoZag1<bool, offsetof(RecognitionParam, _impl_.print_timestamps_), 15>(),
-     {112, 15, 0,
+    {::_pbi::TcParser::SingularVarintNoZag1<bool, offsetof(RecognitionParam, _impl_.print_timestamps_), 17>(),
+     {112, 17, 0,
       PROTOBUF_FIELD_OFFSET(RecognitionParam, _impl_.print_timestamps_)}},
     // bool carry_initial_prompt = 15;
-    {::_pbi::TcParser::SingularVarintNoZag1<bool, offsetof(RecognitionParam, _impl_.carry_initial_prompt_), 16>(),
-     {120, 16, 0,
+    {::_pbi::TcParser::SingularVarintNoZag1<bool, offsetof(RecognitionParam, _impl_.carry_initial_prompt_), 18>(),
+     {120, 18, 0,
       PROTOBUF_FIELD_OFFSET(RecognitionParam, _impl_.carry_initial_prompt_)}},
     // string initial_prompt = 16;
     {::_pbi::TcParser::FastUS2,
@@ -5400,108 +5872,126 @@ RecognitionParam::_table_ = {
       PROTOBUF_FIELD_OFFSET(RecognitionParam, _impl_.suppress_regex_)}},
     // bool suppress_blank = 18;
     {::_pbi::TcParser::FastV8S2,
-     {400, 17, 0,
+     {400, 19, 0,
       PROTOBUF_FIELD_OFFSET(RecognitionParam, _impl_.suppress_blank_)}},
     // bool suppress_nst = 19;
     {::_pbi::TcParser::FastV8S2,
-     {408, 18, 0,
+     {408, 20, 0,
       PROTOBUF_FIELD_OFFSET(RecognitionParam, _impl_.suppress_nst_)}},
     // float temperature = 20;
     {::_pbi::TcParser::FastF32S2,
-     {421, 19, 0,
+     {421, 21, 0,
       PROTOBUF_FIELD_OFFSET(RecognitionParam, _impl_.temperature_)}},
     // float temperature_inc = 21;
     {::_pbi::TcParser::FastF32S2,
-     {429, 20, 0,
+     {429, 22, 0,
       PROTOBUF_FIELD_OFFSET(RecognitionParam, _impl_.temperature_inc_)}},
     // float max_initial_ts = 22;
     {::_pbi::TcParser::FastF32S2,
-     {437, 21, 0,
+     {437, 23, 0,
       PROTOBUF_FIELD_OFFSET(RecognitionParam, _impl_.max_initial_ts_)}},
     // float length_penalty = 23;
     {::_pbi::TcParser::FastF32S2,
-     {445, 22, 0,
+     {445, 24, 0,
       PROTOBUF_FIELD_OFFSET(RecognitionParam, _impl_.length_penalty_)}},
     // float entropy_thold = 24;
     {::_pbi::TcParser::FastF32S2,
-     {453, 23, 0,
+     {453, 25, 0,
       PROTOBUF_FIELD_OFFSET(RecognitionParam, _impl_.entropy_thold_)}},
     // float logprob_thold = 25;
     {::_pbi::TcParser::FastF32S2,
-     {461, 24, 0,
+     {461, 26, 0,
       PROTOBUF_FIELD_OFFSET(RecognitionParam, _impl_.logprob_thold_)}},
     // float no_speech_thold = 26;
     {::_pbi::TcParser::FastF32S2,
-     {469, 25, 0,
+     {469, 27, 0,
       PROTOBUF_FIELD_OFFSET(RecognitionParam, _impl_.no_speech_thold_)}},
-    {::_pbi::TcParser::MiniParse, {}},
-    {::_pbi::TcParser::MiniParse, {}},
-    {::_pbi::TcParser::MiniParse, {}},
+    // bool vad = 27;
+    {::_pbi::TcParser::FastV8S2,
+     {472, 28, 0,
+      PROTOBUF_FIELD_OFFSET(RecognitionParam, _impl_.vad_)}},
+    // string vad_model_path = 28;
+    {::_pbi::TcParser::FastUS2,
+     {482, 3, 0,
+      PROTOBUF_FIELD_OFFSET(RecognitionParam, _impl_.vad_model_path_)}},
+    // .GrpcLibraryV1.VadParam vad_params = 29;
+    {::_pbi::TcParser::FastMtS2,
+     {490, 4, 0,
+      PROTOBUF_FIELD_OFFSET(RecognitionParam, _impl_.vad_params_)}},
     {::_pbi::TcParser::MiniParse, {}},
     {::_pbi::TcParser::MiniParse, {}},
   }}, {{
     65535, 65535
   }}, {{
     // int32 n_threads = 1;
-    {PROTOBUF_FIELD_OFFSET(RecognitionParam, _impl_.n_threads_), _Internal::kHasBitsOffset + 3, 0, (0 | ::_fl::kFcOptional | ::_fl::kInt32)},
+    {PROTOBUF_FIELD_OFFSET(RecognitionParam, _impl_.n_threads_), _Internal::kHasBitsOffset + 5, 0, (0 | ::_fl::kFcOptional | ::_fl::kInt32)},
     // int32 n_max_text_ctx = 2;
-    {PROTOBUF_FIELD_OFFSET(RecognitionParam, _impl_.n_max_text_ctx_), _Internal::kHasBitsOffset + 4, 0, (0 | ::_fl::kFcOptional | ::_fl::kInt32)},
+    {PROTOBUF_FIELD_OFFSET(RecognitionParam, _impl_.n_max_text_ctx_), _Internal::kHasBitsOffset + 6, 0, (0 | ::_fl::kFcOptional | ::_fl::kInt32)},
     // int32 offset_ms = 3;
-    {PROTOBUF_FIELD_OFFSET(RecognitionParam, _impl_.offset_ms_), _Internal::kHasBitsOffset + 5, 0, (0 | ::_fl::kFcOptional | ::_fl::kInt32)},
+    {PROTOBUF_FIELD_OFFSET(RecognitionParam, _impl_.offset_ms_), _Internal::kHasBitsOffset + 7, 0, (0 | ::_fl::kFcOptional | ::_fl::kInt32)},
     // int32 duration_ms = 4;
-    {PROTOBUF_FIELD_OFFSET(RecognitionParam, _impl_.duration_ms_), _Internal::kHasBitsOffset + 6, 0, (0 | ::_fl::kFcOptional | ::_fl::kInt32)},
+    {PROTOBUF_FIELD_OFFSET(RecognitionParam, _impl_.duration_ms_), _Internal::kHasBitsOffset + 8, 0, (0 | ::_fl::kFcOptional | ::_fl::kInt32)},
     // bool translate = 5;
-    {PROTOBUF_FIELD_OFFSET(RecognitionParam, _impl_.translate_), _Internal::kHasBitsOffset + 7, 0, (0 | ::_fl::kFcOptional | ::_fl::kBool)},
+    {PROTOBUF_FIELD_OFFSET(RecognitionParam, _impl_.translate_), _Internal::kHasBitsOffset + 9, 0, (0 | ::_fl::kFcOptional | ::_fl::kBool)},
     // bool detect_language = 6;
-    {PROTOBUF_FIELD_OFFSET(RecognitionParam, _impl_.detect_language_), _Internal::kHasBitsOffset + 8, 0, (0 | ::_fl::kFcOptional | ::_fl::kBool)},
+    {PROTOBUF_FIELD_OFFSET(RecognitionParam, _impl_.detect_language_), _Internal::kHasBitsOffset + 10, 0, (0 | ::_fl::kFcOptional | ::_fl::kBool)},
     // string language = 7;
     {PROTOBUF_FIELD_OFFSET(RecognitionParam, _impl_.language_), _Internal::kHasBitsOffset + 0, 0, (0 | ::_fl::kFcOptional | ::_fl::kUtf8String | ::_fl::kRepAString)},
     // bool no_ctx = 8;
-    {PROTOBUF_FIELD_OFFSET(RecognitionParam, _impl_.no_ctx_), _Internal::kHasBitsOffset + 9, 0, (0 | ::_fl::kFcOptional | ::_fl::kBool)},
+    {PROTOBUF_FIELD_OFFSET(RecognitionParam, _impl_.no_ctx_), _Internal::kHasBitsOffset + 11, 0, (0 | ::_fl::kFcOptional | ::_fl::kBool)},
     // bool no_timestamps = 9;
-    {PROTOBUF_FIELD_OFFSET(RecognitionParam, _impl_.no_timestamps_), _Internal::kHasBitsOffset + 10, 0, (0 | ::_fl::kFcOptional | ::_fl::kBool)},
+    {PROTOBUF_FIELD_OFFSET(RecognitionParam, _impl_.no_timestamps_), _Internal::kHasBitsOffset + 12, 0, (0 | ::_fl::kFcOptional | ::_fl::kBool)},
     // bool single_segment = 10;
-    {PROTOBUF_FIELD_OFFSET(RecognitionParam, _impl_.single_segment_), _Internal::kHasBitsOffset + 11, 0, (0 | ::_fl::kFcOptional | ::_fl::kBool)},
+    {PROTOBUF_FIELD_OFFSET(RecognitionParam, _impl_.single_segment_), _Internal::kHasBitsOffset + 13, 0, (0 | ::_fl::kFcOptional | ::_fl::kBool)},
     // bool print_special = 11;
-    {PROTOBUF_FIELD_OFFSET(RecognitionParam, _impl_.print_special_), _Internal::kHasBitsOffset + 12, 0, (0 | ::_fl::kFcOptional | ::_fl::kBool)},
+    {PROTOBUF_FIELD_OFFSET(RecognitionParam, _impl_.print_special_), _Internal::kHasBitsOffset + 14, 0, (0 | ::_fl::kFcOptional | ::_fl::kBool)},
     // bool print_progress = 12;
-    {PROTOBUF_FIELD_OFFSET(RecognitionParam, _impl_.print_progress_), _Internal::kHasBitsOffset + 13, 0, (0 | ::_fl::kFcOptional | ::_fl::kBool)},
+    {PROTOBUF_FIELD_OFFSET(RecognitionParam, _impl_.print_progress_), _Internal::kHasBitsOffset + 15, 0, (0 | ::_fl::kFcOptional | ::_fl::kBool)},
     // bool print_realtime = 13;
-    {PROTOBUF_FIELD_OFFSET(RecognitionParam, _impl_.print_realtime_), _Internal::kHasBitsOffset + 14, 0, (0 | ::_fl::kFcOptional | ::_fl::kBool)},
+    {PROTOBUF_FIELD_OFFSET(RecognitionParam, _impl_.print_realtime_), _Internal::kHasBitsOffset + 16, 0, (0 | ::_fl::kFcOptional | ::_fl::kBool)},
     // bool print_timestamps = 14;
-    {PROTOBUF_FIELD_OFFSET(RecognitionParam, _impl_.print_timestamps_), _Internal::kHasBitsOffset + 15, 0, (0 | ::_fl::kFcOptional | ::_fl::kBool)},
+    {PROTOBUF_FIELD_OFFSET(RecognitionParam, _impl_.print_timestamps_), _Internal::kHasBitsOffset + 17, 0, (0 | ::_fl::kFcOptional | ::_fl::kBool)},
     // bool carry_initial_prompt = 15;
-    {PROTOBUF_FIELD_OFFSET(RecognitionParam, _impl_.carry_initial_prompt_), _Internal::kHasBitsOffset + 16, 0, (0 | ::_fl::kFcOptional | ::_fl::kBool)},
+    {PROTOBUF_FIELD_OFFSET(RecognitionParam, _impl_.carry_initial_prompt_), _Internal::kHasBitsOffset + 18, 0, (0 | ::_fl::kFcOptional | ::_fl::kBool)},
     // string initial_prompt = 16;
     {PROTOBUF_FIELD_OFFSET(RecognitionParam, _impl_.initial_prompt_), _Internal::kHasBitsOffset + 1, 0, (0 | ::_fl::kFcOptional | ::_fl::kUtf8String | ::_fl::kRepAString)},
     // string suppress_regex = 17;
     {PROTOBUF_FIELD_OFFSET(RecognitionParam, _impl_.suppress_regex_), _Internal::kHasBitsOffset + 2, 0, (0 | ::_fl::kFcOptional | ::_fl::kUtf8String | ::_fl::kRepAString)},
     // bool suppress_blank = 18;
-    {PROTOBUF_FIELD_OFFSET(RecognitionParam, _impl_.suppress_blank_), _Internal::kHasBitsOffset + 17, 0, (0 | ::_fl::kFcOptional | ::_fl::kBool)},
+    {PROTOBUF_FIELD_OFFSET(RecognitionParam, _impl_.suppress_blank_), _Internal::kHasBitsOffset + 19, 0, (0 | ::_fl::kFcOptional | ::_fl::kBool)},
     // bool suppress_nst = 19;
-    {PROTOBUF_FIELD_OFFSET(RecognitionParam, _impl_.suppress_nst_), _Internal::kHasBitsOffset + 18, 0, (0 | ::_fl::kFcOptional | ::_fl::kBool)},
+    {PROTOBUF_FIELD_OFFSET(RecognitionParam, _impl_.suppress_nst_), _Internal::kHasBitsOffset + 20, 0, (0 | ::_fl::kFcOptional | ::_fl::kBool)},
     // float temperature = 20;
-    {PROTOBUF_FIELD_OFFSET(RecognitionParam, _impl_.temperature_), _Internal::kHasBitsOffset + 19, 0, (0 | ::_fl::kFcOptional | ::_fl::kFloat)},
+    {PROTOBUF_FIELD_OFFSET(RecognitionParam, _impl_.temperature_), _Internal::kHasBitsOffset + 21, 0, (0 | ::_fl::kFcOptional | ::_fl::kFloat)},
     // float temperature_inc = 21;
-    {PROTOBUF_FIELD_OFFSET(RecognitionParam, _impl_.temperature_inc_), _Internal::kHasBitsOffset + 20, 0, (0 | ::_fl::kFcOptional | ::_fl::kFloat)},
+    {PROTOBUF_FIELD_OFFSET(RecognitionParam, _impl_.temperature_inc_), _Internal::kHasBitsOffset + 22, 0, (0 | ::_fl::kFcOptional | ::_fl::kFloat)},
     // float max_initial_ts = 22;
-    {PROTOBUF_FIELD_OFFSET(RecognitionParam, _impl_.max_initial_ts_), _Internal::kHasBitsOffset + 21, 0, (0 | ::_fl::kFcOptional | ::_fl::kFloat)},
+    {PROTOBUF_FIELD_OFFSET(RecognitionParam, _impl_.max_initial_ts_), _Internal::kHasBitsOffset + 23, 0, (0 | ::_fl::kFcOptional | ::_fl::kFloat)},
     // float length_penalty = 23;
-    {PROTOBUF_FIELD_OFFSET(RecognitionParam, _impl_.length_penalty_), _Internal::kHasBitsOffset + 22, 0, (0 | ::_fl::kFcOptional | ::_fl::kFloat)},
+    {PROTOBUF_FIELD_OFFSET(RecognitionParam, _impl_.length_penalty_), _Internal::kHasBitsOffset + 24, 0, (0 | ::_fl::kFcOptional | ::_fl::kFloat)},
     // float entropy_thold = 24;
-    {PROTOBUF_FIELD_OFFSET(RecognitionParam, _impl_.entropy_thold_), _Internal::kHasBitsOffset + 23, 0, (0 | ::_fl::kFcOptional | ::_fl::kFloat)},
+    {PROTOBUF_FIELD_OFFSET(RecognitionParam, _impl_.entropy_thold_), _Internal::kHasBitsOffset + 25, 0, (0 | ::_fl::kFcOptional | ::_fl::kFloat)},
     // float logprob_thold = 25;
-    {PROTOBUF_FIELD_OFFSET(RecognitionParam, _impl_.logprob_thold_), _Internal::kHasBitsOffset + 24, 0, (0 | ::_fl::kFcOptional | ::_fl::kFloat)},
+    {PROTOBUF_FIELD_OFFSET(RecognitionParam, _impl_.logprob_thold_), _Internal::kHasBitsOffset + 26, 0, (0 | ::_fl::kFcOptional | ::_fl::kFloat)},
     // float no_speech_thold = 26;
-    {PROTOBUF_FIELD_OFFSET(RecognitionParam, _impl_.no_speech_thold_), _Internal::kHasBitsOffset + 25, 0, (0 | ::_fl::kFcOptional | ::_fl::kFloat)},
+    {PROTOBUF_FIELD_OFFSET(RecognitionParam, _impl_.no_speech_thold_), _Internal::kHasBitsOffset + 27, 0, (0 | ::_fl::kFcOptional | ::_fl::kFloat)},
+    // bool vad = 27;
+    {PROTOBUF_FIELD_OFFSET(RecognitionParam, _impl_.vad_), _Internal::kHasBitsOffset + 28, 0, (0 | ::_fl::kFcOptional | ::_fl::kBool)},
+    // string vad_model_path = 28;
+    {PROTOBUF_FIELD_OFFSET(RecognitionParam, _impl_.vad_model_path_), _Internal::kHasBitsOffset + 3, 0, (0 | ::_fl::kFcOptional | ::_fl::kUtf8String | ::_fl::kRepAString)},
+    // .GrpcLibraryV1.VadParam vad_params = 29;
+    {PROTOBUF_FIELD_OFFSET(RecognitionParam, _impl_.vad_params_), _Internal::kHasBitsOffset + 4, 0, (0 | ::_fl::kFcOptional | ::_fl::kMessage | ::_fl::kTvTable)},
   }},
-  // no aux_entries
   {{
-    "\36\0\0\0\0\0\0\10\0\0\0\0\0\0\0\0\16\16\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
+      {::_pbi::TcParser::GetTable<::GrpcLibraryV1::VadParam>()},
+  }},
+  {{
+    "\36\0\0\0\0\0\0\10\0\0\0\0\0\0\0\0\16\16\0\0\0\0\0\0\0\0\0\0\16\0\0\0"
     "GrpcLibraryV1.RecognitionParam"
     "language"
     "initial_prompt"
     "suppress_regex"
+    "vad_model_path"
   }},
 };
 PROTOBUF_NOINLINE void RecognitionParam::Clear() {
@@ -5512,7 +6002,7 @@ PROTOBUF_NOINLINE void RecognitionParam::Clear() {
   (void) cached_has_bits;
 
   cached_has_bits = _impl_._has_bits_[0];
-  if (BatchCheckHasBit(cached_has_bits, 0x00000007U)) {
+  if (BatchCheckHasBit(cached_has_bits, 0x0000001fU)) {
     if (CheckHasBit(cached_has_bits, 0x00000001U)) {
       _impl_.language_.ClearNonDefaultToEmpty();
     }
@@ -5522,26 +6012,33 @@ PROTOBUF_NOINLINE void RecognitionParam::Clear() {
     if (CheckHasBit(cached_has_bits, 0x00000004U)) {
       _impl_.suppress_regex_.ClearNonDefaultToEmpty();
     }
+    if (CheckHasBit(cached_has_bits, 0x00000008U)) {
+      _impl_.vad_model_path_.ClearNonDefaultToEmpty();
+    }
+    if (CheckHasBit(cached_has_bits, 0x00000010U)) {
+      ABSL_DCHECK(_impl_.vad_params_ != nullptr);
+      _impl_.vad_params_->Clear();
+    }
   }
-  if (BatchCheckHasBit(cached_has_bits, 0x000000f8U)) {
+  if (BatchCheckHasBit(cached_has_bits, 0x000000e0U)) {
     ::memset(&_impl_.n_threads_, 0, static_cast<::size_t>(
-        reinterpret_cast<char*>(&_impl_.translate_) -
-        reinterpret_cast<char*>(&_impl_.n_threads_)) + sizeof(_impl_.translate_));
+        reinterpret_cast<char*>(&_impl_.offset_ms_) -
+        reinterpret_cast<char*>(&_impl_.n_threads_)) + sizeof(_impl_.offset_ms_));
   }
   if (BatchCheckHasBit(cached_has_bits, 0x0000ff00U)) {
-    ::memset(&_impl_.detect_language_, 0, static_cast<::size_t>(
-        reinterpret_cast<char*>(&_impl_.print_timestamps_) -
-        reinterpret_cast<char*>(&_impl_.detect_language_)) + sizeof(_impl_.print_timestamps_));
+    ::memset(&_impl_.duration_ms_, 0, static_cast<::size_t>(
+        reinterpret_cast<char*>(&_impl_.print_progress_) -
+        reinterpret_cast<char*>(&_impl_.duration_ms_)) + sizeof(_impl_.print_progress_));
   }
   if (BatchCheckHasBit(cached_has_bits, 0x00ff0000U)) {
-    ::memset(&_impl_.carry_initial_prompt_, 0, static_cast<::size_t>(
-        reinterpret_cast<char*>(&_impl_.entropy_thold_) -
-        reinterpret_cast<char*>(&_impl_.carry_initial_prompt_)) + sizeof(_impl_.entropy_thold_));
+    ::memset(&_impl_.print_realtime_, 0, static_cast<::size_t>(
+        reinterpret_cast<char*>(&_impl_.max_initial_ts_) -
+        reinterpret_cast<char*>(&_impl_.print_realtime_)) + sizeof(_impl_.max_initial_ts_));
   }
-  if (BatchCheckHasBit(cached_has_bits, 0x03000000U)) {
-    ::memset(&_impl_.logprob_thold_, 0, static_cast<::size_t>(
-        reinterpret_cast<char*>(&_impl_.no_speech_thold_) -
-        reinterpret_cast<char*>(&_impl_.logprob_thold_)) + sizeof(_impl_.no_speech_thold_));
+  if (BatchCheckHasBit(cached_has_bits, 0x1f000000U)) {
+    ::memset(&_impl_.length_penalty_, 0, static_cast<::size_t>(
+        reinterpret_cast<char*>(&_impl_.vad_) -
+        reinterpret_cast<char*>(&_impl_.length_penalty_)) + sizeof(_impl_.vad_));
   }
   _impl_._has_bits_.Clear();
   _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
@@ -5567,7 +6064,7 @@ PROTOBUF_NOINLINE void RecognitionParam::Clear() {
 
   cached_has_bits = this_._impl_._has_bits_[0];
   // int32 n_threads = 1;
-  if (CheckHasBit(cached_has_bits, 0x00000008U)) {
+  if (CheckHasBit(cached_has_bits, 0x00000020U)) {
     if (this_._internal_n_threads() != 0) {
       target =
           ::google::protobuf::internal::WireFormatLite::WriteInt32ToArrayWithField<1>(
@@ -5576,7 +6073,7 @@ PROTOBUF_NOINLINE void RecognitionParam::Clear() {
   }
 
   // int32 n_max_text_ctx = 2;
-  if (CheckHasBit(cached_has_bits, 0x00000010U)) {
+  if (CheckHasBit(cached_has_bits, 0x00000040U)) {
     if (this_._internal_n_max_text_ctx() != 0) {
       target =
           ::google::protobuf::internal::WireFormatLite::WriteInt32ToArrayWithField<2>(
@@ -5585,7 +6082,7 @@ PROTOBUF_NOINLINE void RecognitionParam::Clear() {
   }
 
   // int32 offset_ms = 3;
-  if (CheckHasBit(cached_has_bits, 0x00000020U)) {
+  if (CheckHasBit(cached_has_bits, 0x00000080U)) {
     if (this_._internal_offset_ms() != 0) {
       target =
           ::google::protobuf::internal::WireFormatLite::WriteInt32ToArrayWithField<3>(
@@ -5594,7 +6091,7 @@ PROTOBUF_NOINLINE void RecognitionParam::Clear() {
   }
 
   // int32 duration_ms = 4;
-  if (CheckHasBit(cached_has_bits, 0x00000040U)) {
+  if (CheckHasBit(cached_has_bits, 0x00000100U)) {
     if (this_._internal_duration_ms() != 0) {
       target =
           ::google::protobuf::internal::WireFormatLite::WriteInt32ToArrayWithField<4>(
@@ -5603,7 +6100,7 @@ PROTOBUF_NOINLINE void RecognitionParam::Clear() {
   }
 
   // bool translate = 5;
-  if (CheckHasBit(cached_has_bits, 0x00000080U)) {
+  if (CheckHasBit(cached_has_bits, 0x00000200U)) {
     if (this_._internal_translate() != 0) {
       target = stream->EnsureSpace(target);
       target = ::_pbi::WireFormatLite::WriteBoolToArray(
@@ -5612,7 +6109,7 @@ PROTOBUF_NOINLINE void RecognitionParam::Clear() {
   }
 
   // bool detect_language = 6;
-  if (CheckHasBit(cached_has_bits, 0x00000100U)) {
+  if (CheckHasBit(cached_has_bits, 0x00000400U)) {
     if (this_._internal_detect_language() != 0) {
       target = stream->EnsureSpace(target);
       target = ::_pbi::WireFormatLite::WriteBoolToArray(
@@ -5631,7 +6128,7 @@ PROTOBUF_NOINLINE void RecognitionParam::Clear() {
   }
 
   // bool no_ctx = 8;
-  if (CheckHasBit(cached_has_bits, 0x00000200U)) {
+  if (CheckHasBit(cached_has_bits, 0x00000800U)) {
     if (this_._internal_no_ctx() != 0) {
       target = stream->EnsureSpace(target);
       target = ::_pbi::WireFormatLite::WriteBoolToArray(
@@ -5640,7 +6137,7 @@ PROTOBUF_NOINLINE void RecognitionParam::Clear() {
   }
 
   // bool no_timestamps = 9;
-  if (CheckHasBit(cached_has_bits, 0x00000400U)) {
+  if (CheckHasBit(cached_has_bits, 0x00001000U)) {
     if (this_._internal_no_timestamps() != 0) {
       target = stream->EnsureSpace(target);
       target = ::_pbi::WireFormatLite::WriteBoolToArray(
@@ -5649,7 +6146,7 @@ PROTOBUF_NOINLINE void RecognitionParam::Clear() {
   }
 
   // bool single_segment = 10;
-  if (CheckHasBit(cached_has_bits, 0x00000800U)) {
+  if (CheckHasBit(cached_has_bits, 0x00002000U)) {
     if (this_._internal_single_segment() != 0) {
       target = stream->EnsureSpace(target);
       target = ::_pbi::WireFormatLite::WriteBoolToArray(
@@ -5658,7 +6155,7 @@ PROTOBUF_NOINLINE void RecognitionParam::Clear() {
   }
 
   // bool print_special = 11;
-  if (CheckHasBit(cached_has_bits, 0x00001000U)) {
+  if (CheckHasBit(cached_has_bits, 0x00004000U)) {
     if (this_._internal_print_special() != 0) {
       target = stream->EnsureSpace(target);
       target = ::_pbi::WireFormatLite::WriteBoolToArray(
@@ -5667,7 +6164,7 @@ PROTOBUF_NOINLINE void RecognitionParam::Clear() {
   }
 
   // bool print_progress = 12;
-  if (CheckHasBit(cached_has_bits, 0x00002000U)) {
+  if (CheckHasBit(cached_has_bits, 0x00008000U)) {
     if (this_._internal_print_progress() != 0) {
       target = stream->EnsureSpace(target);
       target = ::_pbi::WireFormatLite::WriteBoolToArray(
@@ -5676,7 +6173,7 @@ PROTOBUF_NOINLINE void RecognitionParam::Clear() {
   }
 
   // bool print_realtime = 13;
-  if (CheckHasBit(cached_has_bits, 0x00004000U)) {
+  if (CheckHasBit(cached_has_bits, 0x00010000U)) {
     if (this_._internal_print_realtime() != 0) {
       target = stream->EnsureSpace(target);
       target = ::_pbi::WireFormatLite::WriteBoolToArray(
@@ -5685,7 +6182,7 @@ PROTOBUF_NOINLINE void RecognitionParam::Clear() {
   }
 
   // bool print_timestamps = 14;
-  if (CheckHasBit(cached_has_bits, 0x00008000U)) {
+  if (CheckHasBit(cached_has_bits, 0x00020000U)) {
     if (this_._internal_print_timestamps() != 0) {
       target = stream->EnsureSpace(target);
       target = ::_pbi::WireFormatLite::WriteBoolToArray(
@@ -5694,7 +6191,7 @@ PROTOBUF_NOINLINE void RecognitionParam::Clear() {
   }
 
   // bool carry_initial_prompt = 15;
-  if (CheckHasBit(cached_has_bits, 0x00010000U)) {
+  if (CheckHasBit(cached_has_bits, 0x00040000U)) {
     if (this_._internal_carry_initial_prompt() != 0) {
       target = stream->EnsureSpace(target);
       target = ::_pbi::WireFormatLite::WriteBoolToArray(
@@ -5723,7 +6220,7 @@ PROTOBUF_NOINLINE void RecognitionParam::Clear() {
   }
 
   // bool suppress_blank = 18;
-  if (CheckHasBit(cached_has_bits, 0x00020000U)) {
+  if (CheckHasBit(cached_has_bits, 0x00080000U)) {
     if (this_._internal_suppress_blank() != 0) {
       target = stream->EnsureSpace(target);
       target = ::_pbi::WireFormatLite::WriteBoolToArray(
@@ -5732,7 +6229,7 @@ PROTOBUF_NOINLINE void RecognitionParam::Clear() {
   }
 
   // bool suppress_nst = 19;
-  if (CheckHasBit(cached_has_bits, 0x00040000U)) {
+  if (CheckHasBit(cached_has_bits, 0x00100000U)) {
     if (this_._internal_suppress_nst() != 0) {
       target = stream->EnsureSpace(target);
       target = ::_pbi::WireFormatLite::WriteBoolToArray(
@@ -5741,7 +6238,7 @@ PROTOBUF_NOINLINE void RecognitionParam::Clear() {
   }
 
   // float temperature = 20;
-  if (CheckHasBit(cached_has_bits, 0x00080000U)) {
+  if (CheckHasBit(cached_has_bits, 0x00200000U)) {
     if (::absl::bit_cast<::uint32_t>(this_._internal_temperature()) != 0) {
       target = stream->EnsureSpace(target);
       target = ::_pbi::WireFormatLite::WriteFloatToArray(
@@ -5750,7 +6247,7 @@ PROTOBUF_NOINLINE void RecognitionParam::Clear() {
   }
 
   // float temperature_inc = 21;
-  if (CheckHasBit(cached_has_bits, 0x00100000U)) {
+  if (CheckHasBit(cached_has_bits, 0x00400000U)) {
     if (::absl::bit_cast<::uint32_t>(this_._internal_temperature_inc()) != 0) {
       target = stream->EnsureSpace(target);
       target = ::_pbi::WireFormatLite::WriteFloatToArray(
@@ -5759,7 +6256,7 @@ PROTOBUF_NOINLINE void RecognitionParam::Clear() {
   }
 
   // float max_initial_ts = 22;
-  if (CheckHasBit(cached_has_bits, 0x00200000U)) {
+  if (CheckHasBit(cached_has_bits, 0x00800000U)) {
     if (::absl::bit_cast<::uint32_t>(this_._internal_max_initial_ts()) != 0) {
       target = stream->EnsureSpace(target);
       target = ::_pbi::WireFormatLite::WriteFloatToArray(
@@ -5768,7 +6265,7 @@ PROTOBUF_NOINLINE void RecognitionParam::Clear() {
   }
 
   // float length_penalty = 23;
-  if (CheckHasBit(cached_has_bits, 0x00400000U)) {
+  if (CheckHasBit(cached_has_bits, 0x01000000U)) {
     if (::absl::bit_cast<::uint32_t>(this_._internal_length_penalty()) != 0) {
       target = stream->EnsureSpace(target);
       target = ::_pbi::WireFormatLite::WriteFloatToArray(
@@ -5777,7 +6274,7 @@ PROTOBUF_NOINLINE void RecognitionParam::Clear() {
   }
 
   // float entropy_thold = 24;
-  if (CheckHasBit(cached_has_bits, 0x00800000U)) {
+  if (CheckHasBit(cached_has_bits, 0x02000000U)) {
     if (::absl::bit_cast<::uint32_t>(this_._internal_entropy_thold()) != 0) {
       target = stream->EnsureSpace(target);
       target = ::_pbi::WireFormatLite::WriteFloatToArray(
@@ -5786,7 +6283,7 @@ PROTOBUF_NOINLINE void RecognitionParam::Clear() {
   }
 
   // float logprob_thold = 25;
-  if (CheckHasBit(cached_has_bits, 0x01000000U)) {
+  if (CheckHasBit(cached_has_bits, 0x04000000U)) {
     if (::absl::bit_cast<::uint32_t>(this_._internal_logprob_thold()) != 0) {
       target = stream->EnsureSpace(target);
       target = ::_pbi::WireFormatLite::WriteFloatToArray(
@@ -5795,12 +6292,38 @@ PROTOBUF_NOINLINE void RecognitionParam::Clear() {
   }
 
   // float no_speech_thold = 26;
-  if (CheckHasBit(cached_has_bits, 0x02000000U)) {
+  if (CheckHasBit(cached_has_bits, 0x08000000U)) {
     if (::absl::bit_cast<::uint32_t>(this_._internal_no_speech_thold()) != 0) {
       target = stream->EnsureSpace(target);
       target = ::_pbi::WireFormatLite::WriteFloatToArray(
           26, this_._internal_no_speech_thold(), target);
     }
+  }
+
+  // bool vad = 27;
+  if (CheckHasBit(cached_has_bits, 0x10000000U)) {
+    if (this_._internal_vad() != 0) {
+      target = stream->EnsureSpace(target);
+      target = ::_pbi::WireFormatLite::WriteBoolToArray(
+          27, this_._internal_vad(), target);
+    }
+  }
+
+  // string vad_model_path = 28;
+  if (CheckHasBit(cached_has_bits, 0x00000008U)) {
+    if (!this_._internal_vad_model_path().empty()) {
+      const ::std::string& _s = this_._internal_vad_model_path();
+      ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+          _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "GrpcLibraryV1.RecognitionParam.vad_model_path");
+      target = stream->WriteStringMaybeAliased(28, _s, target);
+    }
+  }
+
+  // .GrpcLibraryV1.VadParam vad_params = 29;
+  if (CheckHasBit(cached_has_bits, 0x00000010U)) {
+    target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
+        29, *this_._impl_.vad_params_, this_._impl_.vad_params_->GetCachedSize(), target,
+        stream);
   }
 
   if (ABSL_PREDICT_FALSE(this_._internal_metadata_.have_unknown_fields())) {
@@ -5850,152 +6373,170 @@ PROTOBUF_NOINLINE void RecognitionParam::Clear() {
                                         this_._internal_suppress_regex());
       }
     }
-    // int32 n_threads = 1;
+    // string vad_model_path = 28;
     if (CheckHasBit(cached_has_bits, 0x00000008U)) {
+      if (!this_._internal_vad_model_path().empty()) {
+        total_size += 2 + ::google::protobuf::internal::WireFormatLite::StringSize(
+                                        this_._internal_vad_model_path());
+      }
+    }
+    // .GrpcLibraryV1.VadParam vad_params = 29;
+    if (CheckHasBit(cached_has_bits, 0x00000010U)) {
+      total_size += 2 +
+                    ::google::protobuf::internal::WireFormatLite::MessageSize(*this_._impl_.vad_params_);
+    }
+    // int32 n_threads = 1;
+    if (CheckHasBit(cached_has_bits, 0x00000020U)) {
       if (this_._internal_n_threads() != 0) {
         total_size += ::_pbi::WireFormatLite::Int32SizePlusOne(
             this_._internal_n_threads());
       }
     }
     // int32 n_max_text_ctx = 2;
-    if (CheckHasBit(cached_has_bits, 0x00000010U)) {
+    if (CheckHasBit(cached_has_bits, 0x00000040U)) {
       if (this_._internal_n_max_text_ctx() != 0) {
         total_size += ::_pbi::WireFormatLite::Int32SizePlusOne(
             this_._internal_n_max_text_ctx());
       }
     }
     // int32 offset_ms = 3;
-    if (CheckHasBit(cached_has_bits, 0x00000020U)) {
+    if (CheckHasBit(cached_has_bits, 0x00000080U)) {
       if (this_._internal_offset_ms() != 0) {
         total_size += ::_pbi::WireFormatLite::Int32SizePlusOne(
             this_._internal_offset_ms());
       }
     }
+  }
+  if (BatchCheckHasBit(cached_has_bits, 0x0000ff00U)) {
     // int32 duration_ms = 4;
-    if (CheckHasBit(cached_has_bits, 0x00000040U)) {
+    if (CheckHasBit(cached_has_bits, 0x00000100U)) {
       if (this_._internal_duration_ms() != 0) {
         total_size += ::_pbi::WireFormatLite::Int32SizePlusOne(
             this_._internal_duration_ms());
       }
     }
     // bool translate = 5;
-    if (CheckHasBit(cached_has_bits, 0x00000080U)) {
+    if (CheckHasBit(cached_has_bits, 0x00000200U)) {
       if (this_._internal_translate() != 0) {
         total_size += 2;
       }
     }
-  }
-  if (BatchCheckHasBit(cached_has_bits, 0x0000ff00U)) {
     // bool detect_language = 6;
-    if (CheckHasBit(cached_has_bits, 0x00000100U)) {
+    if (CheckHasBit(cached_has_bits, 0x00000400U)) {
       if (this_._internal_detect_language() != 0) {
         total_size += 2;
       }
     }
     // bool no_ctx = 8;
-    if (CheckHasBit(cached_has_bits, 0x00000200U)) {
+    if (CheckHasBit(cached_has_bits, 0x00000800U)) {
       if (this_._internal_no_ctx() != 0) {
         total_size += 2;
       }
     }
     // bool no_timestamps = 9;
-    if (CheckHasBit(cached_has_bits, 0x00000400U)) {
+    if (CheckHasBit(cached_has_bits, 0x00001000U)) {
       if (this_._internal_no_timestamps() != 0) {
         total_size += 2;
       }
     }
     // bool single_segment = 10;
-    if (CheckHasBit(cached_has_bits, 0x00000800U)) {
+    if (CheckHasBit(cached_has_bits, 0x00002000U)) {
       if (this_._internal_single_segment() != 0) {
         total_size += 2;
       }
     }
     // bool print_special = 11;
-    if (CheckHasBit(cached_has_bits, 0x00001000U)) {
+    if (CheckHasBit(cached_has_bits, 0x00004000U)) {
       if (this_._internal_print_special() != 0) {
         total_size += 2;
       }
     }
     // bool print_progress = 12;
-    if (CheckHasBit(cached_has_bits, 0x00002000U)) {
-      if (this_._internal_print_progress() != 0) {
-        total_size += 2;
-      }
-    }
-    // bool print_realtime = 13;
-    if (CheckHasBit(cached_has_bits, 0x00004000U)) {
-      if (this_._internal_print_realtime() != 0) {
-        total_size += 2;
-      }
-    }
-    // bool print_timestamps = 14;
     if (CheckHasBit(cached_has_bits, 0x00008000U)) {
-      if (this_._internal_print_timestamps() != 0) {
+      if (this_._internal_print_progress() != 0) {
         total_size += 2;
       }
     }
   }
   if (BatchCheckHasBit(cached_has_bits, 0x00ff0000U)) {
-    // bool carry_initial_prompt = 15;
+    // bool print_realtime = 13;
     if (CheckHasBit(cached_has_bits, 0x00010000U)) {
+      if (this_._internal_print_realtime() != 0) {
+        total_size += 2;
+      }
+    }
+    // bool print_timestamps = 14;
+    if (CheckHasBit(cached_has_bits, 0x00020000U)) {
+      if (this_._internal_print_timestamps() != 0) {
+        total_size += 2;
+      }
+    }
+    // bool carry_initial_prompt = 15;
+    if (CheckHasBit(cached_has_bits, 0x00040000U)) {
       if (this_._internal_carry_initial_prompt() != 0) {
         total_size += 2;
       }
     }
     // bool suppress_blank = 18;
-    if (CheckHasBit(cached_has_bits, 0x00020000U)) {
+    if (CheckHasBit(cached_has_bits, 0x00080000U)) {
       if (this_._internal_suppress_blank() != 0) {
         total_size += 3;
       }
     }
     // bool suppress_nst = 19;
-    if (CheckHasBit(cached_has_bits, 0x00040000U)) {
+    if (CheckHasBit(cached_has_bits, 0x00100000U)) {
       if (this_._internal_suppress_nst() != 0) {
         total_size += 3;
       }
     }
     // float temperature = 20;
-    if (CheckHasBit(cached_has_bits, 0x00080000U)) {
+    if (CheckHasBit(cached_has_bits, 0x00200000U)) {
       if (::absl::bit_cast<::uint32_t>(this_._internal_temperature()) != 0) {
         total_size += 6;
       }
     }
     // float temperature_inc = 21;
-    if (CheckHasBit(cached_has_bits, 0x00100000U)) {
+    if (CheckHasBit(cached_has_bits, 0x00400000U)) {
       if (::absl::bit_cast<::uint32_t>(this_._internal_temperature_inc()) != 0) {
         total_size += 6;
       }
     }
     // float max_initial_ts = 22;
-    if (CheckHasBit(cached_has_bits, 0x00200000U)) {
+    if (CheckHasBit(cached_has_bits, 0x00800000U)) {
       if (::absl::bit_cast<::uint32_t>(this_._internal_max_initial_ts()) != 0) {
         total_size += 6;
       }
     }
+  }
+  if (BatchCheckHasBit(cached_has_bits, 0x1f000000U)) {
     // float length_penalty = 23;
-    if (CheckHasBit(cached_has_bits, 0x00400000U)) {
+    if (CheckHasBit(cached_has_bits, 0x01000000U)) {
       if (::absl::bit_cast<::uint32_t>(this_._internal_length_penalty()) != 0) {
         total_size += 6;
       }
     }
     // float entropy_thold = 24;
-    if (CheckHasBit(cached_has_bits, 0x00800000U)) {
+    if (CheckHasBit(cached_has_bits, 0x02000000U)) {
       if (::absl::bit_cast<::uint32_t>(this_._internal_entropy_thold()) != 0) {
         total_size += 6;
       }
     }
-  }
-  if (BatchCheckHasBit(cached_has_bits, 0x03000000U)) {
     // float logprob_thold = 25;
-    if (CheckHasBit(cached_has_bits, 0x01000000U)) {
+    if (CheckHasBit(cached_has_bits, 0x04000000U)) {
       if (::absl::bit_cast<::uint32_t>(this_._internal_logprob_thold()) != 0) {
         total_size += 6;
       }
     }
     // float no_speech_thold = 26;
-    if (CheckHasBit(cached_has_bits, 0x02000000U)) {
+    if (CheckHasBit(cached_has_bits, 0x08000000U)) {
       if (::absl::bit_cast<::uint32_t>(this_._internal_no_speech_thold()) != 0) {
         total_size += 6;
+      }
+    }
+    // bool vad = 27;
+    if (CheckHasBit(cached_has_bits, 0x10000000U)) {
+      if (this_._internal_vad() != 0) {
+        total_size += 3;
       }
     }
   }
@@ -6011,6 +6552,7 @@ void RecognitionParam::MergeImpl(::google::protobuf::MessageLite& to_msg,
   if constexpr (::_pbi::DebugHardenCheckHasBitConsistency()) {
     from.CheckHasBitConsistency();
   }
+  ::google::protobuf::Arena* arena = _this->GetArena();
   // @@protoc_insertion_point(class_specific_merge_from_start:GrpcLibraryV1.RecognitionParam)
   ABSL_DCHECK_NE(&from, _this);
   ::uint32_t cached_has_bits = 0;
@@ -6046,124 +6588,146 @@ void RecognitionParam::MergeImpl(::google::protobuf::MessageLite& to_msg,
       }
     }
     if (CheckHasBit(cached_has_bits, 0x00000008U)) {
+      if (!from._internal_vad_model_path().empty()) {
+        _this->_internal_set_vad_model_path(from._internal_vad_model_path());
+      } else {
+        if (_this->_impl_.vad_model_path_.IsDefault()) {
+          _this->_internal_set_vad_model_path("");
+        }
+      }
+    }
+    if (CheckHasBit(cached_has_bits, 0x00000010U)) {
+      ABSL_DCHECK(from._impl_.vad_params_ != nullptr);
+      if (_this->_impl_.vad_params_ == nullptr) {
+        _this->_impl_.vad_params_ = ::google::protobuf::Message::CopyConstruct(arena, *from._impl_.vad_params_);
+      } else {
+        _this->_impl_.vad_params_->MergeFrom(*from._impl_.vad_params_);
+      }
+    }
+    if (CheckHasBit(cached_has_bits, 0x00000020U)) {
       if (from._internal_n_threads() != 0) {
         _this->_impl_.n_threads_ = from._impl_.n_threads_;
       }
     }
-    if (CheckHasBit(cached_has_bits, 0x00000010U)) {
+    if (CheckHasBit(cached_has_bits, 0x00000040U)) {
       if (from._internal_n_max_text_ctx() != 0) {
         _this->_impl_.n_max_text_ctx_ = from._impl_.n_max_text_ctx_;
       }
     }
-    if (CheckHasBit(cached_has_bits, 0x00000020U)) {
+    if (CheckHasBit(cached_has_bits, 0x00000080U)) {
       if (from._internal_offset_ms() != 0) {
         _this->_impl_.offset_ms_ = from._impl_.offset_ms_;
-      }
-    }
-    if (CheckHasBit(cached_has_bits, 0x00000040U)) {
-      if (from._internal_duration_ms() != 0) {
-        _this->_impl_.duration_ms_ = from._impl_.duration_ms_;
-      }
-    }
-    if (CheckHasBit(cached_has_bits, 0x00000080U)) {
-      if (from._internal_translate() != 0) {
-        _this->_impl_.translate_ = from._impl_.translate_;
       }
     }
   }
   if (BatchCheckHasBit(cached_has_bits, 0x0000ff00U)) {
     if (CheckHasBit(cached_has_bits, 0x00000100U)) {
+      if (from._internal_duration_ms() != 0) {
+        _this->_impl_.duration_ms_ = from._impl_.duration_ms_;
+      }
+    }
+    if (CheckHasBit(cached_has_bits, 0x00000200U)) {
+      if (from._internal_translate() != 0) {
+        _this->_impl_.translate_ = from._impl_.translate_;
+      }
+    }
+    if (CheckHasBit(cached_has_bits, 0x00000400U)) {
       if (from._internal_detect_language() != 0) {
         _this->_impl_.detect_language_ = from._impl_.detect_language_;
       }
     }
-    if (CheckHasBit(cached_has_bits, 0x00000200U)) {
+    if (CheckHasBit(cached_has_bits, 0x00000800U)) {
       if (from._internal_no_ctx() != 0) {
         _this->_impl_.no_ctx_ = from._impl_.no_ctx_;
       }
     }
-    if (CheckHasBit(cached_has_bits, 0x00000400U)) {
+    if (CheckHasBit(cached_has_bits, 0x00001000U)) {
       if (from._internal_no_timestamps() != 0) {
         _this->_impl_.no_timestamps_ = from._impl_.no_timestamps_;
       }
     }
-    if (CheckHasBit(cached_has_bits, 0x00000800U)) {
+    if (CheckHasBit(cached_has_bits, 0x00002000U)) {
       if (from._internal_single_segment() != 0) {
         _this->_impl_.single_segment_ = from._impl_.single_segment_;
       }
     }
-    if (CheckHasBit(cached_has_bits, 0x00001000U)) {
+    if (CheckHasBit(cached_has_bits, 0x00004000U)) {
       if (from._internal_print_special() != 0) {
         _this->_impl_.print_special_ = from._impl_.print_special_;
       }
     }
-    if (CheckHasBit(cached_has_bits, 0x00002000U)) {
+    if (CheckHasBit(cached_has_bits, 0x00008000U)) {
       if (from._internal_print_progress() != 0) {
         _this->_impl_.print_progress_ = from._impl_.print_progress_;
-      }
-    }
-    if (CheckHasBit(cached_has_bits, 0x00004000U)) {
-      if (from._internal_print_realtime() != 0) {
-        _this->_impl_.print_realtime_ = from._impl_.print_realtime_;
-      }
-    }
-    if (CheckHasBit(cached_has_bits, 0x00008000U)) {
-      if (from._internal_print_timestamps() != 0) {
-        _this->_impl_.print_timestamps_ = from._impl_.print_timestamps_;
       }
     }
   }
   if (BatchCheckHasBit(cached_has_bits, 0x00ff0000U)) {
     if (CheckHasBit(cached_has_bits, 0x00010000U)) {
+      if (from._internal_print_realtime() != 0) {
+        _this->_impl_.print_realtime_ = from._impl_.print_realtime_;
+      }
+    }
+    if (CheckHasBit(cached_has_bits, 0x00020000U)) {
+      if (from._internal_print_timestamps() != 0) {
+        _this->_impl_.print_timestamps_ = from._impl_.print_timestamps_;
+      }
+    }
+    if (CheckHasBit(cached_has_bits, 0x00040000U)) {
       if (from._internal_carry_initial_prompt() != 0) {
         _this->_impl_.carry_initial_prompt_ = from._impl_.carry_initial_prompt_;
       }
     }
-    if (CheckHasBit(cached_has_bits, 0x00020000U)) {
+    if (CheckHasBit(cached_has_bits, 0x00080000U)) {
       if (from._internal_suppress_blank() != 0) {
         _this->_impl_.suppress_blank_ = from._impl_.suppress_blank_;
       }
     }
-    if (CheckHasBit(cached_has_bits, 0x00040000U)) {
+    if (CheckHasBit(cached_has_bits, 0x00100000U)) {
       if (from._internal_suppress_nst() != 0) {
         _this->_impl_.suppress_nst_ = from._impl_.suppress_nst_;
       }
     }
-    if (CheckHasBit(cached_has_bits, 0x00080000U)) {
+    if (CheckHasBit(cached_has_bits, 0x00200000U)) {
       if (::absl::bit_cast<::uint32_t>(from._internal_temperature()) != 0) {
         _this->_impl_.temperature_ = from._impl_.temperature_;
       }
     }
-    if (CheckHasBit(cached_has_bits, 0x00100000U)) {
+    if (CheckHasBit(cached_has_bits, 0x00400000U)) {
       if (::absl::bit_cast<::uint32_t>(from._internal_temperature_inc()) != 0) {
         _this->_impl_.temperature_inc_ = from._impl_.temperature_inc_;
       }
     }
-    if (CheckHasBit(cached_has_bits, 0x00200000U)) {
+    if (CheckHasBit(cached_has_bits, 0x00800000U)) {
       if (::absl::bit_cast<::uint32_t>(from._internal_max_initial_ts()) != 0) {
         _this->_impl_.max_initial_ts_ = from._impl_.max_initial_ts_;
       }
     }
-    if (CheckHasBit(cached_has_bits, 0x00400000U)) {
+  }
+  if (BatchCheckHasBit(cached_has_bits, 0x1f000000U)) {
+    if (CheckHasBit(cached_has_bits, 0x01000000U)) {
       if (::absl::bit_cast<::uint32_t>(from._internal_length_penalty()) != 0) {
         _this->_impl_.length_penalty_ = from._impl_.length_penalty_;
       }
     }
-    if (CheckHasBit(cached_has_bits, 0x00800000U)) {
+    if (CheckHasBit(cached_has_bits, 0x02000000U)) {
       if (::absl::bit_cast<::uint32_t>(from._internal_entropy_thold()) != 0) {
         _this->_impl_.entropy_thold_ = from._impl_.entropy_thold_;
       }
     }
-  }
-  if (BatchCheckHasBit(cached_has_bits, 0x03000000U)) {
-    if (CheckHasBit(cached_has_bits, 0x01000000U)) {
+    if (CheckHasBit(cached_has_bits, 0x04000000U)) {
       if (::absl::bit_cast<::uint32_t>(from._internal_logprob_thold()) != 0) {
         _this->_impl_.logprob_thold_ = from._impl_.logprob_thold_;
       }
     }
-    if (CheckHasBit(cached_has_bits, 0x02000000U)) {
+    if (CheckHasBit(cached_has_bits, 0x08000000U)) {
       if (::absl::bit_cast<::uint32_t>(from._internal_no_speech_thold()) != 0) {
         _this->_impl_.no_speech_thold_ = from._impl_.no_speech_thold_;
+      }
+    }
+    if (CheckHasBit(cached_has_bits, 0x10000000U)) {
+      if (from._internal_vad() != 0) {
+        _this->_impl_.vad_ = from._impl_.vad_;
       }
     }
   }
@@ -6189,12 +6753,13 @@ void RecognitionParam::InternalSwap(RecognitionParam* PROTOBUF_RESTRICT PROTOBUF
   ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.language_, &other->_impl_.language_, arena);
   ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.initial_prompt_, &other->_impl_.initial_prompt_, arena);
   ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.suppress_regex_, &other->_impl_.suppress_regex_, arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.vad_model_path_, &other->_impl_.vad_model_path_, arena);
   ::google::protobuf::internal::memswap<
-      PROTOBUF_FIELD_OFFSET(RecognitionParam, _impl_.no_speech_thold_)
-      + sizeof(RecognitionParam::_impl_.no_speech_thold_)
-      - PROTOBUF_FIELD_OFFSET(RecognitionParam, _impl_.n_threads_)>(
-          reinterpret_cast<char*>(&_impl_.n_threads_),
-          reinterpret_cast<char*>(&other->_impl_.n_threads_));
+      PROTOBUF_FIELD_OFFSET(RecognitionParam, _impl_.vad_)
+      + sizeof(RecognitionParam::_impl_.vad_)
+      - PROTOBUF_FIELD_OFFSET(RecognitionParam, _impl_.vad_params_)>(
+          reinterpret_cast<char*>(&_impl_.vad_params_),
+          reinterpret_cast<char*>(&other->_impl_.vad_params_));
 }
 
 ::google::protobuf::Metadata RecognitionParam::GetMetadata() const {

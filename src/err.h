@@ -42,9 +42,10 @@ static constexpr int LLM_ERR_EMBEDDING_INVALID            = 502;
 static constexpr int LLM_ERR_EMBEDDING_DIMENSION_MISMATCH = 503;
 static constexpr int LLM_ERR_EMBEDDING_SERIALIZE_FAIL     = 504;
 
-static constexpr int ASR_ERR_CTX_NOT_EXIST  = 600;
-static constexpr int ASR_ERR_CTX_LOAD_FAIL  = 601;
-static constexpr int ASR_ERR_NO_AUDIO_CHUNK = 602;
+static constexpr int ASR_ERR_CTX_NOT_EXIST      = 600;
+static constexpr int ASR_ERR_CTX_LOAD_FAIL      = 601;
+static constexpr int ASR_ERR_NO_AUDIO_CHUNK     = 602;
+static constexpr int ASR_ERR_CTX_ALREADY_LOADED = 603;
 
 static constexpr int CALLER_ERR_NOT_EXIST            = 701;
 static constexpr int CALLER_ERR_REMOTE_RESPONSE_FAIL = 702;

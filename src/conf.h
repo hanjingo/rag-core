@@ -114,6 +114,7 @@ class conf
     std::unordered_map<std::string, asr_ctx_config> asr_ctxs();
     int                                             asr_audio_buffer_size();
     int                                             asr_audio_min_chunk_size();
+    int asr_audio_wait_chunk_timeout_ms();
 
     std::string regex_norm_prompt();
     std::string regex_hard_prompt();

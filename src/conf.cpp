@@ -237,6 +237,11 @@ int conf::asr_audio_min_chunk_size()
     return _cfg.get<int>("asr/audio_min_chunk_size", 16000 * 0.2);
 }
 
+int conf::asr_audio_wait_chunk_timeout_ms()
+{
+    return _cfg.get<int>("asr/audio_wait_chunk_timeout_ms", 4500);
+}
+
 void conf::_init(const std::string &config_file_path)
 {
     // read config file

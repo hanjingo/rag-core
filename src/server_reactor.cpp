@@ -32,11 +32,10 @@ QueryReactor::QueryReactor(grpc::CallbackServerContext     *ctx,
     _model      = req->model();
     _pipeline   = req->pipeline();
     _api_key    = req->api_key();
-    LOG_DEBUG("QueryReactor base param: session_id:{}, user_id:{}, auth:{}, "
+    LOG_DEBUG("QueryReactor base param: session_id:{}, user_id:{}, "
               "content:{}, model:{}, pipeline:{}, api_key:{}",
               _session_id,
               _user_id,
-              _auth,
               _content,
               _model,
               _pipeline,
@@ -369,11 +368,10 @@ void QueryReactor::_flush()
 
     _is_writing.store(true);
     StartWrite(&resp);
-    LOG_DEBUG("QueryReactor::_flush: session_id: {}, user_id: {}, auth: {}, "
+    LOG_DEBUG("QueryReactor::_flush: session_id: {}, user_id: {}, "
               "content: {}, model: {}, is_finished: {}, error_code: {}",
               _session_id,
               _user_id,
-              _auth,
               resp.content(),
               _model,
               resp.is_finished(),
@@ -525,7 +523,7 @@ void RecognizeReactor::_process(const ::GrpcLibraryV1::RecognizeReq &req)
     auto ctx_id = req.ctx_id();
     if(req.has_param())
     {
-        LOG_DEBUG("RecognizeReactor::_process param: ctx_id: {}", ctx_id);
+        LOG_DEBUG("RecognizeReactor::_process set param");
         // full param
         auto tmp                     = req.param();
         _params                      = hj::asr::context::default_full_params();
@@ -535,7 +533,8 @@ void RecognizeReactor::_process(const ::GrpcLibraryV1::RecognizeReq &req)
         _params.duration_ms          = tmp.duration_ms();
         _params.translate            = tmp.translate();
         _params.detect_language      = tmp.detect_language();
-        _params.language             = "auto";
+        _language                    = tmp.language();
+        _params.language             = _language.c_str();
         _params.no_context           = tmp.no_ctx();
         _params.no_timestamps        = tmp.no_timestamps();
         _params.single_segment       = tmp.single_segment();
@@ -544,8 +543,10 @@ void RecognizeReactor::_process(const ::GrpcLibraryV1::RecognizeReq &req)
         _params.print_realtime       = tmp.print_realtime();
         _params.print_timestamps     = tmp.print_timestamps();
         _params.carry_initial_prompt = tmp.carry_initial_prompt();
-        _params.initial_prompt       = "";
-        _params.suppress_regex       = "";
+        _initial_prompt              = tmp.initial_prompt();
+        _params.initial_prompt       = _initial_prompt.c_str();
+        _suppress_regex              = tmp.suppress_regex();
+        _params.suppress_regex       = _suppress_regex.c_str();
         _params.suppress_blank       = tmp.suppress_blank();
         _params.suppress_nst         = tmp.suppress_nst();
         _params.temperature          = tmp.temperature();
@@ -555,9 +556,74 @@ void RecognizeReactor::_process(const ::GrpcLibraryV1::RecognizeReq &req)
         _params.entropy_thold        = tmp.entropy_thold();
         _params.logprob_thold        = tmp.logprob_thold();
         _params.no_speech_thold      = tmp.no_speech_thold();
+        _params.vad                  = tmp.vad();
+        _vad_model_path              = tmp.vad_model_path();
+        _params.vad_model_path       = _vad_model_path.c_str();
+        _params.vad_params.threshold = tmp.vad_params().threshold();
+        _params.vad_params.min_speech_duration_ms =
+            tmp.vad_params().min_speech_dur_ms();
+        _params.vad_params.min_silence_duration_ms =
+            tmp.vad_params().min_silence_dur_ms();
+        _params.vad_params.max_speech_duration_s =
+            tmp.vad_params().max_speech_dur_s();
+        _params.vad_params.speech_pad_ms   = tmp.vad_params().speech_pad_ms();
+        _params.vad_params.samples_overlap = tmp.vad_params().samples_overlap();
 
         err         = OK;
         is_finished = false;
+        LOG_DEBUG(
+            "RecognizeReactor::_process param: ctx_id: {}, session_id: {}, "
+            "n_threads: {}, n_max_text_ctx: {}, offset_ms: {}, duration_ms: "
+            "{}, "
+            "translate: {}, detect_language: {}, language: {}, no_ctx: {}, "
+            "no_timestamps: {}, "
+            "single_segment: {}, print_special: {}, print_progress: {}, "
+            "print_realtime: {}, "
+            "print_timestamps: {}, carry_initial_prompt: {}, initial_prompt: "
+            "{}, suppress_regex: {}, "
+            "suppress_blank: {}, suppress_nst: {}, temperature: {}, "
+            "temperature_inc: {}, "
+            "max_initial_ts: {}, length_penalty: {}, entropy_thold: {}, "
+            "logprob_thold: {}, "
+            "no_speech_thold: {}, vad: {}, vad_model_path: {}, vad_params: "
+            "(threshold: {}, min_speech_dur_ms: {}, min_silence_dur_ms: {}, "
+            "max_speech_dur_s: {}, speech_pad_ms: {}, samples_overlap: {})",
+            ctx_id,
+            session_id,
+            _params.n_threads,
+            _params.n_max_text_ctx,
+            _params.offset_ms,
+            _params.duration_ms,
+            _params.translate,
+            _params.detect_language,
+            _language,
+            _params.no_context,
+            _params.no_timestamps,
+            _params.single_segment,
+            _params.print_special,
+            _params.print_progress,
+            _params.print_realtime,
+            _params.print_timestamps,
+            _params.carry_initial_prompt,
+            _initial_prompt,
+            _suppress_regex,
+            _params.suppress_blank,
+            _params.suppress_nst,
+            _params.temperature,
+            _params.temperature_inc,
+            _params.max_initial_ts,
+            _params.length_penalty,
+            _params.entropy_thold,
+            _params.logprob_thold,
+            _params.no_speech_thold,
+            _params.vad,
+            _vad_model_path,
+            _params.vad_params.threshold,
+            _params.vad_params.min_speech_duration_ms,
+            _params.vad_params.min_silence_duration_ms,
+            _params.vad_params.max_speech_duration_s,
+            _params.vad_params.speech_pad_ms,
+            _params.vad_params.samples_overlap);
     }
 
     if(req.has_audio_chunk())
@@ -569,9 +635,10 @@ void RecognizeReactor::_process(const ::GrpcLibraryV1::RecognizeReq &req)
         // append to audio buffer
         _audio_buffer.push(data.data(), data.size());
         LOG_DEBUG("RecognizeReactor::_process audio chunk: ctx_id: {}, "
-                  "pushed {} samples to audio buffer, session_id: {}",
+                  "pushed {} samples to audio buffer {}, session_id: {}",
                   ctx_id,
                   data.size(),
+                  _audio_buffer.size(),
                   session_id);
 
         // process the audio buffer in a separate thread to avoid blocking the reactor
@@ -582,10 +649,17 @@ void RecognizeReactor::_process(const ::GrpcLibraryV1::RecognizeReq &req)
             _is_processing.store(true);
             // min size of audio at 16kHz
             size_t required_sz = conf::instance().asr_audio_min_chunk_size();
+            int    wait_ms = conf::instance().asr_audio_wait_chunk_timeout_ms();
             std::vector<float> data(required_sz);
             while(!_is_cancelled.load() && _is_processing.load())
             {
-                auto actual = this->_audio_buffer.pop(data.data(), required_sz);
+                // auto actual = this->_audio_buffer.pop(data.data(), required_sz);
+
+                // pop until we have enough audio data or timeout
+                auto actual = this->_audio_buffer.pop_until(data.data(),
+                                                            required_sz,
+                                                            required_sz,
+                                                            wait_ms);
                 if(actual == 0)
                 {
                     _is_processing.store(false);

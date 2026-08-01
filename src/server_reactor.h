@@ -112,6 +112,11 @@ class RecognizeReactor
     std::string            _ctx_id;
     hj::asr::full_params_t _params;
     audio_buffer           _audio_buffer;
+
+    std::string _language;
+    std::string _initial_prompt;
+    std::string _suppress_regex;
+    std::string _vad_model_path;
 };
 
 class EmbeddingReactor

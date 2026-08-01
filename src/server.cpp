@@ -110,13 +110,11 @@ reactor_t *api_handler::Logout(ctx_t                            *ctx,
     std::string auth    = req->auth();
     auto       *reactor = ctx->DefaultReactor();
     resp->set_error_code(ERR_FAIL);
-    LOG_DEBUG("Received Logout request. user_id: {}, auth: {}", user_id, auth);
+    LOG_DEBUG("Received Logout request. user_id: {}", user_id);
 
     if(verifier::instance().verify(auth, std::to_string(user_id), {}) != OK)
     {
-        LOG_ERROR("Failed to verify auth for user_id: {}, auth: {}",
-                  user_id,
-                  auth);
+        LOG_ERROR("Failed to verify auth for user_id: {}", user_id);
         resp->set_error_code(ACCOUNT_INVALID);
 
         reactor->Finish(status_t::OK);
@@ -168,11 +166,9 @@ reactor_t *api_handler::StopAnswer(ctx_t                                *ctx,
     auto session_id = req->session_id();
     auto user_id    = req->user_id();
     auto auth       = req->auth();
-    LOG_DEBUG(
-        "Received StopAnswer request. session_id: {}, user_id: {}, auth: {}",
-        session_id,
-        user_id,
-        auth);
+    LOG_DEBUG("Received StopAnswer request. session_id: {}, user_id: {}",
+              session_id,
+              user_id);
 
     auto *reactor = ctx->DefaultReactor();
     resp->set_error_code(OK);
@@ -188,11 +184,9 @@ reactor_t *api_handler::StopAnswer(ctx_t                                *ctx,
         resp->set_error_code(OK);
     }
 
-    LOG_DEBUG("StopAnswer request processed for session_id: {}, user_id: {}, "
-              "auth: {}",
+    LOG_DEBUG("StopAnswer request processed for session_id: {}, user_id: {}",
               session_id,
-              user_id,
-              auth);
+              user_id);
     resp->set_session_id(session_id);
     reactor->Finish(status_t::OK);
     return reactor;
@@ -223,11 +217,9 @@ api_handler::StopRecognize(ctx_t                                   *ctx,
     auto session_id = req->session_id();
     auto user_id    = req->user_id();
     auto auth       = req->auth();
-    LOG_DEBUG(
-        "Received StopRecognize request. session_id: {}, user_id: {}, auth: {}",
-        session_id,
-        user_id,
-        auth);
+    LOG_DEBUG("Received StopRecognize request. session_id: {}, user_id: {}",
+              session_id,
+              user_id);
 
     auto *reactor = ctx->DefaultReactor();
     resp->set_error_code(OK);
@@ -264,14 +256,12 @@ api_handler::GetMessageInfo(ctx_t                                    *ctx,
     if(limit < 0 || limit > conf::instance().sqlite_msg_limit())
         limit = conf::instance().sqlite_msg_limit();
     resp->set_error_code(ERR_FAIL);
-    LOG_DEBUG(
-        "Received GetMessage request. id: {}, session_id: {}, user_id: {}",
-        ", auth: {}, limit: {}",
-        id,
-        session_id,
-        user_id,
-        auth,
-        limit);
+    LOG_DEBUG("Received GetMessage request. id: {}, session_id: {}, user_id: "
+              "{}, limit: {}",
+              id,
+              session_id,
+              user_id,
+              limit);
 
     std::string sql;
     if(id != -1)
@@ -329,12 +319,10 @@ reactor_t *api_handler::GetSession(ctx_t                                *ctx,
     limit               = (limit < 0 || limit > 100) ? 100 : limit;
     auto *reactor       = ctx->DefaultReactor();
     resp->set_error_code(ERR_FAIL);
-    LOG_DEBUG(
-        "Received GetSession request. id: {}, user_id: {}, auth: {}, limit: {}",
-        id,
-        user_id,
-        auth,
-        limit);
+    LOG_DEBUG("Received GetSession request. id: {}, user_id: {}, limit: {}",
+              id,
+              user_id,
+              limit);
 
     std::string sql;
     if(id > 0)
@@ -392,10 +380,9 @@ reactor_t *api_handler::NewSession(ctx_t                                *ctx,
     auto       *reactor = ctx->DefaultReactor();
     std::string answer;
     long long   ms = hj::date_time::now().ms_since_epoch();
-    LOG_DEBUG("Received NewSession request. user_id: {}, auth: {}, title: {}, "
+    LOG_DEBUG("Received NewSession request. user_id: {}, title: {}, "
               "content: {}, model: {}",
               user_id,
-              auth,
               title,
               content,
               model);
@@ -443,11 +430,9 @@ reactor_t *api_handler::ModifySessionTitle(
     resp->set_id(id);
     resp->set_title(title);
     LOG_DEBUG(
-        "Received ModifySessionTitle request. id: {}, user_id: {}, auth: {}, "
-        "title: {}",
+        "Received ModifySessionTitle request. id: {}, user_id: {}, title: {}",
         id,
         user_id,
-        auth,
         title);
 
     auto sql =
@@ -477,11 +462,9 @@ reactor_t *api_handler::DelSession(ctx_t                                *ctx,
     std::string auth    = req->auth();
     auto       *reactor = ctx->DefaultReactor();
     resp->set_error_code(ERR_FAIL);
-    LOG_DEBUG(
-        "Received DelSession request. ids.size(): {}, user_id: {}, auth: {}",
-        ids.size(),
-        user_id,
-        auth);
+    LOG_DEBUG("Received DelSession request. ids.size(): {}, user_id: {}",
+              ids.size(),
+              user_id);
 
     for(auto id : ids)
     {
@@ -596,10 +579,9 @@ reactor_t *api_handler::Download(ctx_t                              *ctx,
     auto       *reactor = ctx->DefaultReactor();
     resp->set_error_code(ERR_FAIL);
     resp->set_hash(hash);
-    LOG_DEBUG("Received Download request. hash: {}, user_id: {}, auth: {}",
+    LOG_DEBUG("Received Download request. hash: {}, user_id: {}",
               hash,
-              user_id,
-              auth);
+              user_id);
 
     auto sql = hj::sqlite::mprintf(SQL_SELECT_FILE_BY_HASH, hash.c_str())
                + " LIMIT 1;";
@@ -637,10 +619,7 @@ reactor_t *api_handler::Upload(ctx_t                            *ctx,
     auto       *reactor = ctx->DefaultReactor();
     resp->set_error_code(ERR_FAIL);
     resp->set_hash(hash);
-    LOG_DEBUG("Received Upload request. hash: {}, user_id: {}, auth: {}",
-              hash,
-              user_id,
-              auth);
+    LOG_DEBUG("Received Upload request. hash: {}, user_id: {}", hash, user_id);
 
     auto sql = hj::sqlite::mprintf(SQL_INSERT_FILE,
                                    hash.c_str(),
@@ -682,11 +661,9 @@ api_handler::StopEmbedding(ctx_t                                   *ctx,
     auto task_id = req->task_id();
     auto user_id = req->user_id();
     auto auth    = req->auth();
-    LOG_DEBUG(
-        "Received StopEmbedding request. task_id: {}, user_id: {}, auth: {}",
-        task_id,
-        user_id,
-        auth);
+    LOG_DEBUG("Received StopEmbedding request. task_id: {}, user_id: {}",
+              task_id,
+              user_id);
 
     auto *reactor = ctx->DefaultReactor();
     resp->set_task_id(task_id);
@@ -703,11 +680,9 @@ api_handler::StopEmbedding(ctx_t                                   *ctx,
         resp->set_error_code(OK);
     }
 
-    LOG_DEBUG("StopEmbedding request processed for task_id: {}, user_id: {}, "
-              "auth: {}",
+    LOG_DEBUG("StopEmbedding request processed for task_id: {}, user_id: {}",
               task_id,
-              user_id,
-              auth);
+              user_id);
 
     reactor->Finish(status_t::OK);
     return reactor;
