@@ -125,6 +125,10 @@ int main(int argc, char *argv[])
                  ENV_OS,
                  COMPILE_TIME);
         LOG_DEBUG("Init config:{}", conf::instance().data().str());
+        LOG_DEBUG("Init regex norm prompt: {}",
+                  conf::instance().regex_norm_prompt());
+        LOG_DEBUG("Init regex hard prompt: {}",
+                  conf::instance().regex_hard_prompt());
 
         // init dbs
         db_mgr::instance().init();
@@ -218,30 +222,17 @@ int main(int argc, char *argv[])
             std::this_thread::sleep_for(std::chrono::seconds(1));
         }
         LOG_INFO("server stopped");
-    } else if(subcmd == "prompt")
+    } else if(subcmd == "migrate")
     {
-        // ./rag-core prompt "hello"
+        // ./rag-core migrate
         LOG_DEBUG("prompt content:{}", content);
-    } else if(subcmd == "set")
-    {
-        // ./rag-core set "model:qwen;slice_sz:100;"
-        auto params = parse_set_param(content);
-        for(size_t i = 0; i < params.size(); i += 2)
-            LOG_DEBUG("set param key:{}, val:{}", params[i], params[i + 1]);
-    } else if(subcmd == "get")
-    {
-        // ./rag-core get "model;slice_sz"
-        auto params = parse_get_param(content);
-        for(size_t i = 0; i < params.size(); i++)
-            LOG_DEBUG("get param key:{}", params[i]);
-
     } else
     {
         h.match(error(ERR_INVALID_SUBCMD), [&](const err_t &e) {
             LOG_ERROR("Error: unknown subcommand: {}, we expected one of these "
                       "subcommands: [{}]",
                       subcmd,
-                      "run, prompt, set, get");
+                      "run, migrate");
         });
         return 1;
     }

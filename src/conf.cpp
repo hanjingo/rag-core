@@ -77,6 +77,15 @@ std::unordered_map<std::string, conf::client_config> conf::clients()
     return _clients;
 }
 
+std::string conf::clients_file_path()
+{
+#if defined(__APPLE__) // standard macOS bundle structure
+    return hj::filepath::join(hj::filepath::pwd(), "../Resources");
+#else
+    return hj::filepath::join(hj::filepath::pwd());
+#endif
+}
+
 std::string conf::sqlite_id()
 {
     return _cfg.get<std::string>("sqlite/id", "default");
@@ -197,6 +206,24 @@ std::unordered_map<std::string, conf::model_config> conf::llm_models()
     return _models;
 }
 
+std::string conf::llm_model_file_path()
+{
+#if defined(__APPLE__) // standard macOS bundle structure
+    return hj::filepath::join(hj::filepath::pwd(), "../Resources");
+#else
+    return hj::filepath::join(hj::filepath::pwd());
+#endif
+}
+
+std::string conf::llm_remote_api_file_path()
+{
+#if defined(__APPLE__) // standard macOS bundle structure
+    return hj::filepath::join(hj::filepath::pwd(), "../Resources");
+#else
+    return hj::filepath::join(hj::filepath::pwd());
+#endif
+}
+
 int conf::llm_remote_api_sz()
 {
     return _remote_apis.size();
@@ -227,6 +254,15 @@ std::unordered_map<std::string, conf::asr_ctx_config> conf::asr_ctxs()
     return _asr_ctxs;
 }
 
+std::string conf::asr_file_path()
+{
+#if defined(__APPLE__) // standard macOS bundle structure
+    return hj::filepath::join(hj::filepath::pwd(), "../Resources");
+#else
+    return hj::filepath::join(hj::filepath::pwd());
+#endif
+}
+
 int conf::asr_audio_buffer_size()
 {
     return _cfg.get<int>("asr/audio_buffer_size", 16000);
@@ -250,118 +286,166 @@ void conf::_init(const std::string &config_file_path)
                                  + config_file_path);
 
     // init models
-    auto             str = _cfg.get<std::string>("llm/models", "");
-    std::string_view tag{";", 1};
-    auto             items = hj::string_util::split(str, tag);
     _models.clear();
-    for(const auto &item : items)
+    auto fpath_models = _cfg.get<std::string>("llm/models", "");
+    fpath_models      = hj::filepath::join(llm_model_file_path(), fpath_models);
+    hj::ini models_ini;
+    if(models_ini.read_file(fpath_models.c_str()))
     {
-        model_config config;
-        config.id           = _cfg.get<std::string>(item + "/id", "");
-        config.path         = _cfg.get<std::string>(item + "/path", "");
-        config.n_gpu_layers = _cfg.get<int>(item + "/n_gpu_layers", -1);
-        config.split_mode   = static_cast<llama_split_mode>(
-            _cfg.get<int>(item + "/split_mode", 1));
-        config.main_gpu      = _cfg.get<int>(item + "/main_gpu", 0);
-        config.vocab_only    = _cfg.get<int>(item + "/vocab_only", 0) == 1;
-        config.use_mmap      = _cfg.get<int>(item + "/use_mmap", 1) == 1;
-        config.use_direct_io = _cfg.get<int>(item + "/use_direct_io", 0) == 1;
-        config.use_mlock     = _cfg.get<int>(item + "/use_mlock", 0) == 1;
-        config.check_tensors = _cfg.get<int>(item + "/check_tensors", 0) == 1;
-        config.use_extra_bufts =
-            _cfg.get<int>(item + "/use_extra_bufts", 1) == 1;
-        config.no_host  = _cfg.get<int>(item + "/no_host", 0) == 1;
-        config.no_alloc = _cfg.get<int>(item + "/no_alloc", 0) == 1;
-
-        if(config.id.empty() || config.path.empty() || config.n_gpu_layers < -1
-           || config.main_gpu < 0)
+        for(const auto &item : models_ini)
         {
-            std::cerr << "config model: " << item << ", id: " << config.id
-                      << ", path: " << config.path
-                      << ", n_gpu_layers: " << config.n_gpu_layers
-                      << ", main_gpu: " << config.main_gpu << " INVALID!!!"
-                      << std::endl;
-            continue;
-        }
+            auto         sect = item.second;
+            model_config config;
+            config.id           = sect.get<std::string>("id", "");
+            config.path         = sect.get<std::string>("path", "");
+            config.n_gpu_layers = sect.get<int>("n_gpu_layers", -1);
+            config.split_mode =
+                static_cast<llama_split_mode>(sect.get<int>("split_mode", 1));
+            config.main_gpu        = sect.get<int>("main_gpu", 0);
+            config.vocab_only      = sect.get<int>("vocab_only", 0) == 1;
+            config.use_mmap        = sect.get<int>("use_mmap", 1) == 1;
+            config.use_direct_io   = sect.get<int>("use_direct_io", 0) == 1;
+            config.use_mlock       = sect.get<int>("use_mlock", 0) == 1;
+            config.check_tensors   = sect.get<int>("check_tensors", 0) == 1;
+            config.use_extra_bufts = sect.get<int>("use_extra_bufts", 1) == 1;
+            config.no_host         = sect.get<int>("no_host", 0) == 1;
+            config.no_alloc        = sect.get<int>("no_alloc", 0) == 1;
 
-        _models[config.id] = config;
+            if(config.id.empty() || config.path.empty()
+               || config.n_gpu_layers < -1 || config.main_gpu < 0)
+            {
+                std::cerr << "config model id: " << config.id
+                          << ", path: " << config.path
+                          << ", n_gpu_layers: " << config.n_gpu_layers
+                          << ", main_gpu: " << config.main_gpu << " INVALID!!!"
+                          << std::endl;
+                continue;
+            }
+
+            _models[config.id] = config;
+        }
     }
 
     // init remote apis
     _remote_apis.clear();
-    str              = _cfg.get<std::string>("llm/remote_apis", "");
-    auto remote_apis = hj::string_util::split(str, tag);
-    for(const auto &item : remote_apis)
+    auto fpath_remote_apis = _cfg.get<std::string>("llm/remote_apis", "");
+    fpath_remote_apis =
+        hj::filepath::join(llm_remote_api_file_path(), fpath_remote_apis);
+    hj::ini remote_apis_ini;
+    if(remote_apis_ini.read_file(fpath_remote_apis.c_str()))
     {
-        remote_api_config config;
-        config.id          = _cfg.get<std::string>(item + "/id", "");
-        config.type        = _cfg.get<std::string>(item + "/type", "");
-        config.api_key     = _cfg.get<std::string>(item + "/api_key", "");
-        config.timeout_sec = _cfg.get<int>(item + "/timeout_sec", 5);
-
-        if(config.id.empty() || config.type.empty())
+        for(const auto &item : remote_apis_ini)
         {
-            std::cerr << "config remote api: " << item << ", id: " << config.id
-                      << ", type: " << config.type << " INVALID!!!"
-                      << std::endl;
-            continue;
-        }
+            auto              sect = item.second;
+            remote_api_config config;
+            config.id          = sect.get<std::string>("id", "");
+            config.type        = sect.get<std::string>("type", "");
+            config.api_key     = sect.get<std::string>("api_key", "");
+            config.timeout_sec = sect.get<int>("timeout_sec", 5);
+            if(config.id.empty() || config.type.empty())
+            {
+                std::cerr << "config remote api: " << item.first
+                          << ", id: " << config.id << ", type: " << config.type
+                          << " INVALID!!!" << std::endl;
+                continue;
+            }
 
-        _remote_apis[config.id] = config;
+            _remote_apis[config.id] = config;
+        }
     }
 
     // init asr
-    auto asr_str   = _cfg.get<std::string>("asr/ctxs", "");
-    auto asr_items = hj::string_util::split(asr_str, tag);
     _asr_ctxs.clear();
-    for(const auto &item : asr_items)
+    auto fpath_asr = _cfg.get<std::string>("asr/models", "");
+    fpath_asr      = hj::filepath::join(asr_file_path(), fpath_asr);
+    hj::ini asr_ini;
+    if(asr_ini.read_file(fpath_asr.c_str()))
     {
-        asr_ctx_config config;
-        config.id         = _cfg.get<std::string>(item + "/id", "");
-        config.path       = _cfg.get<std::string>(item + "/path", "");
-        config.use_gpu    = (_cfg.get<int>(item + "/use_gpu", 0) == 1);
-        config.gpu_device = _cfg.get<int>(item + "/gpu_device", -1);
+        for(const auto &item : asr_ini)
+        {
+            auto           sect = item.second;
+            asr_ctx_config config;
+            config.id         = sect.get<std::string>("id", "");
+            config.path       = sect.get<std::string>("path", "");
+            config.use_gpu    = (sect.get<int>("use_gpu", 0) == 1);
+            config.gpu_device = sect.get<int>("gpu_device", -1);
 
-        _asr_ctxs[config.id] = config;
+            _asr_ctxs[config.id] = config;
+        }
     }
 
     // init client
-    auto cli_str   = _cfg.get<std::string>("client/sub_class", "");
-    auto cli_items = hj::string_util::split(cli_str, std::string_view(",", 1));
     _clients.clear();
-    for(const auto &item : cli_items)
+    auto fpath_client = _cfg.get<std::string>("client/clients", "");
+    fpath_client      = hj::filepath::join(clients_file_path(), fpath_client);
+    hj::ini client_ini;
+    if(client_ini.read_file(fpath_client.c_str()))
     {
-        client_config config;
-        config.platform = _cfg.get<std::string>(item + "/platform", "");
-        config.arch     = _cfg.get<std::string>(item + "/arch", "");
-        config.rollout_percent =
-            _cfg.get<uint32_t>(item + "/rollout_percent", 100);
-        config.version_major =
-            _cfg.get<uint8_t>(item + "/min_version_major", 0);
-        config.version_minor =
-            _cfg.get<uint8_t>(item + "/min_version_minor", 0);
-        config.version_patch =
-            _cfg.get<uint8_t>(item + "/min_version_patch", 0);
-
-        if(config.platform.empty() || config.arch.empty())
+        for(const auto &item : client_ini)
         {
-            std::cerr << "config client: " << item
-                      << ", platform: " << config.platform
-                      << ", arch: " << config.arch << " INVALID!!!"
-                      << std::endl;
-            continue;
-        }
+            auto          sect = item.second;
+            client_config config;
+            config.platform        = sect.get<std::string>("platform", "");
+            config.arch            = sect.get<std::string>("arch", "");
+            config.rollout_percent = sect.get<uint32_t>("rollout_percent", 100);
+            config.version_major   = sect.get<uint8_t>("min_version_major", 0);
+            config.version_minor   = sect.get<uint8_t>("min_version_minor", 0);
+            config.version_patch   = sect.get<uint8_t>("min_version_patch", 0);
+            if(config.platform.empty() || config.arch.empty())
+            {
+                std::cerr << "config client: " << item.first
+                          << ", platform: " << config.platform
+                          << ", arch: " << config.arch << " INVALID!!!"
+                          << std::endl;
+                continue;
+            }
 
-        _clients["client_" + config.platform + "_" + config.arch] = config;
+            _clients[item.first] = config;
+        }
     }
+
+    // init regex
+    auto file_norm_prompt = _cfg.get<std::string>("regex/norm_prompt", "");
+    file_norm_prompt = hj::filepath::join(regex_file_path(), file_norm_prompt);
+    if(!file_norm_prompt.empty())
+    {
+        std::ifstream ifs(file_norm_prompt);
+        if(ifs.is_open())
+        {
+            std::stringstream ss;
+            ss << ifs.rdbuf();
+            _regex_norm_prompt = ss.str();
+        }
+    }
+    auto file_hard_prompt = _cfg.get<std::string>("regex/hard_prompt", "");
+    file_hard_prompt = hj::filepath::join(regex_file_path(), file_hard_prompt);
+    if(!file_hard_prompt.empty())
+    {
+        std::ifstream ifs(file_hard_prompt);
+        if(ifs.is_open())
+        {
+            std::stringstream ss;
+            ss << ifs.rdbuf();
+            _regex_hard_prompt = ss.str();
+        }
+    }
+}
+
+std::string conf::regex_file_path()
+{
+#if defined(__APPLE__) // standard macOS bundle structure
+    return hj::filepath::join(hj::filepath::pwd(), "../Resources");
+#else
+    return hj::filepath::join(hj::filepath::pwd());
+#endif
 }
 
 std::string conf::regex_norm_prompt()
 {
-    return _cfg.get<std::string>("regex/norm_prompt", "");
+    return _regex_norm_prompt;
 }
 
 std::string conf::regex_hard_prompt()
 {
-    return _cfg.get<std::string>("regex/hard_prompt", "");
+    return _regex_hard_prompt;
 }

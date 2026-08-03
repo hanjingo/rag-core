@@ -170,6 +170,7 @@ target_link_libraries(${PROJECT_NAME} ${LINK_LIBS})
 
 file(GLOB RESOURCE_FILES CONFIGURE_DEPENDS
     "${CONFIG_FILES_PATH}/*.ini"
+    "${CONFIG_FILES_PATH}/*.txt"
     "${CONFIG_FILES_PATH}/*.db"
     "${CONFIG_FILES_PATH}/*.sql"
 )

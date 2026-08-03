@@ -82,6 +82,7 @@ class conf
     std::string server_addr();
 
     std::unordered_map<std::string, conf::client_config> clients();
+    std::string                                          clients_file_path();
 
     std::string sqlite_id();
     std::string sqlite_path();
@@ -101,8 +102,10 @@ class conf
 
     std::unordered_map<std::string, remote_api_config> llm_remote_apis();
     std::unordered_map<std::string, model_config>      llm_models();
-    int                                                llm_remote_api_sz();
-    int                                                llm_model_sz();
+    std::string                                        llm_model_file_path();
+    std::string llm_remote_api_file_path();
+    int         llm_remote_api_sz();
+    int         llm_model_sz();
     bool        llm_is_local_model(const std::string &model_id);
     bool        llm_is_remote_api(const std::string &model_id);
     int         llm_max_repeats();
@@ -111,11 +114,13 @@ class conf
     int         llm_local_prompt_threshold();
     std::string llm_embedding_model();
 
+    std::string                                     asr_file_path();
     std::unordered_map<std::string, asr_ctx_config> asr_ctxs();
     int                                             asr_audio_buffer_size();
     int                                             asr_audio_min_chunk_size();
     int asr_audio_wait_chunk_timeout_ms();
 
+    std::string regex_file_path();
     std::string regex_norm_prompt();
     std::string regex_hard_prompt();
 
@@ -130,6 +135,9 @@ class conf
     std::unordered_map<std::string, conf::model_config>   _models;
     std::unordered_map<std::string, conf::asr_ctx_config> _asr_ctxs;
     std::unordered_map<std::string, conf::client_config>  _clients;
+
+    std::string _regex_norm_prompt;
+    std::string _regex_hard_prompt;
 };
 
 #endif
