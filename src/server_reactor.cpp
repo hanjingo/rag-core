@@ -32,9 +32,11 @@ QueryReactor::QueryReactor(grpc::CallbackServerContext     *ctx,
     _model      = req->model();
     _pipeline   = req->pipeline();
     _api_key    = req->api_key();
-    LOG_DEBUG("QueryReactor base param: session_id:{}, user_id:{}, "
+    _set_msg_id(req->msg_id());
+    LOG_DEBUG("QueryReactor base param: session_id:{}, msg_id:{}, user_id:{}, "
               "content:{}, model:{}, pipeline:{}, api_key:{}",
               _session_id,
+              req->msg_id(),
               _user_id,
               _content,
               _model,
@@ -171,15 +173,14 @@ void QueryReactor::OnWriteDone(bool ok)
 void QueryReactor::OnDone()
 {
     // store the answer to DB
-    auto msg_id = static_cast<int64_t>(hj::uuid::gen_u64());
-    auto now    = hj::date_time::now().ms_since_epoch();
-    auto sql    = hj::sqlite::mprintf(SQL_INSERT_MESSAGE,
-                                      msg_id,
-                                      _session_id,
-                                      ROLE_ASSISTANT,
-                                      _answer.c_str(),
-                                      NONE_MSG_ID,
-                                      now);
+    auto now = hj::date_time::now().ms_since_epoch();
+    auto sql = hj::sqlite::mprintf(SQL_INSERT_MESSAGE,
+                                   _curr_msg_id,
+                                   _session_id,
+                                   ROLE_ASSISTANT,
+                                   _answer.c_str(),
+                                   _prev_msg_id,
+                                   now);
     if(db_mgr::instance().exec(DB_SQLITE, sql) != OK)
     {
         LOG_ERROR("Failed to insert assistant message for session_id: {}",
@@ -205,21 +206,23 @@ void QueryReactor::Stop()
 
 void QueryReactor::_process()
 {
-    int64_t msg_id = static_cast<int64_t>(hj::uuid::gen_u64());
-    auto    now    = hj::date_time::now().ms_since_epoch();
-    auto    sql    = hj::sqlite::mprintf(SQL_INSERT_MESSAGE,
-                                         msg_id,
-                                         _session_id,
-                                         ROLE_USER,
-                                         _content.c_str(),
-                                         NONE_MSG_ID,
-                                         now);
+    // record query
+    auto now = hj::date_time::now().ms_since_epoch();
+    auto sql = hj::sqlite::mprintf(SQL_INSERT_MESSAGE,
+                                   _curr_msg_id,
+                                   _session_id,
+                                   ROLE_USER,
+                                   _content.c_str(),
+                                   _prev_msg_id,
+                                   now);
     if(db_mgr::instance().exec(DB_SQLITE, sql) != OK)
     {
         _send("", true, ERR_SQLITE_EXEC_FAIL);
         return;
     }
 
+    // start loop query
+    _set_msg_id(static_cast<int64_t>(hj::uuid::gen_u64()));
     auto tokens = llm_mgr::instance().tokenize(_model, _content, true, true);
     watch_dog dog{};
     auto      ec = llm_mgr::instance().loop_query(
@@ -274,22 +277,21 @@ void QueryReactor::_processRemote()
               _model,
               _content,
               _api_key);
-    int64_t msg_id = static_cast<int64_t>(hj::uuid::gen_u64());
-    auto    now    = hj::date_time::now().ms_since_epoch();
-    auto    sql    = hj::sqlite::mprintf(SQL_INSERT_MESSAGE,
-                                         msg_id,
-                                         _session_id,
-                                         ROLE_USER,
-                                         _content.c_str(),
-                                         NONE_MSG_ID,
-                                         now);
+    auto now = hj::date_time::now().ms_since_epoch();
+    auto sql = hj::sqlite::mprintf(SQL_INSERT_MESSAGE,
+                                   _curr_msg_id,
+                                   _session_id,
+                                   ROLE_USER,
+                                   _content.c_str(),
+                                   _prev_msg_id,
+                                   now);
     if(db_mgr::instance().exec(DB_SQLITE, sql) != OK)
     {
         _send("", true, ERR_SQLITE_EXEC_FAIL);
         return;
     }
 
-    // watch_dog dog{};
+    _set_msg_id(static_cast<int64_t>(hj::uuid::gen_u64()));
     auto ec = caller_mgr::instance().loop_query(
         _model,
         _content,
@@ -349,6 +351,7 @@ void QueryReactor::_send(const std::string &text,
     resp.set_id(_session_id);
     resp.set_content(text);
     resp.set_is_finished(is_finished);
+    resp.set_msg_id(_curr_msg_id);
 
     _w_queue.enqueue(resp);
     _flush();
@@ -376,6 +379,17 @@ void QueryReactor::_flush()
               _model,
               resp.is_finished(),
               resp.error_code());
+}
+
+void QueryReactor::_set_msg_id(int64_t msg_id)
+{
+    _prev_msg_id = _curr_msg_id;
+    _curr_msg_id = msg_id;
+    LOG_DEBUG("QueryReactor::_set_msg_id: session_id: {}, prev_msg_id: {}, "
+              "curr_msg_id: {}",
+              _session_id,
+              _prev_msg_id,
+              _curr_msg_id);
 }
 
 // ------------------------------------------ ReocgnizeReactor -------------------------------

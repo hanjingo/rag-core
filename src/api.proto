@@ -202,20 +202,22 @@ message RegAccountResp {
 message QueryReq {
     int64 id = 1;
     int64 user_id = 2;
-    string auth = 3;
-    string content = 4;
-    string model = 5;
-    string pipeline = 6;
-    string api_key = 7;
-    SamplingParam sampling = 8;
-    ContextParam ctx = 9;
+    int64 msg_id = 3;
+    string auth = 4;
+    string content = 5;
+    string model = 6;
+    string pipeline = 7;
+    string api_key = 8;
+    SamplingParam sampling = 9;
+    ContextParam ctx = 10;
 }
 
 message QueryResp {
     int32 error_code = 1;
     int64 id = 2;
-    string content = 3;
-    bool is_finished = 4;
+    int64 msg_id = 3;
+    string content = 4;
+    bool is_finished = 5;
 }
 
 message StopAnswerReq {

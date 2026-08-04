@@ -14,9 +14,9 @@ class router
   public:
     router()
     {
-        LOG_DEBUG("classify with norm_regex:{}, hard_regex:{}",
-                  conf::instance().regex_norm_prompt(),
-                  conf::instance().regex_hard_prompt());
+        // LOG_DEBUG("classify with norm_regex:{}, hard_regex:{}",
+        //           conf::instance().regex_norm_prompt(),
+        //           conf::instance().regex_hard_prompt());
 
         auto wnorm =
             hj::unicode::from_utf8(conf::instance().regex_norm_prompt());

@@ -473,6 +473,7 @@ inline constexpr QueryResp::Impl_::Impl_(
             &::google::protobuf::internal::fixed_address_empty_string,
             ::_pbi::ConstantInitialized()),
         id_{::int64_t{0}},
+        msg_id_{::int64_t{0}},
         error_code_{0},
         is_finished_{false} {}
 
@@ -1249,7 +1250,8 @@ inline constexpr QueryReq::Impl_::Impl_(
         sampling_{nullptr},
         ctx_{nullptr},
         id_{::int64_t{0}},
-        user_id_{::int64_t{0}} {}
+        user_id_{::int64_t{0}},
+        msg_id_{::int64_t{0}} {}
 
 template <typename>
 PROTOBUF_CONSTEXPR QueryReq::QueryReq(::_pbi::ConstantInitialized)
@@ -1765,9 +1767,10 @@ const ::uint32_t
         0,
         0x081, // bitmap
         PROTOBUF_FIELD_OFFSET(::GrpcLibraryV1::QueryReq, _impl_._has_bits_),
-        12, // hasbit index offset
+        13, // hasbit index offset
         PROTOBUF_FIELD_OFFSET(::GrpcLibraryV1::QueryReq, _impl_.id_),
         PROTOBUF_FIELD_OFFSET(::GrpcLibraryV1::QueryReq, _impl_.user_id_),
+        PROTOBUF_FIELD_OFFSET(::GrpcLibraryV1::QueryReq, _impl_.msg_id_),
         PROTOBUF_FIELD_OFFSET(::GrpcLibraryV1::QueryReq, _impl_.auth_),
         PROTOBUF_FIELD_OFFSET(::GrpcLibraryV1::QueryReq, _impl_.content_),
         PROTOBUF_FIELD_OFFSET(::GrpcLibraryV1::QueryReq, _impl_.model_),
@@ -1777,6 +1780,7 @@ const ::uint32_t
         PROTOBUF_FIELD_OFFSET(::GrpcLibraryV1::QueryReq, _impl_.ctx_),
         7,
         8,
+        9,
         0,
         1,
         2,
@@ -1786,15 +1790,17 @@ const ::uint32_t
         6,
         0x081, // bitmap
         PROTOBUF_FIELD_OFFSET(::GrpcLibraryV1::QueryResp, _impl_._has_bits_),
-        7, // hasbit index offset
+        8, // hasbit index offset
         PROTOBUF_FIELD_OFFSET(::GrpcLibraryV1::QueryResp, _impl_.error_code_),
         PROTOBUF_FIELD_OFFSET(::GrpcLibraryV1::QueryResp, _impl_.id_),
+        PROTOBUF_FIELD_OFFSET(::GrpcLibraryV1::QueryResp, _impl_.msg_id_),
         PROTOBUF_FIELD_OFFSET(::GrpcLibraryV1::QueryResp, _impl_.content_),
         PROTOBUF_FIELD_OFFSET(::GrpcLibraryV1::QueryResp, _impl_.is_finished_),
-        2,
-        1,
-        0,
         3,
+        1,
+        2,
+        0,
+        4,
         0x081, // bitmap
         PROTOBUF_FIELD_OFFSET(::GrpcLibraryV1::StopAnswerReq, _impl_._has_bits_),
         6, // hasbit index offset
@@ -2064,33 +2070,33 @@ static const ::_pbi::MigrationSchema
         {274, sizeof(::GrpcLibraryV1::RegAccountReq)},
         {281, sizeof(::GrpcLibraryV1::RegAccountResp)},
         {288, sizeof(::GrpcLibraryV1::QueryReq)},
-        {309, sizeof(::GrpcLibraryV1::QueryResp)},
-        {320, sizeof(::GrpcLibraryV1::StopAnswerReq)},
-        {329, sizeof(::GrpcLibraryV1::StopAnswerResp)},
-        {336, sizeof(::GrpcLibraryV1::RecognizeReq)},
-        {349, sizeof(::GrpcLibraryV1::RecognizeResp)},
-        {362, sizeof(::GrpcLibraryV1::StopRecognizeReq)},
-        {371, sizeof(::GrpcLibraryV1::StopRecognizeResp)},
-        {378, sizeof(::GrpcLibraryV1::GetMessageInfoReq)},
-        {391, sizeof(::GrpcLibraryV1::GetMessageInfoResp)},
-        {398, sizeof(::GrpcLibraryV1::GetSessionReq)},
-        {409, sizeof(::GrpcLibraryV1::GetSessionResp)},
-        {416, sizeof(::GrpcLibraryV1::NewSessionReq)},
-        {429, sizeof(::GrpcLibraryV1::NewSessionResp)},
-        {436, sizeof(::GrpcLibraryV1::ModifySessionTitleReq)},
-        {447, sizeof(::GrpcLibraryV1::ModifySessionTitleResp)},
-        {456, sizeof(::GrpcLibraryV1::DelSessionReq)},
-        {465, sizeof(::GrpcLibraryV1::DelSessionResp)},
-        {472, sizeof(::GrpcLibraryV1::GetPluginInfoReq)},
-        {481, sizeof(::GrpcLibraryV1::GetPluginInfoResp)},
-        {488, sizeof(::GrpcLibraryV1::DownloadReq)},
-        {497, sizeof(::GrpcLibraryV1::DownloadResp)},
-        {508, sizeof(::GrpcLibraryV1::UploadReq)},
-        {521, sizeof(::GrpcLibraryV1::UploadResp)},
-        {528, sizeof(::GrpcLibraryV1::EmbeddingReq)},
-        {539, sizeof(::GrpcLibraryV1::EmbeddingResp)},
-        {550, sizeof(::GrpcLibraryV1::StopEmbeddingReq)},
-        {559, sizeof(::GrpcLibraryV1::StopEmbeddingResp)},
+        {311, sizeof(::GrpcLibraryV1::QueryResp)},
+        {324, sizeof(::GrpcLibraryV1::StopAnswerReq)},
+        {333, sizeof(::GrpcLibraryV1::StopAnswerResp)},
+        {340, sizeof(::GrpcLibraryV1::RecognizeReq)},
+        {353, sizeof(::GrpcLibraryV1::RecognizeResp)},
+        {366, sizeof(::GrpcLibraryV1::StopRecognizeReq)},
+        {375, sizeof(::GrpcLibraryV1::StopRecognizeResp)},
+        {382, sizeof(::GrpcLibraryV1::GetMessageInfoReq)},
+        {395, sizeof(::GrpcLibraryV1::GetMessageInfoResp)},
+        {402, sizeof(::GrpcLibraryV1::GetSessionReq)},
+        {413, sizeof(::GrpcLibraryV1::GetSessionResp)},
+        {420, sizeof(::GrpcLibraryV1::NewSessionReq)},
+        {433, sizeof(::GrpcLibraryV1::NewSessionResp)},
+        {440, sizeof(::GrpcLibraryV1::ModifySessionTitleReq)},
+        {451, sizeof(::GrpcLibraryV1::ModifySessionTitleResp)},
+        {460, sizeof(::GrpcLibraryV1::DelSessionReq)},
+        {469, sizeof(::GrpcLibraryV1::DelSessionResp)},
+        {476, sizeof(::GrpcLibraryV1::GetPluginInfoReq)},
+        {485, sizeof(::GrpcLibraryV1::GetPluginInfoResp)},
+        {492, sizeof(::GrpcLibraryV1::DownloadReq)},
+        {501, sizeof(::GrpcLibraryV1::DownloadResp)},
+        {512, sizeof(::GrpcLibraryV1::UploadReq)},
+        {525, sizeof(::GrpcLibraryV1::UploadResp)},
+        {532, sizeof(::GrpcLibraryV1::EmbeddingReq)},
+        {543, sizeof(::GrpcLibraryV1::EmbeddingResp)},
+        {554, sizeof(::GrpcLibraryV1::StopEmbeddingReq)},
+        {563, sizeof(::GrpcLibraryV1::StopEmbeddingResp)},
 };
 static const ::_pb::Message* PROTOBUF_NONNULL const file_default_instances[] = {
     &::GrpcLibraryV1::_Session_default_instance_._instance,
@@ -2209,108 +2215,109 @@ const char descriptor_table_protodef_src_2fapi_2eproto[] ABSL_ATTRIBUTE_SECTION_
     "LogoutResp\022\022\n\nerror_code\030\001 \001(\005\022\017\n\007user_i"
     "d\030\002 \001(\003\"0\n\rRegAccountReq\022\017\n\007account\030\001 \001("
     "\t\022\016\n\006passwd\030\002 \001(\t\"5\n\016RegAccountResp\022\022\n\ne"
-    "rror_code\030\001 \001(\005\022\017\n\007user_id\030\002 \001(\003\"\322\001\n\010Que"
-    "ryReq\022\n\n\002id\030\001 \001(\003\022\017\n\007user_id\030\002 \001(\003\022\014\n\004au"
-    "th\030\003 \001(\t\022\017\n\007content\030\004 \001(\t\022\r\n\005model\030\005 \001(\t"
-    "\022\020\n\010pipeline\030\006 \001(\t\022\017\n\007api_key\030\007 \001(\t\022.\n\010s"
-    "ampling\030\010 \001(\0132\034.GrpcLibraryV1.SamplingPa"
-    "ram\022(\n\003ctx\030\t \001(\0132\033.GrpcLibraryV1.Context"
-    "Param\"Q\n\tQueryResp\022\022\n\nerror_code\030\001 \001(\005\022\n"
-    "\n\002id\030\002 \001(\003\022\017\n\007content\030\003 \001(\t\022\023\n\013is_finish"
-    "ed\030\004 \001(\010\"B\n\rStopAnswerReq\022\022\n\nsession_id\030"
-    "\001 \001(\003\022\017\n\007user_id\030\002 \001(\003\022\014\n\004auth\030\003 \001(\t\"8\n\016"
-    "StopAnswerResp\022\022\n\nerror_code\030\001 \001(\005\022\022\n\nse"
-    "ssion_id\030\002 \001(\003\"\213\001\n\014RecognizeReq\022\016\n\006ctx_i"
-    "d\030\001 \001(\t\022\022\n\nsession_id\030\002 \001(\003\0220\n\005param\030\003 \001"
-    "(\0132\037.GrpcLibraryV1.RecognitionParamH\000\022\025\n"
-    "\013audio_chunk\030\004 \001(\014H\000B\016\n\014request_type\"t\n\r"
-    "RecognizeResp\022\022\n\nerror_code\030\001 \001(\005\022\022\n\nses"
-    "sion_id\030\002 \001(\003\022\022\n\ntranscript\030\003 \001(\t\022\023\n\013is_"
-    "finished\030\004 \001(\010\022\022\n\nconfidence\030\005 \001(\001\"E\n\020St"
-    "opRecognizeReq\022\022\n\nsession_id\030\001 \001(\003\022\017\n\007us"
-    "er_id\030\002 \001(\003\022\014\n\004auth\030\003 \001(\t\";\n\021StopRecogni"
-    "zeResp\022\022\n\nerror_code\030\001 \001(\005\022\022\n\nsession_id"
-    "\030\002 \001(\003\"a\n\021GetMessageInfoReq\022\n\n\002id\030\001 \001(\003\022"
-    "\022\n\nsession_id\030\002 \001(\003\022\r\n\005limit\030\003 \001(\005\022\017\n\007us"
-    "er_id\030\004 \001(\003\022\014\n\004auth\030\005 \001(\t\"V\n\022GetMessageI"
-    "nfoResp\022\022\n\nerror_code\030\001 \001(\005\022,\n\010messages\030"
-    "\002 \003(\0132\032.GrpcLibraryV1.MessageInfo\"I\n\rGet"
-    "SessionReq\022\n\n\002id\030\001 \001(\003\022\017\n\007user_id\030\002 \001(\003\022"
-    "\014\n\004auth\030\003 \001(\t\022\r\n\005limit\030\004 \001(\005\"N\n\016GetSessi"
-    "onResp\022\022\n\nerror_code\030\001 \001(\005\022(\n\010sessions\030\002"
-    " \003(\0132\026.GrpcLibraryV1.Session\"]\n\rNewSessi"
-    "onReq\022\017\n\007user_id\030\001 \001(\003\022\014\n\004auth\030\002 \001(\t\022\r\n\005"
-    "title\030\003 \001(\t\022\017\n\007content\030\004 \001(\t\022\r\n\005model\030\005 "
-    "\001(\t\"M\n\016NewSessionResp\022\022\n\nerror_code\030\001 \001("
-    "\005\022\'\n\007session\030\002 \001(\0132\026.GrpcLibraryV1.Sessi"
-    "on\"Q\n\025ModifySessionTitleReq\022\n\n\002id\030\001 \001(\003\022"
-    "\017\n\007user_id\030\002 \001(\003\022\014\n\004auth\030\003 \001(\t\022\r\n\005title\030"
-    "\004 \001(\t\"G\n\026ModifySessionTitleResp\022\022\n\nerror"
-    "_code\030\001 \001(\005\022\n\n\002id\030\002 \001(\003\022\r\n\005title\030\003 \001(\t\";"
-    "\n\rDelSessionReq\022\017\n\007user_id\030\001 \001(\003\022\014\n\004auth"
-    "\030\002 \001(\t\022\013\n\003ids\030\003 \003(\003\"1\n\016DelSessionResp\022\022\n"
-    "\nerror_code\030\001 \001(\005\022\013\n\003ids\030\002 \003(\003\"B\n\020GetPlu"
-    "ginInfoReq\022\014\n\004hash\030\001 \001(\t\022\021\n\tpublisher\030\002 "
-    "\001(\t\022\r\n\005limit\030\003 \001(\005\"O\n\021GetPluginInfoResp\022"
-    "\022\n\nerror_code\030\001 \001(\005\022&\n\007plugins\030\002 \003(\0132\025.G"
-    "rpcLibraryV1.Plugin\":\n\013DownloadReq\022\014\n\004ha"
-    "sh\030\001 \001(\t\022\017\n\007user_id\030\002 \001(\003\022\014\n\004auth\030\003 \001(\t\""
-    "O\n\014DownloadResp\022\022\n\nerror_code\030\001 \001(\005\022\014\n\004h"
-    "ash\030\002 \001(\t\022\014\n\004addr\030\003 \001(\t\022\017\n\007size_kb\030\004 \001(\003"
-    "\"W\n\tUploadReq\022\014\n\004hash\030\001 \001(\t\022\017\n\007user_id\030\002"
-    " \001(\003\022\014\n\004auth\030\003 \001(\t\022\014\n\004addr\030\004 \001(\t\022\017\n\007size"
-    "_kb\030\005 \001(\003\".\n\nUploadResp\022\022\n\nerror_code\030\001 "
-    "\001(\005\022\014\n\004hash\030\002 \001(\t\"\212\001\n\014EmbeddingReq\022\017\n\007ta"
-    "sk_id\030\001 \001(\003\022.\n\005param\030\002 \001(\0132\035.GrpcLibrary"
-    "V1.EmbeddingParamH\000\022)\n\005chunk\030\003 \001(\0132\030.Grp"
-    "cLibraryV1.FileChunkH\000B\016\n\014request_type\"]"
-    "\n\rEmbeddingResp\022\022\n\nerror_code\030\001 \001(\005\022\017\n\007t"
-    "ask_id\030\002 \001(\003\022\020\n\010chunk_id\030\003 \001(\003\022\025\n\rvector"
-    "_indexs\030\004 \001(\014\"B\n\020StopEmbeddingReq\022\017\n\007tas"
-    "k_id\030\001 \001(\003\022\017\n\007user_id\030\002 \001(\003\022\014\n\004auth\030\003 \001("
-    "\t\"8\n\021StopEmbeddingResp\022\022\n\nerror_code\030\001 \001"
-    "(\005\022\017\n\007task_id\030\002 \001(\0032\352\n\n\013GrpcService\0227\n\tH"
-    "eartbeat\022\023.GrpcLibraryV1.Ping\032\023.GrpcLibr"
-    "aryV1.Pong\"\000\022<\n\005Login\022\027.GrpcLibraryV1.Lo"
-    "ginReq\032\030.GrpcLibraryV1.LoginResp\"\000\022\?\n\006Lo"
-    "gout\022\030.GrpcLibraryV1.LogoutReq\032\031.GrpcLib"
-    "raryV1.LogoutResp\"\000\022K\n\nRegAccount\022\034.Grpc"
-    "LibraryV1.RegAccountReq\032\035.GrpcLibraryV1."
-    "RegAccountResp\"\000\022>\n\005Query\022\027.GrpcLibraryV"
-    "1.QueryReq\032\030.GrpcLibraryV1.QueryResp\"\0000\001"
-    "\022K\n\nStopAnswer\022\034.GrpcLibraryV1.StopAnswe"
-    "rReq\032\035.GrpcLibraryV1.StopAnswerResp\"\000\022L\n"
-    "\tRecognize\022\033.GrpcLibraryV1.RecognizeReq\032"
-    "\034.GrpcLibraryV1.RecognizeResp\"\000(\0010\001\022T\n\rS"
-    "topRecognize\022\037.GrpcLibraryV1.StopRecogni"
-    "zeReq\032 .GrpcLibraryV1.StopRecognizeResp\""
-    "\000\022W\n\016GetMessageInfo\022 .GrpcLibraryV1.GetM"
-    "essageInfoReq\032!.GrpcLibraryV1.GetMessage"
-    "InfoResp\"\000\022K\n\nGetSession\022\034.GrpcLibraryV1"
-    ".GetSessionReq\032\035.GrpcLibraryV1.GetSessio"
-    "nResp\"\000\022K\n\nNewSession\022\034.GrpcLibraryV1.Ne"
-    "wSessionReq\032\035.GrpcLibraryV1.NewSessionRe"
-    "sp\"\000\022c\n\022ModifySessionTitle\022$.GrpcLibrary"
-    "V1.ModifySessionTitleReq\032%.GrpcLibraryV1"
-    ".ModifySessionTitleResp\"\000\022K\n\nDelSession\022"
-    "\034.GrpcLibraryV1.DelSessionReq\032\035.GrpcLibr"
-    "aryV1.DelSessionResp\"\000\022T\n\rGetPluginInfo\022"
-    "\037.GrpcLibraryV1.GetPluginInfoReq\032 .GrpcL"
-    "ibraryV1.GetPluginInfoResp\"\000\022E\n\010Download"
-    "\022\032.GrpcLibraryV1.DownloadReq\032\033.GrpcLibra"
-    "ryV1.DownloadResp\"\000\022\?\n\006Upload\022\030.GrpcLibr"
-    "aryV1.UploadReq\032\031.GrpcLibraryV1.UploadRe"
-    "sp\"\000\022L\n\tEmbedding\022\033.GrpcLibraryV1.Embedd"
-    "ingReq\032\034.GrpcLibraryV1.EmbeddingResp\"\000(\001"
-    "0\001\022T\n\rStopEmbedding\022\037.GrpcLibraryV1.Stop"
-    "EmbeddingReq\032 .GrpcLibraryV1.StopEmbeddi"
-    "ngResp\"\000b\006proto3"
+    "rror_code\030\001 \001(\005\022\017\n\007user_id\030\002 \001(\003\"\342\001\n\010Que"
+    "ryReq\022\n\n\002id\030\001 \001(\003\022\017\n\007user_id\030\002 \001(\003\022\016\n\006ms"
+    "g_id\030\003 \001(\003\022\014\n\004auth\030\004 \001(\t\022\017\n\007content\030\005 \001("
+    "\t\022\r\n\005model\030\006 \001(\t\022\020\n\010pipeline\030\007 \001(\t\022\017\n\007ap"
+    "i_key\030\010 \001(\t\022.\n\010sampling\030\t \001(\0132\034.GrpcLibr"
+    "aryV1.SamplingParam\022(\n\003ctx\030\n \001(\0132\033.GrpcL"
+    "ibraryV1.ContextParam\"a\n\tQueryResp\022\022\n\ner"
+    "ror_code\030\001 \001(\005\022\n\n\002id\030\002 \001(\003\022\016\n\006msg_id\030\003 \001"
+    "(\003\022\017\n\007content\030\004 \001(\t\022\023\n\013is_finished\030\005 \001(\010"
+    "\"B\n\rStopAnswerReq\022\022\n\nsession_id\030\001 \001(\003\022\017\n"
+    "\007user_id\030\002 \001(\003\022\014\n\004auth\030\003 \001(\t\"8\n\016StopAnsw"
+    "erResp\022\022\n\nerror_code\030\001 \001(\005\022\022\n\nsession_id"
+    "\030\002 \001(\003\"\213\001\n\014RecognizeReq\022\016\n\006ctx_id\030\001 \001(\t\022"
+    "\022\n\nsession_id\030\002 \001(\003\0220\n\005param\030\003 \001(\0132\037.Grp"
+    "cLibraryV1.RecognitionParamH\000\022\025\n\013audio_c"
+    "hunk\030\004 \001(\014H\000B\016\n\014request_type\"t\n\rRecogniz"
+    "eResp\022\022\n\nerror_code\030\001 \001(\005\022\022\n\nsession_id\030"
+    "\002 \001(\003\022\022\n\ntranscript\030\003 \001(\t\022\023\n\013is_finished"
+    "\030\004 \001(\010\022\022\n\nconfidence\030\005 \001(\001\"E\n\020StopRecogn"
+    "izeReq\022\022\n\nsession_id\030\001 \001(\003\022\017\n\007user_id\030\002 "
+    "\001(\003\022\014\n\004auth\030\003 \001(\t\";\n\021StopRecognizeResp\022\022"
+    "\n\nerror_code\030\001 \001(\005\022\022\n\nsession_id\030\002 \001(\003\"a"
+    "\n\021GetMessageInfoReq\022\n\n\002id\030\001 \001(\003\022\022\n\nsessi"
+    "on_id\030\002 \001(\003\022\r\n\005limit\030\003 \001(\005\022\017\n\007user_id\030\004 "
+    "\001(\003\022\014\n\004auth\030\005 \001(\t\"V\n\022GetMessageInfoResp\022"
+    "\022\n\nerror_code\030\001 \001(\005\022,\n\010messages\030\002 \003(\0132\032."
+    "GrpcLibraryV1.MessageInfo\"I\n\rGetSessionR"
+    "eq\022\n\n\002id\030\001 \001(\003\022\017\n\007user_id\030\002 \001(\003\022\014\n\004auth\030"
+    "\003 \001(\t\022\r\n\005limit\030\004 \001(\005\"N\n\016GetSessionResp\022\022"
+    "\n\nerror_code\030\001 \001(\005\022(\n\010sessions\030\002 \003(\0132\026.G"
+    "rpcLibraryV1.Session\"]\n\rNewSessionReq\022\017\n"
+    "\007user_id\030\001 \001(\003\022\014\n\004auth\030\002 \001(\t\022\r\n\005title\030\003 "
+    "\001(\t\022\017\n\007content\030\004 \001(\t\022\r\n\005model\030\005 \001(\t\"M\n\016N"
+    "ewSessionResp\022\022\n\nerror_code\030\001 \001(\005\022\'\n\007ses"
+    "sion\030\002 \001(\0132\026.GrpcLibraryV1.Session\"Q\n\025Mo"
+    "difySessionTitleReq\022\n\n\002id\030\001 \001(\003\022\017\n\007user_"
+    "id\030\002 \001(\003\022\014\n\004auth\030\003 \001(\t\022\r\n\005title\030\004 \001(\t\"G\n"
+    "\026ModifySessionTitleResp\022\022\n\nerror_code\030\001 "
+    "\001(\005\022\n\n\002id\030\002 \001(\003\022\r\n\005title\030\003 \001(\t\";\n\rDelSes"
+    "sionReq\022\017\n\007user_id\030\001 \001(\003\022\014\n\004auth\030\002 \001(\t\022\013"
+    "\n\003ids\030\003 \003(\003\"1\n\016DelSessionResp\022\022\n\nerror_c"
+    "ode\030\001 \001(\005\022\013\n\003ids\030\002 \003(\003\"B\n\020GetPluginInfoR"
+    "eq\022\014\n\004hash\030\001 \001(\t\022\021\n\tpublisher\030\002 \001(\t\022\r\n\005l"
+    "imit\030\003 \001(\005\"O\n\021GetPluginInfoResp\022\022\n\nerror"
+    "_code\030\001 \001(\005\022&\n\007plugins\030\002 \003(\0132\025.GrpcLibra"
+    "ryV1.Plugin\":\n\013DownloadReq\022\014\n\004hash\030\001 \001(\t"
+    "\022\017\n\007user_id\030\002 \001(\003\022\014\n\004auth\030\003 \001(\t\"O\n\014Downl"
+    "oadResp\022\022\n\nerror_code\030\001 \001(\005\022\014\n\004hash\030\002 \001("
+    "\t\022\014\n\004addr\030\003 \001(\t\022\017\n\007size_kb\030\004 \001(\003\"W\n\tUplo"
+    "adReq\022\014\n\004hash\030\001 \001(\t\022\017\n\007user_id\030\002 \001(\003\022\014\n\004"
+    "auth\030\003 \001(\t\022\014\n\004addr\030\004 \001(\t\022\017\n\007size_kb\030\005 \001("
+    "\003\".\n\nUploadResp\022\022\n\nerror_code\030\001 \001(\005\022\014\n\004h"
+    "ash\030\002 \001(\t\"\212\001\n\014EmbeddingReq\022\017\n\007task_id\030\001 "
+    "\001(\003\022.\n\005param\030\002 \001(\0132\035.GrpcLibraryV1.Embed"
+    "dingParamH\000\022)\n\005chunk\030\003 \001(\0132\030.GrpcLibrary"
+    "V1.FileChunkH\000B\016\n\014request_type\"]\n\rEmbedd"
+    "ingResp\022\022\n\nerror_code\030\001 \001(\005\022\017\n\007task_id\030\002"
+    " \001(\003\022\020\n\010chunk_id\030\003 \001(\003\022\025\n\rvector_indexs\030"
+    "\004 \001(\014\"B\n\020StopEmbeddingReq\022\017\n\007task_id\030\001 \001"
+    "(\003\022\017\n\007user_id\030\002 \001(\003\022\014\n\004auth\030\003 \001(\t\"8\n\021Sto"
+    "pEmbeddingResp\022\022\n\nerror_code\030\001 \001(\005\022\017\n\007ta"
+    "sk_id\030\002 \001(\0032\352\n\n\013GrpcService\0227\n\tHeartbeat"
+    "\022\023.GrpcLibraryV1.Ping\032\023.GrpcLibraryV1.Po"
+    "ng\"\000\022<\n\005Login\022\027.GrpcLibraryV1.LoginReq\032\030"
+    ".GrpcLibraryV1.LoginResp\"\000\022\?\n\006Logout\022\030.G"
+    "rpcLibraryV1.LogoutReq\032\031.GrpcLibraryV1.L"
+    "ogoutResp\"\000\022K\n\nRegAccount\022\034.GrpcLibraryV"
+    "1.RegAccountReq\032\035.GrpcLibraryV1.RegAccou"
+    "ntResp\"\000\022>\n\005Query\022\027.GrpcLibraryV1.QueryR"
+    "eq\032\030.GrpcLibraryV1.QueryResp\"\0000\001\022K\n\nStop"
+    "Answer\022\034.GrpcLibraryV1.StopAnswerReq\032\035.G"
+    "rpcLibraryV1.StopAnswerResp\"\000\022L\n\tRecogni"
+    "ze\022\033.GrpcLibraryV1.RecognizeReq\032\034.GrpcLi"
+    "braryV1.RecognizeResp\"\000(\0010\001\022T\n\rStopRecog"
+    "nize\022\037.GrpcLibraryV1.StopRecognizeReq\032 ."
+    "GrpcLibraryV1.StopRecognizeResp\"\000\022W\n\016Get"
+    "MessageInfo\022 .GrpcLibraryV1.GetMessageIn"
+    "foReq\032!.GrpcLibraryV1.GetMessageInfoResp"
+    "\"\000\022K\n\nGetSession\022\034.GrpcLibraryV1.GetSess"
+    "ionReq\032\035.GrpcLibraryV1.GetSessionResp\"\000\022"
+    "K\n\nNewSession\022\034.GrpcLibraryV1.NewSession"
+    "Req\032\035.GrpcLibraryV1.NewSessionResp\"\000\022c\n\022"
+    "ModifySessionTitle\022$.GrpcLibraryV1.Modif"
+    "ySessionTitleReq\032%.GrpcLibraryV1.ModifyS"
+    "essionTitleResp\"\000\022K\n\nDelSession\022\034.GrpcLi"
+    "braryV1.DelSessionReq\032\035.GrpcLibraryV1.De"
+    "lSessionResp\"\000\022T\n\rGetPluginInfo\022\037.GrpcLi"
+    "braryV1.GetPluginInfoReq\032 .GrpcLibraryV1"
+    ".GetPluginInfoResp\"\000\022E\n\010Download\022\032.GrpcL"
+    "ibraryV1.DownloadReq\032\033.GrpcLibraryV1.Dow"
+    "nloadResp\"\000\022\?\n\006Upload\022\030.GrpcLibraryV1.Up"
+    "loadReq\032\031.GrpcLibraryV1.UploadResp\"\000\022L\n\t"
+    "Embedding\022\033.GrpcLibraryV1.EmbeddingReq\032\034"
+    ".GrpcLibraryV1.EmbeddingResp\"\000(\0010\001\022T\n\rSt"
+    "opEmbedding\022\037.GrpcLibraryV1.StopEmbeddin"
+    "gReq\032 .GrpcLibraryV1.StopEmbeddingResp\"\000"
+    "b\006proto3"
 };
 static ::absl::once_flag descriptor_table_src_2fapi_2eproto_once;
 PROTOBUF_CONSTINIT const ::_pbi::DescriptorTable descriptor_table_src_2fapi_2eproto = {
     false,
     false,
-    6496,
+    6528,
     descriptor_table_protodef_src_2fapi_2eproto,
     "src/api.proto",
     &descriptor_table_src_2fapi_2eproto_once,
@@ -10372,9 +10379,9 @@ QueryReq::QueryReq(
                offsetof(Impl_, id_),
            reinterpret_cast<const char*>(&from._impl_) +
                offsetof(Impl_, id_),
-           offsetof(Impl_, user_id_) -
+           offsetof(Impl_, msg_id_) -
                offsetof(Impl_, id_) +
-               sizeof(Impl_::user_id_));
+               sizeof(Impl_::msg_id_));
 
   // @@protoc_insertion_point(copy_constructor:GrpcLibraryV1.QueryReq)
 }
@@ -10393,9 +10400,9 @@ inline void QueryReq::SharedCtor(::_pb::Arena* PROTOBUF_NULLABLE arena) {
   ::memset(reinterpret_cast<char*>(&_impl_) +
                offsetof(Impl_, sampling_),
            0,
-           offsetof(Impl_, user_id_) -
+           offsetof(Impl_, msg_id_) -
                offsetof(Impl_, sampling_) +
-               sizeof(Impl_::user_id_));
+               sizeof(Impl_::msg_id_));
 }
 QueryReq::~QueryReq() {
   // @@protoc_insertion_point(destructor:GrpcLibraryV1.QueryReq)
@@ -10461,16 +10468,16 @@ QueryReq::GetClassData() const {
   return QueryReq_class_data_.base();
 }
 PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
-const ::_pbi::TcParseTable<4, 9, 2, 70, 2>
+const ::_pbi::TcParseTable<4, 10, 2, 70, 2>
 QueryReq::_table_ = {
   {
     PROTOBUF_FIELD_OFFSET(QueryReq, _impl_._has_bits_),
     0, // no _extensions_
-    9, 120,  // max_field_number, fast_idx_mask
+    10, 120,  // max_field_number, fast_idx_mask
     offsetof(decltype(_table_), field_lookup_table),
-    4294966784,  // skipmap
+    4294966272,  // skipmap
     offsetof(decltype(_table_), field_entries),
-    9,  // num_field_entries
+    10,  // num_field_entries
     2,  // num_aux_entries
     offsetof(decltype(_table_), aux_entries),
     QueryReq_class_data_.base(),
@@ -10489,35 +10496,38 @@ QueryReq::_table_ = {
     {::_pbi::TcParser::SingularVarintNoZag1<::uint64_t, offsetof(QueryReq, _impl_.user_id_), 8>(),
      {16, 8, 0,
       PROTOBUF_FIELD_OFFSET(QueryReq, _impl_.user_id_)}},
-    // string auth = 3;
+    // int64 msg_id = 3;
+    {::_pbi::TcParser::SingularVarintNoZag1<::uint64_t, offsetof(QueryReq, _impl_.msg_id_), 9>(),
+     {24, 9, 0,
+      PROTOBUF_FIELD_OFFSET(QueryReq, _impl_.msg_id_)}},
+    // string auth = 4;
     {::_pbi::TcParser::FastUS1,
-     {26, 0, 0,
+     {34, 0, 0,
       PROTOBUF_FIELD_OFFSET(QueryReq, _impl_.auth_)}},
-    // string content = 4;
+    // string content = 5;
     {::_pbi::TcParser::FastUS1,
-     {34, 1, 0,
+     {42, 1, 0,
       PROTOBUF_FIELD_OFFSET(QueryReq, _impl_.content_)}},
-    // string model = 5;
+    // string model = 6;
     {::_pbi::TcParser::FastUS1,
-     {42, 2, 0,
+     {50, 2, 0,
       PROTOBUF_FIELD_OFFSET(QueryReq, _impl_.model_)}},
-    // string pipeline = 6;
+    // string pipeline = 7;
     {::_pbi::TcParser::FastUS1,
-     {50, 3, 0,
+     {58, 3, 0,
       PROTOBUF_FIELD_OFFSET(QueryReq, _impl_.pipeline_)}},
-    // string api_key = 7;
+    // string api_key = 8;
     {::_pbi::TcParser::FastUS1,
-     {58, 4, 0,
+     {66, 4, 0,
       PROTOBUF_FIELD_OFFSET(QueryReq, _impl_.api_key_)}},
-    // .GrpcLibraryV1.SamplingParam sampling = 8;
+    // .GrpcLibraryV1.SamplingParam sampling = 9;
     {::_pbi::TcParser::FastMtS1,
-     {66, 5, 0,
+     {74, 5, 0,
       PROTOBUF_FIELD_OFFSET(QueryReq, _impl_.sampling_)}},
-    // .GrpcLibraryV1.ContextParam ctx = 9;
+    // .GrpcLibraryV1.ContextParam ctx = 10;
     {::_pbi::TcParser::FastMtS1,
-     {74, 6, 1,
+     {82, 6, 1,
       PROTOBUF_FIELD_OFFSET(QueryReq, _impl_.ctx_)}},
-    {::_pbi::TcParser::MiniParse, {}},
     {::_pbi::TcParser::MiniParse, {}},
     {::_pbi::TcParser::MiniParse, {}},
     {::_pbi::TcParser::MiniParse, {}},
@@ -10530,19 +10540,21 @@ QueryReq::_table_ = {
     {PROTOBUF_FIELD_OFFSET(QueryReq, _impl_.id_), _Internal::kHasBitsOffset + 7, 0, (0 | ::_fl::kFcOptional | ::_fl::kInt64)},
     // int64 user_id = 2;
     {PROTOBUF_FIELD_OFFSET(QueryReq, _impl_.user_id_), _Internal::kHasBitsOffset + 8, 0, (0 | ::_fl::kFcOptional | ::_fl::kInt64)},
-    // string auth = 3;
+    // int64 msg_id = 3;
+    {PROTOBUF_FIELD_OFFSET(QueryReq, _impl_.msg_id_), _Internal::kHasBitsOffset + 9, 0, (0 | ::_fl::kFcOptional | ::_fl::kInt64)},
+    // string auth = 4;
     {PROTOBUF_FIELD_OFFSET(QueryReq, _impl_.auth_), _Internal::kHasBitsOffset + 0, 0, (0 | ::_fl::kFcOptional | ::_fl::kUtf8String | ::_fl::kRepAString)},
-    // string content = 4;
+    // string content = 5;
     {PROTOBUF_FIELD_OFFSET(QueryReq, _impl_.content_), _Internal::kHasBitsOffset + 1, 0, (0 | ::_fl::kFcOptional | ::_fl::kUtf8String | ::_fl::kRepAString)},
-    // string model = 5;
+    // string model = 6;
     {PROTOBUF_FIELD_OFFSET(QueryReq, _impl_.model_), _Internal::kHasBitsOffset + 2, 0, (0 | ::_fl::kFcOptional | ::_fl::kUtf8String | ::_fl::kRepAString)},
-    // string pipeline = 6;
+    // string pipeline = 7;
     {PROTOBUF_FIELD_OFFSET(QueryReq, _impl_.pipeline_), _Internal::kHasBitsOffset + 3, 0, (0 | ::_fl::kFcOptional | ::_fl::kUtf8String | ::_fl::kRepAString)},
-    // string api_key = 7;
+    // string api_key = 8;
     {PROTOBUF_FIELD_OFFSET(QueryReq, _impl_.api_key_), _Internal::kHasBitsOffset + 4, 0, (0 | ::_fl::kFcOptional | ::_fl::kUtf8String | ::_fl::kRepAString)},
-    // .GrpcLibraryV1.SamplingParam sampling = 8;
+    // .GrpcLibraryV1.SamplingParam sampling = 9;
     {PROTOBUF_FIELD_OFFSET(QueryReq, _impl_.sampling_), _Internal::kHasBitsOffset + 5, 0, (0 | ::_fl::kFcOptional | ::_fl::kMessage | ::_fl::kTvTable)},
-    // .GrpcLibraryV1.ContextParam ctx = 9;
+    // .GrpcLibraryV1.ContextParam ctx = 10;
     {PROTOBUF_FIELD_OFFSET(QueryReq, _impl_.ctx_), _Internal::kHasBitsOffset + 6, 1, (0 | ::_fl::kFcOptional | ::_fl::kMessage | ::_fl::kTvTable)},
   }},
   {{
@@ -10550,7 +10562,7 @@ QueryReq::_table_ = {
       {::_pbi::TcParser::GetTable<::GrpcLibraryV1::ContextParam>()},
   }},
   {{
-    "\26\0\0\4\7\5\10\7\0\0\0\0\0\0\0\0"
+    "\26\0\0\0\4\7\5\10\7\0\0\0\0\0\0\0"
     "GrpcLibraryV1.QueryReq"
     "auth"
     "content"
@@ -10593,7 +10605,11 @@ PROTOBUF_NOINLINE void QueryReq::Clear() {
     }
   }
   _impl_.id_ = ::int64_t{0};
-  _impl_.user_id_ = ::int64_t{0};
+  if (BatchCheckHasBit(cached_has_bits, 0x00000300U)) {
+    ::memset(&_impl_.user_id_, 0, static_cast<::size_t>(
+        reinterpret_cast<char*>(&_impl_.msg_id_) -
+        reinterpret_cast<char*>(&_impl_.user_id_)) + sizeof(_impl_.msg_id_));
+  }
   _impl_._has_bits_.Clear();
   _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
 }
@@ -10635,67 +10651,76 @@ PROTOBUF_NOINLINE void QueryReq::Clear() {
     }
   }
 
-  // string auth = 3;
+  // int64 msg_id = 3;
+  if (CheckHasBit(cached_has_bits, 0x00000200U)) {
+    if (this_._internal_msg_id() != 0) {
+      target =
+          ::google::protobuf::internal::WireFormatLite::WriteInt64ToArrayWithField<3>(
+              stream, this_._internal_msg_id(), target);
+    }
+  }
+
+  // string auth = 4;
   if (CheckHasBit(cached_has_bits, 0x00000001U)) {
     if (!this_._internal_auth().empty()) {
       const ::std::string& _s = this_._internal_auth();
       ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
           _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "GrpcLibraryV1.QueryReq.auth");
-      target = stream->WriteStringMaybeAliased(3, _s, target);
+      target = stream->WriteStringMaybeAliased(4, _s, target);
     }
   }
 
-  // string content = 4;
+  // string content = 5;
   if (CheckHasBit(cached_has_bits, 0x00000002U)) {
     if (!this_._internal_content().empty()) {
       const ::std::string& _s = this_._internal_content();
       ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
           _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "GrpcLibraryV1.QueryReq.content");
-      target = stream->WriteStringMaybeAliased(4, _s, target);
+      target = stream->WriteStringMaybeAliased(5, _s, target);
     }
   }
 
-  // string model = 5;
+  // string model = 6;
   if (CheckHasBit(cached_has_bits, 0x00000004U)) {
     if (!this_._internal_model().empty()) {
       const ::std::string& _s = this_._internal_model();
       ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
           _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "GrpcLibraryV1.QueryReq.model");
-      target = stream->WriteStringMaybeAliased(5, _s, target);
+      target = stream->WriteStringMaybeAliased(6, _s, target);
     }
   }
 
-  // string pipeline = 6;
+  // string pipeline = 7;
   if (CheckHasBit(cached_has_bits, 0x00000008U)) {
     if (!this_._internal_pipeline().empty()) {
       const ::std::string& _s = this_._internal_pipeline();
       ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
           _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "GrpcLibraryV1.QueryReq.pipeline");
-      target = stream->WriteStringMaybeAliased(6, _s, target);
+      target = stream->WriteStringMaybeAliased(7, _s, target);
     }
   }
 
-  // string api_key = 7;
+  // string api_key = 8;
   if (CheckHasBit(cached_has_bits, 0x00000010U)) {
     if (!this_._internal_api_key().empty()) {
       const ::std::string& _s = this_._internal_api_key();
       ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
           _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "GrpcLibraryV1.QueryReq.api_key");
-      target = stream->WriteStringMaybeAliased(7, _s, target);
+      target = stream->WriteStringMaybeAliased(8, _s, target);
     }
   }
 
-  // .GrpcLibraryV1.SamplingParam sampling = 8;
+  // .GrpcLibraryV1.SamplingParam sampling = 9;
   if (CheckHasBit(cached_has_bits, 0x00000020U)) {
     target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
-        8, *this_._impl_.sampling_, this_._impl_.sampling_->GetCachedSize(), target,
+        9, *this_._impl_.sampling_, this_._impl_.sampling_->GetCachedSize(), target,
         stream);
   }
 
-  // .GrpcLibraryV1.ContextParam ctx = 9;
+  // .GrpcLibraryV1.ContextParam ctx = 10;
   if (CheckHasBit(cached_has_bits, 0x00000040U)) {
     target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
-        9, *this_._impl_.ctx_, this_._impl_.ctx_->GetCachedSize(), target,
+        10, *this_._impl_.ctx_, this_._impl_.ctx_->GetCachedSize(), target,
         stream);
   }
 
@@ -10725,47 +10750,47 @@ PROTOBUF_NOINLINE void QueryReq::Clear() {
   ::_pbi::Prefetch5LinesFrom7Lines(&this_);
   cached_has_bits = this_._impl_._has_bits_[0];
   if (BatchCheckHasBit(cached_has_bits, 0x000000ffU)) {
-    // string auth = 3;
+    // string auth = 4;
     if (CheckHasBit(cached_has_bits, 0x00000001U)) {
       if (!this_._internal_auth().empty()) {
         total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
                                         this_._internal_auth());
       }
     }
-    // string content = 4;
+    // string content = 5;
     if (CheckHasBit(cached_has_bits, 0x00000002U)) {
       if (!this_._internal_content().empty()) {
         total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
                                         this_._internal_content());
       }
     }
-    // string model = 5;
+    // string model = 6;
     if (CheckHasBit(cached_has_bits, 0x00000004U)) {
       if (!this_._internal_model().empty()) {
         total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
                                         this_._internal_model());
       }
     }
-    // string pipeline = 6;
+    // string pipeline = 7;
     if (CheckHasBit(cached_has_bits, 0x00000008U)) {
       if (!this_._internal_pipeline().empty()) {
         total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
                                         this_._internal_pipeline());
       }
     }
-    // string api_key = 7;
+    // string api_key = 8;
     if (CheckHasBit(cached_has_bits, 0x00000010U)) {
       if (!this_._internal_api_key().empty()) {
         total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
                                         this_._internal_api_key());
       }
     }
-    // .GrpcLibraryV1.SamplingParam sampling = 8;
+    // .GrpcLibraryV1.SamplingParam sampling = 9;
     if (CheckHasBit(cached_has_bits, 0x00000020U)) {
       total_size += 1 +
                     ::google::protobuf::internal::WireFormatLite::MessageSize(*this_._impl_.sampling_);
     }
-    // .GrpcLibraryV1.ContextParam ctx = 9;
+    // .GrpcLibraryV1.ContextParam ctx = 10;
     if (CheckHasBit(cached_has_bits, 0x00000040U)) {
       total_size += 1 +
                     ::google::protobuf::internal::WireFormatLite::MessageSize(*this_._impl_.ctx_);
@@ -10778,12 +10803,19 @@ PROTOBUF_NOINLINE void QueryReq::Clear() {
       }
     }
   }
-   {
+  if (BatchCheckHasBit(cached_has_bits, 0x00000300U)) {
     // int64 user_id = 2;
     if (CheckHasBit(cached_has_bits, 0x00000100U)) {
       if (this_._internal_user_id() != 0) {
         total_size += ::_pbi::WireFormatLite::Int64SizePlusOne(
             this_._internal_user_id());
+      }
+    }
+    // int64 msg_id = 3;
+    if (CheckHasBit(cached_has_bits, 0x00000200U)) {
+      if (this_._internal_msg_id() != 0) {
+        total_size += ::_pbi::WireFormatLite::Int64SizePlusOne(
+            this_._internal_msg_id());
       }
     }
   }
@@ -10874,9 +10906,16 @@ void QueryReq::MergeImpl(::google::protobuf::MessageLite& to_msg,
       }
     }
   }
-  if (CheckHasBit(cached_has_bits, 0x00000100U)) {
-    if (from._internal_user_id() != 0) {
-      _this->_impl_.user_id_ = from._impl_.user_id_;
+  if (BatchCheckHasBit(cached_has_bits, 0x00000300U)) {
+    if (CheckHasBit(cached_has_bits, 0x00000100U)) {
+      if (from._internal_user_id() != 0) {
+        _this->_impl_.user_id_ = from._impl_.user_id_;
+      }
+    }
+    if (CheckHasBit(cached_has_bits, 0x00000200U)) {
+      if (from._internal_msg_id() != 0) {
+        _this->_impl_.msg_id_ = from._impl_.msg_id_;
+      }
     }
   }
   _this->_impl_._has_bits_[0] |= cached_has_bits;
@@ -10904,8 +10943,8 @@ void QueryReq::InternalSwap(QueryReq* PROTOBUF_RESTRICT PROTOBUF_NONNULL other) 
   ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.pipeline_, &other->_impl_.pipeline_, arena);
   ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.api_key_, &other->_impl_.api_key_, arena);
   ::google::protobuf::internal::memswap<
-      PROTOBUF_FIELD_OFFSET(QueryReq, _impl_.user_id_)
-      + sizeof(QueryReq::_impl_.user_id_)
+      PROTOBUF_FIELD_OFFSET(QueryReq, _impl_.msg_id_)
+      + sizeof(QueryReq::_impl_.msg_id_)
       - PROTOBUF_FIELD_OFFSET(QueryReq, _impl_.sampling_)>(
           reinterpret_cast<char*>(&_impl_.sampling_),
           reinterpret_cast<char*>(&other->_impl_.sampling_));
@@ -11037,16 +11076,16 @@ QueryResp::GetClassData() const {
   return QueryResp_class_data_.base();
 }
 PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
-const ::_pbi::TcParseTable<2, 4, 0, 39, 2>
+const ::_pbi::TcParseTable<3, 5, 0, 39, 2>
 QueryResp::_table_ = {
   {
     PROTOBUF_FIELD_OFFSET(QueryResp, _impl_._has_bits_),
     0, // no _extensions_
-    4, 24,  // max_field_number, fast_idx_mask
+    5, 56,  // max_field_number, fast_idx_mask
     offsetof(decltype(_table_), field_lookup_table),
-    4294967280,  // skipmap
+    4294967264,  // skipmap
     offsetof(decltype(_table_), field_entries),
-    4,  // num_field_entries
+    5,  // num_field_entries
     0,  // num_aux_entries
     offsetof(decltype(_table_), field_names),  // no aux_entries
     QueryResp_class_data_.base(),
@@ -11056,37 +11095,46 @@ QueryResp::_table_ = {
     ::_pbi::TcParser::GetTable<::GrpcLibraryV1::QueryResp>(),  // to_prefetch
     #endif  // PROTOBUF_PREFETCH_PARSE_TABLE
   }, {{
-    // bool is_finished = 4;
-    {::_pbi::TcParser::SingularVarintNoZag1<bool, offsetof(QueryResp, _impl_.is_finished_), 3>(),
-     {32, 3, 0,
-      PROTOBUF_FIELD_OFFSET(QueryResp, _impl_.is_finished_)}},
+    {::_pbi::TcParser::MiniParse, {}},
     // int32 error_code = 1;
-    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(QueryResp, _impl_.error_code_), 2>(),
-     {8, 2, 0,
+    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(QueryResp, _impl_.error_code_), 3>(),
+     {8, 3, 0,
       PROTOBUF_FIELD_OFFSET(QueryResp, _impl_.error_code_)}},
     // int64 id = 2;
     {::_pbi::TcParser::SingularVarintNoZag1<::uint64_t, offsetof(QueryResp, _impl_.id_), 1>(),
      {16, 1, 0,
       PROTOBUF_FIELD_OFFSET(QueryResp, _impl_.id_)}},
-    // string content = 3;
+    // int64 msg_id = 3;
+    {::_pbi::TcParser::SingularVarintNoZag1<::uint64_t, offsetof(QueryResp, _impl_.msg_id_), 2>(),
+     {24, 2, 0,
+      PROTOBUF_FIELD_OFFSET(QueryResp, _impl_.msg_id_)}},
+    // string content = 4;
     {::_pbi::TcParser::FastUS1,
-     {26, 0, 0,
+     {34, 0, 0,
       PROTOBUF_FIELD_OFFSET(QueryResp, _impl_.content_)}},
+    // bool is_finished = 5;
+    {::_pbi::TcParser::SingularVarintNoZag1<bool, offsetof(QueryResp, _impl_.is_finished_), 4>(),
+     {40, 4, 0,
+      PROTOBUF_FIELD_OFFSET(QueryResp, _impl_.is_finished_)}},
+    {::_pbi::TcParser::MiniParse, {}},
+    {::_pbi::TcParser::MiniParse, {}},
   }}, {{
     65535, 65535
   }}, {{
     // int32 error_code = 1;
-    {PROTOBUF_FIELD_OFFSET(QueryResp, _impl_.error_code_), _Internal::kHasBitsOffset + 2, 0, (0 | ::_fl::kFcOptional | ::_fl::kInt32)},
+    {PROTOBUF_FIELD_OFFSET(QueryResp, _impl_.error_code_), _Internal::kHasBitsOffset + 3, 0, (0 | ::_fl::kFcOptional | ::_fl::kInt32)},
     // int64 id = 2;
     {PROTOBUF_FIELD_OFFSET(QueryResp, _impl_.id_), _Internal::kHasBitsOffset + 1, 0, (0 | ::_fl::kFcOptional | ::_fl::kInt64)},
-    // string content = 3;
+    // int64 msg_id = 3;
+    {PROTOBUF_FIELD_OFFSET(QueryResp, _impl_.msg_id_), _Internal::kHasBitsOffset + 2, 0, (0 | ::_fl::kFcOptional | ::_fl::kInt64)},
+    // string content = 4;
     {PROTOBUF_FIELD_OFFSET(QueryResp, _impl_.content_), _Internal::kHasBitsOffset + 0, 0, (0 | ::_fl::kFcOptional | ::_fl::kUtf8String | ::_fl::kRepAString)},
-    // bool is_finished = 4;
-    {PROTOBUF_FIELD_OFFSET(QueryResp, _impl_.is_finished_), _Internal::kHasBitsOffset + 3, 0, (0 | ::_fl::kFcOptional | ::_fl::kBool)},
+    // bool is_finished = 5;
+    {PROTOBUF_FIELD_OFFSET(QueryResp, _impl_.is_finished_), _Internal::kHasBitsOffset + 4, 0, (0 | ::_fl::kFcOptional | ::_fl::kBool)},
   }},
   // no aux_entries
   {{
-    "\27\0\0\7\0\0\0\0"
+    "\27\0\0\0\7\0\0\0"
     "GrpcLibraryV1.QueryResp"
     "content"
   }},
@@ -11102,7 +11150,7 @@ PROTOBUF_NOINLINE void QueryResp::Clear() {
   if (CheckHasBit(cached_has_bits, 0x00000001U)) {
     _impl_.content_.ClearNonDefaultToEmpty();
   }
-  if (BatchCheckHasBit(cached_has_bits, 0x0000000eU)) {
+  if (BatchCheckHasBit(cached_has_bits, 0x0000001eU)) {
     ::memset(&_impl_.id_, 0, static_cast<::size_t>(
         reinterpret_cast<char*>(&_impl_.is_finished_) -
         reinterpret_cast<char*>(&_impl_.id_)) + sizeof(_impl_.is_finished_));
@@ -11131,7 +11179,7 @@ PROTOBUF_NOINLINE void QueryResp::Clear() {
 
   cached_has_bits = this_._impl_._has_bits_[0];
   // int32 error_code = 1;
-  if (CheckHasBit(cached_has_bits, 0x00000004U)) {
+  if (CheckHasBit(cached_has_bits, 0x00000008U)) {
     if (this_._internal_error_code() != 0) {
       target =
           ::google::protobuf::internal::WireFormatLite::WriteInt32ToArrayWithField<1>(
@@ -11148,22 +11196,31 @@ PROTOBUF_NOINLINE void QueryResp::Clear() {
     }
   }
 
-  // string content = 3;
+  // int64 msg_id = 3;
+  if (CheckHasBit(cached_has_bits, 0x00000004U)) {
+    if (this_._internal_msg_id() != 0) {
+      target =
+          ::google::protobuf::internal::WireFormatLite::WriteInt64ToArrayWithField<3>(
+              stream, this_._internal_msg_id(), target);
+    }
+  }
+
+  // string content = 4;
   if (CheckHasBit(cached_has_bits, 0x00000001U)) {
     if (!this_._internal_content().empty()) {
       const ::std::string& _s = this_._internal_content();
       ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
           _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "GrpcLibraryV1.QueryResp.content");
-      target = stream->WriteStringMaybeAliased(3, _s, target);
+      target = stream->WriteStringMaybeAliased(4, _s, target);
     }
   }
 
-  // bool is_finished = 4;
-  if (CheckHasBit(cached_has_bits, 0x00000008U)) {
+  // bool is_finished = 5;
+  if (CheckHasBit(cached_has_bits, 0x00000010U)) {
     if (this_._internal_is_finished() != 0) {
       target = stream->EnsureSpace(target);
       target = ::_pbi::WireFormatLite::WriteBoolToArray(
-          4, this_._internal_is_finished(), target);
+          5, this_._internal_is_finished(), target);
     }
   }
 
@@ -11192,8 +11249,8 @@ PROTOBUF_NOINLINE void QueryResp::Clear() {
 
   ::_pbi::Prefetch5LinesFrom7Lines(&this_);
   cached_has_bits = this_._impl_._has_bits_[0];
-  if (BatchCheckHasBit(cached_has_bits, 0x0000000fU)) {
-    // string content = 3;
+  if (BatchCheckHasBit(cached_has_bits, 0x0000001fU)) {
+    // string content = 4;
     if (CheckHasBit(cached_has_bits, 0x00000001U)) {
       if (!this_._internal_content().empty()) {
         total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
@@ -11207,15 +11264,22 @@ PROTOBUF_NOINLINE void QueryResp::Clear() {
             this_._internal_id());
       }
     }
-    // int32 error_code = 1;
+    // int64 msg_id = 3;
     if (CheckHasBit(cached_has_bits, 0x00000004U)) {
+      if (this_._internal_msg_id() != 0) {
+        total_size += ::_pbi::WireFormatLite::Int64SizePlusOne(
+            this_._internal_msg_id());
+      }
+    }
+    // int32 error_code = 1;
+    if (CheckHasBit(cached_has_bits, 0x00000008U)) {
       if (this_._internal_error_code() != 0) {
         total_size += ::_pbi::WireFormatLite::Int32SizePlusOne(
             this_._internal_error_code());
       }
     }
-    // bool is_finished = 4;
-    if (CheckHasBit(cached_has_bits, 0x00000008U)) {
+    // bool is_finished = 5;
+    if (CheckHasBit(cached_has_bits, 0x00000010U)) {
       if (this_._internal_is_finished() != 0) {
         total_size += 2;
       }
@@ -11239,7 +11303,7 @@ void QueryResp::MergeImpl(::google::protobuf::MessageLite& to_msg,
   (void)cached_has_bits;
 
   cached_has_bits = from._impl_._has_bits_[0];
-  if (BatchCheckHasBit(cached_has_bits, 0x0000000fU)) {
+  if (BatchCheckHasBit(cached_has_bits, 0x0000001fU)) {
     if (CheckHasBit(cached_has_bits, 0x00000001U)) {
       if (!from._internal_content().empty()) {
         _this->_internal_set_content(from._internal_content());
@@ -11255,11 +11319,16 @@ void QueryResp::MergeImpl(::google::protobuf::MessageLite& to_msg,
       }
     }
     if (CheckHasBit(cached_has_bits, 0x00000004U)) {
+      if (from._internal_msg_id() != 0) {
+        _this->_impl_.msg_id_ = from._impl_.msg_id_;
+      }
+    }
+    if (CheckHasBit(cached_has_bits, 0x00000008U)) {
       if (from._internal_error_code() != 0) {
         _this->_impl_.error_code_ = from._impl_.error_code_;
       }
     }
-    if (CheckHasBit(cached_has_bits, 0x00000008U)) {
+    if (CheckHasBit(cached_has_bits, 0x00000010U)) {
       if (from._internal_is_finished() != 0) {
         _this->_impl_.is_finished_ = from._impl_.is_finished_;
       }

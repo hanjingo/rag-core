@@ -38,6 +38,8 @@ class QueryReactor : public grpc::ServerWriteReactor<::GrpcLibraryV1::QueryResp>
 
     void _flush();
 
+    void _set_msg_id(int64_t msg_id);
+
   private:
     grpc::CallbackServerContext            *_ctx;
     std::atomic<bool>                       _is_cancelled{false};
@@ -46,6 +48,8 @@ class QueryReactor : public grpc::ServerWriteReactor<::GrpcLibraryV1::QueryResp>
 
     // base params
     int64_t     _session_id;
+    int64_t     _prev_msg_id = 0;
+    int64_t     _curr_msg_id = 0;
     int64_t     _user_id;
     std::string _auth;
     std::string _content;

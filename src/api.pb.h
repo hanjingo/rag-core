@@ -3794,12 +3794,13 @@ class QueryResp final : public ::google::protobuf::Message
 
   // accessors -------------------------------------------------------
   enum : int {
-    kContentFieldNumber = 3,
+    kContentFieldNumber = 4,
     kIdFieldNumber = 2,
+    kMsgIdFieldNumber = 3,
     kErrorCodeFieldNumber = 1,
-    kIsFinishedFieldNumber = 4,
+    kIsFinishedFieldNumber = 5,
   };
-  // string content = 3;
+  // string content = 4;
   void clear_content() ;
   const ::std::string& content() const;
   template <typename Arg_ = const ::std::string&, typename... Args_>
@@ -3824,6 +3825,16 @@ class QueryResp final : public ::google::protobuf::Message
   void _internal_set_id(::int64_t value);
 
   public:
+  // int64 msg_id = 3;
+  void clear_msg_id() ;
+  ::int64_t msg_id() const;
+  void set_msg_id(::int64_t value);
+
+  private:
+  ::int64_t _internal_msg_id() const;
+  void _internal_set_msg_id(::int64_t value);
+
+  public:
   // int32 error_code = 1;
   void clear_error_code() ;
   ::int32_t error_code() const;
@@ -3834,7 +3845,7 @@ class QueryResp final : public ::google::protobuf::Message
   void _internal_set_error_code(::int32_t value);
 
   public:
-  // bool is_finished = 4;
+  // bool is_finished = 5;
   void clear_is_finished() ;
   bool is_finished() const;
   void set_is_finished(bool value);
@@ -3848,7 +3859,7 @@ class QueryResp final : public ::google::protobuf::Message
  private:
   class _Internal;
   friend class ::google::protobuf::internal::TcParser;
-  static const ::google::protobuf::internal::TcParseTable<2, 4,
+  static const ::google::protobuf::internal::TcParseTable<3, 5,
                                    0, 39,
                                    2>
       _table_;
@@ -3872,6 +3883,7 @@ class QueryResp final : public ::google::protobuf::Message
     ::google::protobuf::internal::CachedSize _cached_size_;
     ::google::protobuf::internal::ArenaStringPtr content_;
     ::int64_t id_;
+    ::int64_t msg_id_;
     ::int32_t error_code_;
     bool is_finished_;
     PROTOBUF_TSAN_DECLARE_MEMBER
@@ -9628,17 +9640,18 @@ class QueryReq final : public ::google::protobuf::Message
 
   // accessors -------------------------------------------------------
   enum : int {
-    kAuthFieldNumber = 3,
-    kContentFieldNumber = 4,
-    kModelFieldNumber = 5,
-    kPipelineFieldNumber = 6,
-    kApiKeyFieldNumber = 7,
-    kSamplingFieldNumber = 8,
-    kCtxFieldNumber = 9,
+    kAuthFieldNumber = 4,
+    kContentFieldNumber = 5,
+    kModelFieldNumber = 6,
+    kPipelineFieldNumber = 7,
+    kApiKeyFieldNumber = 8,
+    kSamplingFieldNumber = 9,
+    kCtxFieldNumber = 10,
     kIdFieldNumber = 1,
     kUserIdFieldNumber = 2,
+    kMsgIdFieldNumber = 3,
   };
-  // string auth = 3;
+  // string auth = 4;
   void clear_auth() ;
   const ::std::string& auth() const;
   template <typename Arg_ = const ::std::string&, typename... Args_>
@@ -9653,7 +9666,7 @@ class QueryReq final : public ::google::protobuf::Message
   ::std::string* PROTOBUF_NONNULL _internal_mutable_auth();
 
   public:
-  // string content = 4;
+  // string content = 5;
   void clear_content() ;
   const ::std::string& content() const;
   template <typename Arg_ = const ::std::string&, typename... Args_>
@@ -9668,7 +9681,7 @@ class QueryReq final : public ::google::protobuf::Message
   ::std::string* PROTOBUF_NONNULL _internal_mutable_content();
 
   public:
-  // string model = 5;
+  // string model = 6;
   void clear_model() ;
   const ::std::string& model() const;
   template <typename Arg_ = const ::std::string&, typename... Args_>
@@ -9683,7 +9696,7 @@ class QueryReq final : public ::google::protobuf::Message
   ::std::string* PROTOBUF_NONNULL _internal_mutable_model();
 
   public:
-  // string pipeline = 6;
+  // string pipeline = 7;
   void clear_pipeline() ;
   const ::std::string& pipeline() const;
   template <typename Arg_ = const ::std::string&, typename... Args_>
@@ -9698,7 +9711,7 @@ class QueryReq final : public ::google::protobuf::Message
   ::std::string* PROTOBUF_NONNULL _internal_mutable_pipeline();
 
   public:
-  // string api_key = 7;
+  // string api_key = 8;
   void clear_api_key() ;
   const ::std::string& api_key() const;
   template <typename Arg_ = const ::std::string&, typename... Args_>
@@ -9713,7 +9726,7 @@ class QueryReq final : public ::google::protobuf::Message
   ::std::string* PROTOBUF_NONNULL _internal_mutable_api_key();
 
   public:
-  // .GrpcLibraryV1.SamplingParam sampling = 8;
+  // .GrpcLibraryV1.SamplingParam sampling = 9;
   bool has_sampling() const;
   void clear_sampling() ;
   const ::GrpcLibraryV1::SamplingParam& sampling() const;
@@ -9728,7 +9741,7 @@ class QueryReq final : public ::google::protobuf::Message
   ::GrpcLibraryV1::SamplingParam* PROTOBUF_NONNULL _internal_mutable_sampling();
 
   public:
-  // .GrpcLibraryV1.ContextParam ctx = 9;
+  // .GrpcLibraryV1.ContextParam ctx = 10;
   bool has_ctx() const;
   void clear_ctx() ;
   const ::GrpcLibraryV1::ContextParam& ctx() const;
@@ -9763,11 +9776,21 @@ class QueryReq final : public ::google::protobuf::Message
   void _internal_set_user_id(::int64_t value);
 
   public:
+  // int64 msg_id = 3;
+  void clear_msg_id() ;
+  ::int64_t msg_id() const;
+  void set_msg_id(::int64_t value);
+
+  private:
+  ::int64_t _internal_msg_id() const;
+  void _internal_set_msg_id(::int64_t value);
+
+  public:
   // @@protoc_insertion_point(class_scope:GrpcLibraryV1.QueryReq)
  private:
   class _Internal;
   friend class ::google::protobuf::internal::TcParser;
-  static const ::google::protobuf::internal::TcParseTable<4, 9,
+  static const ::google::protobuf::internal::TcParseTable<4, 10,
                                    2, 70,
                                    2>
       _table_;
@@ -9798,6 +9821,7 @@ class QueryReq final : public ::google::protobuf::Message
     ::GrpcLibraryV1::ContextParam* PROTOBUF_NULLABLE ctx_;
     ::int64_t id_;
     ::int64_t user_id_;
+    ::int64_t msg_id_;
     PROTOBUF_TSAN_DECLARE_MEMBER
   };
   union { Impl_ _impl_; };
@@ -15831,7 +15855,32 @@ inline void QueryReq::_internal_set_user_id(::int64_t value) {
   _impl_.user_id_ = value;
 }
 
-// string auth = 3;
+// int64 msg_id = 3;
+inline void QueryReq::clear_msg_id() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.msg_id_ = ::int64_t{0};
+  ClearHasBit(_impl_._has_bits_[0],
+                  0x00000200U);
+}
+inline ::int64_t QueryReq::msg_id() const {
+  // @@protoc_insertion_point(field_get:GrpcLibraryV1.QueryReq.msg_id)
+  return _internal_msg_id();
+}
+inline void QueryReq::set_msg_id(::int64_t value) {
+  _internal_set_msg_id(value);
+  SetHasBit(_impl_._has_bits_[0], 0x00000200U);
+  // @@protoc_insertion_point(field_set:GrpcLibraryV1.QueryReq.msg_id)
+}
+inline ::int64_t QueryReq::_internal_msg_id() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.msg_id_;
+}
+inline void QueryReq::_internal_set_msg_id(::int64_t value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.msg_id_ = value;
+}
+
+// string auth = 4;
 inline void QueryReq::clear_auth() {
   ::google::protobuf::internal::TSanWrite(&_impl_);
   _impl_.auth_.ClearToEmpty();
@@ -15896,7 +15945,7 @@ inline void QueryReq::set_allocated_auth(::std::string* PROTOBUF_NULLABLE value)
   // @@protoc_insertion_point(field_set_allocated:GrpcLibraryV1.QueryReq.auth)
 }
 
-// string content = 4;
+// string content = 5;
 inline void QueryReq::clear_content() {
   ::google::protobuf::internal::TSanWrite(&_impl_);
   _impl_.content_.ClearToEmpty();
@@ -15961,7 +16010,7 @@ inline void QueryReq::set_allocated_content(::std::string* PROTOBUF_NULLABLE val
   // @@protoc_insertion_point(field_set_allocated:GrpcLibraryV1.QueryReq.content)
 }
 
-// string model = 5;
+// string model = 6;
 inline void QueryReq::clear_model() {
   ::google::protobuf::internal::TSanWrite(&_impl_);
   _impl_.model_.ClearToEmpty();
@@ -16026,7 +16075,7 @@ inline void QueryReq::set_allocated_model(::std::string* PROTOBUF_NULLABLE value
   // @@protoc_insertion_point(field_set_allocated:GrpcLibraryV1.QueryReq.model)
 }
 
-// string pipeline = 6;
+// string pipeline = 7;
 inline void QueryReq::clear_pipeline() {
   ::google::protobuf::internal::TSanWrite(&_impl_);
   _impl_.pipeline_.ClearToEmpty();
@@ -16091,7 +16140,7 @@ inline void QueryReq::set_allocated_pipeline(::std::string* PROTOBUF_NULLABLE va
   // @@protoc_insertion_point(field_set_allocated:GrpcLibraryV1.QueryReq.pipeline)
 }
 
-// string api_key = 7;
+// string api_key = 8;
 inline void QueryReq::clear_api_key() {
   ::google::protobuf::internal::TSanWrite(&_impl_);
   _impl_.api_key_.ClearToEmpty();
@@ -16156,7 +16205,7 @@ inline void QueryReq::set_allocated_api_key(::std::string* PROTOBUF_NULLABLE val
   // @@protoc_insertion_point(field_set_allocated:GrpcLibraryV1.QueryReq.api_key)
 }
 
-// .GrpcLibraryV1.SamplingParam sampling = 8;
+// .GrpcLibraryV1.SamplingParam sampling = 9;
 inline bool QueryReq::has_sampling() const {
   bool value = CheckHasBit(_impl_._has_bits_[0], 0x00000020U);
   PROTOBUF_ASSUME(!value || _impl_.sampling_ != nullptr);
@@ -16255,7 +16304,7 @@ inline void QueryReq::set_allocated_sampling(::GrpcLibraryV1::SamplingParam* PRO
   // @@protoc_insertion_point(field_set_allocated:GrpcLibraryV1.QueryReq.sampling)
 }
 
-// .GrpcLibraryV1.ContextParam ctx = 9;
+// .GrpcLibraryV1.ContextParam ctx = 10;
 inline bool QueryReq::has_ctx() const {
   bool value = CheckHasBit(_impl_._has_bits_[0], 0x00000040U);
   PROTOBUF_ASSUME(!value || _impl_.ctx_ != nullptr);
@@ -16363,7 +16412,7 @@ inline void QueryResp::clear_error_code() {
   ::google::protobuf::internal::TSanWrite(&_impl_);
   _impl_.error_code_ = 0;
   ClearHasBit(_impl_._has_bits_[0],
-                  0x00000004U);
+                  0x00000008U);
 }
 inline ::int32_t QueryResp::error_code() const {
   // @@protoc_insertion_point(field_get:GrpcLibraryV1.QueryResp.error_code)
@@ -16371,7 +16420,7 @@ inline ::int32_t QueryResp::error_code() const {
 }
 inline void QueryResp::set_error_code(::int32_t value) {
   _internal_set_error_code(value);
-  SetHasBit(_impl_._has_bits_[0], 0x00000004U);
+  SetHasBit(_impl_._has_bits_[0], 0x00000008U);
   // @@protoc_insertion_point(field_set:GrpcLibraryV1.QueryResp.error_code)
 }
 inline ::int32_t QueryResp::_internal_error_code() const {
@@ -16408,7 +16457,32 @@ inline void QueryResp::_internal_set_id(::int64_t value) {
   _impl_.id_ = value;
 }
 
-// string content = 3;
+// int64 msg_id = 3;
+inline void QueryResp::clear_msg_id() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.msg_id_ = ::int64_t{0};
+  ClearHasBit(_impl_._has_bits_[0],
+                  0x00000004U);
+}
+inline ::int64_t QueryResp::msg_id() const {
+  // @@protoc_insertion_point(field_get:GrpcLibraryV1.QueryResp.msg_id)
+  return _internal_msg_id();
+}
+inline void QueryResp::set_msg_id(::int64_t value) {
+  _internal_set_msg_id(value);
+  SetHasBit(_impl_._has_bits_[0], 0x00000004U);
+  // @@protoc_insertion_point(field_set:GrpcLibraryV1.QueryResp.msg_id)
+}
+inline ::int64_t QueryResp::_internal_msg_id() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.msg_id_;
+}
+inline void QueryResp::_internal_set_msg_id(::int64_t value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.msg_id_ = value;
+}
+
+// string content = 4;
 inline void QueryResp::clear_content() {
   ::google::protobuf::internal::TSanWrite(&_impl_);
   _impl_.content_.ClearToEmpty();
@@ -16473,12 +16547,12 @@ inline void QueryResp::set_allocated_content(::std::string* PROTOBUF_NULLABLE va
   // @@protoc_insertion_point(field_set_allocated:GrpcLibraryV1.QueryResp.content)
 }
 
-// bool is_finished = 4;
+// bool is_finished = 5;
 inline void QueryResp::clear_is_finished() {
   ::google::protobuf::internal::TSanWrite(&_impl_);
   _impl_.is_finished_ = false;
   ClearHasBit(_impl_._has_bits_[0],
-                  0x00000008U);
+                  0x00000010U);
 }
 inline bool QueryResp::is_finished() const {
   // @@protoc_insertion_point(field_get:GrpcLibraryV1.QueryResp.is_finished)
@@ -16486,7 +16560,7 @@ inline bool QueryResp::is_finished() const {
 }
 inline void QueryResp::set_is_finished(bool value) {
   _internal_set_is_finished(value);
-  SetHasBit(_impl_._has_bits_[0], 0x00000008U);
+  SetHasBit(_impl_._has_bits_[0], 0x00000010U);
   // @@protoc_insertion_point(field_set:GrpcLibraryV1.QueryResp.is_finished)
 }
 inline bool QueryResp::_internal_is_finished() const {
