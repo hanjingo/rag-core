@@ -688,42 +688,6 @@ struct ModifySessionTitleReqDefaultTypeInternal {
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
     PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 ModifySessionTitleReqDefaultTypeInternal _ModifySessionTitleReq_default_instance_;
 
-inline constexpr MessageInfo::Impl_::Impl_(
-    ::_pbi::ConstantInitialized) noexcept
-      : _cached_size_{0},
-        role_(
-            &::google::protobuf::internal::fixed_address_empty_string,
-            ::_pbi::ConstantInitialized()),
-        content_(
-            &::google::protobuf::internal::fixed_address_empty_string,
-            ::_pbi::ConstantInitialized()),
-        timestamp_(
-            &::google::protobuf::internal::fixed_address_empty_string,
-            ::_pbi::ConstantInitialized()),
-        id_{::int64_t{0}},
-        session_id_{::int64_t{0}},
-        prev_message_id_{::int64_t{0}} {}
-
-template <typename>
-PROTOBUF_CONSTEXPR MessageInfo::MessageInfo(::_pbi::ConstantInitialized)
-#if defined(PROTOBUF_CUSTOM_VTABLE)
-    : ::google::protobuf::Message(MessageInfo_class_data_.base()),
-#else   // PROTOBUF_CUSTOM_VTABLE
-    : ::google::protobuf::Message(),
-#endif  // PROTOBUF_CUSTOM_VTABLE
-      _impl_(::_pbi::ConstantInitialized()) {
-}
-struct MessageInfoDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR MessageInfoDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
-  ~MessageInfoDefaultTypeInternal() {}
-  union {
-    MessageInfo _instance;
-  };
-};
-
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 MessageInfoDefaultTypeInternal _MessageInfo_default_instance_;
-
 inline constexpr LogoutResp::Impl_::Impl_(
     ::_pbi::ConstantInitialized) noexcept
       : _cached_size_{0},
@@ -878,7 +842,7 @@ struct GetPluginInfoReqDefaultTypeInternal {
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
     PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 GetPluginInfoReqDefaultTypeInternal _GetPluginInfoReq_default_instance_;
 
-inline constexpr GetMessageInfoReq::Impl_::Impl_(
+inline constexpr GetChatMessageReq::Impl_::Impl_(
     ::_pbi::ConstantInitialized) noexcept
       : _cached_size_{0},
         auth_(
@@ -890,24 +854,24 @@ inline constexpr GetMessageInfoReq::Impl_::Impl_(
         limit_{0} {}
 
 template <typename>
-PROTOBUF_CONSTEXPR GetMessageInfoReq::GetMessageInfoReq(::_pbi::ConstantInitialized)
+PROTOBUF_CONSTEXPR GetChatMessageReq::GetChatMessageReq(::_pbi::ConstantInitialized)
 #if defined(PROTOBUF_CUSTOM_VTABLE)
-    : ::google::protobuf::Message(GetMessageInfoReq_class_data_.base()),
+    : ::google::protobuf::Message(GetChatMessageReq_class_data_.base()),
 #else   // PROTOBUF_CUSTOM_VTABLE
     : ::google::protobuf::Message(),
 #endif  // PROTOBUF_CUSTOM_VTABLE
       _impl_(::_pbi::ConstantInitialized()) {
 }
-struct GetMessageInfoReqDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR GetMessageInfoReqDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
-  ~GetMessageInfoReqDefaultTypeInternal() {}
+struct GetChatMessageReqDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR GetChatMessageReqDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~GetChatMessageReqDefaultTypeInternal() {}
   union {
-    GetMessageInfoReq _instance;
+    GetChatMessageReq _instance;
   };
 };
 
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 GetMessageInfoReqDefaultTypeInternal _GetMessageInfoReq_default_instance_;
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 GetChatMessageReqDefaultTypeInternal _GetChatMessageReq_default_instance_;
 
 inline constexpr FileChunk::Impl_::Impl_(
     ::_pbi::ConstantInitialized) noexcept
@@ -1168,6 +1132,42 @@ struct ContextParamDefaultTypeInternal {
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
     PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 ContextParamDefaultTypeInternal _ContextParam_default_instance_;
 
+inline constexpr ChatMessage::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : _cached_size_{0},
+        role_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        content_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        timestamp_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        id_{::int64_t{0}},
+        session_id_{::int64_t{0}},
+        prev_message_id_{::int64_t{0}} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR ChatMessage::ChatMessage(::_pbi::ConstantInitialized)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(ChatMessage_class_data_.base()),
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(),
+#endif  // PROTOBUF_CUSTOM_VTABLE
+      _impl_(::_pbi::ConstantInitialized()) {
+}
+struct ChatMessageDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR ChatMessageDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~ChatMessageDefaultTypeInternal() {}
+  union {
+    ChatMessage _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 ChatMessageDefaultTypeInternal _ChatMessage_default_instance_;
+
 inline constexpr RecognitionParam::Impl_::Impl_(
     ::_pbi::ConstantInitialized) noexcept
       : _cached_size_{0},
@@ -1387,31 +1387,31 @@ struct GetPluginInfoRespDefaultTypeInternal {
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
     PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 GetPluginInfoRespDefaultTypeInternal _GetPluginInfoResp_default_instance_;
 
-inline constexpr GetMessageInfoResp::Impl_::Impl_(
+inline constexpr GetChatMessageResp::Impl_::Impl_(
     ::_pbi::ConstantInitialized) noexcept
       : _cached_size_{0},
         messages_{},
         error_code_{0} {}
 
 template <typename>
-PROTOBUF_CONSTEXPR GetMessageInfoResp::GetMessageInfoResp(::_pbi::ConstantInitialized)
+PROTOBUF_CONSTEXPR GetChatMessageResp::GetChatMessageResp(::_pbi::ConstantInitialized)
 #if defined(PROTOBUF_CUSTOM_VTABLE)
-    : ::google::protobuf::Message(GetMessageInfoResp_class_data_.base()),
+    : ::google::protobuf::Message(GetChatMessageResp_class_data_.base()),
 #else   // PROTOBUF_CUSTOM_VTABLE
     : ::google::protobuf::Message(),
 #endif  // PROTOBUF_CUSTOM_VTABLE
       _impl_(::_pbi::ConstantInitialized()) {
 }
-struct GetMessageInfoRespDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR GetMessageInfoRespDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
-  ~GetMessageInfoRespDefaultTypeInternal() {}
+struct GetChatMessageRespDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR GetChatMessageRespDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~GetChatMessageRespDefaultTypeInternal() {}
   union {
-    GetMessageInfoResp _instance;
+    GetChatMessageResp _instance;
   };
 };
 
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 GetMessageInfoRespDefaultTypeInternal _GetMessageInfoResp_default_instance_;
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 GetChatMessageRespDefaultTypeInternal _GetChatMessageResp_default_instance_;
 
 inline constexpr EmbeddingReq::Impl_::Impl_(
     ::_pbi::ConstantInitialized) noexcept
@@ -1506,14 +1506,14 @@ const ::uint32_t
         5,
         6,
         0x081, // bitmap
-        PROTOBUF_FIELD_OFFSET(::GrpcLibraryV1::MessageInfo, _impl_._has_bits_),
+        PROTOBUF_FIELD_OFFSET(::GrpcLibraryV1::ChatMessage, _impl_._has_bits_),
         9, // hasbit index offset
-        PROTOBUF_FIELD_OFFSET(::GrpcLibraryV1::MessageInfo, _impl_.id_),
-        PROTOBUF_FIELD_OFFSET(::GrpcLibraryV1::MessageInfo, _impl_.session_id_),
-        PROTOBUF_FIELD_OFFSET(::GrpcLibraryV1::MessageInfo, _impl_.role_),
-        PROTOBUF_FIELD_OFFSET(::GrpcLibraryV1::MessageInfo, _impl_.content_),
-        PROTOBUF_FIELD_OFFSET(::GrpcLibraryV1::MessageInfo, _impl_.prev_message_id_),
-        PROTOBUF_FIELD_OFFSET(::GrpcLibraryV1::MessageInfo, _impl_.timestamp_),
+        PROTOBUF_FIELD_OFFSET(::GrpcLibraryV1::ChatMessage, _impl_.id_),
+        PROTOBUF_FIELD_OFFSET(::GrpcLibraryV1::ChatMessage, _impl_.session_id_),
+        PROTOBUF_FIELD_OFFSET(::GrpcLibraryV1::ChatMessage, _impl_.role_),
+        PROTOBUF_FIELD_OFFSET(::GrpcLibraryV1::ChatMessage, _impl_.content_),
+        PROTOBUF_FIELD_OFFSET(::GrpcLibraryV1::ChatMessage, _impl_.prev_message_id_),
+        PROTOBUF_FIELD_OFFSET(::GrpcLibraryV1::ChatMessage, _impl_.timestamp_),
         3,
         4,
         0,
@@ -1860,23 +1860,23 @@ const ::uint32_t
         1,
         0,
         0x081, // bitmap
-        PROTOBUF_FIELD_OFFSET(::GrpcLibraryV1::GetMessageInfoReq, _impl_._has_bits_),
+        PROTOBUF_FIELD_OFFSET(::GrpcLibraryV1::GetChatMessageReq, _impl_._has_bits_),
         8, // hasbit index offset
-        PROTOBUF_FIELD_OFFSET(::GrpcLibraryV1::GetMessageInfoReq, _impl_.id_),
-        PROTOBUF_FIELD_OFFSET(::GrpcLibraryV1::GetMessageInfoReq, _impl_.session_id_),
-        PROTOBUF_FIELD_OFFSET(::GrpcLibraryV1::GetMessageInfoReq, _impl_.limit_),
-        PROTOBUF_FIELD_OFFSET(::GrpcLibraryV1::GetMessageInfoReq, _impl_.user_id_),
-        PROTOBUF_FIELD_OFFSET(::GrpcLibraryV1::GetMessageInfoReq, _impl_.auth_),
+        PROTOBUF_FIELD_OFFSET(::GrpcLibraryV1::GetChatMessageReq, _impl_.id_),
+        PROTOBUF_FIELD_OFFSET(::GrpcLibraryV1::GetChatMessageReq, _impl_.session_id_),
+        PROTOBUF_FIELD_OFFSET(::GrpcLibraryV1::GetChatMessageReq, _impl_.limit_),
+        PROTOBUF_FIELD_OFFSET(::GrpcLibraryV1::GetChatMessageReq, _impl_.user_id_),
+        PROTOBUF_FIELD_OFFSET(::GrpcLibraryV1::GetChatMessageReq, _impl_.auth_),
         1,
         2,
         4,
         3,
         0,
         0x081, // bitmap
-        PROTOBUF_FIELD_OFFSET(::GrpcLibraryV1::GetMessageInfoResp, _impl_._has_bits_),
+        PROTOBUF_FIELD_OFFSET(::GrpcLibraryV1::GetChatMessageResp, _impl_._has_bits_),
         5, // hasbit index offset
-        PROTOBUF_FIELD_OFFSET(::GrpcLibraryV1::GetMessageInfoResp, _impl_.error_code_),
-        PROTOBUF_FIELD_OFFSET(::GrpcLibraryV1::GetMessageInfoResp, _impl_.messages_),
+        PROTOBUF_FIELD_OFFSET(::GrpcLibraryV1::GetChatMessageResp, _impl_.error_code_),
+        PROTOBUF_FIELD_OFFSET(::GrpcLibraryV1::GetChatMessageResp, _impl_.messages_),
         1,
         0,
         0x081, // bitmap
@@ -2053,7 +2053,7 @@ static const ::_pbi::MigrationSchema
     schemas[] ABSL_ATTRIBUTE_SECTION_VARIABLE(protodesc_cold) = {
         {0, sizeof(::GrpcLibraryV1::Session)},
         {11, sizeof(::GrpcLibraryV1::Plugin)},
-        {28, sizeof(::GrpcLibraryV1::MessageInfo)},
+        {28, sizeof(::GrpcLibraryV1::ChatMessage)},
         {43, sizeof(::GrpcLibraryV1::SamplingParam)},
         {74, sizeof(::GrpcLibraryV1::ContextParam)},
         {123, sizeof(::GrpcLibraryV1::VadParam)},
@@ -2077,8 +2077,8 @@ static const ::_pbi::MigrationSchema
         {353, sizeof(::GrpcLibraryV1::RecognizeResp)},
         {366, sizeof(::GrpcLibraryV1::StopRecognizeReq)},
         {375, sizeof(::GrpcLibraryV1::StopRecognizeResp)},
-        {382, sizeof(::GrpcLibraryV1::GetMessageInfoReq)},
-        {395, sizeof(::GrpcLibraryV1::GetMessageInfoResp)},
+        {382, sizeof(::GrpcLibraryV1::GetChatMessageReq)},
+        {395, sizeof(::GrpcLibraryV1::GetChatMessageResp)},
         {402, sizeof(::GrpcLibraryV1::GetSessionReq)},
         {413, sizeof(::GrpcLibraryV1::GetSessionResp)},
         {420, sizeof(::GrpcLibraryV1::NewSessionReq)},
@@ -2101,7 +2101,7 @@ static const ::_pbi::MigrationSchema
 static const ::_pb::Message* PROTOBUF_NONNULL const file_default_instances[] = {
     &::GrpcLibraryV1::_Session_default_instance_._instance,
     &::GrpcLibraryV1::_Plugin_default_instance_._instance,
-    &::GrpcLibraryV1::_MessageInfo_default_instance_._instance,
+    &::GrpcLibraryV1::_ChatMessage_default_instance_._instance,
     &::GrpcLibraryV1::_SamplingParam_default_instance_._instance,
     &::GrpcLibraryV1::_ContextParam_default_instance_._instance,
     &::GrpcLibraryV1::_VadParam_default_instance_._instance,
@@ -2125,8 +2125,8 @@ static const ::_pb::Message* PROTOBUF_NONNULL const file_default_instances[] = {
     &::GrpcLibraryV1::_RecognizeResp_default_instance_._instance,
     &::GrpcLibraryV1::_StopRecognizeReq_default_instance_._instance,
     &::GrpcLibraryV1::_StopRecognizeResp_default_instance_._instance,
-    &::GrpcLibraryV1::_GetMessageInfoReq_default_instance_._instance,
-    &::GrpcLibraryV1::_GetMessageInfoResp_default_instance_._instance,
+    &::GrpcLibraryV1::_GetChatMessageReq_default_instance_._instance,
+    &::GrpcLibraryV1::_GetChatMessageResp_default_instance_._instance,
     &::GrpcLibraryV1::_GetSessionReq_default_instance_._instance,
     &::GrpcLibraryV1::_GetSessionResp_default_instance_._instance,
     &::GrpcLibraryV1::_NewSessionReq_default_instance_._instance,
@@ -2153,8 +2153,8 @@ const char descriptor_table_protodef_src_2fapi_2eproto[] ABSL_ATTRIBUTE_SECTION_
     "\003 \001(\t\022\021\n\ttimestamp\030\004 \001(\t\"{\n\006Plugin\022\014\n\004ha"
     "sh\030\001 \001(\t\022\014\n\004name\030\002 \001(\t\022\014\n\004desc\030\003 \001(\t\022\021\n\t"
     "publisher\030\004 \001(\t\022\017\n\007version\030\005 \001(\t\022\021\n\ttime"
-    "stamp\030\006 \001(\t\022\020\n\010platform\030\007 \001(\005\"x\n\013Message"
-    "Info\022\n\n\002id\030\001 \001(\003\022\022\n\nsession_id\030\002 \001(\003\022\014\n\004"
+    "stamp\030\006 \001(\t\022\020\n\010platform\030\007 \001(\005\"x\n\013ChatMes"
+    "sage\022\n\n\002id\030\001 \001(\003\022\022\n\nsession_id\030\002 \001(\003\022\014\n\004"
     "role\030\003 \001(\t\022\017\n\007content\030\004 \001(\t\022\027\n\017prev_mess"
     "age_id\030\005 \001(\003\022\021\n\ttimestamp\030\006 \001(\t\"\310\002\n\rSamp"
     "lingParam\022\026\n\016penalty_last_n\030\001 \001(\005\022\026\n\016pen"
@@ -2237,11 +2237,11 @@ const char descriptor_table_protodef_src_2fapi_2eproto[] ABSL_ATTRIBUTE_SECTION_
     "izeReq\022\022\n\nsession_id\030\001 \001(\003\022\017\n\007user_id\030\002 "
     "\001(\003\022\014\n\004auth\030\003 \001(\t\";\n\021StopRecognizeResp\022\022"
     "\n\nerror_code\030\001 \001(\005\022\022\n\nsession_id\030\002 \001(\003\"a"
-    "\n\021GetMessageInfoReq\022\n\n\002id\030\001 \001(\003\022\022\n\nsessi"
+    "\n\021GetChatMessageReq\022\n\n\002id\030\001 \001(\003\022\022\n\nsessi"
     "on_id\030\002 \001(\003\022\r\n\005limit\030\003 \001(\005\022\017\n\007user_id\030\004 "
-    "\001(\003\022\014\n\004auth\030\005 \001(\t\"V\n\022GetMessageInfoResp\022"
+    "\001(\003\022\014\n\004auth\030\005 \001(\t\"V\n\022GetChatMessageResp\022"
     "\022\n\nerror_code\030\001 \001(\005\022,\n\010messages\030\002 \003(\0132\032."
-    "GrpcLibraryV1.MessageInfo\"I\n\rGetSessionR"
+    "GrpcLibraryV1.ChatMessage\"I\n\rGetSessionR"
     "eq\022\n\n\002id\030\001 \001(\003\022\017\n\007user_id\030\002 \001(\003\022\014\n\004auth\030"
     "\003 \001(\t\022\r\n\005limit\030\004 \001(\005\"N\n\016GetSessionResp\022\022"
     "\n\nerror_code\030\001 \001(\005\022(\n\010sessions\030\002 \003(\0132\026.G"
@@ -2291,8 +2291,8 @@ const char descriptor_table_protodef_src_2fapi_2eproto[] ABSL_ATTRIBUTE_SECTION_
     "braryV1.RecognizeResp\"\000(\0010\001\022T\n\rStopRecog"
     "nize\022\037.GrpcLibraryV1.StopRecognizeReq\032 ."
     "GrpcLibraryV1.StopRecognizeResp\"\000\022W\n\016Get"
-    "MessageInfo\022 .GrpcLibraryV1.GetMessageIn"
-    "foReq\032!.GrpcLibraryV1.GetMessageInfoResp"
+    "ChatMessage\022 .GrpcLibraryV1.GetChatMessa"
+    "geReq\032!.GrpcLibraryV1.GetChatMessageResp"
     "\"\000\022K\n\nGetSession\022\034.GrpcLibraryV1.GetSess"
     "ionReq\032\035.GrpcLibraryV1.GetSessionResp\"\000\022"
     "K\n\nNewSession\022\034.GrpcLibraryV1.NewSession"
@@ -3243,42 +3243,42 @@ void Plugin::InternalSwap(Plugin* PROTOBUF_RESTRICT PROTOBUF_NONNULL other) {
 }
 // ===================================================================
 
-class MessageInfo::_Internal {
+class ChatMessage::_Internal {
  public:
   using HasBits =
-      decltype(::std::declval<MessageInfo>()._impl_._has_bits_);
+      decltype(::std::declval<ChatMessage>()._impl_._has_bits_);
   static constexpr ::int32_t kHasBitsOffset =
-      8 * PROTOBUF_FIELD_OFFSET(MessageInfo, _impl_._has_bits_);
+      8 * PROTOBUF_FIELD_OFFSET(ChatMessage, _impl_._has_bits_);
 };
 
-MessageInfo::MessageInfo(::google::protobuf::Arena* PROTOBUF_NULLABLE arena)
+ChatMessage::ChatMessage(::google::protobuf::Arena* PROTOBUF_NULLABLE arena)
 #if defined(PROTOBUF_CUSTOM_VTABLE)
-    : ::google::protobuf::Message(arena, MessageInfo_class_data_.base()) {
+    : ::google::protobuf::Message(arena, ChatMessage_class_data_.base()) {
 #else   // PROTOBUF_CUSTOM_VTABLE
     : ::google::protobuf::Message(arena) {
 #endif  // PROTOBUF_CUSTOM_VTABLE
   SharedCtor(arena);
-  // @@protoc_insertion_point(arena_constructor:GrpcLibraryV1.MessageInfo)
+  // @@protoc_insertion_point(arena_constructor:GrpcLibraryV1.ChatMessage)
 }
-PROTOBUF_NDEBUG_INLINE MessageInfo::Impl_::Impl_(
+PROTOBUF_NDEBUG_INLINE ChatMessage::Impl_::Impl_(
     [[maybe_unused]] ::google::protobuf::internal::InternalVisibility visibility,
     [[maybe_unused]] ::google::protobuf::Arena* PROTOBUF_NULLABLE arena, const Impl_& from,
-    [[maybe_unused]] const ::GrpcLibraryV1::MessageInfo& from_msg)
+    [[maybe_unused]] const ::GrpcLibraryV1::ChatMessage& from_msg)
       : _has_bits_{from._has_bits_},
         _cached_size_{0},
         role_(arena, from.role_),
         content_(arena, from.content_),
         timestamp_(arena, from.timestamp_) {}
 
-MessageInfo::MessageInfo(
+ChatMessage::ChatMessage(
     ::google::protobuf::Arena* PROTOBUF_NULLABLE arena,
-    const MessageInfo& from)
+    const ChatMessage& from)
 #if defined(PROTOBUF_CUSTOM_VTABLE)
-    : ::google::protobuf::Message(arena, MessageInfo_class_data_.base()) {
+    : ::google::protobuf::Message(arena, ChatMessage_class_data_.base()) {
 #else   // PROTOBUF_CUSTOM_VTABLE
     : ::google::protobuf::Message(arena) {
 #endif  // PROTOBUF_CUSTOM_VTABLE
-  MessageInfo* const _this = this;
+  ChatMessage* const _this = this;
   (void)_this;
   _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
       from._internal_metadata_);
@@ -3291,9 +3291,9 @@ MessageInfo::MessageInfo(
                offsetof(Impl_, id_) +
                sizeof(Impl_::prev_message_id_));
 
-  // @@protoc_insertion_point(copy_constructor:GrpcLibraryV1.MessageInfo)
+  // @@protoc_insertion_point(copy_constructor:GrpcLibraryV1.ChatMessage)
 }
-PROTOBUF_NDEBUG_INLINE MessageInfo::Impl_::Impl_(
+PROTOBUF_NDEBUG_INLINE ChatMessage::Impl_::Impl_(
     [[maybe_unused]] ::google::protobuf::internal::InternalVisibility visibility,
     [[maybe_unused]] ::google::protobuf::Arena* PROTOBUF_NULLABLE arena)
       : _cached_size_{0},
@@ -3301,7 +3301,7 @@ PROTOBUF_NDEBUG_INLINE MessageInfo::Impl_::Impl_(
         content_(arena),
         timestamp_(arena) {}
 
-inline void MessageInfo::SharedCtor(::_pb::Arena* PROTOBUF_NULLABLE arena) {
+inline void ChatMessage::SharedCtor(::_pb::Arena* PROTOBUF_NULLABLE arena) {
   new (&_impl_) Impl_(internal_visibility(), arena);
   ::memset(reinterpret_cast<char*>(&_impl_) +
                offsetof(Impl_, id_),
@@ -3310,12 +3310,12 @@ inline void MessageInfo::SharedCtor(::_pb::Arena* PROTOBUF_NULLABLE arena) {
                offsetof(Impl_, id_) +
                sizeof(Impl_::prev_message_id_));
 }
-MessageInfo::~MessageInfo() {
-  // @@protoc_insertion_point(destructor:GrpcLibraryV1.MessageInfo)
+ChatMessage::~ChatMessage() {
+  // @@protoc_insertion_point(destructor:GrpcLibraryV1.ChatMessage)
   SharedDtor(*this);
 }
-inline void MessageInfo::SharedDtor(MessageLite& self) {
-  MessageInfo& this_ = static_cast<MessageInfo&>(self);
+inline void ChatMessage::SharedDtor(MessageLite& self) {
+  ChatMessage& this_ = static_cast<ChatMessage&>(self);
   if constexpr (::_pbi::DebugHardenCheckHasBitConsistency()) {
     this_.CheckHasBitConsistency();
   }
@@ -3327,53 +3327,53 @@ inline void MessageInfo::SharedDtor(MessageLite& self) {
   this_._impl_.~Impl_();
 }
 
-inline void* PROTOBUF_NONNULL MessageInfo::PlacementNew_(
+inline void* PROTOBUF_NONNULL ChatMessage::PlacementNew_(
     const void* PROTOBUF_NONNULL, void* PROTOBUF_NONNULL mem,
     ::google::protobuf::Arena* PROTOBUF_NULLABLE arena) {
-  return ::new (mem) MessageInfo(arena);
+  return ::new (mem) ChatMessage(arena);
 }
-constexpr auto MessageInfo::InternalNewImpl_() {
-  return ::google::protobuf::internal::MessageCreator::CopyInit(sizeof(MessageInfo),
-                                            alignof(MessageInfo));
+constexpr auto ChatMessage::InternalNewImpl_() {
+  return ::google::protobuf::internal::MessageCreator::CopyInit(sizeof(ChatMessage),
+                                            alignof(ChatMessage));
 }
-constexpr auto MessageInfo::InternalGenerateClassData_() {
+constexpr auto ChatMessage::InternalGenerateClassData_() {
   return ::google::protobuf::internal::ClassDataFull{
       ::google::protobuf::internal::ClassData{
-          &_MessageInfo_default_instance_._instance,
+          &_ChatMessage_default_instance_._instance,
           &_table_.header,
           nullptr,  // OnDemandRegisterArenaDtor
           nullptr,  // IsInitialized
-          &MessageInfo::MergeImpl,
-          ::google::protobuf::Message::GetNewImpl<MessageInfo>(),
+          &ChatMessage::MergeImpl,
+          ::google::protobuf::Message::GetNewImpl<ChatMessage>(),
 #if defined(PROTOBUF_CUSTOM_VTABLE)
-          &MessageInfo::SharedDtor,
-          ::google::protobuf::Message::GetClearImpl<MessageInfo>(), &MessageInfo::ByteSizeLong,
-              &MessageInfo::_InternalSerialize,
+          &ChatMessage::SharedDtor,
+          ::google::protobuf::Message::GetClearImpl<ChatMessage>(), &ChatMessage::ByteSizeLong,
+              &ChatMessage::_InternalSerialize,
 #endif  // PROTOBUF_CUSTOM_VTABLE
-          PROTOBUF_FIELD_OFFSET(MessageInfo, _impl_._cached_size_),
+          PROTOBUF_FIELD_OFFSET(ChatMessage, _impl_._cached_size_),
           false,
       },
-      &MessageInfo::kDescriptorMethods,
+      &ChatMessage::kDescriptorMethods,
       &descriptor_table_src_2fapi_2eproto,
       nullptr,  // tracker
   };
 }
 
 PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 const
-    ::google::protobuf::internal::ClassDataFull MessageInfo_class_data_ =
-        MessageInfo::InternalGenerateClassData_();
+    ::google::protobuf::internal::ClassDataFull ChatMessage_class_data_ =
+        ChatMessage::InternalGenerateClassData_();
 
 PROTOBUF_ATTRIBUTE_WEAK const ::google::protobuf::internal::ClassData* PROTOBUF_NONNULL
-MessageInfo::GetClassData() const {
-  ::google::protobuf::internal::PrefetchToLocalCache(&MessageInfo_class_data_);
-  ::google::protobuf::internal::PrefetchToLocalCache(MessageInfo_class_data_.tc_table);
-  return MessageInfo_class_data_.base();
+ChatMessage::GetClassData() const {
+  ::google::protobuf::internal::PrefetchToLocalCache(&ChatMessage_class_data_);
+  ::google::protobuf::internal::PrefetchToLocalCache(ChatMessage_class_data_.tc_table);
+  return ChatMessage_class_data_.base();
 }
 PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
 const ::_pbi::TcParseTable<3, 6, 0, 54, 2>
-MessageInfo::_table_ = {
+ChatMessage::_table_ = {
   {
-    PROTOBUF_FIELD_OFFSET(MessageInfo, _impl_._has_bits_),
+    PROTOBUF_FIELD_OFFSET(ChatMessage, _impl_._has_bits_),
     0, // no _extensions_
     6, 56,  // max_field_number, fast_idx_mask
     offsetof(decltype(_table_), field_lookup_table),
@@ -3382,66 +3382,66 @@ MessageInfo::_table_ = {
     6,  // num_field_entries
     0,  // num_aux_entries
     offsetof(decltype(_table_), field_names),  // no aux_entries
-    MessageInfo_class_data_.base(),
+    ChatMessage_class_data_.base(),
     nullptr,  // post_loop_handler
     ::_pbi::TcParser::GenericFallback,  // fallback
     #ifdef PROTOBUF_PREFETCH_PARSE_TABLE
-    ::_pbi::TcParser::GetTable<::GrpcLibraryV1::MessageInfo>(),  // to_prefetch
+    ::_pbi::TcParser::GetTable<::GrpcLibraryV1::ChatMessage>(),  // to_prefetch
     #endif  // PROTOBUF_PREFETCH_PARSE_TABLE
   }, {{
     {::_pbi::TcParser::MiniParse, {}},
     // int64 id = 1;
-    {::_pbi::TcParser::SingularVarintNoZag1<::uint64_t, offsetof(MessageInfo, _impl_.id_), 3>(),
+    {::_pbi::TcParser::SingularVarintNoZag1<::uint64_t, offsetof(ChatMessage, _impl_.id_), 3>(),
      {8, 3, 0,
-      PROTOBUF_FIELD_OFFSET(MessageInfo, _impl_.id_)}},
+      PROTOBUF_FIELD_OFFSET(ChatMessage, _impl_.id_)}},
     // int64 session_id = 2;
-    {::_pbi::TcParser::SingularVarintNoZag1<::uint64_t, offsetof(MessageInfo, _impl_.session_id_), 4>(),
+    {::_pbi::TcParser::SingularVarintNoZag1<::uint64_t, offsetof(ChatMessage, _impl_.session_id_), 4>(),
      {16, 4, 0,
-      PROTOBUF_FIELD_OFFSET(MessageInfo, _impl_.session_id_)}},
+      PROTOBUF_FIELD_OFFSET(ChatMessage, _impl_.session_id_)}},
     // string role = 3;
     {::_pbi::TcParser::FastUS1,
      {26, 0, 0,
-      PROTOBUF_FIELD_OFFSET(MessageInfo, _impl_.role_)}},
+      PROTOBUF_FIELD_OFFSET(ChatMessage, _impl_.role_)}},
     // string content = 4;
     {::_pbi::TcParser::FastUS1,
      {34, 1, 0,
-      PROTOBUF_FIELD_OFFSET(MessageInfo, _impl_.content_)}},
+      PROTOBUF_FIELD_OFFSET(ChatMessage, _impl_.content_)}},
     // int64 prev_message_id = 5;
-    {::_pbi::TcParser::SingularVarintNoZag1<::uint64_t, offsetof(MessageInfo, _impl_.prev_message_id_), 5>(),
+    {::_pbi::TcParser::SingularVarintNoZag1<::uint64_t, offsetof(ChatMessage, _impl_.prev_message_id_), 5>(),
      {40, 5, 0,
-      PROTOBUF_FIELD_OFFSET(MessageInfo, _impl_.prev_message_id_)}},
+      PROTOBUF_FIELD_OFFSET(ChatMessage, _impl_.prev_message_id_)}},
     // string timestamp = 6;
     {::_pbi::TcParser::FastUS1,
      {50, 2, 0,
-      PROTOBUF_FIELD_OFFSET(MessageInfo, _impl_.timestamp_)}},
+      PROTOBUF_FIELD_OFFSET(ChatMessage, _impl_.timestamp_)}},
     {::_pbi::TcParser::MiniParse, {}},
   }}, {{
     65535, 65535
   }}, {{
     // int64 id = 1;
-    {PROTOBUF_FIELD_OFFSET(MessageInfo, _impl_.id_), _Internal::kHasBitsOffset + 3, 0, (0 | ::_fl::kFcOptional | ::_fl::kInt64)},
+    {PROTOBUF_FIELD_OFFSET(ChatMessage, _impl_.id_), _Internal::kHasBitsOffset + 3, 0, (0 | ::_fl::kFcOptional | ::_fl::kInt64)},
     // int64 session_id = 2;
-    {PROTOBUF_FIELD_OFFSET(MessageInfo, _impl_.session_id_), _Internal::kHasBitsOffset + 4, 0, (0 | ::_fl::kFcOptional | ::_fl::kInt64)},
+    {PROTOBUF_FIELD_OFFSET(ChatMessage, _impl_.session_id_), _Internal::kHasBitsOffset + 4, 0, (0 | ::_fl::kFcOptional | ::_fl::kInt64)},
     // string role = 3;
-    {PROTOBUF_FIELD_OFFSET(MessageInfo, _impl_.role_), _Internal::kHasBitsOffset + 0, 0, (0 | ::_fl::kFcOptional | ::_fl::kUtf8String | ::_fl::kRepAString)},
+    {PROTOBUF_FIELD_OFFSET(ChatMessage, _impl_.role_), _Internal::kHasBitsOffset + 0, 0, (0 | ::_fl::kFcOptional | ::_fl::kUtf8String | ::_fl::kRepAString)},
     // string content = 4;
-    {PROTOBUF_FIELD_OFFSET(MessageInfo, _impl_.content_), _Internal::kHasBitsOffset + 1, 0, (0 | ::_fl::kFcOptional | ::_fl::kUtf8String | ::_fl::kRepAString)},
+    {PROTOBUF_FIELD_OFFSET(ChatMessage, _impl_.content_), _Internal::kHasBitsOffset + 1, 0, (0 | ::_fl::kFcOptional | ::_fl::kUtf8String | ::_fl::kRepAString)},
     // int64 prev_message_id = 5;
-    {PROTOBUF_FIELD_OFFSET(MessageInfo, _impl_.prev_message_id_), _Internal::kHasBitsOffset + 5, 0, (0 | ::_fl::kFcOptional | ::_fl::kInt64)},
+    {PROTOBUF_FIELD_OFFSET(ChatMessage, _impl_.prev_message_id_), _Internal::kHasBitsOffset + 5, 0, (0 | ::_fl::kFcOptional | ::_fl::kInt64)},
     // string timestamp = 6;
-    {PROTOBUF_FIELD_OFFSET(MessageInfo, _impl_.timestamp_), _Internal::kHasBitsOffset + 2, 0, (0 | ::_fl::kFcOptional | ::_fl::kUtf8String | ::_fl::kRepAString)},
+    {PROTOBUF_FIELD_OFFSET(ChatMessage, _impl_.timestamp_), _Internal::kHasBitsOffset + 2, 0, (0 | ::_fl::kFcOptional | ::_fl::kUtf8String | ::_fl::kRepAString)},
   }},
   // no aux_entries
   {{
     "\31\0\0\4\7\0\11\0"
-    "GrpcLibraryV1.MessageInfo"
+    "GrpcLibraryV1.ChatMessage"
     "role"
     "content"
     "timestamp"
   }},
 };
-PROTOBUF_NOINLINE void MessageInfo::Clear() {
-// @@protoc_insertion_point(message_clear_start:GrpcLibraryV1.MessageInfo)
+PROTOBUF_NOINLINE void ChatMessage::Clear() {
+// @@protoc_insertion_point(message_clear_start:GrpcLibraryV1.ChatMessage)
   ::google::protobuf::internal::TSanWrite(&_impl_);
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
@@ -3469,20 +3469,20 @@ PROTOBUF_NOINLINE void MessageInfo::Clear() {
 }
 
 #if defined(PROTOBUF_CUSTOM_VTABLE)
-::uint8_t* PROTOBUF_NONNULL MessageInfo::_InternalSerialize(
+::uint8_t* PROTOBUF_NONNULL ChatMessage::_InternalSerialize(
     const ::google::protobuf::MessageLite& base, ::uint8_t* PROTOBUF_NONNULL target,
     ::google::protobuf::io::EpsCopyOutputStream* PROTOBUF_NONNULL stream) {
-  const MessageInfo& this_ = static_cast<const MessageInfo&>(base);
+  const ChatMessage& this_ = static_cast<const ChatMessage&>(base);
 #else   // PROTOBUF_CUSTOM_VTABLE
-::uint8_t* PROTOBUF_NONNULL MessageInfo::_InternalSerialize(
+::uint8_t* PROTOBUF_NONNULL ChatMessage::_InternalSerialize(
     ::uint8_t* PROTOBUF_NONNULL target,
     ::google::protobuf::io::EpsCopyOutputStream* PROTOBUF_NONNULL stream) const {
-  const MessageInfo& this_ = *this;
+  const ChatMessage& this_ = *this;
 #endif  // PROTOBUF_CUSTOM_VTABLE
   if constexpr (::_pbi::DebugHardenCheckHasBitConsistency()) {
     this_.CheckHasBitConsistency();
   }
-  // @@protoc_insertion_point(serialize_to_array_start:GrpcLibraryV1.MessageInfo)
+  // @@protoc_insertion_point(serialize_to_array_start:GrpcLibraryV1.ChatMessage)
   ::uint32_t cached_has_bits = 0;
   (void)cached_has_bits;
 
@@ -3510,7 +3510,7 @@ PROTOBUF_NOINLINE void MessageInfo::Clear() {
     if (!this_._internal_role().empty()) {
       const ::std::string& _s = this_._internal_role();
       ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-          _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "GrpcLibraryV1.MessageInfo.role");
+          _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "GrpcLibraryV1.ChatMessage.role");
       target = stream->WriteStringMaybeAliased(3, _s, target);
     }
   }
@@ -3520,7 +3520,7 @@ PROTOBUF_NOINLINE void MessageInfo::Clear() {
     if (!this_._internal_content().empty()) {
       const ::std::string& _s = this_._internal_content();
       ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-          _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "GrpcLibraryV1.MessageInfo.content");
+          _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "GrpcLibraryV1.ChatMessage.content");
       target = stream->WriteStringMaybeAliased(4, _s, target);
     }
   }
@@ -3539,7 +3539,7 @@ PROTOBUF_NOINLINE void MessageInfo::Clear() {
     if (!this_._internal_timestamp().empty()) {
       const ::std::string& _s = this_._internal_timestamp();
       ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-          _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "GrpcLibraryV1.MessageInfo.timestamp");
+          _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "GrpcLibraryV1.ChatMessage.timestamp");
       target = stream->WriteStringMaybeAliased(6, _s, target);
     }
   }
@@ -3549,18 +3549,18 @@ PROTOBUF_NOINLINE void MessageInfo::Clear() {
         ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
             this_._internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:GrpcLibraryV1.MessageInfo)
+  // @@protoc_insertion_point(serialize_to_array_end:GrpcLibraryV1.ChatMessage)
   return target;
 }
 
 #if defined(PROTOBUF_CUSTOM_VTABLE)
-::size_t MessageInfo::ByteSizeLong(const MessageLite& base) {
-  const MessageInfo& this_ = static_cast<const MessageInfo&>(base);
+::size_t ChatMessage::ByteSizeLong(const MessageLite& base) {
+  const ChatMessage& this_ = static_cast<const ChatMessage&>(base);
 #else   // PROTOBUF_CUSTOM_VTABLE
-::size_t MessageInfo::ByteSizeLong() const {
-  const MessageInfo& this_ = *this;
+::size_t ChatMessage::ByteSizeLong() const {
+  const ChatMessage& this_ = *this;
 #endif  // PROTOBUF_CUSTOM_VTABLE
-  // @@protoc_insertion_point(message_byte_size_start:GrpcLibraryV1.MessageInfo)
+  // @@protoc_insertion_point(message_byte_size_start:GrpcLibraryV1.ChatMessage)
   ::size_t total_size = 0;
 
   ::uint32_t cached_has_bits = 0;
@@ -3617,15 +3617,15 @@ PROTOBUF_NOINLINE void MessageInfo::Clear() {
                                              &this_._impl_._cached_size_);
 }
 
-void MessageInfo::MergeImpl(::google::protobuf::MessageLite& to_msg,
+void ChatMessage::MergeImpl(::google::protobuf::MessageLite& to_msg,
                             const ::google::protobuf::MessageLite& from_msg) {
    auto* const _this =
-      static_cast<MessageInfo*>(&to_msg);
-  auto& from = static_cast<const MessageInfo&>(from_msg);
+      static_cast<ChatMessage*>(&to_msg);
+  auto& from = static_cast<const ChatMessage&>(from_msg);
   if constexpr (::_pbi::DebugHardenCheckHasBitConsistency()) {
     from.CheckHasBitConsistency();
   }
-  // @@protoc_insertion_point(class_specific_merge_from_start:GrpcLibraryV1.MessageInfo)
+  // @@protoc_insertion_point(class_specific_merge_from_start:GrpcLibraryV1.ChatMessage)
   ABSL_DCHECK_NE(&from, _this);
   ::uint32_t cached_has_bits = 0;
   (void)cached_has_bits;
@@ -3680,15 +3680,15 @@ void MessageInfo::MergeImpl(::google::protobuf::MessageLite& to_msg,
       from._internal_metadata_);
 }
 
-void MessageInfo::CopyFrom(const MessageInfo& from) {
-  // @@protoc_insertion_point(class_specific_copy_from_start:GrpcLibraryV1.MessageInfo)
+void ChatMessage::CopyFrom(const ChatMessage& from) {
+  // @@protoc_insertion_point(class_specific_copy_from_start:GrpcLibraryV1.ChatMessage)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
 
-void MessageInfo::InternalSwap(MessageInfo* PROTOBUF_RESTRICT PROTOBUF_NONNULL other) {
+void ChatMessage::InternalSwap(ChatMessage* PROTOBUF_RESTRICT PROTOBUF_NONNULL other) {
   using ::std::swap;
   auto* arena = GetArena();
   ABSL_DCHECK_EQ(arena, other->GetArena());
@@ -3698,14 +3698,14 @@ void MessageInfo::InternalSwap(MessageInfo* PROTOBUF_RESTRICT PROTOBUF_NONNULL o
   ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.content_, &other->_impl_.content_, arena);
   ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.timestamp_, &other->_impl_.timestamp_, arena);
   ::google::protobuf::internal::memswap<
-      PROTOBUF_FIELD_OFFSET(MessageInfo, _impl_.prev_message_id_)
-      + sizeof(MessageInfo::_impl_.prev_message_id_)
-      - PROTOBUF_FIELD_OFFSET(MessageInfo, _impl_.id_)>(
+      PROTOBUF_FIELD_OFFSET(ChatMessage, _impl_.prev_message_id_)
+      + sizeof(ChatMessage::_impl_.prev_message_id_)
+      - PROTOBUF_FIELD_OFFSET(ChatMessage, _impl_.id_)>(
           reinterpret_cast<char*>(&_impl_.id_),
           reinterpret_cast<char*>(&other->_impl_.id_));
 }
 
-::google::protobuf::Metadata MessageInfo::GetMetadata() const {
+::google::protobuf::Metadata ChatMessage::GetMetadata() const {
   return ::google::protobuf::Message::GetMetadataImpl(GetClassData()->full());
 }
 // ===================================================================
@@ -13516,40 +13516,40 @@ void StopRecognizeResp::InternalSwap(StopRecognizeResp* PROTOBUF_RESTRICT PROTOB
 }
 // ===================================================================
 
-class GetMessageInfoReq::_Internal {
+class GetChatMessageReq::_Internal {
  public:
   using HasBits =
-      decltype(::std::declval<GetMessageInfoReq>()._impl_._has_bits_);
+      decltype(::std::declval<GetChatMessageReq>()._impl_._has_bits_);
   static constexpr ::int32_t kHasBitsOffset =
-      8 * PROTOBUF_FIELD_OFFSET(GetMessageInfoReq, _impl_._has_bits_);
+      8 * PROTOBUF_FIELD_OFFSET(GetChatMessageReq, _impl_._has_bits_);
 };
 
-GetMessageInfoReq::GetMessageInfoReq(::google::protobuf::Arena* PROTOBUF_NULLABLE arena)
+GetChatMessageReq::GetChatMessageReq(::google::protobuf::Arena* PROTOBUF_NULLABLE arena)
 #if defined(PROTOBUF_CUSTOM_VTABLE)
-    : ::google::protobuf::Message(arena, GetMessageInfoReq_class_data_.base()) {
+    : ::google::protobuf::Message(arena, GetChatMessageReq_class_data_.base()) {
 #else   // PROTOBUF_CUSTOM_VTABLE
     : ::google::protobuf::Message(arena) {
 #endif  // PROTOBUF_CUSTOM_VTABLE
   SharedCtor(arena);
-  // @@protoc_insertion_point(arena_constructor:GrpcLibraryV1.GetMessageInfoReq)
+  // @@protoc_insertion_point(arena_constructor:GrpcLibraryV1.GetChatMessageReq)
 }
-PROTOBUF_NDEBUG_INLINE GetMessageInfoReq::Impl_::Impl_(
+PROTOBUF_NDEBUG_INLINE GetChatMessageReq::Impl_::Impl_(
     [[maybe_unused]] ::google::protobuf::internal::InternalVisibility visibility,
     [[maybe_unused]] ::google::protobuf::Arena* PROTOBUF_NULLABLE arena, const Impl_& from,
-    [[maybe_unused]] const ::GrpcLibraryV1::GetMessageInfoReq& from_msg)
+    [[maybe_unused]] const ::GrpcLibraryV1::GetChatMessageReq& from_msg)
       : _has_bits_{from._has_bits_},
         _cached_size_{0},
         auth_(arena, from.auth_) {}
 
-GetMessageInfoReq::GetMessageInfoReq(
+GetChatMessageReq::GetChatMessageReq(
     ::google::protobuf::Arena* PROTOBUF_NULLABLE arena,
-    const GetMessageInfoReq& from)
+    const GetChatMessageReq& from)
 #if defined(PROTOBUF_CUSTOM_VTABLE)
-    : ::google::protobuf::Message(arena, GetMessageInfoReq_class_data_.base()) {
+    : ::google::protobuf::Message(arena, GetChatMessageReq_class_data_.base()) {
 #else   // PROTOBUF_CUSTOM_VTABLE
     : ::google::protobuf::Message(arena) {
 #endif  // PROTOBUF_CUSTOM_VTABLE
-  GetMessageInfoReq* const _this = this;
+  GetChatMessageReq* const _this = this;
   (void)_this;
   _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
       from._internal_metadata_);
@@ -13562,15 +13562,15 @@ GetMessageInfoReq::GetMessageInfoReq(
                offsetof(Impl_, id_) +
                sizeof(Impl_::limit_));
 
-  // @@protoc_insertion_point(copy_constructor:GrpcLibraryV1.GetMessageInfoReq)
+  // @@protoc_insertion_point(copy_constructor:GrpcLibraryV1.GetChatMessageReq)
 }
-PROTOBUF_NDEBUG_INLINE GetMessageInfoReq::Impl_::Impl_(
+PROTOBUF_NDEBUG_INLINE GetChatMessageReq::Impl_::Impl_(
     [[maybe_unused]] ::google::protobuf::internal::InternalVisibility visibility,
     [[maybe_unused]] ::google::protobuf::Arena* PROTOBUF_NULLABLE arena)
       : _cached_size_{0},
         auth_(arena) {}
 
-inline void GetMessageInfoReq::SharedCtor(::_pb::Arena* PROTOBUF_NULLABLE arena) {
+inline void GetChatMessageReq::SharedCtor(::_pb::Arena* PROTOBUF_NULLABLE arena) {
   new (&_impl_) Impl_(internal_visibility(), arena);
   ::memset(reinterpret_cast<char*>(&_impl_) +
                offsetof(Impl_, id_),
@@ -13579,12 +13579,12 @@ inline void GetMessageInfoReq::SharedCtor(::_pb::Arena* PROTOBUF_NULLABLE arena)
                offsetof(Impl_, id_) +
                sizeof(Impl_::limit_));
 }
-GetMessageInfoReq::~GetMessageInfoReq() {
-  // @@protoc_insertion_point(destructor:GrpcLibraryV1.GetMessageInfoReq)
+GetChatMessageReq::~GetChatMessageReq() {
+  // @@protoc_insertion_point(destructor:GrpcLibraryV1.GetChatMessageReq)
   SharedDtor(*this);
 }
-inline void GetMessageInfoReq::SharedDtor(MessageLite& self) {
-  GetMessageInfoReq& this_ = static_cast<GetMessageInfoReq&>(self);
+inline void GetChatMessageReq::SharedDtor(MessageLite& self) {
+  GetChatMessageReq& this_ = static_cast<GetChatMessageReq&>(self);
   if constexpr (::_pbi::DebugHardenCheckHasBitConsistency()) {
     this_.CheckHasBitConsistency();
   }
@@ -13594,53 +13594,53 @@ inline void GetMessageInfoReq::SharedDtor(MessageLite& self) {
   this_._impl_.~Impl_();
 }
 
-inline void* PROTOBUF_NONNULL GetMessageInfoReq::PlacementNew_(
+inline void* PROTOBUF_NONNULL GetChatMessageReq::PlacementNew_(
     const void* PROTOBUF_NONNULL, void* PROTOBUF_NONNULL mem,
     ::google::protobuf::Arena* PROTOBUF_NULLABLE arena) {
-  return ::new (mem) GetMessageInfoReq(arena);
+  return ::new (mem) GetChatMessageReq(arena);
 }
-constexpr auto GetMessageInfoReq::InternalNewImpl_() {
-  return ::google::protobuf::internal::MessageCreator::CopyInit(sizeof(GetMessageInfoReq),
-                                            alignof(GetMessageInfoReq));
+constexpr auto GetChatMessageReq::InternalNewImpl_() {
+  return ::google::protobuf::internal::MessageCreator::CopyInit(sizeof(GetChatMessageReq),
+                                            alignof(GetChatMessageReq));
 }
-constexpr auto GetMessageInfoReq::InternalGenerateClassData_() {
+constexpr auto GetChatMessageReq::InternalGenerateClassData_() {
   return ::google::protobuf::internal::ClassDataFull{
       ::google::protobuf::internal::ClassData{
-          &_GetMessageInfoReq_default_instance_._instance,
+          &_GetChatMessageReq_default_instance_._instance,
           &_table_.header,
           nullptr,  // OnDemandRegisterArenaDtor
           nullptr,  // IsInitialized
-          &GetMessageInfoReq::MergeImpl,
-          ::google::protobuf::Message::GetNewImpl<GetMessageInfoReq>(),
+          &GetChatMessageReq::MergeImpl,
+          ::google::protobuf::Message::GetNewImpl<GetChatMessageReq>(),
 #if defined(PROTOBUF_CUSTOM_VTABLE)
-          &GetMessageInfoReq::SharedDtor,
-          ::google::protobuf::Message::GetClearImpl<GetMessageInfoReq>(), &GetMessageInfoReq::ByteSizeLong,
-              &GetMessageInfoReq::_InternalSerialize,
+          &GetChatMessageReq::SharedDtor,
+          ::google::protobuf::Message::GetClearImpl<GetChatMessageReq>(), &GetChatMessageReq::ByteSizeLong,
+              &GetChatMessageReq::_InternalSerialize,
 #endif  // PROTOBUF_CUSTOM_VTABLE
-          PROTOBUF_FIELD_OFFSET(GetMessageInfoReq, _impl_._cached_size_),
+          PROTOBUF_FIELD_OFFSET(GetChatMessageReq, _impl_._cached_size_),
           false,
       },
-      &GetMessageInfoReq::kDescriptorMethods,
+      &GetChatMessageReq::kDescriptorMethods,
       &descriptor_table_src_2fapi_2eproto,
       nullptr,  // tracker
   };
 }
 
 PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 const
-    ::google::protobuf::internal::ClassDataFull GetMessageInfoReq_class_data_ =
-        GetMessageInfoReq::InternalGenerateClassData_();
+    ::google::protobuf::internal::ClassDataFull GetChatMessageReq_class_data_ =
+        GetChatMessageReq::InternalGenerateClassData_();
 
 PROTOBUF_ATTRIBUTE_WEAK const ::google::protobuf::internal::ClassData* PROTOBUF_NONNULL
-GetMessageInfoReq::GetClassData() const {
-  ::google::protobuf::internal::PrefetchToLocalCache(&GetMessageInfoReq_class_data_);
-  ::google::protobuf::internal::PrefetchToLocalCache(GetMessageInfoReq_class_data_.tc_table);
-  return GetMessageInfoReq_class_data_.base();
+GetChatMessageReq::GetClassData() const {
+  ::google::protobuf::internal::PrefetchToLocalCache(&GetChatMessageReq_class_data_);
+  ::google::protobuf::internal::PrefetchToLocalCache(GetChatMessageReq_class_data_.tc_table);
+  return GetChatMessageReq_class_data_.base();
 }
 PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
 const ::_pbi::TcParseTable<3, 5, 0, 44, 2>
-GetMessageInfoReq::_table_ = {
+GetChatMessageReq::_table_ = {
   {
-    PROTOBUF_FIELD_OFFSET(GetMessageInfoReq, _impl_._has_bits_),
+    PROTOBUF_FIELD_OFFSET(GetChatMessageReq, _impl_._has_bits_),
     0, // no _extensions_
     5, 56,  // max_field_number, fast_idx_mask
     offsetof(decltype(_table_), field_lookup_table),
@@ -13649,59 +13649,59 @@ GetMessageInfoReq::_table_ = {
     5,  // num_field_entries
     0,  // num_aux_entries
     offsetof(decltype(_table_), field_names),  // no aux_entries
-    GetMessageInfoReq_class_data_.base(),
+    GetChatMessageReq_class_data_.base(),
     nullptr,  // post_loop_handler
     ::_pbi::TcParser::GenericFallback,  // fallback
     #ifdef PROTOBUF_PREFETCH_PARSE_TABLE
-    ::_pbi::TcParser::GetTable<::GrpcLibraryV1::GetMessageInfoReq>(),  // to_prefetch
+    ::_pbi::TcParser::GetTable<::GrpcLibraryV1::GetChatMessageReq>(),  // to_prefetch
     #endif  // PROTOBUF_PREFETCH_PARSE_TABLE
   }, {{
     {::_pbi::TcParser::MiniParse, {}},
     // int64 id = 1;
-    {::_pbi::TcParser::SingularVarintNoZag1<::uint64_t, offsetof(GetMessageInfoReq, _impl_.id_), 1>(),
+    {::_pbi::TcParser::SingularVarintNoZag1<::uint64_t, offsetof(GetChatMessageReq, _impl_.id_), 1>(),
      {8, 1, 0,
-      PROTOBUF_FIELD_OFFSET(GetMessageInfoReq, _impl_.id_)}},
+      PROTOBUF_FIELD_OFFSET(GetChatMessageReq, _impl_.id_)}},
     // int64 session_id = 2;
-    {::_pbi::TcParser::SingularVarintNoZag1<::uint64_t, offsetof(GetMessageInfoReq, _impl_.session_id_), 2>(),
+    {::_pbi::TcParser::SingularVarintNoZag1<::uint64_t, offsetof(GetChatMessageReq, _impl_.session_id_), 2>(),
      {16, 2, 0,
-      PROTOBUF_FIELD_OFFSET(GetMessageInfoReq, _impl_.session_id_)}},
+      PROTOBUF_FIELD_OFFSET(GetChatMessageReq, _impl_.session_id_)}},
     // int32 limit = 3;
-    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(GetMessageInfoReq, _impl_.limit_), 4>(),
+    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(GetChatMessageReq, _impl_.limit_), 4>(),
      {24, 4, 0,
-      PROTOBUF_FIELD_OFFSET(GetMessageInfoReq, _impl_.limit_)}},
+      PROTOBUF_FIELD_OFFSET(GetChatMessageReq, _impl_.limit_)}},
     // int64 user_id = 4;
-    {::_pbi::TcParser::SingularVarintNoZag1<::uint64_t, offsetof(GetMessageInfoReq, _impl_.user_id_), 3>(),
+    {::_pbi::TcParser::SingularVarintNoZag1<::uint64_t, offsetof(GetChatMessageReq, _impl_.user_id_), 3>(),
      {32, 3, 0,
-      PROTOBUF_FIELD_OFFSET(GetMessageInfoReq, _impl_.user_id_)}},
+      PROTOBUF_FIELD_OFFSET(GetChatMessageReq, _impl_.user_id_)}},
     // string auth = 5;
     {::_pbi::TcParser::FastUS1,
      {42, 0, 0,
-      PROTOBUF_FIELD_OFFSET(GetMessageInfoReq, _impl_.auth_)}},
+      PROTOBUF_FIELD_OFFSET(GetChatMessageReq, _impl_.auth_)}},
     {::_pbi::TcParser::MiniParse, {}},
     {::_pbi::TcParser::MiniParse, {}},
   }}, {{
     65535, 65535
   }}, {{
     // int64 id = 1;
-    {PROTOBUF_FIELD_OFFSET(GetMessageInfoReq, _impl_.id_), _Internal::kHasBitsOffset + 1, 0, (0 | ::_fl::kFcOptional | ::_fl::kInt64)},
+    {PROTOBUF_FIELD_OFFSET(GetChatMessageReq, _impl_.id_), _Internal::kHasBitsOffset + 1, 0, (0 | ::_fl::kFcOptional | ::_fl::kInt64)},
     // int64 session_id = 2;
-    {PROTOBUF_FIELD_OFFSET(GetMessageInfoReq, _impl_.session_id_), _Internal::kHasBitsOffset + 2, 0, (0 | ::_fl::kFcOptional | ::_fl::kInt64)},
+    {PROTOBUF_FIELD_OFFSET(GetChatMessageReq, _impl_.session_id_), _Internal::kHasBitsOffset + 2, 0, (0 | ::_fl::kFcOptional | ::_fl::kInt64)},
     // int32 limit = 3;
-    {PROTOBUF_FIELD_OFFSET(GetMessageInfoReq, _impl_.limit_), _Internal::kHasBitsOffset + 4, 0, (0 | ::_fl::kFcOptional | ::_fl::kInt32)},
+    {PROTOBUF_FIELD_OFFSET(GetChatMessageReq, _impl_.limit_), _Internal::kHasBitsOffset + 4, 0, (0 | ::_fl::kFcOptional | ::_fl::kInt32)},
     // int64 user_id = 4;
-    {PROTOBUF_FIELD_OFFSET(GetMessageInfoReq, _impl_.user_id_), _Internal::kHasBitsOffset + 3, 0, (0 | ::_fl::kFcOptional | ::_fl::kInt64)},
+    {PROTOBUF_FIELD_OFFSET(GetChatMessageReq, _impl_.user_id_), _Internal::kHasBitsOffset + 3, 0, (0 | ::_fl::kFcOptional | ::_fl::kInt64)},
     // string auth = 5;
-    {PROTOBUF_FIELD_OFFSET(GetMessageInfoReq, _impl_.auth_), _Internal::kHasBitsOffset + 0, 0, (0 | ::_fl::kFcOptional | ::_fl::kUtf8String | ::_fl::kRepAString)},
+    {PROTOBUF_FIELD_OFFSET(GetChatMessageReq, _impl_.auth_), _Internal::kHasBitsOffset + 0, 0, (0 | ::_fl::kFcOptional | ::_fl::kUtf8String | ::_fl::kRepAString)},
   }},
   // no aux_entries
   {{
     "\37\0\0\0\0\4\0\0"
-    "GrpcLibraryV1.GetMessageInfoReq"
+    "GrpcLibraryV1.GetChatMessageReq"
     "auth"
   }},
 };
-PROTOBUF_NOINLINE void GetMessageInfoReq::Clear() {
-// @@protoc_insertion_point(message_clear_start:GrpcLibraryV1.GetMessageInfoReq)
+PROTOBUF_NOINLINE void GetChatMessageReq::Clear() {
+// @@protoc_insertion_point(message_clear_start:GrpcLibraryV1.GetChatMessageReq)
   ::google::protobuf::internal::TSanWrite(&_impl_);
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
@@ -13721,20 +13721,20 @@ PROTOBUF_NOINLINE void GetMessageInfoReq::Clear() {
 }
 
 #if defined(PROTOBUF_CUSTOM_VTABLE)
-::uint8_t* PROTOBUF_NONNULL GetMessageInfoReq::_InternalSerialize(
+::uint8_t* PROTOBUF_NONNULL GetChatMessageReq::_InternalSerialize(
     const ::google::protobuf::MessageLite& base, ::uint8_t* PROTOBUF_NONNULL target,
     ::google::protobuf::io::EpsCopyOutputStream* PROTOBUF_NONNULL stream) {
-  const GetMessageInfoReq& this_ = static_cast<const GetMessageInfoReq&>(base);
+  const GetChatMessageReq& this_ = static_cast<const GetChatMessageReq&>(base);
 #else   // PROTOBUF_CUSTOM_VTABLE
-::uint8_t* PROTOBUF_NONNULL GetMessageInfoReq::_InternalSerialize(
+::uint8_t* PROTOBUF_NONNULL GetChatMessageReq::_InternalSerialize(
     ::uint8_t* PROTOBUF_NONNULL target,
     ::google::protobuf::io::EpsCopyOutputStream* PROTOBUF_NONNULL stream) const {
-  const GetMessageInfoReq& this_ = *this;
+  const GetChatMessageReq& this_ = *this;
 #endif  // PROTOBUF_CUSTOM_VTABLE
   if constexpr (::_pbi::DebugHardenCheckHasBitConsistency()) {
     this_.CheckHasBitConsistency();
   }
-  // @@protoc_insertion_point(serialize_to_array_start:GrpcLibraryV1.GetMessageInfoReq)
+  // @@protoc_insertion_point(serialize_to_array_start:GrpcLibraryV1.GetChatMessageReq)
   ::uint32_t cached_has_bits = 0;
   (void)cached_has_bits;
 
@@ -13780,7 +13780,7 @@ PROTOBUF_NOINLINE void GetMessageInfoReq::Clear() {
     if (!this_._internal_auth().empty()) {
       const ::std::string& _s = this_._internal_auth();
       ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-          _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "GrpcLibraryV1.GetMessageInfoReq.auth");
+          _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "GrpcLibraryV1.GetChatMessageReq.auth");
       target = stream->WriteStringMaybeAliased(5, _s, target);
     }
   }
@@ -13790,18 +13790,18 @@ PROTOBUF_NOINLINE void GetMessageInfoReq::Clear() {
         ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
             this_._internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:GrpcLibraryV1.GetMessageInfoReq)
+  // @@protoc_insertion_point(serialize_to_array_end:GrpcLibraryV1.GetChatMessageReq)
   return target;
 }
 
 #if defined(PROTOBUF_CUSTOM_VTABLE)
-::size_t GetMessageInfoReq::ByteSizeLong(const MessageLite& base) {
-  const GetMessageInfoReq& this_ = static_cast<const GetMessageInfoReq&>(base);
+::size_t GetChatMessageReq::ByteSizeLong(const MessageLite& base) {
+  const GetChatMessageReq& this_ = static_cast<const GetChatMessageReq&>(base);
 #else   // PROTOBUF_CUSTOM_VTABLE
-::size_t GetMessageInfoReq::ByteSizeLong() const {
-  const GetMessageInfoReq& this_ = *this;
+::size_t GetChatMessageReq::ByteSizeLong() const {
+  const GetChatMessageReq& this_ = *this;
 #endif  // PROTOBUF_CUSTOM_VTABLE
-  // @@protoc_insertion_point(message_byte_size_start:GrpcLibraryV1.GetMessageInfoReq)
+  // @@protoc_insertion_point(message_byte_size_start:GrpcLibraryV1.GetChatMessageReq)
   ::size_t total_size = 0;
 
   ::uint32_t cached_has_bits = 0;
@@ -13851,15 +13851,15 @@ PROTOBUF_NOINLINE void GetMessageInfoReq::Clear() {
                                              &this_._impl_._cached_size_);
 }
 
-void GetMessageInfoReq::MergeImpl(::google::protobuf::MessageLite& to_msg,
+void GetChatMessageReq::MergeImpl(::google::protobuf::MessageLite& to_msg,
                             const ::google::protobuf::MessageLite& from_msg) {
    auto* const _this =
-      static_cast<GetMessageInfoReq*>(&to_msg);
-  auto& from = static_cast<const GetMessageInfoReq&>(from_msg);
+      static_cast<GetChatMessageReq*>(&to_msg);
+  auto& from = static_cast<const GetChatMessageReq&>(from_msg);
   if constexpr (::_pbi::DebugHardenCheckHasBitConsistency()) {
     from.CheckHasBitConsistency();
   }
-  // @@protoc_insertion_point(class_specific_merge_from_start:GrpcLibraryV1.GetMessageInfoReq)
+  // @@protoc_insertion_point(class_specific_merge_from_start:GrpcLibraryV1.GetChatMessageReq)
   ABSL_DCHECK_NE(&from, _this);
   ::uint32_t cached_has_bits = 0;
   (void)cached_has_bits;
@@ -13901,15 +13901,15 @@ void GetMessageInfoReq::MergeImpl(::google::protobuf::MessageLite& to_msg,
       from._internal_metadata_);
 }
 
-void GetMessageInfoReq::CopyFrom(const GetMessageInfoReq& from) {
-  // @@protoc_insertion_point(class_specific_copy_from_start:GrpcLibraryV1.GetMessageInfoReq)
+void GetChatMessageReq::CopyFrom(const GetChatMessageReq& from) {
+  // @@protoc_insertion_point(class_specific_copy_from_start:GrpcLibraryV1.GetChatMessageReq)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
 
-void GetMessageInfoReq::InternalSwap(GetMessageInfoReq* PROTOBUF_RESTRICT PROTOBUF_NONNULL other) {
+void GetChatMessageReq::InternalSwap(GetChatMessageReq* PROTOBUF_RESTRICT PROTOBUF_NONNULL other) {
   using ::std::swap;
   auto* arena = GetArena();
   ABSL_DCHECK_EQ(arena, other->GetArena());
@@ -13917,76 +13917,76 @@ void GetMessageInfoReq::InternalSwap(GetMessageInfoReq* PROTOBUF_RESTRICT PROTOB
   swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
   ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.auth_, &other->_impl_.auth_, arena);
   ::google::protobuf::internal::memswap<
-      PROTOBUF_FIELD_OFFSET(GetMessageInfoReq, _impl_.limit_)
-      + sizeof(GetMessageInfoReq::_impl_.limit_)
-      - PROTOBUF_FIELD_OFFSET(GetMessageInfoReq, _impl_.id_)>(
+      PROTOBUF_FIELD_OFFSET(GetChatMessageReq, _impl_.limit_)
+      + sizeof(GetChatMessageReq::_impl_.limit_)
+      - PROTOBUF_FIELD_OFFSET(GetChatMessageReq, _impl_.id_)>(
           reinterpret_cast<char*>(&_impl_.id_),
           reinterpret_cast<char*>(&other->_impl_.id_));
 }
 
-::google::protobuf::Metadata GetMessageInfoReq::GetMetadata() const {
+::google::protobuf::Metadata GetChatMessageReq::GetMetadata() const {
   return ::google::protobuf::Message::GetMetadataImpl(GetClassData()->full());
 }
 // ===================================================================
 
-class GetMessageInfoResp::_Internal {
+class GetChatMessageResp::_Internal {
  public:
   using HasBits =
-      decltype(::std::declval<GetMessageInfoResp>()._impl_._has_bits_);
+      decltype(::std::declval<GetChatMessageResp>()._impl_._has_bits_);
   static constexpr ::int32_t kHasBitsOffset =
-      8 * PROTOBUF_FIELD_OFFSET(GetMessageInfoResp, _impl_._has_bits_);
+      8 * PROTOBUF_FIELD_OFFSET(GetChatMessageResp, _impl_._has_bits_);
 };
 
-GetMessageInfoResp::GetMessageInfoResp(::google::protobuf::Arena* PROTOBUF_NULLABLE arena)
+GetChatMessageResp::GetChatMessageResp(::google::protobuf::Arena* PROTOBUF_NULLABLE arena)
 #if defined(PROTOBUF_CUSTOM_VTABLE)
-    : ::google::protobuf::Message(arena, GetMessageInfoResp_class_data_.base()) {
+    : ::google::protobuf::Message(arena, GetChatMessageResp_class_data_.base()) {
 #else   // PROTOBUF_CUSTOM_VTABLE
     : ::google::protobuf::Message(arena) {
 #endif  // PROTOBUF_CUSTOM_VTABLE
   SharedCtor(arena);
-  // @@protoc_insertion_point(arena_constructor:GrpcLibraryV1.GetMessageInfoResp)
+  // @@protoc_insertion_point(arena_constructor:GrpcLibraryV1.GetChatMessageResp)
 }
-PROTOBUF_NDEBUG_INLINE GetMessageInfoResp::Impl_::Impl_(
+PROTOBUF_NDEBUG_INLINE GetChatMessageResp::Impl_::Impl_(
     [[maybe_unused]] ::google::protobuf::internal::InternalVisibility visibility,
     [[maybe_unused]] ::google::protobuf::Arena* PROTOBUF_NULLABLE arena, const Impl_& from,
-    [[maybe_unused]] const ::GrpcLibraryV1::GetMessageInfoResp& from_msg)
+    [[maybe_unused]] const ::GrpcLibraryV1::GetChatMessageResp& from_msg)
       : _has_bits_{from._has_bits_},
         _cached_size_{0},
         messages_{visibility, arena, from.messages_} {}
 
-GetMessageInfoResp::GetMessageInfoResp(
+GetChatMessageResp::GetChatMessageResp(
     ::google::protobuf::Arena* PROTOBUF_NULLABLE arena,
-    const GetMessageInfoResp& from)
+    const GetChatMessageResp& from)
 #if defined(PROTOBUF_CUSTOM_VTABLE)
-    : ::google::protobuf::Message(arena, GetMessageInfoResp_class_data_.base()) {
+    : ::google::protobuf::Message(arena, GetChatMessageResp_class_data_.base()) {
 #else   // PROTOBUF_CUSTOM_VTABLE
     : ::google::protobuf::Message(arena) {
 #endif  // PROTOBUF_CUSTOM_VTABLE
-  GetMessageInfoResp* const _this = this;
+  GetChatMessageResp* const _this = this;
   (void)_this;
   _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
       from._internal_metadata_);
   new (&_impl_) Impl_(internal_visibility(), arena, from._impl_, from);
   _impl_.error_code_ = from._impl_.error_code_;
 
-  // @@protoc_insertion_point(copy_constructor:GrpcLibraryV1.GetMessageInfoResp)
+  // @@protoc_insertion_point(copy_constructor:GrpcLibraryV1.GetChatMessageResp)
 }
-PROTOBUF_NDEBUG_INLINE GetMessageInfoResp::Impl_::Impl_(
+PROTOBUF_NDEBUG_INLINE GetChatMessageResp::Impl_::Impl_(
     [[maybe_unused]] ::google::protobuf::internal::InternalVisibility visibility,
     [[maybe_unused]] ::google::protobuf::Arena* PROTOBUF_NULLABLE arena)
       : _cached_size_{0},
         messages_{visibility, arena} {}
 
-inline void GetMessageInfoResp::SharedCtor(::_pb::Arena* PROTOBUF_NULLABLE arena) {
+inline void GetChatMessageResp::SharedCtor(::_pb::Arena* PROTOBUF_NULLABLE arena) {
   new (&_impl_) Impl_(internal_visibility(), arena);
   _impl_.error_code_ = {};
 }
-GetMessageInfoResp::~GetMessageInfoResp() {
-  // @@protoc_insertion_point(destructor:GrpcLibraryV1.GetMessageInfoResp)
+GetChatMessageResp::~GetChatMessageResp() {
+  // @@protoc_insertion_point(destructor:GrpcLibraryV1.GetChatMessageResp)
   SharedDtor(*this);
 }
-inline void GetMessageInfoResp::SharedDtor(MessageLite& self) {
-  GetMessageInfoResp& this_ = static_cast<GetMessageInfoResp&>(self);
+inline void GetChatMessageResp::SharedDtor(MessageLite& self) {
+  GetChatMessageResp& this_ = static_cast<GetChatMessageResp&>(self);
   if constexpr (::_pbi::DebugHardenCheckHasBitConsistency()) {
     this_.CheckHasBitConsistency();
   }
@@ -13995,65 +13995,65 @@ inline void GetMessageInfoResp::SharedDtor(MessageLite& self) {
   this_._impl_.~Impl_();
 }
 
-inline void* PROTOBUF_NONNULL GetMessageInfoResp::PlacementNew_(
+inline void* PROTOBUF_NONNULL GetChatMessageResp::PlacementNew_(
     const void* PROTOBUF_NONNULL, void* PROTOBUF_NONNULL mem,
     ::google::protobuf::Arena* PROTOBUF_NULLABLE arena) {
-  return ::new (mem) GetMessageInfoResp(arena);
+  return ::new (mem) GetChatMessageResp(arena);
 }
-constexpr auto GetMessageInfoResp::InternalNewImpl_() {
+constexpr auto GetChatMessageResp::InternalNewImpl_() {
   constexpr auto arena_bits = ::google::protobuf::internal::EncodePlacementArenaOffsets({
-      PROTOBUF_FIELD_OFFSET(GetMessageInfoResp, _impl_.messages_) +
-          decltype(GetMessageInfoResp::_impl_.messages_)::
+      PROTOBUF_FIELD_OFFSET(GetChatMessageResp, _impl_.messages_) +
+          decltype(GetChatMessageResp::_impl_.messages_)::
               InternalGetArenaOffset(
                   ::google::protobuf::Message::internal_visibility()),
   });
   if (arena_bits.has_value()) {
     return ::google::protobuf::internal::MessageCreator::ZeroInit(
-        sizeof(GetMessageInfoResp), alignof(GetMessageInfoResp), *arena_bits);
+        sizeof(GetChatMessageResp), alignof(GetChatMessageResp), *arena_bits);
   } else {
-    return ::google::protobuf::internal::MessageCreator(&GetMessageInfoResp::PlacementNew_,
-                                 sizeof(GetMessageInfoResp),
-                                 alignof(GetMessageInfoResp));
+    return ::google::protobuf::internal::MessageCreator(&GetChatMessageResp::PlacementNew_,
+                                 sizeof(GetChatMessageResp),
+                                 alignof(GetChatMessageResp));
   }
 }
-constexpr auto GetMessageInfoResp::InternalGenerateClassData_() {
+constexpr auto GetChatMessageResp::InternalGenerateClassData_() {
   return ::google::protobuf::internal::ClassDataFull{
       ::google::protobuf::internal::ClassData{
-          &_GetMessageInfoResp_default_instance_._instance,
+          &_GetChatMessageResp_default_instance_._instance,
           &_table_.header,
           nullptr,  // OnDemandRegisterArenaDtor
           nullptr,  // IsInitialized
-          &GetMessageInfoResp::MergeImpl,
-          ::google::protobuf::Message::GetNewImpl<GetMessageInfoResp>(),
+          &GetChatMessageResp::MergeImpl,
+          ::google::protobuf::Message::GetNewImpl<GetChatMessageResp>(),
 #if defined(PROTOBUF_CUSTOM_VTABLE)
-          &GetMessageInfoResp::SharedDtor,
-          ::google::protobuf::Message::GetClearImpl<GetMessageInfoResp>(), &GetMessageInfoResp::ByteSizeLong,
-              &GetMessageInfoResp::_InternalSerialize,
+          &GetChatMessageResp::SharedDtor,
+          ::google::protobuf::Message::GetClearImpl<GetChatMessageResp>(), &GetChatMessageResp::ByteSizeLong,
+              &GetChatMessageResp::_InternalSerialize,
 #endif  // PROTOBUF_CUSTOM_VTABLE
-          PROTOBUF_FIELD_OFFSET(GetMessageInfoResp, _impl_._cached_size_),
+          PROTOBUF_FIELD_OFFSET(GetChatMessageResp, _impl_._cached_size_),
           false,
       },
-      &GetMessageInfoResp::kDescriptorMethods,
+      &GetChatMessageResp::kDescriptorMethods,
       &descriptor_table_src_2fapi_2eproto,
       nullptr,  // tracker
   };
 }
 
 PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 const
-    ::google::protobuf::internal::ClassDataFull GetMessageInfoResp_class_data_ =
-        GetMessageInfoResp::InternalGenerateClassData_();
+    ::google::protobuf::internal::ClassDataFull GetChatMessageResp_class_data_ =
+        GetChatMessageResp::InternalGenerateClassData_();
 
 PROTOBUF_ATTRIBUTE_WEAK const ::google::protobuf::internal::ClassData* PROTOBUF_NONNULL
-GetMessageInfoResp::GetClassData() const {
-  ::google::protobuf::internal::PrefetchToLocalCache(&GetMessageInfoResp_class_data_);
-  ::google::protobuf::internal::PrefetchToLocalCache(GetMessageInfoResp_class_data_.tc_table);
-  return GetMessageInfoResp_class_data_.base();
+GetChatMessageResp::GetClassData() const {
+  ::google::protobuf::internal::PrefetchToLocalCache(&GetChatMessageResp_class_data_);
+  ::google::protobuf::internal::PrefetchToLocalCache(GetChatMessageResp_class_data_.tc_table);
+  return GetChatMessageResp_class_data_.base();
 }
 PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
 const ::_pbi::TcParseTable<1, 2, 1, 0, 2>
-GetMessageInfoResp::_table_ = {
+GetChatMessageResp::_table_ = {
   {
-    PROTOBUF_FIELD_OFFSET(GetMessageInfoResp, _impl_._has_bits_),
+    PROTOBUF_FIELD_OFFSET(GetChatMessageResp, _impl_._has_bits_),
     0, // no _extensions_
     2, 8,  // max_field_number, fast_idx_mask
     offsetof(decltype(_table_), field_lookup_table),
@@ -14062,37 +14062,37 @@ GetMessageInfoResp::_table_ = {
     2,  // num_field_entries
     1,  // num_aux_entries
     offsetof(decltype(_table_), aux_entries),
-    GetMessageInfoResp_class_data_.base(),
+    GetChatMessageResp_class_data_.base(),
     nullptr,  // post_loop_handler
     ::_pbi::TcParser::GenericFallback,  // fallback
     #ifdef PROTOBUF_PREFETCH_PARSE_TABLE
-    ::_pbi::TcParser::GetTable<::GrpcLibraryV1::GetMessageInfoResp>(),  // to_prefetch
+    ::_pbi::TcParser::GetTable<::GrpcLibraryV1::GetChatMessageResp>(),  // to_prefetch
     #endif  // PROTOBUF_PREFETCH_PARSE_TABLE
   }, {{
-    // repeated .GrpcLibraryV1.MessageInfo messages = 2;
+    // repeated .GrpcLibraryV1.ChatMessage messages = 2;
     {::_pbi::TcParser::FastMtR1,
      {18, 0, 0,
-      PROTOBUF_FIELD_OFFSET(GetMessageInfoResp, _impl_.messages_)}},
+      PROTOBUF_FIELD_OFFSET(GetChatMessageResp, _impl_.messages_)}},
     // int32 error_code = 1;
-    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(GetMessageInfoResp, _impl_.error_code_), 1>(),
+    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(GetChatMessageResp, _impl_.error_code_), 1>(),
      {8, 1, 0,
-      PROTOBUF_FIELD_OFFSET(GetMessageInfoResp, _impl_.error_code_)}},
+      PROTOBUF_FIELD_OFFSET(GetChatMessageResp, _impl_.error_code_)}},
   }}, {{
     65535, 65535
   }}, {{
     // int32 error_code = 1;
-    {PROTOBUF_FIELD_OFFSET(GetMessageInfoResp, _impl_.error_code_), _Internal::kHasBitsOffset + 1, 0, (0 | ::_fl::kFcOptional | ::_fl::kInt32)},
-    // repeated .GrpcLibraryV1.MessageInfo messages = 2;
-    {PROTOBUF_FIELD_OFFSET(GetMessageInfoResp, _impl_.messages_), _Internal::kHasBitsOffset + 0, 0, (0 | ::_fl::kFcRepeated | ::_fl::kMessage | ::_fl::kTvTable)},
+    {PROTOBUF_FIELD_OFFSET(GetChatMessageResp, _impl_.error_code_), _Internal::kHasBitsOffset + 1, 0, (0 | ::_fl::kFcOptional | ::_fl::kInt32)},
+    // repeated .GrpcLibraryV1.ChatMessage messages = 2;
+    {PROTOBUF_FIELD_OFFSET(GetChatMessageResp, _impl_.messages_), _Internal::kHasBitsOffset + 0, 0, (0 | ::_fl::kFcRepeated | ::_fl::kMessage | ::_fl::kTvTable)},
   }},
   {{
-      {::_pbi::TcParser::GetTable<::GrpcLibraryV1::MessageInfo>()},
+      {::_pbi::TcParser::GetTable<::GrpcLibraryV1::ChatMessage>()},
   }},
   {{
   }},
 };
-PROTOBUF_NOINLINE void GetMessageInfoResp::Clear() {
-// @@protoc_insertion_point(message_clear_start:GrpcLibraryV1.GetMessageInfoResp)
+PROTOBUF_NOINLINE void GetChatMessageResp::Clear() {
+// @@protoc_insertion_point(message_clear_start:GrpcLibraryV1.GetChatMessageResp)
   ::google::protobuf::internal::TSanWrite(&_impl_);
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
@@ -14108,20 +14108,20 @@ PROTOBUF_NOINLINE void GetMessageInfoResp::Clear() {
 }
 
 #if defined(PROTOBUF_CUSTOM_VTABLE)
-::uint8_t* PROTOBUF_NONNULL GetMessageInfoResp::_InternalSerialize(
+::uint8_t* PROTOBUF_NONNULL GetChatMessageResp::_InternalSerialize(
     const ::google::protobuf::MessageLite& base, ::uint8_t* PROTOBUF_NONNULL target,
     ::google::protobuf::io::EpsCopyOutputStream* PROTOBUF_NONNULL stream) {
-  const GetMessageInfoResp& this_ = static_cast<const GetMessageInfoResp&>(base);
+  const GetChatMessageResp& this_ = static_cast<const GetChatMessageResp&>(base);
 #else   // PROTOBUF_CUSTOM_VTABLE
-::uint8_t* PROTOBUF_NONNULL GetMessageInfoResp::_InternalSerialize(
+::uint8_t* PROTOBUF_NONNULL GetChatMessageResp::_InternalSerialize(
     ::uint8_t* PROTOBUF_NONNULL target,
     ::google::protobuf::io::EpsCopyOutputStream* PROTOBUF_NONNULL stream) const {
-  const GetMessageInfoResp& this_ = *this;
+  const GetChatMessageResp& this_ = *this;
 #endif  // PROTOBUF_CUSTOM_VTABLE
   if constexpr (::_pbi::DebugHardenCheckHasBitConsistency()) {
     this_.CheckHasBitConsistency();
   }
-  // @@protoc_insertion_point(serialize_to_array_start:GrpcLibraryV1.GetMessageInfoResp)
+  // @@protoc_insertion_point(serialize_to_array_start:GrpcLibraryV1.GetChatMessageResp)
   ::uint32_t cached_has_bits = 0;
   (void)cached_has_bits;
 
@@ -14135,7 +14135,7 @@ PROTOBUF_NOINLINE void GetMessageInfoResp::Clear() {
     }
   }
 
-  // repeated .GrpcLibraryV1.MessageInfo messages = 2;
+  // repeated .GrpcLibraryV1.ChatMessage messages = 2;
   if (CheckHasBitForRepeated(cached_has_bits, 0x00000001U)) {
     for (unsigned i = 0, n = static_cast<unsigned>(
                              this_._internal_messages_size());
@@ -14153,18 +14153,18 @@ PROTOBUF_NOINLINE void GetMessageInfoResp::Clear() {
         ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
             this_._internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:GrpcLibraryV1.GetMessageInfoResp)
+  // @@protoc_insertion_point(serialize_to_array_end:GrpcLibraryV1.GetChatMessageResp)
   return target;
 }
 
 #if defined(PROTOBUF_CUSTOM_VTABLE)
-::size_t GetMessageInfoResp::ByteSizeLong(const MessageLite& base) {
-  const GetMessageInfoResp& this_ = static_cast<const GetMessageInfoResp&>(base);
+::size_t GetChatMessageResp::ByteSizeLong(const MessageLite& base) {
+  const GetChatMessageResp& this_ = static_cast<const GetChatMessageResp&>(base);
 #else   // PROTOBUF_CUSTOM_VTABLE
-::size_t GetMessageInfoResp::ByteSizeLong() const {
-  const GetMessageInfoResp& this_ = *this;
+::size_t GetChatMessageResp::ByteSizeLong() const {
+  const GetChatMessageResp& this_ = *this;
 #endif  // PROTOBUF_CUSTOM_VTABLE
-  // @@protoc_insertion_point(message_byte_size_start:GrpcLibraryV1.GetMessageInfoResp)
+  // @@protoc_insertion_point(message_byte_size_start:GrpcLibraryV1.GetChatMessageResp)
   ::size_t total_size = 0;
 
   ::uint32_t cached_has_bits = 0;
@@ -14174,7 +14174,7 @@ PROTOBUF_NOINLINE void GetMessageInfoResp::Clear() {
   ::_pbi::Prefetch5LinesFrom7Lines(&this_);
   cached_has_bits = this_._impl_._has_bits_[0];
   if (BatchCheckHasBit(cached_has_bits, 0x00000003U)) {
-    // repeated .GrpcLibraryV1.MessageInfo messages = 2;
+    // repeated .GrpcLibraryV1.ChatMessage messages = 2;
     if (CheckHasBitForRepeated(cached_has_bits, 0x00000001U)) {
       total_size += 1UL * this_._internal_messages_size();
       for (const auto& msg : this_._internal_messages()) {
@@ -14193,16 +14193,16 @@ PROTOBUF_NOINLINE void GetMessageInfoResp::Clear() {
                                              &this_._impl_._cached_size_);
 }
 
-void GetMessageInfoResp::MergeImpl(::google::protobuf::MessageLite& to_msg,
+void GetChatMessageResp::MergeImpl(::google::protobuf::MessageLite& to_msg,
                             const ::google::protobuf::MessageLite& from_msg) {
    auto* const _this =
-      static_cast<GetMessageInfoResp*>(&to_msg);
-  auto& from = static_cast<const GetMessageInfoResp&>(from_msg);
+      static_cast<GetChatMessageResp*>(&to_msg);
+  auto& from = static_cast<const GetChatMessageResp&>(from_msg);
   if constexpr (::_pbi::DebugHardenCheckHasBitConsistency()) {
     from.CheckHasBitConsistency();
   }
   ::google::protobuf::Arena* arena = _this->GetArena();
-  // @@protoc_insertion_point(class_specific_merge_from_start:GrpcLibraryV1.GetMessageInfoResp)
+  // @@protoc_insertion_point(class_specific_merge_from_start:GrpcLibraryV1.GetChatMessageResp)
   ABSL_DCHECK_NE(&from, _this);
   ::uint32_t cached_has_bits = 0;
   (void)cached_has_bits;
@@ -14225,15 +14225,15 @@ void GetMessageInfoResp::MergeImpl(::google::protobuf::MessageLite& to_msg,
       from._internal_metadata_);
 }
 
-void GetMessageInfoResp::CopyFrom(const GetMessageInfoResp& from) {
-  // @@protoc_insertion_point(class_specific_copy_from_start:GrpcLibraryV1.GetMessageInfoResp)
+void GetChatMessageResp::CopyFrom(const GetChatMessageResp& from) {
+  // @@protoc_insertion_point(class_specific_copy_from_start:GrpcLibraryV1.GetChatMessageResp)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
 
-void GetMessageInfoResp::InternalSwap(GetMessageInfoResp* PROTOBUF_RESTRICT PROTOBUF_NONNULL other) {
+void GetChatMessageResp::InternalSwap(GetChatMessageResp* PROTOBUF_RESTRICT PROTOBUF_NONNULL other) {
   using ::std::swap;
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
@@ -14241,7 +14241,7 @@ void GetMessageInfoResp::InternalSwap(GetMessageInfoResp* PROTOBUF_RESTRICT PROT
   swap(_impl_.error_code_, other->_impl_.error_code_);
 }
 
-::google::protobuf::Metadata GetMessageInfoResp::GetMetadata() const {
+::google::protobuf::Metadata GetChatMessageResp::GetMetadata() const {
   return ::google::protobuf::Message::GetMetadataImpl(GetClassData()->full());
 }
 // ===================================================================

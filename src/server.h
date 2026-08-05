@@ -39,9 +39,9 @@ class api_handler final : public GrpcLibraryV1::GrpcService::CallbackService
                           ::GrpcLibraryV1::RegAccountResp      *resp) override;
 
     reactor_t *
-    GetMessageInfo(ctx_t                                    *ctx,
-                   const ::GrpcLibraryV1::GetMessageInfoReq *req,
-                   ::GrpcLibraryV1::GetMessageInfoResp      *resp) override;
+    GetChatMessage(ctx_t                                    *ctx,
+                   const ::GrpcLibraryV1::GetChatMessageReq *req,
+                   ::GrpcLibraryV1::GetChatMessageResp      *resp) override;
 
     reactor_t *GetSession(ctx_t                                *ctx,
                           const ::GrpcLibraryV1::GetSessionReq *req,

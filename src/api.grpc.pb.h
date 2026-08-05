@@ -96,12 +96,12 @@ class GrpcService final {
     std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::GrpcLibraryV1::StopRecognizeResp>> PrepareAsyncStopRecognize(::grpc::ClientContext* context, const ::GrpcLibraryV1::StopRecognizeReq& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::GrpcLibraryV1::StopRecognizeResp>>(PrepareAsyncStopRecognizeRaw(context, request, cq));
     }
-    virtual ::grpc::Status GetMessageInfo(::grpc::ClientContext* context, const ::GrpcLibraryV1::GetMessageInfoReq& request, ::GrpcLibraryV1::GetMessageInfoResp* response) = 0;
-    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::GrpcLibraryV1::GetMessageInfoResp>> AsyncGetMessageInfo(::grpc::ClientContext* context, const ::GrpcLibraryV1::GetMessageInfoReq& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::GrpcLibraryV1::GetMessageInfoResp>>(AsyncGetMessageInfoRaw(context, request, cq));
+    virtual ::grpc::Status GetChatMessage(::grpc::ClientContext* context, const ::GrpcLibraryV1::GetChatMessageReq& request, ::GrpcLibraryV1::GetChatMessageResp* response) = 0;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::GrpcLibraryV1::GetChatMessageResp>> AsyncGetChatMessage(::grpc::ClientContext* context, const ::GrpcLibraryV1::GetChatMessageReq& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::GrpcLibraryV1::GetChatMessageResp>>(AsyncGetChatMessageRaw(context, request, cq));
     }
-    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::GrpcLibraryV1::GetMessageInfoResp>> PrepareAsyncGetMessageInfo(::grpc::ClientContext* context, const ::GrpcLibraryV1::GetMessageInfoReq& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::GrpcLibraryV1::GetMessageInfoResp>>(PrepareAsyncGetMessageInfoRaw(context, request, cq));
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::GrpcLibraryV1::GetChatMessageResp>> PrepareAsyncGetChatMessage(::grpc::ClientContext* context, const ::GrpcLibraryV1::GetChatMessageReq& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::GrpcLibraryV1::GetChatMessageResp>>(PrepareAsyncGetChatMessageRaw(context, request, cq));
     }
     virtual ::grpc::Status GetSession(::grpc::ClientContext* context, const ::GrpcLibraryV1::GetSessionReq& request, ::GrpcLibraryV1::GetSessionResp* response) = 0;
     std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::GrpcLibraryV1::GetSessionResp>> AsyncGetSession(::grpc::ClientContext* context, const ::GrpcLibraryV1::GetSessionReq& request, ::grpc::CompletionQueue* cq) {
@@ -185,8 +185,8 @@ class GrpcService final {
       virtual void Recognize(::grpc::ClientContext* context, ::grpc::ClientBidiReactor< ::GrpcLibraryV1::RecognizeReq,::GrpcLibraryV1::RecognizeResp>* reactor) = 0;
       virtual void StopRecognize(::grpc::ClientContext* context, const ::GrpcLibraryV1::StopRecognizeReq* request, ::GrpcLibraryV1::StopRecognizeResp* response, std::function<void(::grpc::Status)>) = 0;
       virtual void StopRecognize(::grpc::ClientContext* context, const ::GrpcLibraryV1::StopRecognizeReq* request, ::GrpcLibraryV1::StopRecognizeResp* response, ::grpc::ClientUnaryReactor* reactor) = 0;
-      virtual void GetMessageInfo(::grpc::ClientContext* context, const ::GrpcLibraryV1::GetMessageInfoReq* request, ::GrpcLibraryV1::GetMessageInfoResp* response, std::function<void(::grpc::Status)>) = 0;
-      virtual void GetMessageInfo(::grpc::ClientContext* context, const ::GrpcLibraryV1::GetMessageInfoReq* request, ::GrpcLibraryV1::GetMessageInfoResp* response, ::grpc::ClientUnaryReactor* reactor) = 0;
+      virtual void GetChatMessage(::grpc::ClientContext* context, const ::GrpcLibraryV1::GetChatMessageReq* request, ::GrpcLibraryV1::GetChatMessageResp* response, std::function<void(::grpc::Status)>) = 0;
+      virtual void GetChatMessage(::grpc::ClientContext* context, const ::GrpcLibraryV1::GetChatMessageReq* request, ::GrpcLibraryV1::GetChatMessageResp* response, ::grpc::ClientUnaryReactor* reactor) = 0;
       virtual void GetSession(::grpc::ClientContext* context, const ::GrpcLibraryV1::GetSessionReq* request, ::GrpcLibraryV1::GetSessionResp* response, std::function<void(::grpc::Status)>) = 0;
       virtual void GetSession(::grpc::ClientContext* context, const ::GrpcLibraryV1::GetSessionReq* request, ::GrpcLibraryV1::GetSessionResp* response, ::grpc::ClientUnaryReactor* reactor) = 0;
       virtual void NewSession(::grpc::ClientContext* context, const ::GrpcLibraryV1::NewSessionReq* request, ::GrpcLibraryV1::NewSessionResp* response, std::function<void(::grpc::Status)>) = 0;
@@ -227,8 +227,8 @@ class GrpcService final {
     virtual ::grpc::ClientAsyncReaderWriterInterface< ::GrpcLibraryV1::RecognizeReq, ::GrpcLibraryV1::RecognizeResp>* PrepareAsyncRecognizeRaw(::grpc::ClientContext* context, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::GrpcLibraryV1::StopRecognizeResp>* AsyncStopRecognizeRaw(::grpc::ClientContext* context, const ::GrpcLibraryV1::StopRecognizeReq& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::GrpcLibraryV1::StopRecognizeResp>* PrepareAsyncStopRecognizeRaw(::grpc::ClientContext* context, const ::GrpcLibraryV1::StopRecognizeReq& request, ::grpc::CompletionQueue* cq) = 0;
-    virtual ::grpc::ClientAsyncResponseReaderInterface< ::GrpcLibraryV1::GetMessageInfoResp>* AsyncGetMessageInfoRaw(::grpc::ClientContext* context, const ::GrpcLibraryV1::GetMessageInfoReq& request, ::grpc::CompletionQueue* cq) = 0;
-    virtual ::grpc::ClientAsyncResponseReaderInterface< ::GrpcLibraryV1::GetMessageInfoResp>* PrepareAsyncGetMessageInfoRaw(::grpc::ClientContext* context, const ::GrpcLibraryV1::GetMessageInfoReq& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::GrpcLibraryV1::GetChatMessageResp>* AsyncGetChatMessageRaw(::grpc::ClientContext* context, const ::GrpcLibraryV1::GetChatMessageReq& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::GrpcLibraryV1::GetChatMessageResp>* PrepareAsyncGetChatMessageRaw(::grpc::ClientContext* context, const ::GrpcLibraryV1::GetChatMessageReq& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::GrpcLibraryV1::GetSessionResp>* AsyncGetSessionRaw(::grpc::ClientContext* context, const ::GrpcLibraryV1::GetSessionReq& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::GrpcLibraryV1::GetSessionResp>* PrepareAsyncGetSessionRaw(::grpc::ClientContext* context, const ::GrpcLibraryV1::GetSessionReq& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::GrpcLibraryV1::NewSessionResp>* AsyncNewSessionRaw(::grpc::ClientContext* context, const ::GrpcLibraryV1::NewSessionReq& request, ::grpc::CompletionQueue* cq) = 0;
@@ -312,12 +312,12 @@ class GrpcService final {
     std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::GrpcLibraryV1::StopRecognizeResp>> PrepareAsyncStopRecognize(::grpc::ClientContext* context, const ::GrpcLibraryV1::StopRecognizeReq& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::GrpcLibraryV1::StopRecognizeResp>>(PrepareAsyncStopRecognizeRaw(context, request, cq));
     }
-    ::grpc::Status GetMessageInfo(::grpc::ClientContext* context, const ::GrpcLibraryV1::GetMessageInfoReq& request, ::GrpcLibraryV1::GetMessageInfoResp* response) override;
-    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::GrpcLibraryV1::GetMessageInfoResp>> AsyncGetMessageInfo(::grpc::ClientContext* context, const ::GrpcLibraryV1::GetMessageInfoReq& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::GrpcLibraryV1::GetMessageInfoResp>>(AsyncGetMessageInfoRaw(context, request, cq));
+    ::grpc::Status GetChatMessage(::grpc::ClientContext* context, const ::GrpcLibraryV1::GetChatMessageReq& request, ::GrpcLibraryV1::GetChatMessageResp* response) override;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::GrpcLibraryV1::GetChatMessageResp>> AsyncGetChatMessage(::grpc::ClientContext* context, const ::GrpcLibraryV1::GetChatMessageReq& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::GrpcLibraryV1::GetChatMessageResp>>(AsyncGetChatMessageRaw(context, request, cq));
     }
-    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::GrpcLibraryV1::GetMessageInfoResp>> PrepareAsyncGetMessageInfo(::grpc::ClientContext* context, const ::GrpcLibraryV1::GetMessageInfoReq& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::GrpcLibraryV1::GetMessageInfoResp>>(PrepareAsyncGetMessageInfoRaw(context, request, cq));
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::GrpcLibraryV1::GetChatMessageResp>> PrepareAsyncGetChatMessage(::grpc::ClientContext* context, const ::GrpcLibraryV1::GetChatMessageReq& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::GrpcLibraryV1::GetChatMessageResp>>(PrepareAsyncGetChatMessageRaw(context, request, cq));
     }
     ::grpc::Status GetSession(::grpc::ClientContext* context, const ::GrpcLibraryV1::GetSessionReq& request, ::GrpcLibraryV1::GetSessionResp* response) override;
     std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::GrpcLibraryV1::GetSessionResp>> AsyncGetSession(::grpc::ClientContext* context, const ::GrpcLibraryV1::GetSessionReq& request, ::grpc::CompletionQueue* cq) {
@@ -401,8 +401,8 @@ class GrpcService final {
       void Recognize(::grpc::ClientContext* context, ::grpc::ClientBidiReactor< ::GrpcLibraryV1::RecognizeReq,::GrpcLibraryV1::RecognizeResp>* reactor) override;
       void StopRecognize(::grpc::ClientContext* context, const ::GrpcLibraryV1::StopRecognizeReq* request, ::GrpcLibraryV1::StopRecognizeResp* response, std::function<void(::grpc::Status)>) override;
       void StopRecognize(::grpc::ClientContext* context, const ::GrpcLibraryV1::StopRecognizeReq* request, ::GrpcLibraryV1::StopRecognizeResp* response, ::grpc::ClientUnaryReactor* reactor) override;
-      void GetMessageInfo(::grpc::ClientContext* context, const ::GrpcLibraryV1::GetMessageInfoReq* request, ::GrpcLibraryV1::GetMessageInfoResp* response, std::function<void(::grpc::Status)>) override;
-      void GetMessageInfo(::grpc::ClientContext* context, const ::GrpcLibraryV1::GetMessageInfoReq* request, ::GrpcLibraryV1::GetMessageInfoResp* response, ::grpc::ClientUnaryReactor* reactor) override;
+      void GetChatMessage(::grpc::ClientContext* context, const ::GrpcLibraryV1::GetChatMessageReq* request, ::GrpcLibraryV1::GetChatMessageResp* response, std::function<void(::grpc::Status)>) override;
+      void GetChatMessage(::grpc::ClientContext* context, const ::GrpcLibraryV1::GetChatMessageReq* request, ::GrpcLibraryV1::GetChatMessageResp* response, ::grpc::ClientUnaryReactor* reactor) override;
       void GetSession(::grpc::ClientContext* context, const ::GrpcLibraryV1::GetSessionReq* request, ::GrpcLibraryV1::GetSessionResp* response, std::function<void(::grpc::Status)>) override;
       void GetSession(::grpc::ClientContext* context, const ::GrpcLibraryV1::GetSessionReq* request, ::GrpcLibraryV1::GetSessionResp* response, ::grpc::ClientUnaryReactor* reactor) override;
       void NewSession(::grpc::ClientContext* context, const ::GrpcLibraryV1::NewSessionReq* request, ::GrpcLibraryV1::NewSessionResp* response, std::function<void(::grpc::Status)>) override;
@@ -449,8 +449,8 @@ class GrpcService final {
     ::grpc::ClientAsyncReaderWriter< ::GrpcLibraryV1::RecognizeReq, ::GrpcLibraryV1::RecognizeResp>* PrepareAsyncRecognizeRaw(::grpc::ClientContext* context, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::GrpcLibraryV1::StopRecognizeResp>* AsyncStopRecognizeRaw(::grpc::ClientContext* context, const ::GrpcLibraryV1::StopRecognizeReq& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::GrpcLibraryV1::StopRecognizeResp>* PrepareAsyncStopRecognizeRaw(::grpc::ClientContext* context, const ::GrpcLibraryV1::StopRecognizeReq& request, ::grpc::CompletionQueue* cq) override;
-    ::grpc::ClientAsyncResponseReader< ::GrpcLibraryV1::GetMessageInfoResp>* AsyncGetMessageInfoRaw(::grpc::ClientContext* context, const ::GrpcLibraryV1::GetMessageInfoReq& request, ::grpc::CompletionQueue* cq) override;
-    ::grpc::ClientAsyncResponseReader< ::GrpcLibraryV1::GetMessageInfoResp>* PrepareAsyncGetMessageInfoRaw(::grpc::ClientContext* context, const ::GrpcLibraryV1::GetMessageInfoReq& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::GrpcLibraryV1::GetChatMessageResp>* AsyncGetChatMessageRaw(::grpc::ClientContext* context, const ::GrpcLibraryV1::GetChatMessageReq& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::GrpcLibraryV1::GetChatMessageResp>* PrepareAsyncGetChatMessageRaw(::grpc::ClientContext* context, const ::GrpcLibraryV1::GetChatMessageReq& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::GrpcLibraryV1::GetSessionResp>* AsyncGetSessionRaw(::grpc::ClientContext* context, const ::GrpcLibraryV1::GetSessionReq& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::GrpcLibraryV1::GetSessionResp>* PrepareAsyncGetSessionRaw(::grpc::ClientContext* context, const ::GrpcLibraryV1::GetSessionReq& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::GrpcLibraryV1::NewSessionResp>* AsyncNewSessionRaw(::grpc::ClientContext* context, const ::GrpcLibraryV1::NewSessionReq& request, ::grpc::CompletionQueue* cq) override;
@@ -478,7 +478,7 @@ class GrpcService final {
     const ::grpc::internal::RpcMethod rpcmethod_StopAnswer_;
     const ::grpc::internal::RpcMethod rpcmethod_Recognize_;
     const ::grpc::internal::RpcMethod rpcmethod_StopRecognize_;
-    const ::grpc::internal::RpcMethod rpcmethod_GetMessageInfo_;
+    const ::grpc::internal::RpcMethod rpcmethod_GetChatMessage_;
     const ::grpc::internal::RpcMethod rpcmethod_GetSession_;
     const ::grpc::internal::RpcMethod rpcmethod_NewSession_;
     const ::grpc::internal::RpcMethod rpcmethod_ModifySessionTitle_;
@@ -503,7 +503,7 @@ class GrpcService final {
     virtual ::grpc::Status StopAnswer(::grpc::ServerContext* context, const ::GrpcLibraryV1::StopAnswerReq* request, ::GrpcLibraryV1::StopAnswerResp* response);
     virtual ::grpc::Status Recognize(::grpc::ServerContext* context, ::grpc::ServerReaderWriter< ::GrpcLibraryV1::RecognizeResp, ::GrpcLibraryV1::RecognizeReq>* stream);
     virtual ::grpc::Status StopRecognize(::grpc::ServerContext* context, const ::GrpcLibraryV1::StopRecognizeReq* request, ::GrpcLibraryV1::StopRecognizeResp* response);
-    virtual ::grpc::Status GetMessageInfo(::grpc::ServerContext* context, const ::GrpcLibraryV1::GetMessageInfoReq* request, ::GrpcLibraryV1::GetMessageInfoResp* response);
+    virtual ::grpc::Status GetChatMessage(::grpc::ServerContext* context, const ::GrpcLibraryV1::GetChatMessageReq* request, ::GrpcLibraryV1::GetChatMessageResp* response);
     virtual ::grpc::Status GetSession(::grpc::ServerContext* context, const ::GrpcLibraryV1::GetSessionReq* request, ::GrpcLibraryV1::GetSessionResp* response);
     virtual ::grpc::Status NewSession(::grpc::ServerContext* context, const ::GrpcLibraryV1::NewSessionReq* request, ::GrpcLibraryV1::NewSessionResp* response);
     virtual ::grpc::Status ModifySessionTitle(::grpc::ServerContext* context, const ::GrpcLibraryV1::ModifySessionTitleReq* request, ::GrpcLibraryV1::ModifySessionTitleResp* response);
@@ -675,22 +675,22 @@ class GrpcService final {
     }
   };
   template <class BaseClass>
-  class WithAsyncMethod_GetMessageInfo : public BaseClass {
+  class WithAsyncMethod_GetChatMessage : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    WithAsyncMethod_GetMessageInfo() {
+    WithAsyncMethod_GetChatMessage() {
       ::grpc::Service::MarkMethodAsync(8);
     }
-    ~WithAsyncMethod_GetMessageInfo() override {
+    ~WithAsyncMethod_GetChatMessage() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status GetMessageInfo(::grpc::ServerContext* /*context*/, const ::GrpcLibraryV1::GetMessageInfoReq* /*request*/, ::GrpcLibraryV1::GetMessageInfoResp* /*response*/) override {
+    ::grpc::Status GetChatMessage(::grpc::ServerContext* /*context*/, const ::GrpcLibraryV1::GetChatMessageReq* /*request*/, ::GrpcLibraryV1::GetChatMessageResp* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    void RequestGetMessageInfo(::grpc::ServerContext* context, ::GrpcLibraryV1::GetMessageInfoReq* request, ::grpc::ServerAsyncResponseWriter< ::GrpcLibraryV1::GetMessageInfoResp>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+    void RequestGetChatMessage(::grpc::ServerContext* context, ::GrpcLibraryV1::GetChatMessageReq* request, ::grpc::ServerAsyncResponseWriter< ::GrpcLibraryV1::GetChatMessageResp>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
       ::grpc::Service::RequestAsyncUnary(8, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
@@ -874,7 +874,7 @@ class GrpcService final {
       ::grpc::Service::RequestAsyncUnary(17, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
-  typedef WithAsyncMethod_Heartbeat<WithAsyncMethod_Login<WithAsyncMethod_Logout<WithAsyncMethod_RegAccount<WithAsyncMethod_Query<WithAsyncMethod_StopAnswer<WithAsyncMethod_Recognize<WithAsyncMethod_StopRecognize<WithAsyncMethod_GetMessageInfo<WithAsyncMethod_GetSession<WithAsyncMethod_NewSession<WithAsyncMethod_ModifySessionTitle<WithAsyncMethod_DelSession<WithAsyncMethod_GetPluginInfo<WithAsyncMethod_Download<WithAsyncMethod_Upload<WithAsyncMethod_Embedding<WithAsyncMethod_StopEmbedding<Service > > > > > > > > > > > > > > > > > > AsyncService;
+  typedef WithAsyncMethod_Heartbeat<WithAsyncMethod_Login<WithAsyncMethod_Logout<WithAsyncMethod_RegAccount<WithAsyncMethod_Query<WithAsyncMethod_StopAnswer<WithAsyncMethod_Recognize<WithAsyncMethod_StopRecognize<WithAsyncMethod_GetChatMessage<WithAsyncMethod_GetSession<WithAsyncMethod_NewSession<WithAsyncMethod_ModifySessionTitle<WithAsyncMethod_DelSession<WithAsyncMethod_GetPluginInfo<WithAsyncMethod_Download<WithAsyncMethod_Upload<WithAsyncMethod_Embedding<WithAsyncMethod_StopEmbedding<Service > > > > > > > > > > > > > > > > > > AsyncService;
   template <class BaseClass>
   class WithCallbackMethod_Heartbeat : public BaseClass {
    private:
@@ -1083,31 +1083,31 @@ class GrpcService final {
       ::grpc::CallbackServerContext* /*context*/, const ::GrpcLibraryV1::StopRecognizeReq* /*request*/, ::GrpcLibraryV1::StopRecognizeResp* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class WithCallbackMethod_GetMessageInfo : public BaseClass {
+  class WithCallbackMethod_GetChatMessage : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    WithCallbackMethod_GetMessageInfo() {
+    WithCallbackMethod_GetChatMessage() {
       ::grpc::Service::MarkMethodCallback(8,
-          new ::grpc::internal::CallbackUnaryHandler< ::GrpcLibraryV1::GetMessageInfoReq, ::GrpcLibraryV1::GetMessageInfoResp>(
+          new ::grpc::internal::CallbackUnaryHandler< ::GrpcLibraryV1::GetChatMessageReq, ::GrpcLibraryV1::GetChatMessageResp>(
             [this](
-                   ::grpc::CallbackServerContext* context, const ::GrpcLibraryV1::GetMessageInfoReq* request, ::GrpcLibraryV1::GetMessageInfoResp* response) { return this->GetMessageInfo(context, request, response); }));}
-    void SetMessageAllocatorFor_GetMessageInfo(
-        ::grpc::MessageAllocator< ::GrpcLibraryV1::GetMessageInfoReq, ::GrpcLibraryV1::GetMessageInfoResp>* allocator) {
+                   ::grpc::CallbackServerContext* context, const ::GrpcLibraryV1::GetChatMessageReq* request, ::GrpcLibraryV1::GetChatMessageResp* response) { return this->GetChatMessage(context, request, response); }));}
+    void SetMessageAllocatorFor_GetChatMessage(
+        ::grpc::MessageAllocator< ::GrpcLibraryV1::GetChatMessageReq, ::GrpcLibraryV1::GetChatMessageResp>* allocator) {
       ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(8);
-      static_cast<::grpc::internal::CallbackUnaryHandler< ::GrpcLibraryV1::GetMessageInfoReq, ::GrpcLibraryV1::GetMessageInfoResp>*>(handler)
+      static_cast<::grpc::internal::CallbackUnaryHandler< ::GrpcLibraryV1::GetChatMessageReq, ::GrpcLibraryV1::GetChatMessageResp>*>(handler)
               ->SetMessageAllocator(allocator);
     }
-    ~WithCallbackMethod_GetMessageInfo() override {
+    ~WithCallbackMethod_GetChatMessage() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status GetMessageInfo(::grpc::ServerContext* /*context*/, const ::GrpcLibraryV1::GetMessageInfoReq* /*request*/, ::GrpcLibraryV1::GetMessageInfoResp* /*response*/) override {
+    ::grpc::Status GetChatMessage(::grpc::ServerContext* /*context*/, const ::GrpcLibraryV1::GetChatMessageReq* /*request*/, ::GrpcLibraryV1::GetChatMessageResp* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    virtual ::grpc::ServerUnaryReactor* GetMessageInfo(
-      ::grpc::CallbackServerContext* /*context*/, const ::GrpcLibraryV1::GetMessageInfoReq* /*request*/, ::GrpcLibraryV1::GetMessageInfoResp* /*response*/)  { return nullptr; }
+    virtual ::grpc::ServerUnaryReactor* GetChatMessage(
+      ::grpc::CallbackServerContext* /*context*/, const ::GrpcLibraryV1::GetChatMessageReq* /*request*/, ::GrpcLibraryV1::GetChatMessageResp* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
   class WithCallbackMethod_GetSession : public BaseClass {
@@ -1348,7 +1348,7 @@ class GrpcService final {
     virtual ::grpc::ServerUnaryReactor* StopEmbedding(
       ::grpc::CallbackServerContext* /*context*/, const ::GrpcLibraryV1::StopEmbeddingReq* /*request*/, ::GrpcLibraryV1::StopEmbeddingResp* /*response*/)  { return nullptr; }
   };
-  typedef WithCallbackMethod_Heartbeat<WithCallbackMethod_Login<WithCallbackMethod_Logout<WithCallbackMethod_RegAccount<WithCallbackMethod_Query<WithCallbackMethod_StopAnswer<WithCallbackMethod_Recognize<WithCallbackMethod_StopRecognize<WithCallbackMethod_GetMessageInfo<WithCallbackMethod_GetSession<WithCallbackMethod_NewSession<WithCallbackMethod_ModifySessionTitle<WithCallbackMethod_DelSession<WithCallbackMethod_GetPluginInfo<WithCallbackMethod_Download<WithCallbackMethod_Upload<WithCallbackMethod_Embedding<WithCallbackMethod_StopEmbedding<Service > > > > > > > > > > > > > > > > > > CallbackService;
+  typedef WithCallbackMethod_Heartbeat<WithCallbackMethod_Login<WithCallbackMethod_Logout<WithCallbackMethod_RegAccount<WithCallbackMethod_Query<WithCallbackMethod_StopAnswer<WithCallbackMethod_Recognize<WithCallbackMethod_StopRecognize<WithCallbackMethod_GetChatMessage<WithCallbackMethod_GetSession<WithCallbackMethod_NewSession<WithCallbackMethod_ModifySessionTitle<WithCallbackMethod_DelSession<WithCallbackMethod_GetPluginInfo<WithCallbackMethod_Download<WithCallbackMethod_Upload<WithCallbackMethod_Embedding<WithCallbackMethod_StopEmbedding<Service > > > > > > > > > > > > > > > > > > CallbackService;
   typedef CallbackService ExperimentalCallbackService;
   template <class BaseClass>
   class WithGenericMethod_Heartbeat : public BaseClass {
@@ -1487,18 +1487,18 @@ class GrpcService final {
     }
   };
   template <class BaseClass>
-  class WithGenericMethod_GetMessageInfo : public BaseClass {
+  class WithGenericMethod_GetChatMessage : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    WithGenericMethod_GetMessageInfo() {
+    WithGenericMethod_GetChatMessage() {
       ::grpc::Service::MarkMethodGeneric(8);
     }
-    ~WithGenericMethod_GetMessageInfo() override {
+    ~WithGenericMethod_GetChatMessage() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status GetMessageInfo(::grpc::ServerContext* /*context*/, const ::GrpcLibraryV1::GetMessageInfoReq* /*request*/, ::GrpcLibraryV1::GetMessageInfoResp* /*response*/) override {
+    ::grpc::Status GetChatMessage(::grpc::ServerContext* /*context*/, const ::GrpcLibraryV1::GetChatMessageReq* /*request*/, ::GrpcLibraryV1::GetChatMessageResp* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -1817,22 +1817,22 @@ class GrpcService final {
     }
   };
   template <class BaseClass>
-  class WithRawMethod_GetMessageInfo : public BaseClass {
+  class WithRawMethod_GetChatMessage : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    WithRawMethod_GetMessageInfo() {
+    WithRawMethod_GetChatMessage() {
       ::grpc::Service::MarkMethodRaw(8);
     }
-    ~WithRawMethod_GetMessageInfo() override {
+    ~WithRawMethod_GetChatMessage() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status GetMessageInfo(::grpc::ServerContext* /*context*/, const ::GrpcLibraryV1::GetMessageInfoReq* /*request*/, ::GrpcLibraryV1::GetMessageInfoResp* /*response*/) override {
+    ::grpc::Status GetChatMessage(::grpc::ServerContext* /*context*/, const ::GrpcLibraryV1::GetChatMessageReq* /*request*/, ::GrpcLibraryV1::GetChatMessageResp* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    void RequestGetMessageInfo(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+    void RequestGetChatMessage(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
       ::grpc::Service::RequestAsyncUnary(8, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
@@ -2194,25 +2194,25 @@ class GrpcService final {
       ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class WithRawCallbackMethod_GetMessageInfo : public BaseClass {
+  class WithRawCallbackMethod_GetChatMessage : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    WithRawCallbackMethod_GetMessageInfo() {
+    WithRawCallbackMethod_GetChatMessage() {
       ::grpc::Service::MarkMethodRawCallback(8,
           new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
             [this](
-                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->GetMessageInfo(context, request, response); }));
+                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->GetChatMessage(context, request, response); }));
     }
-    ~WithRawCallbackMethod_GetMessageInfo() override {
+    ~WithRawCallbackMethod_GetChatMessage() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status GetMessageInfo(::grpc::ServerContext* /*context*/, const ::GrpcLibraryV1::GetMessageInfoReq* /*request*/, ::GrpcLibraryV1::GetMessageInfoResp* /*response*/) override {
+    ::grpc::Status GetChatMessage(::grpc::ServerContext* /*context*/, const ::GrpcLibraryV1::GetChatMessageReq* /*request*/, ::GrpcLibraryV1::GetChatMessageResp* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    virtual ::grpc::ServerUnaryReactor* GetMessageInfo(
+    virtual ::grpc::ServerUnaryReactor* GetChatMessage(
       ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
@@ -2577,31 +2577,31 @@ class GrpcService final {
     virtual ::grpc::Status StreamedStopRecognize(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::GrpcLibraryV1::StopRecognizeReq,::GrpcLibraryV1::StopRecognizeResp>* server_unary_streamer) = 0;
   };
   template <class BaseClass>
-  class WithStreamedUnaryMethod_GetMessageInfo : public BaseClass {
+  class WithStreamedUnaryMethod_GetChatMessage : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    WithStreamedUnaryMethod_GetMessageInfo() {
+    WithStreamedUnaryMethod_GetChatMessage() {
       ::grpc::Service::MarkMethodStreamed(8,
         new ::grpc::internal::StreamedUnaryHandler<
-          ::GrpcLibraryV1::GetMessageInfoReq, ::GrpcLibraryV1::GetMessageInfoResp>(
+          ::GrpcLibraryV1::GetChatMessageReq, ::GrpcLibraryV1::GetChatMessageResp>(
             [this](::grpc::ServerContext* context,
                    ::grpc::ServerUnaryStreamer<
-                     ::GrpcLibraryV1::GetMessageInfoReq, ::GrpcLibraryV1::GetMessageInfoResp>* streamer) {
-                       return this->StreamedGetMessageInfo(context,
+                     ::GrpcLibraryV1::GetChatMessageReq, ::GrpcLibraryV1::GetChatMessageResp>* streamer) {
+                       return this->StreamedGetChatMessage(context,
                          streamer);
                   }));
     }
-    ~WithStreamedUnaryMethod_GetMessageInfo() override {
+    ~WithStreamedUnaryMethod_GetChatMessage() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable regular version of this method
-    ::grpc::Status GetMessageInfo(::grpc::ServerContext* /*context*/, const ::GrpcLibraryV1::GetMessageInfoReq* /*request*/, ::GrpcLibraryV1::GetMessageInfoResp* /*response*/) override {
+    ::grpc::Status GetChatMessage(::grpc::ServerContext* /*context*/, const ::GrpcLibraryV1::GetChatMessageReq* /*request*/, ::GrpcLibraryV1::GetChatMessageResp* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     // replace default version of method with streamed unary
-    virtual ::grpc::Status StreamedGetMessageInfo(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::GrpcLibraryV1::GetMessageInfoReq,::GrpcLibraryV1::GetMessageInfoResp>* server_unary_streamer) = 0;
+    virtual ::grpc::Status StreamedGetChatMessage(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::GrpcLibraryV1::GetChatMessageReq,::GrpcLibraryV1::GetChatMessageResp>* server_unary_streamer) = 0;
   };
   template <class BaseClass>
   class WithStreamedUnaryMethod_GetSession : public BaseClass {
@@ -2819,7 +2819,7 @@ class GrpcService final {
     // replace default version of method with streamed unary
     virtual ::grpc::Status StreamedStopEmbedding(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::GrpcLibraryV1::StopEmbeddingReq,::GrpcLibraryV1::StopEmbeddingResp>* server_unary_streamer) = 0;
   };
-  typedef WithStreamedUnaryMethod_Heartbeat<WithStreamedUnaryMethod_Login<WithStreamedUnaryMethod_Logout<WithStreamedUnaryMethod_RegAccount<WithStreamedUnaryMethod_StopAnswer<WithStreamedUnaryMethod_StopRecognize<WithStreamedUnaryMethod_GetMessageInfo<WithStreamedUnaryMethod_GetSession<WithStreamedUnaryMethod_NewSession<WithStreamedUnaryMethod_ModifySessionTitle<WithStreamedUnaryMethod_DelSession<WithStreamedUnaryMethod_GetPluginInfo<WithStreamedUnaryMethod_Download<WithStreamedUnaryMethod_Upload<WithStreamedUnaryMethod_StopEmbedding<Service > > > > > > > > > > > > > > > StreamedUnaryService;
+  typedef WithStreamedUnaryMethod_Heartbeat<WithStreamedUnaryMethod_Login<WithStreamedUnaryMethod_Logout<WithStreamedUnaryMethod_RegAccount<WithStreamedUnaryMethod_StopAnswer<WithStreamedUnaryMethod_StopRecognize<WithStreamedUnaryMethod_GetChatMessage<WithStreamedUnaryMethod_GetSession<WithStreamedUnaryMethod_NewSession<WithStreamedUnaryMethod_ModifySessionTitle<WithStreamedUnaryMethod_DelSession<WithStreamedUnaryMethod_GetPluginInfo<WithStreamedUnaryMethod_Download<WithStreamedUnaryMethod_Upload<WithStreamedUnaryMethod_StopEmbedding<Service > > > > > > > > > > > > > > > StreamedUnaryService;
   template <class BaseClass>
   class WithSplitStreamingMethod_Query : public BaseClass {
    private:
@@ -2848,7 +2848,7 @@ class GrpcService final {
     virtual ::grpc::Status StreamedQuery(::grpc::ServerContext* context, ::grpc::ServerSplitStreamer< ::GrpcLibraryV1::QueryReq,::GrpcLibraryV1::QueryResp>* server_split_streamer) = 0;
   };
   typedef WithSplitStreamingMethod_Query<Service > SplitStreamedService;
-  typedef WithStreamedUnaryMethod_Heartbeat<WithStreamedUnaryMethod_Login<WithStreamedUnaryMethod_Logout<WithStreamedUnaryMethod_RegAccount<WithSplitStreamingMethod_Query<WithStreamedUnaryMethod_StopAnswer<WithStreamedUnaryMethod_StopRecognize<WithStreamedUnaryMethod_GetMessageInfo<WithStreamedUnaryMethod_GetSession<WithStreamedUnaryMethod_NewSession<WithStreamedUnaryMethod_ModifySessionTitle<WithStreamedUnaryMethod_DelSession<WithStreamedUnaryMethod_GetPluginInfo<WithStreamedUnaryMethod_Download<WithStreamedUnaryMethod_Upload<WithStreamedUnaryMethod_StopEmbedding<Service > > > > > > > > > > > > > > > > StreamedService;
+  typedef WithStreamedUnaryMethod_Heartbeat<WithStreamedUnaryMethod_Login<WithStreamedUnaryMethod_Logout<WithStreamedUnaryMethod_RegAccount<WithSplitStreamingMethod_Query<WithStreamedUnaryMethod_StopAnswer<WithStreamedUnaryMethod_StopRecognize<WithStreamedUnaryMethod_GetChatMessage<WithStreamedUnaryMethod_GetSession<WithStreamedUnaryMethod_NewSession<WithStreamedUnaryMethod_ModifySessionTitle<WithStreamedUnaryMethod_DelSession<WithStreamedUnaryMethod_GetPluginInfo<WithStreamedUnaryMethod_Download<WithStreamedUnaryMethod_Upload<WithStreamedUnaryMethod_StopEmbedding<Service > > > > > > > > > > > > > > > > StreamedService;
 };
 
 }  // namespace GrpcLibraryV1

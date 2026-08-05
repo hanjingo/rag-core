@@ -242,9 +242,9 @@ api_handler::StopRecognize(ctx_t                                   *ctx,
 }
 
 reactor_t *
-api_handler::GetMessageInfo(ctx_t                                    *ctx,
-                            const ::GrpcLibraryV1::GetMessageInfoReq *req,
-                            ::GrpcLibraryV1::GetMessageInfoResp      *resp)
+api_handler::GetChatMessage(ctx_t                                    *ctx,
+                            const ::GrpcLibraryV1::GetChatMessageReq *req,
+                            ::GrpcLibraryV1::GetChatMessageResp      *resp)
 {
     int64_t     id         = req->id();
     int64_t     session_id = req->session_id();
@@ -256,12 +256,13 @@ api_handler::GetMessageInfo(ctx_t                                    *ctx,
     if(limit < 0 || limit > conf::instance().sqlite_msg_limit())
         limit = conf::instance().sqlite_msg_limit();
     resp->set_error_code(ERR_FAIL);
-    LOG_DEBUG("Received GetMessage request. id: {}, session_id: {}, user_id: "
-              "{}, limit: {}",
-              id,
-              session_id,
-              user_id,
-              limit);
+    LOG_DEBUG(
+        "Received GetChatMessage request. id: {}, session_id: {}, user_id: "
+        "{}, limit: {}",
+        id,
+        session_id,
+        user_id,
+        limit);
 
     std::string sql;
     if(id != -1)
@@ -293,14 +294,15 @@ api_handler::GetMessageInfo(ctx_t                                    *ctx,
             hj::date_time::format(hj::date_time::from_ms_since_epoch(ms),
                                   TIME_FORMAT));
 
-        LOG_DEBUG("GetMessage id: {}, session_id: {}, role: {}, content: {}, "
-                  "prev_message_id: {}, timestamp: {}",
-                  item->id(),
-                  item->session_id(),
-                  item->role(),
-                  item->content(),
-                  item->prev_message_id(),
-                  item->timestamp());
+        LOG_DEBUG(
+            "GetChatMessage id: {}, session_id: {}, role: {}, content: {}, "
+            "prev_message_id: {}, timestamp: {}",
+            item->id(),
+            item->session_id(),
+            item->role(),
+            item->content(),
+            item->prev_message_id(),
+            item->timestamp());
     }
 
     resp->set_error_code(OK);

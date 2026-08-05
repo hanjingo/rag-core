@@ -10,7 +10,7 @@ service GrpcService {
     rpc StopAnswer (StopAnswerReq) returns (StopAnswerResp) {}
     rpc Recognize(stream RecognizeReq) returns (stream RecognizeResp) {}
     rpc StopRecognize (StopRecognizeReq) returns (StopRecognizeResp) {}
-    rpc GetMessageInfo (GetMessageInfoReq) returns (GetMessageInfoResp) {}
+    rpc GetChatMessage (GetChatMessageReq) returns (GetChatMessageResp) {}
     rpc GetSession (GetSessionReq) returns (GetSessionResp) {}
     rpc NewSession (NewSessionReq) returns (NewSessionResp) {}
     rpc ModifySessionTitle (ModifySessionTitleReq) returns (ModifySessionTitleResp) {}
@@ -39,7 +39,7 @@ message Plugin {
     int32 platform = 7;
 }
 
-message MessageInfo {
+message ChatMessage {
     int64 id = 1;
     int64 session_id = 2;
     string role = 3;
@@ -259,7 +259,7 @@ message StopRecognizeResp {
     int64 session_id = 2;
 }
 
-message GetMessageInfoReq {
+message GetChatMessageReq {
     int64 id = 1;
     int64 session_id = 2;
     int32 limit = 3;
@@ -267,9 +267,9 @@ message GetMessageInfoReq {
     string auth = 5;
 }
 
-message GetMessageInfoResp {
+message GetChatMessageResp {
     int32 error_code = 1;
-    repeated MessageInfo messages = 2;
+    repeated ChatMessage messages = 2;
 }
 
 message GetSessionReq {

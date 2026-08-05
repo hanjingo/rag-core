@@ -31,7 +31,7 @@ static const char* GrpcService_method_names[] = {
   "/GrpcLibraryV1.GrpcService/StopAnswer",
   "/GrpcLibraryV1.GrpcService/Recognize",
   "/GrpcLibraryV1.GrpcService/StopRecognize",
-  "/GrpcLibraryV1.GrpcService/GetMessageInfo",
+  "/GrpcLibraryV1.GrpcService/GetChatMessage",
   "/GrpcLibraryV1.GrpcService/GetSession",
   "/GrpcLibraryV1.GrpcService/NewSession",
   "/GrpcLibraryV1.GrpcService/ModifySessionTitle",
@@ -58,7 +58,7 @@ GrpcService::Stub::Stub(const std::shared_ptr< ::grpc::ChannelInterface>& channe
   , rpcmethod_StopAnswer_(GrpcService_method_names[5], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
   , rpcmethod_Recognize_(GrpcService_method_names[6], options.suffix_for_stats(),::grpc::internal::RpcMethod::BIDI_STREAMING, channel)
   , rpcmethod_StopRecognize_(GrpcService_method_names[7], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_GetMessageInfo_(GrpcService_method_names[8], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_GetChatMessage_(GrpcService_method_names[8], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
   , rpcmethod_GetSession_(GrpcService_method_names[9], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
   , rpcmethod_NewSession_(GrpcService_method_names[10], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
   , rpcmethod_ModifySessionTitle_(GrpcService_method_names[11], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
@@ -240,25 +240,25 @@ void GrpcService::Stub::async::StopRecognize(::grpc::ClientContext* context, con
   return result;
 }
 
-::grpc::Status GrpcService::Stub::GetMessageInfo(::grpc::ClientContext* context, const ::GrpcLibraryV1::GetMessageInfoReq& request, ::GrpcLibraryV1::GetMessageInfoResp* response) {
-  return ::grpc::internal::BlockingUnaryCall< ::GrpcLibraryV1::GetMessageInfoReq, ::GrpcLibraryV1::GetMessageInfoResp, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_GetMessageInfo_, context, request, response);
+::grpc::Status GrpcService::Stub::GetChatMessage(::grpc::ClientContext* context, const ::GrpcLibraryV1::GetChatMessageReq& request, ::GrpcLibraryV1::GetChatMessageResp* response) {
+  return ::grpc::internal::BlockingUnaryCall< ::GrpcLibraryV1::GetChatMessageReq, ::GrpcLibraryV1::GetChatMessageResp, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_GetChatMessage_, context, request, response);
 }
 
-void GrpcService::Stub::async::GetMessageInfo(::grpc::ClientContext* context, const ::GrpcLibraryV1::GetMessageInfoReq* request, ::GrpcLibraryV1::GetMessageInfoResp* response, std::function<void(::grpc::Status)> f) {
-  ::grpc::internal::CallbackUnaryCall< ::GrpcLibraryV1::GetMessageInfoReq, ::GrpcLibraryV1::GetMessageInfoResp, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_GetMessageInfo_, context, request, response, std::move(f));
+void GrpcService::Stub::async::GetChatMessage(::grpc::ClientContext* context, const ::GrpcLibraryV1::GetChatMessageReq* request, ::GrpcLibraryV1::GetChatMessageResp* response, std::function<void(::grpc::Status)> f) {
+  ::grpc::internal::CallbackUnaryCall< ::GrpcLibraryV1::GetChatMessageReq, ::GrpcLibraryV1::GetChatMessageResp, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_GetChatMessage_, context, request, response, std::move(f));
 }
 
-void GrpcService::Stub::async::GetMessageInfo(::grpc::ClientContext* context, const ::GrpcLibraryV1::GetMessageInfoReq* request, ::GrpcLibraryV1::GetMessageInfoResp* response, ::grpc::ClientUnaryReactor* reactor) {
-  ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_GetMessageInfo_, context, request, response, reactor);
+void GrpcService::Stub::async::GetChatMessage(::grpc::ClientContext* context, const ::GrpcLibraryV1::GetChatMessageReq* request, ::GrpcLibraryV1::GetChatMessageResp* response, ::grpc::ClientUnaryReactor* reactor) {
+  ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_GetChatMessage_, context, request, response, reactor);
 }
 
-::grpc::ClientAsyncResponseReader< ::GrpcLibraryV1::GetMessageInfoResp>* GrpcService::Stub::PrepareAsyncGetMessageInfoRaw(::grpc::ClientContext* context, const ::GrpcLibraryV1::GetMessageInfoReq& request, ::grpc::CompletionQueue* cq) {
-  return ::grpc::internal::ClientAsyncResponseReaderHelper::Create< ::GrpcLibraryV1::GetMessageInfoResp, ::GrpcLibraryV1::GetMessageInfoReq, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), cq, rpcmethod_GetMessageInfo_, context, request);
+::grpc::ClientAsyncResponseReader< ::GrpcLibraryV1::GetChatMessageResp>* GrpcService::Stub::PrepareAsyncGetChatMessageRaw(::grpc::ClientContext* context, const ::GrpcLibraryV1::GetChatMessageReq& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncResponseReaderHelper::Create< ::GrpcLibraryV1::GetChatMessageResp, ::GrpcLibraryV1::GetChatMessageReq, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), cq, rpcmethod_GetChatMessage_, context, request);
 }
 
-::grpc::ClientAsyncResponseReader< ::GrpcLibraryV1::GetMessageInfoResp>* GrpcService::Stub::AsyncGetMessageInfoRaw(::grpc::ClientContext* context, const ::GrpcLibraryV1::GetMessageInfoReq& request, ::grpc::CompletionQueue* cq) {
+::grpc::ClientAsyncResponseReader< ::GrpcLibraryV1::GetChatMessageResp>* GrpcService::Stub::AsyncGetChatMessageRaw(::grpc::ClientContext* context, const ::GrpcLibraryV1::GetChatMessageReq& request, ::grpc::CompletionQueue* cq) {
   auto* result =
-    this->PrepareAsyncGetMessageInfoRaw(context, request, cq);
+    this->PrepareAsyncGetChatMessageRaw(context, request, cq);
   result->StartCall();
   return result;
 }
@@ -547,12 +547,12 @@ GrpcService::Service::Service() {
   AddMethod(new ::grpc::internal::RpcServiceMethod(
       GrpcService_method_names[8],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
-      new ::grpc::internal::RpcMethodHandler< GrpcService::Service, ::GrpcLibraryV1::GetMessageInfoReq, ::GrpcLibraryV1::GetMessageInfoResp, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
+      new ::grpc::internal::RpcMethodHandler< GrpcService::Service, ::GrpcLibraryV1::GetChatMessageReq, ::GrpcLibraryV1::GetChatMessageResp, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
           [](GrpcService::Service* service,
              ::grpc::ServerContext* ctx,
-             const ::GrpcLibraryV1::GetMessageInfoReq* req,
-             ::GrpcLibraryV1::GetMessageInfoResp* resp) {
-               return service->GetMessageInfo(ctx, req, resp);
+             const ::GrpcLibraryV1::GetChatMessageReq* req,
+             ::GrpcLibraryV1::GetChatMessageResp* resp) {
+               return service->GetChatMessage(ctx, req, resp);
              }, this)));
   AddMethod(new ::grpc::internal::RpcServiceMethod(
       GrpcService_method_names[9],
@@ -704,7 +704,7 @@ GrpcService::Service::~Service() {
   return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
 }
 
-::grpc::Status GrpcService::Service::GetMessageInfo(::grpc::ServerContext* context, const ::GrpcLibraryV1::GetMessageInfoReq* request, ::GrpcLibraryV1::GetMessageInfoResp* response) {
+::grpc::Status GrpcService::Service::GetChatMessage(::grpc::ServerContext* context, const ::GrpcLibraryV1::GetChatMessageReq* request, ::GrpcLibraryV1::GetChatMessageResp* response) {
   (void) context;
   (void) request;
   (void) response;
