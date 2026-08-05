@@ -50,7 +50,7 @@ CREATE TABLE IF NOT EXISTS file (
     FOREIGN KEY (owner) REFERENCES user(id)
 );
 
-INSERT INTO user (id, username, encrypted_passwd) VALUES (1, 'admin', 'admin');
+INSERT INTO user (id, username, encrypted_passwd) VALUES (1, 'admin', 'x61Ey612Kl2gpFL56FT9weDnpSo4AV8j8+qx2AuTHdRyY036xxzTTrw10Wq3+4qQyB+XURPWx1ONxp3Y3pB37A==');
 
 INSERT INTO session (id, user_id, title, timestamp) VALUES (
     1, 1, 'x', 0);

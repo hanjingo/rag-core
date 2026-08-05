@@ -20,7 +20,7 @@ reactor_t *api_handler::Heartbeat(ctx_t                       *ctx,
                                   ::GrpcLibraryV1::Pong       *resp)
 {
     int64_t timestamp = req->timestamp();
-    LOG_DEBUG("Received Heartbeat request. timestamp: {}", timestamp);
+    // LOG_DEBUG("Received Heartbeat request. timestamp: {}", timestamp);
     resp->set_timestamp(timestamp);
     auto *reactor = ctx->DefaultReactor();
     reactor->Finish(status_t::OK);
