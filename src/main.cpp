@@ -17,6 +17,7 @@
 #include <hj/os/options.hpp>
 #include <hj/os/signal.hpp>
 #include <hj/io/file.hpp>
+#include <hj/encoding/fmt.hpp>
 
 #include "err.h"
 #include "global.h"
@@ -28,6 +29,9 @@
 #include "caller.h"
 #include "asr.h"
 #include "updater.h"
+#include "mq.h"
+#include "watch_dog.h"
+#include "sync.h"
 
 int main(int argc, char *argv[])
 {
@@ -84,15 +88,15 @@ int main(int argc, char *argv[])
     opts.add<std::string>("config", "./core.ini", "config file path");
     opts.add_positional("content", 2);
 
-    std::string subcmd  = opts.parse<std::string>(argc, argv, "subcmd");
-    auto        content = opts.parse<std::string>(argc, argv, "content");
-    auto        config  = opts.parse<std::string>(argc, argv, "config");
+    std::string subcmd    = opts.parse<std::string>(argc, argv, "subcmd");
+    auto        content   = opts.parse<std::string>(argc, argv, "content");
+    auto        conf_file = opts.parse<std::string>(argc, argv, "config");
 
     // load config file
     if(subcmd == "run")
     {
         // ./rag-core run --config ./core.ini
-        conf::instance().init(config);
+        conf::instance().init(conf_file);
 
         // init log
         auto filename  = conf::instance().log_filename();
@@ -129,6 +133,9 @@ int main(int argc, char *argv[])
                   conf::instance().regex_norm_prompt());
         LOG_DEBUG("Init regex hard prompt: {}",
                   conf::instance().regex_hard_prompt());
+
+        // init thread pool
+        thread_pool::instance();
 
         // init dbs
         db_mgr::instance().init();
@@ -210,6 +217,22 @@ int main(int argc, char *argv[])
                   conf::instance().clients().size());
         updater::instance()->init();
         LOG_INFO("init updater finish");
+
+        // init mq
+        mq::instance().init();
+        LOG_INFO("init mq with publish_addr:{}",
+                 conf::instance().publish_addr());
+
+        // init watch dog
+        auto watch_dog_addr   = conf::instance().watch_dog_pub_addr();
+        auto watch_dog_topics = conf::instance().watch_dog_pub_topics();
+        if(!watch_dog::instance().watch_pub(watch_dog_topics, watch_dog_addr))
+        {
+            LOG_ERROR("init watch dog failed with publish_addr: {}, topics: {}",
+                      watch_dog_addr,
+                      hj::format("{}", watch_dog_topics));
+            return -1;
+        }
 
         // run server
         auto   addr = conf::instance().server_addr();

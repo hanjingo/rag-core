@@ -162,4 +162,52 @@ class embedding_reactor_mgr
     std::mutex                                      _mu;
 };
 
+class subscribe_reactor_mgr
+{
+  public:
+    static subscribe_reactor_mgr &instance()
+    {
+        static subscribe_reactor_mgr manager;
+        return manager;
+    }
+
+    SubscribeReactor *get_active_suber(int64_t user_id)
+    {
+        std::lock_guard<std::mutex> lock(_mu);
+        auto                        it = _active_subers.find(user_id);
+        if(it != _active_subers.end())
+            return it->second;
+
+        return nullptr;
+    }
+
+    void register_suber(int64_t user_id, SubscribeReactor *reactor)
+    {
+        std::lock_guard<std::mutex> lock(_mu);
+        _active_subers[user_id] = reactor;
+    }
+
+    void unregister_suber(int64_t user_id)
+    {
+        std::lock_guard<std::mutex> lock(_mu);
+        _active_subers.erase(user_id);
+    }
+
+    bool stop_suber(int64_t user_id)
+    {
+        std::lock_guard<std::mutex> lock(_mu);
+        auto                        it = _active_subers.find(user_id);
+        if(it != _active_subers.end() && it->second != nullptr)
+        {
+            it->second->Stop();
+            return true;
+        }
+        return false;
+    }
+
+  private:
+    std::unordered_map<int64_t, SubscribeReactor *> _active_subers;
+    std::mutex                                      _mu;
+};
+
 #endif // REACTOR_MGR_H

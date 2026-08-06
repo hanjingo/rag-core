@@ -20,6 +20,9 @@ service GrpcService {
     rpc Upload (UploadReq) returns (UploadResp) {}
     rpc Embedding (stream EmbeddingReq) returns (stream EmbeddingResp) {}
     rpc StopEmbedding (StopEmbeddingReq) returns (StopEmbeddingResp) {}
+    rpc Publish(PublishReq) returns (PublishResp);
+    rpc Subscribe(SubscribeReq) returns (stream PubMessage);
+    rpc UnSubscribe(UnSubscribeReq) returns (UnSubscribeResp);
 }
 
 message Session {
@@ -46,6 +49,10 @@ message ChatMessage {
     string content = 4;
     int64 prev_message_id = 5;
     string timestamp = 6;
+}
+
+message PubMessage {
+    bytes payload = 1;
 }
 
 message SamplingParam {
@@ -382,4 +389,31 @@ message StopEmbeddingReq {
 message StopEmbeddingResp {
     int32 error_code = 1;
     int64 task_id = 2;
+}
+
+message PublishReq {
+    int64 user_id = 1;
+    string auth = 2;
+    repeated bytes msgs = 3; // msg: topic|content
+}
+
+message PublishResp {
+    int32 error_code = 1;
+}
+
+message SubscribeReq {
+    int64 user_id = 1;
+    string auth = 2;
+    repeated string topics = 3;
+}
+
+message UnSubscribeReq {
+    int64 user_id = 1;
+    string auth = 2;
+    repeated string topics = 3;
+}
+
+message UnSubscribeResp {
+    int32 error_code = 1;
+    repeated string topics = 2;
 }

@@ -4,6 +4,7 @@
 #include <hj/time/date_time.hpp>
 #include <hj/algo/uuid.hpp>
 #include <hj/db/sqlite.hpp>
+#include <hj/util/string_util.hpp>
 
 #include "conf.h"
 #include "db_mgr.h"
@@ -18,6 +19,7 @@
 #include "reactor_mgr.h"
 #include "audio_buffer.h"
 #include "memory.h"
+#include "mq.h"
 
 QueryReactor::QueryReactor(grpc::CallbackServerContext     *ctx,
                            const ::GrpcLibraryV1::QueryReq *req)
@@ -134,7 +136,7 @@ QueryReactor::QueryReactor(grpc::CallbackServerContext     *ctx,
     LOG_DEBUG("route pipeline:{}, model:{}", _pipeline, _model);
 
     query_reactor_mgr::instance().register_query(_session_id, this);
-    thread_pool::instance().enqueue([this]() {
+    thread_pool::instance()->enqueue([this]() {
         if(_pipeline == PIPELINE_LOCAL)
         {
             _process();
@@ -224,8 +226,7 @@ void QueryReactor::_process()
     // start loop query
     _set_msg_id(static_cast<int64_t>(hj::uuid::gen_u64()));
     auto tokens = llm_mgr::instance().tokenize(_model, _content, true, true);
-    watch_dog dog{};
-    auto      ec = llm_mgr::instance().loop_query(
+    auto ec     = llm_mgr::instance().loop_query(
         _model,
         tokens,
         _ctx_params,
@@ -247,7 +248,7 @@ void QueryReactor::_process()
             if(output.empty())
                 return true;
 
-            if(!dog.watch(output))
+            if(!watch_dog::instance().watch(output))
             {
                 LOG_DEBUG("dog.watch() is false, stop query");
                 _send(output, true, OK);
@@ -656,7 +657,7 @@ void RecognizeReactor::_process(const ::GrpcLibraryV1::RecognizeReq &req)
                   session_id);
 
         // process the audio buffer in a separate thread to avoid blocking the reactor
-        thread_pool::instance().enqueue([this, ctx_id, session_id]() {
+        thread_pool::instance()->enqueue([this, ctx_id, session_id]() {
             if(_is_cancelled.load() || _is_processing.load())
                 return;
 
@@ -1032,3 +1033,106 @@ void EmbeddingReactor::_convert(std::vector<uint8_t> &data,
     data.resize(src.size());
     std::memcpy(data.data(), src.data(), src.size());
 }
+
+// ------------------------------------------ EmbeddingReactor -------------------------------
+
+SubscribeReactor::SubscribeReactor(grpc::CallbackServerContext         *ctx,
+                                   const ::GrpcLibraryV1::SubscribeReq *req)
+    : _ctx(ctx)
+    , _w_queue{conf::instance().sync_write_queue_size()}
+{
+    _user_id = req->user_id();
+    subscribe_reactor_mgr::instance().register_suber(_user_id, this);
+}
+
+SubscribeReactor::~SubscribeReactor()
+{
+    mq::instance().remove_suber(_user_id);
+    subscribe_reactor_mgr::instance().unregister_suber(_user_id);
+}
+
+void SubscribeReactor::OnWriteDone(bool ok)
+{
+    _is_writing.store(false);
+
+    if(!ok)
+    {
+        LOG_ERROR("Write failed or client disconnected for user_id: {}",
+                  _user_id);
+        _is_cancelled.store(true);
+        Finish(grpc::Status(grpc::StatusCode::ABORTED, "Client disconnected"));
+        return;
+    }
+
+    _flush();
+}
+
+void SubscribeReactor::OnDone()
+{
+    delete this;
+}
+
+void SubscribeReactor::Stop()
+{
+    LOG_INFO("Subscriber {} was stopped by user", _user_id);
+    _is_cancelled.store(true);
+    _is_writing.store(false);
+
+    ::GrpcLibraryV1::PubMessage msg;
+    while(_w_queue.try_dequeue(msg))
+    {
+    }
+}
+
+bool SubscribeReactor::Sub(std::vector<std::string> &topics)
+{
+    return 0
+           == mq::instance().sub(_user_id,
+                                 topics,
+                                 conf::instance().publish_addr(),
+                                 std::bind(&SubscribeReactor::_process,
+                                           this,
+                                           std::placeholders::_1));
+}
+
+bool SubscribeReactor::UnSub(std::vector<std::string> &topics)
+{
+    return 0 == mq::instance().unsub(_user_id, topics);
+}
+
+void SubscribeReactor::_process(const std::string &msg)
+{
+    _send(msg);
+}
+
+void SubscribeReactor::_send(const std::string &payload)
+{
+    if(_is_cancelled.load())
+        return;
+
+    ::GrpcLibraryV1::PubMessage msg;
+    msg.set_payload(payload);
+    _w_queue.enqueue(msg);
+    _flush();
+}
+
+void SubscribeReactor::_flush()
+{
+    if(_is_writing.load())
+        return;
+
+    if(_is_cancelled.load())
+        return;
+
+    ::GrpcLibraryV1::PubMessage msg;
+    if(!_w_queue.try_dequeue(msg))
+        return;
+
+    _is_writing.store(true);
+    StartWrite(&msg);
+    LOG_DEBUG("SubscribeReactor::_flush: user_id: {}, payload: {}",
+              _user_id,
+              msg.payload());
+}
+
+// ------------------------------------------ RecognizeReactor -------------------------------

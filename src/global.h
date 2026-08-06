@@ -78,6 +78,9 @@ static constexpr const char *SQL_SELECT_PLUGIN_INFO =
 static constexpr const char *SQL_SELECT_PLUGIN_INFO_BY_HASH =
     R"(SELECT hash, platform, name, desc, publisher, version, timestamp FROM plugin WHERE hash = %Q)";
 
+static constexpr const char *SQL_INSERT_PLUGIN_INFO =
+    R"(INSERT INTO plugin (hash, platform, name, desc, publisher, version, timestamp) VALUES (%Q, %d, %Q, %Q, %Q, %Q, %lld))";
+
 static constexpr const char *SQL_SELECT_FILE_BY_HASH =
     R"(SELECT addr, owner, size_kb FROM file WHERE hash = %Q)";
 
@@ -101,5 +104,12 @@ static constexpr const char *PROMPT_TYPE_NORM = "norm";
 
 // caller type
 static constexpr const char *CALLER_TYPE_DEEPSEEK = "deepseek";
+
+// pub-sub
+static constexpr const char *INPROC_PUB_SUB_ADDR = "inproc://rag-qt-publish";
+
+static constexpr const char *TOPIC_SEPARATOR  = "|";
+static constexpr const char *TOPIC_RAG_CORE   = "topic-rag-core";
+static constexpr const char *TOPIC_PLUGIN_PUB = "topic-plugin-pub";
 
 #endif

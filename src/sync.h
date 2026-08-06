@@ -15,9 +15,12 @@ class thread_pool
     }
     ~thread_pool() { _pool.clear(); }
 
-    static thread_pool &instance()
+    static std::shared_ptr<thread_pool> instance()
     {
-        static thread_pool inst;
+        static std::shared_ptr<thread_pool> inst = nullptr;
+        if(inst == nullptr)
+            inst = std::make_shared<thread_pool>();
+
         return inst;
     }
 

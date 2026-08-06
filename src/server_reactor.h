@@ -163,4 +163,40 @@ class EmbeddingReactor
     std::atomic<bool> _is_processing{false};
 };
 
+class SubscribeReactor
+    : public grpc::ServerWriteReactor<::GrpcLibraryV1::PubMessage>
+{
+  public:
+    SubscribeReactor(grpc::CallbackServerContext         *ctx,
+                     const ::GrpcLibraryV1::SubscribeReq *req);
+    ~SubscribeReactor();
+
+    void OnWriteDone(bool ok) override;
+
+    void OnDone() override;
+
+    void OnCancel() override { _is_cancelled.store(true); }
+
+    void Stop();
+
+    bool Sub(std::vector<std::string> &topics);
+
+    bool UnSub(std::vector<std::string> &topics);
+
+  private:
+    void _process(const std::string &payload);
+
+    void _send(const std::string &payload);
+
+    void _flush();
+
+  private:
+    grpc::CallbackServerContext             *_ctx;
+    std::atomic<bool>                        _is_cancelled{false};
+    std::atomic<bool>                        _is_writing{false};
+    hj::channel<::GrpcLibraryV1::PubMessage> _w_queue;
+
+    int64_t _user_id;
+};
+
 #endif // SERVER_REACTOR_H

@@ -168,6 +168,29 @@ class GrpcService final {
     std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::GrpcLibraryV1::StopEmbeddingResp>> PrepareAsyncStopEmbedding(::grpc::ClientContext* context, const ::GrpcLibraryV1::StopEmbeddingReq& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::GrpcLibraryV1::StopEmbeddingResp>>(PrepareAsyncStopEmbeddingRaw(context, request, cq));
     }
+    virtual ::grpc::Status Publish(::grpc::ClientContext* context, const ::GrpcLibraryV1::PublishReq& request, ::GrpcLibraryV1::PublishResp* response) = 0;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::GrpcLibraryV1::PublishResp>> AsyncPublish(::grpc::ClientContext* context, const ::GrpcLibraryV1::PublishReq& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::GrpcLibraryV1::PublishResp>>(AsyncPublishRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::GrpcLibraryV1::PublishResp>> PrepareAsyncPublish(::grpc::ClientContext* context, const ::GrpcLibraryV1::PublishReq& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::GrpcLibraryV1::PublishResp>>(PrepareAsyncPublishRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientReaderInterface< ::GrpcLibraryV1::PubMessage>> Subscribe(::grpc::ClientContext* context, const ::GrpcLibraryV1::SubscribeReq& request) {
+      return std::unique_ptr< ::grpc::ClientReaderInterface< ::GrpcLibraryV1::PubMessage>>(SubscribeRaw(context, request));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncReaderInterface< ::GrpcLibraryV1::PubMessage>> AsyncSubscribe(::grpc::ClientContext* context, const ::GrpcLibraryV1::SubscribeReq& request, ::grpc::CompletionQueue* cq, void* tag) {
+      return std::unique_ptr< ::grpc::ClientAsyncReaderInterface< ::GrpcLibraryV1::PubMessage>>(AsyncSubscribeRaw(context, request, cq, tag));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncReaderInterface< ::GrpcLibraryV1::PubMessage>> PrepareAsyncSubscribe(::grpc::ClientContext* context, const ::GrpcLibraryV1::SubscribeReq& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncReaderInterface< ::GrpcLibraryV1::PubMessage>>(PrepareAsyncSubscribeRaw(context, request, cq));
+    }
+    virtual ::grpc::Status UnSubscribe(::grpc::ClientContext* context, const ::GrpcLibraryV1::UnSubscribeReq& request, ::GrpcLibraryV1::UnSubscribeResp* response) = 0;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::GrpcLibraryV1::UnSubscribeResp>> AsyncUnSubscribe(::grpc::ClientContext* context, const ::GrpcLibraryV1::UnSubscribeReq& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::GrpcLibraryV1::UnSubscribeResp>>(AsyncUnSubscribeRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::GrpcLibraryV1::UnSubscribeResp>> PrepareAsyncUnSubscribe(::grpc::ClientContext* context, const ::GrpcLibraryV1::UnSubscribeReq& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::GrpcLibraryV1::UnSubscribeResp>>(PrepareAsyncUnSubscribeRaw(context, request, cq));
+    }
     class async_interface {
      public:
       virtual ~async_interface() {}
@@ -204,6 +227,11 @@ class GrpcService final {
       virtual void Embedding(::grpc::ClientContext* context, ::grpc::ClientBidiReactor< ::GrpcLibraryV1::EmbeddingReq,::GrpcLibraryV1::EmbeddingResp>* reactor) = 0;
       virtual void StopEmbedding(::grpc::ClientContext* context, const ::GrpcLibraryV1::StopEmbeddingReq* request, ::GrpcLibraryV1::StopEmbeddingResp* response, std::function<void(::grpc::Status)>) = 0;
       virtual void StopEmbedding(::grpc::ClientContext* context, const ::GrpcLibraryV1::StopEmbeddingReq* request, ::GrpcLibraryV1::StopEmbeddingResp* response, ::grpc::ClientUnaryReactor* reactor) = 0;
+      virtual void Publish(::grpc::ClientContext* context, const ::GrpcLibraryV1::PublishReq* request, ::GrpcLibraryV1::PublishResp* response, std::function<void(::grpc::Status)>) = 0;
+      virtual void Publish(::grpc::ClientContext* context, const ::GrpcLibraryV1::PublishReq* request, ::GrpcLibraryV1::PublishResp* response, ::grpc::ClientUnaryReactor* reactor) = 0;
+      virtual void Subscribe(::grpc::ClientContext* context, const ::GrpcLibraryV1::SubscribeReq* request, ::grpc::ClientReadReactor< ::GrpcLibraryV1::PubMessage>* reactor) = 0;
+      virtual void UnSubscribe(::grpc::ClientContext* context, const ::GrpcLibraryV1::UnSubscribeReq* request, ::GrpcLibraryV1::UnSubscribeResp* response, std::function<void(::grpc::Status)>) = 0;
+      virtual void UnSubscribe(::grpc::ClientContext* context, const ::GrpcLibraryV1::UnSubscribeReq* request, ::GrpcLibraryV1::UnSubscribeResp* response, ::grpc::ClientUnaryReactor* reactor) = 0;
     };
     typedef class async_interface experimental_async_interface;
     virtual class async_interface* async() { return nullptr; }
@@ -248,6 +276,13 @@ class GrpcService final {
     virtual ::grpc::ClientAsyncReaderWriterInterface< ::GrpcLibraryV1::EmbeddingReq, ::GrpcLibraryV1::EmbeddingResp>* PrepareAsyncEmbeddingRaw(::grpc::ClientContext* context, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::GrpcLibraryV1::StopEmbeddingResp>* AsyncStopEmbeddingRaw(::grpc::ClientContext* context, const ::GrpcLibraryV1::StopEmbeddingReq& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::GrpcLibraryV1::StopEmbeddingResp>* PrepareAsyncStopEmbeddingRaw(::grpc::ClientContext* context, const ::GrpcLibraryV1::StopEmbeddingReq& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::GrpcLibraryV1::PublishResp>* AsyncPublishRaw(::grpc::ClientContext* context, const ::GrpcLibraryV1::PublishReq& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::GrpcLibraryV1::PublishResp>* PrepareAsyncPublishRaw(::grpc::ClientContext* context, const ::GrpcLibraryV1::PublishReq& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientReaderInterface< ::GrpcLibraryV1::PubMessage>* SubscribeRaw(::grpc::ClientContext* context, const ::GrpcLibraryV1::SubscribeReq& request) = 0;
+    virtual ::grpc::ClientAsyncReaderInterface< ::GrpcLibraryV1::PubMessage>* AsyncSubscribeRaw(::grpc::ClientContext* context, const ::GrpcLibraryV1::SubscribeReq& request, ::grpc::CompletionQueue* cq, void* tag) = 0;
+    virtual ::grpc::ClientAsyncReaderInterface< ::GrpcLibraryV1::PubMessage>* PrepareAsyncSubscribeRaw(::grpc::ClientContext* context, const ::GrpcLibraryV1::SubscribeReq& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::GrpcLibraryV1::UnSubscribeResp>* AsyncUnSubscribeRaw(::grpc::ClientContext* context, const ::GrpcLibraryV1::UnSubscribeReq& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::GrpcLibraryV1::UnSubscribeResp>* PrepareAsyncUnSubscribeRaw(::grpc::ClientContext* context, const ::GrpcLibraryV1::UnSubscribeReq& request, ::grpc::CompletionQueue* cq) = 0;
   };
   class Stub final : public StubInterface {
    public:
@@ -384,6 +419,29 @@ class GrpcService final {
     std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::GrpcLibraryV1::StopEmbeddingResp>> PrepareAsyncStopEmbedding(::grpc::ClientContext* context, const ::GrpcLibraryV1::StopEmbeddingReq& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::GrpcLibraryV1::StopEmbeddingResp>>(PrepareAsyncStopEmbeddingRaw(context, request, cq));
     }
+    ::grpc::Status Publish(::grpc::ClientContext* context, const ::GrpcLibraryV1::PublishReq& request, ::GrpcLibraryV1::PublishResp* response) override;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::GrpcLibraryV1::PublishResp>> AsyncPublish(::grpc::ClientContext* context, const ::GrpcLibraryV1::PublishReq& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::GrpcLibraryV1::PublishResp>>(AsyncPublishRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::GrpcLibraryV1::PublishResp>> PrepareAsyncPublish(::grpc::ClientContext* context, const ::GrpcLibraryV1::PublishReq& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::GrpcLibraryV1::PublishResp>>(PrepareAsyncPublishRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientReader< ::GrpcLibraryV1::PubMessage>> Subscribe(::grpc::ClientContext* context, const ::GrpcLibraryV1::SubscribeReq& request) {
+      return std::unique_ptr< ::grpc::ClientReader< ::GrpcLibraryV1::PubMessage>>(SubscribeRaw(context, request));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncReader< ::GrpcLibraryV1::PubMessage>> AsyncSubscribe(::grpc::ClientContext* context, const ::GrpcLibraryV1::SubscribeReq& request, ::grpc::CompletionQueue* cq, void* tag) {
+      return std::unique_ptr< ::grpc::ClientAsyncReader< ::GrpcLibraryV1::PubMessage>>(AsyncSubscribeRaw(context, request, cq, tag));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncReader< ::GrpcLibraryV1::PubMessage>> PrepareAsyncSubscribe(::grpc::ClientContext* context, const ::GrpcLibraryV1::SubscribeReq& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncReader< ::GrpcLibraryV1::PubMessage>>(PrepareAsyncSubscribeRaw(context, request, cq));
+    }
+    ::grpc::Status UnSubscribe(::grpc::ClientContext* context, const ::GrpcLibraryV1::UnSubscribeReq& request, ::GrpcLibraryV1::UnSubscribeResp* response) override;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::GrpcLibraryV1::UnSubscribeResp>> AsyncUnSubscribe(::grpc::ClientContext* context, const ::GrpcLibraryV1::UnSubscribeReq& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::GrpcLibraryV1::UnSubscribeResp>>(AsyncUnSubscribeRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::GrpcLibraryV1::UnSubscribeResp>> PrepareAsyncUnSubscribe(::grpc::ClientContext* context, const ::GrpcLibraryV1::UnSubscribeReq& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::GrpcLibraryV1::UnSubscribeResp>>(PrepareAsyncUnSubscribeRaw(context, request, cq));
+    }
     class async final :
       public StubInterface::async_interface {
      public:
@@ -420,6 +478,11 @@ class GrpcService final {
       void Embedding(::grpc::ClientContext* context, ::grpc::ClientBidiReactor< ::GrpcLibraryV1::EmbeddingReq,::GrpcLibraryV1::EmbeddingResp>* reactor) override;
       void StopEmbedding(::grpc::ClientContext* context, const ::GrpcLibraryV1::StopEmbeddingReq* request, ::GrpcLibraryV1::StopEmbeddingResp* response, std::function<void(::grpc::Status)>) override;
       void StopEmbedding(::grpc::ClientContext* context, const ::GrpcLibraryV1::StopEmbeddingReq* request, ::GrpcLibraryV1::StopEmbeddingResp* response, ::grpc::ClientUnaryReactor* reactor) override;
+      void Publish(::grpc::ClientContext* context, const ::GrpcLibraryV1::PublishReq* request, ::GrpcLibraryV1::PublishResp* response, std::function<void(::grpc::Status)>) override;
+      void Publish(::grpc::ClientContext* context, const ::GrpcLibraryV1::PublishReq* request, ::GrpcLibraryV1::PublishResp* response, ::grpc::ClientUnaryReactor* reactor) override;
+      void Subscribe(::grpc::ClientContext* context, const ::GrpcLibraryV1::SubscribeReq* request, ::grpc::ClientReadReactor< ::GrpcLibraryV1::PubMessage>* reactor) override;
+      void UnSubscribe(::grpc::ClientContext* context, const ::GrpcLibraryV1::UnSubscribeReq* request, ::GrpcLibraryV1::UnSubscribeResp* response, std::function<void(::grpc::Status)>) override;
+      void UnSubscribe(::grpc::ClientContext* context, const ::GrpcLibraryV1::UnSubscribeReq* request, ::GrpcLibraryV1::UnSubscribeResp* response, ::grpc::ClientUnaryReactor* reactor) override;
      private:
       friend class Stub;
       explicit async(Stub* stub): stub_(stub) { }
@@ -470,6 +533,13 @@ class GrpcService final {
     ::grpc::ClientAsyncReaderWriter< ::GrpcLibraryV1::EmbeddingReq, ::GrpcLibraryV1::EmbeddingResp>* PrepareAsyncEmbeddingRaw(::grpc::ClientContext* context, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::GrpcLibraryV1::StopEmbeddingResp>* AsyncStopEmbeddingRaw(::grpc::ClientContext* context, const ::GrpcLibraryV1::StopEmbeddingReq& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::GrpcLibraryV1::StopEmbeddingResp>* PrepareAsyncStopEmbeddingRaw(::grpc::ClientContext* context, const ::GrpcLibraryV1::StopEmbeddingReq& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::GrpcLibraryV1::PublishResp>* AsyncPublishRaw(::grpc::ClientContext* context, const ::GrpcLibraryV1::PublishReq& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::GrpcLibraryV1::PublishResp>* PrepareAsyncPublishRaw(::grpc::ClientContext* context, const ::GrpcLibraryV1::PublishReq& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientReader< ::GrpcLibraryV1::PubMessage>* SubscribeRaw(::grpc::ClientContext* context, const ::GrpcLibraryV1::SubscribeReq& request) override;
+    ::grpc::ClientAsyncReader< ::GrpcLibraryV1::PubMessage>* AsyncSubscribeRaw(::grpc::ClientContext* context, const ::GrpcLibraryV1::SubscribeReq& request, ::grpc::CompletionQueue* cq, void* tag) override;
+    ::grpc::ClientAsyncReader< ::GrpcLibraryV1::PubMessage>* PrepareAsyncSubscribeRaw(::grpc::ClientContext* context, const ::GrpcLibraryV1::SubscribeReq& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::GrpcLibraryV1::UnSubscribeResp>* AsyncUnSubscribeRaw(::grpc::ClientContext* context, const ::GrpcLibraryV1::UnSubscribeReq& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::GrpcLibraryV1::UnSubscribeResp>* PrepareAsyncUnSubscribeRaw(::grpc::ClientContext* context, const ::GrpcLibraryV1::UnSubscribeReq& request, ::grpc::CompletionQueue* cq) override;
     const ::grpc::internal::RpcMethod rpcmethod_Heartbeat_;
     const ::grpc::internal::RpcMethod rpcmethod_Login_;
     const ::grpc::internal::RpcMethod rpcmethod_Logout_;
@@ -488,6 +558,9 @@ class GrpcService final {
     const ::grpc::internal::RpcMethod rpcmethod_Upload_;
     const ::grpc::internal::RpcMethod rpcmethod_Embedding_;
     const ::grpc::internal::RpcMethod rpcmethod_StopEmbedding_;
+    const ::grpc::internal::RpcMethod rpcmethod_Publish_;
+    const ::grpc::internal::RpcMethod rpcmethod_Subscribe_;
+    const ::grpc::internal::RpcMethod rpcmethod_UnSubscribe_;
   };
   static std::unique_ptr<Stub> NewStub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, const ::grpc::StubOptions& options = ::grpc::StubOptions());
 
@@ -513,6 +586,9 @@ class GrpcService final {
     virtual ::grpc::Status Upload(::grpc::ServerContext* context, const ::GrpcLibraryV1::UploadReq* request, ::GrpcLibraryV1::UploadResp* response);
     virtual ::grpc::Status Embedding(::grpc::ServerContext* context, ::grpc::ServerReaderWriter< ::GrpcLibraryV1::EmbeddingResp, ::GrpcLibraryV1::EmbeddingReq>* stream);
     virtual ::grpc::Status StopEmbedding(::grpc::ServerContext* context, const ::GrpcLibraryV1::StopEmbeddingReq* request, ::GrpcLibraryV1::StopEmbeddingResp* response);
+    virtual ::grpc::Status Publish(::grpc::ServerContext* context, const ::GrpcLibraryV1::PublishReq* request, ::GrpcLibraryV1::PublishResp* response);
+    virtual ::grpc::Status Subscribe(::grpc::ServerContext* context, const ::GrpcLibraryV1::SubscribeReq* request, ::grpc::ServerWriter< ::GrpcLibraryV1::PubMessage>* writer);
+    virtual ::grpc::Status UnSubscribe(::grpc::ServerContext* context, const ::GrpcLibraryV1::UnSubscribeReq* request, ::GrpcLibraryV1::UnSubscribeResp* response);
   };
   template <class BaseClass>
   class WithAsyncMethod_Heartbeat : public BaseClass {
@@ -874,7 +950,67 @@ class GrpcService final {
       ::grpc::Service::RequestAsyncUnary(17, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
-  typedef WithAsyncMethod_Heartbeat<WithAsyncMethod_Login<WithAsyncMethod_Logout<WithAsyncMethod_RegAccount<WithAsyncMethod_Query<WithAsyncMethod_StopAnswer<WithAsyncMethod_Recognize<WithAsyncMethod_StopRecognize<WithAsyncMethod_GetChatMessage<WithAsyncMethod_GetSession<WithAsyncMethod_NewSession<WithAsyncMethod_ModifySessionTitle<WithAsyncMethod_DelSession<WithAsyncMethod_GetPluginInfo<WithAsyncMethod_Download<WithAsyncMethod_Upload<WithAsyncMethod_Embedding<WithAsyncMethod_StopEmbedding<Service > > > > > > > > > > > > > > > > > > AsyncService;
+  template <class BaseClass>
+  class WithAsyncMethod_Publish : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithAsyncMethod_Publish() {
+      ::grpc::Service::MarkMethodAsync(18);
+    }
+    ~WithAsyncMethod_Publish() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status Publish(::grpc::ServerContext* /*context*/, const ::GrpcLibraryV1::PublishReq* /*request*/, ::GrpcLibraryV1::PublishResp* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestPublish(::grpc::ServerContext* context, ::GrpcLibraryV1::PublishReq* request, ::grpc::ServerAsyncResponseWriter< ::GrpcLibraryV1::PublishResp>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(18, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
+  class WithAsyncMethod_Subscribe : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithAsyncMethod_Subscribe() {
+      ::grpc::Service::MarkMethodAsync(19);
+    }
+    ~WithAsyncMethod_Subscribe() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status Subscribe(::grpc::ServerContext* /*context*/, const ::GrpcLibraryV1::SubscribeReq* /*request*/, ::grpc::ServerWriter< ::GrpcLibraryV1::PubMessage>* /*writer*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestSubscribe(::grpc::ServerContext* context, ::GrpcLibraryV1::SubscribeReq* request, ::grpc::ServerAsyncWriter< ::GrpcLibraryV1::PubMessage>* writer, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncServerStreaming(19, context, request, writer, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
+  class WithAsyncMethod_UnSubscribe : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithAsyncMethod_UnSubscribe() {
+      ::grpc::Service::MarkMethodAsync(20);
+    }
+    ~WithAsyncMethod_UnSubscribe() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status UnSubscribe(::grpc::ServerContext* /*context*/, const ::GrpcLibraryV1::UnSubscribeReq* /*request*/, ::GrpcLibraryV1::UnSubscribeResp* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestUnSubscribe(::grpc::ServerContext* context, ::GrpcLibraryV1::UnSubscribeReq* request, ::grpc::ServerAsyncResponseWriter< ::GrpcLibraryV1::UnSubscribeResp>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(20, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  typedef WithAsyncMethod_Heartbeat<WithAsyncMethod_Login<WithAsyncMethod_Logout<WithAsyncMethod_RegAccount<WithAsyncMethod_Query<WithAsyncMethod_StopAnswer<WithAsyncMethod_Recognize<WithAsyncMethod_StopRecognize<WithAsyncMethod_GetChatMessage<WithAsyncMethod_GetSession<WithAsyncMethod_NewSession<WithAsyncMethod_ModifySessionTitle<WithAsyncMethod_DelSession<WithAsyncMethod_GetPluginInfo<WithAsyncMethod_Download<WithAsyncMethod_Upload<WithAsyncMethod_Embedding<WithAsyncMethod_StopEmbedding<WithAsyncMethod_Publish<WithAsyncMethod_Subscribe<WithAsyncMethod_UnSubscribe<Service > > > > > > > > > > > > > > > > > > > > > AsyncService;
   template <class BaseClass>
   class WithCallbackMethod_Heartbeat : public BaseClass {
    private:
@@ -1348,7 +1484,83 @@ class GrpcService final {
     virtual ::grpc::ServerUnaryReactor* StopEmbedding(
       ::grpc::CallbackServerContext* /*context*/, const ::GrpcLibraryV1::StopEmbeddingReq* /*request*/, ::GrpcLibraryV1::StopEmbeddingResp* /*response*/)  { return nullptr; }
   };
-  typedef WithCallbackMethod_Heartbeat<WithCallbackMethod_Login<WithCallbackMethod_Logout<WithCallbackMethod_RegAccount<WithCallbackMethod_Query<WithCallbackMethod_StopAnswer<WithCallbackMethod_Recognize<WithCallbackMethod_StopRecognize<WithCallbackMethod_GetChatMessage<WithCallbackMethod_GetSession<WithCallbackMethod_NewSession<WithCallbackMethod_ModifySessionTitle<WithCallbackMethod_DelSession<WithCallbackMethod_GetPluginInfo<WithCallbackMethod_Download<WithCallbackMethod_Upload<WithCallbackMethod_Embedding<WithCallbackMethod_StopEmbedding<Service > > > > > > > > > > > > > > > > > > CallbackService;
+  template <class BaseClass>
+  class WithCallbackMethod_Publish : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithCallbackMethod_Publish() {
+      ::grpc::Service::MarkMethodCallback(18,
+          new ::grpc::internal::CallbackUnaryHandler< ::GrpcLibraryV1::PublishReq, ::GrpcLibraryV1::PublishResp>(
+            [this](
+                   ::grpc::CallbackServerContext* context, const ::GrpcLibraryV1::PublishReq* request, ::GrpcLibraryV1::PublishResp* response) { return this->Publish(context, request, response); }));}
+    void SetMessageAllocatorFor_Publish(
+        ::grpc::MessageAllocator< ::GrpcLibraryV1::PublishReq, ::GrpcLibraryV1::PublishResp>* allocator) {
+      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(18);
+      static_cast<::grpc::internal::CallbackUnaryHandler< ::GrpcLibraryV1::PublishReq, ::GrpcLibraryV1::PublishResp>*>(handler)
+              ->SetMessageAllocator(allocator);
+    }
+    ~WithCallbackMethod_Publish() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status Publish(::grpc::ServerContext* /*context*/, const ::GrpcLibraryV1::PublishReq* /*request*/, ::GrpcLibraryV1::PublishResp* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual ::grpc::ServerUnaryReactor* Publish(
+      ::grpc::CallbackServerContext* /*context*/, const ::GrpcLibraryV1::PublishReq* /*request*/, ::GrpcLibraryV1::PublishResp* /*response*/)  { return nullptr; }
+  };
+  template <class BaseClass>
+  class WithCallbackMethod_Subscribe : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithCallbackMethod_Subscribe() {
+      ::grpc::Service::MarkMethodCallback(19,
+          new ::grpc::internal::CallbackServerStreamingHandler< ::GrpcLibraryV1::SubscribeReq, ::GrpcLibraryV1::PubMessage>(
+            [this](
+                   ::grpc::CallbackServerContext* context, const ::GrpcLibraryV1::SubscribeReq* request) { return this->Subscribe(context, request); }));
+    }
+    ~WithCallbackMethod_Subscribe() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status Subscribe(::grpc::ServerContext* /*context*/, const ::GrpcLibraryV1::SubscribeReq* /*request*/, ::grpc::ServerWriter< ::GrpcLibraryV1::PubMessage>* /*writer*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual ::grpc::ServerWriteReactor< ::GrpcLibraryV1::PubMessage>* Subscribe(
+      ::grpc::CallbackServerContext* /*context*/, const ::GrpcLibraryV1::SubscribeReq* /*request*/)  { return nullptr; }
+  };
+  template <class BaseClass>
+  class WithCallbackMethod_UnSubscribe : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithCallbackMethod_UnSubscribe() {
+      ::grpc::Service::MarkMethodCallback(20,
+          new ::grpc::internal::CallbackUnaryHandler< ::GrpcLibraryV1::UnSubscribeReq, ::GrpcLibraryV1::UnSubscribeResp>(
+            [this](
+                   ::grpc::CallbackServerContext* context, const ::GrpcLibraryV1::UnSubscribeReq* request, ::GrpcLibraryV1::UnSubscribeResp* response) { return this->UnSubscribe(context, request, response); }));}
+    void SetMessageAllocatorFor_UnSubscribe(
+        ::grpc::MessageAllocator< ::GrpcLibraryV1::UnSubscribeReq, ::GrpcLibraryV1::UnSubscribeResp>* allocator) {
+      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(20);
+      static_cast<::grpc::internal::CallbackUnaryHandler< ::GrpcLibraryV1::UnSubscribeReq, ::GrpcLibraryV1::UnSubscribeResp>*>(handler)
+              ->SetMessageAllocator(allocator);
+    }
+    ~WithCallbackMethod_UnSubscribe() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status UnSubscribe(::grpc::ServerContext* /*context*/, const ::GrpcLibraryV1::UnSubscribeReq* /*request*/, ::GrpcLibraryV1::UnSubscribeResp* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual ::grpc::ServerUnaryReactor* UnSubscribe(
+      ::grpc::CallbackServerContext* /*context*/, const ::GrpcLibraryV1::UnSubscribeReq* /*request*/, ::GrpcLibraryV1::UnSubscribeResp* /*response*/)  { return nullptr; }
+  };
+  typedef WithCallbackMethod_Heartbeat<WithCallbackMethod_Login<WithCallbackMethod_Logout<WithCallbackMethod_RegAccount<WithCallbackMethod_Query<WithCallbackMethod_StopAnswer<WithCallbackMethod_Recognize<WithCallbackMethod_StopRecognize<WithCallbackMethod_GetChatMessage<WithCallbackMethod_GetSession<WithCallbackMethod_NewSession<WithCallbackMethod_ModifySessionTitle<WithCallbackMethod_DelSession<WithCallbackMethod_GetPluginInfo<WithCallbackMethod_Download<WithCallbackMethod_Upload<WithCallbackMethod_Embedding<WithCallbackMethod_StopEmbedding<WithCallbackMethod_Publish<WithCallbackMethod_Subscribe<WithCallbackMethod_UnSubscribe<Service > > > > > > > > > > > > > > > > > > > > > CallbackService;
   typedef CallbackService ExperimentalCallbackService;
   template <class BaseClass>
   class WithGenericMethod_Heartbeat : public BaseClass {
@@ -1652,6 +1864,57 @@ class GrpcService final {
     }
     // disable synchronous version of this method
     ::grpc::Status StopEmbedding(::grpc::ServerContext* /*context*/, const ::GrpcLibraryV1::StopEmbeddingReq* /*request*/, ::GrpcLibraryV1::StopEmbeddingResp* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+  };
+  template <class BaseClass>
+  class WithGenericMethod_Publish : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithGenericMethod_Publish() {
+      ::grpc::Service::MarkMethodGeneric(18);
+    }
+    ~WithGenericMethod_Publish() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status Publish(::grpc::ServerContext* /*context*/, const ::GrpcLibraryV1::PublishReq* /*request*/, ::GrpcLibraryV1::PublishResp* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+  };
+  template <class BaseClass>
+  class WithGenericMethod_Subscribe : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithGenericMethod_Subscribe() {
+      ::grpc::Service::MarkMethodGeneric(19);
+    }
+    ~WithGenericMethod_Subscribe() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status Subscribe(::grpc::ServerContext* /*context*/, const ::GrpcLibraryV1::SubscribeReq* /*request*/, ::grpc::ServerWriter< ::GrpcLibraryV1::PubMessage>* /*writer*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+  };
+  template <class BaseClass>
+  class WithGenericMethod_UnSubscribe : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithGenericMethod_UnSubscribe() {
+      ::grpc::Service::MarkMethodGeneric(20);
+    }
+    ~WithGenericMethod_UnSubscribe() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status UnSubscribe(::grpc::ServerContext* /*context*/, const ::GrpcLibraryV1::UnSubscribeReq* /*request*/, ::GrpcLibraryV1::UnSubscribeResp* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -2014,6 +2277,66 @@ class GrpcService final {
     }
     void RequestStopEmbedding(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
       ::grpc::Service::RequestAsyncUnary(17, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
+  class WithRawMethod_Publish : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithRawMethod_Publish() {
+      ::grpc::Service::MarkMethodRaw(18);
+    }
+    ~WithRawMethod_Publish() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status Publish(::grpc::ServerContext* /*context*/, const ::GrpcLibraryV1::PublishReq* /*request*/, ::GrpcLibraryV1::PublishResp* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestPublish(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(18, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
+  class WithRawMethod_Subscribe : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithRawMethod_Subscribe() {
+      ::grpc::Service::MarkMethodRaw(19);
+    }
+    ~WithRawMethod_Subscribe() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status Subscribe(::grpc::ServerContext* /*context*/, const ::GrpcLibraryV1::SubscribeReq* /*request*/, ::grpc::ServerWriter< ::GrpcLibraryV1::PubMessage>* /*writer*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestSubscribe(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncWriter< ::grpc::ByteBuffer>* writer, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncServerStreaming(19, context, request, writer, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
+  class WithRawMethod_UnSubscribe : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithRawMethod_UnSubscribe() {
+      ::grpc::Service::MarkMethodRaw(20);
+    }
+    ~WithRawMethod_UnSubscribe() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status UnSubscribe(::grpc::ServerContext* /*context*/, const ::GrpcLibraryV1::UnSubscribeReq* /*request*/, ::GrpcLibraryV1::UnSubscribeResp* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestUnSubscribe(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(20, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -2412,6 +2735,72 @@ class GrpcService final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     virtual ::grpc::ServerUnaryReactor* StopEmbedding(
+      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
+  };
+  template <class BaseClass>
+  class WithRawCallbackMethod_Publish : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithRawCallbackMethod_Publish() {
+      ::grpc::Service::MarkMethodRawCallback(18,
+          new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
+            [this](
+                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->Publish(context, request, response); }));
+    }
+    ~WithRawCallbackMethod_Publish() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status Publish(::grpc::ServerContext* /*context*/, const ::GrpcLibraryV1::PublishReq* /*request*/, ::GrpcLibraryV1::PublishResp* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual ::grpc::ServerUnaryReactor* Publish(
+      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
+  };
+  template <class BaseClass>
+  class WithRawCallbackMethod_Subscribe : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithRawCallbackMethod_Subscribe() {
+      ::grpc::Service::MarkMethodRawCallback(19,
+          new ::grpc::internal::CallbackServerStreamingHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
+            [this](
+                   ::grpc::CallbackServerContext* context, const::grpc::ByteBuffer* request) { return this->Subscribe(context, request); }));
+    }
+    ~WithRawCallbackMethod_Subscribe() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status Subscribe(::grpc::ServerContext* /*context*/, const ::GrpcLibraryV1::SubscribeReq* /*request*/, ::grpc::ServerWriter< ::GrpcLibraryV1::PubMessage>* /*writer*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual ::grpc::ServerWriteReactor< ::grpc::ByteBuffer>* Subscribe(
+      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/)  { return nullptr; }
+  };
+  template <class BaseClass>
+  class WithRawCallbackMethod_UnSubscribe : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithRawCallbackMethod_UnSubscribe() {
+      ::grpc::Service::MarkMethodRawCallback(20,
+          new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
+            [this](
+                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->UnSubscribe(context, request, response); }));
+    }
+    ~WithRawCallbackMethod_UnSubscribe() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status UnSubscribe(::grpc::ServerContext* /*context*/, const ::GrpcLibraryV1::UnSubscribeReq* /*request*/, ::GrpcLibraryV1::UnSubscribeResp* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual ::grpc::ServerUnaryReactor* UnSubscribe(
       ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
@@ -2819,7 +3208,61 @@ class GrpcService final {
     // replace default version of method with streamed unary
     virtual ::grpc::Status StreamedStopEmbedding(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::GrpcLibraryV1::StopEmbeddingReq,::GrpcLibraryV1::StopEmbeddingResp>* server_unary_streamer) = 0;
   };
-  typedef WithStreamedUnaryMethod_Heartbeat<WithStreamedUnaryMethod_Login<WithStreamedUnaryMethod_Logout<WithStreamedUnaryMethod_RegAccount<WithStreamedUnaryMethod_StopAnswer<WithStreamedUnaryMethod_StopRecognize<WithStreamedUnaryMethod_GetChatMessage<WithStreamedUnaryMethod_GetSession<WithStreamedUnaryMethod_NewSession<WithStreamedUnaryMethod_ModifySessionTitle<WithStreamedUnaryMethod_DelSession<WithStreamedUnaryMethod_GetPluginInfo<WithStreamedUnaryMethod_Download<WithStreamedUnaryMethod_Upload<WithStreamedUnaryMethod_StopEmbedding<Service > > > > > > > > > > > > > > > StreamedUnaryService;
+  template <class BaseClass>
+  class WithStreamedUnaryMethod_Publish : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithStreamedUnaryMethod_Publish() {
+      ::grpc::Service::MarkMethodStreamed(18,
+        new ::grpc::internal::StreamedUnaryHandler<
+          ::GrpcLibraryV1::PublishReq, ::GrpcLibraryV1::PublishResp>(
+            [this](::grpc::ServerContext* context,
+                   ::grpc::ServerUnaryStreamer<
+                     ::GrpcLibraryV1::PublishReq, ::GrpcLibraryV1::PublishResp>* streamer) {
+                       return this->StreamedPublish(context,
+                         streamer);
+                  }));
+    }
+    ~WithStreamedUnaryMethod_Publish() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable regular version of this method
+    ::grpc::Status Publish(::grpc::ServerContext* /*context*/, const ::GrpcLibraryV1::PublishReq* /*request*/, ::GrpcLibraryV1::PublishResp* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    // replace default version of method with streamed unary
+    virtual ::grpc::Status StreamedPublish(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::GrpcLibraryV1::PublishReq,::GrpcLibraryV1::PublishResp>* server_unary_streamer) = 0;
+  };
+  template <class BaseClass>
+  class WithStreamedUnaryMethod_UnSubscribe : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithStreamedUnaryMethod_UnSubscribe() {
+      ::grpc::Service::MarkMethodStreamed(20,
+        new ::grpc::internal::StreamedUnaryHandler<
+          ::GrpcLibraryV1::UnSubscribeReq, ::GrpcLibraryV1::UnSubscribeResp>(
+            [this](::grpc::ServerContext* context,
+                   ::grpc::ServerUnaryStreamer<
+                     ::GrpcLibraryV1::UnSubscribeReq, ::GrpcLibraryV1::UnSubscribeResp>* streamer) {
+                       return this->StreamedUnSubscribe(context,
+                         streamer);
+                  }));
+    }
+    ~WithStreamedUnaryMethod_UnSubscribe() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable regular version of this method
+    ::grpc::Status UnSubscribe(::grpc::ServerContext* /*context*/, const ::GrpcLibraryV1::UnSubscribeReq* /*request*/, ::GrpcLibraryV1::UnSubscribeResp* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    // replace default version of method with streamed unary
+    virtual ::grpc::Status StreamedUnSubscribe(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::GrpcLibraryV1::UnSubscribeReq,::GrpcLibraryV1::UnSubscribeResp>* server_unary_streamer) = 0;
+  };
+  typedef WithStreamedUnaryMethod_Heartbeat<WithStreamedUnaryMethod_Login<WithStreamedUnaryMethod_Logout<WithStreamedUnaryMethod_RegAccount<WithStreamedUnaryMethod_StopAnswer<WithStreamedUnaryMethod_StopRecognize<WithStreamedUnaryMethod_GetChatMessage<WithStreamedUnaryMethod_GetSession<WithStreamedUnaryMethod_NewSession<WithStreamedUnaryMethod_ModifySessionTitle<WithStreamedUnaryMethod_DelSession<WithStreamedUnaryMethod_GetPluginInfo<WithStreamedUnaryMethod_Download<WithStreamedUnaryMethod_Upload<WithStreamedUnaryMethod_StopEmbedding<WithStreamedUnaryMethod_Publish<WithStreamedUnaryMethod_UnSubscribe<Service > > > > > > > > > > > > > > > > > StreamedUnaryService;
   template <class BaseClass>
   class WithSplitStreamingMethod_Query : public BaseClass {
    private:
@@ -2847,8 +3290,35 @@ class GrpcService final {
     // replace default version of method with split streamed
     virtual ::grpc::Status StreamedQuery(::grpc::ServerContext* context, ::grpc::ServerSplitStreamer< ::GrpcLibraryV1::QueryReq,::GrpcLibraryV1::QueryResp>* server_split_streamer) = 0;
   };
-  typedef WithSplitStreamingMethod_Query<Service > SplitStreamedService;
-  typedef WithStreamedUnaryMethod_Heartbeat<WithStreamedUnaryMethod_Login<WithStreamedUnaryMethod_Logout<WithStreamedUnaryMethod_RegAccount<WithSplitStreamingMethod_Query<WithStreamedUnaryMethod_StopAnswer<WithStreamedUnaryMethod_StopRecognize<WithStreamedUnaryMethod_GetChatMessage<WithStreamedUnaryMethod_GetSession<WithStreamedUnaryMethod_NewSession<WithStreamedUnaryMethod_ModifySessionTitle<WithStreamedUnaryMethod_DelSession<WithStreamedUnaryMethod_GetPluginInfo<WithStreamedUnaryMethod_Download<WithStreamedUnaryMethod_Upload<WithStreamedUnaryMethod_StopEmbedding<Service > > > > > > > > > > > > > > > > StreamedService;
+  template <class BaseClass>
+  class WithSplitStreamingMethod_Subscribe : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithSplitStreamingMethod_Subscribe() {
+      ::grpc::Service::MarkMethodStreamed(19,
+        new ::grpc::internal::SplitServerStreamingHandler<
+          ::GrpcLibraryV1::SubscribeReq, ::GrpcLibraryV1::PubMessage>(
+            [this](::grpc::ServerContext* context,
+                   ::grpc::ServerSplitStreamer<
+                     ::GrpcLibraryV1::SubscribeReq, ::GrpcLibraryV1::PubMessage>* streamer) {
+                       return this->StreamedSubscribe(context,
+                         streamer);
+                  }));
+    }
+    ~WithSplitStreamingMethod_Subscribe() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable regular version of this method
+    ::grpc::Status Subscribe(::grpc::ServerContext* /*context*/, const ::GrpcLibraryV1::SubscribeReq* /*request*/, ::grpc::ServerWriter< ::GrpcLibraryV1::PubMessage>* /*writer*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    // replace default version of method with split streamed
+    virtual ::grpc::Status StreamedSubscribe(::grpc::ServerContext* context, ::grpc::ServerSplitStreamer< ::GrpcLibraryV1::SubscribeReq,::GrpcLibraryV1::PubMessage>* server_split_streamer) = 0;
+  };
+  typedef WithSplitStreamingMethod_Query<WithSplitStreamingMethod_Subscribe<Service > > SplitStreamedService;
+  typedef WithStreamedUnaryMethod_Heartbeat<WithStreamedUnaryMethod_Login<WithStreamedUnaryMethod_Logout<WithStreamedUnaryMethod_RegAccount<WithSplitStreamingMethod_Query<WithStreamedUnaryMethod_StopAnswer<WithStreamedUnaryMethod_StopRecognize<WithStreamedUnaryMethod_GetChatMessage<WithStreamedUnaryMethod_GetSession<WithStreamedUnaryMethod_NewSession<WithStreamedUnaryMethod_ModifySessionTitle<WithStreamedUnaryMethod_DelSession<WithStreamedUnaryMethod_GetPluginInfo<WithStreamedUnaryMethod_Download<WithStreamedUnaryMethod_Upload<WithStreamedUnaryMethod_StopEmbedding<WithStreamedUnaryMethod_Publish<WithSplitStreamingMethod_Subscribe<WithStreamedUnaryMethod_UnSubscribe<Service > > > > > > > > > > > > > > > > > > > StreamedService;
 };
 
 }  // namespace GrpcLibraryV1

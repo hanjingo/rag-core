@@ -144,6 +144,90 @@ struct UpdateInfoDefaultTypeInternal {
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
     PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 UpdateInfoDefaultTypeInternal _UpdateInfo_default_instance_;
 
+inline constexpr UnSubscribeResp::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : _cached_size_{0},
+        topics_{},
+        error_code_{0} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR UnSubscribeResp::UnSubscribeResp(::_pbi::ConstantInitialized)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(UnSubscribeResp_class_data_.base()),
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(),
+#endif  // PROTOBUF_CUSTOM_VTABLE
+      _impl_(::_pbi::ConstantInitialized()) {
+}
+struct UnSubscribeRespDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR UnSubscribeRespDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~UnSubscribeRespDefaultTypeInternal() {}
+  union {
+    UnSubscribeResp _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 UnSubscribeRespDefaultTypeInternal _UnSubscribeResp_default_instance_;
+
+inline constexpr UnSubscribeReq::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : _cached_size_{0},
+        topics_{},
+        auth_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        user_id_{::int64_t{0}} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR UnSubscribeReq::UnSubscribeReq(::_pbi::ConstantInitialized)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(UnSubscribeReq_class_data_.base()),
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(),
+#endif  // PROTOBUF_CUSTOM_VTABLE
+      _impl_(::_pbi::ConstantInitialized()) {
+}
+struct UnSubscribeReqDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR UnSubscribeReqDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~UnSubscribeReqDefaultTypeInternal() {}
+  union {
+    UnSubscribeReq _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 UnSubscribeReqDefaultTypeInternal _UnSubscribeReq_default_instance_;
+
+inline constexpr SubscribeReq::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : _cached_size_{0},
+        topics_{},
+        auth_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        user_id_{::int64_t{0}} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR SubscribeReq::SubscribeReq(::_pbi::ConstantInitialized)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(SubscribeReq_class_data_.base()),
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(),
+#endif  // PROTOBUF_CUSTOM_VTABLE
+      _impl_(::_pbi::ConstantInitialized()) {
+}
+struct SubscribeReqDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR SubscribeReqDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~SubscribeReqDefaultTypeInternal() {}
+  union {
+    SubscribeReq _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 SubscribeReqDefaultTypeInternal _SubscribeReq_default_instance_;
+
 inline constexpr StopRecognizeResp::Impl_::Impl_(
     ::_pbi::ConstantInitialized) noexcept
       : _cached_size_{0},
@@ -496,6 +580,87 @@ struct QueryRespDefaultTypeInternal {
 
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
     PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 QueryRespDefaultTypeInternal _QueryResp_default_instance_;
+
+inline constexpr PublishResp::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : _cached_size_{0},
+        error_code_{0} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR PublishResp::PublishResp(::_pbi::ConstantInitialized)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(PublishResp_class_data_.base()),
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(),
+#endif  // PROTOBUF_CUSTOM_VTABLE
+      _impl_(::_pbi::ConstantInitialized()) {
+}
+struct PublishRespDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR PublishRespDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~PublishRespDefaultTypeInternal() {}
+  union {
+    PublishResp _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 PublishRespDefaultTypeInternal _PublishResp_default_instance_;
+
+inline constexpr PublishReq::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : _cached_size_{0},
+        msgs_{},
+        auth_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        user_id_{::int64_t{0}} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR PublishReq::PublishReq(::_pbi::ConstantInitialized)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(PublishReq_class_data_.base()),
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(),
+#endif  // PROTOBUF_CUSTOM_VTABLE
+      _impl_(::_pbi::ConstantInitialized()) {
+}
+struct PublishReqDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR PublishReqDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~PublishReqDefaultTypeInternal() {}
+  union {
+    PublishReq _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 PublishReqDefaultTypeInternal _PublishReq_default_instance_;
+
+inline constexpr PubMessage::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : _cached_size_{0},
+        payload_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()) {}
+
+template <typename>
+PROTOBUF_CONSTEXPR PubMessage::PubMessage(::_pbi::ConstantInitialized)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(PubMessage_class_data_.base()),
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(),
+#endif  // PROTOBUF_CUSTOM_VTABLE
+      _impl_(::_pbi::ConstantInitialized()) {
+}
+struct PubMessageDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR PubMessageDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~PubMessageDefaultTypeInternal() {}
+  union {
+    PubMessage _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 PubMessageDefaultTypeInternal _PubMessage_default_instance_;
 
 inline constexpr Pong::Impl_::Impl_(
     ::_pbi::ConstantInitialized) noexcept
@@ -1521,6 +1686,11 @@ const ::uint32_t
         5,
         2,
         0x081, // bitmap
+        PROTOBUF_FIELD_OFFSET(::GrpcLibraryV1::PubMessage, _impl_._has_bits_),
+        4, // hasbit index offset
+        PROTOBUF_FIELD_OFFSET(::GrpcLibraryV1::PubMessage, _impl_.payload_),
+        0,
+        0x081, // bitmap
         PROTOBUF_FIELD_OFFSET(::GrpcLibraryV1::SamplingParam, _impl_._has_bits_),
         17, // hasbit index offset
         PROTOBUF_FIELD_OFFSET(::GrpcLibraryV1::SamplingParam, _impl_.penalty_last_n_),
@@ -2047,6 +2217,45 @@ const ::uint32_t
         PROTOBUF_FIELD_OFFSET(::GrpcLibraryV1::StopEmbeddingResp, _impl_.task_id_),
         1,
         0,
+        0x081, // bitmap
+        PROTOBUF_FIELD_OFFSET(::GrpcLibraryV1::PublishReq, _impl_._has_bits_),
+        6, // hasbit index offset
+        PROTOBUF_FIELD_OFFSET(::GrpcLibraryV1::PublishReq, _impl_.user_id_),
+        PROTOBUF_FIELD_OFFSET(::GrpcLibraryV1::PublishReq, _impl_.auth_),
+        PROTOBUF_FIELD_OFFSET(::GrpcLibraryV1::PublishReq, _impl_.msgs_),
+        2,
+        1,
+        0,
+        0x081, // bitmap
+        PROTOBUF_FIELD_OFFSET(::GrpcLibraryV1::PublishResp, _impl_._has_bits_),
+        4, // hasbit index offset
+        PROTOBUF_FIELD_OFFSET(::GrpcLibraryV1::PublishResp, _impl_.error_code_),
+        0,
+        0x081, // bitmap
+        PROTOBUF_FIELD_OFFSET(::GrpcLibraryV1::SubscribeReq, _impl_._has_bits_),
+        6, // hasbit index offset
+        PROTOBUF_FIELD_OFFSET(::GrpcLibraryV1::SubscribeReq, _impl_.user_id_),
+        PROTOBUF_FIELD_OFFSET(::GrpcLibraryV1::SubscribeReq, _impl_.auth_),
+        PROTOBUF_FIELD_OFFSET(::GrpcLibraryV1::SubscribeReq, _impl_.topics_),
+        2,
+        1,
+        0,
+        0x081, // bitmap
+        PROTOBUF_FIELD_OFFSET(::GrpcLibraryV1::UnSubscribeReq, _impl_._has_bits_),
+        6, // hasbit index offset
+        PROTOBUF_FIELD_OFFSET(::GrpcLibraryV1::UnSubscribeReq, _impl_.user_id_),
+        PROTOBUF_FIELD_OFFSET(::GrpcLibraryV1::UnSubscribeReq, _impl_.auth_),
+        PROTOBUF_FIELD_OFFSET(::GrpcLibraryV1::UnSubscribeReq, _impl_.topics_),
+        2,
+        1,
+        0,
+        0x081, // bitmap
+        PROTOBUF_FIELD_OFFSET(::GrpcLibraryV1::UnSubscribeResp, _impl_._has_bits_),
+        5, // hasbit index offset
+        PROTOBUF_FIELD_OFFSET(::GrpcLibraryV1::UnSubscribeResp, _impl_.error_code_),
+        PROTOBUF_FIELD_OFFSET(::GrpcLibraryV1::UnSubscribeResp, _impl_.topics_),
+        1,
+        0,
 };
 
 static const ::_pbi::MigrationSchema
@@ -2054,54 +2263,61 @@ static const ::_pbi::MigrationSchema
         {0, sizeof(::GrpcLibraryV1::Session)},
         {11, sizeof(::GrpcLibraryV1::Plugin)},
         {28, sizeof(::GrpcLibraryV1::ChatMessage)},
-        {43, sizeof(::GrpcLibraryV1::SamplingParam)},
-        {74, sizeof(::GrpcLibraryV1::ContextParam)},
-        {123, sizeof(::GrpcLibraryV1::VadParam)},
-        {138, sizeof(::GrpcLibraryV1::RecognitionParam)},
-        {199, sizeof(::GrpcLibraryV1::EmbeddingParam)},
-        {204, sizeof(::GrpcLibraryV1::FileChunk)},
-        {217, sizeof(::GrpcLibraryV1::UpdateInfo)},
-        {222, sizeof(::GrpcLibraryV1::Ping)},
-        {227, sizeof(::GrpcLibraryV1::Pong)},
-        {232, sizeof(::GrpcLibraryV1::LoginReq)},
-        {245, sizeof(::GrpcLibraryV1::LoginResp)},
-        {260, sizeof(::GrpcLibraryV1::LogoutReq)},
-        {267, sizeof(::GrpcLibraryV1::LogoutResp)},
-        {274, sizeof(::GrpcLibraryV1::RegAccountReq)},
-        {281, sizeof(::GrpcLibraryV1::RegAccountResp)},
-        {288, sizeof(::GrpcLibraryV1::QueryReq)},
-        {311, sizeof(::GrpcLibraryV1::QueryResp)},
-        {324, sizeof(::GrpcLibraryV1::StopAnswerReq)},
-        {333, sizeof(::GrpcLibraryV1::StopAnswerResp)},
-        {340, sizeof(::GrpcLibraryV1::RecognizeReq)},
-        {353, sizeof(::GrpcLibraryV1::RecognizeResp)},
-        {366, sizeof(::GrpcLibraryV1::StopRecognizeReq)},
-        {375, sizeof(::GrpcLibraryV1::StopRecognizeResp)},
-        {382, sizeof(::GrpcLibraryV1::GetChatMessageReq)},
-        {395, sizeof(::GrpcLibraryV1::GetChatMessageResp)},
-        {402, sizeof(::GrpcLibraryV1::GetSessionReq)},
-        {413, sizeof(::GrpcLibraryV1::GetSessionResp)},
-        {420, sizeof(::GrpcLibraryV1::NewSessionReq)},
-        {433, sizeof(::GrpcLibraryV1::NewSessionResp)},
-        {440, sizeof(::GrpcLibraryV1::ModifySessionTitleReq)},
-        {451, sizeof(::GrpcLibraryV1::ModifySessionTitleResp)},
-        {460, sizeof(::GrpcLibraryV1::DelSessionReq)},
-        {469, sizeof(::GrpcLibraryV1::DelSessionResp)},
-        {476, sizeof(::GrpcLibraryV1::GetPluginInfoReq)},
-        {485, sizeof(::GrpcLibraryV1::GetPluginInfoResp)},
-        {492, sizeof(::GrpcLibraryV1::DownloadReq)},
-        {501, sizeof(::GrpcLibraryV1::DownloadResp)},
-        {512, sizeof(::GrpcLibraryV1::UploadReq)},
-        {525, sizeof(::GrpcLibraryV1::UploadResp)},
-        {532, sizeof(::GrpcLibraryV1::EmbeddingReq)},
-        {543, sizeof(::GrpcLibraryV1::EmbeddingResp)},
-        {554, sizeof(::GrpcLibraryV1::StopEmbeddingReq)},
-        {563, sizeof(::GrpcLibraryV1::StopEmbeddingResp)},
+        {43, sizeof(::GrpcLibraryV1::PubMessage)},
+        {48, sizeof(::GrpcLibraryV1::SamplingParam)},
+        {79, sizeof(::GrpcLibraryV1::ContextParam)},
+        {128, sizeof(::GrpcLibraryV1::VadParam)},
+        {143, sizeof(::GrpcLibraryV1::RecognitionParam)},
+        {204, sizeof(::GrpcLibraryV1::EmbeddingParam)},
+        {209, sizeof(::GrpcLibraryV1::FileChunk)},
+        {222, sizeof(::GrpcLibraryV1::UpdateInfo)},
+        {227, sizeof(::GrpcLibraryV1::Ping)},
+        {232, sizeof(::GrpcLibraryV1::Pong)},
+        {237, sizeof(::GrpcLibraryV1::LoginReq)},
+        {250, sizeof(::GrpcLibraryV1::LoginResp)},
+        {265, sizeof(::GrpcLibraryV1::LogoutReq)},
+        {272, sizeof(::GrpcLibraryV1::LogoutResp)},
+        {279, sizeof(::GrpcLibraryV1::RegAccountReq)},
+        {286, sizeof(::GrpcLibraryV1::RegAccountResp)},
+        {293, sizeof(::GrpcLibraryV1::QueryReq)},
+        {316, sizeof(::GrpcLibraryV1::QueryResp)},
+        {329, sizeof(::GrpcLibraryV1::StopAnswerReq)},
+        {338, sizeof(::GrpcLibraryV1::StopAnswerResp)},
+        {345, sizeof(::GrpcLibraryV1::RecognizeReq)},
+        {358, sizeof(::GrpcLibraryV1::RecognizeResp)},
+        {371, sizeof(::GrpcLibraryV1::StopRecognizeReq)},
+        {380, sizeof(::GrpcLibraryV1::StopRecognizeResp)},
+        {387, sizeof(::GrpcLibraryV1::GetChatMessageReq)},
+        {400, sizeof(::GrpcLibraryV1::GetChatMessageResp)},
+        {407, sizeof(::GrpcLibraryV1::GetSessionReq)},
+        {418, sizeof(::GrpcLibraryV1::GetSessionResp)},
+        {425, sizeof(::GrpcLibraryV1::NewSessionReq)},
+        {438, sizeof(::GrpcLibraryV1::NewSessionResp)},
+        {445, sizeof(::GrpcLibraryV1::ModifySessionTitleReq)},
+        {456, sizeof(::GrpcLibraryV1::ModifySessionTitleResp)},
+        {465, sizeof(::GrpcLibraryV1::DelSessionReq)},
+        {474, sizeof(::GrpcLibraryV1::DelSessionResp)},
+        {481, sizeof(::GrpcLibraryV1::GetPluginInfoReq)},
+        {490, sizeof(::GrpcLibraryV1::GetPluginInfoResp)},
+        {497, sizeof(::GrpcLibraryV1::DownloadReq)},
+        {506, sizeof(::GrpcLibraryV1::DownloadResp)},
+        {517, sizeof(::GrpcLibraryV1::UploadReq)},
+        {530, sizeof(::GrpcLibraryV1::UploadResp)},
+        {537, sizeof(::GrpcLibraryV1::EmbeddingReq)},
+        {548, sizeof(::GrpcLibraryV1::EmbeddingResp)},
+        {559, sizeof(::GrpcLibraryV1::StopEmbeddingReq)},
+        {568, sizeof(::GrpcLibraryV1::StopEmbeddingResp)},
+        {575, sizeof(::GrpcLibraryV1::PublishReq)},
+        {584, sizeof(::GrpcLibraryV1::PublishResp)},
+        {589, sizeof(::GrpcLibraryV1::SubscribeReq)},
+        {598, sizeof(::GrpcLibraryV1::UnSubscribeReq)},
+        {607, sizeof(::GrpcLibraryV1::UnSubscribeResp)},
 };
 static const ::_pb::Message* PROTOBUF_NONNULL const file_default_instances[] = {
     &::GrpcLibraryV1::_Session_default_instance_._instance,
     &::GrpcLibraryV1::_Plugin_default_instance_._instance,
     &::GrpcLibraryV1::_ChatMessage_default_instance_._instance,
+    &::GrpcLibraryV1::_PubMessage_default_instance_._instance,
     &::GrpcLibraryV1::_SamplingParam_default_instance_._instance,
     &::GrpcLibraryV1::_ContextParam_default_instance_._instance,
     &::GrpcLibraryV1::_VadParam_default_instance_._instance,
@@ -2145,6 +2361,11 @@ static const ::_pb::Message* PROTOBUF_NONNULL const file_default_instances[] = {
     &::GrpcLibraryV1::_EmbeddingResp_default_instance_._instance,
     &::GrpcLibraryV1::_StopEmbeddingReq_default_instance_._instance,
     &::GrpcLibraryV1::_StopEmbeddingResp_default_instance_._instance,
+    &::GrpcLibraryV1::_PublishReq_default_instance_._instance,
+    &::GrpcLibraryV1::_PublishResp_default_instance_._instance,
+    &::GrpcLibraryV1::_SubscribeReq_default_instance_._instance,
+    &::GrpcLibraryV1::_UnSubscribeReq_default_instance_._instance,
+    &::GrpcLibraryV1::_UnSubscribeResp_default_instance_._instance,
 };
 const char descriptor_table_protodef_src_2fapi_2eproto[] ABSL_ATTRIBUTE_SECTION_VARIABLE(
     protodesc_cold) = {
@@ -2156,174 +2377,187 @@ const char descriptor_table_protodef_src_2fapi_2eproto[] ABSL_ATTRIBUTE_SECTION_
     "stamp\030\006 \001(\t\022\020\n\010platform\030\007 \001(\005\"x\n\013ChatMes"
     "sage\022\n\n\002id\030\001 \001(\003\022\022\n\nsession_id\030\002 \001(\003\022\014\n\004"
     "role\030\003 \001(\t\022\017\n\007content\030\004 \001(\t\022\027\n\017prev_mess"
-    "age_id\030\005 \001(\003\022\021\n\ttimestamp\030\006 \001(\t\"\310\002\n\rSamp"
-    "lingParam\022\026\n\016penalty_last_n\030\001 \001(\005\022\026\n\016pen"
-    "alty_repeat\030\002 \001(\002\022\024\n\014penalty_freq\030\003 \001(\002\022"
-    "\027\n\017penalty_present\030\004 \001(\002\022\023\n\013temperature\030"
-    "\005 \001(\002\022\027\n\017temperature_ext\030\006 \001(\002\022\035\n\025temper"
-    "ature_ext_delta\030\007 \001(\002\022 \n\030temperature_ext"
-    "_exponent\030\010 \001(\002\022\014\n\004seed\030\t \001(\r\022\r\n\005top_k\030\n"
-    " \001(\005\022\r\n\005top_p\030\013 \001(\002\022\026\n\016top_p_min_keep\030\014 "
-    "\001(\005\022\r\n\005min_p\030\r \001(\002\022\026\n\016min_p_min_keep\030\016 \001"
-    "(\005\"\355\003\n\014ContextParam\022\023\n\013window_size\030\001 \001(\005"
-    "\022\022\n\nstop_words\030\002 \001(\t\022\r\n\005n_ctx\030\003 \001(\005\022\017\n\007n"
-    "_batch\030\004 \001(\005\022\020\n\010n_ubatch\030\005 \001(\005\022\021\n\tn_seq_"
-    "max\030\006 \001(\005\022\021\n\tn_threads\030\007 \001(\005\022\027\n\017n_thread"
-    "s_batch\030\010 \001(\005\022\026\n\016rope_freq_base\030\t \001(\002\022\027\n"
-    "\017rope_freq_scale\030\n \001(\002\022\027\n\017yarn_ext_facto"
-    "r\030\013 \001(\002\022\030\n\020yarn_attn_factor\030\014 \001(\002\022\026\n\016yar"
-    "n_beta_fast\030\r \001(\002\022\026\n\016yarn_beta_slow\030\016 \001("
-    "\002\022\025\n\ryarn_orig_ctx\030\017 \001(\005\022\024\n\014defrag_thold"
-    "\030\020 \001(\002\022\022\n\nembeddings\030\021 \001(\010\022\023\n\013offload_kq"
-    "v\030\022 \001(\010\022\017\n\007no_perf\030\023 \001(\010\022\022\n\nop_offload\030\024"
-    " \001(\010\022\020\n\010swa_full\030\025 \001(\010\022\022\n\nkv_unified\030\026 \001"
-    "(\010\022\016\n\006prompt\030\027 \001(\t\"\236\001\n\010VadParam\022\021\n\tthres"
-    "hold\030\001 \001(\002\022\031\n\021min_speech_dur_ms\030\002 \001(\005\022\032\n"
-    "\022min_silence_dur_ms\030\003 \001(\005\022\030\n\020max_speech_"
-    "dur_s\030\004 \001(\002\022\025\n\rspeech_pad_ms\030\005 \001(\005\022\027\n\017sa"
-    "mples_overlap\030\006 \001(\002\"\266\005\n\020RecognitionParam"
-    "\022\021\n\tn_threads\030\001 \001(\005\022\026\n\016n_max_text_ctx\030\002 "
-    "\001(\005\022\021\n\toffset_ms\030\003 \001(\005\022\023\n\013duration_ms\030\004 "
-    "\001(\005\022\021\n\ttranslate\030\005 \001(\010\022\027\n\017detect_languag"
-    "e\030\006 \001(\010\022\020\n\010language\030\007 \001(\t\022\016\n\006no_ctx\030\010 \001("
-    "\010\022\025\n\rno_timestamps\030\t \001(\010\022\026\n\016single_segme"
-    "nt\030\n \001(\010\022\025\n\rprint_special\030\013 \001(\010\022\026\n\016print"
-    "_progress\030\014 \001(\010\022\026\n\016print_realtime\030\r \001(\010\022"
-    "\030\n\020print_timestamps\030\016 \001(\010\022\034\n\024carry_initi"
-    "al_prompt\030\017 \001(\010\022\026\n\016initial_prompt\030\020 \001(\t\022"
-    "\026\n\016suppress_regex\030\021 \001(\t\022\026\n\016suppress_blan"
-    "k\030\022 \001(\010\022\024\n\014suppress_nst\030\023 \001(\010\022\023\n\013tempera"
-    "ture\030\024 \001(\002\022\027\n\017temperature_inc\030\025 \001(\002\022\026\n\016m"
-    "ax_initial_ts\030\026 \001(\002\022\026\n\016length_penalty\030\027 "
-    "\001(\002\022\025\n\rentropy_thold\030\030 \001(\002\022\025\n\rlogprob_th"
-    "old\030\031 \001(\002\022\027\n\017no_speech_thold\030\032 \001(\002\022\013\n\003va"
-    "d\030\033 \001(\010\022\026\n\016vad_model_path\030\034 \001(\t\022+\n\nvad_p"
-    "arams\030\035 \001(\0132\027.GrpcLibraryV1.VadParam\"#\n\016"
-    "EmbeddingParam\022\021\n\tdimension\030\001 \001(\005\"[\n\tFil"
-    "eChunk\022\n\n\002id\030\001 \001(\003\022\014\n\004data\030\002 \001(\014\022\021\n\tstar"
-    "t_pos\030\003 \001(\003\022\017\n\007end_pos\030\004 \001(\003\022\020\n\010filename"
-    "\030\005 \001(\t\"\"\n\nUpdateInfo\022\024\n\014force_update\030\001 \001"
-    "(\010\"\031\n\004Ping\022\021\n\ttimestamp\030\001 \001(\003\"\031\n\004Pong\022\021\n"
-    "\ttimestamp\030\001 \001(\003\"c\n\010LoginReq\022\017\n\007account\030"
-    "\001 \001(\t\022\016\n\006passwd\030\002 \001(\t\022\020\n\010platform\030\003 \001(\t\022"
-    "\014\n\004arch\030\004 \001(\t\022\026\n\016client_version\030\005 \001(\t\"\230\001"
-    "\n\tLoginResp\022\022\n\nerror_code\030\001 \001(\005\022\017\n\007user_"
-    "id\030\002 \001(\003\022\014\n\004auth\030\003 \001(\t\022\017\n\007account\030\004 \001(\t\022"
-    "\027\n\017last_login_time\030\005 \001(\t\022.\n\013update_info\030"
-    "\006 \001(\0132\031.GrpcLibraryV1.UpdateInfo\"*\n\tLogo"
-    "utReq\022\017\n\007user_id\030\001 \001(\003\022\014\n\004auth\030\002 \001(\t\"1\n\n"
-    "LogoutResp\022\022\n\nerror_code\030\001 \001(\005\022\017\n\007user_i"
-    "d\030\002 \001(\003\"0\n\rRegAccountReq\022\017\n\007account\030\001 \001("
-    "\t\022\016\n\006passwd\030\002 \001(\t\"5\n\016RegAccountResp\022\022\n\ne"
-    "rror_code\030\001 \001(\005\022\017\n\007user_id\030\002 \001(\003\"\342\001\n\010Que"
-    "ryReq\022\n\n\002id\030\001 \001(\003\022\017\n\007user_id\030\002 \001(\003\022\016\n\006ms"
-    "g_id\030\003 \001(\003\022\014\n\004auth\030\004 \001(\t\022\017\n\007content\030\005 \001("
-    "\t\022\r\n\005model\030\006 \001(\t\022\020\n\010pipeline\030\007 \001(\t\022\017\n\007ap"
-    "i_key\030\010 \001(\t\022.\n\010sampling\030\t \001(\0132\034.GrpcLibr"
-    "aryV1.SamplingParam\022(\n\003ctx\030\n \001(\0132\033.GrpcL"
-    "ibraryV1.ContextParam\"a\n\tQueryResp\022\022\n\ner"
-    "ror_code\030\001 \001(\005\022\n\n\002id\030\002 \001(\003\022\016\n\006msg_id\030\003 \001"
-    "(\003\022\017\n\007content\030\004 \001(\t\022\023\n\013is_finished\030\005 \001(\010"
-    "\"B\n\rStopAnswerReq\022\022\n\nsession_id\030\001 \001(\003\022\017\n"
-    "\007user_id\030\002 \001(\003\022\014\n\004auth\030\003 \001(\t\"8\n\016StopAnsw"
-    "erResp\022\022\n\nerror_code\030\001 \001(\005\022\022\n\nsession_id"
-    "\030\002 \001(\003\"\213\001\n\014RecognizeReq\022\016\n\006ctx_id\030\001 \001(\t\022"
-    "\022\n\nsession_id\030\002 \001(\003\0220\n\005param\030\003 \001(\0132\037.Grp"
-    "cLibraryV1.RecognitionParamH\000\022\025\n\013audio_c"
-    "hunk\030\004 \001(\014H\000B\016\n\014request_type\"t\n\rRecogniz"
-    "eResp\022\022\n\nerror_code\030\001 \001(\005\022\022\n\nsession_id\030"
-    "\002 \001(\003\022\022\n\ntranscript\030\003 \001(\t\022\023\n\013is_finished"
-    "\030\004 \001(\010\022\022\n\nconfidence\030\005 \001(\001\"E\n\020StopRecogn"
-    "izeReq\022\022\n\nsession_id\030\001 \001(\003\022\017\n\007user_id\030\002 "
-    "\001(\003\022\014\n\004auth\030\003 \001(\t\";\n\021StopRecognizeResp\022\022"
-    "\n\nerror_code\030\001 \001(\005\022\022\n\nsession_id\030\002 \001(\003\"a"
-    "\n\021GetChatMessageReq\022\n\n\002id\030\001 \001(\003\022\022\n\nsessi"
-    "on_id\030\002 \001(\003\022\r\n\005limit\030\003 \001(\005\022\017\n\007user_id\030\004 "
-    "\001(\003\022\014\n\004auth\030\005 \001(\t\"V\n\022GetChatMessageResp\022"
-    "\022\n\nerror_code\030\001 \001(\005\022,\n\010messages\030\002 \003(\0132\032."
-    "GrpcLibraryV1.ChatMessage\"I\n\rGetSessionR"
-    "eq\022\n\n\002id\030\001 \001(\003\022\017\n\007user_id\030\002 \001(\003\022\014\n\004auth\030"
-    "\003 \001(\t\022\r\n\005limit\030\004 \001(\005\"N\n\016GetSessionResp\022\022"
-    "\n\nerror_code\030\001 \001(\005\022(\n\010sessions\030\002 \003(\0132\026.G"
-    "rpcLibraryV1.Session\"]\n\rNewSessionReq\022\017\n"
-    "\007user_id\030\001 \001(\003\022\014\n\004auth\030\002 \001(\t\022\r\n\005title\030\003 "
-    "\001(\t\022\017\n\007content\030\004 \001(\t\022\r\n\005model\030\005 \001(\t\"M\n\016N"
-    "ewSessionResp\022\022\n\nerror_code\030\001 \001(\005\022\'\n\007ses"
-    "sion\030\002 \001(\0132\026.GrpcLibraryV1.Session\"Q\n\025Mo"
-    "difySessionTitleReq\022\n\n\002id\030\001 \001(\003\022\017\n\007user_"
-    "id\030\002 \001(\003\022\014\n\004auth\030\003 \001(\t\022\r\n\005title\030\004 \001(\t\"G\n"
-    "\026ModifySessionTitleResp\022\022\n\nerror_code\030\001 "
-    "\001(\005\022\n\n\002id\030\002 \001(\003\022\r\n\005title\030\003 \001(\t\";\n\rDelSes"
-    "sionReq\022\017\n\007user_id\030\001 \001(\003\022\014\n\004auth\030\002 \001(\t\022\013"
-    "\n\003ids\030\003 \003(\003\"1\n\016DelSessionResp\022\022\n\nerror_c"
-    "ode\030\001 \001(\005\022\013\n\003ids\030\002 \003(\003\"B\n\020GetPluginInfoR"
-    "eq\022\014\n\004hash\030\001 \001(\t\022\021\n\tpublisher\030\002 \001(\t\022\r\n\005l"
-    "imit\030\003 \001(\005\"O\n\021GetPluginInfoResp\022\022\n\nerror"
-    "_code\030\001 \001(\005\022&\n\007plugins\030\002 \003(\0132\025.GrpcLibra"
-    "ryV1.Plugin\":\n\013DownloadReq\022\014\n\004hash\030\001 \001(\t"
-    "\022\017\n\007user_id\030\002 \001(\003\022\014\n\004auth\030\003 \001(\t\"O\n\014Downl"
-    "oadResp\022\022\n\nerror_code\030\001 \001(\005\022\014\n\004hash\030\002 \001("
-    "\t\022\014\n\004addr\030\003 \001(\t\022\017\n\007size_kb\030\004 \001(\003\"W\n\tUplo"
-    "adReq\022\014\n\004hash\030\001 \001(\t\022\017\n\007user_id\030\002 \001(\003\022\014\n\004"
-    "auth\030\003 \001(\t\022\014\n\004addr\030\004 \001(\t\022\017\n\007size_kb\030\005 \001("
-    "\003\".\n\nUploadResp\022\022\n\nerror_code\030\001 \001(\005\022\014\n\004h"
-    "ash\030\002 \001(\t\"\212\001\n\014EmbeddingReq\022\017\n\007task_id\030\001 "
-    "\001(\003\022.\n\005param\030\002 \001(\0132\035.GrpcLibraryV1.Embed"
-    "dingParamH\000\022)\n\005chunk\030\003 \001(\0132\030.GrpcLibrary"
-    "V1.FileChunkH\000B\016\n\014request_type\"]\n\rEmbedd"
-    "ingResp\022\022\n\nerror_code\030\001 \001(\005\022\017\n\007task_id\030\002"
-    " \001(\003\022\020\n\010chunk_id\030\003 \001(\003\022\025\n\rvector_indexs\030"
-    "\004 \001(\014\"B\n\020StopEmbeddingReq\022\017\n\007task_id\030\001 \001"
-    "(\003\022\017\n\007user_id\030\002 \001(\003\022\014\n\004auth\030\003 \001(\t\"8\n\021Sto"
-    "pEmbeddingResp\022\022\n\nerror_code\030\001 \001(\005\022\017\n\007ta"
-    "sk_id\030\002 \001(\0032\352\n\n\013GrpcService\0227\n\tHeartbeat"
-    "\022\023.GrpcLibraryV1.Ping\032\023.GrpcLibraryV1.Po"
-    "ng\"\000\022<\n\005Login\022\027.GrpcLibraryV1.LoginReq\032\030"
-    ".GrpcLibraryV1.LoginResp\"\000\022\?\n\006Logout\022\030.G"
-    "rpcLibraryV1.LogoutReq\032\031.GrpcLibraryV1.L"
-    "ogoutResp\"\000\022K\n\nRegAccount\022\034.GrpcLibraryV"
-    "1.RegAccountReq\032\035.GrpcLibraryV1.RegAccou"
-    "ntResp\"\000\022>\n\005Query\022\027.GrpcLibraryV1.QueryR"
-    "eq\032\030.GrpcLibraryV1.QueryResp\"\0000\001\022K\n\nStop"
-    "Answer\022\034.GrpcLibraryV1.StopAnswerReq\032\035.G"
-    "rpcLibraryV1.StopAnswerResp\"\000\022L\n\tRecogni"
-    "ze\022\033.GrpcLibraryV1.RecognizeReq\032\034.GrpcLi"
-    "braryV1.RecognizeResp\"\000(\0010\001\022T\n\rStopRecog"
-    "nize\022\037.GrpcLibraryV1.StopRecognizeReq\032 ."
-    "GrpcLibraryV1.StopRecognizeResp\"\000\022W\n\016Get"
-    "ChatMessage\022 .GrpcLibraryV1.GetChatMessa"
-    "geReq\032!.GrpcLibraryV1.GetChatMessageResp"
-    "\"\000\022K\n\nGetSession\022\034.GrpcLibraryV1.GetSess"
-    "ionReq\032\035.GrpcLibraryV1.GetSessionResp\"\000\022"
-    "K\n\nNewSession\022\034.GrpcLibraryV1.NewSession"
-    "Req\032\035.GrpcLibraryV1.NewSessionResp\"\000\022c\n\022"
-    "ModifySessionTitle\022$.GrpcLibraryV1.Modif"
-    "ySessionTitleReq\032%.GrpcLibraryV1.ModifyS"
-    "essionTitleResp\"\000\022K\n\nDelSession\022\034.GrpcLi"
-    "braryV1.DelSessionReq\032\035.GrpcLibraryV1.De"
-    "lSessionResp\"\000\022T\n\rGetPluginInfo\022\037.GrpcLi"
-    "braryV1.GetPluginInfoReq\032 .GrpcLibraryV1"
-    ".GetPluginInfoResp\"\000\022E\n\010Download\022\032.GrpcL"
-    "ibraryV1.DownloadReq\032\033.GrpcLibraryV1.Dow"
-    "nloadResp\"\000\022\?\n\006Upload\022\030.GrpcLibraryV1.Up"
-    "loadReq\032\031.GrpcLibraryV1.UploadResp\"\000\022L\n\t"
-    "Embedding\022\033.GrpcLibraryV1.EmbeddingReq\032\034"
-    ".GrpcLibraryV1.EmbeddingResp\"\000(\0010\001\022T\n\rSt"
-    "opEmbedding\022\037.GrpcLibraryV1.StopEmbeddin"
-    "gReq\032 .GrpcLibraryV1.StopEmbeddingResp\"\000"
-    "b\006proto3"
+    "age_id\030\005 \001(\003\022\021\n\ttimestamp\030\006 \001(\t\"\035\n\nPubMe"
+    "ssage\022\017\n\007payload\030\001 \001(\014\"\310\002\n\rSamplingParam"
+    "\022\026\n\016penalty_last_n\030\001 \001(\005\022\026\n\016penalty_repe"
+    "at\030\002 \001(\002\022\024\n\014penalty_freq\030\003 \001(\002\022\027\n\017penalt"
+    "y_present\030\004 \001(\002\022\023\n\013temperature\030\005 \001(\002\022\027\n\017"
+    "temperature_ext\030\006 \001(\002\022\035\n\025temperature_ext"
+    "_delta\030\007 \001(\002\022 \n\030temperature_ext_exponent"
+    "\030\010 \001(\002\022\014\n\004seed\030\t \001(\r\022\r\n\005top_k\030\n \001(\005\022\r\n\005t"
+    "op_p\030\013 \001(\002\022\026\n\016top_p_min_keep\030\014 \001(\005\022\r\n\005mi"
+    "n_p\030\r \001(\002\022\026\n\016min_p_min_keep\030\016 \001(\005\"\355\003\n\014Co"
+    "ntextParam\022\023\n\013window_size\030\001 \001(\005\022\022\n\nstop_"
+    "words\030\002 \001(\t\022\r\n\005n_ctx\030\003 \001(\005\022\017\n\007n_batch\030\004 "
+    "\001(\005\022\020\n\010n_ubatch\030\005 \001(\005\022\021\n\tn_seq_max\030\006 \001(\005"
+    "\022\021\n\tn_threads\030\007 \001(\005\022\027\n\017n_threads_batch\030\010"
+    " \001(\005\022\026\n\016rope_freq_base\030\t \001(\002\022\027\n\017rope_fre"
+    "q_scale\030\n \001(\002\022\027\n\017yarn_ext_factor\030\013 \001(\002\022\030"
+    "\n\020yarn_attn_factor\030\014 \001(\002\022\026\n\016yarn_beta_fa"
+    "st\030\r \001(\002\022\026\n\016yarn_beta_slow\030\016 \001(\002\022\025\n\ryarn"
+    "_orig_ctx\030\017 \001(\005\022\024\n\014defrag_thold\030\020 \001(\002\022\022\n"
+    "\nembeddings\030\021 \001(\010\022\023\n\013offload_kqv\030\022 \001(\010\022\017"
+    "\n\007no_perf\030\023 \001(\010\022\022\n\nop_offload\030\024 \001(\010\022\020\n\010s"
+    "wa_full\030\025 \001(\010\022\022\n\nkv_unified\030\026 \001(\010\022\016\n\006pro"
+    "mpt\030\027 \001(\t\"\236\001\n\010VadParam\022\021\n\tthreshold\030\001 \001("
+    "\002\022\031\n\021min_speech_dur_ms\030\002 \001(\005\022\032\n\022min_sile"
+    "nce_dur_ms\030\003 \001(\005\022\030\n\020max_speech_dur_s\030\004 \001"
+    "(\002\022\025\n\rspeech_pad_ms\030\005 \001(\005\022\027\n\017samples_ove"
+    "rlap\030\006 \001(\002\"\266\005\n\020RecognitionParam\022\021\n\tn_thr"
+    "eads\030\001 \001(\005\022\026\n\016n_max_text_ctx\030\002 \001(\005\022\021\n\tof"
+    "fset_ms\030\003 \001(\005\022\023\n\013duration_ms\030\004 \001(\005\022\021\n\ttr"
+    "anslate\030\005 \001(\010\022\027\n\017detect_language\030\006 \001(\010\022\020"
+    "\n\010language\030\007 \001(\t\022\016\n\006no_ctx\030\010 \001(\010\022\025\n\rno_t"
+    "imestamps\030\t \001(\010\022\026\n\016single_segment\030\n \001(\010\022"
+    "\025\n\rprint_special\030\013 \001(\010\022\026\n\016print_progress"
+    "\030\014 \001(\010\022\026\n\016print_realtime\030\r \001(\010\022\030\n\020print_"
+    "timestamps\030\016 \001(\010\022\034\n\024carry_initial_prompt"
+    "\030\017 \001(\010\022\026\n\016initial_prompt\030\020 \001(\t\022\026\n\016suppre"
+    "ss_regex\030\021 \001(\t\022\026\n\016suppress_blank\030\022 \001(\010\022\024"
+    "\n\014suppress_nst\030\023 \001(\010\022\023\n\013temperature\030\024 \001("
+    "\002\022\027\n\017temperature_inc\030\025 \001(\002\022\026\n\016max_initia"
+    "l_ts\030\026 \001(\002\022\026\n\016length_penalty\030\027 \001(\002\022\025\n\ren"
+    "tropy_thold\030\030 \001(\002\022\025\n\rlogprob_thold\030\031 \001(\002"
+    "\022\027\n\017no_speech_thold\030\032 \001(\002\022\013\n\003vad\030\033 \001(\010\022\026"
+    "\n\016vad_model_path\030\034 \001(\t\022+\n\nvad_params\030\035 \001"
+    "(\0132\027.GrpcLibraryV1.VadParam\"#\n\016Embedding"
+    "Param\022\021\n\tdimension\030\001 \001(\005\"[\n\tFileChunk\022\n\n"
+    "\002id\030\001 \001(\003\022\014\n\004data\030\002 \001(\014\022\021\n\tstart_pos\030\003 \001"
+    "(\003\022\017\n\007end_pos\030\004 \001(\003\022\020\n\010filename\030\005 \001(\t\"\"\n"
+    "\nUpdateInfo\022\024\n\014force_update\030\001 \001(\010\"\031\n\004Pin"
+    "g\022\021\n\ttimestamp\030\001 \001(\003\"\031\n\004Pong\022\021\n\ttimestam"
+    "p\030\001 \001(\003\"c\n\010LoginReq\022\017\n\007account\030\001 \001(\t\022\016\n\006"
+    "passwd\030\002 \001(\t\022\020\n\010platform\030\003 \001(\t\022\014\n\004arch\030\004"
+    " \001(\t\022\026\n\016client_version\030\005 \001(\t\"\230\001\n\tLoginRe"
+    "sp\022\022\n\nerror_code\030\001 \001(\005\022\017\n\007user_id\030\002 \001(\003\022"
+    "\014\n\004auth\030\003 \001(\t\022\017\n\007account\030\004 \001(\t\022\027\n\017last_l"
+    "ogin_time\030\005 \001(\t\022.\n\013update_info\030\006 \001(\0132\031.G"
+    "rpcLibraryV1.UpdateInfo\"*\n\tLogoutReq\022\017\n\007"
+    "user_id\030\001 \001(\003\022\014\n\004auth\030\002 \001(\t\"1\n\nLogoutRes"
+    "p\022\022\n\nerror_code\030\001 \001(\005\022\017\n\007user_id\030\002 \001(\003\"0"
+    "\n\rRegAccountReq\022\017\n\007account\030\001 \001(\t\022\016\n\006pass"
+    "wd\030\002 \001(\t\"5\n\016RegAccountResp\022\022\n\nerror_code"
+    "\030\001 \001(\005\022\017\n\007user_id\030\002 \001(\003\"\342\001\n\010QueryReq\022\n\n\002"
+    "id\030\001 \001(\003\022\017\n\007user_id\030\002 \001(\003\022\016\n\006msg_id\030\003 \001("
+    "\003\022\014\n\004auth\030\004 \001(\t\022\017\n\007content\030\005 \001(\t\022\r\n\005mode"
+    "l\030\006 \001(\t\022\020\n\010pipeline\030\007 \001(\t\022\017\n\007api_key\030\010 \001"
+    "(\t\022.\n\010sampling\030\t \001(\0132\034.GrpcLibraryV1.Sam"
+    "plingParam\022(\n\003ctx\030\n \001(\0132\033.GrpcLibraryV1."
+    "ContextParam\"a\n\tQueryResp\022\022\n\nerror_code\030"
+    "\001 \001(\005\022\n\n\002id\030\002 \001(\003\022\016\n\006msg_id\030\003 \001(\003\022\017\n\007con"
+    "tent\030\004 \001(\t\022\023\n\013is_finished\030\005 \001(\010\"B\n\rStopA"
+    "nswerReq\022\022\n\nsession_id\030\001 \001(\003\022\017\n\007user_id\030"
+    "\002 \001(\003\022\014\n\004auth\030\003 \001(\t\"8\n\016StopAnswerResp\022\022\n"
+    "\nerror_code\030\001 \001(\005\022\022\n\nsession_id\030\002 \001(\003\"\213\001"
+    "\n\014RecognizeReq\022\016\n\006ctx_id\030\001 \001(\t\022\022\n\nsessio"
+    "n_id\030\002 \001(\003\0220\n\005param\030\003 \001(\0132\037.GrpcLibraryV"
+    "1.RecognitionParamH\000\022\025\n\013audio_chunk\030\004 \001("
+    "\014H\000B\016\n\014request_type\"t\n\rRecognizeResp\022\022\n\n"
+    "error_code\030\001 \001(\005\022\022\n\nsession_id\030\002 \001(\003\022\022\n\n"
+    "transcript\030\003 \001(\t\022\023\n\013is_finished\030\004 \001(\010\022\022\n"
+    "\nconfidence\030\005 \001(\001\"E\n\020StopRecognizeReq\022\022\n"
+    "\nsession_id\030\001 \001(\003\022\017\n\007user_id\030\002 \001(\003\022\014\n\004au"
+    "th\030\003 \001(\t\";\n\021StopRecognizeResp\022\022\n\nerror_c"
+    "ode\030\001 \001(\005\022\022\n\nsession_id\030\002 \001(\003\"a\n\021GetChat"
+    "MessageReq\022\n\n\002id\030\001 \001(\003\022\022\n\nsession_id\030\002 \001"
+    "(\003\022\r\n\005limit\030\003 \001(\005\022\017\n\007user_id\030\004 \001(\003\022\014\n\004au"
+    "th\030\005 \001(\t\"V\n\022GetChatMessageResp\022\022\n\nerror_"
+    "code\030\001 \001(\005\022,\n\010messages\030\002 \003(\0132\032.GrpcLibra"
+    "ryV1.ChatMessage\"I\n\rGetSessionReq\022\n\n\002id\030"
+    "\001 \001(\003\022\017\n\007user_id\030\002 \001(\003\022\014\n\004auth\030\003 \001(\t\022\r\n\005"
+    "limit\030\004 \001(\005\"N\n\016GetSessionResp\022\022\n\nerror_c"
+    "ode\030\001 \001(\005\022(\n\010sessions\030\002 \003(\0132\026.GrpcLibrar"
+    "yV1.Session\"]\n\rNewSessionReq\022\017\n\007user_id\030"
+    "\001 \001(\003\022\014\n\004auth\030\002 \001(\t\022\r\n\005title\030\003 \001(\t\022\017\n\007co"
+    "ntent\030\004 \001(\t\022\r\n\005model\030\005 \001(\t\"M\n\016NewSession"
+    "Resp\022\022\n\nerror_code\030\001 \001(\005\022\'\n\007session\030\002 \001("
+    "\0132\026.GrpcLibraryV1.Session\"Q\n\025ModifySessi"
+    "onTitleReq\022\n\n\002id\030\001 \001(\003\022\017\n\007user_id\030\002 \001(\003\022"
+    "\014\n\004auth\030\003 \001(\t\022\r\n\005title\030\004 \001(\t\"G\n\026ModifySe"
+    "ssionTitleResp\022\022\n\nerror_code\030\001 \001(\005\022\n\n\002id"
+    "\030\002 \001(\003\022\r\n\005title\030\003 \001(\t\";\n\rDelSessionReq\022\017"
+    "\n\007user_id\030\001 \001(\003\022\014\n\004auth\030\002 \001(\t\022\013\n\003ids\030\003 \003"
+    "(\003\"1\n\016DelSessionResp\022\022\n\nerror_code\030\001 \001(\005"
+    "\022\013\n\003ids\030\002 \003(\003\"B\n\020GetPluginInfoReq\022\014\n\004has"
+    "h\030\001 \001(\t\022\021\n\tpublisher\030\002 \001(\t\022\r\n\005limit\030\003 \001("
+    "\005\"O\n\021GetPluginInfoResp\022\022\n\nerror_code\030\001 \001"
+    "(\005\022&\n\007plugins\030\002 \003(\0132\025.GrpcLibraryV1.Plug"
+    "in\":\n\013DownloadReq\022\014\n\004hash\030\001 \001(\t\022\017\n\007user_"
+    "id\030\002 \001(\003\022\014\n\004auth\030\003 \001(\t\"O\n\014DownloadResp\022\022"
+    "\n\nerror_code\030\001 \001(\005\022\014\n\004hash\030\002 \001(\t\022\014\n\004addr"
+    "\030\003 \001(\t\022\017\n\007size_kb\030\004 \001(\003\"W\n\tUploadReq\022\014\n\004"
+    "hash\030\001 \001(\t\022\017\n\007user_id\030\002 \001(\003\022\014\n\004auth\030\003 \001("
+    "\t\022\014\n\004addr\030\004 \001(\t\022\017\n\007size_kb\030\005 \001(\003\".\n\nUplo"
+    "adResp\022\022\n\nerror_code\030\001 \001(\005\022\014\n\004hash\030\002 \001(\t"
+    "\"\212\001\n\014EmbeddingReq\022\017\n\007task_id\030\001 \001(\003\022.\n\005pa"
+    "ram\030\002 \001(\0132\035.GrpcLibraryV1.EmbeddingParam"
+    "H\000\022)\n\005chunk\030\003 \001(\0132\030.GrpcLibraryV1.FileCh"
+    "unkH\000B\016\n\014request_type\"]\n\rEmbeddingResp\022\022"
+    "\n\nerror_code\030\001 \001(\005\022\017\n\007task_id\030\002 \001(\003\022\020\n\010c"
+    "hunk_id\030\003 \001(\003\022\025\n\rvector_indexs\030\004 \001(\014\"B\n\020"
+    "StopEmbeddingReq\022\017\n\007task_id\030\001 \001(\003\022\017\n\007use"
+    "r_id\030\002 \001(\003\022\014\n\004auth\030\003 \001(\t\"8\n\021StopEmbeddin"
+    "gResp\022\022\n\nerror_code\030\001 \001(\005\022\017\n\007task_id\030\002 \001"
+    "(\003\"9\n\nPublishReq\022\017\n\007user_id\030\001 \001(\003\022\014\n\004aut"
+    "h\030\002 \001(\t\022\014\n\004msgs\030\003 \003(\014\"!\n\013PublishResp\022\022\n\n"
+    "error_code\030\001 \001(\005\"=\n\014SubscribeReq\022\017\n\007user"
+    "_id\030\001 \001(\003\022\014\n\004auth\030\002 \001(\t\022\016\n\006topics\030\003 \003(\t\""
+    "\?\n\016UnSubscribeReq\022\017\n\007user_id\030\001 \001(\003\022\014\n\004au"
+    "th\030\002 \001(\t\022\016\n\006topics\030\003 \003(\t\"5\n\017UnSubscribeR"
+    "esp\022\022\n\nerror_code\030\001 \001(\005\022\016\n\006topics\030\002 \003(\t2"
+    "\301\014\n\013GrpcService\0227\n\tHeartbeat\022\023.GrpcLibra"
+    "ryV1.Ping\032\023.GrpcLibraryV1.Pong\"\000\022<\n\005Logi"
+    "n\022\027.GrpcLibraryV1.LoginReq\032\030.GrpcLibrary"
+    "V1.LoginResp\"\000\022\?\n\006Logout\022\030.GrpcLibraryV1"
+    ".LogoutReq\032\031.GrpcLibraryV1.LogoutResp\"\000\022"
+    "K\n\nRegAccount\022\034.GrpcLibraryV1.RegAccount"
+    "Req\032\035.GrpcLibraryV1.RegAccountResp\"\000\022>\n\005"
+    "Query\022\027.GrpcLibraryV1.QueryReq\032\030.GrpcLib"
+    "raryV1.QueryResp\"\0000\001\022K\n\nStopAnswer\022\034.Grp"
+    "cLibraryV1.StopAnswerReq\032\035.GrpcLibraryV1"
+    ".StopAnswerResp\"\000\022L\n\tRecognize\022\033.GrpcLib"
+    "raryV1.RecognizeReq\032\034.GrpcLibraryV1.Reco"
+    "gnizeResp\"\000(\0010\001\022T\n\rStopRecognize\022\037.GrpcL"
+    "ibraryV1.StopRecognizeReq\032 .GrpcLibraryV"
+    "1.StopRecognizeResp\"\000\022W\n\016GetChatMessage\022"
+    " .GrpcLibraryV1.GetChatMessageReq\032!.Grpc"
+    "LibraryV1.GetChatMessageResp\"\000\022K\n\nGetSes"
+    "sion\022\034.GrpcLibraryV1.GetSessionReq\032\035.Grp"
+    "cLibraryV1.GetSessionResp\"\000\022K\n\nNewSessio"
+    "n\022\034.GrpcLibraryV1.NewSessionReq\032\035.GrpcLi"
+    "braryV1.NewSessionResp\"\000\022c\n\022ModifySessio"
+    "nTitle\022$.GrpcLibraryV1.ModifySessionTitl"
+    "eReq\032%.GrpcLibraryV1.ModifySessionTitleR"
+    "esp\"\000\022K\n\nDelSession\022\034.GrpcLibraryV1.DelS"
+    "essionReq\032\035.GrpcLibraryV1.DelSessionResp"
+    "\"\000\022T\n\rGetPluginInfo\022\037.GrpcLibraryV1.GetP"
+    "luginInfoReq\032 .GrpcLibraryV1.GetPluginIn"
+    "foResp\"\000\022E\n\010Download\022\032.GrpcLibraryV1.Dow"
+    "nloadReq\032\033.GrpcLibraryV1.DownloadResp\"\000\022"
+    "\?\n\006Upload\022\030.GrpcLibraryV1.UploadReq\032\031.Gr"
+    "pcLibraryV1.UploadResp\"\000\022L\n\tEmbedding\022\033."
+    "GrpcLibraryV1.EmbeddingReq\032\034.GrpcLibrary"
+    "V1.EmbeddingResp\"\000(\0010\001\022T\n\rStopEmbedding\022"
+    "\037.GrpcLibraryV1.StopEmbeddingReq\032 .GrpcL"
+    "ibraryV1.StopEmbeddingResp\"\000\022@\n\007Publish\022"
+    "\031.GrpcLibraryV1.PublishReq\032\032.GrpcLibrary"
+    "V1.PublishResp\022E\n\tSubscribe\022\033.GrpcLibrar"
+    "yV1.SubscribeReq\032\031.GrpcLibraryV1.PubMess"
+    "age0\001\022L\n\013UnSubscribe\022\035.GrpcLibraryV1.UnS"
+    "ubscribeReq\032\036.GrpcLibraryV1.UnSubscribeR"
+    "espb\006proto3"
 };
 static ::absl::once_flag descriptor_table_src_2fapi_2eproto_once;
 PROTOBUF_CONSTINIT const ::_pbi::DescriptorTable descriptor_table_src_2fapi_2eproto = {
     false,
     false,
-    6528,
+    7051,
     descriptor_table_protodef_src_2fapi_2eproto,
     "src/api.proto",
     &descriptor_table_src_2fapi_2eproto_once,
     nullptr,
     0,
-    46,
+    52,
     schemas,
     file_default_instances,
     TableStruct_src_2fapi_2eproto::offsets,
@@ -3706,6 +3940,276 @@ void ChatMessage::InternalSwap(ChatMessage* PROTOBUF_RESTRICT PROTOBUF_NONNULL o
 }
 
 ::google::protobuf::Metadata ChatMessage::GetMetadata() const {
+  return ::google::protobuf::Message::GetMetadataImpl(GetClassData()->full());
+}
+// ===================================================================
+
+class PubMessage::_Internal {
+ public:
+  using HasBits =
+      decltype(::std::declval<PubMessage>()._impl_._has_bits_);
+  static constexpr ::int32_t kHasBitsOffset =
+      8 * PROTOBUF_FIELD_OFFSET(PubMessage, _impl_._has_bits_);
+};
+
+PubMessage::PubMessage(::google::protobuf::Arena* PROTOBUF_NULLABLE arena)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(arena, PubMessage_class_data_.base()) {
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(arena) {
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  SharedCtor(arena);
+  // @@protoc_insertion_point(arena_constructor:GrpcLibraryV1.PubMessage)
+}
+PROTOBUF_NDEBUG_INLINE PubMessage::Impl_::Impl_(
+    [[maybe_unused]] ::google::protobuf::internal::InternalVisibility visibility,
+    [[maybe_unused]] ::google::protobuf::Arena* PROTOBUF_NULLABLE arena, const Impl_& from,
+    [[maybe_unused]] const ::GrpcLibraryV1::PubMessage& from_msg)
+      : _has_bits_{from._has_bits_},
+        _cached_size_{0},
+        payload_(arena, from.payload_) {}
+
+PubMessage::PubMessage(
+    ::google::protobuf::Arena* PROTOBUF_NULLABLE arena,
+    const PubMessage& from)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(arena, PubMessage_class_data_.base()) {
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(arena) {
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  PubMessage* const _this = this;
+  (void)_this;
+  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
+      from._internal_metadata_);
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_, from);
+
+  // @@protoc_insertion_point(copy_constructor:GrpcLibraryV1.PubMessage)
+}
+PROTOBUF_NDEBUG_INLINE PubMessage::Impl_::Impl_(
+    [[maybe_unused]] ::google::protobuf::internal::InternalVisibility visibility,
+    [[maybe_unused]] ::google::protobuf::Arena* PROTOBUF_NULLABLE arena)
+      : _cached_size_{0},
+        payload_(arena) {}
+
+inline void PubMessage::SharedCtor(::_pb::Arena* PROTOBUF_NULLABLE arena) {
+  new (&_impl_) Impl_(internal_visibility(), arena);
+}
+PubMessage::~PubMessage() {
+  // @@protoc_insertion_point(destructor:GrpcLibraryV1.PubMessage)
+  SharedDtor(*this);
+}
+inline void PubMessage::SharedDtor(MessageLite& self) {
+  PubMessage& this_ = static_cast<PubMessage&>(self);
+  if constexpr (::_pbi::DebugHardenCheckHasBitConsistency()) {
+    this_.CheckHasBitConsistency();
+  }
+  this_._internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
+  ABSL_DCHECK(this_.GetArena() == nullptr);
+  this_._impl_.payload_.Destroy();
+  this_._impl_.~Impl_();
+}
+
+inline void* PROTOBUF_NONNULL PubMessage::PlacementNew_(
+    const void* PROTOBUF_NONNULL, void* PROTOBUF_NONNULL mem,
+    ::google::protobuf::Arena* PROTOBUF_NULLABLE arena) {
+  return ::new (mem) PubMessage(arena);
+}
+constexpr auto PubMessage::InternalNewImpl_() {
+  return ::google::protobuf::internal::MessageCreator::CopyInit(sizeof(PubMessage),
+                                            alignof(PubMessage));
+}
+constexpr auto PubMessage::InternalGenerateClassData_() {
+  return ::google::protobuf::internal::ClassDataFull{
+      ::google::protobuf::internal::ClassData{
+          &_PubMessage_default_instance_._instance,
+          &_table_.header,
+          nullptr,  // OnDemandRegisterArenaDtor
+          nullptr,  // IsInitialized
+          &PubMessage::MergeImpl,
+          ::google::protobuf::Message::GetNewImpl<PubMessage>(),
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+          &PubMessage::SharedDtor,
+          ::google::protobuf::Message::GetClearImpl<PubMessage>(), &PubMessage::ByteSizeLong,
+              &PubMessage::_InternalSerialize,
+#endif  // PROTOBUF_CUSTOM_VTABLE
+          PROTOBUF_FIELD_OFFSET(PubMessage, _impl_._cached_size_),
+          false,
+      },
+      &PubMessage::kDescriptorMethods,
+      &descriptor_table_src_2fapi_2eproto,
+      nullptr,  // tracker
+  };
+}
+
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 const
+    ::google::protobuf::internal::ClassDataFull PubMessage_class_data_ =
+        PubMessage::InternalGenerateClassData_();
+
+PROTOBUF_ATTRIBUTE_WEAK const ::google::protobuf::internal::ClassData* PROTOBUF_NONNULL
+PubMessage::GetClassData() const {
+  ::google::protobuf::internal::PrefetchToLocalCache(&PubMessage_class_data_);
+  ::google::protobuf::internal::PrefetchToLocalCache(PubMessage_class_data_.tc_table);
+  return PubMessage_class_data_.base();
+}
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::_pbi::TcParseTable<0, 1, 0, 0, 2>
+PubMessage::_table_ = {
+  {
+    PROTOBUF_FIELD_OFFSET(PubMessage, _impl_._has_bits_),
+    0, // no _extensions_
+    1, 0,  // max_field_number, fast_idx_mask
+    offsetof(decltype(_table_), field_lookup_table),
+    4294967294,  // skipmap
+    offsetof(decltype(_table_), field_entries),
+    1,  // num_field_entries
+    0,  // num_aux_entries
+    offsetof(decltype(_table_), field_names),  // no aux_entries
+    PubMessage_class_data_.base(),
+    nullptr,  // post_loop_handler
+    ::_pbi::TcParser::GenericFallback,  // fallback
+    #ifdef PROTOBUF_PREFETCH_PARSE_TABLE
+    ::_pbi::TcParser::GetTable<::GrpcLibraryV1::PubMessage>(),  // to_prefetch
+    #endif  // PROTOBUF_PREFETCH_PARSE_TABLE
+  }, {{
+    // bytes payload = 1;
+    {::_pbi::TcParser::FastBS1,
+     {10, 0, 0,
+      PROTOBUF_FIELD_OFFSET(PubMessage, _impl_.payload_)}},
+  }}, {{
+    65535, 65535
+  }}, {{
+    // bytes payload = 1;
+    {PROTOBUF_FIELD_OFFSET(PubMessage, _impl_.payload_), _Internal::kHasBitsOffset + 0, 0, (0 | ::_fl::kFcOptional | ::_fl::kBytes | ::_fl::kRepAString)},
+  }},
+  // no aux_entries
+  {{
+  }},
+};
+PROTOBUF_NOINLINE void PubMessage::Clear() {
+// @@protoc_insertion_point(message_clear_start:GrpcLibraryV1.PubMessage)
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  ::uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  cached_has_bits = _impl_._has_bits_[0];
+  if (CheckHasBit(cached_has_bits, 0x00000001U)) {
+    _impl_.payload_.ClearNonDefaultToEmpty();
+  }
+  _impl_._has_bits_.Clear();
+  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
+}
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+::uint8_t* PROTOBUF_NONNULL PubMessage::_InternalSerialize(
+    const ::google::protobuf::MessageLite& base, ::uint8_t* PROTOBUF_NONNULL target,
+    ::google::protobuf::io::EpsCopyOutputStream* PROTOBUF_NONNULL stream) {
+  const PubMessage& this_ = static_cast<const PubMessage&>(base);
+#else   // PROTOBUF_CUSTOM_VTABLE
+::uint8_t* PROTOBUF_NONNULL PubMessage::_InternalSerialize(
+    ::uint8_t* PROTOBUF_NONNULL target,
+    ::google::protobuf::io::EpsCopyOutputStream* PROTOBUF_NONNULL stream) const {
+  const PubMessage& this_ = *this;
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  if constexpr (::_pbi::DebugHardenCheckHasBitConsistency()) {
+    this_.CheckHasBitConsistency();
+  }
+  // @@protoc_insertion_point(serialize_to_array_start:GrpcLibraryV1.PubMessage)
+  ::uint32_t cached_has_bits = 0;
+  (void)cached_has_bits;
+
+  cached_has_bits = this_._impl_._has_bits_[0];
+  // bytes payload = 1;
+  if (CheckHasBit(cached_has_bits, 0x00000001U)) {
+    if (!this_._internal_payload().empty()) {
+      const ::std::string& _s = this_._internal_payload();
+      target = stream->WriteBytesMaybeAliased(1, _s, target);
+    }
+  }
+
+  if (ABSL_PREDICT_FALSE(this_._internal_metadata_.have_unknown_fields())) {
+    target =
+        ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+            this_._internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:GrpcLibraryV1.PubMessage)
+  return target;
+}
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+::size_t PubMessage::ByteSizeLong(const MessageLite& base) {
+  const PubMessage& this_ = static_cast<const PubMessage&>(base);
+#else   // PROTOBUF_CUSTOM_VTABLE
+::size_t PubMessage::ByteSizeLong() const {
+  const PubMessage& this_ = *this;
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  // @@protoc_insertion_point(message_byte_size_start:GrpcLibraryV1.PubMessage)
+  ::size_t total_size = 0;
+
+  ::uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void)cached_has_bits;
+
+   {
+    // bytes payload = 1;
+    cached_has_bits = this_._impl_._has_bits_[0];
+    if (CheckHasBit(cached_has_bits, 0x00000001U)) {
+      if (!this_._internal_payload().empty()) {
+        total_size += 1 + ::google::protobuf::internal::WireFormatLite::BytesSize(
+                                        this_._internal_payload());
+      }
+    }
+  }
+  return this_.MaybeComputeUnknownFieldsSize(total_size,
+                                             &this_._impl_._cached_size_);
+}
+
+void PubMessage::MergeImpl(::google::protobuf::MessageLite& to_msg,
+                            const ::google::protobuf::MessageLite& from_msg) {
+   auto* const _this =
+      static_cast<PubMessage*>(&to_msg);
+  auto& from = static_cast<const PubMessage&>(from_msg);
+  if constexpr (::_pbi::DebugHardenCheckHasBitConsistency()) {
+    from.CheckHasBitConsistency();
+  }
+  // @@protoc_insertion_point(class_specific_merge_from_start:GrpcLibraryV1.PubMessage)
+  ABSL_DCHECK_NE(&from, _this);
+  ::uint32_t cached_has_bits = 0;
+  (void)cached_has_bits;
+
+  cached_has_bits = from._impl_._has_bits_[0];
+  if (CheckHasBit(cached_has_bits, 0x00000001U)) {
+    if (!from._internal_payload().empty()) {
+      _this->_internal_set_payload(from._internal_payload());
+    } else {
+      if (_this->_impl_.payload_.IsDefault()) {
+        _this->_internal_set_payload("");
+      }
+    }
+  }
+  _this->_impl_._has_bits_[0] |= cached_has_bits;
+  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
+      from._internal_metadata_);
+}
+
+void PubMessage::CopyFrom(const PubMessage& from) {
+  // @@protoc_insertion_point(class_specific_copy_from_start:GrpcLibraryV1.PubMessage)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+
+void PubMessage::InternalSwap(PubMessage* PROTOBUF_RESTRICT PROTOBUF_NONNULL other) {
+  using ::std::swap;
+  auto* arena = GetArena();
+  ABSL_DCHECK_EQ(arena, other->GetArena());
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.payload_, &other->_impl_.payload_, arena);
+}
+
+::google::protobuf::Metadata PubMessage::GetMetadata() const {
   return ::google::protobuf::Message::GetMetadataImpl(GetClassData()->full());
 }
 // ===================================================================
@@ -20722,6 +21226,1654 @@ void StopEmbeddingResp::InternalSwap(StopEmbeddingResp* PROTOBUF_RESTRICT PROTOB
 }
 
 ::google::protobuf::Metadata StopEmbeddingResp::GetMetadata() const {
+  return ::google::protobuf::Message::GetMetadataImpl(GetClassData()->full());
+}
+// ===================================================================
+
+class PublishReq::_Internal {
+ public:
+  using HasBits =
+      decltype(::std::declval<PublishReq>()._impl_._has_bits_);
+  static constexpr ::int32_t kHasBitsOffset =
+      8 * PROTOBUF_FIELD_OFFSET(PublishReq, _impl_._has_bits_);
+};
+
+PublishReq::PublishReq(::google::protobuf::Arena* PROTOBUF_NULLABLE arena)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(arena, PublishReq_class_data_.base()) {
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(arena) {
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  SharedCtor(arena);
+  // @@protoc_insertion_point(arena_constructor:GrpcLibraryV1.PublishReq)
+}
+PROTOBUF_NDEBUG_INLINE PublishReq::Impl_::Impl_(
+    [[maybe_unused]] ::google::protobuf::internal::InternalVisibility visibility,
+    [[maybe_unused]] ::google::protobuf::Arena* PROTOBUF_NULLABLE arena, const Impl_& from,
+    [[maybe_unused]] const ::GrpcLibraryV1::PublishReq& from_msg)
+      : _has_bits_{from._has_bits_},
+        _cached_size_{0},
+        msgs_{visibility, arena, from.msgs_},
+        auth_(arena, from.auth_) {}
+
+PublishReq::PublishReq(
+    ::google::protobuf::Arena* PROTOBUF_NULLABLE arena,
+    const PublishReq& from)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(arena, PublishReq_class_data_.base()) {
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(arena) {
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  PublishReq* const _this = this;
+  (void)_this;
+  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
+      from._internal_metadata_);
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_, from);
+  _impl_.user_id_ = from._impl_.user_id_;
+
+  // @@protoc_insertion_point(copy_constructor:GrpcLibraryV1.PublishReq)
+}
+PROTOBUF_NDEBUG_INLINE PublishReq::Impl_::Impl_(
+    [[maybe_unused]] ::google::protobuf::internal::InternalVisibility visibility,
+    [[maybe_unused]] ::google::protobuf::Arena* PROTOBUF_NULLABLE arena)
+      : _cached_size_{0},
+        msgs_{visibility, arena},
+        auth_(arena) {}
+
+inline void PublishReq::SharedCtor(::_pb::Arena* PROTOBUF_NULLABLE arena) {
+  new (&_impl_) Impl_(internal_visibility(), arena);
+  _impl_.user_id_ = {};
+}
+PublishReq::~PublishReq() {
+  // @@protoc_insertion_point(destructor:GrpcLibraryV1.PublishReq)
+  SharedDtor(*this);
+}
+inline void PublishReq::SharedDtor(MessageLite& self) {
+  PublishReq& this_ = static_cast<PublishReq&>(self);
+  if constexpr (::_pbi::DebugHardenCheckHasBitConsistency()) {
+    this_.CheckHasBitConsistency();
+  }
+  this_._internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
+  ABSL_DCHECK(this_.GetArena() == nullptr);
+  this_._impl_.auth_.Destroy();
+  this_._impl_.~Impl_();
+}
+
+inline void* PROTOBUF_NONNULL PublishReq::PlacementNew_(
+    const void* PROTOBUF_NONNULL, void* PROTOBUF_NONNULL mem,
+    ::google::protobuf::Arena* PROTOBUF_NULLABLE arena) {
+  return ::new (mem) PublishReq(arena);
+}
+constexpr auto PublishReq::InternalNewImpl_() {
+  constexpr auto arena_bits = ::google::protobuf::internal::EncodePlacementArenaOffsets({
+      PROTOBUF_FIELD_OFFSET(PublishReq, _impl_.msgs_) +
+          decltype(PublishReq::_impl_.msgs_)::
+              InternalGetArenaOffset(
+                  ::google::protobuf::Message::internal_visibility()),
+  });
+  if (arena_bits.has_value()) {
+    return ::google::protobuf::internal::MessageCreator::CopyInit(
+        sizeof(PublishReq), alignof(PublishReq), *arena_bits);
+  } else {
+    return ::google::protobuf::internal::MessageCreator(&PublishReq::PlacementNew_,
+                                 sizeof(PublishReq),
+                                 alignof(PublishReq));
+  }
+}
+constexpr auto PublishReq::InternalGenerateClassData_() {
+  return ::google::protobuf::internal::ClassDataFull{
+      ::google::protobuf::internal::ClassData{
+          &_PublishReq_default_instance_._instance,
+          &_table_.header,
+          nullptr,  // OnDemandRegisterArenaDtor
+          nullptr,  // IsInitialized
+          &PublishReq::MergeImpl,
+          ::google::protobuf::Message::GetNewImpl<PublishReq>(),
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+          &PublishReq::SharedDtor,
+          ::google::protobuf::Message::GetClearImpl<PublishReq>(), &PublishReq::ByteSizeLong,
+              &PublishReq::_InternalSerialize,
+#endif  // PROTOBUF_CUSTOM_VTABLE
+          PROTOBUF_FIELD_OFFSET(PublishReq, _impl_._cached_size_),
+          false,
+      },
+      &PublishReq::kDescriptorMethods,
+      &descriptor_table_src_2fapi_2eproto,
+      nullptr,  // tracker
+  };
+}
+
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 const
+    ::google::protobuf::internal::ClassDataFull PublishReq_class_data_ =
+        PublishReq::InternalGenerateClassData_();
+
+PROTOBUF_ATTRIBUTE_WEAK const ::google::protobuf::internal::ClassData* PROTOBUF_NONNULL
+PublishReq::GetClassData() const {
+  ::google::protobuf::internal::PrefetchToLocalCache(&PublishReq_class_data_);
+  ::google::protobuf::internal::PrefetchToLocalCache(PublishReq_class_data_.tc_table);
+  return PublishReq_class_data_.base();
+}
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::_pbi::TcParseTable<2, 3, 0, 37, 2>
+PublishReq::_table_ = {
+  {
+    PROTOBUF_FIELD_OFFSET(PublishReq, _impl_._has_bits_),
+    0, // no _extensions_
+    3, 24,  // max_field_number, fast_idx_mask
+    offsetof(decltype(_table_), field_lookup_table),
+    4294967288,  // skipmap
+    offsetof(decltype(_table_), field_entries),
+    3,  // num_field_entries
+    0,  // num_aux_entries
+    offsetof(decltype(_table_), field_names),  // no aux_entries
+    PublishReq_class_data_.base(),
+    nullptr,  // post_loop_handler
+    ::_pbi::TcParser::GenericFallback,  // fallback
+    #ifdef PROTOBUF_PREFETCH_PARSE_TABLE
+    ::_pbi::TcParser::GetTable<::GrpcLibraryV1::PublishReq>(),  // to_prefetch
+    #endif  // PROTOBUF_PREFETCH_PARSE_TABLE
+  }, {{
+    {::_pbi::TcParser::MiniParse, {}},
+    // int64 user_id = 1;
+    {::_pbi::TcParser::SingularVarintNoZag1<::uint64_t, offsetof(PublishReq, _impl_.user_id_), 2>(),
+     {8, 2, 0,
+      PROTOBUF_FIELD_OFFSET(PublishReq, _impl_.user_id_)}},
+    // string auth = 2;
+    {::_pbi::TcParser::FastUS1,
+     {18, 1, 0,
+      PROTOBUF_FIELD_OFFSET(PublishReq, _impl_.auth_)}},
+    // repeated bytes msgs = 3;
+    {::_pbi::TcParser::FastBR1,
+     {26, 0, 0,
+      PROTOBUF_FIELD_OFFSET(PublishReq, _impl_.msgs_)}},
+  }}, {{
+    65535, 65535
+  }}, {{
+    // int64 user_id = 1;
+    {PROTOBUF_FIELD_OFFSET(PublishReq, _impl_.user_id_), _Internal::kHasBitsOffset + 2, 0, (0 | ::_fl::kFcOptional | ::_fl::kInt64)},
+    // string auth = 2;
+    {PROTOBUF_FIELD_OFFSET(PublishReq, _impl_.auth_), _Internal::kHasBitsOffset + 1, 0, (0 | ::_fl::kFcOptional | ::_fl::kUtf8String | ::_fl::kRepAString)},
+    // repeated bytes msgs = 3;
+    {PROTOBUF_FIELD_OFFSET(PublishReq, _impl_.msgs_), _Internal::kHasBitsOffset + 0, 0, (0 | ::_fl::kFcRepeated | ::_fl::kBytes | ::_fl::kRepSString)},
+  }},
+  // no aux_entries
+  {{
+    "\30\0\4\0\0\0\0\0"
+    "GrpcLibraryV1.PublishReq"
+    "auth"
+  }},
+};
+PROTOBUF_NOINLINE void PublishReq::Clear() {
+// @@protoc_insertion_point(message_clear_start:GrpcLibraryV1.PublishReq)
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  ::uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  cached_has_bits = _impl_._has_bits_[0];
+  if (BatchCheckHasBit(cached_has_bits, 0x00000003U)) {
+    if (CheckHasBitForRepeated(cached_has_bits, 0x00000001U)) {
+      _impl_.msgs_.Clear();
+    }
+    if (CheckHasBit(cached_has_bits, 0x00000002U)) {
+      _impl_.auth_.ClearNonDefaultToEmpty();
+    }
+  }
+  _impl_.user_id_ = ::int64_t{0};
+  _impl_._has_bits_.Clear();
+  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
+}
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+::uint8_t* PROTOBUF_NONNULL PublishReq::_InternalSerialize(
+    const ::google::protobuf::MessageLite& base, ::uint8_t* PROTOBUF_NONNULL target,
+    ::google::protobuf::io::EpsCopyOutputStream* PROTOBUF_NONNULL stream) {
+  const PublishReq& this_ = static_cast<const PublishReq&>(base);
+#else   // PROTOBUF_CUSTOM_VTABLE
+::uint8_t* PROTOBUF_NONNULL PublishReq::_InternalSerialize(
+    ::uint8_t* PROTOBUF_NONNULL target,
+    ::google::protobuf::io::EpsCopyOutputStream* PROTOBUF_NONNULL stream) const {
+  const PublishReq& this_ = *this;
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  if constexpr (::_pbi::DebugHardenCheckHasBitConsistency()) {
+    this_.CheckHasBitConsistency();
+  }
+  // @@protoc_insertion_point(serialize_to_array_start:GrpcLibraryV1.PublishReq)
+  ::uint32_t cached_has_bits = 0;
+  (void)cached_has_bits;
+
+  cached_has_bits = this_._impl_._has_bits_[0];
+  // int64 user_id = 1;
+  if (CheckHasBit(cached_has_bits, 0x00000004U)) {
+    if (this_._internal_user_id() != 0) {
+      target =
+          ::google::protobuf::internal::WireFormatLite::WriteInt64ToArrayWithField<1>(
+              stream, this_._internal_user_id(), target);
+    }
+  }
+
+  // string auth = 2;
+  if (CheckHasBit(cached_has_bits, 0x00000002U)) {
+    if (!this_._internal_auth().empty()) {
+      const ::std::string& _s = this_._internal_auth();
+      ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+          _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "GrpcLibraryV1.PublishReq.auth");
+      target = stream->WriteStringMaybeAliased(2, _s, target);
+    }
+  }
+
+  // repeated bytes msgs = 3;
+  if (CheckHasBitForRepeated(cached_has_bits, 0x00000001U)) {
+    for (int i = 0, n = this_._internal_msgs_size(); i < n; ++i) {
+      const auto& s = this_._internal_msgs().Get(i);
+      target = stream->WriteBytes(3, s, target);
+    }
+  }
+
+  if (ABSL_PREDICT_FALSE(this_._internal_metadata_.have_unknown_fields())) {
+    target =
+        ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+            this_._internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:GrpcLibraryV1.PublishReq)
+  return target;
+}
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+::size_t PublishReq::ByteSizeLong(const MessageLite& base) {
+  const PublishReq& this_ = static_cast<const PublishReq&>(base);
+#else   // PROTOBUF_CUSTOM_VTABLE
+::size_t PublishReq::ByteSizeLong() const {
+  const PublishReq& this_ = *this;
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  // @@protoc_insertion_point(message_byte_size_start:GrpcLibraryV1.PublishReq)
+  ::size_t total_size = 0;
+
+  ::uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void)cached_has_bits;
+
+  ::_pbi::Prefetch5LinesFrom7Lines(&this_);
+  cached_has_bits = this_._impl_._has_bits_[0];
+  if (BatchCheckHasBit(cached_has_bits, 0x00000007U)) {
+    // repeated bytes msgs = 3;
+    if (CheckHasBitForRepeated(cached_has_bits, 0x00000001U)) {
+      total_size +=
+          1 * ::google::protobuf::internal::FromIntSize(this_._internal_msgs().size());
+      for (int i = 0, n = this_._internal_msgs().size(); i < n; ++i) {
+        total_size += ::google::protobuf::internal::WireFormatLite::BytesSize(
+            this_._internal_msgs().Get(i));
+      }
+    }
+    // string auth = 2;
+    if (CheckHasBit(cached_has_bits, 0x00000002U)) {
+      if (!this_._internal_auth().empty()) {
+        total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
+                                        this_._internal_auth());
+      }
+    }
+    // int64 user_id = 1;
+    if (CheckHasBit(cached_has_bits, 0x00000004U)) {
+      if (this_._internal_user_id() != 0) {
+        total_size += ::_pbi::WireFormatLite::Int64SizePlusOne(
+            this_._internal_user_id());
+      }
+    }
+  }
+  return this_.MaybeComputeUnknownFieldsSize(total_size,
+                                             &this_._impl_._cached_size_);
+}
+
+void PublishReq::MergeImpl(::google::protobuf::MessageLite& to_msg,
+                            const ::google::protobuf::MessageLite& from_msg) {
+   auto* const _this =
+      static_cast<PublishReq*>(&to_msg);
+  auto& from = static_cast<const PublishReq&>(from_msg);
+  if constexpr (::_pbi::DebugHardenCheckHasBitConsistency()) {
+    from.CheckHasBitConsistency();
+  }
+  ::google::protobuf::Arena* arena = _this->GetArena();
+  // @@protoc_insertion_point(class_specific_merge_from_start:GrpcLibraryV1.PublishReq)
+  ABSL_DCHECK_NE(&from, _this);
+  ::uint32_t cached_has_bits = 0;
+  (void)cached_has_bits;
+
+  cached_has_bits = from._impl_._has_bits_[0];
+  if (BatchCheckHasBit(cached_has_bits, 0x00000007U)) {
+    if (CheckHasBitForRepeated(cached_has_bits, 0x00000001U)) {
+      _this->_internal_mutable_msgs()->InternalMergeFromWithArena(
+          ::google::protobuf::MessageLite::internal_visibility(), arena,
+          from._internal_msgs());
+    }
+    if (CheckHasBit(cached_has_bits, 0x00000002U)) {
+      if (!from._internal_auth().empty()) {
+        _this->_internal_set_auth(from._internal_auth());
+      } else {
+        if (_this->_impl_.auth_.IsDefault()) {
+          _this->_internal_set_auth("");
+        }
+      }
+    }
+    if (CheckHasBit(cached_has_bits, 0x00000004U)) {
+      if (from._internal_user_id() != 0) {
+        _this->_impl_.user_id_ = from._impl_.user_id_;
+      }
+    }
+  }
+  _this->_impl_._has_bits_[0] |= cached_has_bits;
+  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
+      from._internal_metadata_);
+}
+
+void PublishReq::CopyFrom(const PublishReq& from) {
+  // @@protoc_insertion_point(class_specific_copy_from_start:GrpcLibraryV1.PublishReq)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+
+void PublishReq::InternalSwap(PublishReq* PROTOBUF_RESTRICT PROTOBUF_NONNULL other) {
+  using ::std::swap;
+  auto* arena = GetArena();
+  ABSL_DCHECK_EQ(arena, other->GetArena());
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
+  _impl_.msgs_.InternalSwap(&other->_impl_.msgs_);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.auth_, &other->_impl_.auth_, arena);
+  swap(_impl_.user_id_, other->_impl_.user_id_);
+}
+
+::google::protobuf::Metadata PublishReq::GetMetadata() const {
+  return ::google::protobuf::Message::GetMetadataImpl(GetClassData()->full());
+}
+// ===================================================================
+
+class PublishResp::_Internal {
+ public:
+  using HasBits =
+      decltype(::std::declval<PublishResp>()._impl_._has_bits_);
+  static constexpr ::int32_t kHasBitsOffset =
+      8 * PROTOBUF_FIELD_OFFSET(PublishResp, _impl_._has_bits_);
+};
+
+PublishResp::PublishResp(::google::protobuf::Arena* PROTOBUF_NULLABLE arena)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(arena, PublishResp_class_data_.base()) {
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(arena) {
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  SharedCtor(arena);
+  // @@protoc_insertion_point(arena_constructor:GrpcLibraryV1.PublishResp)
+}
+PublishResp::PublishResp(
+    ::google::protobuf::Arena* PROTOBUF_NULLABLE arena, const PublishResp& from)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(arena, PublishResp_class_data_.base()),
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(arena),
+#endif  // PROTOBUF_CUSTOM_VTABLE
+      _impl_(from._impl_) {
+  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
+      from._internal_metadata_);
+}
+PROTOBUF_NDEBUG_INLINE PublishResp::Impl_::Impl_(
+    [[maybe_unused]] ::google::protobuf::internal::InternalVisibility visibility,
+    [[maybe_unused]] ::google::protobuf::Arena* PROTOBUF_NULLABLE arena)
+      : _cached_size_{0} {}
+
+inline void PublishResp::SharedCtor(::_pb::Arena* PROTOBUF_NULLABLE arena) {
+  new (&_impl_) Impl_(internal_visibility(), arena);
+  _impl_.error_code_ = {};
+}
+PublishResp::~PublishResp() {
+  // @@protoc_insertion_point(destructor:GrpcLibraryV1.PublishResp)
+  SharedDtor(*this);
+}
+inline void PublishResp::SharedDtor(MessageLite& self) {
+  PublishResp& this_ = static_cast<PublishResp&>(self);
+  if constexpr (::_pbi::DebugHardenCheckHasBitConsistency()) {
+    this_.CheckHasBitConsistency();
+  }
+  this_._internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
+  ABSL_DCHECK(this_.GetArena() == nullptr);
+  this_._impl_.~Impl_();
+}
+
+inline void* PROTOBUF_NONNULL PublishResp::PlacementNew_(
+    const void* PROTOBUF_NONNULL, void* PROTOBUF_NONNULL mem,
+    ::google::protobuf::Arena* PROTOBUF_NULLABLE arena) {
+  return ::new (mem) PublishResp(arena);
+}
+constexpr auto PublishResp::InternalNewImpl_() {
+  return ::google::protobuf::internal::MessageCreator::ZeroInit(sizeof(PublishResp),
+                                            alignof(PublishResp));
+}
+constexpr auto PublishResp::InternalGenerateClassData_() {
+  return ::google::protobuf::internal::ClassDataFull{
+      ::google::protobuf::internal::ClassData{
+          &_PublishResp_default_instance_._instance,
+          &_table_.header,
+          nullptr,  // OnDemandRegisterArenaDtor
+          nullptr,  // IsInitialized
+          &PublishResp::MergeImpl,
+          ::google::protobuf::Message::GetNewImpl<PublishResp>(),
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+          &PublishResp::SharedDtor,
+          ::google::protobuf::Message::GetClearImpl<PublishResp>(), &PublishResp::ByteSizeLong,
+              &PublishResp::_InternalSerialize,
+#endif  // PROTOBUF_CUSTOM_VTABLE
+          PROTOBUF_FIELD_OFFSET(PublishResp, _impl_._cached_size_),
+          false,
+      },
+      &PublishResp::kDescriptorMethods,
+      &descriptor_table_src_2fapi_2eproto,
+      nullptr,  // tracker
+  };
+}
+
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 const
+    ::google::protobuf::internal::ClassDataFull PublishResp_class_data_ =
+        PublishResp::InternalGenerateClassData_();
+
+PROTOBUF_ATTRIBUTE_WEAK const ::google::protobuf::internal::ClassData* PROTOBUF_NONNULL
+PublishResp::GetClassData() const {
+  ::google::protobuf::internal::PrefetchToLocalCache(&PublishResp_class_data_);
+  ::google::protobuf::internal::PrefetchToLocalCache(PublishResp_class_data_.tc_table);
+  return PublishResp_class_data_.base();
+}
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::_pbi::TcParseTable<0, 1, 0, 0, 2>
+PublishResp::_table_ = {
+  {
+    PROTOBUF_FIELD_OFFSET(PublishResp, _impl_._has_bits_),
+    0, // no _extensions_
+    1, 0,  // max_field_number, fast_idx_mask
+    offsetof(decltype(_table_), field_lookup_table),
+    4294967294,  // skipmap
+    offsetof(decltype(_table_), field_entries),
+    1,  // num_field_entries
+    0,  // num_aux_entries
+    offsetof(decltype(_table_), field_names),  // no aux_entries
+    PublishResp_class_data_.base(),
+    nullptr,  // post_loop_handler
+    ::_pbi::TcParser::GenericFallback,  // fallback
+    #ifdef PROTOBUF_PREFETCH_PARSE_TABLE
+    ::_pbi::TcParser::GetTable<::GrpcLibraryV1::PublishResp>(),  // to_prefetch
+    #endif  // PROTOBUF_PREFETCH_PARSE_TABLE
+  }, {{
+    // int32 error_code = 1;
+    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(PublishResp, _impl_.error_code_), 0>(),
+     {8, 0, 0,
+      PROTOBUF_FIELD_OFFSET(PublishResp, _impl_.error_code_)}},
+  }}, {{
+    65535, 65535
+  }}, {{
+    // int32 error_code = 1;
+    {PROTOBUF_FIELD_OFFSET(PublishResp, _impl_.error_code_), _Internal::kHasBitsOffset + 0, 0, (0 | ::_fl::kFcOptional | ::_fl::kInt32)},
+  }},
+  // no aux_entries
+  {{
+  }},
+};
+PROTOBUF_NOINLINE void PublishResp::Clear() {
+// @@protoc_insertion_point(message_clear_start:GrpcLibraryV1.PublishResp)
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  ::uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  _impl_.error_code_ = 0;
+  _impl_._has_bits_.Clear();
+  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
+}
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+::uint8_t* PROTOBUF_NONNULL PublishResp::_InternalSerialize(
+    const ::google::protobuf::MessageLite& base, ::uint8_t* PROTOBUF_NONNULL target,
+    ::google::protobuf::io::EpsCopyOutputStream* PROTOBUF_NONNULL stream) {
+  const PublishResp& this_ = static_cast<const PublishResp&>(base);
+#else   // PROTOBUF_CUSTOM_VTABLE
+::uint8_t* PROTOBUF_NONNULL PublishResp::_InternalSerialize(
+    ::uint8_t* PROTOBUF_NONNULL target,
+    ::google::protobuf::io::EpsCopyOutputStream* PROTOBUF_NONNULL stream) const {
+  const PublishResp& this_ = *this;
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  if constexpr (::_pbi::DebugHardenCheckHasBitConsistency()) {
+    this_.CheckHasBitConsistency();
+  }
+  // @@protoc_insertion_point(serialize_to_array_start:GrpcLibraryV1.PublishResp)
+  ::uint32_t cached_has_bits = 0;
+  (void)cached_has_bits;
+
+  cached_has_bits = this_._impl_._has_bits_[0];
+  // int32 error_code = 1;
+  if (CheckHasBit(cached_has_bits, 0x00000001U)) {
+    if (this_._internal_error_code() != 0) {
+      target =
+          ::google::protobuf::internal::WireFormatLite::WriteInt32ToArrayWithField<1>(
+              stream, this_._internal_error_code(), target);
+    }
+  }
+
+  if (ABSL_PREDICT_FALSE(this_._internal_metadata_.have_unknown_fields())) {
+    target =
+        ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+            this_._internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:GrpcLibraryV1.PublishResp)
+  return target;
+}
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+::size_t PublishResp::ByteSizeLong(const MessageLite& base) {
+  const PublishResp& this_ = static_cast<const PublishResp&>(base);
+#else   // PROTOBUF_CUSTOM_VTABLE
+::size_t PublishResp::ByteSizeLong() const {
+  const PublishResp& this_ = *this;
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  // @@protoc_insertion_point(message_byte_size_start:GrpcLibraryV1.PublishResp)
+  ::size_t total_size = 0;
+
+  ::uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void)cached_has_bits;
+
+   {
+    // int32 error_code = 1;
+    cached_has_bits = this_._impl_._has_bits_[0];
+    if (CheckHasBit(cached_has_bits, 0x00000001U)) {
+      if (this_._internal_error_code() != 0) {
+        total_size += ::_pbi::WireFormatLite::Int32SizePlusOne(
+            this_._internal_error_code());
+      }
+    }
+  }
+  return this_.MaybeComputeUnknownFieldsSize(total_size,
+                                             &this_._impl_._cached_size_);
+}
+
+void PublishResp::MergeImpl(::google::protobuf::MessageLite& to_msg,
+                            const ::google::protobuf::MessageLite& from_msg) {
+   auto* const _this =
+      static_cast<PublishResp*>(&to_msg);
+  auto& from = static_cast<const PublishResp&>(from_msg);
+  if constexpr (::_pbi::DebugHardenCheckHasBitConsistency()) {
+    from.CheckHasBitConsistency();
+  }
+  // @@protoc_insertion_point(class_specific_merge_from_start:GrpcLibraryV1.PublishResp)
+  ABSL_DCHECK_NE(&from, _this);
+  ::uint32_t cached_has_bits = 0;
+  (void)cached_has_bits;
+
+  cached_has_bits = from._impl_._has_bits_[0];
+  if (CheckHasBit(cached_has_bits, 0x00000001U)) {
+    if (from._internal_error_code() != 0) {
+      _this->_impl_.error_code_ = from._impl_.error_code_;
+    }
+  }
+  _this->_impl_._has_bits_[0] |= cached_has_bits;
+  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
+      from._internal_metadata_);
+}
+
+void PublishResp::CopyFrom(const PublishResp& from) {
+  // @@protoc_insertion_point(class_specific_copy_from_start:GrpcLibraryV1.PublishResp)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+
+void PublishResp::InternalSwap(PublishResp* PROTOBUF_RESTRICT PROTOBUF_NONNULL other) {
+  using ::std::swap;
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
+  swap(_impl_.error_code_, other->_impl_.error_code_);
+}
+
+::google::protobuf::Metadata PublishResp::GetMetadata() const {
+  return ::google::protobuf::Message::GetMetadataImpl(GetClassData()->full());
+}
+// ===================================================================
+
+class SubscribeReq::_Internal {
+ public:
+  using HasBits =
+      decltype(::std::declval<SubscribeReq>()._impl_._has_bits_);
+  static constexpr ::int32_t kHasBitsOffset =
+      8 * PROTOBUF_FIELD_OFFSET(SubscribeReq, _impl_._has_bits_);
+};
+
+SubscribeReq::SubscribeReq(::google::protobuf::Arena* PROTOBUF_NULLABLE arena)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(arena, SubscribeReq_class_data_.base()) {
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(arena) {
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  SharedCtor(arena);
+  // @@protoc_insertion_point(arena_constructor:GrpcLibraryV1.SubscribeReq)
+}
+PROTOBUF_NDEBUG_INLINE SubscribeReq::Impl_::Impl_(
+    [[maybe_unused]] ::google::protobuf::internal::InternalVisibility visibility,
+    [[maybe_unused]] ::google::protobuf::Arena* PROTOBUF_NULLABLE arena, const Impl_& from,
+    [[maybe_unused]] const ::GrpcLibraryV1::SubscribeReq& from_msg)
+      : _has_bits_{from._has_bits_},
+        _cached_size_{0},
+        topics_{visibility, arena, from.topics_},
+        auth_(arena, from.auth_) {}
+
+SubscribeReq::SubscribeReq(
+    ::google::protobuf::Arena* PROTOBUF_NULLABLE arena,
+    const SubscribeReq& from)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(arena, SubscribeReq_class_data_.base()) {
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(arena) {
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  SubscribeReq* const _this = this;
+  (void)_this;
+  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
+      from._internal_metadata_);
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_, from);
+  _impl_.user_id_ = from._impl_.user_id_;
+
+  // @@protoc_insertion_point(copy_constructor:GrpcLibraryV1.SubscribeReq)
+}
+PROTOBUF_NDEBUG_INLINE SubscribeReq::Impl_::Impl_(
+    [[maybe_unused]] ::google::protobuf::internal::InternalVisibility visibility,
+    [[maybe_unused]] ::google::protobuf::Arena* PROTOBUF_NULLABLE arena)
+      : _cached_size_{0},
+        topics_{visibility, arena},
+        auth_(arena) {}
+
+inline void SubscribeReq::SharedCtor(::_pb::Arena* PROTOBUF_NULLABLE arena) {
+  new (&_impl_) Impl_(internal_visibility(), arena);
+  _impl_.user_id_ = {};
+}
+SubscribeReq::~SubscribeReq() {
+  // @@protoc_insertion_point(destructor:GrpcLibraryV1.SubscribeReq)
+  SharedDtor(*this);
+}
+inline void SubscribeReq::SharedDtor(MessageLite& self) {
+  SubscribeReq& this_ = static_cast<SubscribeReq&>(self);
+  if constexpr (::_pbi::DebugHardenCheckHasBitConsistency()) {
+    this_.CheckHasBitConsistency();
+  }
+  this_._internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
+  ABSL_DCHECK(this_.GetArena() == nullptr);
+  this_._impl_.auth_.Destroy();
+  this_._impl_.~Impl_();
+}
+
+inline void* PROTOBUF_NONNULL SubscribeReq::PlacementNew_(
+    const void* PROTOBUF_NONNULL, void* PROTOBUF_NONNULL mem,
+    ::google::protobuf::Arena* PROTOBUF_NULLABLE arena) {
+  return ::new (mem) SubscribeReq(arena);
+}
+constexpr auto SubscribeReq::InternalNewImpl_() {
+  constexpr auto arena_bits = ::google::protobuf::internal::EncodePlacementArenaOffsets({
+      PROTOBUF_FIELD_OFFSET(SubscribeReq, _impl_.topics_) +
+          decltype(SubscribeReq::_impl_.topics_)::
+              InternalGetArenaOffset(
+                  ::google::protobuf::Message::internal_visibility()),
+  });
+  if (arena_bits.has_value()) {
+    return ::google::protobuf::internal::MessageCreator::CopyInit(
+        sizeof(SubscribeReq), alignof(SubscribeReq), *arena_bits);
+  } else {
+    return ::google::protobuf::internal::MessageCreator(&SubscribeReq::PlacementNew_,
+                                 sizeof(SubscribeReq),
+                                 alignof(SubscribeReq));
+  }
+}
+constexpr auto SubscribeReq::InternalGenerateClassData_() {
+  return ::google::protobuf::internal::ClassDataFull{
+      ::google::protobuf::internal::ClassData{
+          &_SubscribeReq_default_instance_._instance,
+          &_table_.header,
+          nullptr,  // OnDemandRegisterArenaDtor
+          nullptr,  // IsInitialized
+          &SubscribeReq::MergeImpl,
+          ::google::protobuf::Message::GetNewImpl<SubscribeReq>(),
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+          &SubscribeReq::SharedDtor,
+          ::google::protobuf::Message::GetClearImpl<SubscribeReq>(), &SubscribeReq::ByteSizeLong,
+              &SubscribeReq::_InternalSerialize,
+#endif  // PROTOBUF_CUSTOM_VTABLE
+          PROTOBUF_FIELD_OFFSET(SubscribeReq, _impl_._cached_size_),
+          false,
+      },
+      &SubscribeReq::kDescriptorMethods,
+      &descriptor_table_src_2fapi_2eproto,
+      nullptr,  // tracker
+  };
+}
+
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 const
+    ::google::protobuf::internal::ClassDataFull SubscribeReq_class_data_ =
+        SubscribeReq::InternalGenerateClassData_();
+
+PROTOBUF_ATTRIBUTE_WEAK const ::google::protobuf::internal::ClassData* PROTOBUF_NONNULL
+SubscribeReq::GetClassData() const {
+  ::google::protobuf::internal::PrefetchToLocalCache(&SubscribeReq_class_data_);
+  ::google::protobuf::internal::PrefetchToLocalCache(SubscribeReq_class_data_.tc_table);
+  return SubscribeReq_class_data_.base();
+}
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::_pbi::TcParseTable<2, 3, 0, 45, 2>
+SubscribeReq::_table_ = {
+  {
+    PROTOBUF_FIELD_OFFSET(SubscribeReq, _impl_._has_bits_),
+    0, // no _extensions_
+    3, 24,  // max_field_number, fast_idx_mask
+    offsetof(decltype(_table_), field_lookup_table),
+    4294967288,  // skipmap
+    offsetof(decltype(_table_), field_entries),
+    3,  // num_field_entries
+    0,  // num_aux_entries
+    offsetof(decltype(_table_), field_names),  // no aux_entries
+    SubscribeReq_class_data_.base(),
+    nullptr,  // post_loop_handler
+    ::_pbi::TcParser::GenericFallback,  // fallback
+    #ifdef PROTOBUF_PREFETCH_PARSE_TABLE
+    ::_pbi::TcParser::GetTable<::GrpcLibraryV1::SubscribeReq>(),  // to_prefetch
+    #endif  // PROTOBUF_PREFETCH_PARSE_TABLE
+  }, {{
+    {::_pbi::TcParser::MiniParse, {}},
+    // int64 user_id = 1;
+    {::_pbi::TcParser::SingularVarintNoZag1<::uint64_t, offsetof(SubscribeReq, _impl_.user_id_), 2>(),
+     {8, 2, 0,
+      PROTOBUF_FIELD_OFFSET(SubscribeReq, _impl_.user_id_)}},
+    // string auth = 2;
+    {::_pbi::TcParser::FastUS1,
+     {18, 1, 0,
+      PROTOBUF_FIELD_OFFSET(SubscribeReq, _impl_.auth_)}},
+    // repeated string topics = 3;
+    {::_pbi::TcParser::FastUR1,
+     {26, 0, 0,
+      PROTOBUF_FIELD_OFFSET(SubscribeReq, _impl_.topics_)}},
+  }}, {{
+    65535, 65535
+  }}, {{
+    // int64 user_id = 1;
+    {PROTOBUF_FIELD_OFFSET(SubscribeReq, _impl_.user_id_), _Internal::kHasBitsOffset + 2, 0, (0 | ::_fl::kFcOptional | ::_fl::kInt64)},
+    // string auth = 2;
+    {PROTOBUF_FIELD_OFFSET(SubscribeReq, _impl_.auth_), _Internal::kHasBitsOffset + 1, 0, (0 | ::_fl::kFcOptional | ::_fl::kUtf8String | ::_fl::kRepAString)},
+    // repeated string topics = 3;
+    {PROTOBUF_FIELD_OFFSET(SubscribeReq, _impl_.topics_), _Internal::kHasBitsOffset + 0, 0, (0 | ::_fl::kFcRepeated | ::_fl::kUtf8String | ::_fl::kRepSString)},
+  }},
+  // no aux_entries
+  {{
+    "\32\0\4\6\0\0\0\0"
+    "GrpcLibraryV1.SubscribeReq"
+    "auth"
+    "topics"
+  }},
+};
+PROTOBUF_NOINLINE void SubscribeReq::Clear() {
+// @@protoc_insertion_point(message_clear_start:GrpcLibraryV1.SubscribeReq)
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  ::uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  cached_has_bits = _impl_._has_bits_[0];
+  if (BatchCheckHasBit(cached_has_bits, 0x00000003U)) {
+    if (CheckHasBitForRepeated(cached_has_bits, 0x00000001U)) {
+      _impl_.topics_.Clear();
+    }
+    if (CheckHasBit(cached_has_bits, 0x00000002U)) {
+      _impl_.auth_.ClearNonDefaultToEmpty();
+    }
+  }
+  _impl_.user_id_ = ::int64_t{0};
+  _impl_._has_bits_.Clear();
+  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
+}
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+::uint8_t* PROTOBUF_NONNULL SubscribeReq::_InternalSerialize(
+    const ::google::protobuf::MessageLite& base, ::uint8_t* PROTOBUF_NONNULL target,
+    ::google::protobuf::io::EpsCopyOutputStream* PROTOBUF_NONNULL stream) {
+  const SubscribeReq& this_ = static_cast<const SubscribeReq&>(base);
+#else   // PROTOBUF_CUSTOM_VTABLE
+::uint8_t* PROTOBUF_NONNULL SubscribeReq::_InternalSerialize(
+    ::uint8_t* PROTOBUF_NONNULL target,
+    ::google::protobuf::io::EpsCopyOutputStream* PROTOBUF_NONNULL stream) const {
+  const SubscribeReq& this_ = *this;
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  if constexpr (::_pbi::DebugHardenCheckHasBitConsistency()) {
+    this_.CheckHasBitConsistency();
+  }
+  // @@protoc_insertion_point(serialize_to_array_start:GrpcLibraryV1.SubscribeReq)
+  ::uint32_t cached_has_bits = 0;
+  (void)cached_has_bits;
+
+  cached_has_bits = this_._impl_._has_bits_[0];
+  // int64 user_id = 1;
+  if (CheckHasBit(cached_has_bits, 0x00000004U)) {
+    if (this_._internal_user_id() != 0) {
+      target =
+          ::google::protobuf::internal::WireFormatLite::WriteInt64ToArrayWithField<1>(
+              stream, this_._internal_user_id(), target);
+    }
+  }
+
+  // string auth = 2;
+  if (CheckHasBit(cached_has_bits, 0x00000002U)) {
+    if (!this_._internal_auth().empty()) {
+      const ::std::string& _s = this_._internal_auth();
+      ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+          _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "GrpcLibraryV1.SubscribeReq.auth");
+      target = stream->WriteStringMaybeAliased(2, _s, target);
+    }
+  }
+
+  // repeated string topics = 3;
+  if (CheckHasBitForRepeated(cached_has_bits, 0x00000001U)) {
+    for (int i = 0, n = this_._internal_topics_size(); i < n; ++i) {
+      const auto& s = this_._internal_topics().Get(i);
+      ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+          s.data(), static_cast<int>(s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "GrpcLibraryV1.SubscribeReq.topics");
+      target = stream->WriteString(3, s, target);
+    }
+  }
+
+  if (ABSL_PREDICT_FALSE(this_._internal_metadata_.have_unknown_fields())) {
+    target =
+        ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+            this_._internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:GrpcLibraryV1.SubscribeReq)
+  return target;
+}
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+::size_t SubscribeReq::ByteSizeLong(const MessageLite& base) {
+  const SubscribeReq& this_ = static_cast<const SubscribeReq&>(base);
+#else   // PROTOBUF_CUSTOM_VTABLE
+::size_t SubscribeReq::ByteSizeLong() const {
+  const SubscribeReq& this_ = *this;
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  // @@protoc_insertion_point(message_byte_size_start:GrpcLibraryV1.SubscribeReq)
+  ::size_t total_size = 0;
+
+  ::uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void)cached_has_bits;
+
+  ::_pbi::Prefetch5LinesFrom7Lines(&this_);
+  cached_has_bits = this_._impl_._has_bits_[0];
+  if (BatchCheckHasBit(cached_has_bits, 0x00000007U)) {
+    // repeated string topics = 3;
+    if (CheckHasBitForRepeated(cached_has_bits, 0x00000001U)) {
+      total_size +=
+          1 * ::google::protobuf::internal::FromIntSize(this_._internal_topics().size());
+      for (int i = 0, n = this_._internal_topics().size(); i < n; ++i) {
+        total_size += ::google::protobuf::internal::WireFormatLite::StringSize(
+            this_._internal_topics().Get(i));
+      }
+    }
+    // string auth = 2;
+    if (CheckHasBit(cached_has_bits, 0x00000002U)) {
+      if (!this_._internal_auth().empty()) {
+        total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
+                                        this_._internal_auth());
+      }
+    }
+    // int64 user_id = 1;
+    if (CheckHasBit(cached_has_bits, 0x00000004U)) {
+      if (this_._internal_user_id() != 0) {
+        total_size += ::_pbi::WireFormatLite::Int64SizePlusOne(
+            this_._internal_user_id());
+      }
+    }
+  }
+  return this_.MaybeComputeUnknownFieldsSize(total_size,
+                                             &this_._impl_._cached_size_);
+}
+
+void SubscribeReq::MergeImpl(::google::protobuf::MessageLite& to_msg,
+                            const ::google::protobuf::MessageLite& from_msg) {
+   auto* const _this =
+      static_cast<SubscribeReq*>(&to_msg);
+  auto& from = static_cast<const SubscribeReq&>(from_msg);
+  if constexpr (::_pbi::DebugHardenCheckHasBitConsistency()) {
+    from.CheckHasBitConsistency();
+  }
+  ::google::protobuf::Arena* arena = _this->GetArena();
+  // @@protoc_insertion_point(class_specific_merge_from_start:GrpcLibraryV1.SubscribeReq)
+  ABSL_DCHECK_NE(&from, _this);
+  ::uint32_t cached_has_bits = 0;
+  (void)cached_has_bits;
+
+  cached_has_bits = from._impl_._has_bits_[0];
+  if (BatchCheckHasBit(cached_has_bits, 0x00000007U)) {
+    if (CheckHasBitForRepeated(cached_has_bits, 0x00000001U)) {
+      _this->_internal_mutable_topics()->InternalMergeFromWithArena(
+          ::google::protobuf::MessageLite::internal_visibility(), arena,
+          from._internal_topics());
+    }
+    if (CheckHasBit(cached_has_bits, 0x00000002U)) {
+      if (!from._internal_auth().empty()) {
+        _this->_internal_set_auth(from._internal_auth());
+      } else {
+        if (_this->_impl_.auth_.IsDefault()) {
+          _this->_internal_set_auth("");
+        }
+      }
+    }
+    if (CheckHasBit(cached_has_bits, 0x00000004U)) {
+      if (from._internal_user_id() != 0) {
+        _this->_impl_.user_id_ = from._impl_.user_id_;
+      }
+    }
+  }
+  _this->_impl_._has_bits_[0] |= cached_has_bits;
+  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
+      from._internal_metadata_);
+}
+
+void SubscribeReq::CopyFrom(const SubscribeReq& from) {
+  // @@protoc_insertion_point(class_specific_copy_from_start:GrpcLibraryV1.SubscribeReq)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+
+void SubscribeReq::InternalSwap(SubscribeReq* PROTOBUF_RESTRICT PROTOBUF_NONNULL other) {
+  using ::std::swap;
+  auto* arena = GetArena();
+  ABSL_DCHECK_EQ(arena, other->GetArena());
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
+  _impl_.topics_.InternalSwap(&other->_impl_.topics_);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.auth_, &other->_impl_.auth_, arena);
+  swap(_impl_.user_id_, other->_impl_.user_id_);
+}
+
+::google::protobuf::Metadata SubscribeReq::GetMetadata() const {
+  return ::google::protobuf::Message::GetMetadataImpl(GetClassData()->full());
+}
+// ===================================================================
+
+class UnSubscribeReq::_Internal {
+ public:
+  using HasBits =
+      decltype(::std::declval<UnSubscribeReq>()._impl_._has_bits_);
+  static constexpr ::int32_t kHasBitsOffset =
+      8 * PROTOBUF_FIELD_OFFSET(UnSubscribeReq, _impl_._has_bits_);
+};
+
+UnSubscribeReq::UnSubscribeReq(::google::protobuf::Arena* PROTOBUF_NULLABLE arena)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(arena, UnSubscribeReq_class_data_.base()) {
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(arena) {
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  SharedCtor(arena);
+  // @@protoc_insertion_point(arena_constructor:GrpcLibraryV1.UnSubscribeReq)
+}
+PROTOBUF_NDEBUG_INLINE UnSubscribeReq::Impl_::Impl_(
+    [[maybe_unused]] ::google::protobuf::internal::InternalVisibility visibility,
+    [[maybe_unused]] ::google::protobuf::Arena* PROTOBUF_NULLABLE arena, const Impl_& from,
+    [[maybe_unused]] const ::GrpcLibraryV1::UnSubscribeReq& from_msg)
+      : _has_bits_{from._has_bits_},
+        _cached_size_{0},
+        topics_{visibility, arena, from.topics_},
+        auth_(arena, from.auth_) {}
+
+UnSubscribeReq::UnSubscribeReq(
+    ::google::protobuf::Arena* PROTOBUF_NULLABLE arena,
+    const UnSubscribeReq& from)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(arena, UnSubscribeReq_class_data_.base()) {
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(arena) {
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  UnSubscribeReq* const _this = this;
+  (void)_this;
+  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
+      from._internal_metadata_);
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_, from);
+  _impl_.user_id_ = from._impl_.user_id_;
+
+  // @@protoc_insertion_point(copy_constructor:GrpcLibraryV1.UnSubscribeReq)
+}
+PROTOBUF_NDEBUG_INLINE UnSubscribeReq::Impl_::Impl_(
+    [[maybe_unused]] ::google::protobuf::internal::InternalVisibility visibility,
+    [[maybe_unused]] ::google::protobuf::Arena* PROTOBUF_NULLABLE arena)
+      : _cached_size_{0},
+        topics_{visibility, arena},
+        auth_(arena) {}
+
+inline void UnSubscribeReq::SharedCtor(::_pb::Arena* PROTOBUF_NULLABLE arena) {
+  new (&_impl_) Impl_(internal_visibility(), arena);
+  _impl_.user_id_ = {};
+}
+UnSubscribeReq::~UnSubscribeReq() {
+  // @@protoc_insertion_point(destructor:GrpcLibraryV1.UnSubscribeReq)
+  SharedDtor(*this);
+}
+inline void UnSubscribeReq::SharedDtor(MessageLite& self) {
+  UnSubscribeReq& this_ = static_cast<UnSubscribeReq&>(self);
+  if constexpr (::_pbi::DebugHardenCheckHasBitConsistency()) {
+    this_.CheckHasBitConsistency();
+  }
+  this_._internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
+  ABSL_DCHECK(this_.GetArena() == nullptr);
+  this_._impl_.auth_.Destroy();
+  this_._impl_.~Impl_();
+}
+
+inline void* PROTOBUF_NONNULL UnSubscribeReq::PlacementNew_(
+    const void* PROTOBUF_NONNULL, void* PROTOBUF_NONNULL mem,
+    ::google::protobuf::Arena* PROTOBUF_NULLABLE arena) {
+  return ::new (mem) UnSubscribeReq(arena);
+}
+constexpr auto UnSubscribeReq::InternalNewImpl_() {
+  constexpr auto arena_bits = ::google::protobuf::internal::EncodePlacementArenaOffsets({
+      PROTOBUF_FIELD_OFFSET(UnSubscribeReq, _impl_.topics_) +
+          decltype(UnSubscribeReq::_impl_.topics_)::
+              InternalGetArenaOffset(
+                  ::google::protobuf::Message::internal_visibility()),
+  });
+  if (arena_bits.has_value()) {
+    return ::google::protobuf::internal::MessageCreator::CopyInit(
+        sizeof(UnSubscribeReq), alignof(UnSubscribeReq), *arena_bits);
+  } else {
+    return ::google::protobuf::internal::MessageCreator(&UnSubscribeReq::PlacementNew_,
+                                 sizeof(UnSubscribeReq),
+                                 alignof(UnSubscribeReq));
+  }
+}
+constexpr auto UnSubscribeReq::InternalGenerateClassData_() {
+  return ::google::protobuf::internal::ClassDataFull{
+      ::google::protobuf::internal::ClassData{
+          &_UnSubscribeReq_default_instance_._instance,
+          &_table_.header,
+          nullptr,  // OnDemandRegisterArenaDtor
+          nullptr,  // IsInitialized
+          &UnSubscribeReq::MergeImpl,
+          ::google::protobuf::Message::GetNewImpl<UnSubscribeReq>(),
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+          &UnSubscribeReq::SharedDtor,
+          ::google::protobuf::Message::GetClearImpl<UnSubscribeReq>(), &UnSubscribeReq::ByteSizeLong,
+              &UnSubscribeReq::_InternalSerialize,
+#endif  // PROTOBUF_CUSTOM_VTABLE
+          PROTOBUF_FIELD_OFFSET(UnSubscribeReq, _impl_._cached_size_),
+          false,
+      },
+      &UnSubscribeReq::kDescriptorMethods,
+      &descriptor_table_src_2fapi_2eproto,
+      nullptr,  // tracker
+  };
+}
+
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 const
+    ::google::protobuf::internal::ClassDataFull UnSubscribeReq_class_data_ =
+        UnSubscribeReq::InternalGenerateClassData_();
+
+PROTOBUF_ATTRIBUTE_WEAK const ::google::protobuf::internal::ClassData* PROTOBUF_NONNULL
+UnSubscribeReq::GetClassData() const {
+  ::google::protobuf::internal::PrefetchToLocalCache(&UnSubscribeReq_class_data_);
+  ::google::protobuf::internal::PrefetchToLocalCache(UnSubscribeReq_class_data_.tc_table);
+  return UnSubscribeReq_class_data_.base();
+}
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::_pbi::TcParseTable<2, 3, 0, 47, 2>
+UnSubscribeReq::_table_ = {
+  {
+    PROTOBUF_FIELD_OFFSET(UnSubscribeReq, _impl_._has_bits_),
+    0, // no _extensions_
+    3, 24,  // max_field_number, fast_idx_mask
+    offsetof(decltype(_table_), field_lookup_table),
+    4294967288,  // skipmap
+    offsetof(decltype(_table_), field_entries),
+    3,  // num_field_entries
+    0,  // num_aux_entries
+    offsetof(decltype(_table_), field_names),  // no aux_entries
+    UnSubscribeReq_class_data_.base(),
+    nullptr,  // post_loop_handler
+    ::_pbi::TcParser::GenericFallback,  // fallback
+    #ifdef PROTOBUF_PREFETCH_PARSE_TABLE
+    ::_pbi::TcParser::GetTable<::GrpcLibraryV1::UnSubscribeReq>(),  // to_prefetch
+    #endif  // PROTOBUF_PREFETCH_PARSE_TABLE
+  }, {{
+    {::_pbi::TcParser::MiniParse, {}},
+    // int64 user_id = 1;
+    {::_pbi::TcParser::SingularVarintNoZag1<::uint64_t, offsetof(UnSubscribeReq, _impl_.user_id_), 2>(),
+     {8, 2, 0,
+      PROTOBUF_FIELD_OFFSET(UnSubscribeReq, _impl_.user_id_)}},
+    // string auth = 2;
+    {::_pbi::TcParser::FastUS1,
+     {18, 1, 0,
+      PROTOBUF_FIELD_OFFSET(UnSubscribeReq, _impl_.auth_)}},
+    // repeated string topics = 3;
+    {::_pbi::TcParser::FastUR1,
+     {26, 0, 0,
+      PROTOBUF_FIELD_OFFSET(UnSubscribeReq, _impl_.topics_)}},
+  }}, {{
+    65535, 65535
+  }}, {{
+    // int64 user_id = 1;
+    {PROTOBUF_FIELD_OFFSET(UnSubscribeReq, _impl_.user_id_), _Internal::kHasBitsOffset + 2, 0, (0 | ::_fl::kFcOptional | ::_fl::kInt64)},
+    // string auth = 2;
+    {PROTOBUF_FIELD_OFFSET(UnSubscribeReq, _impl_.auth_), _Internal::kHasBitsOffset + 1, 0, (0 | ::_fl::kFcOptional | ::_fl::kUtf8String | ::_fl::kRepAString)},
+    // repeated string topics = 3;
+    {PROTOBUF_FIELD_OFFSET(UnSubscribeReq, _impl_.topics_), _Internal::kHasBitsOffset + 0, 0, (0 | ::_fl::kFcRepeated | ::_fl::kUtf8String | ::_fl::kRepSString)},
+  }},
+  // no aux_entries
+  {{
+    "\34\0\4\6\0\0\0\0"
+    "GrpcLibraryV1.UnSubscribeReq"
+    "auth"
+    "topics"
+  }},
+};
+PROTOBUF_NOINLINE void UnSubscribeReq::Clear() {
+// @@protoc_insertion_point(message_clear_start:GrpcLibraryV1.UnSubscribeReq)
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  ::uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  cached_has_bits = _impl_._has_bits_[0];
+  if (BatchCheckHasBit(cached_has_bits, 0x00000003U)) {
+    if (CheckHasBitForRepeated(cached_has_bits, 0x00000001U)) {
+      _impl_.topics_.Clear();
+    }
+    if (CheckHasBit(cached_has_bits, 0x00000002U)) {
+      _impl_.auth_.ClearNonDefaultToEmpty();
+    }
+  }
+  _impl_.user_id_ = ::int64_t{0};
+  _impl_._has_bits_.Clear();
+  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
+}
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+::uint8_t* PROTOBUF_NONNULL UnSubscribeReq::_InternalSerialize(
+    const ::google::protobuf::MessageLite& base, ::uint8_t* PROTOBUF_NONNULL target,
+    ::google::protobuf::io::EpsCopyOutputStream* PROTOBUF_NONNULL stream) {
+  const UnSubscribeReq& this_ = static_cast<const UnSubscribeReq&>(base);
+#else   // PROTOBUF_CUSTOM_VTABLE
+::uint8_t* PROTOBUF_NONNULL UnSubscribeReq::_InternalSerialize(
+    ::uint8_t* PROTOBUF_NONNULL target,
+    ::google::protobuf::io::EpsCopyOutputStream* PROTOBUF_NONNULL stream) const {
+  const UnSubscribeReq& this_ = *this;
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  if constexpr (::_pbi::DebugHardenCheckHasBitConsistency()) {
+    this_.CheckHasBitConsistency();
+  }
+  // @@protoc_insertion_point(serialize_to_array_start:GrpcLibraryV1.UnSubscribeReq)
+  ::uint32_t cached_has_bits = 0;
+  (void)cached_has_bits;
+
+  cached_has_bits = this_._impl_._has_bits_[0];
+  // int64 user_id = 1;
+  if (CheckHasBit(cached_has_bits, 0x00000004U)) {
+    if (this_._internal_user_id() != 0) {
+      target =
+          ::google::protobuf::internal::WireFormatLite::WriteInt64ToArrayWithField<1>(
+              stream, this_._internal_user_id(), target);
+    }
+  }
+
+  // string auth = 2;
+  if (CheckHasBit(cached_has_bits, 0x00000002U)) {
+    if (!this_._internal_auth().empty()) {
+      const ::std::string& _s = this_._internal_auth();
+      ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+          _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "GrpcLibraryV1.UnSubscribeReq.auth");
+      target = stream->WriteStringMaybeAliased(2, _s, target);
+    }
+  }
+
+  // repeated string topics = 3;
+  if (CheckHasBitForRepeated(cached_has_bits, 0x00000001U)) {
+    for (int i = 0, n = this_._internal_topics_size(); i < n; ++i) {
+      const auto& s = this_._internal_topics().Get(i);
+      ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+          s.data(), static_cast<int>(s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "GrpcLibraryV1.UnSubscribeReq.topics");
+      target = stream->WriteString(3, s, target);
+    }
+  }
+
+  if (ABSL_PREDICT_FALSE(this_._internal_metadata_.have_unknown_fields())) {
+    target =
+        ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+            this_._internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:GrpcLibraryV1.UnSubscribeReq)
+  return target;
+}
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+::size_t UnSubscribeReq::ByteSizeLong(const MessageLite& base) {
+  const UnSubscribeReq& this_ = static_cast<const UnSubscribeReq&>(base);
+#else   // PROTOBUF_CUSTOM_VTABLE
+::size_t UnSubscribeReq::ByteSizeLong() const {
+  const UnSubscribeReq& this_ = *this;
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  // @@protoc_insertion_point(message_byte_size_start:GrpcLibraryV1.UnSubscribeReq)
+  ::size_t total_size = 0;
+
+  ::uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void)cached_has_bits;
+
+  ::_pbi::Prefetch5LinesFrom7Lines(&this_);
+  cached_has_bits = this_._impl_._has_bits_[0];
+  if (BatchCheckHasBit(cached_has_bits, 0x00000007U)) {
+    // repeated string topics = 3;
+    if (CheckHasBitForRepeated(cached_has_bits, 0x00000001U)) {
+      total_size +=
+          1 * ::google::protobuf::internal::FromIntSize(this_._internal_topics().size());
+      for (int i = 0, n = this_._internal_topics().size(); i < n; ++i) {
+        total_size += ::google::protobuf::internal::WireFormatLite::StringSize(
+            this_._internal_topics().Get(i));
+      }
+    }
+    // string auth = 2;
+    if (CheckHasBit(cached_has_bits, 0x00000002U)) {
+      if (!this_._internal_auth().empty()) {
+        total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
+                                        this_._internal_auth());
+      }
+    }
+    // int64 user_id = 1;
+    if (CheckHasBit(cached_has_bits, 0x00000004U)) {
+      if (this_._internal_user_id() != 0) {
+        total_size += ::_pbi::WireFormatLite::Int64SizePlusOne(
+            this_._internal_user_id());
+      }
+    }
+  }
+  return this_.MaybeComputeUnknownFieldsSize(total_size,
+                                             &this_._impl_._cached_size_);
+}
+
+void UnSubscribeReq::MergeImpl(::google::protobuf::MessageLite& to_msg,
+                            const ::google::protobuf::MessageLite& from_msg) {
+   auto* const _this =
+      static_cast<UnSubscribeReq*>(&to_msg);
+  auto& from = static_cast<const UnSubscribeReq&>(from_msg);
+  if constexpr (::_pbi::DebugHardenCheckHasBitConsistency()) {
+    from.CheckHasBitConsistency();
+  }
+  ::google::protobuf::Arena* arena = _this->GetArena();
+  // @@protoc_insertion_point(class_specific_merge_from_start:GrpcLibraryV1.UnSubscribeReq)
+  ABSL_DCHECK_NE(&from, _this);
+  ::uint32_t cached_has_bits = 0;
+  (void)cached_has_bits;
+
+  cached_has_bits = from._impl_._has_bits_[0];
+  if (BatchCheckHasBit(cached_has_bits, 0x00000007U)) {
+    if (CheckHasBitForRepeated(cached_has_bits, 0x00000001U)) {
+      _this->_internal_mutable_topics()->InternalMergeFromWithArena(
+          ::google::protobuf::MessageLite::internal_visibility(), arena,
+          from._internal_topics());
+    }
+    if (CheckHasBit(cached_has_bits, 0x00000002U)) {
+      if (!from._internal_auth().empty()) {
+        _this->_internal_set_auth(from._internal_auth());
+      } else {
+        if (_this->_impl_.auth_.IsDefault()) {
+          _this->_internal_set_auth("");
+        }
+      }
+    }
+    if (CheckHasBit(cached_has_bits, 0x00000004U)) {
+      if (from._internal_user_id() != 0) {
+        _this->_impl_.user_id_ = from._impl_.user_id_;
+      }
+    }
+  }
+  _this->_impl_._has_bits_[0] |= cached_has_bits;
+  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
+      from._internal_metadata_);
+}
+
+void UnSubscribeReq::CopyFrom(const UnSubscribeReq& from) {
+  // @@protoc_insertion_point(class_specific_copy_from_start:GrpcLibraryV1.UnSubscribeReq)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+
+void UnSubscribeReq::InternalSwap(UnSubscribeReq* PROTOBUF_RESTRICT PROTOBUF_NONNULL other) {
+  using ::std::swap;
+  auto* arena = GetArena();
+  ABSL_DCHECK_EQ(arena, other->GetArena());
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
+  _impl_.topics_.InternalSwap(&other->_impl_.topics_);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.auth_, &other->_impl_.auth_, arena);
+  swap(_impl_.user_id_, other->_impl_.user_id_);
+}
+
+::google::protobuf::Metadata UnSubscribeReq::GetMetadata() const {
+  return ::google::protobuf::Message::GetMetadataImpl(GetClassData()->full());
+}
+// ===================================================================
+
+class UnSubscribeResp::_Internal {
+ public:
+  using HasBits =
+      decltype(::std::declval<UnSubscribeResp>()._impl_._has_bits_);
+  static constexpr ::int32_t kHasBitsOffset =
+      8 * PROTOBUF_FIELD_OFFSET(UnSubscribeResp, _impl_._has_bits_);
+};
+
+UnSubscribeResp::UnSubscribeResp(::google::protobuf::Arena* PROTOBUF_NULLABLE arena)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(arena, UnSubscribeResp_class_data_.base()) {
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(arena) {
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  SharedCtor(arena);
+  // @@protoc_insertion_point(arena_constructor:GrpcLibraryV1.UnSubscribeResp)
+}
+PROTOBUF_NDEBUG_INLINE UnSubscribeResp::Impl_::Impl_(
+    [[maybe_unused]] ::google::protobuf::internal::InternalVisibility visibility,
+    [[maybe_unused]] ::google::protobuf::Arena* PROTOBUF_NULLABLE arena, const Impl_& from,
+    [[maybe_unused]] const ::GrpcLibraryV1::UnSubscribeResp& from_msg)
+      : _has_bits_{from._has_bits_},
+        _cached_size_{0},
+        topics_{visibility, arena, from.topics_} {}
+
+UnSubscribeResp::UnSubscribeResp(
+    ::google::protobuf::Arena* PROTOBUF_NULLABLE arena,
+    const UnSubscribeResp& from)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(arena, UnSubscribeResp_class_data_.base()) {
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(arena) {
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  UnSubscribeResp* const _this = this;
+  (void)_this;
+  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
+      from._internal_metadata_);
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_, from);
+  _impl_.error_code_ = from._impl_.error_code_;
+
+  // @@protoc_insertion_point(copy_constructor:GrpcLibraryV1.UnSubscribeResp)
+}
+PROTOBUF_NDEBUG_INLINE UnSubscribeResp::Impl_::Impl_(
+    [[maybe_unused]] ::google::protobuf::internal::InternalVisibility visibility,
+    [[maybe_unused]] ::google::protobuf::Arena* PROTOBUF_NULLABLE arena)
+      : _cached_size_{0},
+        topics_{visibility, arena} {}
+
+inline void UnSubscribeResp::SharedCtor(::_pb::Arena* PROTOBUF_NULLABLE arena) {
+  new (&_impl_) Impl_(internal_visibility(), arena);
+  _impl_.error_code_ = {};
+}
+UnSubscribeResp::~UnSubscribeResp() {
+  // @@protoc_insertion_point(destructor:GrpcLibraryV1.UnSubscribeResp)
+  SharedDtor(*this);
+}
+inline void UnSubscribeResp::SharedDtor(MessageLite& self) {
+  UnSubscribeResp& this_ = static_cast<UnSubscribeResp&>(self);
+  if constexpr (::_pbi::DebugHardenCheckHasBitConsistency()) {
+    this_.CheckHasBitConsistency();
+  }
+  this_._internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
+  ABSL_DCHECK(this_.GetArena() == nullptr);
+  this_._impl_.~Impl_();
+}
+
+inline void* PROTOBUF_NONNULL UnSubscribeResp::PlacementNew_(
+    const void* PROTOBUF_NONNULL, void* PROTOBUF_NONNULL mem,
+    ::google::protobuf::Arena* PROTOBUF_NULLABLE arena) {
+  return ::new (mem) UnSubscribeResp(arena);
+}
+constexpr auto UnSubscribeResp::InternalNewImpl_() {
+  constexpr auto arena_bits = ::google::protobuf::internal::EncodePlacementArenaOffsets({
+      PROTOBUF_FIELD_OFFSET(UnSubscribeResp, _impl_.topics_) +
+          decltype(UnSubscribeResp::_impl_.topics_)::
+              InternalGetArenaOffset(
+                  ::google::protobuf::Message::internal_visibility()),
+  });
+  if (arena_bits.has_value()) {
+    return ::google::protobuf::internal::MessageCreator::ZeroInit(
+        sizeof(UnSubscribeResp), alignof(UnSubscribeResp), *arena_bits);
+  } else {
+    return ::google::protobuf::internal::MessageCreator(&UnSubscribeResp::PlacementNew_,
+                                 sizeof(UnSubscribeResp),
+                                 alignof(UnSubscribeResp));
+  }
+}
+constexpr auto UnSubscribeResp::InternalGenerateClassData_() {
+  return ::google::protobuf::internal::ClassDataFull{
+      ::google::protobuf::internal::ClassData{
+          &_UnSubscribeResp_default_instance_._instance,
+          &_table_.header,
+          nullptr,  // OnDemandRegisterArenaDtor
+          nullptr,  // IsInitialized
+          &UnSubscribeResp::MergeImpl,
+          ::google::protobuf::Message::GetNewImpl<UnSubscribeResp>(),
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+          &UnSubscribeResp::SharedDtor,
+          ::google::protobuf::Message::GetClearImpl<UnSubscribeResp>(), &UnSubscribeResp::ByteSizeLong,
+              &UnSubscribeResp::_InternalSerialize,
+#endif  // PROTOBUF_CUSTOM_VTABLE
+          PROTOBUF_FIELD_OFFSET(UnSubscribeResp, _impl_._cached_size_),
+          false,
+      },
+      &UnSubscribeResp::kDescriptorMethods,
+      &descriptor_table_src_2fapi_2eproto,
+      nullptr,  // tracker
+  };
+}
+
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 const
+    ::google::protobuf::internal::ClassDataFull UnSubscribeResp_class_data_ =
+        UnSubscribeResp::InternalGenerateClassData_();
+
+PROTOBUF_ATTRIBUTE_WEAK const ::google::protobuf::internal::ClassData* PROTOBUF_NONNULL
+UnSubscribeResp::GetClassData() const {
+  ::google::protobuf::internal::PrefetchToLocalCache(&UnSubscribeResp_class_data_);
+  ::google::protobuf::internal::PrefetchToLocalCache(UnSubscribeResp_class_data_.tc_table);
+  return UnSubscribeResp_class_data_.base();
+}
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::_pbi::TcParseTable<1, 2, 0, 44, 2>
+UnSubscribeResp::_table_ = {
+  {
+    PROTOBUF_FIELD_OFFSET(UnSubscribeResp, _impl_._has_bits_),
+    0, // no _extensions_
+    2, 8,  // max_field_number, fast_idx_mask
+    offsetof(decltype(_table_), field_lookup_table),
+    4294967292,  // skipmap
+    offsetof(decltype(_table_), field_entries),
+    2,  // num_field_entries
+    0,  // num_aux_entries
+    offsetof(decltype(_table_), field_names),  // no aux_entries
+    UnSubscribeResp_class_data_.base(),
+    nullptr,  // post_loop_handler
+    ::_pbi::TcParser::GenericFallback,  // fallback
+    #ifdef PROTOBUF_PREFETCH_PARSE_TABLE
+    ::_pbi::TcParser::GetTable<::GrpcLibraryV1::UnSubscribeResp>(),  // to_prefetch
+    #endif  // PROTOBUF_PREFETCH_PARSE_TABLE
+  }, {{
+    // repeated string topics = 2;
+    {::_pbi::TcParser::FastUR1,
+     {18, 0, 0,
+      PROTOBUF_FIELD_OFFSET(UnSubscribeResp, _impl_.topics_)}},
+    // int32 error_code = 1;
+    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(UnSubscribeResp, _impl_.error_code_), 1>(),
+     {8, 1, 0,
+      PROTOBUF_FIELD_OFFSET(UnSubscribeResp, _impl_.error_code_)}},
+  }}, {{
+    65535, 65535
+  }}, {{
+    // int32 error_code = 1;
+    {PROTOBUF_FIELD_OFFSET(UnSubscribeResp, _impl_.error_code_), _Internal::kHasBitsOffset + 1, 0, (0 | ::_fl::kFcOptional | ::_fl::kInt32)},
+    // repeated string topics = 2;
+    {PROTOBUF_FIELD_OFFSET(UnSubscribeResp, _impl_.topics_), _Internal::kHasBitsOffset + 0, 0, (0 | ::_fl::kFcRepeated | ::_fl::kUtf8String | ::_fl::kRepSString)},
+  }},
+  // no aux_entries
+  {{
+    "\35\0\6\0\0\0\0\0"
+    "GrpcLibraryV1.UnSubscribeResp"
+    "topics"
+  }},
+};
+PROTOBUF_NOINLINE void UnSubscribeResp::Clear() {
+// @@protoc_insertion_point(message_clear_start:GrpcLibraryV1.UnSubscribeResp)
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  ::uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  cached_has_bits = _impl_._has_bits_[0];
+  if (CheckHasBitForRepeated(cached_has_bits, 0x00000001U)) {
+    _impl_.topics_.Clear();
+  }
+  _impl_.error_code_ = 0;
+  _impl_._has_bits_.Clear();
+  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
+}
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+::uint8_t* PROTOBUF_NONNULL UnSubscribeResp::_InternalSerialize(
+    const ::google::protobuf::MessageLite& base, ::uint8_t* PROTOBUF_NONNULL target,
+    ::google::protobuf::io::EpsCopyOutputStream* PROTOBUF_NONNULL stream) {
+  const UnSubscribeResp& this_ = static_cast<const UnSubscribeResp&>(base);
+#else   // PROTOBUF_CUSTOM_VTABLE
+::uint8_t* PROTOBUF_NONNULL UnSubscribeResp::_InternalSerialize(
+    ::uint8_t* PROTOBUF_NONNULL target,
+    ::google::protobuf::io::EpsCopyOutputStream* PROTOBUF_NONNULL stream) const {
+  const UnSubscribeResp& this_ = *this;
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  if constexpr (::_pbi::DebugHardenCheckHasBitConsistency()) {
+    this_.CheckHasBitConsistency();
+  }
+  // @@protoc_insertion_point(serialize_to_array_start:GrpcLibraryV1.UnSubscribeResp)
+  ::uint32_t cached_has_bits = 0;
+  (void)cached_has_bits;
+
+  cached_has_bits = this_._impl_._has_bits_[0];
+  // int32 error_code = 1;
+  if (CheckHasBit(cached_has_bits, 0x00000002U)) {
+    if (this_._internal_error_code() != 0) {
+      target =
+          ::google::protobuf::internal::WireFormatLite::WriteInt32ToArrayWithField<1>(
+              stream, this_._internal_error_code(), target);
+    }
+  }
+
+  // repeated string topics = 2;
+  if (CheckHasBitForRepeated(cached_has_bits, 0x00000001U)) {
+    for (int i = 0, n = this_._internal_topics_size(); i < n; ++i) {
+      const auto& s = this_._internal_topics().Get(i);
+      ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+          s.data(), static_cast<int>(s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "GrpcLibraryV1.UnSubscribeResp.topics");
+      target = stream->WriteString(2, s, target);
+    }
+  }
+
+  if (ABSL_PREDICT_FALSE(this_._internal_metadata_.have_unknown_fields())) {
+    target =
+        ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+            this_._internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:GrpcLibraryV1.UnSubscribeResp)
+  return target;
+}
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+::size_t UnSubscribeResp::ByteSizeLong(const MessageLite& base) {
+  const UnSubscribeResp& this_ = static_cast<const UnSubscribeResp&>(base);
+#else   // PROTOBUF_CUSTOM_VTABLE
+::size_t UnSubscribeResp::ByteSizeLong() const {
+  const UnSubscribeResp& this_ = *this;
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  // @@protoc_insertion_point(message_byte_size_start:GrpcLibraryV1.UnSubscribeResp)
+  ::size_t total_size = 0;
+
+  ::uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void)cached_has_bits;
+
+  ::_pbi::Prefetch5LinesFrom7Lines(&this_);
+  cached_has_bits = this_._impl_._has_bits_[0];
+  if (BatchCheckHasBit(cached_has_bits, 0x00000003U)) {
+    // repeated string topics = 2;
+    if (CheckHasBitForRepeated(cached_has_bits, 0x00000001U)) {
+      total_size +=
+          1 * ::google::protobuf::internal::FromIntSize(this_._internal_topics().size());
+      for (int i = 0, n = this_._internal_topics().size(); i < n; ++i) {
+        total_size += ::google::protobuf::internal::WireFormatLite::StringSize(
+            this_._internal_topics().Get(i));
+      }
+    }
+    // int32 error_code = 1;
+    if (CheckHasBit(cached_has_bits, 0x00000002U)) {
+      if (this_._internal_error_code() != 0) {
+        total_size += ::_pbi::WireFormatLite::Int32SizePlusOne(
+            this_._internal_error_code());
+      }
+    }
+  }
+  return this_.MaybeComputeUnknownFieldsSize(total_size,
+                                             &this_._impl_._cached_size_);
+}
+
+void UnSubscribeResp::MergeImpl(::google::protobuf::MessageLite& to_msg,
+                            const ::google::protobuf::MessageLite& from_msg) {
+   auto* const _this =
+      static_cast<UnSubscribeResp*>(&to_msg);
+  auto& from = static_cast<const UnSubscribeResp&>(from_msg);
+  if constexpr (::_pbi::DebugHardenCheckHasBitConsistency()) {
+    from.CheckHasBitConsistency();
+  }
+  ::google::protobuf::Arena* arena = _this->GetArena();
+  // @@protoc_insertion_point(class_specific_merge_from_start:GrpcLibraryV1.UnSubscribeResp)
+  ABSL_DCHECK_NE(&from, _this);
+  ::uint32_t cached_has_bits = 0;
+  (void)cached_has_bits;
+
+  cached_has_bits = from._impl_._has_bits_[0];
+  if (BatchCheckHasBit(cached_has_bits, 0x00000003U)) {
+    if (CheckHasBitForRepeated(cached_has_bits, 0x00000001U)) {
+      _this->_internal_mutable_topics()->InternalMergeFromWithArena(
+          ::google::protobuf::MessageLite::internal_visibility(), arena,
+          from._internal_topics());
+    }
+    if (CheckHasBit(cached_has_bits, 0x00000002U)) {
+      if (from._internal_error_code() != 0) {
+        _this->_impl_.error_code_ = from._impl_.error_code_;
+      }
+    }
+  }
+  _this->_impl_._has_bits_[0] |= cached_has_bits;
+  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
+      from._internal_metadata_);
+}
+
+void UnSubscribeResp::CopyFrom(const UnSubscribeResp& from) {
+  // @@protoc_insertion_point(class_specific_copy_from_start:GrpcLibraryV1.UnSubscribeResp)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+
+void UnSubscribeResp::InternalSwap(UnSubscribeResp* PROTOBUF_RESTRICT PROTOBUF_NONNULL other) {
+  using ::std::swap;
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
+  _impl_.topics_.InternalSwap(&other->_impl_.topics_);
+  swap(_impl_.error_code_, other->_impl_.error_code_);
+}
+
+::google::protobuf::Metadata UnSubscribeResp::GetMetadata() const {
   return ::google::protobuf::Message::GetMetadataImpl(GetClassData()->full());
 }
 // @@protoc_insertion_point(namespace_scope)

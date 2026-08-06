@@ -80,6 +80,7 @@ class conf
     unsigned long sync_thread_pool_size();
 
     std::string server_addr();
+    std::string publish_addr();
 
     std::unordered_map<std::string, conf::client_config> clients();
     std::string                                          clients_file_path();
@@ -124,6 +125,9 @@ class conf
     std::string regex_norm_prompt();
     std::string regex_hard_prompt();
 
+    std::string              watch_dog_pub_addr();
+    std::vector<std::string> watch_dog_pub_topics();
+
   private:
     void _init(const std::string &config_file_path);
 
@@ -138,6 +142,9 @@ class conf
 
     std::string _regex_norm_prompt;
     std::string _regex_hard_prompt;
+
+    std::vector<std::string> _watch_dog_pub_topics;
+    std::string              _watch_dog_pub_addr;
 };
 
 #endif

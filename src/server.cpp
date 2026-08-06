@@ -4,6 +4,7 @@
 #include <hj/time/date_time.hpp>
 #include <hj/algo/uuid.hpp>
 #include <hj/db/sqlite.hpp>
+#include <hj/encoding/fmt.hpp>
 
 #include "conf.h"
 #include "db_mgr.h"
@@ -14,6 +15,7 @@
 #include "watch_dog.h"
 #include "reactor_mgr.h"
 #include "updater.h"
+#include "mq.h"
 
 reactor_t *api_handler::Heartbeat(ctx_t                       *ctx,
                                   const ::GrpcLibraryV1::Ping *req,
@@ -641,6 +643,10 @@ reactor_t *api_handler::Upload(ctx_t                            *ctx,
 
     resp->set_error_code(OK);
     resp->set_hash(hash);
+    LOG_DEBUG("send upload resp with error_code:{}, hash:{}",
+              resp->error_code(),
+              resp->hash());
+
     reactor->Finish(status_t::OK);
     return reactor;
 }
@@ -685,6 +691,109 @@ api_handler::StopEmbedding(ctx_t                                   *ctx,
     LOG_DEBUG("StopEmbedding request processed for task_id: {}, user_id: {}",
               task_id,
               user_id);
+
+    reactor->Finish(status_t::OK);
+    return reactor;
+}
+
+reactor_t *api_handler::Publish(ctx_t                             *ctx,
+                                const ::GrpcLibraryV1::PublishReq *req,
+                                ::GrpcLibraryV1::PublishResp      *resp)
+{
+    int64_t     user_id = req->user_id();
+    std::string auth    = req->auth();
+
+    std::vector<std::string> msgs;
+    msgs.reserve(req->msgs_size());
+    for(const auto &msg : req->msgs())
+        msgs.push_back(msg);
+
+    auto *reactor = ctx->DefaultReactor();
+    resp->set_error_code(ERR_FAIL);
+    LOG_DEBUG("Received Publish request. msgs.size(): {}, user_id: {}",
+              msgs.size(),
+              user_id);
+
+    for(int i = 0; i < msgs.size(); ++i)
+    {
+        auto &msg = msgs[i];
+        mq::instance().pub(msg);
+        LOG_DEBUG("Publish msg[{}]: {}", i, msg);
+    }
+
+    resp->set_error_code(OK);
+    reactor->Finish(status_t::OK);
+    return reactor;
+}
+
+grpc::ServerWriteReactor<::GrpcLibraryV1::PubMessage> *
+api_handler::Subscribe(grpc::CallbackServerContext         *ctx,
+                       const ::GrpcLibraryV1::SubscribeReq *req)
+{
+    auto user_id = req->user_id();
+    auto auth    = req->auth();
+
+    std::vector<std::string> topics;
+    topics.reserve(req->topics_size());
+    for(const auto &topic : req->topics())
+        topics.push_back(topic);
+
+    auto suber = subscribe_reactor_mgr::instance().get_active_suber(user_id);
+    if(!suber)
+        suber = new SubscribeReactor(ctx, req);
+
+    if(!suber->Sub(topics))
+    {
+        LOG_ERROR("Failed to subscribe topics for user_id: {}, topics: {}",
+                  user_id,
+                  hj::format("{}", topics));
+        delete suber;
+        return nullptr;
+    }
+
+    return suber;
+}
+
+reactor_t *api_handler::UnSubscribe(ctx_t                                 *ctx,
+                                    const ::GrpcLibraryV1::UnSubscribeReq *req,
+                                    ::GrpcLibraryV1::UnSubscribeResp      *resp)
+{
+    int64_t user_id = req->user_id();
+    auto    auth    = req->auth();
+
+    auto *reactor = ctx->DefaultReactor();
+    resp->set_error_code(ERR_FAIL);
+    LOG_DEBUG("Received UnSubscribe request. user_id: {}", user_id);
+
+    auto suber = subscribe_reactor_mgr::instance().get_active_suber(user_id);
+    if(!suber)
+    {
+        LOG_ERROR("No active suber found for user_id: {}", user_id);
+        resp->set_error_code(SUB_ERR_NO_ACTIVE_SUBER);
+
+        reactor->Finish(status_t::OK);
+        return reactor;
+    }
+
+    std::vector<std::string> topics;
+    topics.reserve(req->topics_size());
+    for(const auto &topic : req->topics())
+        topics.push_back(topic);
+
+    if(!suber->UnSub(topics))
+    {
+        LOG_ERROR("Failed to unsubscribe topics for user_id: {}, topics: {}",
+                  user_id,
+                  hj::format("{}", topics));
+        resp->set_error_code(SUB_ERR_UNSUB_FAIL);
+
+        reactor->Finish(status_t::OK);
+        return reactor;
+    }
+
+    resp->set_error_code(OK);
+    for(auto topic : topics)
+        resp->add_topics(topic);
 
     reactor->Finish(status_t::OK);
     return reactor;

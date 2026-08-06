@@ -41,6 +41,9 @@ static const char* GrpcService_method_names[] = {
   "/GrpcLibraryV1.GrpcService/Upload",
   "/GrpcLibraryV1.GrpcService/Embedding",
   "/GrpcLibraryV1.GrpcService/StopEmbedding",
+  "/GrpcLibraryV1.GrpcService/Publish",
+  "/GrpcLibraryV1.GrpcService/Subscribe",
+  "/GrpcLibraryV1.GrpcService/UnSubscribe",
 };
 
 std::unique_ptr< GrpcService::Stub> GrpcService::NewStub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, const ::grpc::StubOptions& options) {
@@ -68,6 +71,9 @@ GrpcService::Stub::Stub(const std::shared_ptr< ::grpc::ChannelInterface>& channe
   , rpcmethod_Upload_(GrpcService_method_names[15], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
   , rpcmethod_Embedding_(GrpcService_method_names[16], options.suffix_for_stats(),::grpc::internal::RpcMethod::BIDI_STREAMING, channel)
   , rpcmethod_StopEmbedding_(GrpcService_method_names[17], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_Publish_(GrpcService_method_names[18], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_Subscribe_(GrpcService_method_names[19], options.suffix_for_stats(),::grpc::internal::RpcMethod::SERVER_STREAMING, channel)
+  , rpcmethod_UnSubscribe_(GrpcService_method_names[20], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
   {}
 
 ::grpc::Status GrpcService::Stub::Heartbeat(::grpc::ClientContext* context, const ::GrpcLibraryV1::Ping& request, ::GrpcLibraryV1::Pong* response) {
@@ -463,6 +469,68 @@ void GrpcService::Stub::async::StopEmbedding(::grpc::ClientContext* context, con
   return result;
 }
 
+::grpc::Status GrpcService::Stub::Publish(::grpc::ClientContext* context, const ::GrpcLibraryV1::PublishReq& request, ::GrpcLibraryV1::PublishResp* response) {
+  return ::grpc::internal::BlockingUnaryCall< ::GrpcLibraryV1::PublishReq, ::GrpcLibraryV1::PublishResp, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_Publish_, context, request, response);
+}
+
+void GrpcService::Stub::async::Publish(::grpc::ClientContext* context, const ::GrpcLibraryV1::PublishReq* request, ::GrpcLibraryV1::PublishResp* response, std::function<void(::grpc::Status)> f) {
+  ::grpc::internal::CallbackUnaryCall< ::GrpcLibraryV1::PublishReq, ::GrpcLibraryV1::PublishResp, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_Publish_, context, request, response, std::move(f));
+}
+
+void GrpcService::Stub::async::Publish(::grpc::ClientContext* context, const ::GrpcLibraryV1::PublishReq* request, ::GrpcLibraryV1::PublishResp* response, ::grpc::ClientUnaryReactor* reactor) {
+  ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_Publish_, context, request, response, reactor);
+}
+
+::grpc::ClientAsyncResponseReader< ::GrpcLibraryV1::PublishResp>* GrpcService::Stub::PrepareAsyncPublishRaw(::grpc::ClientContext* context, const ::GrpcLibraryV1::PublishReq& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncResponseReaderHelper::Create< ::GrpcLibraryV1::PublishResp, ::GrpcLibraryV1::PublishReq, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), cq, rpcmethod_Publish_, context, request);
+}
+
+::grpc::ClientAsyncResponseReader< ::GrpcLibraryV1::PublishResp>* GrpcService::Stub::AsyncPublishRaw(::grpc::ClientContext* context, const ::GrpcLibraryV1::PublishReq& request, ::grpc::CompletionQueue* cq) {
+  auto* result =
+    this->PrepareAsyncPublishRaw(context, request, cq);
+  result->StartCall();
+  return result;
+}
+
+::grpc::ClientReader< ::GrpcLibraryV1::PubMessage>* GrpcService::Stub::SubscribeRaw(::grpc::ClientContext* context, const ::GrpcLibraryV1::SubscribeReq& request) {
+  return ::grpc::internal::ClientReaderFactory< ::GrpcLibraryV1::PubMessage>::Create(channel_.get(), rpcmethod_Subscribe_, context, request);
+}
+
+void GrpcService::Stub::async::Subscribe(::grpc::ClientContext* context, const ::GrpcLibraryV1::SubscribeReq* request, ::grpc::ClientReadReactor< ::GrpcLibraryV1::PubMessage>* reactor) {
+  ::grpc::internal::ClientCallbackReaderFactory< ::GrpcLibraryV1::PubMessage>::Create(stub_->channel_.get(), stub_->rpcmethod_Subscribe_, context, request, reactor);
+}
+
+::grpc::ClientAsyncReader< ::GrpcLibraryV1::PubMessage>* GrpcService::Stub::AsyncSubscribeRaw(::grpc::ClientContext* context, const ::GrpcLibraryV1::SubscribeReq& request, ::grpc::CompletionQueue* cq, void* tag) {
+  return ::grpc::internal::ClientAsyncReaderFactory< ::GrpcLibraryV1::PubMessage>::Create(channel_.get(), cq, rpcmethod_Subscribe_, context, request, true, tag);
+}
+
+::grpc::ClientAsyncReader< ::GrpcLibraryV1::PubMessage>* GrpcService::Stub::PrepareAsyncSubscribeRaw(::grpc::ClientContext* context, const ::GrpcLibraryV1::SubscribeReq& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncReaderFactory< ::GrpcLibraryV1::PubMessage>::Create(channel_.get(), cq, rpcmethod_Subscribe_, context, request, false, nullptr);
+}
+
+::grpc::Status GrpcService::Stub::UnSubscribe(::grpc::ClientContext* context, const ::GrpcLibraryV1::UnSubscribeReq& request, ::GrpcLibraryV1::UnSubscribeResp* response) {
+  return ::grpc::internal::BlockingUnaryCall< ::GrpcLibraryV1::UnSubscribeReq, ::GrpcLibraryV1::UnSubscribeResp, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_UnSubscribe_, context, request, response);
+}
+
+void GrpcService::Stub::async::UnSubscribe(::grpc::ClientContext* context, const ::GrpcLibraryV1::UnSubscribeReq* request, ::GrpcLibraryV1::UnSubscribeResp* response, std::function<void(::grpc::Status)> f) {
+  ::grpc::internal::CallbackUnaryCall< ::GrpcLibraryV1::UnSubscribeReq, ::GrpcLibraryV1::UnSubscribeResp, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_UnSubscribe_, context, request, response, std::move(f));
+}
+
+void GrpcService::Stub::async::UnSubscribe(::grpc::ClientContext* context, const ::GrpcLibraryV1::UnSubscribeReq* request, ::GrpcLibraryV1::UnSubscribeResp* response, ::grpc::ClientUnaryReactor* reactor) {
+  ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_UnSubscribe_, context, request, response, reactor);
+}
+
+::grpc::ClientAsyncResponseReader< ::GrpcLibraryV1::UnSubscribeResp>* GrpcService::Stub::PrepareAsyncUnSubscribeRaw(::grpc::ClientContext* context, const ::GrpcLibraryV1::UnSubscribeReq& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncResponseReaderHelper::Create< ::GrpcLibraryV1::UnSubscribeResp, ::GrpcLibraryV1::UnSubscribeReq, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), cq, rpcmethod_UnSubscribe_, context, request);
+}
+
+::grpc::ClientAsyncResponseReader< ::GrpcLibraryV1::UnSubscribeResp>* GrpcService::Stub::AsyncUnSubscribeRaw(::grpc::ClientContext* context, const ::GrpcLibraryV1::UnSubscribeReq& request, ::grpc::CompletionQueue* cq) {
+  auto* result =
+    this->PrepareAsyncUnSubscribeRaw(context, request, cq);
+  result->StartCall();
+  return result;
+}
+
 GrpcService::Service::Service() {
   AddMethod(new ::grpc::internal::RpcServiceMethod(
       GrpcService_method_names[0],
@@ -644,6 +712,36 @@ GrpcService::Service::Service() {
              ::GrpcLibraryV1::StopEmbeddingResp* resp) {
                return service->StopEmbedding(ctx, req, resp);
              }, this)));
+  AddMethod(new ::grpc::internal::RpcServiceMethod(
+      GrpcService_method_names[18],
+      ::grpc::internal::RpcMethod::NORMAL_RPC,
+      new ::grpc::internal::RpcMethodHandler< GrpcService::Service, ::GrpcLibraryV1::PublishReq, ::GrpcLibraryV1::PublishResp, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
+          [](GrpcService::Service* service,
+             ::grpc::ServerContext* ctx,
+             const ::GrpcLibraryV1::PublishReq* req,
+             ::GrpcLibraryV1::PublishResp* resp) {
+               return service->Publish(ctx, req, resp);
+             }, this)));
+  AddMethod(new ::grpc::internal::RpcServiceMethod(
+      GrpcService_method_names[19],
+      ::grpc::internal::RpcMethod::SERVER_STREAMING,
+      new ::grpc::internal::ServerStreamingHandler< GrpcService::Service, ::GrpcLibraryV1::SubscribeReq, ::GrpcLibraryV1::PubMessage>(
+          [](GrpcService::Service* service,
+             ::grpc::ServerContext* ctx,
+             const ::GrpcLibraryV1::SubscribeReq* req,
+             ::grpc::ServerWriter<::GrpcLibraryV1::PubMessage>* writer) {
+               return service->Subscribe(ctx, req, writer);
+             }, this)));
+  AddMethod(new ::grpc::internal::RpcServiceMethod(
+      GrpcService_method_names[20],
+      ::grpc::internal::RpcMethod::NORMAL_RPC,
+      new ::grpc::internal::RpcMethodHandler< GrpcService::Service, ::GrpcLibraryV1::UnSubscribeReq, ::GrpcLibraryV1::UnSubscribeResp, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
+          [](GrpcService::Service* service,
+             ::grpc::ServerContext* ctx,
+             const ::GrpcLibraryV1::UnSubscribeReq* req,
+             ::GrpcLibraryV1::UnSubscribeResp* resp) {
+               return service->UnSubscribe(ctx, req, resp);
+             }, this)));
 }
 
 GrpcService::Service::~Service() {
@@ -767,6 +865,27 @@ GrpcService::Service::~Service() {
 }
 
 ::grpc::Status GrpcService::Service::StopEmbedding(::grpc::ServerContext* context, const ::GrpcLibraryV1::StopEmbeddingReq* request, ::GrpcLibraryV1::StopEmbeddingResp* response) {
+  (void) context;
+  (void) request;
+  (void) response;
+  return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+}
+
+::grpc::Status GrpcService::Service::Publish(::grpc::ServerContext* context, const ::GrpcLibraryV1::PublishReq* request, ::GrpcLibraryV1::PublishResp* response) {
+  (void) context;
+  (void) request;
+  (void) response;
+  return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+}
+
+::grpc::Status GrpcService::Service::Subscribe(::grpc::ServerContext* context, const ::GrpcLibraryV1::SubscribeReq* request, ::grpc::ServerWriter< ::GrpcLibraryV1::PubMessage>* writer) {
+  (void) context;
+  (void) request;
+  (void) writer;
+  return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+}
+
+::grpc::Status GrpcService::Service::UnSubscribe(::grpc::ServerContext* context, const ::GrpcLibraryV1::UnSubscribeReq* request, ::GrpcLibraryV1::UnSubscribeResp* response) {
   (void) context;
   (void) request;
   (void) response;

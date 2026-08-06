@@ -50,6 +50,9 @@ static constexpr int ASR_ERR_CTX_ALREADY_LOADED = 603;
 static constexpr int CALLER_ERR_NOT_EXIST            = 701;
 static constexpr int CALLER_ERR_REMOTE_RESPONSE_FAIL = 702;
 
+static constexpr int SUB_ERR_UNSUB_FAIL      = 800;
+static constexpr int SUB_ERR_NO_ACTIVE_SUBER = 801;
+
 static inline std::error_code error(const int   e,
                                     const char *category = "rag-core")
 {

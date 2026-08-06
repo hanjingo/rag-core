@@ -64,12 +64,17 @@ size_t conf::sync_write_queue_size()
 
 unsigned long conf::sync_thread_pool_size()
 {
-    return _cfg.get<unsigned long>("sync/thread_pool_size", 1);
+    return _cfg.get<unsigned long>("sync/thread_pool_size", 4);
 }
 
 std::string conf::server_addr()
 {
     return _cfg.get<std::string>("server/addr", "");
+}
+
+std::string conf::publish_addr()
+{
+    return _cfg.get<std::string>("server/publish_addr", INPROC_PUB_SUB_ADDR);
 }
 
 std::unordered_map<std::string, conf::client_config> conf::clients()
@@ -278,6 +283,16 @@ int conf::asr_audio_wait_chunk_timeout_ms()
     return _cfg.get<int>("asr/audio_wait_chunk_timeout_ms", 4500);
 }
 
+std::vector<std::string> conf::watch_dog_pub_topics()
+{
+    return _watch_dog_pub_topics;
+}
+
+std::string conf::watch_dog_pub_addr()
+{
+    return _watch_dog_pub_addr;
+}
+
 void conf::_init(const std::string &config_file_path)
 {
     // read config file
@@ -429,6 +444,11 @@ void conf::_init(const std::string &config_file_path)
             _regex_hard_prompt = ss.str();
         }
     }
+
+    // init watch dog
+    auto topics           = _cfg.get<std::string>("watch_dog/topics", "");
+    _watch_dog_pub_topics = hj::string_util::split(topics, ",");
+    _watch_dog_pub_addr   = _cfg.get<std::string>("watch_dog/addr", "");
 }
 
 std::string conf::regex_file_path()

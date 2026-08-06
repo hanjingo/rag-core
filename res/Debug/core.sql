@@ -65,29 +65,3 @@ INSERT INTO message (id, session_id, role, content, prev_message_id, timestamp) 
     3, 1, 'user', 'Question Test2', NULL, 2);
 INSERT INTO message (id, session_id, role, content, prev_message_id, timestamp) VALUES (
     4, 1, 'assistant', 'Answer Test2', 3, 3);
-
-INSERT INTO plugin (hash, name, platform, desc, publisher, version, timestamp) VALUES (
-    'sha256:a05c13fcd95e7305526d8a70820247046335f461356271b4eaee0919ee340f2a', 'chatbox', 1, 
-    'A plugin for Chat, using llm model, free for use it etc...', 'admin', '0.0.3', 0);
-INSERT INTO plugin (hash, name, platform, desc, publisher, version, timestamp) VALUES (
-    'sha256:4135b32bf4257a54aabeabd416b53dbd1bc411c50257688f0073eeb9aa785d16', 'grammar', 1, 
-    'A plugin for english grammar checking', 'admin', '0.0.2', 1);
-INSERT INTO plugin (hash, name, platform, desc, publisher, version, timestamp) VALUES (
-    'sha256:cdfcc494cf944a74a06985688063197513295e6c3c876521ea184da11b6f0076', 'ielts-writer', 1, 
-    'A plugin for IELTS Writer Guide', 'admin', '0.0.2', 2);
-INSERT INTO plugin (hash, name, platform, desc, publisher, version, timestamp) VALUES (
-    'sha256:cac176b447f4dd995677d1ee998b9bc37d49feed0fe5125020110ad7f52edfb5', 'stock', 1, 
-    'A plugin for Stock trade', 'admin', '0.0.2', 3);
-
-INSERT INTO file (hash, addr, owner, size_kb) VALUES (
-    'sha256:a05c13fcd95e7305526d8a70820247046335f461356271b4eaee0919ee340f2a', 
-    'http://www.hango.fun/downloads/plugins/chatbox-windows-x64-v0.0.3.zip', 1, 152);
-INSERT INTO file (hash, addr, owner, size_kb) VALUES (
-    'sha256:4135b32bf4257a54aabeabd416b53dbd1bc411c50257688f0073eeb9aa785d16', 
-    'http://www.hango.fun/downloads/plugins/grammar-windows-x64-v0.0.2.zip', 1, 87);
-INSERT INTO file (hash, addr, owner, size_kb) VALUES (
-    'sha256:cdfcc494cf944a74a06985688063197513295e6c3c876521ea184da11b6f0076', 
-    'http://www.hango.fun/downloads/plugins/ielts-writer-windows-x64-v0.0.2.zip', 1, 49);
-INSERT INTO file (hash, addr, owner, size_kb) VALUES (
-    'sha256:cac176b447f4dd995677d1ee998b9bc37d49feed0fe5125020110ad7f52edfb5', 
-    'http://www.hango.fun/downloads/plugins/stock-windows-x64-v0.0.2.zip', 1, 45);

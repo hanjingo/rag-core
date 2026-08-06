@@ -95,6 +95,18 @@ class api_handler final : public GrpcLibraryV1::GrpcService::CallbackService
     reactor_t *StopEmbedding(ctx_t                                   *ctx,
                              const ::GrpcLibraryV1::StopEmbeddingReq *req,
                              ::GrpcLibraryV1::StopEmbeddingResp *resp) override;
+
+    reactor_t *Publish(ctx_t                             *ctx,
+                       const ::GrpcLibraryV1::PublishReq *req,
+                       ::GrpcLibraryV1::PublishResp      *resp) override;
+
+    grpc::ServerWriteReactor<::GrpcLibraryV1::PubMessage> *
+    Subscribe(grpc::CallbackServerContext         *ctx,
+              const ::GrpcLibraryV1::SubscribeReq *req) override;
+
+    reactor_t *UnSubscribe(ctx_t                                 *ctx,
+                           const ::GrpcLibraryV1::UnSubscribeReq *req,
+                           ::GrpcLibraryV1::UnSubscribeResp *resp) override;
 };
 
 class server
