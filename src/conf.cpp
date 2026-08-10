@@ -268,6 +268,15 @@ std::string conf::asr_file_path()
 #endif
 }
 
+std::string conf::asr_vad_model_path()
+{
+#if defined(__APPLE__) // standard macOS bundle structure
+    return hj::filepath::join(hj::filepath::pwd(), "../Resources");
+#else
+    return hj::filepath::join(hj::filepath::pwd());
+#endif
+}
+
 int conf::asr_audio_buffer_size()
 {
     return _cfg.get<int>("asr/audio_buffer_size", 16000);
@@ -311,8 +320,10 @@ void conf::_init(const std::string &config_file_path)
         {
             auto         sect = item.second;
             model_config config;
-            config.id           = sect.get<std::string>("id", "");
-            config.path         = sect.get<std::string>("path", "");
+            config.id   = sect.get<std::string>("id", "");
+            config.path = sect.get<std::string>("path", "");
+            config.path =
+                hj::filepath::join(llm_model_file_path(), config.path);
             config.n_gpu_layers = sect.get<int>("n_gpu_layers", -1);
             config.split_mode =
                 static_cast<llama_split_mode>(sect.get<int>("split_mode", 1));
@@ -380,9 +391,10 @@ void conf::_init(const std::string &config_file_path)
         {
             auto           sect = item.second;
             asr_ctx_config config;
-            config.id         = sect.get<std::string>("id", "");
-            config.path       = sect.get<std::string>("path", "");
-            config.use_gpu    = (sect.get<int>("use_gpu", 0) == 1);
+            config.id      = sect.get<std::string>("id", "");
+            config.path    = sect.get<std::string>("path", "");
+            config.path    = hj::filepath::join(asr_file_path(), config.path);
+            config.use_gpu = (sect.get<int>("use_gpu", 0) == 1);
             config.gpu_device = sect.get<int>("gpu_device", -1);
 
             _asr_ctxs[config.id] = config;

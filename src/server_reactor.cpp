@@ -5,6 +5,7 @@
 #include <hj/algo/uuid.hpp>
 #include <hj/db/sqlite.hpp>
 #include <hj/util/string_util.hpp>
+#include <hj/io/filepath.hpp>
 
 #include "conf.h"
 #include "db_mgr.h"
@@ -573,6 +574,8 @@ void RecognizeReactor::_process(const ::GrpcLibraryV1::RecognizeReq &req)
         _params.no_speech_thold      = tmp.no_speech_thold();
         _params.vad                  = tmp.vad();
         _vad_model_path              = tmp.vad_model_path();
+        _vad_model_path = hj::filepath::join(conf::instance().asr_file_path(),
+                                             _vad_model_path);
         _params.vad_model_path       = _vad_model_path.c_str();
         _params.vad_params.threshold = tmp.vad_params().threshold();
         _params.vad_params.min_speech_duration_ms =

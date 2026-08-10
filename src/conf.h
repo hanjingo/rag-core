@@ -116,6 +116,7 @@ class conf
     std::string llm_embedding_model();
 
     std::string                                     asr_file_path();
+    std::string                                     asr_vad_model_path();
     std::unordered_map<std::string, asr_ctx_config> asr_ctxs();
     int                                             asr_audio_buffer_size();
     int                                             asr_audio_min_chunk_size();
