@@ -60,18 +60,26 @@ void watch_dog::_on_pub_msg(const std::string &msg)
                   info.version(),
                   info.timestamp(),
                   info.platform());
-        auto sql = hj::sqlite::mprintf(SQL_INSERT_PLUGIN_INFO,
-                                       info.hash().c_str(),
-                                       info.platform(),
-                                       info.name().c_str(),
-                                       info.desc().c_str(),
-                                       info.publisher().c_str(),
-                                       info.version().c_str(),
-                                       info.timestamp().c_str());
-        LOG_DEBUG("{}", sql);
-        if(db_mgr::instance().exec(DB_SQLITE, sql) != OK)
+        if(db_mgr::instance().exec(SQL_INSERT_PLUGIN_INFO,
+                                   info.hash().c_str(),
+                                   info.platform(),
+                                   info.name().c_str(),
+                                   info.desc().c_str(),
+                                   info.publisher().c_str(),
+                                   info.version().c_str(),
+                                   info.timestamp().c_str())
+           != OK)
         {
-            LOG_ERROR("Failed to insert plugin info for sql: {}", sql);
+            LOG_ERROR(
+                "Failed to insert plugin info for hash: {}, platform: {}, "
+                "name: {}, desc: {}, publisher: {}, version: {}, timestamp: {}",
+                info.hash(),
+                info.platform(),
+                info.name(),
+                info.desc(),
+                info.publisher(),
+                info.version(),
+                info.timestamp());
             return;
         }
     }

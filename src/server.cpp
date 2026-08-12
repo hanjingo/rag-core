@@ -16,6 +16,7 @@
 #include "reactor_mgr.h"
 #include "updater.h"
 #include "mq.h"
+#include "err.h"
 
 reactor_t *api_handler::Heartbeat(ctx_t                       *ctx,
                                   const ::GrpcLibraryV1::Ping *req,
@@ -54,23 +55,24 @@ reactor_t *api_handler::Login(ctx_t                           *ctx,
               arch,
               version);
 
-    std::string sql = hj::sqlite::mprintf(SQL_SELECT_USER_BY_USERNAME_PASSWD,
-                                          account.c_str(),
-                                          encrypted_passwd.c_str())
-                      + " LIMIT 1;";
-    // LOG_DEBUG("{}", sql);
-    db_mgr::query_ret rows;
-    if(db_mgr::instance().query(rows, DB_SQLITE, sql) != OK || rows.empty())
+    db_mgr::query_ret ret;
+    if(db_mgr::instance().query(ret,
+                                SQL_SELECT_USER_BY_USERNAME_PASSWD,
+                                account,
+                                encrypted_passwd)
+           != OK
+       || ret.empty())
     {
-        LOG_ERROR("Failed to authenticate account: {}, sql: {}", account, sql);
+        LOG_ERROR("Failed to authenticate account: {}", account);
         resp->set_error_code(ACCOUNT_INVALID);
 
         reactor->Finish(status_t::OK);
         return reactor;
     }
-    for(const auto row : rows)
+    for(int n_row = 0; n_row < ret.rows(); ++n_row)
     {
-        user_id = std::stoll(row[0]);
+        auto row = ret[n_row];
+        user_id  = std::get<int64_t>(row[0]);
         break;
     }
 
@@ -145,10 +147,15 @@ reactor_t *api_handler::RegAccount(ctx_t                                *ctx,
                                             account.c_str(),
                                             encrypted_passwd.c_str());
     // LOG_DEBUG("{}", sql);
-    if(db_mgr::instance().exec(DB_SQLITE, sql) != OK)
+    if(db_mgr::instance().exec(SQL_INSERT_USER, id, account, encrypted_passwd)
+       != OK)
     {
         resp->set_error_code(ERR_SQLITE_EXEC_FAIL);
-        LOG_ERROR("Failed to insert user with sql: {}", sql);
+        LOG_ERROR("Failed to insert user with id: {}, account: {}, "
+                  "encrypted_passwd: {}",
+                  id,
+                  account,
+                  encrypted_passwd);
 
         reactor->Finish(status_t::OK);
         return reactor;
@@ -255,8 +262,8 @@ api_handler::GetChatMessage(ctx_t                                    *ctx,
     std::string auth       = req->auth();
     auto       *reactor    = ctx->DefaultReactor();
 
-    if(limit < 0 || limit > conf::instance().sqlite_msg_limit())
-        limit = conf::instance().sqlite_msg_limit();
+    if(limit < 0 || limit > conf::instance().param_query_limit())
+        limit = conf::instance().param_query_limit();
     resp->set_error_code(ERR_FAIL);
     LOG_DEBUG(
         "Received GetChatMessage request. id: {}, session_id: {}, user_id: "
@@ -266,36 +273,54 @@ api_handler::GetChatMessage(ctx_t                                    *ctx,
         user_id,
         limit);
 
-    std::string sql;
-    if(id != -1)
-        sql = hj::sqlite::mprintf(SQL_SELECT_MESSAGE_BY_ID, id);
-    else
-        sql = hj::sqlite::mprintf(SQL_SELECT_MESSAGE_BY_SESSION_ID, session_id);
-    sql += hj::sqlite::mprintf(" LIMIT %d;", limit);
-
-    LOG_DEBUG("{}", sql);
     db_mgr::query_ret rows;
-    if(db_mgr::instance().query(rows, DB_SQLITE, sql) != OK)
+    if(id != -1)
     {
-        LOG_ERROR("Failed to query message for sql: {}", sql);
-        resp->set_error_code(ERR_SQLITE_EXEC_FAIL);
+        if(db_mgr::instance().query(rows, SQL_SELECT_MESSAGE_BY_ID, id) != OK)
+        {
+            LOG_ERROR("Failed to query message for id: {}, limit: {}",
+                      id,
+                      limit);
+            resp->set_error_code(ERR_SQLITE_EXEC_FAIL);
 
-        reactor->Finish(status_t::OK);
-        return reactor;
-    }
-    for(const auto row : rows)
+            reactor->Finish(status_t::OK);
+            return reactor;
+        }
+    } else
     {
+        if(db_mgr::instance().query(rows,
+                                    SQL_SELECT_MESSAGE_BY_SESSION_ID,
+                                    session_id,
+                                    limit)
+           != OK)
+        {
+            LOG_ERROR("Failed to query message for session_id: {}, limit: {}",
+                      session_id,
+                      limit);
+            resp->set_error_code(ERR_SQLITE_EXEC_FAIL);
+
+            reactor->Finish(status_t::OK);
+            return reactor;
+        }
+    }
+    for(int n_row = 0; n_row < rows.rows(); ++n_row)
+    {
+        auto id         = rows.get_or<int64_t>(n_row, 0, -1);
+        auto session_id = rows.get_or<int64_t>(n_row, 1, -1);
+        auto role       = rows.get_or<std::string>(n_row, 2, "");
+        auto content    = rows.get_or<std::string>(n_row, 3, "");
+        auto msg_id     = rows.get_or<int64_t>(n_row, 4, -1);
+        auto ms         = rows.get_or<int64_t>(n_row, 5, 0);
+
         auto item = resp->add_messages();
-        item->set_id(row[0].empty() ? -1 : std::stoll(row[0]));
-        item->set_session_id(row[1].empty() ? -1 : std::stoll(row[1]));
-        item->set_role(row[2]);
-        item->set_content(row[3]);
-        item->set_prev_message_id(row[4].empty() ? -1 : std::stoll(row[4]));
-        long long ms = row[5].empty() ? 0 : std::stoll(row[5]);
+        item->set_id(id);
+        item->set_session_id(session_id);
+        item->set_role(role);
+        item->set_content(content);
+        item->set_prev_message_id(msg_id);
         item->set_timestamp(
             hj::date_time::format(hj::date_time::from_ms_since_epoch(ms),
                                   TIME_FORMAT));
-
         LOG_DEBUG(
             "GetChatMessage id: {}, session_id: {}, role: {}, content: {}, "
             "prev_message_id: {}, timestamp: {}",
@@ -335,25 +360,47 @@ reactor_t *api_handler::GetSession(ctx_t                                *ctx,
         sql = hj::sqlite::mprintf(SQL_SELECT_SESSION_BY_USER_ID, user_id)
               + hj::sqlite::mprintf(" LIMIT %d;", limit);
 
-    LOG_DEBUG("{}", sql);
     db_mgr::query_ret rows;
-    if(db_mgr::instance().query(rows, DB_SQLITE, sql) != OK)
+    if(id > 0)
     {
-        LOG_ERROR("Failed to query history for sql: {}", sql);
-        resp->set_error_code(ERR_SQLITE_EXEC_FAIL);
+        if(db_mgr::instance().query(rows, SQL_SELECT_SESSION_BY_ID, id, 1)
+           != OK)
+        {
+            LOG_ERROR("Failed to query history for id: {}", id);
+            resp->set_error_code(ERR_SQLITE_EXEC_FAIL);
 
-        // return status_t::OK;
-        reactor->Finish(status_t::OK);
-        return reactor;
+            // return status_t::OK;
+            reactor->Finish(status_t::OK);
+            return reactor;
+        }
+    } else
+    {
+        if(db_mgr::instance().query(rows,
+                                    SQL_SELECT_SESSION_BY_USER_ID,
+                                    user_id,
+                                    limit)
+           != OK)
+        {
+            LOG_ERROR("Failed to query history for user_id: {}", user_id);
+            resp->set_error_code(ERR_SQLITE_EXEC_FAIL);
+
+            // return status_t::OK;
+            reactor->Finish(status_t::OK);
+            return reactor;
+        }
     }
-    for(const auto row : rows)
-    {
-        auto item = resp->add_sessions();
-        item->set_id(row[0].empty() ? -1 : std::stoll(row[0]));
-        item->set_user_id(row[1].empty() ? -1 : std::stoll(row[1]));
-        item->set_title(row[2]);
 
-        long long ms = row[3].empty() ? 0 : std::stoll(row[3]);
+    for(int n_row = 0; n_row < rows.rows(); ++n_row)
+    {
+        auto id      = rows.get_or<int64_t>(n_row, 0, -1);
+        auto user_id = rows.get_or<int64_t>(n_row, 1, -1);
+        auto title   = rows.get_or<std::string>(n_row, 2, "");
+        auto ms      = rows.get_or<int64_t>(n_row, 3, 0);
+
+        auto item = resp->add_sessions();
+        item->set_id(id);
+        item->set_user_id(user_id);
+        item->set_title(title);
         item->set_timestamp(
             hj::date_time::format(hj::date_time::from_ms_since_epoch(ms),
                                   TIME_FORMAT));
@@ -392,13 +439,16 @@ reactor_t *api_handler::NewSession(ctx_t                                *ctx,
               model);
 
     int64_t id = static_cast<int64_t>(hj::uuid::gen_u64());
-    auto    sql =
-        hj::sqlite::mprintf(SQL_INSERT_SESSION, id, user_id, title.c_str(), ms);
-    LOG_DEBUG("{}", sql);
-    if(db_mgr::instance().exec(DB_SQLITE, sql) != OK)
+    if(db_mgr::instance().exec(SQL_INSERT_SESSION, id, user_id, title, ms)
+       != OK)
     {
         resp->set_error_code(ERR_SQLITE_EXEC_FAIL);
-        LOG_ERROR("Failed to insert session for sql: {}", sql);
+        LOG_ERROR("Failed to insert session with id: {}, user_id: {}, "
+                  "title: {}, ms: {}",
+                  id,
+                  user_id,
+                  title,
+                  ms);
 
         reactor->Finish(status_t::OK);
         return reactor;
@@ -439,13 +489,13 @@ reactor_t *api_handler::ModifySessionTitle(
         user_id,
         title);
 
-    auto sql =
-        hj::sqlite::mprintf(SQL_UPDATE_SESSION_TITLE_BY_ID, title.c_str(), id);
-    LOG_DEBUG("{}", sql);
-    if(db_mgr::instance().exec(DB_SQLITE, sql) != OK)
+    if(db_mgr::instance().exec(SQL_UPDATE_SESSION_TITLE_BY_ID,
+                               title.c_str(),
+                               id)
+       != OK)
     {
         resp->set_error_code(ERR_SQLITE_EXEC_FAIL);
-        LOG_ERROR("Failed to update session for sql: {}", sql);
+        LOG_ERROR("Failed to update session for id: {}, title: {}", id, title);
 
         reactor->Finish(status_t::OK);
         return reactor;
@@ -472,24 +522,20 @@ reactor_t *api_handler::DelSession(ctx_t                                *ctx,
 
     for(auto id : ids)
     {
-        auto sql = hj::sqlite::mprintf(SQL_DELETE_SESSION_BY_ID, id);
-        LOG_DEBUG("{}", sql);
-        if(db_mgr::instance().exec(DB_SQLITE, sql) != OK)
+        if(db_mgr::instance().exec(SQL_DELETE_SESSION_BY_ID, id) != OK)
         {
             resp->set_error_code(ERR_SQLITE_EXEC_FAIL);
-            LOG_ERROR("Failed to delete session for sql: {}", sql);
+            LOG_ERROR("Failed to delete session for id: {}", id);
 
             reactor->Finish(status_t::OK);
             return reactor;
         }
 
         // delete all relative message
-        sql = hj::sqlite::mprintf(SQL_DELETE_MESSAGE_BY_SESSION_ID, id);
-        LOG_DEBUG("{}", sql);
-        if(db_mgr::instance().exec(DB_SQLITE, sql) != OK)
+        if(db_mgr::instance().exec(SQL_DELETE_MESSAGE_BY_SESSION_ID, id) != OK)
         {
             resp->set_error_code(ERR_SQLITE_EXEC_FAIL);
-            LOG_ERROR("Failed to delete messages for sql: {}", sql);
+            LOG_ERROR("Failed to delete messages for session id: {}", id);
 
             reactor->Finish(status_t::OK);
             return reactor;
@@ -523,35 +569,69 @@ api_handler::GetPluginInfo(ctx_t                                   *ctx,
         publisher,
         limit);
 
-    std::string sql = SQL_SELECT_PLUGIN_INFO;
-    if(!hash.empty())
-        sql += hj::sqlite::mprintf(" AND hash = '%s'", hash.c_str());
+    // std::string sql = SQL_SELECT_PLUGIN_INFO;
+    // if(!hash.empty())
+    //     sql += hj::sqlite::mprintf(" AND hash = '%s'", hash.c_str());
 
-    if(!publisher.empty())
-        sql += hj::sqlite::mprintf(" AND publisher = '%s'", publisher.c_str());
+    // if(!publisher.empty())
+    //     sql += hj::sqlite::mprintf(" AND publisher = '%s'", publisher.c_str());
 
-    sql += hj::sqlite::mprintf(" LIMIT %d;", limit);
+    // sql += hj::sqlite::mprintf(" LIMIT %d;", limit);
 
-    LOG_DEBUG("{}", sql);
+    // LOG_DEBUG("{}", sql);
+    // db_mgr::query_ret rows;
+    // if(db_mgr::instance().query(rows, DB_SQLITE, sql) != OK)
+    // {
+    //     resp->set_error_code(ERR_SQLITE_EXEC_FAIL);
+    //     LOG_ERROR("Failed to query plugin info for sql: {}", sql);
+
+    //     reactor->Finish(status_t::OK);
+    //     return reactor;
+    // }
+    // for(const auto row : rows)
+    // {
+    //     auto item = resp->add_plugins();
+    //     item->set_hash(row[0]);
+    //     item->set_platform(row[1].empty() ? 0 : std::stoi(row[1]));
+    //     item->set_name(row[2]);
+    //     item->set_desc(row[3]);
+    //     item->set_publisher(row[4]);
+    //     item->set_version(row[5]);
+    //     long long ms = row[6].empty() ? 0 : std::stoll(row[6]);
+    //     item->set_timestamp(
+    //         hj::date_time::format(hj::date_time::from_ms_since_epoch(ms),
+    //                               TIME_FORMAT));
+
+    //     LOG_DEBUG("GetPluginInfo hash: {}, platform: {}, name: {}, desc: {}, "
+    //               "publisher: {}, version: {}, timestamp: {}",
+    //               item->hash(),
+    //               item->platform(),
+    //               item->name(),
+    //               item->desc(),
+    //               item->publisher(),
+    //               item->version(),
+    //               item->timestamp());
+    // }
+
     db_mgr::query_ret rows;
-    if(db_mgr::instance().query(rows, DB_SQLITE, sql) != OK)
+    if(db_mgr::instance().query(rows, SQL_SELECT_PLUGIN_INFO, limit) != OK)
     {
         resp->set_error_code(ERR_SQLITE_EXEC_FAIL);
-        LOG_ERROR("Failed to query plugin info for sql: {}", sql);
+        LOG_ERROR("Failed to query plugin info");
 
         reactor->Finish(status_t::OK);
         return reactor;
     }
-    for(const auto row : rows)
+    for(int n_row = 0; n_row < rows.rows(); ++n_row)
     {
         auto item = resp->add_plugins();
-        item->set_hash(row[0]);
-        item->set_platform(row[1].empty() ? 0 : std::stoi(row[1]));
-        item->set_name(row[2]);
-        item->set_desc(row[3]);
-        item->set_publisher(row[4]);
-        item->set_version(row[5]);
-        long long ms = row[6].empty() ? 0 : std::stoll(row[6]);
+        item->set_hash(rows.get_or<std::string>(n_row, 0, ""));
+        item->set_platform(rows.get_or<int64_t>(n_row, 1, 0));
+        item->set_name(rows.get_or<std::string>(n_row, 2, ""));
+        item->set_desc(rows.get_or<std::string>(n_row, 3, ""));
+        item->set_publisher(rows.get_or<std::string>(n_row, 4, ""));
+        item->set_version(rows.get_or<std::string>(n_row, 5, ""));
+        long long ms = rows.get_or<int64_t>(n_row, 6, 0);
         item->set_timestamp(
             hj::date_time::format(hj::date_time::from_ms_since_epoch(ms),
                                   TIME_FORMAT));
@@ -587,21 +667,18 @@ reactor_t *api_handler::Download(ctx_t                              *ctx,
               hash,
               user_id);
 
-    auto sql = hj::sqlite::mprintf(SQL_SELECT_FILE_BY_HASH, hash.c_str())
-               + " LIMIT 1;";
-    LOG_DEBUG("{}", sql);
     db_mgr::query_ret rows;
-    if(db_mgr::instance().query(rows, DB_SQLITE, sql) != OK)
+    if(db_mgr::instance().query(rows, SQL_SELECT_FILE_BY_HASH, hash) != OK)
     {
-        LOG_ERROR("Failed to query history for sql: {}", sql);
+        LOG_ERROR("Failed to query file for hash: {}", hash);
 
         reactor->Finish(status_t::OK);
         return reactor;
     }
-    for(const auto row : rows)
+    for(int n_row = 0; n_row < rows.rows(); ++n_row)
     {
-        resp->set_addr(row[0]);
-        resp->set_size_kb(std::stoll(row[2]));
+        resp->set_addr(rows.get_or<std::string>(n_row, 0, ""));
+        resp->set_size_kb(rows.get_or<long long>(n_row, 2, 0));
         break;
     }
 
@@ -625,17 +702,17 @@ reactor_t *api_handler::Upload(ctx_t                            *ctx,
     resp->set_hash(hash);
     LOG_DEBUG("Received Upload request. hash: {}, user_id: {}", hash, user_id);
 
-    auto sql = hj::sqlite::mprintf(SQL_INSERT_FILE,
-                                   hash.c_str(),
-                                   addr.c_str(),
-                                   user_id,
-                                   size_kb);
-    LOG_DEBUG("{}", sql);
     db_mgr::query_ret rows;
-    if(db_mgr::instance().exec(DB_SQLITE, sql) != OK)
+    if(db_mgr::instance().exec(SQL_INSERT_FILE, hash, addr, user_id, size_kb)
+       != OK)
     {
         resp->set_error_code(ERR_SQLITE_EXEC_FAIL);
-        LOG_ERROR("Failed to insert file for sql: {}", sql);
+        LOG_ERROR("Failed to insert file for hash: {}, addr: {}, user_id: {}, "
+                  "size_kb: {}",
+                  hash,
+                  addr,
+                  user_id,
+                  size_kb);
 
         reactor->Finish(status_t::OK);
         return reactor;

@@ -177,14 +177,14 @@ void QueryReactor::OnDone()
 {
     // store the answer to DB
     auto now = hj::date_time::now().ms_since_epoch();
-    auto sql = hj::sqlite::mprintf(SQL_INSERT_MESSAGE,
-                                   _curr_msg_id,
-                                   _session_id,
-                                   ROLE_ASSISTANT,
-                                   _answer.c_str(),
-                                   _prev_msg_id,
-                                   now);
-    if(db_mgr::instance().exec(DB_SQLITE, sql) != OK)
+    if(db_mgr::instance().exec(SQL_INSERT_MESSAGE,
+                               _curr_msg_id,
+                               _session_id,
+                               ROLE_ASSISTANT,
+                               _answer.c_str(),
+                               _prev_msg_id,
+                               now)
+       != OK)
     {
         LOG_ERROR("Failed to insert assistant message for session_id: {}",
                   _session_id);
@@ -211,14 +211,14 @@ void QueryReactor::_process()
 {
     // record query
     auto now = hj::date_time::now().ms_since_epoch();
-    auto sql = hj::sqlite::mprintf(SQL_INSERT_MESSAGE,
-                                   _curr_msg_id,
-                                   _session_id,
-                                   ROLE_USER,
-                                   _content.c_str(),
-                                   _prev_msg_id,
-                                   now);
-    if(db_mgr::instance().exec(DB_SQLITE, sql) != OK)
+    if(db_mgr::instance().exec(SQL_INSERT_MESSAGE,
+                               _curr_msg_id,
+                               _session_id,
+                               ROLE_USER,
+                               _content.c_str(),
+                               _prev_msg_id,
+                               now)
+       != OK)
     {
         _send("", true, ERR_SQLITE_EXEC_FAIL);
         return;
@@ -280,14 +280,14 @@ void QueryReactor::_processRemote()
               _content,
               _api_key);
     auto now = hj::date_time::now().ms_since_epoch();
-    auto sql = hj::sqlite::mprintf(SQL_INSERT_MESSAGE,
-                                   _curr_msg_id,
-                                   _session_id,
-                                   ROLE_USER,
-                                   _content.c_str(),
-                                   _prev_msg_id,
-                                   now);
-    if(db_mgr::instance().exec(DB_SQLITE, sql) != OK)
+    if(db_mgr::instance().exec(SQL_INSERT_MESSAGE,
+                               _curr_msg_id,
+                               _session_id,
+                               ROLE_USER,
+                               _content.c_str(),
+                               _prev_msg_id,
+                               now)
+       != OK)
     {
         _send("", true, ERR_SQLITE_EXEC_FAIL);
         return;

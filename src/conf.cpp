@@ -91,30 +91,33 @@ std::string conf::clients_file_path()
 #endif
 }
 
-std::string conf::sqlite_id()
+std::vector<conf::sqlite_config> conf::sqlites()
 {
-    return _cfg.get<std::string>("sqlite/id", "default");
-}
-
-std::string conf::sqlite_path()
-{
+    std::vector<sqlite_config> ret;
+    auto                       str = _cfg.get<std::string>("db/sqlite", "");
+    auto                       arr = hj::string_util::split(str, ",");
+    for(auto item : arr)
+    {
+        sqlite_config conf;
+        conf.id = _cfg.get<int>(item + "/id", -1);
 #if defined(__APPLE__) // standard macOS bundle structure
-    return hj::filepath::join(
-        hj::filepath::pwd() + "/../Resources",
-        _cfg.get<std::string>("sqlite/path", "default.db"));
+        conf.path = hj::filepath::join(
+            hj::filepath::pwd() + "/../Resources",
+            _cfg.get<std::string>(item + "/path", "default.db"));
 #else
-    return _cfg.get<std::string>("sqlite/path", "default.db");
+        conf.path = _cfg.get<std::string>(item + "/path", "default.db");
 #endif
+        conf.capa   = _cfg.get<int>(item + "/capa", 1);
+        conf.min_sz = _cfg.get<int>(item + "/min_sz", 1);
+        ret.push_back(conf);
+    }
+
+    return ret;
 }
 
-int conf::sqlite_pool()
+int conf::param_query_limit()
 {
-    return _cfg.get<int>("sqlite/pool", 5);
-}
-
-int conf::sqlite_msg_limit()
-{
-    return _cfg.get<int>("sqlite/msg_limit", 1000);
+    return _cfg.get<int>("param/query_limit", 1000);
 }
 
 std::string conf::issuer_id()

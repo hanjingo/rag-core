@@ -18,6 +18,7 @@ static constexpr int ERR_DB_EXISTED           = 101;
 static constexpr int ERR_SQLITE_GET_CONN_FAIL = 102;
 static constexpr int ERR_SQLITE_EXEC_FAIL     = 103;
 static constexpr int ERR_UNKNOWN_PIPELINE     = 104;
+static constexpr int ERR_DB_CONN_POOL_EMPTY   = 105;
 
 static constexpr int AUTH_ERR_ISSUER_EXIST     = 200;
 static constexpr int AUTH_ERR_ISSUER_NOT_EXIST = 201;

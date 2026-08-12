@@ -1,20 +1,46 @@
 #include "db_mgr.h"
 
-#include "conf.h"
 #include <hj/log/logger.hpp>
+#include <hj/db/db_conn.hpp>
+#include <hj/db/db_conn_pool.hpp>
+#include <hj/db/sqlite.hpp>
+
+#include "conf.h"
+#include "global.h"
 
 void db_mgr::init()
 {
-    _dbs.clear();
+    _pools.clear();
+    // init sqlite
+    auto sqlite_confs = conf::instance().sqlites();
+    for(auto conf : sqlite_confs)
+    {
+        auto pool = hj::db_conn_pool<hj::db_conn>::create(
+            conf.capa,
+            conf.min_sz,
+            [path = conf.path]() -> std::shared_ptr<hj::db_conn> {
+                auto conn = std::make_shared<hj::sqlite>();
+                if(!conn->open(path))
+                    return nullptr;
 
-    auto id   = conf::instance().sqlite_id();
-    auto path = conf::instance().sqlite_path();
-    auto capa = conf::instance().sqlite_pool();
-    add(std::make_unique<sqlite>(id.c_str(), path.c_str(), capa));
-    LOG_DEBUG("Initialized db_mgr with sqlite db, id:{}, path:{}, capa:{}",
-              id,
-              path,
-              capa);
+                return std::static_pointer_cast<hj::db_conn>(conn);
+            },
+            [](std::shared_ptr<hj::db_conn> conn) -> bool {
+                if(!conn)
+                    return false;
+
+                auto valid = static_cast<hj::sqlite *>(conn.get())->is_open();
+                return valid;
+            });
+        add(conf.id, pool);
+        LOG_DEBUG(
+            "Initialized db_mgr with sqlite id:%1, path:%2, capa:%3, min_sz:%4",
+            conf.id,
+            conf.path,
+            conf.capa,
+            conf.min_sz);
+    }
+
     return;
 }
 
@@ -24,54 +50,11 @@ const std::vector<std::string> &db_mgr::supported_db_types()
     return ret;
 }
 
-int db_mgr::add(std::unique_ptr<db> &&elem)
+int db_mgr::add(const uint32_t db_id, pool_ptr_t pool)
 {
-    for(const auto &e : _dbs)
-        if(e->id() == elem->id())
-            return ERR_DB_EXISTED;
+    if(_pools.size() <= db_id)
+        _pools.resize(db_id + 1);
 
-    _dbs.emplace_back(std::move(elem));
+    _pools[db_id] = std::move(pool);
     return OK;
-}
-
-int db_mgr::exec(const std::string &db_id, const std::string &sql)
-{
-    for(const auto &e : _dbs)
-    {
-        if(e->id() != db_id)
-            continue;
-
-        return e->exec(sql.c_str());
-    }
-
-    return ERR_DB_NOT_EXIST;
-}
-
-int db_mgr::query(query_ret         &outs,
-                  const std::string &db_id,
-                  const std::string &sql)
-{
-    for(const auto &e : _dbs)
-    {
-        if(e->id() != db_id)
-            continue;
-
-        return e->query(outs, sql.c_str());
-    }
-
-    return ERR_DB_NOT_EXIST;
-}
-
-int64_t db_mgr::last_insert_id(const std::string &db_id,
-                               const std::string &table)
-{
-    for(const auto &e : _dbs)
-    {
-        if(e->id() != db_id)
-            continue;
-
-        return e->last_insert_id(table.c_str());
-    }
-
-    return -1;
 }

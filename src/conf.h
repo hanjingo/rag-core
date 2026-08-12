@@ -57,6 +57,14 @@ class conf
         int         gpu_device;
     };
 
+    struct sqlite_config
+    {
+        int         id;
+        std::string path;
+        std::size_t capa;
+        std::size_t min_sz;
+    };
+
   public:
     conf();
     ~conf();
@@ -85,11 +93,9 @@ class conf
     std::unordered_map<std::string, conf::client_config> clients();
     std::string                                          clients_file_path();
 
-    std::string sqlite_id();
-    std::string sqlite_path();
-    int         sqlite_pool();
-    int         sqlite_msg_limit();
+    std::vector<sqlite_config> sqlites();
 
+    int param_query_limit();
 
     std::string              issuer_id();
     hj::license::sign_algo   issuer_algo();
