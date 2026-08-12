@@ -54,23 +54,23 @@ void watch_dog::_on_pub_msg(const std::string &msgs)
                 std::string timestamp = item.value("timestamp", "");
                 int         platform  = item.value("platform", 0);
                 LOG_DEBUG(
-                    "Received plugin info: hash: {}, name: {}, desc: {}, "
-                    "publisher: {}, version: {}, timestamp: {}, platform: {}",
+                    "Received plugin info: hash: {}, platform: {}, name: "
+                    "{}, desc: {}, publisher: {}, version: {}, timestamp: {}",
                     hash,
+                    platform,
                     name,
                     desc,
                     publisher,
                     version,
-                    timestamp,
-                    platform);
+                    timestamp);
                 if(db_mgr::instance().exec(SQL_INSERT_PLUGIN_INFO,
                                            hash,
+                                           platform,
                                            name,
                                            desc,
                                            publisher,
                                            version,
-                                           timestamp,
-                                           platform)
+                                           timestamp)
                    != OK)
                 {
                     LOG_ERROR("Failed to insert plugin info with hash:{}",
