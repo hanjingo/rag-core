@@ -22,7 +22,7 @@ class watch_dog
                    const std::string &addr = conf::instance().publish_addr());
 
   private:
-    void _on_pub_msg(const std::string &msg);
+    void _on_pub_msg(const std::string &msgs);
 
   private:
     watch_dog()  = default;

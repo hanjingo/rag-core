@@ -64,7 +64,7 @@ static constexpr const char *SQL_SELECT_PLUGIN_INFO_BY_PUBLISHER =
     R"(SELECT hash, platform, name, desc, publisher, version, timestamp FROM plugin WHERE publisher = ? LIMIT ?)";
 
 static constexpr const char *SQL_INSERT_PLUGIN_INFO =
-    R"(INSERT INTO plugin (hash, platform, name, desc, publisher, version, timestamp) VALUES (%Q, %d, %Q, %Q, %Q, %Q, %lld))";
+    R"(INSERT INTO plugin (hash, platform, name, desc, publisher, version, timestamp) VALUES (?, ?, ?, ?, ?, ?, ?))";
 
 static constexpr const char *SQL_SELECT_FILE_BY_HASH =
     R"(SELECT addr, owner, size_kb FROM file WHERE hash = ? LIMIT 1)";
