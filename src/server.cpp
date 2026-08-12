@@ -569,50 +569,6 @@ api_handler::GetPluginInfo(ctx_t                                   *ctx,
         publisher,
         limit);
 
-    // std::string sql = SQL_SELECT_PLUGIN_INFO;
-    // if(!hash.empty())
-    //     sql += hj::sqlite::mprintf(" AND hash = '%s'", hash.c_str());
-
-    // if(!publisher.empty())
-    //     sql += hj::sqlite::mprintf(" AND publisher = '%s'", publisher.c_str());
-
-    // sql += hj::sqlite::mprintf(" LIMIT %d;", limit);
-
-    // LOG_DEBUG("{}", sql);
-    // db_mgr::query_ret rows;
-    // if(db_mgr::instance().query(rows, DB_SQLITE, sql) != OK)
-    // {
-    //     resp->set_error_code(ERR_SQLITE_EXEC_FAIL);
-    //     LOG_ERROR("Failed to query plugin info for sql: {}", sql);
-
-    //     reactor->Finish(status_t::OK);
-    //     return reactor;
-    // }
-    // for(const auto row : rows)
-    // {
-    //     auto item = resp->add_plugins();
-    //     item->set_hash(row[0]);
-    //     item->set_platform(row[1].empty() ? 0 : std::stoi(row[1]));
-    //     item->set_name(row[2]);
-    //     item->set_desc(row[3]);
-    //     item->set_publisher(row[4]);
-    //     item->set_version(row[5]);
-    //     long long ms = row[6].empty() ? 0 : std::stoll(row[6]);
-    //     item->set_timestamp(
-    //         hj::date_time::format(hj::date_time::from_ms_since_epoch(ms),
-    //                               TIME_FORMAT));
-
-    //     LOG_DEBUG("GetPluginInfo hash: {}, platform: {}, name: {}, desc: {}, "
-    //               "publisher: {}, version: {}, timestamp: {}",
-    //               item->hash(),
-    //               item->platform(),
-    //               item->name(),
-    //               item->desc(),
-    //               item->publisher(),
-    //               item->version(),
-    //               item->timestamp());
-    // }
-
     db_mgr::query_ret rows;
     if(db_mgr::instance().query(rows, SQL_SELECT_PLUGIN_INFO, limit) != OK)
     {
