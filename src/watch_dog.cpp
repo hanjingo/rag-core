@@ -2,6 +2,7 @@
 
 #include <hj/util/string_util.hpp>
 #include <hj/log/logger.hpp>
+#include <hj/encoding/json.hpp>
 
 #include "global.h"
 #include "mq.h"
@@ -25,62 +26,67 @@ bool watch_dog::watch_pub(const std::vector<std::string> &topics,
     return true;
 }
 
-void watch_dog::_on_pub_msg(const std::string &msg)
+void watch_dog::_on_pub_msg(const std::string &msgs)
 {
-    LOG_DEBUG("watch_dog::_on_pub_msg: msg: {}", msg);
-    std::string payload;
-    std::string topic;
-    auto        parts = hj::string_util::split(msg, TOPIC_SEPARATOR);
-    if(parts.size() < 2)
+    LOG_DEBUG("watch_dog::_on_pub_msg with msgs: {}", msgs);
+
+    try
     {
-        LOG_WARN("Received pub message with unexpected format: {}", msg);
-        return;
+        auto arr = hj::json::parse(msgs);
+        if(!arr.is_array())
+        {
+            LOG_INFO("Invalid pub msg format: {}", msgs);
+            return;
+        }
+        for(auto item : arr)
+        {
+            if(!item.contains("topic") || !item["topic"].is_string())
+                continue;
+
+            std::string topic = item["topic"].get<std::string>();
+            if(topic == TOPIC_PLUGIN_PUB)
+            {
+                std::string hash      = item.value("hash", "");
+                std::string name      = item.value("name", "");
+                std::string desc      = item.value("desc", "");
+                std::string publisher = item.value("publisher", "");
+                std::string version   = item.value("version", "");
+                std::string timestamp = item.value("timestamp", "");
+                int         platform  = item.value("platform", 0);
+                LOG_DEBUG(
+                    "Received plugin info: hash: {}, name: {}, desc: {}, "
+                    "publisher: {}, version: {}, timestamp: {}, platform: {}",
+                    hash,
+                    name,
+                    desc,
+                    publisher,
+                    version,
+                    timestamp,
+                    platform);
+                if(db_mgr::instance().exec(SQL_INSERT_PLUGIN_INFO,
+                                           hash,
+                                           name,
+                                           desc,
+                                           publisher,
+                                           version,
+                                           timestamp,
+                                           platform)
+                   != OK)
+                {
+                    LOG_ERROR("Failed to insert plugin info with hash:{}",
+                              hash);
+                    return;
+                }
+            } else
+            {
+                LOG_DEBUG("unrecognized msg!");
+            }
+        }
     }
-
-    topic   = parts[0];
-    payload = parts[1];
-    LOG_DEBUG("parse pub msg with topic:{}, payload:{}", topic, payload);
-
-    if(topic == TOPIC_PLUGIN_PUB)
+    catch(const hj::json::exception &e)
     {
-        ::GrpcLibraryV1::Plugin info;
-        if(!info.ParseFromString(payload))
-        {
-            LOG_WARN("Failed to parse Plugin message from payload: {}",
-                     payload);
-            return;
-        }
-
-        LOG_DEBUG("Received plugin info: hash: {}, name: {}, desc: {}, "
-                  "publisher: {}, version: {}, timestamp: {}, platform: {}",
-                  info.hash(),
-                  info.name(),
-                  info.desc(),
-                  info.publisher(),
-                  info.version(),
-                  info.timestamp(),
-                  info.platform());
-        if(db_mgr::instance().exec(SQL_INSERT_PLUGIN_INFO,
-                                   info.hash(),
-                                   info.platform(),
-                                   info.name(),
-                                   info.desc(),
-                                   info.publisher(),
-                                   info.version(),
-                                   info.timestamp())
-           != OK)
-        {
-            LOG_ERROR(
-                "Failed to insert plugin info for hash: {}, platform: {}, "
-                "name: {}, desc: {}, publisher: {}, version: {}, timestamp: {}",
-                info.hash(),
-                info.platform(),
-                info.name(),
-                info.desc(),
-                info.publisher(),
-                info.version(),
-                info.timestamp());
-            return;
-        }
+        LOG_ERROR("JSON parse or operational exception: {}, raw msgs: {}",
+                  e.what(),
+                  msgs);
     }
 }

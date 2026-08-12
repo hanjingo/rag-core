@@ -394,7 +394,7 @@ message StopEmbeddingResp {
 message PublishReq {
     int64 user_id = 1;
     string auth = 2;
-    repeated bytes msgs = 3; // msg: topic|content
+    repeated bytes msgs = 3; // msgs(JSON): [{topic:"topic1", ...}, {topic:"topic2", ...}, ...]
 }
 
 message PublishResp {
