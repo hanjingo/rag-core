@@ -61,13 +61,13 @@ void watch_dog::_on_pub_msg(const std::string &msg)
                   info.timestamp(),
                   info.platform());
         if(db_mgr::instance().exec(SQL_INSERT_PLUGIN_INFO,
-                                   info.hash().c_str(),
+                                   info.hash(),
                                    info.platform(),
-                                   info.name().c_str(),
-                                   info.desc().c_str(),
-                                   info.publisher().c_str(),
-                                   info.version().c_str(),
-                                   info.timestamp().c_str())
+                                   info.name(),
+                                   info.desc(),
+                                   info.publisher(),
+                                   info.version(),
+                                   info.timestamp())
            != OK)
         {
             LOG_ERROR(
