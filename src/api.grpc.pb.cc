@@ -29,8 +29,8 @@ static const char* GrpcService_method_names[] = {
   "/GrpcLibraryV1.GrpcService/RegAccount",
   "/GrpcLibraryV1.GrpcService/Query",
   "/GrpcLibraryV1.GrpcService/StopAnswer",
-  "/GrpcLibraryV1.GrpcService/Recognize",
-  "/GrpcLibraryV1.GrpcService/StopRecognize",
+  "/GrpcLibraryV1.GrpcService/RecognizeAudio",
+  "/GrpcLibraryV1.GrpcService/StopRecognizeAudio",
   "/GrpcLibraryV1.GrpcService/GetChatMessage",
   "/GrpcLibraryV1.GrpcService/GetSession",
   "/GrpcLibraryV1.GrpcService/NewSession",
@@ -59,8 +59,8 @@ GrpcService::Stub::Stub(const std::shared_ptr< ::grpc::ChannelInterface>& channe
   , rpcmethod_RegAccount_(GrpcService_method_names[3], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
   , rpcmethod_Query_(GrpcService_method_names[4], options.suffix_for_stats(),::grpc::internal::RpcMethod::SERVER_STREAMING, channel)
   , rpcmethod_StopAnswer_(GrpcService_method_names[5], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_Recognize_(GrpcService_method_names[6], options.suffix_for_stats(),::grpc::internal::RpcMethod::BIDI_STREAMING, channel)
-  , rpcmethod_StopRecognize_(GrpcService_method_names[7], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_RecognizeAudio_(GrpcService_method_names[6], options.suffix_for_stats(),::grpc::internal::RpcMethod::BIDI_STREAMING, channel)
+  , rpcmethod_StopRecognizeAudio_(GrpcService_method_names[7], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
   , rpcmethod_GetChatMessage_(GrpcService_method_names[8], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
   , rpcmethod_GetSession_(GrpcService_method_names[9], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
   , rpcmethod_NewSession_(GrpcService_method_names[10], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
@@ -207,41 +207,41 @@ void GrpcService::Stub::async::StopAnswer(::grpc::ClientContext* context, const 
   return result;
 }
 
-::grpc::ClientReaderWriter< ::GrpcLibraryV1::RecognizeReq, ::GrpcLibraryV1::RecognizeResp>* GrpcService::Stub::RecognizeRaw(::grpc::ClientContext* context) {
-  return ::grpc::internal::ClientReaderWriterFactory< ::GrpcLibraryV1::RecognizeReq, ::GrpcLibraryV1::RecognizeResp>::Create(channel_.get(), rpcmethod_Recognize_, context);
+::grpc::ClientReaderWriter< ::GrpcLibraryV1::RecognizeAudioReq, ::GrpcLibraryV1::RecognizeAudioResp>* GrpcService::Stub::RecognizeAudioRaw(::grpc::ClientContext* context) {
+  return ::grpc::internal::ClientReaderWriterFactory< ::GrpcLibraryV1::RecognizeAudioReq, ::GrpcLibraryV1::RecognizeAudioResp>::Create(channel_.get(), rpcmethod_RecognizeAudio_, context);
 }
 
-void GrpcService::Stub::async::Recognize(::grpc::ClientContext* context, ::grpc::ClientBidiReactor< ::GrpcLibraryV1::RecognizeReq,::GrpcLibraryV1::RecognizeResp>* reactor) {
-  ::grpc::internal::ClientCallbackReaderWriterFactory< ::GrpcLibraryV1::RecognizeReq,::GrpcLibraryV1::RecognizeResp>::Create(stub_->channel_.get(), stub_->rpcmethod_Recognize_, context, reactor);
+void GrpcService::Stub::async::RecognizeAudio(::grpc::ClientContext* context, ::grpc::ClientBidiReactor< ::GrpcLibraryV1::RecognizeAudioReq,::GrpcLibraryV1::RecognizeAudioResp>* reactor) {
+  ::grpc::internal::ClientCallbackReaderWriterFactory< ::GrpcLibraryV1::RecognizeAudioReq,::GrpcLibraryV1::RecognizeAudioResp>::Create(stub_->channel_.get(), stub_->rpcmethod_RecognizeAudio_, context, reactor);
 }
 
-::grpc::ClientAsyncReaderWriter< ::GrpcLibraryV1::RecognizeReq, ::GrpcLibraryV1::RecognizeResp>* GrpcService::Stub::AsyncRecognizeRaw(::grpc::ClientContext* context, ::grpc::CompletionQueue* cq, void* tag) {
-  return ::grpc::internal::ClientAsyncReaderWriterFactory< ::GrpcLibraryV1::RecognizeReq, ::GrpcLibraryV1::RecognizeResp>::Create(channel_.get(), cq, rpcmethod_Recognize_, context, true, tag);
+::grpc::ClientAsyncReaderWriter< ::GrpcLibraryV1::RecognizeAudioReq, ::GrpcLibraryV1::RecognizeAudioResp>* GrpcService::Stub::AsyncRecognizeAudioRaw(::grpc::ClientContext* context, ::grpc::CompletionQueue* cq, void* tag) {
+  return ::grpc::internal::ClientAsyncReaderWriterFactory< ::GrpcLibraryV1::RecognizeAudioReq, ::GrpcLibraryV1::RecognizeAudioResp>::Create(channel_.get(), cq, rpcmethod_RecognizeAudio_, context, true, tag);
 }
 
-::grpc::ClientAsyncReaderWriter< ::GrpcLibraryV1::RecognizeReq, ::GrpcLibraryV1::RecognizeResp>* GrpcService::Stub::PrepareAsyncRecognizeRaw(::grpc::ClientContext* context, ::grpc::CompletionQueue* cq) {
-  return ::grpc::internal::ClientAsyncReaderWriterFactory< ::GrpcLibraryV1::RecognizeReq, ::GrpcLibraryV1::RecognizeResp>::Create(channel_.get(), cq, rpcmethod_Recognize_, context, false, nullptr);
+::grpc::ClientAsyncReaderWriter< ::GrpcLibraryV1::RecognizeAudioReq, ::GrpcLibraryV1::RecognizeAudioResp>* GrpcService::Stub::PrepareAsyncRecognizeAudioRaw(::grpc::ClientContext* context, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncReaderWriterFactory< ::GrpcLibraryV1::RecognizeAudioReq, ::GrpcLibraryV1::RecognizeAudioResp>::Create(channel_.get(), cq, rpcmethod_RecognizeAudio_, context, false, nullptr);
 }
 
-::grpc::Status GrpcService::Stub::StopRecognize(::grpc::ClientContext* context, const ::GrpcLibraryV1::StopRecognizeReq& request, ::GrpcLibraryV1::StopRecognizeResp* response) {
-  return ::grpc::internal::BlockingUnaryCall< ::GrpcLibraryV1::StopRecognizeReq, ::GrpcLibraryV1::StopRecognizeResp, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_StopRecognize_, context, request, response);
+::grpc::Status GrpcService::Stub::StopRecognizeAudio(::grpc::ClientContext* context, const ::GrpcLibraryV1::StopRecognizeAudioReq& request, ::GrpcLibraryV1::StopRecognizeAudioResp* response) {
+  return ::grpc::internal::BlockingUnaryCall< ::GrpcLibraryV1::StopRecognizeAudioReq, ::GrpcLibraryV1::StopRecognizeAudioResp, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_StopRecognizeAudio_, context, request, response);
 }
 
-void GrpcService::Stub::async::StopRecognize(::grpc::ClientContext* context, const ::GrpcLibraryV1::StopRecognizeReq* request, ::GrpcLibraryV1::StopRecognizeResp* response, std::function<void(::grpc::Status)> f) {
-  ::grpc::internal::CallbackUnaryCall< ::GrpcLibraryV1::StopRecognizeReq, ::GrpcLibraryV1::StopRecognizeResp, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_StopRecognize_, context, request, response, std::move(f));
+void GrpcService::Stub::async::StopRecognizeAudio(::grpc::ClientContext* context, const ::GrpcLibraryV1::StopRecognizeAudioReq* request, ::GrpcLibraryV1::StopRecognizeAudioResp* response, std::function<void(::grpc::Status)> f) {
+  ::grpc::internal::CallbackUnaryCall< ::GrpcLibraryV1::StopRecognizeAudioReq, ::GrpcLibraryV1::StopRecognizeAudioResp, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_StopRecognizeAudio_, context, request, response, std::move(f));
 }
 
-void GrpcService::Stub::async::StopRecognize(::grpc::ClientContext* context, const ::GrpcLibraryV1::StopRecognizeReq* request, ::GrpcLibraryV1::StopRecognizeResp* response, ::grpc::ClientUnaryReactor* reactor) {
-  ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_StopRecognize_, context, request, response, reactor);
+void GrpcService::Stub::async::StopRecognizeAudio(::grpc::ClientContext* context, const ::GrpcLibraryV1::StopRecognizeAudioReq* request, ::GrpcLibraryV1::StopRecognizeAudioResp* response, ::grpc::ClientUnaryReactor* reactor) {
+  ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_StopRecognizeAudio_, context, request, response, reactor);
 }
 
-::grpc::ClientAsyncResponseReader< ::GrpcLibraryV1::StopRecognizeResp>* GrpcService::Stub::PrepareAsyncStopRecognizeRaw(::grpc::ClientContext* context, const ::GrpcLibraryV1::StopRecognizeReq& request, ::grpc::CompletionQueue* cq) {
-  return ::grpc::internal::ClientAsyncResponseReaderHelper::Create< ::GrpcLibraryV1::StopRecognizeResp, ::GrpcLibraryV1::StopRecognizeReq, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), cq, rpcmethod_StopRecognize_, context, request);
+::grpc::ClientAsyncResponseReader< ::GrpcLibraryV1::StopRecognizeAudioResp>* GrpcService::Stub::PrepareAsyncStopRecognizeAudioRaw(::grpc::ClientContext* context, const ::GrpcLibraryV1::StopRecognizeAudioReq& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncResponseReaderHelper::Create< ::GrpcLibraryV1::StopRecognizeAudioResp, ::GrpcLibraryV1::StopRecognizeAudioReq, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), cq, rpcmethod_StopRecognizeAudio_, context, request);
 }
 
-::grpc::ClientAsyncResponseReader< ::GrpcLibraryV1::StopRecognizeResp>* GrpcService::Stub::AsyncStopRecognizeRaw(::grpc::ClientContext* context, const ::GrpcLibraryV1::StopRecognizeReq& request, ::grpc::CompletionQueue* cq) {
+::grpc::ClientAsyncResponseReader< ::GrpcLibraryV1::StopRecognizeAudioResp>* GrpcService::Stub::AsyncStopRecognizeAudioRaw(::grpc::ClientContext* context, const ::GrpcLibraryV1::StopRecognizeAudioReq& request, ::grpc::CompletionQueue* cq) {
   auto* result =
-    this->PrepareAsyncStopRecognizeRaw(context, request, cq);
+    this->PrepareAsyncStopRecognizeAudioRaw(context, request, cq);
   result->StartCall();
   return result;
 }
@@ -595,22 +595,22 @@ GrpcService::Service::Service() {
   AddMethod(new ::grpc::internal::RpcServiceMethod(
       GrpcService_method_names[6],
       ::grpc::internal::RpcMethod::BIDI_STREAMING,
-      new ::grpc::internal::BidiStreamingHandler< GrpcService::Service, ::GrpcLibraryV1::RecognizeReq, ::GrpcLibraryV1::RecognizeResp>(
+      new ::grpc::internal::BidiStreamingHandler< GrpcService::Service, ::GrpcLibraryV1::RecognizeAudioReq, ::GrpcLibraryV1::RecognizeAudioResp>(
           [](GrpcService::Service* service,
              ::grpc::ServerContext* ctx,
-             ::grpc::ServerReaderWriter<::GrpcLibraryV1::RecognizeResp,
-             ::GrpcLibraryV1::RecognizeReq>* stream) {
-               return service->Recognize(ctx, stream);
+             ::grpc::ServerReaderWriter<::GrpcLibraryV1::RecognizeAudioResp,
+             ::GrpcLibraryV1::RecognizeAudioReq>* stream) {
+               return service->RecognizeAudio(ctx, stream);
              }, this)));
   AddMethod(new ::grpc::internal::RpcServiceMethod(
       GrpcService_method_names[7],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
-      new ::grpc::internal::RpcMethodHandler< GrpcService::Service, ::GrpcLibraryV1::StopRecognizeReq, ::GrpcLibraryV1::StopRecognizeResp, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
+      new ::grpc::internal::RpcMethodHandler< GrpcService::Service, ::GrpcLibraryV1::StopRecognizeAudioReq, ::GrpcLibraryV1::StopRecognizeAudioResp, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
           [](GrpcService::Service* service,
              ::grpc::ServerContext* ctx,
-             const ::GrpcLibraryV1::StopRecognizeReq* req,
-             ::GrpcLibraryV1::StopRecognizeResp* resp) {
-               return service->StopRecognize(ctx, req, resp);
+             const ::GrpcLibraryV1::StopRecognizeAudioReq* req,
+             ::GrpcLibraryV1::StopRecognizeAudioResp* resp) {
+               return service->StopRecognizeAudio(ctx, req, resp);
              }, this)));
   AddMethod(new ::grpc::internal::RpcServiceMethod(
       GrpcService_method_names[8],
@@ -789,13 +789,13 @@ GrpcService::Service::~Service() {
   return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
 }
 
-::grpc::Status GrpcService::Service::Recognize(::grpc::ServerContext* context, ::grpc::ServerReaderWriter< ::GrpcLibraryV1::RecognizeResp, ::GrpcLibraryV1::RecognizeReq>* stream) {
+::grpc::Status GrpcService::Service::RecognizeAudio(::grpc::ServerContext* context, ::grpc::ServerReaderWriter< ::GrpcLibraryV1::RecognizeAudioResp, ::GrpcLibraryV1::RecognizeAudioReq>* stream) {
   (void) context;
   (void) stream;
   return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
 }
 
-::grpc::Status GrpcService::Service::StopRecognize(::grpc::ServerContext* context, const ::GrpcLibraryV1::StopRecognizeReq* request, ::GrpcLibraryV1::StopRecognizeResp* response) {
+::grpc::Status GrpcService::Service::StopRecognizeAudio(::grpc::ServerContext* context, const ::GrpcLibraryV1::StopRecognizeAudioReq* request, ::GrpcLibraryV1::StopRecognizeAudioResp* response) {
   (void) context;
   (void) request;
   (void) response;

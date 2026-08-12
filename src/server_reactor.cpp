@@ -395,7 +395,7 @@ void QueryReactor::_set_msg_id(int64_t msg_id)
 }
 
 // ------------------------------------------ ReocgnizeReactor -------------------------------
-RecognizeReactor::RecognizeReactor(grpc::CallbackServerContext *ctx)
+RecognizeAudioReactor::RecognizeAudioReactor(grpc::CallbackServerContext *ctx)
     : _ctx(ctx)
     , _session_id(0)
     , _w_queue{conf::instance().sync_write_queue_size()}
@@ -405,22 +405,22 @@ RecognizeReactor::RecognizeReactor(grpc::CallbackServerContext *ctx)
     , _is_processing(false)
     , _audio_buffer(conf::instance().asr_audio_buffer_size())
 {
-    LOG_DEBUG("RecognizeReactor entry");
+    LOG_DEBUG("RecognizeAudioReactor entry");
 
     // start reading the first request
     StartRead(&_req);
 }
 
-RecognizeReactor::~RecognizeReactor()
+RecognizeAudioReactor::~RecognizeAudioReactor()
 {
     if(_is_registered.load() && _session_id != 0)
     {
         recognize_reactor_mgr::instance().unregister_recognize(_session_id);
     }
-    LOG_DEBUG("RecognizeReactor exit for session_id: {}", _session_id);
+    LOG_DEBUG("RecognizeAudioReactor exit for session_id: {}", _session_id);
 }
 
-void RecognizeReactor::_ensure_registered(int64_t session_id)
+void RecognizeAudioReactor::_ensure_registered(int64_t session_id)
 {
     if(_is_registered.load())
         return;
@@ -432,10 +432,11 @@ void RecognizeReactor::_ensure_registered(int64_t session_id)
     _session_id = session_id;
     recognize_reactor_mgr::instance().register_recognize(_session_id, this);
     _is_registered.store(true);
-    LOG_DEBUG("Registered RecognizeReactor with session_id: {}", _session_id);
+    LOG_DEBUG("Registered RecognizeAudioReactor with session_id: {}",
+              _session_id);
 }
 
-void RecognizeReactor::OnReadDone(bool ok)
+void RecognizeAudioReactor::OnReadDone(bool ok)
 {
     LOG_DEBUG("OnReadDone called with ok={}, session_id: {}", ok, _session_id);
 
@@ -456,7 +457,7 @@ void RecognizeReactor::OnReadDone(bool ok)
     StartRead(&_req);
 }
 
-void RecognizeReactor::OnWriteDone(bool ok)
+void RecognizeAudioReactor::OnWriteDone(bool ok)
 {
     LOG_DEBUG("OnWriteDone called with ok={}, session_id: {}", ok, _session_id);
     _is_writing.store(false);
@@ -466,7 +467,7 @@ void RecognizeReactor::OnWriteDone(bool ok)
         LOG_WARN("Write failed for session_id: {}", _session_id);
         _is_cancelled.store(true);
 
-        ::GrpcLibraryV1::RecognizeResp resp;
+        ::GrpcLibraryV1::RecognizeAudioResp resp;
         while(_w_queue.try_dequeue(resp))
         {
         }
@@ -478,37 +479,38 @@ void RecognizeReactor::OnWriteDone(bool ok)
     _flush();
 }
 
-void RecognizeReactor::OnDone()
+void RecognizeAudioReactor::OnDone()
 {
     LOG_DEBUG("OnDone called for session_id: {}", _session_id);
     delete this;
 }
 
-void RecognizeReactor::OnCancel()
+void RecognizeAudioReactor::OnCancel()
 {
     LOG_INFO("OnCancel called for session_id: {}", _session_id);
     _is_cancelled.store(true);
     _is_writing.store(false);
 
-    ::GrpcLibraryV1::RecognizeResp resp;
+    ::GrpcLibraryV1::RecognizeAudioResp resp;
     while(_w_queue.try_dequeue(resp))
     {
     }
 }
 
-void RecognizeReactor::Stop()
+void RecognizeAudioReactor::Stop()
 {
-    LOG_INFO("RecognizeReactor {} was stopped by user", _session_id);
+    LOG_INFO("RecognizeAudioReactor {} was stopped by user", _session_id);
     _is_cancelled.store(true);
     _is_writing.store(false);
 
-    ::GrpcLibraryV1::RecognizeResp resp;
+    ::GrpcLibraryV1::RecognizeAudioResp resp;
     while(_w_queue.try_dequeue(resp))
     {
     }
 }
 
-void RecognizeReactor::_process(const ::GrpcLibraryV1::RecognizeReq &req)
+void RecognizeAudioReactor::_process(
+    const ::GrpcLibraryV1::RecognizeAudioReq &req)
 {
     // check if registered
     if(!_is_registered.load() && req.session_id() != 0)
@@ -523,12 +525,13 @@ void RecognizeReactor::_process(const ::GrpcLibraryV1::RecognizeReq &req)
         return;
     }
 
-    LOG_DEBUG("RecognizeReactor::_process: ctx_id: {}, has_audio_chunk: {}, "
-              "has_param: {}, _session_id: {}",
-              req.ctx_id(),
-              req.has_audio_chunk(),
-              req.has_param(),
-              req.session_id());
+    LOG_DEBUG(
+        "RecognizeAudioReactor::_process: ctx_id: {}, has_audio_chunk: {}, "
+        "has_param: {}, _session_id: {}",
+        req.ctx_id(),
+        req.has_audio_chunk(),
+        req.has_param(),
+        req.session_id());
     int         err         = ERR_FAIL;
     std::string text        = "";
     int64_t     session_id  = req.session_id();
@@ -539,7 +542,7 @@ void RecognizeReactor::_process(const ::GrpcLibraryV1::RecognizeReq &req)
     auto ctx_id = req.ctx_id();
     if(req.has_param())
     {
-        LOG_DEBUG("RecognizeReactor::_process set param");
+        LOG_DEBUG("RecognizeAudioReactor::_process set param");
         // full param
         auto tmp                     = req.param();
         _params                      = hj::asr::context::default_full_params();
@@ -590,7 +593,8 @@ void RecognizeReactor::_process(const ::GrpcLibraryV1::RecognizeReq &req)
         err         = OK;
         is_finished = false;
         LOG_DEBUG(
-            "RecognizeReactor::_process param: ctx_id: {}, session_id: {}, "
+            "RecognizeAudioReactor::_process param: ctx_id: {}, session_id: "
+            "{}, "
             "n_threads: {}, n_max_text_ctx: {}, offset_ms: {}, duration_ms: "
             "{}, "
             "translate: {}, detect_language: {}, language: {}, no_ctx: {}, "
@@ -652,7 +656,7 @@ void RecognizeReactor::_process(const ::GrpcLibraryV1::RecognizeReq &req)
         hj::asr::context::convert(data, chunk);
         // append to audio buffer
         _audio_buffer.push(data.data(), data.size());
-        LOG_DEBUG("RecognizeReactor::_process audio chunk: ctx_id: {}, "
+        LOG_DEBUG("RecognizeAudioReactor::_process audio chunk: ctx_id: {}, "
                   "pushed {} samples to audio buffer {}, session_id: {}",
                   ctx_id,
                   data.size(),
@@ -687,7 +691,8 @@ void RecognizeReactor::_process(const ::GrpcLibraryV1::RecognizeReq &req)
                 if(actual < required_sz)
                 {
                     LOG_WARN(
-                        "RecognizeReactor::_process: not enough audio data "
+                        "RecognizeAudioReactor::_process: not enough audio "
+                        "data "
                         "after pop, "
                         "actual size: {}, required size: {}, session_id: {}",
                         actual,
@@ -723,16 +728,16 @@ void RecognizeReactor::_process(const ::GrpcLibraryV1::RecognizeReq &req)
     _send(err, session_id, text, is_finished, confidence);
 }
 
-void RecognizeReactor::_send(const int          error_code,
-                             const int64_t      session_id,
-                             const std::string &text,
-                             const bool         is_finished,
-                             const double       confidence)
+void RecognizeAudioReactor::_send(const int          error_code,
+                                  const int64_t      session_id,
+                                  const std::string &text,
+                                  const bool         is_finished,
+                                  const double       confidence)
 {
     if(_is_cancelled.load())
         return;
 
-    ::GrpcLibraryV1::RecognizeResp resp;
+    ::GrpcLibraryV1::RecognizeAudioResp resp;
     resp.set_error_code(error_code);
     resp.set_session_id(session_id);
     resp.set_transcript(text);
@@ -743,7 +748,7 @@ void RecognizeReactor::_send(const int          error_code,
     _flush();
 }
 
-void RecognizeReactor::_flush()
+void RecognizeAudioReactor::_flush()
 {
     if(_is_writing.load())
         return;
@@ -751,13 +756,13 @@ void RecognizeReactor::_flush()
     if(_is_cancelled.load())
         return;
 
-    ::GrpcLibraryV1::RecognizeResp resp;
+    ::GrpcLibraryV1::RecognizeAudioResp resp;
     if(!_w_queue.try_dequeue(resp))
         return;
 
     _is_writing.store(true);
     StartWrite(&resp);
-    LOG_DEBUG("RecognizeReactor::_flush: session_id: {}, transcript: {}, "
+    LOG_DEBUG("RecognizeAudioReactor::_flush: session_id: {}, transcript: {}, "
               "is_finished: {}, error_code: {}",
               resp.session_id(),
               resp.transcript(),
@@ -1138,4 +1143,4 @@ void SubscribeReactor::_flush()
               msg.payload());
 }
 
-// ------------------------------------------ RecognizeReactor -------------------------------
+// ------------------------------------------ RecognizeAudioReactor -------------------------------

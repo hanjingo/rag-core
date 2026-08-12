@@ -80,13 +80,14 @@ class api_handler final : public GrpcLibraryV1::GrpcService::CallbackService
     Query(grpc::CallbackServerContext     *ctx,
           const ::GrpcLibraryV1::QueryReq *req) override;
 
-    grpc::ServerBidiReactor<GrpcLibraryV1::RecognizeReq,
-                            GrpcLibraryV1::RecognizeResp> *
-    Recognize(grpc::CallbackServerContext *context) override;
+    grpc::ServerBidiReactor<GrpcLibraryV1::RecognizeAudioReq,
+                            GrpcLibraryV1::RecognizeAudioResp> *
+    RecognizeAudio(grpc::CallbackServerContext *context) override;
 
-    reactor_t *StopRecognize(ctx_t                                   *ctx,
-                             const ::GrpcLibraryV1::StopRecognizeReq *req,
-                             ::GrpcLibraryV1::StopRecognizeResp *resp) override;
+    reactor_t *
+    StopRecognizeAudio(ctx_t                                        *ctx,
+                       const ::GrpcLibraryV1::StopRecognizeAudioReq *req,
+                       ::GrpcLibraryV1::StopRecognizeAudioResp *resp) override;
 
     grpc::ServerBidiReactor<GrpcLibraryV1::EmbeddingReq,
                             GrpcLibraryV1::EmbeddingResp> *

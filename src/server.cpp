@@ -208,20 +208,20 @@ api_handler::Query(grpc::CallbackServerContext     *ctx,
     return new QueryReactor(ctx, req);
 }
 
-grpc::ServerBidiReactor<GrpcLibraryV1::RecognizeReq,
-                        GrpcLibraryV1::RecognizeResp> *
-api_handler::Recognize(grpc::CallbackServerContext *context)
+grpc::ServerBidiReactor<GrpcLibraryV1::RecognizeAudioReq,
+                        GrpcLibraryV1::RecognizeAudioResp> *
+api_handler::RecognizeAudio(grpc::CallbackServerContext *context)
 {
     LOG_INFO("Received Recognize bidirectional stream request from peer: {}",
              context->peer());
 
-    return new RecognizeReactor(context);
+    return new RecognizeAudioReactor(context);
 }
 
-reactor_t *
-api_handler::StopRecognize(ctx_t                                   *ctx,
-                           const ::GrpcLibraryV1::StopRecognizeReq *req,
-                           ::GrpcLibraryV1::StopRecognizeResp      *resp)
+reactor_t *api_handler::StopRecognizeAudio(
+    ctx_t                                        *ctx,
+    const ::GrpcLibraryV1::StopRecognizeAudioReq *req,
+    ::GrpcLibraryV1::StopRecognizeAudioResp      *resp)
 {
     auto session_id = req->session_id();
     auto user_id    = req->user_id();

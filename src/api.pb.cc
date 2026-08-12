@@ -228,33 +228,33 @@ struct SubscribeReqDefaultTypeInternal {
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
     PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 SubscribeReqDefaultTypeInternal _SubscribeReq_default_instance_;
 
-inline constexpr StopRecognizeResp::Impl_::Impl_(
+inline constexpr StopRecognizeAudioResp::Impl_::Impl_(
     ::_pbi::ConstantInitialized) noexcept
       : _cached_size_{0},
         session_id_{::int64_t{0}},
         error_code_{0} {}
 
 template <typename>
-PROTOBUF_CONSTEXPR StopRecognizeResp::StopRecognizeResp(::_pbi::ConstantInitialized)
+PROTOBUF_CONSTEXPR StopRecognizeAudioResp::StopRecognizeAudioResp(::_pbi::ConstantInitialized)
 #if defined(PROTOBUF_CUSTOM_VTABLE)
-    : ::google::protobuf::Message(StopRecognizeResp_class_data_.base()),
+    : ::google::protobuf::Message(StopRecognizeAudioResp_class_data_.base()),
 #else   // PROTOBUF_CUSTOM_VTABLE
     : ::google::protobuf::Message(),
 #endif  // PROTOBUF_CUSTOM_VTABLE
       _impl_(::_pbi::ConstantInitialized()) {
 }
-struct StopRecognizeRespDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR StopRecognizeRespDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
-  ~StopRecognizeRespDefaultTypeInternal() {}
+struct StopRecognizeAudioRespDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR StopRecognizeAudioRespDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~StopRecognizeAudioRespDefaultTypeInternal() {}
   union {
-    StopRecognizeResp _instance;
+    StopRecognizeAudioResp _instance;
   };
 };
 
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 StopRecognizeRespDefaultTypeInternal _StopRecognizeResp_default_instance_;
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 StopRecognizeAudioRespDefaultTypeInternal _StopRecognizeAudioResp_default_instance_;
 
-inline constexpr StopRecognizeReq::Impl_::Impl_(
+inline constexpr StopRecognizeAudioReq::Impl_::Impl_(
     ::_pbi::ConstantInitialized) noexcept
       : _cached_size_{0},
         auth_(
@@ -264,24 +264,24 @@ inline constexpr StopRecognizeReq::Impl_::Impl_(
         user_id_{::int64_t{0}} {}
 
 template <typename>
-PROTOBUF_CONSTEXPR StopRecognizeReq::StopRecognizeReq(::_pbi::ConstantInitialized)
+PROTOBUF_CONSTEXPR StopRecognizeAudioReq::StopRecognizeAudioReq(::_pbi::ConstantInitialized)
 #if defined(PROTOBUF_CUSTOM_VTABLE)
-    : ::google::protobuf::Message(StopRecognizeReq_class_data_.base()),
+    : ::google::protobuf::Message(StopRecognizeAudioReq_class_data_.base()),
 #else   // PROTOBUF_CUSTOM_VTABLE
     : ::google::protobuf::Message(),
 #endif  // PROTOBUF_CUSTOM_VTABLE
       _impl_(::_pbi::ConstantInitialized()) {
 }
-struct StopRecognizeReqDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR StopRecognizeReqDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
-  ~StopRecognizeReqDefaultTypeInternal() {}
+struct StopRecognizeAudioReqDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR StopRecognizeAudioReqDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~StopRecognizeAudioReqDefaultTypeInternal() {}
   union {
-    StopRecognizeReq _instance;
+    StopRecognizeAudioReq _instance;
   };
 };
 
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 StopRecognizeReqDefaultTypeInternal _StopRecognizeReq_default_instance_;
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 StopRecognizeAudioReqDefaultTypeInternal _StopRecognizeAudioReq_default_instance_;
 
 inline constexpr StopEmbeddingResp::Impl_::Impl_(
     ::_pbi::ConstantInitialized) noexcept
@@ -519,7 +519,7 @@ struct RegAccountReqDefaultTypeInternal {
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
     PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 RegAccountReqDefaultTypeInternal _RegAccountReq_default_instance_;
 
-inline constexpr RecognizeResp::Impl_::Impl_(
+inline constexpr RecognizeAudioResp::Impl_::Impl_(
     ::_pbi::ConstantInitialized) noexcept
       : _cached_size_{0},
         transcript_(
@@ -531,24 +531,24 @@ inline constexpr RecognizeResp::Impl_::Impl_(
         confidence_{0} {}
 
 template <typename>
-PROTOBUF_CONSTEXPR RecognizeResp::RecognizeResp(::_pbi::ConstantInitialized)
+PROTOBUF_CONSTEXPR RecognizeAudioResp::RecognizeAudioResp(::_pbi::ConstantInitialized)
 #if defined(PROTOBUF_CUSTOM_VTABLE)
-    : ::google::protobuf::Message(RecognizeResp_class_data_.base()),
+    : ::google::protobuf::Message(RecognizeAudioResp_class_data_.base()),
 #else   // PROTOBUF_CUSTOM_VTABLE
     : ::google::protobuf::Message(),
 #endif  // PROTOBUF_CUSTOM_VTABLE
       _impl_(::_pbi::ConstantInitialized()) {
 }
-struct RecognizeRespDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR RecognizeRespDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
-  ~RecognizeRespDefaultTypeInternal() {}
+struct RecognizeAudioRespDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR RecognizeAudioRespDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~RecognizeAudioRespDefaultTypeInternal() {}
   union {
-    RecognizeResp _instance;
+    RecognizeAudioResp _instance;
   };
 };
 
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 RecognizeRespDefaultTypeInternal _RecognizeResp_default_instance_;
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 RecognizeAudioRespDefaultTypeInternal _RecognizeAudioResp_default_instance_;
 
 inline constexpr QueryResp::Impl_::Impl_(
     ::_pbi::ConstantInitialized) noexcept
@@ -1333,7 +1333,7 @@ struct ChatMessageDefaultTypeInternal {
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
     PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 ChatMessageDefaultTypeInternal _ChatMessage_default_instance_;
 
-inline constexpr RecognitionParam::Impl_::Impl_(
+inline constexpr RecognizeAudioParam::Impl_::Impl_(
     ::_pbi::ConstantInitialized) noexcept
       : _cached_size_{0},
         language_(
@@ -1375,24 +1375,24 @@ inline constexpr RecognitionParam::Impl_::Impl_(
         vad_{false} {}
 
 template <typename>
-PROTOBUF_CONSTEXPR RecognitionParam::RecognitionParam(::_pbi::ConstantInitialized)
+PROTOBUF_CONSTEXPR RecognizeAudioParam::RecognizeAudioParam(::_pbi::ConstantInitialized)
 #if defined(PROTOBUF_CUSTOM_VTABLE)
-    : ::google::protobuf::Message(RecognitionParam_class_data_.base()),
+    : ::google::protobuf::Message(RecognizeAudioParam_class_data_.base()),
 #else   // PROTOBUF_CUSTOM_VTABLE
     : ::google::protobuf::Message(),
 #endif  // PROTOBUF_CUSTOM_VTABLE
       _impl_(::_pbi::ConstantInitialized()) {
 }
-struct RecognitionParamDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR RecognitionParamDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
-  ~RecognitionParamDefaultTypeInternal() {}
+struct RecognizeAudioParamDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR RecognizeAudioParamDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~RecognizeAudioParamDefaultTypeInternal() {}
   union {
-    RecognitionParam _instance;
+    RecognizeAudioParam _instance;
   };
 };
 
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 RecognitionParamDefaultTypeInternal _RecognitionParam_default_instance_;
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 RecognizeAudioParamDefaultTypeInternal _RecognizeAudioParam_default_instance_;
 
 inline constexpr QueryReq::Impl_::Impl_(
     ::_pbi::ConstantInitialized) noexcept
@@ -1605,7 +1605,7 @@ struct EmbeddingReqDefaultTypeInternal {
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
     PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 EmbeddingReqDefaultTypeInternal _EmbeddingReq_default_instance_;
 
-inline constexpr RecognizeReq::Impl_::Impl_(
+inline constexpr RecognizeAudioReq::Impl_::Impl_(
     ::_pbi::ConstantInitialized) noexcept
       : _cached_size_{0},
         ctx_id_(
@@ -1616,24 +1616,24 @@ inline constexpr RecognizeReq::Impl_::Impl_(
         _oneof_case_{} {}
 
 template <typename>
-PROTOBUF_CONSTEXPR RecognizeReq::RecognizeReq(::_pbi::ConstantInitialized)
+PROTOBUF_CONSTEXPR RecognizeAudioReq::RecognizeAudioReq(::_pbi::ConstantInitialized)
 #if defined(PROTOBUF_CUSTOM_VTABLE)
-    : ::google::protobuf::Message(RecognizeReq_class_data_.base()),
+    : ::google::protobuf::Message(RecognizeAudioReq_class_data_.base()),
 #else   // PROTOBUF_CUSTOM_VTABLE
     : ::google::protobuf::Message(),
 #endif  // PROTOBUF_CUSTOM_VTABLE
       _impl_(::_pbi::ConstantInitialized()) {
 }
-struct RecognizeReqDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR RecognizeReqDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
-  ~RecognizeReqDefaultTypeInternal() {}
+struct RecognizeAudioReqDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR RecognizeAudioReqDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~RecognizeAudioReqDefaultTypeInternal() {}
   union {
-    RecognizeReq _instance;
+    RecognizeAudioReq _instance;
   };
 };
 
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 RecognizeReqDefaultTypeInternal _RecognizeReq_default_instance_;
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 RecognizeAudioReqDefaultTypeInternal _RecognizeAudioReq_default_instance_;
 }  // namespace GrpcLibraryV1
 static constexpr const ::_pb::EnumDescriptor* PROTOBUF_NONNULL* PROTOBUF_NULLABLE
     file_level_enum_descriptors_src_2fapi_2eproto = nullptr;
@@ -1786,37 +1786,37 @@ const ::uint32_t
         4,
         5,
         0x081, // bitmap
-        PROTOBUF_FIELD_OFFSET(::GrpcLibraryV1::RecognitionParam, _impl_._has_bits_),
+        PROTOBUF_FIELD_OFFSET(::GrpcLibraryV1::RecognizeAudioParam, _impl_._has_bits_),
         32, // hasbit index offset
-        PROTOBUF_FIELD_OFFSET(::GrpcLibraryV1::RecognitionParam, _impl_.n_threads_),
-        PROTOBUF_FIELD_OFFSET(::GrpcLibraryV1::RecognitionParam, _impl_.n_max_text_ctx_),
-        PROTOBUF_FIELD_OFFSET(::GrpcLibraryV1::RecognitionParam, _impl_.offset_ms_),
-        PROTOBUF_FIELD_OFFSET(::GrpcLibraryV1::RecognitionParam, _impl_.duration_ms_),
-        PROTOBUF_FIELD_OFFSET(::GrpcLibraryV1::RecognitionParam, _impl_.translate_),
-        PROTOBUF_FIELD_OFFSET(::GrpcLibraryV1::RecognitionParam, _impl_.detect_language_),
-        PROTOBUF_FIELD_OFFSET(::GrpcLibraryV1::RecognitionParam, _impl_.language_),
-        PROTOBUF_FIELD_OFFSET(::GrpcLibraryV1::RecognitionParam, _impl_.no_ctx_),
-        PROTOBUF_FIELD_OFFSET(::GrpcLibraryV1::RecognitionParam, _impl_.no_timestamps_),
-        PROTOBUF_FIELD_OFFSET(::GrpcLibraryV1::RecognitionParam, _impl_.single_segment_),
-        PROTOBUF_FIELD_OFFSET(::GrpcLibraryV1::RecognitionParam, _impl_.print_special_),
-        PROTOBUF_FIELD_OFFSET(::GrpcLibraryV1::RecognitionParam, _impl_.print_progress_),
-        PROTOBUF_FIELD_OFFSET(::GrpcLibraryV1::RecognitionParam, _impl_.print_realtime_),
-        PROTOBUF_FIELD_OFFSET(::GrpcLibraryV1::RecognitionParam, _impl_.print_timestamps_),
-        PROTOBUF_FIELD_OFFSET(::GrpcLibraryV1::RecognitionParam, _impl_.carry_initial_prompt_),
-        PROTOBUF_FIELD_OFFSET(::GrpcLibraryV1::RecognitionParam, _impl_.initial_prompt_),
-        PROTOBUF_FIELD_OFFSET(::GrpcLibraryV1::RecognitionParam, _impl_.suppress_regex_),
-        PROTOBUF_FIELD_OFFSET(::GrpcLibraryV1::RecognitionParam, _impl_.suppress_blank_),
-        PROTOBUF_FIELD_OFFSET(::GrpcLibraryV1::RecognitionParam, _impl_.suppress_nst_),
-        PROTOBUF_FIELD_OFFSET(::GrpcLibraryV1::RecognitionParam, _impl_.temperature_),
-        PROTOBUF_FIELD_OFFSET(::GrpcLibraryV1::RecognitionParam, _impl_.temperature_inc_),
-        PROTOBUF_FIELD_OFFSET(::GrpcLibraryV1::RecognitionParam, _impl_.max_initial_ts_),
-        PROTOBUF_FIELD_OFFSET(::GrpcLibraryV1::RecognitionParam, _impl_.length_penalty_),
-        PROTOBUF_FIELD_OFFSET(::GrpcLibraryV1::RecognitionParam, _impl_.entropy_thold_),
-        PROTOBUF_FIELD_OFFSET(::GrpcLibraryV1::RecognitionParam, _impl_.logprob_thold_),
-        PROTOBUF_FIELD_OFFSET(::GrpcLibraryV1::RecognitionParam, _impl_.no_speech_thold_),
-        PROTOBUF_FIELD_OFFSET(::GrpcLibraryV1::RecognitionParam, _impl_.vad_),
-        PROTOBUF_FIELD_OFFSET(::GrpcLibraryV1::RecognitionParam, _impl_.vad_model_path_),
-        PROTOBUF_FIELD_OFFSET(::GrpcLibraryV1::RecognitionParam, _impl_.vad_params_),
+        PROTOBUF_FIELD_OFFSET(::GrpcLibraryV1::RecognizeAudioParam, _impl_.n_threads_),
+        PROTOBUF_FIELD_OFFSET(::GrpcLibraryV1::RecognizeAudioParam, _impl_.n_max_text_ctx_),
+        PROTOBUF_FIELD_OFFSET(::GrpcLibraryV1::RecognizeAudioParam, _impl_.offset_ms_),
+        PROTOBUF_FIELD_OFFSET(::GrpcLibraryV1::RecognizeAudioParam, _impl_.duration_ms_),
+        PROTOBUF_FIELD_OFFSET(::GrpcLibraryV1::RecognizeAudioParam, _impl_.translate_),
+        PROTOBUF_FIELD_OFFSET(::GrpcLibraryV1::RecognizeAudioParam, _impl_.detect_language_),
+        PROTOBUF_FIELD_OFFSET(::GrpcLibraryV1::RecognizeAudioParam, _impl_.language_),
+        PROTOBUF_FIELD_OFFSET(::GrpcLibraryV1::RecognizeAudioParam, _impl_.no_ctx_),
+        PROTOBUF_FIELD_OFFSET(::GrpcLibraryV1::RecognizeAudioParam, _impl_.no_timestamps_),
+        PROTOBUF_FIELD_OFFSET(::GrpcLibraryV1::RecognizeAudioParam, _impl_.single_segment_),
+        PROTOBUF_FIELD_OFFSET(::GrpcLibraryV1::RecognizeAudioParam, _impl_.print_special_),
+        PROTOBUF_FIELD_OFFSET(::GrpcLibraryV1::RecognizeAudioParam, _impl_.print_progress_),
+        PROTOBUF_FIELD_OFFSET(::GrpcLibraryV1::RecognizeAudioParam, _impl_.print_realtime_),
+        PROTOBUF_FIELD_OFFSET(::GrpcLibraryV1::RecognizeAudioParam, _impl_.print_timestamps_),
+        PROTOBUF_FIELD_OFFSET(::GrpcLibraryV1::RecognizeAudioParam, _impl_.carry_initial_prompt_),
+        PROTOBUF_FIELD_OFFSET(::GrpcLibraryV1::RecognizeAudioParam, _impl_.initial_prompt_),
+        PROTOBUF_FIELD_OFFSET(::GrpcLibraryV1::RecognizeAudioParam, _impl_.suppress_regex_),
+        PROTOBUF_FIELD_OFFSET(::GrpcLibraryV1::RecognizeAudioParam, _impl_.suppress_blank_),
+        PROTOBUF_FIELD_OFFSET(::GrpcLibraryV1::RecognizeAudioParam, _impl_.suppress_nst_),
+        PROTOBUF_FIELD_OFFSET(::GrpcLibraryV1::RecognizeAudioParam, _impl_.temperature_),
+        PROTOBUF_FIELD_OFFSET(::GrpcLibraryV1::RecognizeAudioParam, _impl_.temperature_inc_),
+        PROTOBUF_FIELD_OFFSET(::GrpcLibraryV1::RecognizeAudioParam, _impl_.max_initial_ts_),
+        PROTOBUF_FIELD_OFFSET(::GrpcLibraryV1::RecognizeAudioParam, _impl_.length_penalty_),
+        PROTOBUF_FIELD_OFFSET(::GrpcLibraryV1::RecognizeAudioParam, _impl_.entropy_thold_),
+        PROTOBUF_FIELD_OFFSET(::GrpcLibraryV1::RecognizeAudioParam, _impl_.logprob_thold_),
+        PROTOBUF_FIELD_OFFSET(::GrpcLibraryV1::RecognizeAudioParam, _impl_.no_speech_thold_),
+        PROTOBUF_FIELD_OFFSET(::GrpcLibraryV1::RecognizeAudioParam, _impl_.vad_),
+        PROTOBUF_FIELD_OFFSET(::GrpcLibraryV1::RecognizeAudioParam, _impl_.vad_model_path_),
+        PROTOBUF_FIELD_OFFSET(::GrpcLibraryV1::RecognizeAudioParam, _impl_.vad_params_),
         5,
         6,
         7,
@@ -1988,45 +1988,45 @@ const ::uint32_t
         1,
         0,
         0x085, // bitmap
-        PROTOBUF_FIELD_OFFSET(::GrpcLibraryV1::RecognizeReq, _impl_._has_bits_),
-        PROTOBUF_FIELD_OFFSET(::GrpcLibraryV1::RecognizeReq, _impl_._oneof_case_[0]),
+        PROTOBUF_FIELD_OFFSET(::GrpcLibraryV1::RecognizeAudioReq, _impl_._has_bits_),
+        PROTOBUF_FIELD_OFFSET(::GrpcLibraryV1::RecognizeAudioReq, _impl_._oneof_case_[0]),
         9, // hasbit index offset
-        PROTOBUF_FIELD_OFFSET(::GrpcLibraryV1::RecognizeReq, _impl_.ctx_id_),
-        PROTOBUF_FIELD_OFFSET(::GrpcLibraryV1::RecognizeReq, _impl_.session_id_),
-        PROTOBUF_FIELD_OFFSET(::GrpcLibraryV1::RecognizeReq, _impl_.request_type_),
-        PROTOBUF_FIELD_OFFSET(::GrpcLibraryV1::RecognizeReq, _impl_.request_type_),
-        PROTOBUF_FIELD_OFFSET(::GrpcLibraryV1::RecognizeReq, _impl_.request_type_),
+        PROTOBUF_FIELD_OFFSET(::GrpcLibraryV1::RecognizeAudioReq, _impl_.ctx_id_),
+        PROTOBUF_FIELD_OFFSET(::GrpcLibraryV1::RecognizeAudioReq, _impl_.session_id_),
+        PROTOBUF_FIELD_OFFSET(::GrpcLibraryV1::RecognizeAudioReq, _impl_.request_type_),
+        PROTOBUF_FIELD_OFFSET(::GrpcLibraryV1::RecognizeAudioReq, _impl_.request_type_),
+        PROTOBUF_FIELD_OFFSET(::GrpcLibraryV1::RecognizeAudioReq, _impl_.request_type_),
         0,
         1,
         ~0u,
         ~0u,
         0x081, // bitmap
-        PROTOBUF_FIELD_OFFSET(::GrpcLibraryV1::RecognizeResp, _impl_._has_bits_),
+        PROTOBUF_FIELD_OFFSET(::GrpcLibraryV1::RecognizeAudioResp, _impl_._has_bits_),
         8, // hasbit index offset
-        PROTOBUF_FIELD_OFFSET(::GrpcLibraryV1::RecognizeResp, _impl_.error_code_),
-        PROTOBUF_FIELD_OFFSET(::GrpcLibraryV1::RecognizeResp, _impl_.session_id_),
-        PROTOBUF_FIELD_OFFSET(::GrpcLibraryV1::RecognizeResp, _impl_.transcript_),
-        PROTOBUF_FIELD_OFFSET(::GrpcLibraryV1::RecognizeResp, _impl_.is_finished_),
-        PROTOBUF_FIELD_OFFSET(::GrpcLibraryV1::RecognizeResp, _impl_.confidence_),
+        PROTOBUF_FIELD_OFFSET(::GrpcLibraryV1::RecognizeAudioResp, _impl_.error_code_),
+        PROTOBUF_FIELD_OFFSET(::GrpcLibraryV1::RecognizeAudioResp, _impl_.session_id_),
+        PROTOBUF_FIELD_OFFSET(::GrpcLibraryV1::RecognizeAudioResp, _impl_.transcript_),
+        PROTOBUF_FIELD_OFFSET(::GrpcLibraryV1::RecognizeAudioResp, _impl_.is_finished_),
+        PROTOBUF_FIELD_OFFSET(::GrpcLibraryV1::RecognizeAudioResp, _impl_.confidence_),
         2,
         1,
         0,
         3,
         4,
         0x081, // bitmap
-        PROTOBUF_FIELD_OFFSET(::GrpcLibraryV1::StopRecognizeReq, _impl_._has_bits_),
+        PROTOBUF_FIELD_OFFSET(::GrpcLibraryV1::StopRecognizeAudioReq, _impl_._has_bits_),
         6, // hasbit index offset
-        PROTOBUF_FIELD_OFFSET(::GrpcLibraryV1::StopRecognizeReq, _impl_.session_id_),
-        PROTOBUF_FIELD_OFFSET(::GrpcLibraryV1::StopRecognizeReq, _impl_.user_id_),
-        PROTOBUF_FIELD_OFFSET(::GrpcLibraryV1::StopRecognizeReq, _impl_.auth_),
+        PROTOBUF_FIELD_OFFSET(::GrpcLibraryV1::StopRecognizeAudioReq, _impl_.session_id_),
+        PROTOBUF_FIELD_OFFSET(::GrpcLibraryV1::StopRecognizeAudioReq, _impl_.user_id_),
+        PROTOBUF_FIELD_OFFSET(::GrpcLibraryV1::StopRecognizeAudioReq, _impl_.auth_),
         1,
         2,
         0,
         0x081, // bitmap
-        PROTOBUF_FIELD_OFFSET(::GrpcLibraryV1::StopRecognizeResp, _impl_._has_bits_),
+        PROTOBUF_FIELD_OFFSET(::GrpcLibraryV1::StopRecognizeAudioResp, _impl_._has_bits_),
         5, // hasbit index offset
-        PROTOBUF_FIELD_OFFSET(::GrpcLibraryV1::StopRecognizeResp, _impl_.error_code_),
-        PROTOBUF_FIELD_OFFSET(::GrpcLibraryV1::StopRecognizeResp, _impl_.session_id_),
+        PROTOBUF_FIELD_OFFSET(::GrpcLibraryV1::StopRecognizeAudioResp, _impl_.error_code_),
+        PROTOBUF_FIELD_OFFSET(::GrpcLibraryV1::StopRecognizeAudioResp, _impl_.session_id_),
         1,
         0,
         0x081, // bitmap
@@ -2267,7 +2267,7 @@ static const ::_pbi::MigrationSchema
         {48, sizeof(::GrpcLibraryV1::SamplingParam)},
         {79, sizeof(::GrpcLibraryV1::ContextParam)},
         {128, sizeof(::GrpcLibraryV1::VadParam)},
-        {143, sizeof(::GrpcLibraryV1::RecognitionParam)},
+        {143, sizeof(::GrpcLibraryV1::RecognizeAudioParam)},
         {204, sizeof(::GrpcLibraryV1::EmbeddingParam)},
         {209, sizeof(::GrpcLibraryV1::FileChunk)},
         {222, sizeof(::GrpcLibraryV1::UpdateInfo)},
@@ -2283,10 +2283,10 @@ static const ::_pbi::MigrationSchema
         {316, sizeof(::GrpcLibraryV1::QueryResp)},
         {329, sizeof(::GrpcLibraryV1::StopAnswerReq)},
         {338, sizeof(::GrpcLibraryV1::StopAnswerResp)},
-        {345, sizeof(::GrpcLibraryV1::RecognizeReq)},
-        {358, sizeof(::GrpcLibraryV1::RecognizeResp)},
-        {371, sizeof(::GrpcLibraryV1::StopRecognizeReq)},
-        {380, sizeof(::GrpcLibraryV1::StopRecognizeResp)},
+        {345, sizeof(::GrpcLibraryV1::RecognizeAudioReq)},
+        {358, sizeof(::GrpcLibraryV1::RecognizeAudioResp)},
+        {371, sizeof(::GrpcLibraryV1::StopRecognizeAudioReq)},
+        {380, sizeof(::GrpcLibraryV1::StopRecognizeAudioResp)},
         {387, sizeof(::GrpcLibraryV1::GetChatMessageReq)},
         {400, sizeof(::GrpcLibraryV1::GetChatMessageResp)},
         {407, sizeof(::GrpcLibraryV1::GetSessionReq)},
@@ -2321,7 +2321,7 @@ static const ::_pb::Message* PROTOBUF_NONNULL const file_default_instances[] = {
     &::GrpcLibraryV1::_SamplingParam_default_instance_._instance,
     &::GrpcLibraryV1::_ContextParam_default_instance_._instance,
     &::GrpcLibraryV1::_VadParam_default_instance_._instance,
-    &::GrpcLibraryV1::_RecognitionParam_default_instance_._instance,
+    &::GrpcLibraryV1::_RecognizeAudioParam_default_instance_._instance,
     &::GrpcLibraryV1::_EmbeddingParam_default_instance_._instance,
     &::GrpcLibraryV1::_FileChunk_default_instance_._instance,
     &::GrpcLibraryV1::_UpdateInfo_default_instance_._instance,
@@ -2337,10 +2337,10 @@ static const ::_pb::Message* PROTOBUF_NONNULL const file_default_instances[] = {
     &::GrpcLibraryV1::_QueryResp_default_instance_._instance,
     &::GrpcLibraryV1::_StopAnswerReq_default_instance_._instance,
     &::GrpcLibraryV1::_StopAnswerResp_default_instance_._instance,
-    &::GrpcLibraryV1::_RecognizeReq_default_instance_._instance,
-    &::GrpcLibraryV1::_RecognizeResp_default_instance_._instance,
-    &::GrpcLibraryV1::_StopRecognizeReq_default_instance_._instance,
-    &::GrpcLibraryV1::_StopRecognizeResp_default_instance_._instance,
+    &::GrpcLibraryV1::_RecognizeAudioReq_default_instance_._instance,
+    &::GrpcLibraryV1::_RecognizeAudioResp_default_instance_._instance,
+    &::GrpcLibraryV1::_StopRecognizeAudioReq_default_instance_._instance,
+    &::GrpcLibraryV1::_StopRecognizeAudioResp_default_instance_._instance,
     &::GrpcLibraryV1::_GetChatMessageReq_default_instance_._instance,
     &::GrpcLibraryV1::_GetChatMessageResp_default_instance_._instance,
     &::GrpcLibraryV1::_GetSessionReq_default_instance_._instance,
@@ -2403,155 +2403,156 @@ const char descriptor_table_protodef_src_2fapi_2eproto[] ABSL_ATTRIBUTE_SECTION_
     "\002\022\031\n\021min_speech_dur_ms\030\002 \001(\005\022\032\n\022min_sile"
     "nce_dur_ms\030\003 \001(\005\022\030\n\020max_speech_dur_s\030\004 \001"
     "(\002\022\025\n\rspeech_pad_ms\030\005 \001(\005\022\027\n\017samples_ove"
-    "rlap\030\006 \001(\002\"\266\005\n\020RecognitionParam\022\021\n\tn_thr"
-    "eads\030\001 \001(\005\022\026\n\016n_max_text_ctx\030\002 \001(\005\022\021\n\tof"
-    "fset_ms\030\003 \001(\005\022\023\n\013duration_ms\030\004 \001(\005\022\021\n\ttr"
-    "anslate\030\005 \001(\010\022\027\n\017detect_language\030\006 \001(\010\022\020"
-    "\n\010language\030\007 \001(\t\022\016\n\006no_ctx\030\010 \001(\010\022\025\n\rno_t"
-    "imestamps\030\t \001(\010\022\026\n\016single_segment\030\n \001(\010\022"
-    "\025\n\rprint_special\030\013 \001(\010\022\026\n\016print_progress"
-    "\030\014 \001(\010\022\026\n\016print_realtime\030\r \001(\010\022\030\n\020print_"
-    "timestamps\030\016 \001(\010\022\034\n\024carry_initial_prompt"
-    "\030\017 \001(\010\022\026\n\016initial_prompt\030\020 \001(\t\022\026\n\016suppre"
-    "ss_regex\030\021 \001(\t\022\026\n\016suppress_blank\030\022 \001(\010\022\024"
-    "\n\014suppress_nst\030\023 \001(\010\022\023\n\013temperature\030\024 \001("
-    "\002\022\027\n\017temperature_inc\030\025 \001(\002\022\026\n\016max_initia"
-    "l_ts\030\026 \001(\002\022\026\n\016length_penalty\030\027 \001(\002\022\025\n\ren"
-    "tropy_thold\030\030 \001(\002\022\025\n\rlogprob_thold\030\031 \001(\002"
-    "\022\027\n\017no_speech_thold\030\032 \001(\002\022\013\n\003vad\030\033 \001(\010\022\026"
-    "\n\016vad_model_path\030\034 \001(\t\022+\n\nvad_params\030\035 \001"
-    "(\0132\027.GrpcLibraryV1.VadParam\"#\n\016Embedding"
-    "Param\022\021\n\tdimension\030\001 \001(\005\"[\n\tFileChunk\022\n\n"
-    "\002id\030\001 \001(\003\022\014\n\004data\030\002 \001(\014\022\021\n\tstart_pos\030\003 \001"
-    "(\003\022\017\n\007end_pos\030\004 \001(\003\022\020\n\010filename\030\005 \001(\t\"\"\n"
-    "\nUpdateInfo\022\024\n\014force_update\030\001 \001(\010\"\031\n\004Pin"
-    "g\022\021\n\ttimestamp\030\001 \001(\003\"\031\n\004Pong\022\021\n\ttimestam"
-    "p\030\001 \001(\003\"c\n\010LoginReq\022\017\n\007account\030\001 \001(\t\022\016\n\006"
-    "passwd\030\002 \001(\t\022\020\n\010platform\030\003 \001(\t\022\014\n\004arch\030\004"
-    " \001(\t\022\026\n\016client_version\030\005 \001(\t\"\230\001\n\tLoginRe"
-    "sp\022\022\n\nerror_code\030\001 \001(\005\022\017\n\007user_id\030\002 \001(\003\022"
-    "\014\n\004auth\030\003 \001(\t\022\017\n\007account\030\004 \001(\t\022\027\n\017last_l"
-    "ogin_time\030\005 \001(\t\022.\n\013update_info\030\006 \001(\0132\031.G"
-    "rpcLibraryV1.UpdateInfo\"*\n\tLogoutReq\022\017\n\007"
-    "user_id\030\001 \001(\003\022\014\n\004auth\030\002 \001(\t\"1\n\nLogoutRes"
-    "p\022\022\n\nerror_code\030\001 \001(\005\022\017\n\007user_id\030\002 \001(\003\"0"
-    "\n\rRegAccountReq\022\017\n\007account\030\001 \001(\t\022\016\n\006pass"
-    "wd\030\002 \001(\t\"5\n\016RegAccountResp\022\022\n\nerror_code"
-    "\030\001 \001(\005\022\017\n\007user_id\030\002 \001(\003\"\342\001\n\010QueryReq\022\n\n\002"
-    "id\030\001 \001(\003\022\017\n\007user_id\030\002 \001(\003\022\016\n\006msg_id\030\003 \001("
-    "\003\022\014\n\004auth\030\004 \001(\t\022\017\n\007content\030\005 \001(\t\022\r\n\005mode"
-    "l\030\006 \001(\t\022\020\n\010pipeline\030\007 \001(\t\022\017\n\007api_key\030\010 \001"
-    "(\t\022.\n\010sampling\030\t \001(\0132\034.GrpcLibraryV1.Sam"
-    "plingParam\022(\n\003ctx\030\n \001(\0132\033.GrpcLibraryV1."
-    "ContextParam\"a\n\tQueryResp\022\022\n\nerror_code\030"
-    "\001 \001(\005\022\n\n\002id\030\002 \001(\003\022\016\n\006msg_id\030\003 \001(\003\022\017\n\007con"
-    "tent\030\004 \001(\t\022\023\n\013is_finished\030\005 \001(\010\"B\n\rStopA"
-    "nswerReq\022\022\n\nsession_id\030\001 \001(\003\022\017\n\007user_id\030"
-    "\002 \001(\003\022\014\n\004auth\030\003 \001(\t\"8\n\016StopAnswerResp\022\022\n"
-    "\nerror_code\030\001 \001(\005\022\022\n\nsession_id\030\002 \001(\003\"\213\001"
-    "\n\014RecognizeReq\022\016\n\006ctx_id\030\001 \001(\t\022\022\n\nsessio"
-    "n_id\030\002 \001(\003\0220\n\005param\030\003 \001(\0132\037.GrpcLibraryV"
-    "1.RecognitionParamH\000\022\025\n\013audio_chunk\030\004 \001("
-    "\014H\000B\016\n\014request_type\"t\n\rRecognizeResp\022\022\n\n"
-    "error_code\030\001 \001(\005\022\022\n\nsession_id\030\002 \001(\003\022\022\n\n"
-    "transcript\030\003 \001(\t\022\023\n\013is_finished\030\004 \001(\010\022\022\n"
-    "\nconfidence\030\005 \001(\001\"E\n\020StopRecognizeReq\022\022\n"
-    "\nsession_id\030\001 \001(\003\022\017\n\007user_id\030\002 \001(\003\022\014\n\004au"
-    "th\030\003 \001(\t\";\n\021StopRecognizeResp\022\022\n\nerror_c"
-    "ode\030\001 \001(\005\022\022\n\nsession_id\030\002 \001(\003\"a\n\021GetChat"
-    "MessageReq\022\n\n\002id\030\001 \001(\003\022\022\n\nsession_id\030\002 \001"
-    "(\003\022\r\n\005limit\030\003 \001(\005\022\017\n\007user_id\030\004 \001(\003\022\014\n\004au"
-    "th\030\005 \001(\t\"V\n\022GetChatMessageResp\022\022\n\nerror_"
-    "code\030\001 \001(\005\022,\n\010messages\030\002 \003(\0132\032.GrpcLibra"
-    "ryV1.ChatMessage\"I\n\rGetSessionReq\022\n\n\002id\030"
-    "\001 \001(\003\022\017\n\007user_id\030\002 \001(\003\022\014\n\004auth\030\003 \001(\t\022\r\n\005"
-    "limit\030\004 \001(\005\"N\n\016GetSessionResp\022\022\n\nerror_c"
-    "ode\030\001 \001(\005\022(\n\010sessions\030\002 \003(\0132\026.GrpcLibrar"
-    "yV1.Session\"]\n\rNewSessionReq\022\017\n\007user_id\030"
-    "\001 \001(\003\022\014\n\004auth\030\002 \001(\t\022\r\n\005title\030\003 \001(\t\022\017\n\007co"
-    "ntent\030\004 \001(\t\022\r\n\005model\030\005 \001(\t\"M\n\016NewSession"
-    "Resp\022\022\n\nerror_code\030\001 \001(\005\022\'\n\007session\030\002 \001("
-    "\0132\026.GrpcLibraryV1.Session\"Q\n\025ModifySessi"
-    "onTitleReq\022\n\n\002id\030\001 \001(\003\022\017\n\007user_id\030\002 \001(\003\022"
-    "\014\n\004auth\030\003 \001(\t\022\r\n\005title\030\004 \001(\t\"G\n\026ModifySe"
-    "ssionTitleResp\022\022\n\nerror_code\030\001 \001(\005\022\n\n\002id"
-    "\030\002 \001(\003\022\r\n\005title\030\003 \001(\t\";\n\rDelSessionReq\022\017"
-    "\n\007user_id\030\001 \001(\003\022\014\n\004auth\030\002 \001(\t\022\013\n\003ids\030\003 \003"
-    "(\003\"1\n\016DelSessionResp\022\022\n\nerror_code\030\001 \001(\005"
-    "\022\013\n\003ids\030\002 \003(\003\"B\n\020GetPluginInfoReq\022\014\n\004has"
-    "h\030\001 \001(\t\022\021\n\tpublisher\030\002 \001(\t\022\r\n\005limit\030\003 \001("
-    "\005\"O\n\021GetPluginInfoResp\022\022\n\nerror_code\030\001 \001"
-    "(\005\022&\n\007plugins\030\002 \003(\0132\025.GrpcLibraryV1.Plug"
-    "in\":\n\013DownloadReq\022\014\n\004hash\030\001 \001(\t\022\017\n\007user_"
-    "id\030\002 \001(\003\022\014\n\004auth\030\003 \001(\t\"O\n\014DownloadResp\022\022"
-    "\n\nerror_code\030\001 \001(\005\022\014\n\004hash\030\002 \001(\t\022\014\n\004addr"
-    "\030\003 \001(\t\022\017\n\007size_kb\030\004 \001(\003\"W\n\tUploadReq\022\014\n\004"
-    "hash\030\001 \001(\t\022\017\n\007user_id\030\002 \001(\003\022\014\n\004auth\030\003 \001("
-    "\t\022\014\n\004addr\030\004 \001(\t\022\017\n\007size_kb\030\005 \001(\003\".\n\nUplo"
-    "adResp\022\022\n\nerror_code\030\001 \001(\005\022\014\n\004hash\030\002 \001(\t"
-    "\"\212\001\n\014EmbeddingReq\022\017\n\007task_id\030\001 \001(\003\022.\n\005pa"
-    "ram\030\002 \001(\0132\035.GrpcLibraryV1.EmbeddingParam"
-    "H\000\022)\n\005chunk\030\003 \001(\0132\030.GrpcLibraryV1.FileCh"
-    "unkH\000B\016\n\014request_type\"]\n\rEmbeddingResp\022\022"
-    "\n\nerror_code\030\001 \001(\005\022\017\n\007task_id\030\002 \001(\003\022\020\n\010c"
-    "hunk_id\030\003 \001(\003\022\025\n\rvector_indexs\030\004 \001(\014\"B\n\020"
-    "StopEmbeddingReq\022\017\n\007task_id\030\001 \001(\003\022\017\n\007use"
-    "r_id\030\002 \001(\003\022\014\n\004auth\030\003 \001(\t\"8\n\021StopEmbeddin"
-    "gResp\022\022\n\nerror_code\030\001 \001(\005\022\017\n\007task_id\030\002 \001"
-    "(\003\"9\n\nPublishReq\022\017\n\007user_id\030\001 \001(\003\022\014\n\004aut"
-    "h\030\002 \001(\t\022\014\n\004msgs\030\003 \003(\014\"!\n\013PublishResp\022\022\n\n"
-    "error_code\030\001 \001(\005\"=\n\014SubscribeReq\022\017\n\007user"
-    "_id\030\001 \001(\003\022\014\n\004auth\030\002 \001(\t\022\016\n\006topics\030\003 \003(\t\""
-    "\?\n\016UnSubscribeReq\022\017\n\007user_id\030\001 \001(\003\022\014\n\004au"
-    "th\030\002 \001(\t\022\016\n\006topics\030\003 \003(\t\"5\n\017UnSubscribeR"
-    "esp\022\022\n\nerror_code\030\001 \001(\005\022\016\n\006topics\030\002 \003(\t2"
-    "\301\014\n\013GrpcService\0227\n\tHeartbeat\022\023.GrpcLibra"
-    "ryV1.Ping\032\023.GrpcLibraryV1.Pong\"\000\022<\n\005Logi"
-    "n\022\027.GrpcLibraryV1.LoginReq\032\030.GrpcLibrary"
-    "V1.LoginResp\"\000\022\?\n\006Logout\022\030.GrpcLibraryV1"
-    ".LogoutReq\032\031.GrpcLibraryV1.LogoutResp\"\000\022"
-    "K\n\nRegAccount\022\034.GrpcLibraryV1.RegAccount"
-    "Req\032\035.GrpcLibraryV1.RegAccountResp\"\000\022>\n\005"
-    "Query\022\027.GrpcLibraryV1.QueryReq\032\030.GrpcLib"
-    "raryV1.QueryResp\"\0000\001\022K\n\nStopAnswer\022\034.Grp"
-    "cLibraryV1.StopAnswerReq\032\035.GrpcLibraryV1"
-    ".StopAnswerResp\"\000\022L\n\tRecognize\022\033.GrpcLib"
-    "raryV1.RecognizeReq\032\034.GrpcLibraryV1.Reco"
-    "gnizeResp\"\000(\0010\001\022T\n\rStopRecognize\022\037.GrpcL"
-    "ibraryV1.StopRecognizeReq\032 .GrpcLibraryV"
-    "1.StopRecognizeResp\"\000\022W\n\016GetChatMessage\022"
-    " .GrpcLibraryV1.GetChatMessageReq\032!.Grpc"
-    "LibraryV1.GetChatMessageResp\"\000\022K\n\nGetSes"
-    "sion\022\034.GrpcLibraryV1.GetSessionReq\032\035.Grp"
-    "cLibraryV1.GetSessionResp\"\000\022K\n\nNewSessio"
-    "n\022\034.GrpcLibraryV1.NewSessionReq\032\035.GrpcLi"
-    "braryV1.NewSessionResp\"\000\022c\n\022ModifySessio"
-    "nTitle\022$.GrpcLibraryV1.ModifySessionTitl"
-    "eReq\032%.GrpcLibraryV1.ModifySessionTitleR"
-    "esp\"\000\022K\n\nDelSession\022\034.GrpcLibraryV1.DelS"
-    "essionReq\032\035.GrpcLibraryV1.DelSessionResp"
-    "\"\000\022T\n\rGetPluginInfo\022\037.GrpcLibraryV1.GetP"
-    "luginInfoReq\032 .GrpcLibraryV1.GetPluginIn"
-    "foResp\"\000\022E\n\010Download\022\032.GrpcLibraryV1.Dow"
-    "nloadReq\032\033.GrpcLibraryV1.DownloadResp\"\000\022"
-    "\?\n\006Upload\022\030.GrpcLibraryV1.UploadReq\032\031.Gr"
-    "pcLibraryV1.UploadResp\"\000\022L\n\tEmbedding\022\033."
-    "GrpcLibraryV1.EmbeddingReq\032\034.GrpcLibrary"
-    "V1.EmbeddingResp\"\000(\0010\001\022T\n\rStopEmbedding\022"
-    "\037.GrpcLibraryV1.StopEmbeddingReq\032 .GrpcL"
-    "ibraryV1.StopEmbeddingResp\"\000\022@\n\007Publish\022"
-    "\031.GrpcLibraryV1.PublishReq\032\032.GrpcLibrary"
-    "V1.PublishResp\022E\n\tSubscribe\022\033.GrpcLibrar"
-    "yV1.SubscribeReq\032\031.GrpcLibraryV1.PubMess"
-    "age0\001\022L\n\013UnSubscribe\022\035.GrpcLibraryV1.UnS"
-    "ubscribeReq\032\036.GrpcLibraryV1.UnSubscribeR"
-    "espb\006proto3"
+    "rlap\030\006 \001(\002\"\271\005\n\023RecognizeAudioParam\022\021\n\tn_"
+    "threads\030\001 \001(\005\022\026\n\016n_max_text_ctx\030\002 \001(\005\022\021\n"
+    "\toffset_ms\030\003 \001(\005\022\023\n\013duration_ms\030\004 \001(\005\022\021\n"
+    "\ttranslate\030\005 \001(\010\022\027\n\017detect_language\030\006 \001("
+    "\010\022\020\n\010language\030\007 \001(\t\022\016\n\006no_ctx\030\010 \001(\010\022\025\n\rn"
+    "o_timestamps\030\t \001(\010\022\026\n\016single_segment\030\n \001"
+    "(\010\022\025\n\rprint_special\030\013 \001(\010\022\026\n\016print_progr"
+    "ess\030\014 \001(\010\022\026\n\016print_realtime\030\r \001(\010\022\030\n\020pri"
+    "nt_timestamps\030\016 \001(\010\022\034\n\024carry_initial_pro"
+    "mpt\030\017 \001(\010\022\026\n\016initial_prompt\030\020 \001(\t\022\026\n\016sup"
+    "press_regex\030\021 \001(\t\022\026\n\016suppress_blank\030\022 \001("
+    "\010\022\024\n\014suppress_nst\030\023 \001(\010\022\023\n\013temperature\030\024"
+    " \001(\002\022\027\n\017temperature_inc\030\025 \001(\002\022\026\n\016max_ini"
+    "tial_ts\030\026 \001(\002\022\026\n\016length_penalty\030\027 \001(\002\022\025\n"
+    "\rentropy_thold\030\030 \001(\002\022\025\n\rlogprob_thold\030\031 "
+    "\001(\002\022\027\n\017no_speech_thold\030\032 \001(\002\022\013\n\003vad\030\033 \001("
+    "\010\022\026\n\016vad_model_path\030\034 \001(\t\022+\n\nvad_params\030"
+    "\035 \001(\0132\027.GrpcLibraryV1.VadParam\"#\n\016Embedd"
+    "ingParam\022\021\n\tdimension\030\001 \001(\005\"[\n\tFileChunk"
+    "\022\n\n\002id\030\001 \001(\003\022\014\n\004data\030\002 \001(\014\022\021\n\tstart_pos\030"
+    "\003 \001(\003\022\017\n\007end_pos\030\004 \001(\003\022\020\n\010filename\030\005 \001(\t"
+    "\"\"\n\nUpdateInfo\022\024\n\014force_update\030\001 \001(\010\"\031\n\004"
+    "Ping\022\021\n\ttimestamp\030\001 \001(\003\"\031\n\004Pong\022\021\n\ttimes"
+    "tamp\030\001 \001(\003\"c\n\010LoginReq\022\017\n\007account\030\001 \001(\t\022"
+    "\016\n\006passwd\030\002 \001(\t\022\020\n\010platform\030\003 \001(\t\022\014\n\004arc"
+    "h\030\004 \001(\t\022\026\n\016client_version\030\005 \001(\t\"\230\001\n\tLogi"
+    "nResp\022\022\n\nerror_code\030\001 \001(\005\022\017\n\007user_id\030\002 \001"
+    "(\003\022\014\n\004auth\030\003 \001(\t\022\017\n\007account\030\004 \001(\t\022\027\n\017las"
+    "t_login_time\030\005 \001(\t\022.\n\013update_info\030\006 \001(\0132"
+    "\031.GrpcLibraryV1.UpdateInfo\"*\n\tLogoutReq\022"
+    "\017\n\007user_id\030\001 \001(\003\022\014\n\004auth\030\002 \001(\t\"1\n\nLogout"
+    "Resp\022\022\n\nerror_code\030\001 \001(\005\022\017\n\007user_id\030\002 \001("
+    "\003\"0\n\rRegAccountReq\022\017\n\007account\030\001 \001(\t\022\016\n\006p"
+    "asswd\030\002 \001(\t\"5\n\016RegAccountResp\022\022\n\nerror_c"
+    "ode\030\001 \001(\005\022\017\n\007user_id\030\002 \001(\003\"\342\001\n\010QueryReq\022"
+    "\n\n\002id\030\001 \001(\003\022\017\n\007user_id\030\002 \001(\003\022\016\n\006msg_id\030\003"
+    " \001(\003\022\014\n\004auth\030\004 \001(\t\022\017\n\007content\030\005 \001(\t\022\r\n\005m"
+    "odel\030\006 \001(\t\022\020\n\010pipeline\030\007 \001(\t\022\017\n\007api_key\030"
+    "\010 \001(\t\022.\n\010sampling\030\t \001(\0132\034.GrpcLibraryV1."
+    "SamplingParam\022(\n\003ctx\030\n \001(\0132\033.GrpcLibrary"
+    "V1.ContextParam\"a\n\tQueryResp\022\022\n\nerror_co"
+    "de\030\001 \001(\005\022\n\n\002id\030\002 \001(\003\022\016\n\006msg_id\030\003 \001(\003\022\017\n\007"
+    "content\030\004 \001(\t\022\023\n\013is_finished\030\005 \001(\010\"B\n\rSt"
+    "opAnswerReq\022\022\n\nsession_id\030\001 \001(\003\022\017\n\007user_"
+    "id\030\002 \001(\003\022\014\n\004auth\030\003 \001(\t\"8\n\016StopAnswerResp"
+    "\022\022\n\nerror_code\030\001 \001(\005\022\022\n\nsession_id\030\002 \001(\003"
+    "\"\223\001\n\021RecognizeAudioReq\022\016\n\006ctx_id\030\001 \001(\t\022\022"
+    "\n\nsession_id\030\002 \001(\003\0223\n\005param\030\003 \001(\0132\".Grpc"
+    "LibraryV1.RecognizeAudioParamH\000\022\025\n\013audio"
+    "_chunk\030\004 \001(\014H\000B\016\n\014request_type\"y\n\022Recogn"
+    "izeAudioResp\022\022\n\nerror_code\030\001 \001(\005\022\022\n\nsess"
+    "ion_id\030\002 \001(\003\022\022\n\ntranscript\030\003 \001(\t\022\023\n\013is_f"
+    "inished\030\004 \001(\010\022\022\n\nconfidence\030\005 \001(\001\"J\n\025Sto"
+    "pRecognizeAudioReq\022\022\n\nsession_id\030\001 \001(\003\022\017"
+    "\n\007user_id\030\002 \001(\003\022\014\n\004auth\030\003 \001(\t\"@\n\026StopRec"
+    "ognizeAudioResp\022\022\n\nerror_code\030\001 \001(\005\022\022\n\ns"
+    "ession_id\030\002 \001(\003\"a\n\021GetChatMessageReq\022\n\n\002"
+    "id\030\001 \001(\003\022\022\n\nsession_id\030\002 \001(\003\022\r\n\005limit\030\003 "
+    "\001(\005\022\017\n\007user_id\030\004 \001(\003\022\014\n\004auth\030\005 \001(\t\"V\n\022Ge"
+    "tChatMessageResp\022\022\n\nerror_code\030\001 \001(\005\022,\n\010"
+    "messages\030\002 \003(\0132\032.GrpcLibraryV1.ChatMessa"
+    "ge\"I\n\rGetSessionReq\022\n\n\002id\030\001 \001(\003\022\017\n\007user_"
+    "id\030\002 \001(\003\022\014\n\004auth\030\003 \001(\t\022\r\n\005limit\030\004 \001(\005\"N\n"
+    "\016GetSessionResp\022\022\n\nerror_code\030\001 \001(\005\022(\n\010s"
+    "essions\030\002 \003(\0132\026.GrpcLibraryV1.Session\"]\n"
+    "\rNewSessionReq\022\017\n\007user_id\030\001 \001(\003\022\014\n\004auth\030"
+    "\002 \001(\t\022\r\n\005title\030\003 \001(\t\022\017\n\007content\030\004 \001(\t\022\r\n"
+    "\005model\030\005 \001(\t\"M\n\016NewSessionResp\022\022\n\nerror_"
+    "code\030\001 \001(\005\022\'\n\007session\030\002 \001(\0132\026.GrpcLibrar"
+    "yV1.Session\"Q\n\025ModifySessionTitleReq\022\n\n\002"
+    "id\030\001 \001(\003\022\017\n\007user_id\030\002 \001(\003\022\014\n\004auth\030\003 \001(\t\022"
+    "\r\n\005title\030\004 \001(\t\"G\n\026ModifySessionTitleResp"
+    "\022\022\n\nerror_code\030\001 \001(\005\022\n\n\002id\030\002 \001(\003\022\r\n\005titl"
+    "e\030\003 \001(\t\";\n\rDelSessionReq\022\017\n\007user_id\030\001 \001("
+    "\003\022\014\n\004auth\030\002 \001(\t\022\013\n\003ids\030\003 \003(\003\"1\n\016DelSessi"
+    "onResp\022\022\n\nerror_code\030\001 \001(\005\022\013\n\003ids\030\002 \003(\003\""
+    "B\n\020GetPluginInfoReq\022\014\n\004hash\030\001 \001(\t\022\021\n\tpub"
+    "lisher\030\002 \001(\t\022\r\n\005limit\030\003 \001(\005\"O\n\021GetPlugin"
+    "InfoResp\022\022\n\nerror_code\030\001 \001(\005\022&\n\007plugins\030"
+    "\002 \003(\0132\025.GrpcLibraryV1.Plugin\":\n\013Download"
+    "Req\022\014\n\004hash\030\001 \001(\t\022\017\n\007user_id\030\002 \001(\003\022\014\n\004au"
+    "th\030\003 \001(\t\"O\n\014DownloadResp\022\022\n\nerror_code\030\001"
+    " \001(\005\022\014\n\004hash\030\002 \001(\t\022\014\n\004addr\030\003 \001(\t\022\017\n\007size"
+    "_kb\030\004 \001(\003\"W\n\tUploadReq\022\014\n\004hash\030\001 \001(\t\022\017\n\007"
+    "user_id\030\002 \001(\003\022\014\n\004auth\030\003 \001(\t\022\014\n\004addr\030\004 \001("
+    "\t\022\017\n\007size_kb\030\005 \001(\003\".\n\nUploadResp\022\022\n\nerro"
+    "r_code\030\001 \001(\005\022\014\n\004hash\030\002 \001(\t\"\212\001\n\014Embedding"
+    "Req\022\017\n\007task_id\030\001 \001(\003\022.\n\005param\030\002 \001(\0132\035.Gr"
+    "pcLibraryV1.EmbeddingParamH\000\022)\n\005chunk\030\003 "
+    "\001(\0132\030.GrpcLibraryV1.FileChunkH\000B\016\n\014reque"
+    "st_type\"]\n\rEmbeddingResp\022\022\n\nerror_code\030\001"
+    " \001(\005\022\017\n\007task_id\030\002 \001(\003\022\020\n\010chunk_id\030\003 \001(\003\022"
+    "\025\n\rvector_indexs\030\004 \001(\014\"B\n\020StopEmbeddingR"
+    "eq\022\017\n\007task_id\030\001 \001(\003\022\017\n\007user_id\030\002 \001(\003\022\014\n\004"
+    "auth\030\003 \001(\t\"8\n\021StopEmbeddingResp\022\022\n\nerror"
+    "_code\030\001 \001(\005\022\017\n\007task_id\030\002 \001(\003\"9\n\nPublishR"
+    "eq\022\017\n\007user_id\030\001 \001(\003\022\014\n\004auth\030\002 \001(\t\022\014\n\004msg"
+    "s\030\003 \003(\014\"!\n\013PublishResp\022\022\n\nerror_code\030\001 \001"
+    "(\005\"=\n\014SubscribeReq\022\017\n\007user_id\030\001 \001(\003\022\014\n\004a"
+    "uth\030\002 \001(\t\022\016\n\006topics\030\003 \003(\t\"\?\n\016UnSubscribe"
+    "Req\022\017\n\007user_id\030\001 \001(\003\022\014\n\004auth\030\002 \001(\t\022\016\n\006to"
+    "pics\030\003 \003(\t\"5\n\017UnSubscribeResp\022\022\n\nerror_c"
+    "ode\030\001 \001(\005\022\016\n\006topics\030\002 \003(\t2\337\014\n\013GrpcServic"
+    "e\0227\n\tHeartbeat\022\023.GrpcLibraryV1.Ping\032\023.Gr"
+    "pcLibraryV1.Pong\"\000\022<\n\005Login\022\027.GrpcLibrar"
+    "yV1.LoginReq\032\030.GrpcLibraryV1.LoginResp\"\000"
+    "\022\?\n\006Logout\022\030.GrpcLibraryV1.LogoutReq\032\031.G"
+    "rpcLibraryV1.LogoutResp\"\000\022K\n\nRegAccount\022"
+    "\034.GrpcLibraryV1.RegAccountReq\032\035.GrpcLibr"
+    "aryV1.RegAccountResp\"\000\022>\n\005Query\022\027.GrpcLi"
+    "braryV1.QueryReq\032\030.GrpcLibraryV1.QueryRe"
+    "sp\"\0000\001\022K\n\nStopAnswer\022\034.GrpcLibraryV1.Sto"
+    "pAnswerReq\032\035.GrpcLibraryV1.StopAnswerRes"
+    "p\"\000\022[\n\016RecognizeAudio\022 .GrpcLibraryV1.Re"
+    "cognizeAudioReq\032!.GrpcLibraryV1.Recogniz"
+    "eAudioResp\"\000(\0010\001\022c\n\022StopRecognizeAudio\022$"
+    ".GrpcLibraryV1.StopRecognizeAudioReq\032%.G"
+    "rpcLibraryV1.StopRecognizeAudioResp\"\000\022W\n"
+    "\016GetChatMessage\022 .GrpcLibraryV1.GetChatM"
+    "essageReq\032!.GrpcLibraryV1.GetChatMessage"
+    "Resp\"\000\022K\n\nGetSession\022\034.GrpcLibraryV1.Get"
+    "SessionReq\032\035.GrpcLibraryV1.GetSessionRes"
+    "p\"\000\022K\n\nNewSession\022\034.GrpcLibraryV1.NewSes"
+    "sionReq\032\035.GrpcLibraryV1.NewSessionResp\"\000"
+    "\022c\n\022ModifySessionTitle\022$.GrpcLibraryV1.M"
+    "odifySessionTitleReq\032%.GrpcLibraryV1.Mod"
+    "ifySessionTitleResp\"\000\022K\n\nDelSession\022\034.Gr"
+    "pcLibraryV1.DelSessionReq\032\035.GrpcLibraryV"
+    "1.DelSessionResp\"\000\022T\n\rGetPluginInfo\022\037.Gr"
+    "pcLibraryV1.GetPluginInfoReq\032 .GrpcLibra"
+    "ryV1.GetPluginInfoResp\"\000\022E\n\010Download\022\032.G"
+    "rpcLibraryV1.DownloadReq\032\033.GrpcLibraryV1"
+    ".DownloadResp\"\000\022\?\n\006Upload\022\030.GrpcLibraryV"
+    "1.UploadReq\032\031.GrpcLibraryV1.UploadResp\"\000"
+    "\022L\n\tEmbedding\022\033.GrpcLibraryV1.EmbeddingR"
+    "eq\032\034.GrpcLibraryV1.EmbeddingResp\"\000(\0010\001\022T"
+    "\n\rStopEmbedding\022\037.GrpcLibraryV1.StopEmbe"
+    "ddingReq\032 .GrpcLibraryV1.StopEmbeddingRe"
+    "sp\"\000\022@\n\007Publish\022\031.GrpcLibraryV1.PublishR"
+    "eq\032\032.GrpcLibraryV1.PublishResp\022E\n\tSubscr"
+    "ibe\022\033.GrpcLibraryV1.SubscribeReq\032\031.GrpcL"
+    "ibraryV1.PubMessage0\001\022L\n\013UnSubscribe\022\035.G"
+    "rpcLibraryV1.UnSubscribeReq\032\036.GrpcLibrar"
+    "yV1.UnSubscribeRespb\006proto3"
 };
 static ::absl::once_flag descriptor_table_src_2fapi_2eproto_once;
 PROTOBUF_CONSTINIT const ::_pbi::DescriptorTable descriptor_table_src_2fapi_2eproto = {
     false,
     false,
-    7051,
+    7107,
     descriptor_table_protodef_src_2fapi_2eproto,
     "src/api.proto",
     &descriptor_table_src_2fapi_2eproto_once,
@@ -6158,27 +6159,27 @@ void VadParam::InternalSwap(VadParam* PROTOBUF_RESTRICT PROTOBUF_NONNULL other) 
 }
 // ===================================================================
 
-class RecognitionParam::_Internal {
+class RecognizeAudioParam::_Internal {
  public:
   using HasBits =
-      decltype(::std::declval<RecognitionParam>()._impl_._has_bits_);
+      decltype(::std::declval<RecognizeAudioParam>()._impl_._has_bits_);
   static constexpr ::int32_t kHasBitsOffset =
-      8 * PROTOBUF_FIELD_OFFSET(RecognitionParam, _impl_._has_bits_);
+      8 * PROTOBUF_FIELD_OFFSET(RecognizeAudioParam, _impl_._has_bits_);
 };
 
-RecognitionParam::RecognitionParam(::google::protobuf::Arena* PROTOBUF_NULLABLE arena)
+RecognizeAudioParam::RecognizeAudioParam(::google::protobuf::Arena* PROTOBUF_NULLABLE arena)
 #if defined(PROTOBUF_CUSTOM_VTABLE)
-    : ::google::protobuf::Message(arena, RecognitionParam_class_data_.base()) {
+    : ::google::protobuf::Message(arena, RecognizeAudioParam_class_data_.base()) {
 #else   // PROTOBUF_CUSTOM_VTABLE
     : ::google::protobuf::Message(arena) {
 #endif  // PROTOBUF_CUSTOM_VTABLE
   SharedCtor(arena);
-  // @@protoc_insertion_point(arena_constructor:GrpcLibraryV1.RecognitionParam)
+  // @@protoc_insertion_point(arena_constructor:GrpcLibraryV1.RecognizeAudioParam)
 }
-PROTOBUF_NDEBUG_INLINE RecognitionParam::Impl_::Impl_(
+PROTOBUF_NDEBUG_INLINE RecognizeAudioParam::Impl_::Impl_(
     [[maybe_unused]] ::google::protobuf::internal::InternalVisibility visibility,
     [[maybe_unused]] ::google::protobuf::Arena* PROTOBUF_NULLABLE arena, const Impl_& from,
-    [[maybe_unused]] const ::GrpcLibraryV1::RecognitionParam& from_msg)
+    [[maybe_unused]] const ::GrpcLibraryV1::RecognizeAudioParam& from_msg)
       : _has_bits_{from._has_bits_},
         _cached_size_{0},
         language_(arena, from.language_),
@@ -6186,15 +6187,15 @@ PROTOBUF_NDEBUG_INLINE RecognitionParam::Impl_::Impl_(
         suppress_regex_(arena, from.suppress_regex_),
         vad_model_path_(arena, from.vad_model_path_) {}
 
-RecognitionParam::RecognitionParam(
+RecognizeAudioParam::RecognizeAudioParam(
     ::google::protobuf::Arena* PROTOBUF_NULLABLE arena,
-    const RecognitionParam& from)
+    const RecognizeAudioParam& from)
 #if defined(PROTOBUF_CUSTOM_VTABLE)
-    : ::google::protobuf::Message(arena, RecognitionParam_class_data_.base()) {
+    : ::google::protobuf::Message(arena, RecognizeAudioParam_class_data_.base()) {
 #else   // PROTOBUF_CUSTOM_VTABLE
     : ::google::protobuf::Message(arena) {
 #endif  // PROTOBUF_CUSTOM_VTABLE
-  RecognitionParam* const _this = this;
+  RecognizeAudioParam* const _this = this;
   (void)_this;
   _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
       from._internal_metadata_);
@@ -6211,9 +6212,9 @@ RecognitionParam::RecognitionParam(
                offsetof(Impl_, n_threads_) +
                sizeof(Impl_::vad_));
 
-  // @@protoc_insertion_point(copy_constructor:GrpcLibraryV1.RecognitionParam)
+  // @@protoc_insertion_point(copy_constructor:GrpcLibraryV1.RecognizeAudioParam)
 }
-PROTOBUF_NDEBUG_INLINE RecognitionParam::Impl_::Impl_(
+PROTOBUF_NDEBUG_INLINE RecognizeAudioParam::Impl_::Impl_(
     [[maybe_unused]] ::google::protobuf::internal::InternalVisibility visibility,
     [[maybe_unused]] ::google::protobuf::Arena* PROTOBUF_NULLABLE arena)
       : _cached_size_{0},
@@ -6222,7 +6223,7 @@ PROTOBUF_NDEBUG_INLINE RecognitionParam::Impl_::Impl_(
         suppress_regex_(arena),
         vad_model_path_(arena) {}
 
-inline void RecognitionParam::SharedCtor(::_pb::Arena* PROTOBUF_NULLABLE arena) {
+inline void RecognizeAudioParam::SharedCtor(::_pb::Arena* PROTOBUF_NULLABLE arena) {
   new (&_impl_) Impl_(internal_visibility(), arena);
   ::memset(reinterpret_cast<char*>(&_impl_) +
                offsetof(Impl_, vad_params_),
@@ -6231,12 +6232,12 @@ inline void RecognitionParam::SharedCtor(::_pb::Arena* PROTOBUF_NULLABLE arena) 
                offsetof(Impl_, vad_params_) +
                sizeof(Impl_::vad_));
 }
-RecognitionParam::~RecognitionParam() {
-  // @@protoc_insertion_point(destructor:GrpcLibraryV1.RecognitionParam)
+RecognizeAudioParam::~RecognizeAudioParam() {
+  // @@protoc_insertion_point(destructor:GrpcLibraryV1.RecognizeAudioParam)
   SharedDtor(*this);
 }
-inline void RecognitionParam::SharedDtor(MessageLite& self) {
-  RecognitionParam& this_ = static_cast<RecognitionParam&>(self);
+inline void RecognizeAudioParam::SharedDtor(MessageLite& self) {
+  RecognizeAudioParam& this_ = static_cast<RecognizeAudioParam&>(self);
   if constexpr (::_pbi::DebugHardenCheckHasBitConsistency()) {
     this_.CheckHasBitConsistency();
   }
@@ -6250,53 +6251,53 @@ inline void RecognitionParam::SharedDtor(MessageLite& self) {
   this_._impl_.~Impl_();
 }
 
-inline void* PROTOBUF_NONNULL RecognitionParam::PlacementNew_(
+inline void* PROTOBUF_NONNULL RecognizeAudioParam::PlacementNew_(
     const void* PROTOBUF_NONNULL, void* PROTOBUF_NONNULL mem,
     ::google::protobuf::Arena* PROTOBUF_NULLABLE arena) {
-  return ::new (mem) RecognitionParam(arena);
+  return ::new (mem) RecognizeAudioParam(arena);
 }
-constexpr auto RecognitionParam::InternalNewImpl_() {
-  return ::google::protobuf::internal::MessageCreator::CopyInit(sizeof(RecognitionParam),
-                                            alignof(RecognitionParam));
+constexpr auto RecognizeAudioParam::InternalNewImpl_() {
+  return ::google::protobuf::internal::MessageCreator::CopyInit(sizeof(RecognizeAudioParam),
+                                            alignof(RecognizeAudioParam));
 }
-constexpr auto RecognitionParam::InternalGenerateClassData_() {
+constexpr auto RecognizeAudioParam::InternalGenerateClassData_() {
   return ::google::protobuf::internal::ClassDataFull{
       ::google::protobuf::internal::ClassData{
-          &_RecognitionParam_default_instance_._instance,
+          &_RecognizeAudioParam_default_instance_._instance,
           &_table_.header,
           nullptr,  // OnDemandRegisterArenaDtor
           nullptr,  // IsInitialized
-          &RecognitionParam::MergeImpl,
-          ::google::protobuf::Message::GetNewImpl<RecognitionParam>(),
+          &RecognizeAudioParam::MergeImpl,
+          ::google::protobuf::Message::GetNewImpl<RecognizeAudioParam>(),
 #if defined(PROTOBUF_CUSTOM_VTABLE)
-          &RecognitionParam::SharedDtor,
-          ::google::protobuf::Message::GetClearImpl<RecognitionParam>(), &RecognitionParam::ByteSizeLong,
-              &RecognitionParam::_InternalSerialize,
+          &RecognizeAudioParam::SharedDtor,
+          ::google::protobuf::Message::GetClearImpl<RecognizeAudioParam>(), &RecognizeAudioParam::ByteSizeLong,
+              &RecognizeAudioParam::_InternalSerialize,
 #endif  // PROTOBUF_CUSTOM_VTABLE
-          PROTOBUF_FIELD_OFFSET(RecognitionParam, _impl_._cached_size_),
+          PROTOBUF_FIELD_OFFSET(RecognizeAudioParam, _impl_._cached_size_),
           false,
       },
-      &RecognitionParam::kDescriptorMethods,
+      &RecognizeAudioParam::kDescriptorMethods,
       &descriptor_table_src_2fapi_2eproto,
       nullptr,  // tracker
   };
 }
 
 PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 const
-    ::google::protobuf::internal::ClassDataFull RecognitionParam_class_data_ =
-        RecognitionParam::InternalGenerateClassData_();
+    ::google::protobuf::internal::ClassDataFull RecognizeAudioParam_class_data_ =
+        RecognizeAudioParam::InternalGenerateClassData_();
 
 PROTOBUF_ATTRIBUTE_WEAK const ::google::protobuf::internal::ClassData* PROTOBUF_NONNULL
-RecognitionParam::GetClassData() const {
-  ::google::protobuf::internal::PrefetchToLocalCache(&RecognitionParam_class_data_);
-  ::google::protobuf::internal::PrefetchToLocalCache(RecognitionParam_class_data_.tc_table);
-  return RecognitionParam_class_data_.base();
+RecognizeAudioParam::GetClassData() const {
+  ::google::protobuf::internal::PrefetchToLocalCache(&RecognizeAudioParam_class_data_);
+  ::google::protobuf::internal::PrefetchToLocalCache(RecognizeAudioParam_class_data_.tc_table);
+  return RecognizeAudioParam_class_data_.base();
 }
 PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
-const ::_pbi::TcParseTable<5, 29, 1, 113, 2>
-RecognitionParam::_table_ = {
+const ::_pbi::TcParseTable<5, 29, 1, 116, 2>
+RecognizeAudioParam::_table_ = {
   {
-    PROTOBUF_FIELD_OFFSET(RecognitionParam, _impl_._has_bits_),
+    PROTOBUF_FIELD_OFFSET(RecognizeAudioParam, _impl_._has_bits_),
     0, // no _extensions_
     29, 248,  // max_field_number, fast_idx_mask
     offsetof(decltype(_table_), field_lookup_table),
@@ -6305,208 +6306,208 @@ RecognitionParam::_table_ = {
     29,  // num_field_entries
     1,  // num_aux_entries
     offsetof(decltype(_table_), aux_entries),
-    RecognitionParam_class_data_.base(),
+    RecognizeAudioParam_class_data_.base(),
     nullptr,  // post_loop_handler
     ::_pbi::TcParser::GenericFallback,  // fallback
     #ifdef PROTOBUF_PREFETCH_PARSE_TABLE
-    ::_pbi::TcParser::GetTable<::GrpcLibraryV1::RecognitionParam>(),  // to_prefetch
+    ::_pbi::TcParser::GetTable<::GrpcLibraryV1::RecognizeAudioParam>(),  // to_prefetch
     #endif  // PROTOBUF_PREFETCH_PARSE_TABLE
   }, {{
     {::_pbi::TcParser::MiniParse, {}},
     // int32 n_threads = 1;
-    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(RecognitionParam, _impl_.n_threads_), 5>(),
+    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(RecognizeAudioParam, _impl_.n_threads_), 5>(),
      {8, 5, 0,
-      PROTOBUF_FIELD_OFFSET(RecognitionParam, _impl_.n_threads_)}},
+      PROTOBUF_FIELD_OFFSET(RecognizeAudioParam, _impl_.n_threads_)}},
     // int32 n_max_text_ctx = 2;
-    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(RecognitionParam, _impl_.n_max_text_ctx_), 6>(),
+    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(RecognizeAudioParam, _impl_.n_max_text_ctx_), 6>(),
      {16, 6, 0,
-      PROTOBUF_FIELD_OFFSET(RecognitionParam, _impl_.n_max_text_ctx_)}},
+      PROTOBUF_FIELD_OFFSET(RecognizeAudioParam, _impl_.n_max_text_ctx_)}},
     // int32 offset_ms = 3;
-    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(RecognitionParam, _impl_.offset_ms_), 7>(),
+    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(RecognizeAudioParam, _impl_.offset_ms_), 7>(),
      {24, 7, 0,
-      PROTOBUF_FIELD_OFFSET(RecognitionParam, _impl_.offset_ms_)}},
+      PROTOBUF_FIELD_OFFSET(RecognizeAudioParam, _impl_.offset_ms_)}},
     // int32 duration_ms = 4;
-    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(RecognitionParam, _impl_.duration_ms_), 8>(),
+    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(RecognizeAudioParam, _impl_.duration_ms_), 8>(),
      {32, 8, 0,
-      PROTOBUF_FIELD_OFFSET(RecognitionParam, _impl_.duration_ms_)}},
+      PROTOBUF_FIELD_OFFSET(RecognizeAudioParam, _impl_.duration_ms_)}},
     // bool translate = 5;
-    {::_pbi::TcParser::SingularVarintNoZag1<bool, offsetof(RecognitionParam, _impl_.translate_), 9>(),
+    {::_pbi::TcParser::SingularVarintNoZag1<bool, offsetof(RecognizeAudioParam, _impl_.translate_), 9>(),
      {40, 9, 0,
-      PROTOBUF_FIELD_OFFSET(RecognitionParam, _impl_.translate_)}},
+      PROTOBUF_FIELD_OFFSET(RecognizeAudioParam, _impl_.translate_)}},
     // bool detect_language = 6;
-    {::_pbi::TcParser::SingularVarintNoZag1<bool, offsetof(RecognitionParam, _impl_.detect_language_), 10>(),
+    {::_pbi::TcParser::SingularVarintNoZag1<bool, offsetof(RecognizeAudioParam, _impl_.detect_language_), 10>(),
      {48, 10, 0,
-      PROTOBUF_FIELD_OFFSET(RecognitionParam, _impl_.detect_language_)}},
+      PROTOBUF_FIELD_OFFSET(RecognizeAudioParam, _impl_.detect_language_)}},
     // string language = 7;
     {::_pbi::TcParser::FastUS1,
      {58, 0, 0,
-      PROTOBUF_FIELD_OFFSET(RecognitionParam, _impl_.language_)}},
+      PROTOBUF_FIELD_OFFSET(RecognizeAudioParam, _impl_.language_)}},
     // bool no_ctx = 8;
-    {::_pbi::TcParser::SingularVarintNoZag1<bool, offsetof(RecognitionParam, _impl_.no_ctx_), 11>(),
+    {::_pbi::TcParser::SingularVarintNoZag1<bool, offsetof(RecognizeAudioParam, _impl_.no_ctx_), 11>(),
      {64, 11, 0,
-      PROTOBUF_FIELD_OFFSET(RecognitionParam, _impl_.no_ctx_)}},
+      PROTOBUF_FIELD_OFFSET(RecognizeAudioParam, _impl_.no_ctx_)}},
     // bool no_timestamps = 9;
-    {::_pbi::TcParser::SingularVarintNoZag1<bool, offsetof(RecognitionParam, _impl_.no_timestamps_), 12>(),
+    {::_pbi::TcParser::SingularVarintNoZag1<bool, offsetof(RecognizeAudioParam, _impl_.no_timestamps_), 12>(),
      {72, 12, 0,
-      PROTOBUF_FIELD_OFFSET(RecognitionParam, _impl_.no_timestamps_)}},
+      PROTOBUF_FIELD_OFFSET(RecognizeAudioParam, _impl_.no_timestamps_)}},
     // bool single_segment = 10;
-    {::_pbi::TcParser::SingularVarintNoZag1<bool, offsetof(RecognitionParam, _impl_.single_segment_), 13>(),
+    {::_pbi::TcParser::SingularVarintNoZag1<bool, offsetof(RecognizeAudioParam, _impl_.single_segment_), 13>(),
      {80, 13, 0,
-      PROTOBUF_FIELD_OFFSET(RecognitionParam, _impl_.single_segment_)}},
+      PROTOBUF_FIELD_OFFSET(RecognizeAudioParam, _impl_.single_segment_)}},
     // bool print_special = 11;
-    {::_pbi::TcParser::SingularVarintNoZag1<bool, offsetof(RecognitionParam, _impl_.print_special_), 14>(),
+    {::_pbi::TcParser::SingularVarintNoZag1<bool, offsetof(RecognizeAudioParam, _impl_.print_special_), 14>(),
      {88, 14, 0,
-      PROTOBUF_FIELD_OFFSET(RecognitionParam, _impl_.print_special_)}},
+      PROTOBUF_FIELD_OFFSET(RecognizeAudioParam, _impl_.print_special_)}},
     // bool print_progress = 12;
-    {::_pbi::TcParser::SingularVarintNoZag1<bool, offsetof(RecognitionParam, _impl_.print_progress_), 15>(),
+    {::_pbi::TcParser::SingularVarintNoZag1<bool, offsetof(RecognizeAudioParam, _impl_.print_progress_), 15>(),
      {96, 15, 0,
-      PROTOBUF_FIELD_OFFSET(RecognitionParam, _impl_.print_progress_)}},
+      PROTOBUF_FIELD_OFFSET(RecognizeAudioParam, _impl_.print_progress_)}},
     // bool print_realtime = 13;
-    {::_pbi::TcParser::SingularVarintNoZag1<bool, offsetof(RecognitionParam, _impl_.print_realtime_), 16>(),
+    {::_pbi::TcParser::SingularVarintNoZag1<bool, offsetof(RecognizeAudioParam, _impl_.print_realtime_), 16>(),
      {104, 16, 0,
-      PROTOBUF_FIELD_OFFSET(RecognitionParam, _impl_.print_realtime_)}},
+      PROTOBUF_FIELD_OFFSET(RecognizeAudioParam, _impl_.print_realtime_)}},
     // bool print_timestamps = 14;
-    {::_pbi::TcParser::SingularVarintNoZag1<bool, offsetof(RecognitionParam, _impl_.print_timestamps_), 17>(),
+    {::_pbi::TcParser::SingularVarintNoZag1<bool, offsetof(RecognizeAudioParam, _impl_.print_timestamps_), 17>(),
      {112, 17, 0,
-      PROTOBUF_FIELD_OFFSET(RecognitionParam, _impl_.print_timestamps_)}},
+      PROTOBUF_FIELD_OFFSET(RecognizeAudioParam, _impl_.print_timestamps_)}},
     // bool carry_initial_prompt = 15;
-    {::_pbi::TcParser::SingularVarintNoZag1<bool, offsetof(RecognitionParam, _impl_.carry_initial_prompt_), 18>(),
+    {::_pbi::TcParser::SingularVarintNoZag1<bool, offsetof(RecognizeAudioParam, _impl_.carry_initial_prompt_), 18>(),
      {120, 18, 0,
-      PROTOBUF_FIELD_OFFSET(RecognitionParam, _impl_.carry_initial_prompt_)}},
+      PROTOBUF_FIELD_OFFSET(RecognizeAudioParam, _impl_.carry_initial_prompt_)}},
     // string initial_prompt = 16;
     {::_pbi::TcParser::FastUS2,
      {386, 1, 0,
-      PROTOBUF_FIELD_OFFSET(RecognitionParam, _impl_.initial_prompt_)}},
+      PROTOBUF_FIELD_OFFSET(RecognizeAudioParam, _impl_.initial_prompt_)}},
     // string suppress_regex = 17;
     {::_pbi::TcParser::FastUS2,
      {394, 2, 0,
-      PROTOBUF_FIELD_OFFSET(RecognitionParam, _impl_.suppress_regex_)}},
+      PROTOBUF_FIELD_OFFSET(RecognizeAudioParam, _impl_.suppress_regex_)}},
     // bool suppress_blank = 18;
     {::_pbi::TcParser::FastV8S2,
      {400, 19, 0,
-      PROTOBUF_FIELD_OFFSET(RecognitionParam, _impl_.suppress_blank_)}},
+      PROTOBUF_FIELD_OFFSET(RecognizeAudioParam, _impl_.suppress_blank_)}},
     // bool suppress_nst = 19;
     {::_pbi::TcParser::FastV8S2,
      {408, 20, 0,
-      PROTOBUF_FIELD_OFFSET(RecognitionParam, _impl_.suppress_nst_)}},
+      PROTOBUF_FIELD_OFFSET(RecognizeAudioParam, _impl_.suppress_nst_)}},
     // float temperature = 20;
     {::_pbi::TcParser::FastF32S2,
      {421, 21, 0,
-      PROTOBUF_FIELD_OFFSET(RecognitionParam, _impl_.temperature_)}},
+      PROTOBUF_FIELD_OFFSET(RecognizeAudioParam, _impl_.temperature_)}},
     // float temperature_inc = 21;
     {::_pbi::TcParser::FastF32S2,
      {429, 22, 0,
-      PROTOBUF_FIELD_OFFSET(RecognitionParam, _impl_.temperature_inc_)}},
+      PROTOBUF_FIELD_OFFSET(RecognizeAudioParam, _impl_.temperature_inc_)}},
     // float max_initial_ts = 22;
     {::_pbi::TcParser::FastF32S2,
      {437, 23, 0,
-      PROTOBUF_FIELD_OFFSET(RecognitionParam, _impl_.max_initial_ts_)}},
+      PROTOBUF_FIELD_OFFSET(RecognizeAudioParam, _impl_.max_initial_ts_)}},
     // float length_penalty = 23;
     {::_pbi::TcParser::FastF32S2,
      {445, 24, 0,
-      PROTOBUF_FIELD_OFFSET(RecognitionParam, _impl_.length_penalty_)}},
+      PROTOBUF_FIELD_OFFSET(RecognizeAudioParam, _impl_.length_penalty_)}},
     // float entropy_thold = 24;
     {::_pbi::TcParser::FastF32S2,
      {453, 25, 0,
-      PROTOBUF_FIELD_OFFSET(RecognitionParam, _impl_.entropy_thold_)}},
+      PROTOBUF_FIELD_OFFSET(RecognizeAudioParam, _impl_.entropy_thold_)}},
     // float logprob_thold = 25;
     {::_pbi::TcParser::FastF32S2,
      {461, 26, 0,
-      PROTOBUF_FIELD_OFFSET(RecognitionParam, _impl_.logprob_thold_)}},
+      PROTOBUF_FIELD_OFFSET(RecognizeAudioParam, _impl_.logprob_thold_)}},
     // float no_speech_thold = 26;
     {::_pbi::TcParser::FastF32S2,
      {469, 27, 0,
-      PROTOBUF_FIELD_OFFSET(RecognitionParam, _impl_.no_speech_thold_)}},
+      PROTOBUF_FIELD_OFFSET(RecognizeAudioParam, _impl_.no_speech_thold_)}},
     // bool vad = 27;
     {::_pbi::TcParser::FastV8S2,
      {472, 28, 0,
-      PROTOBUF_FIELD_OFFSET(RecognitionParam, _impl_.vad_)}},
+      PROTOBUF_FIELD_OFFSET(RecognizeAudioParam, _impl_.vad_)}},
     // string vad_model_path = 28;
     {::_pbi::TcParser::FastUS2,
      {482, 3, 0,
-      PROTOBUF_FIELD_OFFSET(RecognitionParam, _impl_.vad_model_path_)}},
+      PROTOBUF_FIELD_OFFSET(RecognizeAudioParam, _impl_.vad_model_path_)}},
     // .GrpcLibraryV1.VadParam vad_params = 29;
     {::_pbi::TcParser::FastMtS2,
      {490, 4, 0,
-      PROTOBUF_FIELD_OFFSET(RecognitionParam, _impl_.vad_params_)}},
+      PROTOBUF_FIELD_OFFSET(RecognizeAudioParam, _impl_.vad_params_)}},
     {::_pbi::TcParser::MiniParse, {}},
     {::_pbi::TcParser::MiniParse, {}},
   }}, {{
     65535, 65535
   }}, {{
     // int32 n_threads = 1;
-    {PROTOBUF_FIELD_OFFSET(RecognitionParam, _impl_.n_threads_), _Internal::kHasBitsOffset + 5, 0, (0 | ::_fl::kFcOptional | ::_fl::kInt32)},
+    {PROTOBUF_FIELD_OFFSET(RecognizeAudioParam, _impl_.n_threads_), _Internal::kHasBitsOffset + 5, 0, (0 | ::_fl::kFcOptional | ::_fl::kInt32)},
     // int32 n_max_text_ctx = 2;
-    {PROTOBUF_FIELD_OFFSET(RecognitionParam, _impl_.n_max_text_ctx_), _Internal::kHasBitsOffset + 6, 0, (0 | ::_fl::kFcOptional | ::_fl::kInt32)},
+    {PROTOBUF_FIELD_OFFSET(RecognizeAudioParam, _impl_.n_max_text_ctx_), _Internal::kHasBitsOffset + 6, 0, (0 | ::_fl::kFcOptional | ::_fl::kInt32)},
     // int32 offset_ms = 3;
-    {PROTOBUF_FIELD_OFFSET(RecognitionParam, _impl_.offset_ms_), _Internal::kHasBitsOffset + 7, 0, (0 | ::_fl::kFcOptional | ::_fl::kInt32)},
+    {PROTOBUF_FIELD_OFFSET(RecognizeAudioParam, _impl_.offset_ms_), _Internal::kHasBitsOffset + 7, 0, (0 | ::_fl::kFcOptional | ::_fl::kInt32)},
     // int32 duration_ms = 4;
-    {PROTOBUF_FIELD_OFFSET(RecognitionParam, _impl_.duration_ms_), _Internal::kHasBitsOffset + 8, 0, (0 | ::_fl::kFcOptional | ::_fl::kInt32)},
+    {PROTOBUF_FIELD_OFFSET(RecognizeAudioParam, _impl_.duration_ms_), _Internal::kHasBitsOffset + 8, 0, (0 | ::_fl::kFcOptional | ::_fl::kInt32)},
     // bool translate = 5;
-    {PROTOBUF_FIELD_OFFSET(RecognitionParam, _impl_.translate_), _Internal::kHasBitsOffset + 9, 0, (0 | ::_fl::kFcOptional | ::_fl::kBool)},
+    {PROTOBUF_FIELD_OFFSET(RecognizeAudioParam, _impl_.translate_), _Internal::kHasBitsOffset + 9, 0, (0 | ::_fl::kFcOptional | ::_fl::kBool)},
     // bool detect_language = 6;
-    {PROTOBUF_FIELD_OFFSET(RecognitionParam, _impl_.detect_language_), _Internal::kHasBitsOffset + 10, 0, (0 | ::_fl::kFcOptional | ::_fl::kBool)},
+    {PROTOBUF_FIELD_OFFSET(RecognizeAudioParam, _impl_.detect_language_), _Internal::kHasBitsOffset + 10, 0, (0 | ::_fl::kFcOptional | ::_fl::kBool)},
     // string language = 7;
-    {PROTOBUF_FIELD_OFFSET(RecognitionParam, _impl_.language_), _Internal::kHasBitsOffset + 0, 0, (0 | ::_fl::kFcOptional | ::_fl::kUtf8String | ::_fl::kRepAString)},
+    {PROTOBUF_FIELD_OFFSET(RecognizeAudioParam, _impl_.language_), _Internal::kHasBitsOffset + 0, 0, (0 | ::_fl::kFcOptional | ::_fl::kUtf8String | ::_fl::kRepAString)},
     // bool no_ctx = 8;
-    {PROTOBUF_FIELD_OFFSET(RecognitionParam, _impl_.no_ctx_), _Internal::kHasBitsOffset + 11, 0, (0 | ::_fl::kFcOptional | ::_fl::kBool)},
+    {PROTOBUF_FIELD_OFFSET(RecognizeAudioParam, _impl_.no_ctx_), _Internal::kHasBitsOffset + 11, 0, (0 | ::_fl::kFcOptional | ::_fl::kBool)},
     // bool no_timestamps = 9;
-    {PROTOBUF_FIELD_OFFSET(RecognitionParam, _impl_.no_timestamps_), _Internal::kHasBitsOffset + 12, 0, (0 | ::_fl::kFcOptional | ::_fl::kBool)},
+    {PROTOBUF_FIELD_OFFSET(RecognizeAudioParam, _impl_.no_timestamps_), _Internal::kHasBitsOffset + 12, 0, (0 | ::_fl::kFcOptional | ::_fl::kBool)},
     // bool single_segment = 10;
-    {PROTOBUF_FIELD_OFFSET(RecognitionParam, _impl_.single_segment_), _Internal::kHasBitsOffset + 13, 0, (0 | ::_fl::kFcOptional | ::_fl::kBool)},
+    {PROTOBUF_FIELD_OFFSET(RecognizeAudioParam, _impl_.single_segment_), _Internal::kHasBitsOffset + 13, 0, (0 | ::_fl::kFcOptional | ::_fl::kBool)},
     // bool print_special = 11;
-    {PROTOBUF_FIELD_OFFSET(RecognitionParam, _impl_.print_special_), _Internal::kHasBitsOffset + 14, 0, (0 | ::_fl::kFcOptional | ::_fl::kBool)},
+    {PROTOBUF_FIELD_OFFSET(RecognizeAudioParam, _impl_.print_special_), _Internal::kHasBitsOffset + 14, 0, (0 | ::_fl::kFcOptional | ::_fl::kBool)},
     // bool print_progress = 12;
-    {PROTOBUF_FIELD_OFFSET(RecognitionParam, _impl_.print_progress_), _Internal::kHasBitsOffset + 15, 0, (0 | ::_fl::kFcOptional | ::_fl::kBool)},
+    {PROTOBUF_FIELD_OFFSET(RecognizeAudioParam, _impl_.print_progress_), _Internal::kHasBitsOffset + 15, 0, (0 | ::_fl::kFcOptional | ::_fl::kBool)},
     // bool print_realtime = 13;
-    {PROTOBUF_FIELD_OFFSET(RecognitionParam, _impl_.print_realtime_), _Internal::kHasBitsOffset + 16, 0, (0 | ::_fl::kFcOptional | ::_fl::kBool)},
+    {PROTOBUF_FIELD_OFFSET(RecognizeAudioParam, _impl_.print_realtime_), _Internal::kHasBitsOffset + 16, 0, (0 | ::_fl::kFcOptional | ::_fl::kBool)},
     // bool print_timestamps = 14;
-    {PROTOBUF_FIELD_OFFSET(RecognitionParam, _impl_.print_timestamps_), _Internal::kHasBitsOffset + 17, 0, (0 | ::_fl::kFcOptional | ::_fl::kBool)},
+    {PROTOBUF_FIELD_OFFSET(RecognizeAudioParam, _impl_.print_timestamps_), _Internal::kHasBitsOffset + 17, 0, (0 | ::_fl::kFcOptional | ::_fl::kBool)},
     // bool carry_initial_prompt = 15;
-    {PROTOBUF_FIELD_OFFSET(RecognitionParam, _impl_.carry_initial_prompt_), _Internal::kHasBitsOffset + 18, 0, (0 | ::_fl::kFcOptional | ::_fl::kBool)},
+    {PROTOBUF_FIELD_OFFSET(RecognizeAudioParam, _impl_.carry_initial_prompt_), _Internal::kHasBitsOffset + 18, 0, (0 | ::_fl::kFcOptional | ::_fl::kBool)},
     // string initial_prompt = 16;
-    {PROTOBUF_FIELD_OFFSET(RecognitionParam, _impl_.initial_prompt_), _Internal::kHasBitsOffset + 1, 0, (0 | ::_fl::kFcOptional | ::_fl::kUtf8String | ::_fl::kRepAString)},
+    {PROTOBUF_FIELD_OFFSET(RecognizeAudioParam, _impl_.initial_prompt_), _Internal::kHasBitsOffset + 1, 0, (0 | ::_fl::kFcOptional | ::_fl::kUtf8String | ::_fl::kRepAString)},
     // string suppress_regex = 17;
-    {PROTOBUF_FIELD_OFFSET(RecognitionParam, _impl_.suppress_regex_), _Internal::kHasBitsOffset + 2, 0, (0 | ::_fl::kFcOptional | ::_fl::kUtf8String | ::_fl::kRepAString)},
+    {PROTOBUF_FIELD_OFFSET(RecognizeAudioParam, _impl_.suppress_regex_), _Internal::kHasBitsOffset + 2, 0, (0 | ::_fl::kFcOptional | ::_fl::kUtf8String | ::_fl::kRepAString)},
     // bool suppress_blank = 18;
-    {PROTOBUF_FIELD_OFFSET(RecognitionParam, _impl_.suppress_blank_), _Internal::kHasBitsOffset + 19, 0, (0 | ::_fl::kFcOptional | ::_fl::kBool)},
+    {PROTOBUF_FIELD_OFFSET(RecognizeAudioParam, _impl_.suppress_blank_), _Internal::kHasBitsOffset + 19, 0, (0 | ::_fl::kFcOptional | ::_fl::kBool)},
     // bool suppress_nst = 19;
-    {PROTOBUF_FIELD_OFFSET(RecognitionParam, _impl_.suppress_nst_), _Internal::kHasBitsOffset + 20, 0, (0 | ::_fl::kFcOptional | ::_fl::kBool)},
+    {PROTOBUF_FIELD_OFFSET(RecognizeAudioParam, _impl_.suppress_nst_), _Internal::kHasBitsOffset + 20, 0, (0 | ::_fl::kFcOptional | ::_fl::kBool)},
     // float temperature = 20;
-    {PROTOBUF_FIELD_OFFSET(RecognitionParam, _impl_.temperature_), _Internal::kHasBitsOffset + 21, 0, (0 | ::_fl::kFcOptional | ::_fl::kFloat)},
+    {PROTOBUF_FIELD_OFFSET(RecognizeAudioParam, _impl_.temperature_), _Internal::kHasBitsOffset + 21, 0, (0 | ::_fl::kFcOptional | ::_fl::kFloat)},
     // float temperature_inc = 21;
-    {PROTOBUF_FIELD_OFFSET(RecognitionParam, _impl_.temperature_inc_), _Internal::kHasBitsOffset + 22, 0, (0 | ::_fl::kFcOptional | ::_fl::kFloat)},
+    {PROTOBUF_FIELD_OFFSET(RecognizeAudioParam, _impl_.temperature_inc_), _Internal::kHasBitsOffset + 22, 0, (0 | ::_fl::kFcOptional | ::_fl::kFloat)},
     // float max_initial_ts = 22;
-    {PROTOBUF_FIELD_OFFSET(RecognitionParam, _impl_.max_initial_ts_), _Internal::kHasBitsOffset + 23, 0, (0 | ::_fl::kFcOptional | ::_fl::kFloat)},
+    {PROTOBUF_FIELD_OFFSET(RecognizeAudioParam, _impl_.max_initial_ts_), _Internal::kHasBitsOffset + 23, 0, (0 | ::_fl::kFcOptional | ::_fl::kFloat)},
     // float length_penalty = 23;
-    {PROTOBUF_FIELD_OFFSET(RecognitionParam, _impl_.length_penalty_), _Internal::kHasBitsOffset + 24, 0, (0 | ::_fl::kFcOptional | ::_fl::kFloat)},
+    {PROTOBUF_FIELD_OFFSET(RecognizeAudioParam, _impl_.length_penalty_), _Internal::kHasBitsOffset + 24, 0, (0 | ::_fl::kFcOptional | ::_fl::kFloat)},
     // float entropy_thold = 24;
-    {PROTOBUF_FIELD_OFFSET(RecognitionParam, _impl_.entropy_thold_), _Internal::kHasBitsOffset + 25, 0, (0 | ::_fl::kFcOptional | ::_fl::kFloat)},
+    {PROTOBUF_FIELD_OFFSET(RecognizeAudioParam, _impl_.entropy_thold_), _Internal::kHasBitsOffset + 25, 0, (0 | ::_fl::kFcOptional | ::_fl::kFloat)},
     // float logprob_thold = 25;
-    {PROTOBUF_FIELD_OFFSET(RecognitionParam, _impl_.logprob_thold_), _Internal::kHasBitsOffset + 26, 0, (0 | ::_fl::kFcOptional | ::_fl::kFloat)},
+    {PROTOBUF_FIELD_OFFSET(RecognizeAudioParam, _impl_.logprob_thold_), _Internal::kHasBitsOffset + 26, 0, (0 | ::_fl::kFcOptional | ::_fl::kFloat)},
     // float no_speech_thold = 26;
-    {PROTOBUF_FIELD_OFFSET(RecognitionParam, _impl_.no_speech_thold_), _Internal::kHasBitsOffset + 27, 0, (0 | ::_fl::kFcOptional | ::_fl::kFloat)},
+    {PROTOBUF_FIELD_OFFSET(RecognizeAudioParam, _impl_.no_speech_thold_), _Internal::kHasBitsOffset + 27, 0, (0 | ::_fl::kFcOptional | ::_fl::kFloat)},
     // bool vad = 27;
-    {PROTOBUF_FIELD_OFFSET(RecognitionParam, _impl_.vad_), _Internal::kHasBitsOffset + 28, 0, (0 | ::_fl::kFcOptional | ::_fl::kBool)},
+    {PROTOBUF_FIELD_OFFSET(RecognizeAudioParam, _impl_.vad_), _Internal::kHasBitsOffset + 28, 0, (0 | ::_fl::kFcOptional | ::_fl::kBool)},
     // string vad_model_path = 28;
-    {PROTOBUF_FIELD_OFFSET(RecognitionParam, _impl_.vad_model_path_), _Internal::kHasBitsOffset + 3, 0, (0 | ::_fl::kFcOptional | ::_fl::kUtf8String | ::_fl::kRepAString)},
+    {PROTOBUF_FIELD_OFFSET(RecognizeAudioParam, _impl_.vad_model_path_), _Internal::kHasBitsOffset + 3, 0, (0 | ::_fl::kFcOptional | ::_fl::kUtf8String | ::_fl::kRepAString)},
     // .GrpcLibraryV1.VadParam vad_params = 29;
-    {PROTOBUF_FIELD_OFFSET(RecognitionParam, _impl_.vad_params_), _Internal::kHasBitsOffset + 4, 0, (0 | ::_fl::kFcOptional | ::_fl::kMessage | ::_fl::kTvTable)},
+    {PROTOBUF_FIELD_OFFSET(RecognizeAudioParam, _impl_.vad_params_), _Internal::kHasBitsOffset + 4, 0, (0 | ::_fl::kFcOptional | ::_fl::kMessage | ::_fl::kTvTable)},
   }},
   {{
       {::_pbi::TcParser::GetTable<::GrpcLibraryV1::VadParam>()},
   }},
   {{
-    "\36\0\0\0\0\0\0\10\0\0\0\0\0\0\0\0\16\16\0\0\0\0\0\0\0\0\0\0\16\0\0\0"
-    "GrpcLibraryV1.RecognitionParam"
+    "\41\0\0\0\0\0\0\10\0\0\0\0\0\0\0\0\16\16\0\0\0\0\0\0\0\0\0\0\16\0\0\0"
+    "GrpcLibraryV1.RecognizeAudioParam"
     "language"
     "initial_prompt"
     "suppress_regex"
     "vad_model_path"
   }},
 };
-PROTOBUF_NOINLINE void RecognitionParam::Clear() {
-// @@protoc_insertion_point(message_clear_start:GrpcLibraryV1.RecognitionParam)
+PROTOBUF_NOINLINE void RecognizeAudioParam::Clear() {
+// @@protoc_insertion_point(message_clear_start:GrpcLibraryV1.RecognizeAudioParam)
   ::google::protobuf::internal::TSanWrite(&_impl_);
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
@@ -6556,20 +6557,20 @@ PROTOBUF_NOINLINE void RecognitionParam::Clear() {
 }
 
 #if defined(PROTOBUF_CUSTOM_VTABLE)
-::uint8_t* PROTOBUF_NONNULL RecognitionParam::_InternalSerialize(
+::uint8_t* PROTOBUF_NONNULL RecognizeAudioParam::_InternalSerialize(
     const ::google::protobuf::MessageLite& base, ::uint8_t* PROTOBUF_NONNULL target,
     ::google::protobuf::io::EpsCopyOutputStream* PROTOBUF_NONNULL stream) {
-  const RecognitionParam& this_ = static_cast<const RecognitionParam&>(base);
+  const RecognizeAudioParam& this_ = static_cast<const RecognizeAudioParam&>(base);
 #else   // PROTOBUF_CUSTOM_VTABLE
-::uint8_t* PROTOBUF_NONNULL RecognitionParam::_InternalSerialize(
+::uint8_t* PROTOBUF_NONNULL RecognizeAudioParam::_InternalSerialize(
     ::uint8_t* PROTOBUF_NONNULL target,
     ::google::protobuf::io::EpsCopyOutputStream* PROTOBUF_NONNULL stream) const {
-  const RecognitionParam& this_ = *this;
+  const RecognizeAudioParam& this_ = *this;
 #endif  // PROTOBUF_CUSTOM_VTABLE
   if constexpr (::_pbi::DebugHardenCheckHasBitConsistency()) {
     this_.CheckHasBitConsistency();
   }
-  // @@protoc_insertion_point(serialize_to_array_start:GrpcLibraryV1.RecognitionParam)
+  // @@protoc_insertion_point(serialize_to_array_start:GrpcLibraryV1.RecognizeAudioParam)
   ::uint32_t cached_has_bits = 0;
   (void)cached_has_bits;
 
@@ -6633,7 +6634,7 @@ PROTOBUF_NOINLINE void RecognitionParam::Clear() {
     if (!this_._internal_language().empty()) {
       const ::std::string& _s = this_._internal_language();
       ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-          _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "GrpcLibraryV1.RecognitionParam.language");
+          _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "GrpcLibraryV1.RecognizeAudioParam.language");
       target = stream->WriteStringMaybeAliased(7, _s, target);
     }
   }
@@ -6715,7 +6716,7 @@ PROTOBUF_NOINLINE void RecognitionParam::Clear() {
     if (!this_._internal_initial_prompt().empty()) {
       const ::std::string& _s = this_._internal_initial_prompt();
       ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-          _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "GrpcLibraryV1.RecognitionParam.initial_prompt");
+          _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "GrpcLibraryV1.RecognizeAudioParam.initial_prompt");
       target = stream->WriteStringMaybeAliased(16, _s, target);
     }
   }
@@ -6725,7 +6726,7 @@ PROTOBUF_NOINLINE void RecognitionParam::Clear() {
     if (!this_._internal_suppress_regex().empty()) {
       const ::std::string& _s = this_._internal_suppress_regex();
       ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-          _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "GrpcLibraryV1.RecognitionParam.suppress_regex");
+          _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "GrpcLibraryV1.RecognizeAudioParam.suppress_regex");
       target = stream->WriteStringMaybeAliased(17, _s, target);
     }
   }
@@ -6825,7 +6826,7 @@ PROTOBUF_NOINLINE void RecognitionParam::Clear() {
     if (!this_._internal_vad_model_path().empty()) {
       const ::std::string& _s = this_._internal_vad_model_path();
       ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-          _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "GrpcLibraryV1.RecognitionParam.vad_model_path");
+          _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "GrpcLibraryV1.RecognizeAudioParam.vad_model_path");
       target = stream->WriteStringMaybeAliased(28, _s, target);
     }
   }
@@ -6842,18 +6843,18 @@ PROTOBUF_NOINLINE void RecognitionParam::Clear() {
         ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
             this_._internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:GrpcLibraryV1.RecognitionParam)
+  // @@protoc_insertion_point(serialize_to_array_end:GrpcLibraryV1.RecognizeAudioParam)
   return target;
 }
 
 #if defined(PROTOBUF_CUSTOM_VTABLE)
-::size_t RecognitionParam::ByteSizeLong(const MessageLite& base) {
-  const RecognitionParam& this_ = static_cast<const RecognitionParam&>(base);
+::size_t RecognizeAudioParam::ByteSizeLong(const MessageLite& base) {
+  const RecognizeAudioParam& this_ = static_cast<const RecognizeAudioParam&>(base);
 #else   // PROTOBUF_CUSTOM_VTABLE
-::size_t RecognitionParam::ByteSizeLong() const {
-  const RecognitionParam& this_ = *this;
+::size_t RecognizeAudioParam::ByteSizeLong() const {
+  const RecognizeAudioParam& this_ = *this;
 #endif  // PROTOBUF_CUSTOM_VTABLE
-  // @@protoc_insertion_point(message_byte_size_start:GrpcLibraryV1.RecognitionParam)
+  // @@protoc_insertion_point(message_byte_size_start:GrpcLibraryV1.RecognizeAudioParam)
   ::size_t total_size = 0;
 
   ::uint32_t cached_has_bits = 0;
@@ -7055,16 +7056,16 @@ PROTOBUF_NOINLINE void RecognitionParam::Clear() {
                                              &this_._impl_._cached_size_);
 }
 
-void RecognitionParam::MergeImpl(::google::protobuf::MessageLite& to_msg,
+void RecognizeAudioParam::MergeImpl(::google::protobuf::MessageLite& to_msg,
                             const ::google::protobuf::MessageLite& from_msg) {
    auto* const _this =
-      static_cast<RecognitionParam*>(&to_msg);
-  auto& from = static_cast<const RecognitionParam&>(from_msg);
+      static_cast<RecognizeAudioParam*>(&to_msg);
+  auto& from = static_cast<const RecognizeAudioParam&>(from_msg);
   if constexpr (::_pbi::DebugHardenCheckHasBitConsistency()) {
     from.CheckHasBitConsistency();
   }
   ::google::protobuf::Arena* arena = _this->GetArena();
-  // @@protoc_insertion_point(class_specific_merge_from_start:GrpcLibraryV1.RecognitionParam)
+  // @@protoc_insertion_point(class_specific_merge_from_start:GrpcLibraryV1.RecognizeAudioParam)
   ABSL_DCHECK_NE(&from, _this);
   ::uint32_t cached_has_bits = 0;
   (void)cached_has_bits;
@@ -7247,15 +7248,15 @@ void RecognitionParam::MergeImpl(::google::protobuf::MessageLite& to_msg,
       from._internal_metadata_);
 }
 
-void RecognitionParam::CopyFrom(const RecognitionParam& from) {
-  // @@protoc_insertion_point(class_specific_copy_from_start:GrpcLibraryV1.RecognitionParam)
+void RecognizeAudioParam::CopyFrom(const RecognizeAudioParam& from) {
+  // @@protoc_insertion_point(class_specific_copy_from_start:GrpcLibraryV1.RecognizeAudioParam)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
 
-void RecognitionParam::InternalSwap(RecognitionParam* PROTOBUF_RESTRICT PROTOBUF_NONNULL other) {
+void RecognizeAudioParam::InternalSwap(RecognizeAudioParam* PROTOBUF_RESTRICT PROTOBUF_NONNULL other) {
   using ::std::swap;
   auto* arena = GetArena();
   ABSL_DCHECK_EQ(arena, other->GetArena());
@@ -7266,14 +7267,14 @@ void RecognitionParam::InternalSwap(RecognitionParam* PROTOBUF_RESTRICT PROTOBUF
   ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.suppress_regex_, &other->_impl_.suppress_regex_, arena);
   ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.vad_model_path_, &other->_impl_.vad_model_path_, arena);
   ::google::protobuf::internal::memswap<
-      PROTOBUF_FIELD_OFFSET(RecognitionParam, _impl_.vad_)
-      + sizeof(RecognitionParam::_impl_.vad_)
-      - PROTOBUF_FIELD_OFFSET(RecognitionParam, _impl_.vad_params_)>(
+      PROTOBUF_FIELD_OFFSET(RecognizeAudioParam, _impl_.vad_)
+      + sizeof(RecognizeAudioParam::_impl_.vad_)
+      - PROTOBUF_FIELD_OFFSET(RecognizeAudioParam, _impl_.vad_params_)>(
           reinterpret_cast<char*>(&_impl_.vad_params_),
           reinterpret_cast<char*>(&other->_impl_.vad_params_));
 }
 
-::google::protobuf::Metadata RecognitionParam::GetMetadata() const {
+::google::protobuf::Metadata RecognizeAudioParam::GetMetadata() const {
   return ::google::protobuf::Message::GetMetadataImpl(GetClassData()->full());
 }
 // ===================================================================
@@ -12521,17 +12522,17 @@ void StopAnswerResp::InternalSwap(StopAnswerResp* PROTOBUF_RESTRICT PROTOBUF_NON
 }
 // ===================================================================
 
-class RecognizeReq::_Internal {
+class RecognizeAudioReq::_Internal {
  public:
   using HasBits =
-      decltype(::std::declval<RecognizeReq>()._impl_._has_bits_);
+      decltype(::std::declval<RecognizeAudioReq>()._impl_._has_bits_);
   static constexpr ::int32_t kHasBitsOffset =
-      8 * PROTOBUF_FIELD_OFFSET(RecognizeReq, _impl_._has_bits_);
+      8 * PROTOBUF_FIELD_OFFSET(RecognizeAudioReq, _impl_._has_bits_);
   static constexpr ::int32_t kOneofCaseOffset =
-      PROTOBUF_FIELD_OFFSET(::GrpcLibraryV1::RecognizeReq, _impl_._oneof_case_);
+      PROTOBUF_FIELD_OFFSET(::GrpcLibraryV1::RecognizeAudioReq, _impl_._oneof_case_);
 };
 
-void RecognizeReq::set_allocated_param(::GrpcLibraryV1::RecognitionParam* PROTOBUF_NULLABLE param) {
+void RecognizeAudioReq::set_allocated_param(::GrpcLibraryV1::RecognizeAudioParam* PROTOBUF_NULLABLE param) {
   ::google::protobuf::Arena* message_arena = GetArena();
   clear_request_type();
   if (param) {
@@ -12542,36 +12543,36 @@ void RecognizeReq::set_allocated_param(::GrpcLibraryV1::RecognitionParam* PROTOB
     set_has_param();
     _impl_.request_type_.param_ = param;
   }
-  // @@protoc_insertion_point(field_set_allocated:GrpcLibraryV1.RecognizeReq.param)
+  // @@protoc_insertion_point(field_set_allocated:GrpcLibraryV1.RecognizeAudioReq.param)
 }
-RecognizeReq::RecognizeReq(::google::protobuf::Arena* PROTOBUF_NULLABLE arena)
+RecognizeAudioReq::RecognizeAudioReq(::google::protobuf::Arena* PROTOBUF_NULLABLE arena)
 #if defined(PROTOBUF_CUSTOM_VTABLE)
-    : ::google::protobuf::Message(arena, RecognizeReq_class_data_.base()) {
+    : ::google::protobuf::Message(arena, RecognizeAudioReq_class_data_.base()) {
 #else   // PROTOBUF_CUSTOM_VTABLE
     : ::google::protobuf::Message(arena) {
 #endif  // PROTOBUF_CUSTOM_VTABLE
   SharedCtor(arena);
-  // @@protoc_insertion_point(arena_constructor:GrpcLibraryV1.RecognizeReq)
+  // @@protoc_insertion_point(arena_constructor:GrpcLibraryV1.RecognizeAudioReq)
 }
-PROTOBUF_NDEBUG_INLINE RecognizeReq::Impl_::Impl_(
+PROTOBUF_NDEBUG_INLINE RecognizeAudioReq::Impl_::Impl_(
     [[maybe_unused]] ::google::protobuf::internal::InternalVisibility visibility,
     [[maybe_unused]] ::google::protobuf::Arena* PROTOBUF_NULLABLE arena, const Impl_& from,
-    [[maybe_unused]] const ::GrpcLibraryV1::RecognizeReq& from_msg)
+    [[maybe_unused]] const ::GrpcLibraryV1::RecognizeAudioReq& from_msg)
       : _has_bits_{from._has_bits_},
         _cached_size_{0},
         ctx_id_(arena, from.ctx_id_),
         request_type_{},
         _oneof_case_{from._oneof_case_[0]} {}
 
-RecognizeReq::RecognizeReq(
+RecognizeAudioReq::RecognizeAudioReq(
     ::google::protobuf::Arena* PROTOBUF_NULLABLE arena,
-    const RecognizeReq& from)
+    const RecognizeAudioReq& from)
 #if defined(PROTOBUF_CUSTOM_VTABLE)
-    : ::google::protobuf::Message(arena, RecognizeReq_class_data_.base()) {
+    : ::google::protobuf::Message(arena, RecognizeAudioReq_class_data_.base()) {
 #else   // PROTOBUF_CUSTOM_VTABLE
     : ::google::protobuf::Message(arena) {
 #endif  // PROTOBUF_CUSTOM_VTABLE
-  RecognizeReq* const _this = this;
+  RecognizeAudioReq* const _this = this;
   (void)_this;
   _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
       from._internal_metadata_);
@@ -12588,9 +12589,9 @@ RecognizeReq::RecognizeReq(
         break;
   }
 
-  // @@protoc_insertion_point(copy_constructor:GrpcLibraryV1.RecognizeReq)
+  // @@protoc_insertion_point(copy_constructor:GrpcLibraryV1.RecognizeAudioReq)
 }
-PROTOBUF_NDEBUG_INLINE RecognizeReq::Impl_::Impl_(
+PROTOBUF_NDEBUG_INLINE RecognizeAudioReq::Impl_::Impl_(
     [[maybe_unused]] ::google::protobuf::internal::InternalVisibility visibility,
     [[maybe_unused]] ::google::protobuf::Arena* PROTOBUF_NULLABLE arena)
       : _cached_size_{0},
@@ -12598,16 +12599,16 @@ PROTOBUF_NDEBUG_INLINE RecognizeReq::Impl_::Impl_(
         request_type_{},
         _oneof_case_{} {}
 
-inline void RecognizeReq::SharedCtor(::_pb::Arena* PROTOBUF_NULLABLE arena) {
+inline void RecognizeAudioReq::SharedCtor(::_pb::Arena* PROTOBUF_NULLABLE arena) {
   new (&_impl_) Impl_(internal_visibility(), arena);
   _impl_.session_id_ = {};
 }
-RecognizeReq::~RecognizeReq() {
-  // @@protoc_insertion_point(destructor:GrpcLibraryV1.RecognizeReq)
+RecognizeAudioReq::~RecognizeAudioReq() {
+  // @@protoc_insertion_point(destructor:GrpcLibraryV1.RecognizeAudioReq)
   SharedDtor(*this);
 }
-inline void RecognizeReq::SharedDtor(MessageLite& self) {
-  RecognizeReq& this_ = static_cast<RecognizeReq&>(self);
+inline void RecognizeAudioReq::SharedDtor(MessageLite& self) {
+  RecognizeAudioReq& this_ = static_cast<RecognizeAudioReq&>(self);
   if constexpr (::_pbi::DebugHardenCheckHasBitConsistency()) {
     this_.CheckHasBitConsistency();
   }
@@ -12620,8 +12621,8 @@ inline void RecognizeReq::SharedDtor(MessageLite& self) {
   this_._impl_.~Impl_();
 }
 
-void RecognizeReq::clear_request_type() {
-// @@protoc_insertion_point(one_of_clear_start:GrpcLibraryV1.RecognizeReq)
+void RecognizeAudioReq::clear_request_type() {
+// @@protoc_insertion_point(one_of_clear_start:GrpcLibraryV1.RecognizeAudioReq)
   ::google::protobuf::internal::TSanWrite(&_impl_);
   switch (request_type_case()) {
     case kParam: {
@@ -12644,53 +12645,53 @@ void RecognizeReq::clear_request_type() {
 }
 
 
-inline void* PROTOBUF_NONNULL RecognizeReq::PlacementNew_(
+inline void* PROTOBUF_NONNULL RecognizeAudioReq::PlacementNew_(
     const void* PROTOBUF_NONNULL, void* PROTOBUF_NONNULL mem,
     ::google::protobuf::Arena* PROTOBUF_NULLABLE arena) {
-  return ::new (mem) RecognizeReq(arena);
+  return ::new (mem) RecognizeAudioReq(arena);
 }
-constexpr auto RecognizeReq::InternalNewImpl_() {
-  return ::google::protobuf::internal::MessageCreator::CopyInit(sizeof(RecognizeReq),
-                                            alignof(RecognizeReq));
+constexpr auto RecognizeAudioReq::InternalNewImpl_() {
+  return ::google::protobuf::internal::MessageCreator::CopyInit(sizeof(RecognizeAudioReq),
+                                            alignof(RecognizeAudioReq));
 }
-constexpr auto RecognizeReq::InternalGenerateClassData_() {
+constexpr auto RecognizeAudioReq::InternalGenerateClassData_() {
   return ::google::protobuf::internal::ClassDataFull{
       ::google::protobuf::internal::ClassData{
-          &_RecognizeReq_default_instance_._instance,
+          &_RecognizeAudioReq_default_instance_._instance,
           &_table_.header,
           nullptr,  // OnDemandRegisterArenaDtor
           nullptr,  // IsInitialized
-          &RecognizeReq::MergeImpl,
-          ::google::protobuf::Message::GetNewImpl<RecognizeReq>(),
+          &RecognizeAudioReq::MergeImpl,
+          ::google::protobuf::Message::GetNewImpl<RecognizeAudioReq>(),
 #if defined(PROTOBUF_CUSTOM_VTABLE)
-          &RecognizeReq::SharedDtor,
-          ::google::protobuf::Message::GetClearImpl<RecognizeReq>(), &RecognizeReq::ByteSizeLong,
-              &RecognizeReq::_InternalSerialize,
+          &RecognizeAudioReq::SharedDtor,
+          ::google::protobuf::Message::GetClearImpl<RecognizeAudioReq>(), &RecognizeAudioReq::ByteSizeLong,
+              &RecognizeAudioReq::_InternalSerialize,
 #endif  // PROTOBUF_CUSTOM_VTABLE
-          PROTOBUF_FIELD_OFFSET(RecognizeReq, _impl_._cached_size_),
+          PROTOBUF_FIELD_OFFSET(RecognizeAudioReq, _impl_._cached_size_),
           false,
       },
-      &RecognizeReq::kDescriptorMethods,
+      &RecognizeAudioReq::kDescriptorMethods,
       &descriptor_table_src_2fapi_2eproto,
       nullptr,  // tracker
   };
 }
 
 PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 const
-    ::google::protobuf::internal::ClassDataFull RecognizeReq_class_data_ =
-        RecognizeReq::InternalGenerateClassData_();
+    ::google::protobuf::internal::ClassDataFull RecognizeAudioReq_class_data_ =
+        RecognizeAudioReq::InternalGenerateClassData_();
 
 PROTOBUF_ATTRIBUTE_WEAK const ::google::protobuf::internal::ClassData* PROTOBUF_NONNULL
-RecognizeReq::GetClassData() const {
-  ::google::protobuf::internal::PrefetchToLocalCache(&RecognizeReq_class_data_);
-  ::google::protobuf::internal::PrefetchToLocalCache(RecognizeReq_class_data_.tc_table);
-  return RecognizeReq_class_data_.base();
+RecognizeAudioReq::GetClassData() const {
+  ::google::protobuf::internal::PrefetchToLocalCache(&RecognizeAudioReq_class_data_);
+  ::google::protobuf::internal::PrefetchToLocalCache(RecognizeAudioReq_class_data_.tc_table);
+  return RecognizeAudioReq_class_data_.base();
 }
 PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
-const ::_pbi::TcParseTable<1, 4, 1, 41, 2>
-RecognizeReq::_table_ = {
+const ::_pbi::TcParseTable<1, 4, 1, 46, 2>
+RecognizeAudioReq::_table_ = {
   {
-    PROTOBUF_FIELD_OFFSET(RecognizeReq, _impl_._has_bits_),
+    PROTOBUF_FIELD_OFFSET(RecognizeAudioReq, _impl_._has_bits_),
     0, // no _extensions_
     4, 8,  // max_field_number, fast_idx_mask
     offsetof(decltype(_table_), field_lookup_table),
@@ -12699,44 +12700,44 @@ RecognizeReq::_table_ = {
     4,  // num_field_entries
     1,  // num_aux_entries
     offsetof(decltype(_table_), aux_entries),
-    RecognizeReq_class_data_.base(),
+    RecognizeAudioReq_class_data_.base(),
     nullptr,  // post_loop_handler
     ::_pbi::TcParser::GenericFallback,  // fallback
     #ifdef PROTOBUF_PREFETCH_PARSE_TABLE
-    ::_pbi::TcParser::GetTable<::GrpcLibraryV1::RecognizeReq>(),  // to_prefetch
+    ::_pbi::TcParser::GetTable<::GrpcLibraryV1::RecognizeAudioReq>(),  // to_prefetch
     #endif  // PROTOBUF_PREFETCH_PARSE_TABLE
   }, {{
     // int64 session_id = 2;
-    {::_pbi::TcParser::SingularVarintNoZag1<::uint64_t, offsetof(RecognizeReq, _impl_.session_id_), 1>(),
+    {::_pbi::TcParser::SingularVarintNoZag1<::uint64_t, offsetof(RecognizeAudioReq, _impl_.session_id_), 1>(),
      {16, 1, 0,
-      PROTOBUF_FIELD_OFFSET(RecognizeReq, _impl_.session_id_)}},
+      PROTOBUF_FIELD_OFFSET(RecognizeAudioReq, _impl_.session_id_)}},
     // string ctx_id = 1;
     {::_pbi::TcParser::FastUS1,
      {10, 0, 0,
-      PROTOBUF_FIELD_OFFSET(RecognizeReq, _impl_.ctx_id_)}},
+      PROTOBUF_FIELD_OFFSET(RecognizeAudioReq, _impl_.ctx_id_)}},
   }}, {{
     65535, 65535
   }}, {{
     // string ctx_id = 1;
-    {PROTOBUF_FIELD_OFFSET(RecognizeReq, _impl_.ctx_id_), _Internal::kHasBitsOffset + 0, 0, (0 | ::_fl::kFcOptional | ::_fl::kUtf8String | ::_fl::kRepAString)},
+    {PROTOBUF_FIELD_OFFSET(RecognizeAudioReq, _impl_.ctx_id_), _Internal::kHasBitsOffset + 0, 0, (0 | ::_fl::kFcOptional | ::_fl::kUtf8String | ::_fl::kRepAString)},
     // int64 session_id = 2;
-    {PROTOBUF_FIELD_OFFSET(RecognizeReq, _impl_.session_id_), _Internal::kHasBitsOffset + 1, 0, (0 | ::_fl::kFcOptional | ::_fl::kInt64)},
-    // .GrpcLibraryV1.RecognitionParam param = 3;
-    {PROTOBUF_FIELD_OFFSET(RecognizeReq, _impl_.request_type_.param_), _Internal::kOneofCaseOffset + 0, 0, (0 | ::_fl::kFcOneof | ::_fl::kMessage | ::_fl::kTvTable)},
+    {PROTOBUF_FIELD_OFFSET(RecognizeAudioReq, _impl_.session_id_), _Internal::kHasBitsOffset + 1, 0, (0 | ::_fl::kFcOptional | ::_fl::kInt64)},
+    // .GrpcLibraryV1.RecognizeAudioParam param = 3;
+    {PROTOBUF_FIELD_OFFSET(RecognizeAudioReq, _impl_.request_type_.param_), _Internal::kOneofCaseOffset + 0, 0, (0 | ::_fl::kFcOneof | ::_fl::kMessage | ::_fl::kTvTable)},
     // bytes audio_chunk = 4;
-    {PROTOBUF_FIELD_OFFSET(RecognizeReq, _impl_.request_type_.audio_chunk_), _Internal::kOneofCaseOffset + 0, 0, (0 | ::_fl::kFcOneof | ::_fl::kBytes | ::_fl::kRepAString)},
+    {PROTOBUF_FIELD_OFFSET(RecognizeAudioReq, _impl_.request_type_.audio_chunk_), _Internal::kOneofCaseOffset + 0, 0, (0 | ::_fl::kFcOneof | ::_fl::kBytes | ::_fl::kRepAString)},
   }},
   {{
-      {::_pbi::TcParser::GetTable<::GrpcLibraryV1::RecognitionParam>()},
+      {::_pbi::TcParser::GetTable<::GrpcLibraryV1::RecognizeAudioParam>()},
   }},
   {{
-    "\32\6\0\0\0\0\0\0"
-    "GrpcLibraryV1.RecognizeReq"
+    "\37\6\0\0\0\0\0\0"
+    "GrpcLibraryV1.RecognizeAudioReq"
     "ctx_id"
   }},
 };
-PROTOBUF_NOINLINE void RecognizeReq::Clear() {
-// @@protoc_insertion_point(message_clear_start:GrpcLibraryV1.RecognizeReq)
+PROTOBUF_NOINLINE void RecognizeAudioReq::Clear() {
+// @@protoc_insertion_point(message_clear_start:GrpcLibraryV1.RecognizeAudioReq)
   ::google::protobuf::internal::TSanWrite(&_impl_);
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
@@ -12753,20 +12754,20 @@ PROTOBUF_NOINLINE void RecognizeReq::Clear() {
 }
 
 #if defined(PROTOBUF_CUSTOM_VTABLE)
-::uint8_t* PROTOBUF_NONNULL RecognizeReq::_InternalSerialize(
+::uint8_t* PROTOBUF_NONNULL RecognizeAudioReq::_InternalSerialize(
     const ::google::protobuf::MessageLite& base, ::uint8_t* PROTOBUF_NONNULL target,
     ::google::protobuf::io::EpsCopyOutputStream* PROTOBUF_NONNULL stream) {
-  const RecognizeReq& this_ = static_cast<const RecognizeReq&>(base);
+  const RecognizeAudioReq& this_ = static_cast<const RecognizeAudioReq&>(base);
 #else   // PROTOBUF_CUSTOM_VTABLE
-::uint8_t* PROTOBUF_NONNULL RecognizeReq::_InternalSerialize(
+::uint8_t* PROTOBUF_NONNULL RecognizeAudioReq::_InternalSerialize(
     ::uint8_t* PROTOBUF_NONNULL target,
     ::google::protobuf::io::EpsCopyOutputStream* PROTOBUF_NONNULL stream) const {
-  const RecognizeReq& this_ = *this;
+  const RecognizeAudioReq& this_ = *this;
 #endif  // PROTOBUF_CUSTOM_VTABLE
   if constexpr (::_pbi::DebugHardenCheckHasBitConsistency()) {
     this_.CheckHasBitConsistency();
   }
-  // @@protoc_insertion_point(serialize_to_array_start:GrpcLibraryV1.RecognizeReq)
+  // @@protoc_insertion_point(serialize_to_array_start:GrpcLibraryV1.RecognizeAudioReq)
   ::uint32_t cached_has_bits = 0;
   (void)cached_has_bits;
 
@@ -12776,7 +12777,7 @@ PROTOBUF_NOINLINE void RecognizeReq::Clear() {
     if (!this_._internal_ctx_id().empty()) {
       const ::std::string& _s = this_._internal_ctx_id();
       ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-          _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "GrpcLibraryV1.RecognizeReq.ctx_id");
+          _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "GrpcLibraryV1.RecognizeAudioReq.ctx_id");
       target = stream->WriteStringMaybeAliased(1, _s, target);
     }
   }
@@ -12810,18 +12811,18 @@ PROTOBUF_NOINLINE void RecognizeReq::Clear() {
         ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
             this_._internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:GrpcLibraryV1.RecognizeReq)
+  // @@protoc_insertion_point(serialize_to_array_end:GrpcLibraryV1.RecognizeAudioReq)
   return target;
 }
 
 #if defined(PROTOBUF_CUSTOM_VTABLE)
-::size_t RecognizeReq::ByteSizeLong(const MessageLite& base) {
-  const RecognizeReq& this_ = static_cast<const RecognizeReq&>(base);
+::size_t RecognizeAudioReq::ByteSizeLong(const MessageLite& base) {
+  const RecognizeAudioReq& this_ = static_cast<const RecognizeAudioReq&>(base);
 #else   // PROTOBUF_CUSTOM_VTABLE
-::size_t RecognizeReq::ByteSizeLong() const {
-  const RecognizeReq& this_ = *this;
+::size_t RecognizeAudioReq::ByteSizeLong() const {
+  const RecognizeAudioReq& this_ = *this;
 #endif  // PROTOBUF_CUSTOM_VTABLE
-  // @@protoc_insertion_point(message_byte_size_start:GrpcLibraryV1.RecognizeReq)
+  // @@protoc_insertion_point(message_byte_size_start:GrpcLibraryV1.RecognizeAudioReq)
   ::size_t total_size = 0;
 
   ::uint32_t cached_has_bits = 0;
@@ -12847,7 +12848,7 @@ PROTOBUF_NOINLINE void RecognizeReq::Clear() {
     }
   }
   switch (this_.request_type_case()) {
-    // .GrpcLibraryV1.RecognitionParam param = 3;
+    // .GrpcLibraryV1.RecognizeAudioParam param = 3;
     case kParam: {
       total_size += 1 +
                     ::google::protobuf::internal::WireFormatLite::MessageSize(*this_._impl_.request_type_.param_);
@@ -12867,16 +12868,16 @@ PROTOBUF_NOINLINE void RecognizeReq::Clear() {
                                              &this_._impl_._cached_size_);
 }
 
-void RecognizeReq::MergeImpl(::google::protobuf::MessageLite& to_msg,
+void RecognizeAudioReq::MergeImpl(::google::protobuf::MessageLite& to_msg,
                             const ::google::protobuf::MessageLite& from_msg) {
    auto* const _this =
-      static_cast<RecognizeReq*>(&to_msg);
-  auto& from = static_cast<const RecognizeReq&>(from_msg);
+      static_cast<RecognizeAudioReq*>(&to_msg);
+  auto& from = static_cast<const RecognizeAudioReq&>(from_msg);
   if constexpr (::_pbi::DebugHardenCheckHasBitConsistency()) {
     from.CheckHasBitConsistency();
   }
   ::google::protobuf::Arena* arena = _this->GetArena();
-  // @@protoc_insertion_point(class_specific_merge_from_start:GrpcLibraryV1.RecognizeReq)
+  // @@protoc_insertion_point(class_specific_merge_from_start:GrpcLibraryV1.RecognizeAudioReq)
   ABSL_DCHECK_NE(&from, _this);
   ::uint32_t cached_has_bits = 0;
   (void)cached_has_bits;
@@ -12934,15 +12935,15 @@ void RecognizeReq::MergeImpl(::google::protobuf::MessageLite& to_msg,
       from._internal_metadata_);
 }
 
-void RecognizeReq::CopyFrom(const RecognizeReq& from) {
-  // @@protoc_insertion_point(class_specific_copy_from_start:GrpcLibraryV1.RecognizeReq)
+void RecognizeAudioReq::CopyFrom(const RecognizeAudioReq& from) {
+  // @@protoc_insertion_point(class_specific_copy_from_start:GrpcLibraryV1.RecognizeAudioReq)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
 
-void RecognizeReq::InternalSwap(RecognizeReq* PROTOBUF_RESTRICT PROTOBUF_NONNULL other) {
+void RecognizeAudioReq::InternalSwap(RecognizeAudioReq* PROTOBUF_RESTRICT PROTOBUF_NONNULL other) {
   using ::std::swap;
   auto* arena = GetArena();
   ABSL_DCHECK_EQ(arena, other->GetArena());
@@ -12954,45 +12955,45 @@ void RecognizeReq::InternalSwap(RecognizeReq* PROTOBUF_RESTRICT PROTOBUF_NONNULL
   swap(_impl_._oneof_case_[0], other->_impl_._oneof_case_[0]);
 }
 
-::google::protobuf::Metadata RecognizeReq::GetMetadata() const {
+::google::protobuf::Metadata RecognizeAudioReq::GetMetadata() const {
   return ::google::protobuf::Message::GetMetadataImpl(GetClassData()->full());
 }
 // ===================================================================
 
-class RecognizeResp::_Internal {
+class RecognizeAudioResp::_Internal {
  public:
   using HasBits =
-      decltype(::std::declval<RecognizeResp>()._impl_._has_bits_);
+      decltype(::std::declval<RecognizeAudioResp>()._impl_._has_bits_);
   static constexpr ::int32_t kHasBitsOffset =
-      8 * PROTOBUF_FIELD_OFFSET(RecognizeResp, _impl_._has_bits_);
+      8 * PROTOBUF_FIELD_OFFSET(RecognizeAudioResp, _impl_._has_bits_);
 };
 
-RecognizeResp::RecognizeResp(::google::protobuf::Arena* PROTOBUF_NULLABLE arena)
+RecognizeAudioResp::RecognizeAudioResp(::google::protobuf::Arena* PROTOBUF_NULLABLE arena)
 #if defined(PROTOBUF_CUSTOM_VTABLE)
-    : ::google::protobuf::Message(arena, RecognizeResp_class_data_.base()) {
+    : ::google::protobuf::Message(arena, RecognizeAudioResp_class_data_.base()) {
 #else   // PROTOBUF_CUSTOM_VTABLE
     : ::google::protobuf::Message(arena) {
 #endif  // PROTOBUF_CUSTOM_VTABLE
   SharedCtor(arena);
-  // @@protoc_insertion_point(arena_constructor:GrpcLibraryV1.RecognizeResp)
+  // @@protoc_insertion_point(arena_constructor:GrpcLibraryV1.RecognizeAudioResp)
 }
-PROTOBUF_NDEBUG_INLINE RecognizeResp::Impl_::Impl_(
+PROTOBUF_NDEBUG_INLINE RecognizeAudioResp::Impl_::Impl_(
     [[maybe_unused]] ::google::protobuf::internal::InternalVisibility visibility,
     [[maybe_unused]] ::google::protobuf::Arena* PROTOBUF_NULLABLE arena, const Impl_& from,
-    [[maybe_unused]] const ::GrpcLibraryV1::RecognizeResp& from_msg)
+    [[maybe_unused]] const ::GrpcLibraryV1::RecognizeAudioResp& from_msg)
       : _has_bits_{from._has_bits_},
         _cached_size_{0},
         transcript_(arena, from.transcript_) {}
 
-RecognizeResp::RecognizeResp(
+RecognizeAudioResp::RecognizeAudioResp(
     ::google::protobuf::Arena* PROTOBUF_NULLABLE arena,
-    const RecognizeResp& from)
+    const RecognizeAudioResp& from)
 #if defined(PROTOBUF_CUSTOM_VTABLE)
-    : ::google::protobuf::Message(arena, RecognizeResp_class_data_.base()) {
+    : ::google::protobuf::Message(arena, RecognizeAudioResp_class_data_.base()) {
 #else   // PROTOBUF_CUSTOM_VTABLE
     : ::google::protobuf::Message(arena) {
 #endif  // PROTOBUF_CUSTOM_VTABLE
-  RecognizeResp* const _this = this;
+  RecognizeAudioResp* const _this = this;
   (void)_this;
   _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
       from._internal_metadata_);
@@ -13005,15 +13006,15 @@ RecognizeResp::RecognizeResp(
                offsetof(Impl_, session_id_) +
                sizeof(Impl_::confidence_));
 
-  // @@protoc_insertion_point(copy_constructor:GrpcLibraryV1.RecognizeResp)
+  // @@protoc_insertion_point(copy_constructor:GrpcLibraryV1.RecognizeAudioResp)
 }
-PROTOBUF_NDEBUG_INLINE RecognizeResp::Impl_::Impl_(
+PROTOBUF_NDEBUG_INLINE RecognizeAudioResp::Impl_::Impl_(
     [[maybe_unused]] ::google::protobuf::internal::InternalVisibility visibility,
     [[maybe_unused]] ::google::protobuf::Arena* PROTOBUF_NULLABLE arena)
       : _cached_size_{0},
         transcript_(arena) {}
 
-inline void RecognizeResp::SharedCtor(::_pb::Arena* PROTOBUF_NULLABLE arena) {
+inline void RecognizeAudioResp::SharedCtor(::_pb::Arena* PROTOBUF_NULLABLE arena) {
   new (&_impl_) Impl_(internal_visibility(), arena);
   ::memset(reinterpret_cast<char*>(&_impl_) +
                offsetof(Impl_, session_id_),
@@ -13022,12 +13023,12 @@ inline void RecognizeResp::SharedCtor(::_pb::Arena* PROTOBUF_NULLABLE arena) {
                offsetof(Impl_, session_id_) +
                sizeof(Impl_::confidence_));
 }
-RecognizeResp::~RecognizeResp() {
-  // @@protoc_insertion_point(destructor:GrpcLibraryV1.RecognizeResp)
+RecognizeAudioResp::~RecognizeAudioResp() {
+  // @@protoc_insertion_point(destructor:GrpcLibraryV1.RecognizeAudioResp)
   SharedDtor(*this);
 }
-inline void RecognizeResp::SharedDtor(MessageLite& self) {
-  RecognizeResp& this_ = static_cast<RecognizeResp&>(self);
+inline void RecognizeAudioResp::SharedDtor(MessageLite& self) {
+  RecognizeAudioResp& this_ = static_cast<RecognizeAudioResp&>(self);
   if constexpr (::_pbi::DebugHardenCheckHasBitConsistency()) {
     this_.CheckHasBitConsistency();
   }
@@ -13037,53 +13038,53 @@ inline void RecognizeResp::SharedDtor(MessageLite& self) {
   this_._impl_.~Impl_();
 }
 
-inline void* PROTOBUF_NONNULL RecognizeResp::PlacementNew_(
+inline void* PROTOBUF_NONNULL RecognizeAudioResp::PlacementNew_(
     const void* PROTOBUF_NONNULL, void* PROTOBUF_NONNULL mem,
     ::google::protobuf::Arena* PROTOBUF_NULLABLE arena) {
-  return ::new (mem) RecognizeResp(arena);
+  return ::new (mem) RecognizeAudioResp(arena);
 }
-constexpr auto RecognizeResp::InternalNewImpl_() {
-  return ::google::protobuf::internal::MessageCreator::CopyInit(sizeof(RecognizeResp),
-                                            alignof(RecognizeResp));
+constexpr auto RecognizeAudioResp::InternalNewImpl_() {
+  return ::google::protobuf::internal::MessageCreator::CopyInit(sizeof(RecognizeAudioResp),
+                                            alignof(RecognizeAudioResp));
 }
-constexpr auto RecognizeResp::InternalGenerateClassData_() {
+constexpr auto RecognizeAudioResp::InternalGenerateClassData_() {
   return ::google::protobuf::internal::ClassDataFull{
       ::google::protobuf::internal::ClassData{
-          &_RecognizeResp_default_instance_._instance,
+          &_RecognizeAudioResp_default_instance_._instance,
           &_table_.header,
           nullptr,  // OnDemandRegisterArenaDtor
           nullptr,  // IsInitialized
-          &RecognizeResp::MergeImpl,
-          ::google::protobuf::Message::GetNewImpl<RecognizeResp>(),
+          &RecognizeAudioResp::MergeImpl,
+          ::google::protobuf::Message::GetNewImpl<RecognizeAudioResp>(),
 #if defined(PROTOBUF_CUSTOM_VTABLE)
-          &RecognizeResp::SharedDtor,
-          ::google::protobuf::Message::GetClearImpl<RecognizeResp>(), &RecognizeResp::ByteSizeLong,
-              &RecognizeResp::_InternalSerialize,
+          &RecognizeAudioResp::SharedDtor,
+          ::google::protobuf::Message::GetClearImpl<RecognizeAudioResp>(), &RecognizeAudioResp::ByteSizeLong,
+              &RecognizeAudioResp::_InternalSerialize,
 #endif  // PROTOBUF_CUSTOM_VTABLE
-          PROTOBUF_FIELD_OFFSET(RecognizeResp, _impl_._cached_size_),
+          PROTOBUF_FIELD_OFFSET(RecognizeAudioResp, _impl_._cached_size_),
           false,
       },
-      &RecognizeResp::kDescriptorMethods,
+      &RecognizeAudioResp::kDescriptorMethods,
       &descriptor_table_src_2fapi_2eproto,
       nullptr,  // tracker
   };
 }
 
 PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 const
-    ::google::protobuf::internal::ClassDataFull RecognizeResp_class_data_ =
-        RecognizeResp::InternalGenerateClassData_();
+    ::google::protobuf::internal::ClassDataFull RecognizeAudioResp_class_data_ =
+        RecognizeAudioResp::InternalGenerateClassData_();
 
 PROTOBUF_ATTRIBUTE_WEAK const ::google::protobuf::internal::ClassData* PROTOBUF_NONNULL
-RecognizeResp::GetClassData() const {
-  ::google::protobuf::internal::PrefetchToLocalCache(&RecognizeResp_class_data_);
-  ::google::protobuf::internal::PrefetchToLocalCache(RecognizeResp_class_data_.tc_table);
-  return RecognizeResp_class_data_.base();
+RecognizeAudioResp::GetClassData() const {
+  ::google::protobuf::internal::PrefetchToLocalCache(&RecognizeAudioResp_class_data_);
+  ::google::protobuf::internal::PrefetchToLocalCache(RecognizeAudioResp_class_data_.tc_table);
+  return RecognizeAudioResp_class_data_.base();
 }
 PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
-const ::_pbi::TcParseTable<3, 5, 0, 46, 2>
-RecognizeResp::_table_ = {
+const ::_pbi::TcParseTable<3, 5, 0, 51, 2>
+RecognizeAudioResp::_table_ = {
   {
-    PROTOBUF_FIELD_OFFSET(RecognizeResp, _impl_._has_bits_),
+    PROTOBUF_FIELD_OFFSET(RecognizeAudioResp, _impl_._has_bits_),
     0, // no _extensions_
     5, 56,  // max_field_number, fast_idx_mask
     offsetof(decltype(_table_), field_lookup_table),
@@ -13092,59 +13093,59 @@ RecognizeResp::_table_ = {
     5,  // num_field_entries
     0,  // num_aux_entries
     offsetof(decltype(_table_), field_names),  // no aux_entries
-    RecognizeResp_class_data_.base(),
+    RecognizeAudioResp_class_data_.base(),
     nullptr,  // post_loop_handler
     ::_pbi::TcParser::GenericFallback,  // fallback
     #ifdef PROTOBUF_PREFETCH_PARSE_TABLE
-    ::_pbi::TcParser::GetTable<::GrpcLibraryV1::RecognizeResp>(),  // to_prefetch
+    ::_pbi::TcParser::GetTable<::GrpcLibraryV1::RecognizeAudioResp>(),  // to_prefetch
     #endif  // PROTOBUF_PREFETCH_PARSE_TABLE
   }, {{
     {::_pbi::TcParser::MiniParse, {}},
     // int32 error_code = 1;
-    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(RecognizeResp, _impl_.error_code_), 2>(),
+    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(RecognizeAudioResp, _impl_.error_code_), 2>(),
      {8, 2, 0,
-      PROTOBUF_FIELD_OFFSET(RecognizeResp, _impl_.error_code_)}},
+      PROTOBUF_FIELD_OFFSET(RecognizeAudioResp, _impl_.error_code_)}},
     // int64 session_id = 2;
-    {::_pbi::TcParser::SingularVarintNoZag1<::uint64_t, offsetof(RecognizeResp, _impl_.session_id_), 1>(),
+    {::_pbi::TcParser::SingularVarintNoZag1<::uint64_t, offsetof(RecognizeAudioResp, _impl_.session_id_), 1>(),
      {16, 1, 0,
-      PROTOBUF_FIELD_OFFSET(RecognizeResp, _impl_.session_id_)}},
+      PROTOBUF_FIELD_OFFSET(RecognizeAudioResp, _impl_.session_id_)}},
     // string transcript = 3;
     {::_pbi::TcParser::FastUS1,
      {26, 0, 0,
-      PROTOBUF_FIELD_OFFSET(RecognizeResp, _impl_.transcript_)}},
+      PROTOBUF_FIELD_OFFSET(RecognizeAudioResp, _impl_.transcript_)}},
     // bool is_finished = 4;
-    {::_pbi::TcParser::SingularVarintNoZag1<bool, offsetof(RecognizeResp, _impl_.is_finished_), 3>(),
+    {::_pbi::TcParser::SingularVarintNoZag1<bool, offsetof(RecognizeAudioResp, _impl_.is_finished_), 3>(),
      {32, 3, 0,
-      PROTOBUF_FIELD_OFFSET(RecognizeResp, _impl_.is_finished_)}},
+      PROTOBUF_FIELD_OFFSET(RecognizeAudioResp, _impl_.is_finished_)}},
     // double confidence = 5;
     {::_pbi::TcParser::FastF64S1,
      {41, 4, 0,
-      PROTOBUF_FIELD_OFFSET(RecognizeResp, _impl_.confidence_)}},
+      PROTOBUF_FIELD_OFFSET(RecognizeAudioResp, _impl_.confidence_)}},
     {::_pbi::TcParser::MiniParse, {}},
     {::_pbi::TcParser::MiniParse, {}},
   }}, {{
     65535, 65535
   }}, {{
     // int32 error_code = 1;
-    {PROTOBUF_FIELD_OFFSET(RecognizeResp, _impl_.error_code_), _Internal::kHasBitsOffset + 2, 0, (0 | ::_fl::kFcOptional | ::_fl::kInt32)},
+    {PROTOBUF_FIELD_OFFSET(RecognizeAudioResp, _impl_.error_code_), _Internal::kHasBitsOffset + 2, 0, (0 | ::_fl::kFcOptional | ::_fl::kInt32)},
     // int64 session_id = 2;
-    {PROTOBUF_FIELD_OFFSET(RecognizeResp, _impl_.session_id_), _Internal::kHasBitsOffset + 1, 0, (0 | ::_fl::kFcOptional | ::_fl::kInt64)},
+    {PROTOBUF_FIELD_OFFSET(RecognizeAudioResp, _impl_.session_id_), _Internal::kHasBitsOffset + 1, 0, (0 | ::_fl::kFcOptional | ::_fl::kInt64)},
     // string transcript = 3;
-    {PROTOBUF_FIELD_OFFSET(RecognizeResp, _impl_.transcript_), _Internal::kHasBitsOffset + 0, 0, (0 | ::_fl::kFcOptional | ::_fl::kUtf8String | ::_fl::kRepAString)},
+    {PROTOBUF_FIELD_OFFSET(RecognizeAudioResp, _impl_.transcript_), _Internal::kHasBitsOffset + 0, 0, (0 | ::_fl::kFcOptional | ::_fl::kUtf8String | ::_fl::kRepAString)},
     // bool is_finished = 4;
-    {PROTOBUF_FIELD_OFFSET(RecognizeResp, _impl_.is_finished_), _Internal::kHasBitsOffset + 3, 0, (0 | ::_fl::kFcOptional | ::_fl::kBool)},
+    {PROTOBUF_FIELD_OFFSET(RecognizeAudioResp, _impl_.is_finished_), _Internal::kHasBitsOffset + 3, 0, (0 | ::_fl::kFcOptional | ::_fl::kBool)},
     // double confidence = 5;
-    {PROTOBUF_FIELD_OFFSET(RecognizeResp, _impl_.confidence_), _Internal::kHasBitsOffset + 4, 0, (0 | ::_fl::kFcOptional | ::_fl::kDouble)},
+    {PROTOBUF_FIELD_OFFSET(RecognizeAudioResp, _impl_.confidence_), _Internal::kHasBitsOffset + 4, 0, (0 | ::_fl::kFcOptional | ::_fl::kDouble)},
   }},
   // no aux_entries
   {{
-    "\33\0\0\12\0\0\0\0"
-    "GrpcLibraryV1.RecognizeResp"
+    "\40\0\0\12\0\0\0\0"
+    "GrpcLibraryV1.RecognizeAudioResp"
     "transcript"
   }},
 };
-PROTOBUF_NOINLINE void RecognizeResp::Clear() {
-// @@protoc_insertion_point(message_clear_start:GrpcLibraryV1.RecognizeResp)
+PROTOBUF_NOINLINE void RecognizeAudioResp::Clear() {
+// @@protoc_insertion_point(message_clear_start:GrpcLibraryV1.RecognizeAudioResp)
   ::google::protobuf::internal::TSanWrite(&_impl_);
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
@@ -13164,20 +13165,20 @@ PROTOBUF_NOINLINE void RecognizeResp::Clear() {
 }
 
 #if defined(PROTOBUF_CUSTOM_VTABLE)
-::uint8_t* PROTOBUF_NONNULL RecognizeResp::_InternalSerialize(
+::uint8_t* PROTOBUF_NONNULL RecognizeAudioResp::_InternalSerialize(
     const ::google::protobuf::MessageLite& base, ::uint8_t* PROTOBUF_NONNULL target,
     ::google::protobuf::io::EpsCopyOutputStream* PROTOBUF_NONNULL stream) {
-  const RecognizeResp& this_ = static_cast<const RecognizeResp&>(base);
+  const RecognizeAudioResp& this_ = static_cast<const RecognizeAudioResp&>(base);
 #else   // PROTOBUF_CUSTOM_VTABLE
-::uint8_t* PROTOBUF_NONNULL RecognizeResp::_InternalSerialize(
+::uint8_t* PROTOBUF_NONNULL RecognizeAudioResp::_InternalSerialize(
     ::uint8_t* PROTOBUF_NONNULL target,
     ::google::protobuf::io::EpsCopyOutputStream* PROTOBUF_NONNULL stream) const {
-  const RecognizeResp& this_ = *this;
+  const RecognizeAudioResp& this_ = *this;
 #endif  // PROTOBUF_CUSTOM_VTABLE
   if constexpr (::_pbi::DebugHardenCheckHasBitConsistency()) {
     this_.CheckHasBitConsistency();
   }
-  // @@protoc_insertion_point(serialize_to_array_start:GrpcLibraryV1.RecognizeResp)
+  // @@protoc_insertion_point(serialize_to_array_start:GrpcLibraryV1.RecognizeAudioResp)
   ::uint32_t cached_has_bits = 0;
   (void)cached_has_bits;
 
@@ -13205,7 +13206,7 @@ PROTOBUF_NOINLINE void RecognizeResp::Clear() {
     if (!this_._internal_transcript().empty()) {
       const ::std::string& _s = this_._internal_transcript();
       ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-          _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "GrpcLibraryV1.RecognizeResp.transcript");
+          _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "GrpcLibraryV1.RecognizeAudioResp.transcript");
       target = stream->WriteStringMaybeAliased(3, _s, target);
     }
   }
@@ -13233,18 +13234,18 @@ PROTOBUF_NOINLINE void RecognizeResp::Clear() {
         ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
             this_._internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:GrpcLibraryV1.RecognizeResp)
+  // @@protoc_insertion_point(serialize_to_array_end:GrpcLibraryV1.RecognizeAudioResp)
   return target;
 }
 
 #if defined(PROTOBUF_CUSTOM_VTABLE)
-::size_t RecognizeResp::ByteSizeLong(const MessageLite& base) {
-  const RecognizeResp& this_ = static_cast<const RecognizeResp&>(base);
+::size_t RecognizeAudioResp::ByteSizeLong(const MessageLite& base) {
+  const RecognizeAudioResp& this_ = static_cast<const RecognizeAudioResp&>(base);
 #else   // PROTOBUF_CUSTOM_VTABLE
-::size_t RecognizeResp::ByteSizeLong() const {
-  const RecognizeResp& this_ = *this;
+::size_t RecognizeAudioResp::ByteSizeLong() const {
+  const RecognizeAudioResp& this_ = *this;
 #endif  // PROTOBUF_CUSTOM_VTABLE
-  // @@protoc_insertion_point(message_byte_size_start:GrpcLibraryV1.RecognizeResp)
+  // @@protoc_insertion_point(message_byte_size_start:GrpcLibraryV1.RecognizeAudioResp)
   ::size_t total_size = 0;
 
   ::uint32_t cached_has_bits = 0;
@@ -13292,15 +13293,15 @@ PROTOBUF_NOINLINE void RecognizeResp::Clear() {
                                              &this_._impl_._cached_size_);
 }
 
-void RecognizeResp::MergeImpl(::google::protobuf::MessageLite& to_msg,
+void RecognizeAudioResp::MergeImpl(::google::protobuf::MessageLite& to_msg,
                             const ::google::protobuf::MessageLite& from_msg) {
    auto* const _this =
-      static_cast<RecognizeResp*>(&to_msg);
-  auto& from = static_cast<const RecognizeResp&>(from_msg);
+      static_cast<RecognizeAudioResp*>(&to_msg);
+  auto& from = static_cast<const RecognizeAudioResp&>(from_msg);
   if constexpr (::_pbi::DebugHardenCheckHasBitConsistency()) {
     from.CheckHasBitConsistency();
   }
-  // @@protoc_insertion_point(class_specific_merge_from_start:GrpcLibraryV1.RecognizeResp)
+  // @@protoc_insertion_point(class_specific_merge_from_start:GrpcLibraryV1.RecognizeAudioResp)
   ABSL_DCHECK_NE(&from, _this);
   ::uint32_t cached_has_bits = 0;
   (void)cached_has_bits;
@@ -13342,15 +13343,15 @@ void RecognizeResp::MergeImpl(::google::protobuf::MessageLite& to_msg,
       from._internal_metadata_);
 }
 
-void RecognizeResp::CopyFrom(const RecognizeResp& from) {
-  // @@protoc_insertion_point(class_specific_copy_from_start:GrpcLibraryV1.RecognizeResp)
+void RecognizeAudioResp::CopyFrom(const RecognizeAudioResp& from) {
+  // @@protoc_insertion_point(class_specific_copy_from_start:GrpcLibraryV1.RecognizeAudioResp)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
 
-void RecognizeResp::InternalSwap(RecognizeResp* PROTOBUF_RESTRICT PROTOBUF_NONNULL other) {
+void RecognizeAudioResp::InternalSwap(RecognizeAudioResp* PROTOBUF_RESTRICT PROTOBUF_NONNULL other) {
   using ::std::swap;
   auto* arena = GetArena();
   ABSL_DCHECK_EQ(arena, other->GetArena());
@@ -13358,52 +13359,52 @@ void RecognizeResp::InternalSwap(RecognizeResp* PROTOBUF_RESTRICT PROTOBUF_NONNU
   swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
   ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.transcript_, &other->_impl_.transcript_, arena);
   ::google::protobuf::internal::memswap<
-      PROTOBUF_FIELD_OFFSET(RecognizeResp, _impl_.confidence_)
-      + sizeof(RecognizeResp::_impl_.confidence_)
-      - PROTOBUF_FIELD_OFFSET(RecognizeResp, _impl_.session_id_)>(
+      PROTOBUF_FIELD_OFFSET(RecognizeAudioResp, _impl_.confidence_)
+      + sizeof(RecognizeAudioResp::_impl_.confidence_)
+      - PROTOBUF_FIELD_OFFSET(RecognizeAudioResp, _impl_.session_id_)>(
           reinterpret_cast<char*>(&_impl_.session_id_),
           reinterpret_cast<char*>(&other->_impl_.session_id_));
 }
 
-::google::protobuf::Metadata RecognizeResp::GetMetadata() const {
+::google::protobuf::Metadata RecognizeAudioResp::GetMetadata() const {
   return ::google::protobuf::Message::GetMetadataImpl(GetClassData()->full());
 }
 // ===================================================================
 
-class StopRecognizeReq::_Internal {
+class StopRecognizeAudioReq::_Internal {
  public:
   using HasBits =
-      decltype(::std::declval<StopRecognizeReq>()._impl_._has_bits_);
+      decltype(::std::declval<StopRecognizeAudioReq>()._impl_._has_bits_);
   static constexpr ::int32_t kHasBitsOffset =
-      8 * PROTOBUF_FIELD_OFFSET(StopRecognizeReq, _impl_._has_bits_);
+      8 * PROTOBUF_FIELD_OFFSET(StopRecognizeAudioReq, _impl_._has_bits_);
 };
 
-StopRecognizeReq::StopRecognizeReq(::google::protobuf::Arena* PROTOBUF_NULLABLE arena)
+StopRecognizeAudioReq::StopRecognizeAudioReq(::google::protobuf::Arena* PROTOBUF_NULLABLE arena)
 #if defined(PROTOBUF_CUSTOM_VTABLE)
-    : ::google::protobuf::Message(arena, StopRecognizeReq_class_data_.base()) {
+    : ::google::protobuf::Message(arena, StopRecognizeAudioReq_class_data_.base()) {
 #else   // PROTOBUF_CUSTOM_VTABLE
     : ::google::protobuf::Message(arena) {
 #endif  // PROTOBUF_CUSTOM_VTABLE
   SharedCtor(arena);
-  // @@protoc_insertion_point(arena_constructor:GrpcLibraryV1.StopRecognizeReq)
+  // @@protoc_insertion_point(arena_constructor:GrpcLibraryV1.StopRecognizeAudioReq)
 }
-PROTOBUF_NDEBUG_INLINE StopRecognizeReq::Impl_::Impl_(
+PROTOBUF_NDEBUG_INLINE StopRecognizeAudioReq::Impl_::Impl_(
     [[maybe_unused]] ::google::protobuf::internal::InternalVisibility visibility,
     [[maybe_unused]] ::google::protobuf::Arena* PROTOBUF_NULLABLE arena, const Impl_& from,
-    [[maybe_unused]] const ::GrpcLibraryV1::StopRecognizeReq& from_msg)
+    [[maybe_unused]] const ::GrpcLibraryV1::StopRecognizeAudioReq& from_msg)
       : _has_bits_{from._has_bits_},
         _cached_size_{0},
         auth_(arena, from.auth_) {}
 
-StopRecognizeReq::StopRecognizeReq(
+StopRecognizeAudioReq::StopRecognizeAudioReq(
     ::google::protobuf::Arena* PROTOBUF_NULLABLE arena,
-    const StopRecognizeReq& from)
+    const StopRecognizeAudioReq& from)
 #if defined(PROTOBUF_CUSTOM_VTABLE)
-    : ::google::protobuf::Message(arena, StopRecognizeReq_class_data_.base()) {
+    : ::google::protobuf::Message(arena, StopRecognizeAudioReq_class_data_.base()) {
 #else   // PROTOBUF_CUSTOM_VTABLE
     : ::google::protobuf::Message(arena) {
 #endif  // PROTOBUF_CUSTOM_VTABLE
-  StopRecognizeReq* const _this = this;
+  StopRecognizeAudioReq* const _this = this;
   (void)_this;
   _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
       from._internal_metadata_);
@@ -13416,15 +13417,15 @@ StopRecognizeReq::StopRecognizeReq(
                offsetof(Impl_, session_id_) +
                sizeof(Impl_::user_id_));
 
-  // @@protoc_insertion_point(copy_constructor:GrpcLibraryV1.StopRecognizeReq)
+  // @@protoc_insertion_point(copy_constructor:GrpcLibraryV1.StopRecognizeAudioReq)
 }
-PROTOBUF_NDEBUG_INLINE StopRecognizeReq::Impl_::Impl_(
+PROTOBUF_NDEBUG_INLINE StopRecognizeAudioReq::Impl_::Impl_(
     [[maybe_unused]] ::google::protobuf::internal::InternalVisibility visibility,
     [[maybe_unused]] ::google::protobuf::Arena* PROTOBUF_NULLABLE arena)
       : _cached_size_{0},
         auth_(arena) {}
 
-inline void StopRecognizeReq::SharedCtor(::_pb::Arena* PROTOBUF_NULLABLE arena) {
+inline void StopRecognizeAudioReq::SharedCtor(::_pb::Arena* PROTOBUF_NULLABLE arena) {
   new (&_impl_) Impl_(internal_visibility(), arena);
   ::memset(reinterpret_cast<char*>(&_impl_) +
                offsetof(Impl_, session_id_),
@@ -13433,12 +13434,12 @@ inline void StopRecognizeReq::SharedCtor(::_pb::Arena* PROTOBUF_NULLABLE arena) 
                offsetof(Impl_, session_id_) +
                sizeof(Impl_::user_id_));
 }
-StopRecognizeReq::~StopRecognizeReq() {
-  // @@protoc_insertion_point(destructor:GrpcLibraryV1.StopRecognizeReq)
+StopRecognizeAudioReq::~StopRecognizeAudioReq() {
+  // @@protoc_insertion_point(destructor:GrpcLibraryV1.StopRecognizeAudioReq)
   SharedDtor(*this);
 }
-inline void StopRecognizeReq::SharedDtor(MessageLite& self) {
-  StopRecognizeReq& this_ = static_cast<StopRecognizeReq&>(self);
+inline void StopRecognizeAudioReq::SharedDtor(MessageLite& self) {
+  StopRecognizeAudioReq& this_ = static_cast<StopRecognizeAudioReq&>(self);
   if constexpr (::_pbi::DebugHardenCheckHasBitConsistency()) {
     this_.CheckHasBitConsistency();
   }
@@ -13448,53 +13449,53 @@ inline void StopRecognizeReq::SharedDtor(MessageLite& self) {
   this_._impl_.~Impl_();
 }
 
-inline void* PROTOBUF_NONNULL StopRecognizeReq::PlacementNew_(
+inline void* PROTOBUF_NONNULL StopRecognizeAudioReq::PlacementNew_(
     const void* PROTOBUF_NONNULL, void* PROTOBUF_NONNULL mem,
     ::google::protobuf::Arena* PROTOBUF_NULLABLE arena) {
-  return ::new (mem) StopRecognizeReq(arena);
+  return ::new (mem) StopRecognizeAudioReq(arena);
 }
-constexpr auto StopRecognizeReq::InternalNewImpl_() {
-  return ::google::protobuf::internal::MessageCreator::CopyInit(sizeof(StopRecognizeReq),
-                                            alignof(StopRecognizeReq));
+constexpr auto StopRecognizeAudioReq::InternalNewImpl_() {
+  return ::google::protobuf::internal::MessageCreator::CopyInit(sizeof(StopRecognizeAudioReq),
+                                            alignof(StopRecognizeAudioReq));
 }
-constexpr auto StopRecognizeReq::InternalGenerateClassData_() {
+constexpr auto StopRecognizeAudioReq::InternalGenerateClassData_() {
   return ::google::protobuf::internal::ClassDataFull{
       ::google::protobuf::internal::ClassData{
-          &_StopRecognizeReq_default_instance_._instance,
+          &_StopRecognizeAudioReq_default_instance_._instance,
           &_table_.header,
           nullptr,  // OnDemandRegisterArenaDtor
           nullptr,  // IsInitialized
-          &StopRecognizeReq::MergeImpl,
-          ::google::protobuf::Message::GetNewImpl<StopRecognizeReq>(),
+          &StopRecognizeAudioReq::MergeImpl,
+          ::google::protobuf::Message::GetNewImpl<StopRecognizeAudioReq>(),
 #if defined(PROTOBUF_CUSTOM_VTABLE)
-          &StopRecognizeReq::SharedDtor,
-          ::google::protobuf::Message::GetClearImpl<StopRecognizeReq>(), &StopRecognizeReq::ByteSizeLong,
-              &StopRecognizeReq::_InternalSerialize,
+          &StopRecognizeAudioReq::SharedDtor,
+          ::google::protobuf::Message::GetClearImpl<StopRecognizeAudioReq>(), &StopRecognizeAudioReq::ByteSizeLong,
+              &StopRecognizeAudioReq::_InternalSerialize,
 #endif  // PROTOBUF_CUSTOM_VTABLE
-          PROTOBUF_FIELD_OFFSET(StopRecognizeReq, _impl_._cached_size_),
+          PROTOBUF_FIELD_OFFSET(StopRecognizeAudioReq, _impl_._cached_size_),
           false,
       },
-      &StopRecognizeReq::kDescriptorMethods,
+      &StopRecognizeAudioReq::kDescriptorMethods,
       &descriptor_table_src_2fapi_2eproto,
       nullptr,  // tracker
   };
 }
 
 PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 const
-    ::google::protobuf::internal::ClassDataFull StopRecognizeReq_class_data_ =
-        StopRecognizeReq::InternalGenerateClassData_();
+    ::google::protobuf::internal::ClassDataFull StopRecognizeAudioReq_class_data_ =
+        StopRecognizeAudioReq::InternalGenerateClassData_();
 
 PROTOBUF_ATTRIBUTE_WEAK const ::google::protobuf::internal::ClassData* PROTOBUF_NONNULL
-StopRecognizeReq::GetClassData() const {
-  ::google::protobuf::internal::PrefetchToLocalCache(&StopRecognizeReq_class_data_);
-  ::google::protobuf::internal::PrefetchToLocalCache(StopRecognizeReq_class_data_.tc_table);
-  return StopRecognizeReq_class_data_.base();
+StopRecognizeAudioReq::GetClassData() const {
+  ::google::protobuf::internal::PrefetchToLocalCache(&StopRecognizeAudioReq_class_data_);
+  ::google::protobuf::internal::PrefetchToLocalCache(StopRecognizeAudioReq_class_data_.tc_table);
+  return StopRecognizeAudioReq_class_data_.base();
 }
 PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
-const ::_pbi::TcParseTable<2, 3, 0, 43, 2>
-StopRecognizeReq::_table_ = {
+const ::_pbi::TcParseTable<2, 3, 0, 48, 2>
+StopRecognizeAudioReq::_table_ = {
   {
-    PROTOBUF_FIELD_OFFSET(StopRecognizeReq, _impl_._has_bits_),
+    PROTOBUF_FIELD_OFFSET(StopRecognizeAudioReq, _impl_._has_bits_),
     0, // no _extensions_
     3, 24,  // max_field_number, fast_idx_mask
     offsetof(decltype(_table_), field_lookup_table),
@@ -13503,45 +13504,45 @@ StopRecognizeReq::_table_ = {
     3,  // num_field_entries
     0,  // num_aux_entries
     offsetof(decltype(_table_), field_names),  // no aux_entries
-    StopRecognizeReq_class_data_.base(),
+    StopRecognizeAudioReq_class_data_.base(),
     nullptr,  // post_loop_handler
     ::_pbi::TcParser::GenericFallback,  // fallback
     #ifdef PROTOBUF_PREFETCH_PARSE_TABLE
-    ::_pbi::TcParser::GetTable<::GrpcLibraryV1::StopRecognizeReq>(),  // to_prefetch
+    ::_pbi::TcParser::GetTable<::GrpcLibraryV1::StopRecognizeAudioReq>(),  // to_prefetch
     #endif  // PROTOBUF_PREFETCH_PARSE_TABLE
   }, {{
     {::_pbi::TcParser::MiniParse, {}},
     // int64 session_id = 1;
-    {::_pbi::TcParser::SingularVarintNoZag1<::uint64_t, offsetof(StopRecognizeReq, _impl_.session_id_), 1>(),
+    {::_pbi::TcParser::SingularVarintNoZag1<::uint64_t, offsetof(StopRecognizeAudioReq, _impl_.session_id_), 1>(),
      {8, 1, 0,
-      PROTOBUF_FIELD_OFFSET(StopRecognizeReq, _impl_.session_id_)}},
+      PROTOBUF_FIELD_OFFSET(StopRecognizeAudioReq, _impl_.session_id_)}},
     // int64 user_id = 2;
-    {::_pbi::TcParser::SingularVarintNoZag1<::uint64_t, offsetof(StopRecognizeReq, _impl_.user_id_), 2>(),
+    {::_pbi::TcParser::SingularVarintNoZag1<::uint64_t, offsetof(StopRecognizeAudioReq, _impl_.user_id_), 2>(),
      {16, 2, 0,
-      PROTOBUF_FIELD_OFFSET(StopRecognizeReq, _impl_.user_id_)}},
+      PROTOBUF_FIELD_OFFSET(StopRecognizeAudioReq, _impl_.user_id_)}},
     // string auth = 3;
     {::_pbi::TcParser::FastUS1,
      {26, 0, 0,
-      PROTOBUF_FIELD_OFFSET(StopRecognizeReq, _impl_.auth_)}},
+      PROTOBUF_FIELD_OFFSET(StopRecognizeAudioReq, _impl_.auth_)}},
   }}, {{
     65535, 65535
   }}, {{
     // int64 session_id = 1;
-    {PROTOBUF_FIELD_OFFSET(StopRecognizeReq, _impl_.session_id_), _Internal::kHasBitsOffset + 1, 0, (0 | ::_fl::kFcOptional | ::_fl::kInt64)},
+    {PROTOBUF_FIELD_OFFSET(StopRecognizeAudioReq, _impl_.session_id_), _Internal::kHasBitsOffset + 1, 0, (0 | ::_fl::kFcOptional | ::_fl::kInt64)},
     // int64 user_id = 2;
-    {PROTOBUF_FIELD_OFFSET(StopRecognizeReq, _impl_.user_id_), _Internal::kHasBitsOffset + 2, 0, (0 | ::_fl::kFcOptional | ::_fl::kInt64)},
+    {PROTOBUF_FIELD_OFFSET(StopRecognizeAudioReq, _impl_.user_id_), _Internal::kHasBitsOffset + 2, 0, (0 | ::_fl::kFcOptional | ::_fl::kInt64)},
     // string auth = 3;
-    {PROTOBUF_FIELD_OFFSET(StopRecognizeReq, _impl_.auth_), _Internal::kHasBitsOffset + 0, 0, (0 | ::_fl::kFcOptional | ::_fl::kUtf8String | ::_fl::kRepAString)},
+    {PROTOBUF_FIELD_OFFSET(StopRecognizeAudioReq, _impl_.auth_), _Internal::kHasBitsOffset + 0, 0, (0 | ::_fl::kFcOptional | ::_fl::kUtf8String | ::_fl::kRepAString)},
   }},
   // no aux_entries
   {{
-    "\36\0\0\4\0\0\0\0"
-    "GrpcLibraryV1.StopRecognizeReq"
+    "\43\0\0\4\0\0\0\0"
+    "GrpcLibraryV1.StopRecognizeAudioReq"
     "auth"
   }},
 };
-PROTOBUF_NOINLINE void StopRecognizeReq::Clear() {
-// @@protoc_insertion_point(message_clear_start:GrpcLibraryV1.StopRecognizeReq)
+PROTOBUF_NOINLINE void StopRecognizeAudioReq::Clear() {
+// @@protoc_insertion_point(message_clear_start:GrpcLibraryV1.StopRecognizeAudioReq)
   ::google::protobuf::internal::TSanWrite(&_impl_);
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
@@ -13561,20 +13562,20 @@ PROTOBUF_NOINLINE void StopRecognizeReq::Clear() {
 }
 
 #if defined(PROTOBUF_CUSTOM_VTABLE)
-::uint8_t* PROTOBUF_NONNULL StopRecognizeReq::_InternalSerialize(
+::uint8_t* PROTOBUF_NONNULL StopRecognizeAudioReq::_InternalSerialize(
     const ::google::protobuf::MessageLite& base, ::uint8_t* PROTOBUF_NONNULL target,
     ::google::protobuf::io::EpsCopyOutputStream* PROTOBUF_NONNULL stream) {
-  const StopRecognizeReq& this_ = static_cast<const StopRecognizeReq&>(base);
+  const StopRecognizeAudioReq& this_ = static_cast<const StopRecognizeAudioReq&>(base);
 #else   // PROTOBUF_CUSTOM_VTABLE
-::uint8_t* PROTOBUF_NONNULL StopRecognizeReq::_InternalSerialize(
+::uint8_t* PROTOBUF_NONNULL StopRecognizeAudioReq::_InternalSerialize(
     ::uint8_t* PROTOBUF_NONNULL target,
     ::google::protobuf::io::EpsCopyOutputStream* PROTOBUF_NONNULL stream) const {
-  const StopRecognizeReq& this_ = *this;
+  const StopRecognizeAudioReq& this_ = *this;
 #endif  // PROTOBUF_CUSTOM_VTABLE
   if constexpr (::_pbi::DebugHardenCheckHasBitConsistency()) {
     this_.CheckHasBitConsistency();
   }
-  // @@protoc_insertion_point(serialize_to_array_start:GrpcLibraryV1.StopRecognizeReq)
+  // @@protoc_insertion_point(serialize_to_array_start:GrpcLibraryV1.StopRecognizeAudioReq)
   ::uint32_t cached_has_bits = 0;
   (void)cached_has_bits;
 
@@ -13602,7 +13603,7 @@ PROTOBUF_NOINLINE void StopRecognizeReq::Clear() {
     if (!this_._internal_auth().empty()) {
       const ::std::string& _s = this_._internal_auth();
       ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-          _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "GrpcLibraryV1.StopRecognizeReq.auth");
+          _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "GrpcLibraryV1.StopRecognizeAudioReq.auth");
       target = stream->WriteStringMaybeAliased(3, _s, target);
     }
   }
@@ -13612,18 +13613,18 @@ PROTOBUF_NOINLINE void StopRecognizeReq::Clear() {
         ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
             this_._internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:GrpcLibraryV1.StopRecognizeReq)
+  // @@protoc_insertion_point(serialize_to_array_end:GrpcLibraryV1.StopRecognizeAudioReq)
   return target;
 }
 
 #if defined(PROTOBUF_CUSTOM_VTABLE)
-::size_t StopRecognizeReq::ByteSizeLong(const MessageLite& base) {
-  const StopRecognizeReq& this_ = static_cast<const StopRecognizeReq&>(base);
+::size_t StopRecognizeAudioReq::ByteSizeLong(const MessageLite& base) {
+  const StopRecognizeAudioReq& this_ = static_cast<const StopRecognizeAudioReq&>(base);
 #else   // PROTOBUF_CUSTOM_VTABLE
-::size_t StopRecognizeReq::ByteSizeLong() const {
-  const StopRecognizeReq& this_ = *this;
+::size_t StopRecognizeAudioReq::ByteSizeLong() const {
+  const StopRecognizeAudioReq& this_ = *this;
 #endif  // PROTOBUF_CUSTOM_VTABLE
-  // @@protoc_insertion_point(message_byte_size_start:GrpcLibraryV1.StopRecognizeReq)
+  // @@protoc_insertion_point(message_byte_size_start:GrpcLibraryV1.StopRecognizeAudioReq)
   ::size_t total_size = 0;
 
   ::uint32_t cached_has_bits = 0;
@@ -13659,15 +13660,15 @@ PROTOBUF_NOINLINE void StopRecognizeReq::Clear() {
                                              &this_._impl_._cached_size_);
 }
 
-void StopRecognizeReq::MergeImpl(::google::protobuf::MessageLite& to_msg,
+void StopRecognizeAudioReq::MergeImpl(::google::protobuf::MessageLite& to_msg,
                             const ::google::protobuf::MessageLite& from_msg) {
    auto* const _this =
-      static_cast<StopRecognizeReq*>(&to_msg);
-  auto& from = static_cast<const StopRecognizeReq&>(from_msg);
+      static_cast<StopRecognizeAudioReq*>(&to_msg);
+  auto& from = static_cast<const StopRecognizeAudioReq&>(from_msg);
   if constexpr (::_pbi::DebugHardenCheckHasBitConsistency()) {
     from.CheckHasBitConsistency();
   }
-  // @@protoc_insertion_point(class_specific_merge_from_start:GrpcLibraryV1.StopRecognizeReq)
+  // @@protoc_insertion_point(class_specific_merge_from_start:GrpcLibraryV1.StopRecognizeAudioReq)
   ABSL_DCHECK_NE(&from, _this);
   ::uint32_t cached_has_bits = 0;
   (void)cached_has_bits;
@@ -13699,15 +13700,15 @@ void StopRecognizeReq::MergeImpl(::google::protobuf::MessageLite& to_msg,
       from._internal_metadata_);
 }
 
-void StopRecognizeReq::CopyFrom(const StopRecognizeReq& from) {
-  // @@protoc_insertion_point(class_specific_copy_from_start:GrpcLibraryV1.StopRecognizeReq)
+void StopRecognizeAudioReq::CopyFrom(const StopRecognizeAudioReq& from) {
+  // @@protoc_insertion_point(class_specific_copy_from_start:GrpcLibraryV1.StopRecognizeAudioReq)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
 
-void StopRecognizeReq::InternalSwap(StopRecognizeReq* PROTOBUF_RESTRICT PROTOBUF_NONNULL other) {
+void StopRecognizeAudioReq::InternalSwap(StopRecognizeAudioReq* PROTOBUF_RESTRICT PROTOBUF_NONNULL other) {
   using ::std::swap;
   auto* arena = GetArena();
   ABSL_DCHECK_EQ(arena, other->GetArena());
@@ -13715,39 +13716,39 @@ void StopRecognizeReq::InternalSwap(StopRecognizeReq* PROTOBUF_RESTRICT PROTOBUF
   swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
   ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.auth_, &other->_impl_.auth_, arena);
   ::google::protobuf::internal::memswap<
-      PROTOBUF_FIELD_OFFSET(StopRecognizeReq, _impl_.user_id_)
-      + sizeof(StopRecognizeReq::_impl_.user_id_)
-      - PROTOBUF_FIELD_OFFSET(StopRecognizeReq, _impl_.session_id_)>(
+      PROTOBUF_FIELD_OFFSET(StopRecognizeAudioReq, _impl_.user_id_)
+      + sizeof(StopRecognizeAudioReq::_impl_.user_id_)
+      - PROTOBUF_FIELD_OFFSET(StopRecognizeAudioReq, _impl_.session_id_)>(
           reinterpret_cast<char*>(&_impl_.session_id_),
           reinterpret_cast<char*>(&other->_impl_.session_id_));
 }
 
-::google::protobuf::Metadata StopRecognizeReq::GetMetadata() const {
+::google::protobuf::Metadata StopRecognizeAudioReq::GetMetadata() const {
   return ::google::protobuf::Message::GetMetadataImpl(GetClassData()->full());
 }
 // ===================================================================
 
-class StopRecognizeResp::_Internal {
+class StopRecognizeAudioResp::_Internal {
  public:
   using HasBits =
-      decltype(::std::declval<StopRecognizeResp>()._impl_._has_bits_);
+      decltype(::std::declval<StopRecognizeAudioResp>()._impl_._has_bits_);
   static constexpr ::int32_t kHasBitsOffset =
-      8 * PROTOBUF_FIELD_OFFSET(StopRecognizeResp, _impl_._has_bits_);
+      8 * PROTOBUF_FIELD_OFFSET(StopRecognizeAudioResp, _impl_._has_bits_);
 };
 
-StopRecognizeResp::StopRecognizeResp(::google::protobuf::Arena* PROTOBUF_NULLABLE arena)
+StopRecognizeAudioResp::StopRecognizeAudioResp(::google::protobuf::Arena* PROTOBUF_NULLABLE arena)
 #if defined(PROTOBUF_CUSTOM_VTABLE)
-    : ::google::protobuf::Message(arena, StopRecognizeResp_class_data_.base()) {
+    : ::google::protobuf::Message(arena, StopRecognizeAudioResp_class_data_.base()) {
 #else   // PROTOBUF_CUSTOM_VTABLE
     : ::google::protobuf::Message(arena) {
 #endif  // PROTOBUF_CUSTOM_VTABLE
   SharedCtor(arena);
-  // @@protoc_insertion_point(arena_constructor:GrpcLibraryV1.StopRecognizeResp)
+  // @@protoc_insertion_point(arena_constructor:GrpcLibraryV1.StopRecognizeAudioResp)
 }
-StopRecognizeResp::StopRecognizeResp(
-    ::google::protobuf::Arena* PROTOBUF_NULLABLE arena, const StopRecognizeResp& from)
+StopRecognizeAudioResp::StopRecognizeAudioResp(
+    ::google::protobuf::Arena* PROTOBUF_NULLABLE arena, const StopRecognizeAudioResp& from)
 #if defined(PROTOBUF_CUSTOM_VTABLE)
-    : ::google::protobuf::Message(arena, StopRecognizeResp_class_data_.base()),
+    : ::google::protobuf::Message(arena, StopRecognizeAudioResp_class_data_.base()),
 #else   // PROTOBUF_CUSTOM_VTABLE
     : ::google::protobuf::Message(arena),
 #endif  // PROTOBUF_CUSTOM_VTABLE
@@ -13755,12 +13756,12 @@ StopRecognizeResp::StopRecognizeResp(
   _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
       from._internal_metadata_);
 }
-PROTOBUF_NDEBUG_INLINE StopRecognizeResp::Impl_::Impl_(
+PROTOBUF_NDEBUG_INLINE StopRecognizeAudioResp::Impl_::Impl_(
     [[maybe_unused]] ::google::protobuf::internal::InternalVisibility visibility,
     [[maybe_unused]] ::google::protobuf::Arena* PROTOBUF_NULLABLE arena)
       : _cached_size_{0} {}
 
-inline void StopRecognizeResp::SharedCtor(::_pb::Arena* PROTOBUF_NULLABLE arena) {
+inline void StopRecognizeAudioResp::SharedCtor(::_pb::Arena* PROTOBUF_NULLABLE arena) {
   new (&_impl_) Impl_(internal_visibility(), arena);
   ::memset(reinterpret_cast<char*>(&_impl_) +
                offsetof(Impl_, session_id_),
@@ -13769,12 +13770,12 @@ inline void StopRecognizeResp::SharedCtor(::_pb::Arena* PROTOBUF_NULLABLE arena)
                offsetof(Impl_, session_id_) +
                sizeof(Impl_::error_code_));
 }
-StopRecognizeResp::~StopRecognizeResp() {
-  // @@protoc_insertion_point(destructor:GrpcLibraryV1.StopRecognizeResp)
+StopRecognizeAudioResp::~StopRecognizeAudioResp() {
+  // @@protoc_insertion_point(destructor:GrpcLibraryV1.StopRecognizeAudioResp)
   SharedDtor(*this);
 }
-inline void StopRecognizeResp::SharedDtor(MessageLite& self) {
-  StopRecognizeResp& this_ = static_cast<StopRecognizeResp&>(self);
+inline void StopRecognizeAudioResp::SharedDtor(MessageLite& self) {
+  StopRecognizeAudioResp& this_ = static_cast<StopRecognizeAudioResp&>(self);
   if constexpr (::_pbi::DebugHardenCheckHasBitConsistency()) {
     this_.CheckHasBitConsistency();
   }
@@ -13783,53 +13784,53 @@ inline void StopRecognizeResp::SharedDtor(MessageLite& self) {
   this_._impl_.~Impl_();
 }
 
-inline void* PROTOBUF_NONNULL StopRecognizeResp::PlacementNew_(
+inline void* PROTOBUF_NONNULL StopRecognizeAudioResp::PlacementNew_(
     const void* PROTOBUF_NONNULL, void* PROTOBUF_NONNULL mem,
     ::google::protobuf::Arena* PROTOBUF_NULLABLE arena) {
-  return ::new (mem) StopRecognizeResp(arena);
+  return ::new (mem) StopRecognizeAudioResp(arena);
 }
-constexpr auto StopRecognizeResp::InternalNewImpl_() {
-  return ::google::protobuf::internal::MessageCreator::ZeroInit(sizeof(StopRecognizeResp),
-                                            alignof(StopRecognizeResp));
+constexpr auto StopRecognizeAudioResp::InternalNewImpl_() {
+  return ::google::protobuf::internal::MessageCreator::ZeroInit(sizeof(StopRecognizeAudioResp),
+                                            alignof(StopRecognizeAudioResp));
 }
-constexpr auto StopRecognizeResp::InternalGenerateClassData_() {
+constexpr auto StopRecognizeAudioResp::InternalGenerateClassData_() {
   return ::google::protobuf::internal::ClassDataFull{
       ::google::protobuf::internal::ClassData{
-          &_StopRecognizeResp_default_instance_._instance,
+          &_StopRecognizeAudioResp_default_instance_._instance,
           &_table_.header,
           nullptr,  // OnDemandRegisterArenaDtor
           nullptr,  // IsInitialized
-          &StopRecognizeResp::MergeImpl,
-          ::google::protobuf::Message::GetNewImpl<StopRecognizeResp>(),
+          &StopRecognizeAudioResp::MergeImpl,
+          ::google::protobuf::Message::GetNewImpl<StopRecognizeAudioResp>(),
 #if defined(PROTOBUF_CUSTOM_VTABLE)
-          &StopRecognizeResp::SharedDtor,
-          ::google::protobuf::Message::GetClearImpl<StopRecognizeResp>(), &StopRecognizeResp::ByteSizeLong,
-              &StopRecognizeResp::_InternalSerialize,
+          &StopRecognizeAudioResp::SharedDtor,
+          ::google::protobuf::Message::GetClearImpl<StopRecognizeAudioResp>(), &StopRecognizeAudioResp::ByteSizeLong,
+              &StopRecognizeAudioResp::_InternalSerialize,
 #endif  // PROTOBUF_CUSTOM_VTABLE
-          PROTOBUF_FIELD_OFFSET(StopRecognizeResp, _impl_._cached_size_),
+          PROTOBUF_FIELD_OFFSET(StopRecognizeAudioResp, _impl_._cached_size_),
           false,
       },
-      &StopRecognizeResp::kDescriptorMethods,
+      &StopRecognizeAudioResp::kDescriptorMethods,
       &descriptor_table_src_2fapi_2eproto,
       nullptr,  // tracker
   };
 }
 
 PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 const
-    ::google::protobuf::internal::ClassDataFull StopRecognizeResp_class_data_ =
-        StopRecognizeResp::InternalGenerateClassData_();
+    ::google::protobuf::internal::ClassDataFull StopRecognizeAudioResp_class_data_ =
+        StopRecognizeAudioResp::InternalGenerateClassData_();
 
 PROTOBUF_ATTRIBUTE_WEAK const ::google::protobuf::internal::ClassData* PROTOBUF_NONNULL
-StopRecognizeResp::GetClassData() const {
-  ::google::protobuf::internal::PrefetchToLocalCache(&StopRecognizeResp_class_data_);
-  ::google::protobuf::internal::PrefetchToLocalCache(StopRecognizeResp_class_data_.tc_table);
-  return StopRecognizeResp_class_data_.base();
+StopRecognizeAudioResp::GetClassData() const {
+  ::google::protobuf::internal::PrefetchToLocalCache(&StopRecognizeAudioResp_class_data_);
+  ::google::protobuf::internal::PrefetchToLocalCache(StopRecognizeAudioResp_class_data_.tc_table);
+  return StopRecognizeAudioResp_class_data_.base();
 }
 PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
 const ::_pbi::TcParseTable<1, 2, 0, 0, 2>
-StopRecognizeResp::_table_ = {
+StopRecognizeAudioResp::_table_ = {
   {
-    PROTOBUF_FIELD_OFFSET(StopRecognizeResp, _impl_._has_bits_),
+    PROTOBUF_FIELD_OFFSET(StopRecognizeAudioResp, _impl_._has_bits_),
     0, // no _extensions_
     2, 8,  // max_field_number, fast_idx_mask
     offsetof(decltype(_table_), field_lookup_table),
@@ -13838,35 +13839,35 @@ StopRecognizeResp::_table_ = {
     2,  // num_field_entries
     0,  // num_aux_entries
     offsetof(decltype(_table_), field_names),  // no aux_entries
-    StopRecognizeResp_class_data_.base(),
+    StopRecognizeAudioResp_class_data_.base(),
     nullptr,  // post_loop_handler
     ::_pbi::TcParser::GenericFallback,  // fallback
     #ifdef PROTOBUF_PREFETCH_PARSE_TABLE
-    ::_pbi::TcParser::GetTable<::GrpcLibraryV1::StopRecognizeResp>(),  // to_prefetch
+    ::_pbi::TcParser::GetTable<::GrpcLibraryV1::StopRecognizeAudioResp>(),  // to_prefetch
     #endif  // PROTOBUF_PREFETCH_PARSE_TABLE
   }, {{
     // int64 session_id = 2;
-    {::_pbi::TcParser::SingularVarintNoZag1<::uint64_t, offsetof(StopRecognizeResp, _impl_.session_id_), 0>(),
+    {::_pbi::TcParser::SingularVarintNoZag1<::uint64_t, offsetof(StopRecognizeAudioResp, _impl_.session_id_), 0>(),
      {16, 0, 0,
-      PROTOBUF_FIELD_OFFSET(StopRecognizeResp, _impl_.session_id_)}},
+      PROTOBUF_FIELD_OFFSET(StopRecognizeAudioResp, _impl_.session_id_)}},
     // int32 error_code = 1;
-    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(StopRecognizeResp, _impl_.error_code_), 1>(),
+    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(StopRecognizeAudioResp, _impl_.error_code_), 1>(),
      {8, 1, 0,
-      PROTOBUF_FIELD_OFFSET(StopRecognizeResp, _impl_.error_code_)}},
+      PROTOBUF_FIELD_OFFSET(StopRecognizeAudioResp, _impl_.error_code_)}},
   }}, {{
     65535, 65535
   }}, {{
     // int32 error_code = 1;
-    {PROTOBUF_FIELD_OFFSET(StopRecognizeResp, _impl_.error_code_), _Internal::kHasBitsOffset + 1, 0, (0 | ::_fl::kFcOptional | ::_fl::kInt32)},
+    {PROTOBUF_FIELD_OFFSET(StopRecognizeAudioResp, _impl_.error_code_), _Internal::kHasBitsOffset + 1, 0, (0 | ::_fl::kFcOptional | ::_fl::kInt32)},
     // int64 session_id = 2;
-    {PROTOBUF_FIELD_OFFSET(StopRecognizeResp, _impl_.session_id_), _Internal::kHasBitsOffset + 0, 0, (0 | ::_fl::kFcOptional | ::_fl::kInt64)},
+    {PROTOBUF_FIELD_OFFSET(StopRecognizeAudioResp, _impl_.session_id_), _Internal::kHasBitsOffset + 0, 0, (0 | ::_fl::kFcOptional | ::_fl::kInt64)},
   }},
   // no aux_entries
   {{
   }},
 };
-PROTOBUF_NOINLINE void StopRecognizeResp::Clear() {
-// @@protoc_insertion_point(message_clear_start:GrpcLibraryV1.StopRecognizeResp)
+PROTOBUF_NOINLINE void StopRecognizeAudioResp::Clear() {
+// @@protoc_insertion_point(message_clear_start:GrpcLibraryV1.StopRecognizeAudioResp)
   ::google::protobuf::internal::TSanWrite(&_impl_);
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
@@ -13883,20 +13884,20 @@ PROTOBUF_NOINLINE void StopRecognizeResp::Clear() {
 }
 
 #if defined(PROTOBUF_CUSTOM_VTABLE)
-::uint8_t* PROTOBUF_NONNULL StopRecognizeResp::_InternalSerialize(
+::uint8_t* PROTOBUF_NONNULL StopRecognizeAudioResp::_InternalSerialize(
     const ::google::protobuf::MessageLite& base, ::uint8_t* PROTOBUF_NONNULL target,
     ::google::protobuf::io::EpsCopyOutputStream* PROTOBUF_NONNULL stream) {
-  const StopRecognizeResp& this_ = static_cast<const StopRecognizeResp&>(base);
+  const StopRecognizeAudioResp& this_ = static_cast<const StopRecognizeAudioResp&>(base);
 #else   // PROTOBUF_CUSTOM_VTABLE
-::uint8_t* PROTOBUF_NONNULL StopRecognizeResp::_InternalSerialize(
+::uint8_t* PROTOBUF_NONNULL StopRecognizeAudioResp::_InternalSerialize(
     ::uint8_t* PROTOBUF_NONNULL target,
     ::google::protobuf::io::EpsCopyOutputStream* PROTOBUF_NONNULL stream) const {
-  const StopRecognizeResp& this_ = *this;
+  const StopRecognizeAudioResp& this_ = *this;
 #endif  // PROTOBUF_CUSTOM_VTABLE
   if constexpr (::_pbi::DebugHardenCheckHasBitConsistency()) {
     this_.CheckHasBitConsistency();
   }
-  // @@protoc_insertion_point(serialize_to_array_start:GrpcLibraryV1.StopRecognizeResp)
+  // @@protoc_insertion_point(serialize_to_array_start:GrpcLibraryV1.StopRecognizeAudioResp)
   ::uint32_t cached_has_bits = 0;
   (void)cached_has_bits;
 
@@ -13924,18 +13925,18 @@ PROTOBUF_NOINLINE void StopRecognizeResp::Clear() {
         ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
             this_._internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:GrpcLibraryV1.StopRecognizeResp)
+  // @@protoc_insertion_point(serialize_to_array_end:GrpcLibraryV1.StopRecognizeAudioResp)
   return target;
 }
 
 #if defined(PROTOBUF_CUSTOM_VTABLE)
-::size_t StopRecognizeResp::ByteSizeLong(const MessageLite& base) {
-  const StopRecognizeResp& this_ = static_cast<const StopRecognizeResp&>(base);
+::size_t StopRecognizeAudioResp::ByteSizeLong(const MessageLite& base) {
+  const StopRecognizeAudioResp& this_ = static_cast<const StopRecognizeAudioResp&>(base);
 #else   // PROTOBUF_CUSTOM_VTABLE
-::size_t StopRecognizeResp::ByteSizeLong() const {
-  const StopRecognizeResp& this_ = *this;
+::size_t StopRecognizeAudioResp::ByteSizeLong() const {
+  const StopRecognizeAudioResp& this_ = *this;
 #endif  // PROTOBUF_CUSTOM_VTABLE
-  // @@protoc_insertion_point(message_byte_size_start:GrpcLibraryV1.StopRecognizeResp)
+  // @@protoc_insertion_point(message_byte_size_start:GrpcLibraryV1.StopRecognizeAudioResp)
   ::size_t total_size = 0;
 
   ::uint32_t cached_has_bits = 0;
@@ -13964,15 +13965,15 @@ PROTOBUF_NOINLINE void StopRecognizeResp::Clear() {
                                              &this_._impl_._cached_size_);
 }
 
-void StopRecognizeResp::MergeImpl(::google::protobuf::MessageLite& to_msg,
+void StopRecognizeAudioResp::MergeImpl(::google::protobuf::MessageLite& to_msg,
                             const ::google::protobuf::MessageLite& from_msg) {
    auto* const _this =
-      static_cast<StopRecognizeResp*>(&to_msg);
-  auto& from = static_cast<const StopRecognizeResp&>(from_msg);
+      static_cast<StopRecognizeAudioResp*>(&to_msg);
+  auto& from = static_cast<const StopRecognizeAudioResp&>(from_msg);
   if constexpr (::_pbi::DebugHardenCheckHasBitConsistency()) {
     from.CheckHasBitConsistency();
   }
-  // @@protoc_insertion_point(class_specific_merge_from_start:GrpcLibraryV1.StopRecognizeResp)
+  // @@protoc_insertion_point(class_specific_merge_from_start:GrpcLibraryV1.StopRecognizeAudioResp)
   ABSL_DCHECK_NE(&from, _this);
   ::uint32_t cached_has_bits = 0;
   (void)cached_has_bits;
@@ -13995,27 +13996,27 @@ void StopRecognizeResp::MergeImpl(::google::protobuf::MessageLite& to_msg,
       from._internal_metadata_);
 }
 
-void StopRecognizeResp::CopyFrom(const StopRecognizeResp& from) {
-  // @@protoc_insertion_point(class_specific_copy_from_start:GrpcLibraryV1.StopRecognizeResp)
+void StopRecognizeAudioResp::CopyFrom(const StopRecognizeAudioResp& from) {
+  // @@protoc_insertion_point(class_specific_copy_from_start:GrpcLibraryV1.StopRecognizeAudioResp)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
 
-void StopRecognizeResp::InternalSwap(StopRecognizeResp* PROTOBUF_RESTRICT PROTOBUF_NONNULL other) {
+void StopRecognizeAudioResp::InternalSwap(StopRecognizeAudioResp* PROTOBUF_RESTRICT PROTOBUF_NONNULL other) {
   using ::std::swap;
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
   ::google::protobuf::internal::memswap<
-      PROTOBUF_FIELD_OFFSET(StopRecognizeResp, _impl_.error_code_)
-      + sizeof(StopRecognizeResp::_impl_.error_code_)
-      - PROTOBUF_FIELD_OFFSET(StopRecognizeResp, _impl_.session_id_)>(
+      PROTOBUF_FIELD_OFFSET(StopRecognizeAudioResp, _impl_.error_code_)
+      + sizeof(StopRecognizeAudioResp::_impl_.error_code_)
+      - PROTOBUF_FIELD_OFFSET(StopRecognizeAudioResp, _impl_.session_id_)>(
           reinterpret_cast<char*>(&_impl_.session_id_),
           reinterpret_cast<char*>(&other->_impl_.session_id_));
 }
 
-::google::protobuf::Metadata StopRecognizeResp::GetMetadata() const {
+::google::protobuf::Metadata StopRecognizeAudioResp::GetMetadata() const {
   return ::google::protobuf::Message::GetMetadataImpl(GetClassData()->full());
 }
 // ===================================================================

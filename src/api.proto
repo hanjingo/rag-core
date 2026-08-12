@@ -8,8 +8,8 @@ service GrpcService {
     rpc RegAccount (RegAccountReq) returns (RegAccountResp) {}
     rpc Query (QueryReq) returns (stream QueryResp) {}
     rpc StopAnswer (StopAnswerReq) returns (StopAnswerResp) {}
-    rpc Recognize(stream RecognizeReq) returns (stream RecognizeResp) {}
-    rpc StopRecognize (StopRecognizeReq) returns (StopRecognizeResp) {}
+    rpc RecognizeAudio(stream RecognizeAudioReq) returns (stream RecognizeAudioResp) {}
+    rpc StopRecognizeAudio (StopRecognizeAudioReq) returns (StopRecognizeAudioResp) {}
     rpc GetChatMessage (GetChatMessageReq) returns (GetChatMessageResp) {}
     rpc GetSession (GetSessionReq) returns (GetSessionResp) {}
     rpc NewSession (NewSessionReq) returns (NewSessionResp) {}
@@ -111,7 +111,7 @@ message VadParam {
     float samples_overlap = 6;
 }
 
-message RecognitionParam {
+message RecognizeAudioParam {
     int32 n_threads = 1;
     int32 n_max_text_ctx = 2;
     int32 offset_ms = 3;
@@ -238,16 +238,16 @@ message StopAnswerResp {
     int64 session_id = 2;
 }
 
-message RecognizeReq {
+message RecognizeAudioReq {
     string ctx_id = 1;
     int64 session_id = 2;
     oneof request_type {
-        RecognitionParam param = 3;
+        RecognizeAudioParam param = 3;
         bytes audio_chunk = 4;
     }
 }
 
-message RecognizeResp {
+message RecognizeAudioResp {
     int32 error_code = 1;
     int64 session_id = 2;
     string transcript = 3;
@@ -255,13 +255,13 @@ message RecognizeResp {
     double confidence = 5;
 }
 
-message StopRecognizeReq {
+message StopRecognizeAudioReq {
     int64 session_id = 1;
     int64 user_id = 2;
     string auth = 3;
 }
 
-message StopRecognizeResp {
+message StopRecognizeAudioResp {
     int32 error_code = 1;
     int64 session_id = 2;
 }

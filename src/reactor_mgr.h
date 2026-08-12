@@ -56,7 +56,7 @@ class recognize_reactor_mgr
         return manager;
     }
 
-    void register_recognize(int64_t session_id, RecognizeReactor *reactor)
+    void register_recognize(int64_t session_id, RecognizeAudioReactor *reactor)
     {
         std::lock_guard<std::mutex> lock(_mu);
         _active_recognizes[session_id] = reactor;
@@ -69,7 +69,7 @@ class recognize_reactor_mgr
         if(it != _active_recognizes.end())
         {
             _active_recognizes.erase(it);
-            LOG_DEBUG("Unregistered RecognizeReactor for session_id: {}",
+            LOG_DEBUG("Unregistered RecognizeAudioReactor for session_id: {}",
                       session_id);
         }
     }
@@ -83,26 +83,26 @@ class recognize_reactor_mgr
             it->second->Stop();
             return true;
         }
-        LOG_WARN("No active RecognizeReactor found for session_id: {}",
+        LOG_WARN("No active RecognizeAudioReactor found for session_id: {}",
                  session_id);
         return false;
     }
 
-    RecognizeReactor *get_recognize(int64_t session_id)
+    RecognizeAudioReactor *get_recognize(int64_t session_id)
     {
         std::lock_guard<std::mutex> lock(_mu);
         auto                        it = _active_recognizes.find(session_id);
         if(it != _active_recognizes.end())
             return it->second;
 
-        LOG_WARN("No active RecognizeReactor found for session_id: {}",
+        LOG_WARN("No active RecognizeAudioReactor found for session_id: {}",
                  session_id);
         return nullptr;
     }
 
   private:
-    std::unordered_map<int64_t, RecognizeReactor *> _active_recognizes;
-    std::mutex                                      _mu;
+    std::unordered_map<int64_t, RecognizeAudioReactor *> _active_recognizes;
+    std::mutex                                           _mu;
 };
 
 class embedding_reactor_mgr

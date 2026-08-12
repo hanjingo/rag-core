@@ -73,13 +73,13 @@ class QueryReactor : public grpc::ServerWriteReactor<::GrpcLibraryV1::QueryResp>
     std::string _answer;
 };
 
-class RecognizeReactor
-    : public grpc::ServerBidiReactor<::GrpcLibraryV1::RecognizeReq,
-                                     ::GrpcLibraryV1::RecognizeResp>
+class RecognizeAudioReactor
+    : public grpc::ServerBidiReactor<::GrpcLibraryV1::RecognizeAudioReq,
+                                     ::GrpcLibraryV1::RecognizeAudioResp>
 {
   public:
-    RecognizeReactor(grpc::CallbackServerContext *ctx);
-    ~RecognizeReactor();
+    RecognizeAudioReactor(grpc::CallbackServerContext *ctx);
+    ~RecognizeAudioReactor();
 
     void OnReadDone(bool ok) override;
     void OnWriteDone(bool ok) override;
@@ -90,7 +90,7 @@ class RecognizeReactor
     inline int64_t GetSessionId() const { return _session_id; }
 
   private:
-    void _process(const ::GrpcLibraryV1::RecognizeReq &req);
+    void _process(const ::GrpcLibraryV1::RecognizeAudioReq &req);
     void _ensure_registered(int64_t session_id);
 
     void _send(const int          error_code,
@@ -101,11 +101,11 @@ class RecognizeReactor
     void _flush();
 
   private:
-    grpc::CallbackServerContext   *_ctx;
-    ::GrpcLibraryV1::RecognizeReq  _req;
-    ::GrpcLibraryV1::RecognizeResp _resp;
+    grpc::CallbackServerContext        *_ctx;
+    ::GrpcLibraryV1::RecognizeAudioReq  _req;
+    ::GrpcLibraryV1::RecognizeAudioResp _resp;
 
-    hj::channel<::GrpcLibraryV1::RecognizeResp> _w_queue;
+    hj::channel<::GrpcLibraryV1::RecognizeAudioResp> _w_queue;
 
     int64_t                _session_id;
     std::atomic<bool>      _is_cancelled{false};

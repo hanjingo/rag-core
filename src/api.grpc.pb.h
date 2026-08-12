@@ -80,21 +80,21 @@ class GrpcService final {
     std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::GrpcLibraryV1::StopAnswerResp>> PrepareAsyncStopAnswer(::grpc::ClientContext* context, const ::GrpcLibraryV1::StopAnswerReq& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::GrpcLibraryV1::StopAnswerResp>>(PrepareAsyncStopAnswerRaw(context, request, cq));
     }
-    std::unique_ptr< ::grpc::ClientReaderWriterInterface< ::GrpcLibraryV1::RecognizeReq, ::GrpcLibraryV1::RecognizeResp>> Recognize(::grpc::ClientContext* context) {
-      return std::unique_ptr< ::grpc::ClientReaderWriterInterface< ::GrpcLibraryV1::RecognizeReq, ::GrpcLibraryV1::RecognizeResp>>(RecognizeRaw(context));
+    std::unique_ptr< ::grpc::ClientReaderWriterInterface< ::GrpcLibraryV1::RecognizeAudioReq, ::GrpcLibraryV1::RecognizeAudioResp>> RecognizeAudio(::grpc::ClientContext* context) {
+      return std::unique_ptr< ::grpc::ClientReaderWriterInterface< ::GrpcLibraryV1::RecognizeAudioReq, ::GrpcLibraryV1::RecognizeAudioResp>>(RecognizeAudioRaw(context));
     }
-    std::unique_ptr< ::grpc::ClientAsyncReaderWriterInterface< ::GrpcLibraryV1::RecognizeReq, ::GrpcLibraryV1::RecognizeResp>> AsyncRecognize(::grpc::ClientContext* context, ::grpc::CompletionQueue* cq, void* tag) {
-      return std::unique_ptr< ::grpc::ClientAsyncReaderWriterInterface< ::GrpcLibraryV1::RecognizeReq, ::GrpcLibraryV1::RecognizeResp>>(AsyncRecognizeRaw(context, cq, tag));
+    std::unique_ptr< ::grpc::ClientAsyncReaderWriterInterface< ::GrpcLibraryV1::RecognizeAudioReq, ::GrpcLibraryV1::RecognizeAudioResp>> AsyncRecognizeAudio(::grpc::ClientContext* context, ::grpc::CompletionQueue* cq, void* tag) {
+      return std::unique_ptr< ::grpc::ClientAsyncReaderWriterInterface< ::GrpcLibraryV1::RecognizeAudioReq, ::GrpcLibraryV1::RecognizeAudioResp>>(AsyncRecognizeAudioRaw(context, cq, tag));
     }
-    std::unique_ptr< ::grpc::ClientAsyncReaderWriterInterface< ::GrpcLibraryV1::RecognizeReq, ::GrpcLibraryV1::RecognizeResp>> PrepareAsyncRecognize(::grpc::ClientContext* context, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncReaderWriterInterface< ::GrpcLibraryV1::RecognizeReq, ::GrpcLibraryV1::RecognizeResp>>(PrepareAsyncRecognizeRaw(context, cq));
+    std::unique_ptr< ::grpc::ClientAsyncReaderWriterInterface< ::GrpcLibraryV1::RecognizeAudioReq, ::GrpcLibraryV1::RecognizeAudioResp>> PrepareAsyncRecognizeAudio(::grpc::ClientContext* context, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncReaderWriterInterface< ::GrpcLibraryV1::RecognizeAudioReq, ::GrpcLibraryV1::RecognizeAudioResp>>(PrepareAsyncRecognizeAudioRaw(context, cq));
     }
-    virtual ::grpc::Status StopRecognize(::grpc::ClientContext* context, const ::GrpcLibraryV1::StopRecognizeReq& request, ::GrpcLibraryV1::StopRecognizeResp* response) = 0;
-    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::GrpcLibraryV1::StopRecognizeResp>> AsyncStopRecognize(::grpc::ClientContext* context, const ::GrpcLibraryV1::StopRecognizeReq& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::GrpcLibraryV1::StopRecognizeResp>>(AsyncStopRecognizeRaw(context, request, cq));
+    virtual ::grpc::Status StopRecognizeAudio(::grpc::ClientContext* context, const ::GrpcLibraryV1::StopRecognizeAudioReq& request, ::GrpcLibraryV1::StopRecognizeAudioResp* response) = 0;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::GrpcLibraryV1::StopRecognizeAudioResp>> AsyncStopRecognizeAudio(::grpc::ClientContext* context, const ::GrpcLibraryV1::StopRecognizeAudioReq& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::GrpcLibraryV1::StopRecognizeAudioResp>>(AsyncStopRecognizeAudioRaw(context, request, cq));
     }
-    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::GrpcLibraryV1::StopRecognizeResp>> PrepareAsyncStopRecognize(::grpc::ClientContext* context, const ::GrpcLibraryV1::StopRecognizeReq& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::GrpcLibraryV1::StopRecognizeResp>>(PrepareAsyncStopRecognizeRaw(context, request, cq));
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::GrpcLibraryV1::StopRecognizeAudioResp>> PrepareAsyncStopRecognizeAudio(::grpc::ClientContext* context, const ::GrpcLibraryV1::StopRecognizeAudioReq& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::GrpcLibraryV1::StopRecognizeAudioResp>>(PrepareAsyncStopRecognizeAudioRaw(context, request, cq));
     }
     virtual ::grpc::Status GetChatMessage(::grpc::ClientContext* context, const ::GrpcLibraryV1::GetChatMessageReq& request, ::GrpcLibraryV1::GetChatMessageResp* response) = 0;
     std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::GrpcLibraryV1::GetChatMessageResp>> AsyncGetChatMessage(::grpc::ClientContext* context, const ::GrpcLibraryV1::GetChatMessageReq& request, ::grpc::CompletionQueue* cq) {
@@ -205,9 +205,9 @@ class GrpcService final {
       virtual void Query(::grpc::ClientContext* context, const ::GrpcLibraryV1::QueryReq* request, ::grpc::ClientReadReactor< ::GrpcLibraryV1::QueryResp>* reactor) = 0;
       virtual void StopAnswer(::grpc::ClientContext* context, const ::GrpcLibraryV1::StopAnswerReq* request, ::GrpcLibraryV1::StopAnswerResp* response, std::function<void(::grpc::Status)>) = 0;
       virtual void StopAnswer(::grpc::ClientContext* context, const ::GrpcLibraryV1::StopAnswerReq* request, ::GrpcLibraryV1::StopAnswerResp* response, ::grpc::ClientUnaryReactor* reactor) = 0;
-      virtual void Recognize(::grpc::ClientContext* context, ::grpc::ClientBidiReactor< ::GrpcLibraryV1::RecognizeReq,::GrpcLibraryV1::RecognizeResp>* reactor) = 0;
-      virtual void StopRecognize(::grpc::ClientContext* context, const ::GrpcLibraryV1::StopRecognizeReq* request, ::GrpcLibraryV1::StopRecognizeResp* response, std::function<void(::grpc::Status)>) = 0;
-      virtual void StopRecognize(::grpc::ClientContext* context, const ::GrpcLibraryV1::StopRecognizeReq* request, ::GrpcLibraryV1::StopRecognizeResp* response, ::grpc::ClientUnaryReactor* reactor) = 0;
+      virtual void RecognizeAudio(::grpc::ClientContext* context, ::grpc::ClientBidiReactor< ::GrpcLibraryV1::RecognizeAudioReq,::GrpcLibraryV1::RecognizeAudioResp>* reactor) = 0;
+      virtual void StopRecognizeAudio(::grpc::ClientContext* context, const ::GrpcLibraryV1::StopRecognizeAudioReq* request, ::GrpcLibraryV1::StopRecognizeAudioResp* response, std::function<void(::grpc::Status)>) = 0;
+      virtual void StopRecognizeAudio(::grpc::ClientContext* context, const ::GrpcLibraryV1::StopRecognizeAudioReq* request, ::GrpcLibraryV1::StopRecognizeAudioResp* response, ::grpc::ClientUnaryReactor* reactor) = 0;
       virtual void GetChatMessage(::grpc::ClientContext* context, const ::GrpcLibraryV1::GetChatMessageReq* request, ::GrpcLibraryV1::GetChatMessageResp* response, std::function<void(::grpc::Status)>) = 0;
       virtual void GetChatMessage(::grpc::ClientContext* context, const ::GrpcLibraryV1::GetChatMessageReq* request, ::GrpcLibraryV1::GetChatMessageResp* response, ::grpc::ClientUnaryReactor* reactor) = 0;
       virtual void GetSession(::grpc::ClientContext* context, const ::GrpcLibraryV1::GetSessionReq* request, ::GrpcLibraryV1::GetSessionResp* response, std::function<void(::grpc::Status)>) = 0;
@@ -250,11 +250,11 @@ class GrpcService final {
     virtual ::grpc::ClientAsyncReaderInterface< ::GrpcLibraryV1::QueryResp>* PrepareAsyncQueryRaw(::grpc::ClientContext* context, const ::GrpcLibraryV1::QueryReq& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::GrpcLibraryV1::StopAnswerResp>* AsyncStopAnswerRaw(::grpc::ClientContext* context, const ::GrpcLibraryV1::StopAnswerReq& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::GrpcLibraryV1::StopAnswerResp>* PrepareAsyncStopAnswerRaw(::grpc::ClientContext* context, const ::GrpcLibraryV1::StopAnswerReq& request, ::grpc::CompletionQueue* cq) = 0;
-    virtual ::grpc::ClientReaderWriterInterface< ::GrpcLibraryV1::RecognizeReq, ::GrpcLibraryV1::RecognizeResp>* RecognizeRaw(::grpc::ClientContext* context) = 0;
-    virtual ::grpc::ClientAsyncReaderWriterInterface< ::GrpcLibraryV1::RecognizeReq, ::GrpcLibraryV1::RecognizeResp>* AsyncRecognizeRaw(::grpc::ClientContext* context, ::grpc::CompletionQueue* cq, void* tag) = 0;
-    virtual ::grpc::ClientAsyncReaderWriterInterface< ::GrpcLibraryV1::RecognizeReq, ::GrpcLibraryV1::RecognizeResp>* PrepareAsyncRecognizeRaw(::grpc::ClientContext* context, ::grpc::CompletionQueue* cq) = 0;
-    virtual ::grpc::ClientAsyncResponseReaderInterface< ::GrpcLibraryV1::StopRecognizeResp>* AsyncStopRecognizeRaw(::grpc::ClientContext* context, const ::GrpcLibraryV1::StopRecognizeReq& request, ::grpc::CompletionQueue* cq) = 0;
-    virtual ::grpc::ClientAsyncResponseReaderInterface< ::GrpcLibraryV1::StopRecognizeResp>* PrepareAsyncStopRecognizeRaw(::grpc::ClientContext* context, const ::GrpcLibraryV1::StopRecognizeReq& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientReaderWriterInterface< ::GrpcLibraryV1::RecognizeAudioReq, ::GrpcLibraryV1::RecognizeAudioResp>* RecognizeAudioRaw(::grpc::ClientContext* context) = 0;
+    virtual ::grpc::ClientAsyncReaderWriterInterface< ::GrpcLibraryV1::RecognizeAudioReq, ::GrpcLibraryV1::RecognizeAudioResp>* AsyncRecognizeAudioRaw(::grpc::ClientContext* context, ::grpc::CompletionQueue* cq, void* tag) = 0;
+    virtual ::grpc::ClientAsyncReaderWriterInterface< ::GrpcLibraryV1::RecognizeAudioReq, ::GrpcLibraryV1::RecognizeAudioResp>* PrepareAsyncRecognizeAudioRaw(::grpc::ClientContext* context, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::GrpcLibraryV1::StopRecognizeAudioResp>* AsyncStopRecognizeAudioRaw(::grpc::ClientContext* context, const ::GrpcLibraryV1::StopRecognizeAudioReq& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::GrpcLibraryV1::StopRecognizeAudioResp>* PrepareAsyncStopRecognizeAudioRaw(::grpc::ClientContext* context, const ::GrpcLibraryV1::StopRecognizeAudioReq& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::GrpcLibraryV1::GetChatMessageResp>* AsyncGetChatMessageRaw(::grpc::ClientContext* context, const ::GrpcLibraryV1::GetChatMessageReq& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::GrpcLibraryV1::GetChatMessageResp>* PrepareAsyncGetChatMessageRaw(::grpc::ClientContext* context, const ::GrpcLibraryV1::GetChatMessageReq& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::GrpcLibraryV1::GetSessionResp>* AsyncGetSessionRaw(::grpc::ClientContext* context, const ::GrpcLibraryV1::GetSessionReq& request, ::grpc::CompletionQueue* cq) = 0;
@@ -331,21 +331,21 @@ class GrpcService final {
     std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::GrpcLibraryV1::StopAnswerResp>> PrepareAsyncStopAnswer(::grpc::ClientContext* context, const ::GrpcLibraryV1::StopAnswerReq& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::GrpcLibraryV1::StopAnswerResp>>(PrepareAsyncStopAnswerRaw(context, request, cq));
     }
-    std::unique_ptr< ::grpc::ClientReaderWriter< ::GrpcLibraryV1::RecognizeReq, ::GrpcLibraryV1::RecognizeResp>> Recognize(::grpc::ClientContext* context) {
-      return std::unique_ptr< ::grpc::ClientReaderWriter< ::GrpcLibraryV1::RecognizeReq, ::GrpcLibraryV1::RecognizeResp>>(RecognizeRaw(context));
+    std::unique_ptr< ::grpc::ClientReaderWriter< ::GrpcLibraryV1::RecognizeAudioReq, ::GrpcLibraryV1::RecognizeAudioResp>> RecognizeAudio(::grpc::ClientContext* context) {
+      return std::unique_ptr< ::grpc::ClientReaderWriter< ::GrpcLibraryV1::RecognizeAudioReq, ::GrpcLibraryV1::RecognizeAudioResp>>(RecognizeAudioRaw(context));
     }
-    std::unique_ptr<  ::grpc::ClientAsyncReaderWriter< ::GrpcLibraryV1::RecognizeReq, ::GrpcLibraryV1::RecognizeResp>> AsyncRecognize(::grpc::ClientContext* context, ::grpc::CompletionQueue* cq, void* tag) {
-      return std::unique_ptr< ::grpc::ClientAsyncReaderWriter< ::GrpcLibraryV1::RecognizeReq, ::GrpcLibraryV1::RecognizeResp>>(AsyncRecognizeRaw(context, cq, tag));
+    std::unique_ptr<  ::grpc::ClientAsyncReaderWriter< ::GrpcLibraryV1::RecognizeAudioReq, ::GrpcLibraryV1::RecognizeAudioResp>> AsyncRecognizeAudio(::grpc::ClientContext* context, ::grpc::CompletionQueue* cq, void* tag) {
+      return std::unique_ptr< ::grpc::ClientAsyncReaderWriter< ::GrpcLibraryV1::RecognizeAudioReq, ::GrpcLibraryV1::RecognizeAudioResp>>(AsyncRecognizeAudioRaw(context, cq, tag));
     }
-    std::unique_ptr<  ::grpc::ClientAsyncReaderWriter< ::GrpcLibraryV1::RecognizeReq, ::GrpcLibraryV1::RecognizeResp>> PrepareAsyncRecognize(::grpc::ClientContext* context, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncReaderWriter< ::GrpcLibraryV1::RecognizeReq, ::GrpcLibraryV1::RecognizeResp>>(PrepareAsyncRecognizeRaw(context, cq));
+    std::unique_ptr<  ::grpc::ClientAsyncReaderWriter< ::GrpcLibraryV1::RecognizeAudioReq, ::GrpcLibraryV1::RecognizeAudioResp>> PrepareAsyncRecognizeAudio(::grpc::ClientContext* context, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncReaderWriter< ::GrpcLibraryV1::RecognizeAudioReq, ::GrpcLibraryV1::RecognizeAudioResp>>(PrepareAsyncRecognizeAudioRaw(context, cq));
     }
-    ::grpc::Status StopRecognize(::grpc::ClientContext* context, const ::GrpcLibraryV1::StopRecognizeReq& request, ::GrpcLibraryV1::StopRecognizeResp* response) override;
-    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::GrpcLibraryV1::StopRecognizeResp>> AsyncStopRecognize(::grpc::ClientContext* context, const ::GrpcLibraryV1::StopRecognizeReq& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::GrpcLibraryV1::StopRecognizeResp>>(AsyncStopRecognizeRaw(context, request, cq));
+    ::grpc::Status StopRecognizeAudio(::grpc::ClientContext* context, const ::GrpcLibraryV1::StopRecognizeAudioReq& request, ::GrpcLibraryV1::StopRecognizeAudioResp* response) override;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::GrpcLibraryV1::StopRecognizeAudioResp>> AsyncStopRecognizeAudio(::grpc::ClientContext* context, const ::GrpcLibraryV1::StopRecognizeAudioReq& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::GrpcLibraryV1::StopRecognizeAudioResp>>(AsyncStopRecognizeAudioRaw(context, request, cq));
     }
-    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::GrpcLibraryV1::StopRecognizeResp>> PrepareAsyncStopRecognize(::grpc::ClientContext* context, const ::GrpcLibraryV1::StopRecognizeReq& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::GrpcLibraryV1::StopRecognizeResp>>(PrepareAsyncStopRecognizeRaw(context, request, cq));
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::GrpcLibraryV1::StopRecognizeAudioResp>> PrepareAsyncStopRecognizeAudio(::grpc::ClientContext* context, const ::GrpcLibraryV1::StopRecognizeAudioReq& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::GrpcLibraryV1::StopRecognizeAudioResp>>(PrepareAsyncStopRecognizeAudioRaw(context, request, cq));
     }
     ::grpc::Status GetChatMessage(::grpc::ClientContext* context, const ::GrpcLibraryV1::GetChatMessageReq& request, ::GrpcLibraryV1::GetChatMessageResp* response) override;
     std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::GrpcLibraryV1::GetChatMessageResp>> AsyncGetChatMessage(::grpc::ClientContext* context, const ::GrpcLibraryV1::GetChatMessageReq& request, ::grpc::CompletionQueue* cq) {
@@ -456,9 +456,9 @@ class GrpcService final {
       void Query(::grpc::ClientContext* context, const ::GrpcLibraryV1::QueryReq* request, ::grpc::ClientReadReactor< ::GrpcLibraryV1::QueryResp>* reactor) override;
       void StopAnswer(::grpc::ClientContext* context, const ::GrpcLibraryV1::StopAnswerReq* request, ::GrpcLibraryV1::StopAnswerResp* response, std::function<void(::grpc::Status)>) override;
       void StopAnswer(::grpc::ClientContext* context, const ::GrpcLibraryV1::StopAnswerReq* request, ::GrpcLibraryV1::StopAnswerResp* response, ::grpc::ClientUnaryReactor* reactor) override;
-      void Recognize(::grpc::ClientContext* context, ::grpc::ClientBidiReactor< ::GrpcLibraryV1::RecognizeReq,::GrpcLibraryV1::RecognizeResp>* reactor) override;
-      void StopRecognize(::grpc::ClientContext* context, const ::GrpcLibraryV1::StopRecognizeReq* request, ::GrpcLibraryV1::StopRecognizeResp* response, std::function<void(::grpc::Status)>) override;
-      void StopRecognize(::grpc::ClientContext* context, const ::GrpcLibraryV1::StopRecognizeReq* request, ::GrpcLibraryV1::StopRecognizeResp* response, ::grpc::ClientUnaryReactor* reactor) override;
+      void RecognizeAudio(::grpc::ClientContext* context, ::grpc::ClientBidiReactor< ::GrpcLibraryV1::RecognizeAudioReq,::GrpcLibraryV1::RecognizeAudioResp>* reactor) override;
+      void StopRecognizeAudio(::grpc::ClientContext* context, const ::GrpcLibraryV1::StopRecognizeAudioReq* request, ::GrpcLibraryV1::StopRecognizeAudioResp* response, std::function<void(::grpc::Status)>) override;
+      void StopRecognizeAudio(::grpc::ClientContext* context, const ::GrpcLibraryV1::StopRecognizeAudioReq* request, ::GrpcLibraryV1::StopRecognizeAudioResp* response, ::grpc::ClientUnaryReactor* reactor) override;
       void GetChatMessage(::grpc::ClientContext* context, const ::GrpcLibraryV1::GetChatMessageReq* request, ::GrpcLibraryV1::GetChatMessageResp* response, std::function<void(::grpc::Status)>) override;
       void GetChatMessage(::grpc::ClientContext* context, const ::GrpcLibraryV1::GetChatMessageReq* request, ::GrpcLibraryV1::GetChatMessageResp* response, ::grpc::ClientUnaryReactor* reactor) override;
       void GetSession(::grpc::ClientContext* context, const ::GrpcLibraryV1::GetSessionReq* request, ::GrpcLibraryV1::GetSessionResp* response, std::function<void(::grpc::Status)>) override;
@@ -507,11 +507,11 @@ class GrpcService final {
     ::grpc::ClientAsyncReader< ::GrpcLibraryV1::QueryResp>* PrepareAsyncQueryRaw(::grpc::ClientContext* context, const ::GrpcLibraryV1::QueryReq& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::GrpcLibraryV1::StopAnswerResp>* AsyncStopAnswerRaw(::grpc::ClientContext* context, const ::GrpcLibraryV1::StopAnswerReq& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::GrpcLibraryV1::StopAnswerResp>* PrepareAsyncStopAnswerRaw(::grpc::ClientContext* context, const ::GrpcLibraryV1::StopAnswerReq& request, ::grpc::CompletionQueue* cq) override;
-    ::grpc::ClientReaderWriter< ::GrpcLibraryV1::RecognizeReq, ::GrpcLibraryV1::RecognizeResp>* RecognizeRaw(::grpc::ClientContext* context) override;
-    ::grpc::ClientAsyncReaderWriter< ::GrpcLibraryV1::RecognizeReq, ::GrpcLibraryV1::RecognizeResp>* AsyncRecognizeRaw(::grpc::ClientContext* context, ::grpc::CompletionQueue* cq, void* tag) override;
-    ::grpc::ClientAsyncReaderWriter< ::GrpcLibraryV1::RecognizeReq, ::GrpcLibraryV1::RecognizeResp>* PrepareAsyncRecognizeRaw(::grpc::ClientContext* context, ::grpc::CompletionQueue* cq) override;
-    ::grpc::ClientAsyncResponseReader< ::GrpcLibraryV1::StopRecognizeResp>* AsyncStopRecognizeRaw(::grpc::ClientContext* context, const ::GrpcLibraryV1::StopRecognizeReq& request, ::grpc::CompletionQueue* cq) override;
-    ::grpc::ClientAsyncResponseReader< ::GrpcLibraryV1::StopRecognizeResp>* PrepareAsyncStopRecognizeRaw(::grpc::ClientContext* context, const ::GrpcLibraryV1::StopRecognizeReq& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientReaderWriter< ::GrpcLibraryV1::RecognizeAudioReq, ::GrpcLibraryV1::RecognizeAudioResp>* RecognizeAudioRaw(::grpc::ClientContext* context) override;
+    ::grpc::ClientAsyncReaderWriter< ::GrpcLibraryV1::RecognizeAudioReq, ::GrpcLibraryV1::RecognizeAudioResp>* AsyncRecognizeAudioRaw(::grpc::ClientContext* context, ::grpc::CompletionQueue* cq, void* tag) override;
+    ::grpc::ClientAsyncReaderWriter< ::GrpcLibraryV1::RecognizeAudioReq, ::GrpcLibraryV1::RecognizeAudioResp>* PrepareAsyncRecognizeAudioRaw(::grpc::ClientContext* context, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::GrpcLibraryV1::StopRecognizeAudioResp>* AsyncStopRecognizeAudioRaw(::grpc::ClientContext* context, const ::GrpcLibraryV1::StopRecognizeAudioReq& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::GrpcLibraryV1::StopRecognizeAudioResp>* PrepareAsyncStopRecognizeAudioRaw(::grpc::ClientContext* context, const ::GrpcLibraryV1::StopRecognizeAudioReq& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::GrpcLibraryV1::GetChatMessageResp>* AsyncGetChatMessageRaw(::grpc::ClientContext* context, const ::GrpcLibraryV1::GetChatMessageReq& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::GrpcLibraryV1::GetChatMessageResp>* PrepareAsyncGetChatMessageRaw(::grpc::ClientContext* context, const ::GrpcLibraryV1::GetChatMessageReq& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::GrpcLibraryV1::GetSessionResp>* AsyncGetSessionRaw(::grpc::ClientContext* context, const ::GrpcLibraryV1::GetSessionReq& request, ::grpc::CompletionQueue* cq) override;
@@ -546,8 +546,8 @@ class GrpcService final {
     const ::grpc::internal::RpcMethod rpcmethod_RegAccount_;
     const ::grpc::internal::RpcMethod rpcmethod_Query_;
     const ::grpc::internal::RpcMethod rpcmethod_StopAnswer_;
-    const ::grpc::internal::RpcMethod rpcmethod_Recognize_;
-    const ::grpc::internal::RpcMethod rpcmethod_StopRecognize_;
+    const ::grpc::internal::RpcMethod rpcmethod_RecognizeAudio_;
+    const ::grpc::internal::RpcMethod rpcmethod_StopRecognizeAudio_;
     const ::grpc::internal::RpcMethod rpcmethod_GetChatMessage_;
     const ::grpc::internal::RpcMethod rpcmethod_GetSession_;
     const ::grpc::internal::RpcMethod rpcmethod_NewSession_;
@@ -574,8 +574,8 @@ class GrpcService final {
     virtual ::grpc::Status RegAccount(::grpc::ServerContext* context, const ::GrpcLibraryV1::RegAccountReq* request, ::GrpcLibraryV1::RegAccountResp* response);
     virtual ::grpc::Status Query(::grpc::ServerContext* context, const ::GrpcLibraryV1::QueryReq* request, ::grpc::ServerWriter< ::GrpcLibraryV1::QueryResp>* writer);
     virtual ::grpc::Status StopAnswer(::grpc::ServerContext* context, const ::GrpcLibraryV1::StopAnswerReq* request, ::GrpcLibraryV1::StopAnswerResp* response);
-    virtual ::grpc::Status Recognize(::grpc::ServerContext* context, ::grpc::ServerReaderWriter< ::GrpcLibraryV1::RecognizeResp, ::GrpcLibraryV1::RecognizeReq>* stream);
-    virtual ::grpc::Status StopRecognize(::grpc::ServerContext* context, const ::GrpcLibraryV1::StopRecognizeReq* request, ::GrpcLibraryV1::StopRecognizeResp* response);
+    virtual ::grpc::Status RecognizeAudio(::grpc::ServerContext* context, ::grpc::ServerReaderWriter< ::GrpcLibraryV1::RecognizeAudioResp, ::GrpcLibraryV1::RecognizeAudioReq>* stream);
+    virtual ::grpc::Status StopRecognizeAudio(::grpc::ServerContext* context, const ::GrpcLibraryV1::StopRecognizeAudioReq* request, ::GrpcLibraryV1::StopRecognizeAudioResp* response);
     virtual ::grpc::Status GetChatMessage(::grpc::ServerContext* context, const ::GrpcLibraryV1::GetChatMessageReq* request, ::GrpcLibraryV1::GetChatMessageResp* response);
     virtual ::grpc::Status GetSession(::grpc::ServerContext* context, const ::GrpcLibraryV1::GetSessionReq* request, ::GrpcLibraryV1::GetSessionResp* response);
     virtual ::grpc::Status NewSession(::grpc::ServerContext* context, const ::GrpcLibraryV1::NewSessionReq* request, ::GrpcLibraryV1::NewSessionResp* response);
@@ -711,42 +711,42 @@ class GrpcService final {
     }
   };
   template <class BaseClass>
-  class WithAsyncMethod_Recognize : public BaseClass {
+  class WithAsyncMethod_RecognizeAudio : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    WithAsyncMethod_Recognize() {
+    WithAsyncMethod_RecognizeAudio() {
       ::grpc::Service::MarkMethodAsync(6);
     }
-    ~WithAsyncMethod_Recognize() override {
+    ~WithAsyncMethod_RecognizeAudio() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status Recognize(::grpc::ServerContext* /*context*/, ::grpc::ServerReaderWriter< ::GrpcLibraryV1::RecognizeResp, ::GrpcLibraryV1::RecognizeReq>* /*stream*/)  override {
+    ::grpc::Status RecognizeAudio(::grpc::ServerContext* /*context*/, ::grpc::ServerReaderWriter< ::GrpcLibraryV1::RecognizeAudioResp, ::GrpcLibraryV1::RecognizeAudioReq>* /*stream*/)  override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    void RequestRecognize(::grpc::ServerContext* context, ::grpc::ServerAsyncReaderWriter< ::GrpcLibraryV1::RecognizeResp, ::GrpcLibraryV1::RecognizeReq>* stream, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+    void RequestRecognizeAudio(::grpc::ServerContext* context, ::grpc::ServerAsyncReaderWriter< ::GrpcLibraryV1::RecognizeAudioResp, ::GrpcLibraryV1::RecognizeAudioReq>* stream, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
       ::grpc::Service::RequestAsyncBidiStreaming(6, context, stream, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
-  class WithAsyncMethod_StopRecognize : public BaseClass {
+  class WithAsyncMethod_StopRecognizeAudio : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    WithAsyncMethod_StopRecognize() {
+    WithAsyncMethod_StopRecognizeAudio() {
       ::grpc::Service::MarkMethodAsync(7);
     }
-    ~WithAsyncMethod_StopRecognize() override {
+    ~WithAsyncMethod_StopRecognizeAudio() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status StopRecognize(::grpc::ServerContext* /*context*/, const ::GrpcLibraryV1::StopRecognizeReq* /*request*/, ::GrpcLibraryV1::StopRecognizeResp* /*response*/) override {
+    ::grpc::Status StopRecognizeAudio(::grpc::ServerContext* /*context*/, const ::GrpcLibraryV1::StopRecognizeAudioReq* /*request*/, ::GrpcLibraryV1::StopRecognizeAudioResp* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    void RequestStopRecognize(::grpc::ServerContext* context, ::GrpcLibraryV1::StopRecognizeReq* request, ::grpc::ServerAsyncResponseWriter< ::GrpcLibraryV1::StopRecognizeResp>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+    void RequestStopRecognizeAudio(::grpc::ServerContext* context, ::GrpcLibraryV1::StopRecognizeAudioReq* request, ::grpc::ServerAsyncResponseWriter< ::GrpcLibraryV1::StopRecognizeAudioResp>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
       ::grpc::Service::RequestAsyncUnary(7, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
@@ -1010,7 +1010,7 @@ class GrpcService final {
       ::grpc::Service::RequestAsyncUnary(20, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
-  typedef WithAsyncMethod_Heartbeat<WithAsyncMethod_Login<WithAsyncMethod_Logout<WithAsyncMethod_RegAccount<WithAsyncMethod_Query<WithAsyncMethod_StopAnswer<WithAsyncMethod_Recognize<WithAsyncMethod_StopRecognize<WithAsyncMethod_GetChatMessage<WithAsyncMethod_GetSession<WithAsyncMethod_NewSession<WithAsyncMethod_ModifySessionTitle<WithAsyncMethod_DelSession<WithAsyncMethod_GetPluginInfo<WithAsyncMethod_Download<WithAsyncMethod_Upload<WithAsyncMethod_Embedding<WithAsyncMethod_StopEmbedding<WithAsyncMethod_Publish<WithAsyncMethod_Subscribe<WithAsyncMethod_UnSubscribe<Service > > > > > > > > > > > > > > > > > > > > > AsyncService;
+  typedef WithAsyncMethod_Heartbeat<WithAsyncMethod_Login<WithAsyncMethod_Logout<WithAsyncMethod_RegAccount<WithAsyncMethod_Query<WithAsyncMethod_StopAnswer<WithAsyncMethod_RecognizeAudio<WithAsyncMethod_StopRecognizeAudio<WithAsyncMethod_GetChatMessage<WithAsyncMethod_GetSession<WithAsyncMethod_NewSession<WithAsyncMethod_ModifySessionTitle<WithAsyncMethod_DelSession<WithAsyncMethod_GetPluginInfo<WithAsyncMethod_Download<WithAsyncMethod_Upload<WithAsyncMethod_Embedding<WithAsyncMethod_StopEmbedding<WithAsyncMethod_Publish<WithAsyncMethod_Subscribe<WithAsyncMethod_UnSubscribe<Service > > > > > > > > > > > > > > > > > > > > > AsyncService;
   template <class BaseClass>
   class WithCallbackMethod_Heartbeat : public BaseClass {
    private:
@@ -1169,54 +1169,54 @@ class GrpcService final {
       ::grpc::CallbackServerContext* /*context*/, const ::GrpcLibraryV1::StopAnswerReq* /*request*/, ::GrpcLibraryV1::StopAnswerResp* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class WithCallbackMethod_Recognize : public BaseClass {
+  class WithCallbackMethod_RecognizeAudio : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    WithCallbackMethod_Recognize() {
+    WithCallbackMethod_RecognizeAudio() {
       ::grpc::Service::MarkMethodCallback(6,
-          new ::grpc::internal::CallbackBidiHandler< ::GrpcLibraryV1::RecognizeReq, ::GrpcLibraryV1::RecognizeResp>(
+          new ::grpc::internal::CallbackBidiHandler< ::GrpcLibraryV1::RecognizeAudioReq, ::GrpcLibraryV1::RecognizeAudioResp>(
             [this](
-                   ::grpc::CallbackServerContext* context) { return this->Recognize(context); }));
+                   ::grpc::CallbackServerContext* context) { return this->RecognizeAudio(context); }));
     }
-    ~WithCallbackMethod_Recognize() override {
+    ~WithCallbackMethod_RecognizeAudio() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status Recognize(::grpc::ServerContext* /*context*/, ::grpc::ServerReaderWriter< ::GrpcLibraryV1::RecognizeResp, ::GrpcLibraryV1::RecognizeReq>* /*stream*/)  override {
+    ::grpc::Status RecognizeAudio(::grpc::ServerContext* /*context*/, ::grpc::ServerReaderWriter< ::GrpcLibraryV1::RecognizeAudioResp, ::GrpcLibraryV1::RecognizeAudioReq>* /*stream*/)  override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    virtual ::grpc::ServerBidiReactor< ::GrpcLibraryV1::RecognizeReq, ::GrpcLibraryV1::RecognizeResp>* Recognize(
+    virtual ::grpc::ServerBidiReactor< ::GrpcLibraryV1::RecognizeAudioReq, ::GrpcLibraryV1::RecognizeAudioResp>* RecognizeAudio(
       ::grpc::CallbackServerContext* /*context*/)
       { return nullptr; }
   };
   template <class BaseClass>
-  class WithCallbackMethod_StopRecognize : public BaseClass {
+  class WithCallbackMethod_StopRecognizeAudio : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    WithCallbackMethod_StopRecognize() {
+    WithCallbackMethod_StopRecognizeAudio() {
       ::grpc::Service::MarkMethodCallback(7,
-          new ::grpc::internal::CallbackUnaryHandler< ::GrpcLibraryV1::StopRecognizeReq, ::GrpcLibraryV1::StopRecognizeResp>(
+          new ::grpc::internal::CallbackUnaryHandler< ::GrpcLibraryV1::StopRecognizeAudioReq, ::GrpcLibraryV1::StopRecognizeAudioResp>(
             [this](
-                   ::grpc::CallbackServerContext* context, const ::GrpcLibraryV1::StopRecognizeReq* request, ::GrpcLibraryV1::StopRecognizeResp* response) { return this->StopRecognize(context, request, response); }));}
-    void SetMessageAllocatorFor_StopRecognize(
-        ::grpc::MessageAllocator< ::GrpcLibraryV1::StopRecognizeReq, ::GrpcLibraryV1::StopRecognizeResp>* allocator) {
+                   ::grpc::CallbackServerContext* context, const ::GrpcLibraryV1::StopRecognizeAudioReq* request, ::GrpcLibraryV1::StopRecognizeAudioResp* response) { return this->StopRecognizeAudio(context, request, response); }));}
+    void SetMessageAllocatorFor_StopRecognizeAudio(
+        ::grpc::MessageAllocator< ::GrpcLibraryV1::StopRecognizeAudioReq, ::GrpcLibraryV1::StopRecognizeAudioResp>* allocator) {
       ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(7);
-      static_cast<::grpc::internal::CallbackUnaryHandler< ::GrpcLibraryV1::StopRecognizeReq, ::GrpcLibraryV1::StopRecognizeResp>*>(handler)
+      static_cast<::grpc::internal::CallbackUnaryHandler< ::GrpcLibraryV1::StopRecognizeAudioReq, ::GrpcLibraryV1::StopRecognizeAudioResp>*>(handler)
               ->SetMessageAllocator(allocator);
     }
-    ~WithCallbackMethod_StopRecognize() override {
+    ~WithCallbackMethod_StopRecognizeAudio() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status StopRecognize(::grpc::ServerContext* /*context*/, const ::GrpcLibraryV1::StopRecognizeReq* /*request*/, ::GrpcLibraryV1::StopRecognizeResp* /*response*/) override {
+    ::grpc::Status StopRecognizeAudio(::grpc::ServerContext* /*context*/, const ::GrpcLibraryV1::StopRecognizeAudioReq* /*request*/, ::GrpcLibraryV1::StopRecognizeAudioResp* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    virtual ::grpc::ServerUnaryReactor* StopRecognize(
-      ::grpc::CallbackServerContext* /*context*/, const ::GrpcLibraryV1::StopRecognizeReq* /*request*/, ::GrpcLibraryV1::StopRecognizeResp* /*response*/)  { return nullptr; }
+    virtual ::grpc::ServerUnaryReactor* StopRecognizeAudio(
+      ::grpc::CallbackServerContext* /*context*/, const ::GrpcLibraryV1::StopRecognizeAudioReq* /*request*/, ::GrpcLibraryV1::StopRecognizeAudioResp* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
   class WithCallbackMethod_GetChatMessage : public BaseClass {
@@ -1560,7 +1560,7 @@ class GrpcService final {
     virtual ::grpc::ServerUnaryReactor* UnSubscribe(
       ::grpc::CallbackServerContext* /*context*/, const ::GrpcLibraryV1::UnSubscribeReq* /*request*/, ::GrpcLibraryV1::UnSubscribeResp* /*response*/)  { return nullptr; }
   };
-  typedef WithCallbackMethod_Heartbeat<WithCallbackMethod_Login<WithCallbackMethod_Logout<WithCallbackMethod_RegAccount<WithCallbackMethod_Query<WithCallbackMethod_StopAnswer<WithCallbackMethod_Recognize<WithCallbackMethod_StopRecognize<WithCallbackMethod_GetChatMessage<WithCallbackMethod_GetSession<WithCallbackMethod_NewSession<WithCallbackMethod_ModifySessionTitle<WithCallbackMethod_DelSession<WithCallbackMethod_GetPluginInfo<WithCallbackMethod_Download<WithCallbackMethod_Upload<WithCallbackMethod_Embedding<WithCallbackMethod_StopEmbedding<WithCallbackMethod_Publish<WithCallbackMethod_Subscribe<WithCallbackMethod_UnSubscribe<Service > > > > > > > > > > > > > > > > > > > > > CallbackService;
+  typedef WithCallbackMethod_Heartbeat<WithCallbackMethod_Login<WithCallbackMethod_Logout<WithCallbackMethod_RegAccount<WithCallbackMethod_Query<WithCallbackMethod_StopAnswer<WithCallbackMethod_RecognizeAudio<WithCallbackMethod_StopRecognizeAudio<WithCallbackMethod_GetChatMessage<WithCallbackMethod_GetSession<WithCallbackMethod_NewSession<WithCallbackMethod_ModifySessionTitle<WithCallbackMethod_DelSession<WithCallbackMethod_GetPluginInfo<WithCallbackMethod_Download<WithCallbackMethod_Upload<WithCallbackMethod_Embedding<WithCallbackMethod_StopEmbedding<WithCallbackMethod_Publish<WithCallbackMethod_Subscribe<WithCallbackMethod_UnSubscribe<Service > > > > > > > > > > > > > > > > > > > > > CallbackService;
   typedef CallbackService ExperimentalCallbackService;
   template <class BaseClass>
   class WithGenericMethod_Heartbeat : public BaseClass {
@@ -1665,35 +1665,35 @@ class GrpcService final {
     }
   };
   template <class BaseClass>
-  class WithGenericMethod_Recognize : public BaseClass {
+  class WithGenericMethod_RecognizeAudio : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    WithGenericMethod_Recognize() {
+    WithGenericMethod_RecognizeAudio() {
       ::grpc::Service::MarkMethodGeneric(6);
     }
-    ~WithGenericMethod_Recognize() override {
+    ~WithGenericMethod_RecognizeAudio() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status Recognize(::grpc::ServerContext* /*context*/, ::grpc::ServerReaderWriter< ::GrpcLibraryV1::RecognizeResp, ::GrpcLibraryV1::RecognizeReq>* /*stream*/)  override {
+    ::grpc::Status RecognizeAudio(::grpc::ServerContext* /*context*/, ::grpc::ServerReaderWriter< ::GrpcLibraryV1::RecognizeAudioResp, ::GrpcLibraryV1::RecognizeAudioReq>* /*stream*/)  override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
   };
   template <class BaseClass>
-  class WithGenericMethod_StopRecognize : public BaseClass {
+  class WithGenericMethod_StopRecognizeAudio : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    WithGenericMethod_StopRecognize() {
+    WithGenericMethod_StopRecognizeAudio() {
       ::grpc::Service::MarkMethodGeneric(7);
     }
-    ~WithGenericMethod_StopRecognize() override {
+    ~WithGenericMethod_StopRecognizeAudio() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status StopRecognize(::grpc::ServerContext* /*context*/, const ::GrpcLibraryV1::StopRecognizeReq* /*request*/, ::GrpcLibraryV1::StopRecognizeResp* /*response*/) override {
+    ::grpc::Status StopRecognizeAudio(::grpc::ServerContext* /*context*/, const ::GrpcLibraryV1::StopRecognizeAudioReq* /*request*/, ::GrpcLibraryV1::StopRecognizeAudioResp* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -2040,42 +2040,42 @@ class GrpcService final {
     }
   };
   template <class BaseClass>
-  class WithRawMethod_Recognize : public BaseClass {
+  class WithRawMethod_RecognizeAudio : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    WithRawMethod_Recognize() {
+    WithRawMethod_RecognizeAudio() {
       ::grpc::Service::MarkMethodRaw(6);
     }
-    ~WithRawMethod_Recognize() override {
+    ~WithRawMethod_RecognizeAudio() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status Recognize(::grpc::ServerContext* /*context*/, ::grpc::ServerReaderWriter< ::GrpcLibraryV1::RecognizeResp, ::GrpcLibraryV1::RecognizeReq>* /*stream*/)  override {
+    ::grpc::Status RecognizeAudio(::grpc::ServerContext* /*context*/, ::grpc::ServerReaderWriter< ::GrpcLibraryV1::RecognizeAudioResp, ::GrpcLibraryV1::RecognizeAudioReq>* /*stream*/)  override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    void RequestRecognize(::grpc::ServerContext* context, ::grpc::ServerAsyncReaderWriter< ::grpc::ByteBuffer, ::grpc::ByteBuffer>* stream, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+    void RequestRecognizeAudio(::grpc::ServerContext* context, ::grpc::ServerAsyncReaderWriter< ::grpc::ByteBuffer, ::grpc::ByteBuffer>* stream, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
       ::grpc::Service::RequestAsyncBidiStreaming(6, context, stream, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
-  class WithRawMethod_StopRecognize : public BaseClass {
+  class WithRawMethod_StopRecognizeAudio : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    WithRawMethod_StopRecognize() {
+    WithRawMethod_StopRecognizeAudio() {
       ::grpc::Service::MarkMethodRaw(7);
     }
-    ~WithRawMethod_StopRecognize() override {
+    ~WithRawMethod_StopRecognizeAudio() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status StopRecognize(::grpc::ServerContext* /*context*/, const ::GrpcLibraryV1::StopRecognizeReq* /*request*/, ::GrpcLibraryV1::StopRecognizeResp* /*response*/) override {
+    ::grpc::Status StopRecognizeAudio(::grpc::ServerContext* /*context*/, const ::GrpcLibraryV1::StopRecognizeAudioReq* /*request*/, ::GrpcLibraryV1::StopRecognizeAudioResp* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    void RequestStopRecognize(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+    void RequestStopRecognizeAudio(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
       ::grpc::Service::RequestAsyncUnary(7, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
@@ -2472,48 +2472,48 @@ class GrpcService final {
       ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class WithRawCallbackMethod_Recognize : public BaseClass {
+  class WithRawCallbackMethod_RecognizeAudio : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    WithRawCallbackMethod_Recognize() {
+    WithRawCallbackMethod_RecognizeAudio() {
       ::grpc::Service::MarkMethodRawCallback(6,
           new ::grpc::internal::CallbackBidiHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
             [this](
-                   ::grpc::CallbackServerContext* context) { return this->Recognize(context); }));
+                   ::grpc::CallbackServerContext* context) { return this->RecognizeAudio(context); }));
     }
-    ~WithRawCallbackMethod_Recognize() override {
+    ~WithRawCallbackMethod_RecognizeAudio() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status Recognize(::grpc::ServerContext* /*context*/, ::grpc::ServerReaderWriter< ::GrpcLibraryV1::RecognizeResp, ::GrpcLibraryV1::RecognizeReq>* /*stream*/)  override {
+    ::grpc::Status RecognizeAudio(::grpc::ServerContext* /*context*/, ::grpc::ServerReaderWriter< ::GrpcLibraryV1::RecognizeAudioResp, ::GrpcLibraryV1::RecognizeAudioReq>* /*stream*/)  override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    virtual ::grpc::ServerBidiReactor< ::grpc::ByteBuffer, ::grpc::ByteBuffer>* Recognize(
+    virtual ::grpc::ServerBidiReactor< ::grpc::ByteBuffer, ::grpc::ByteBuffer>* RecognizeAudio(
       ::grpc::CallbackServerContext* /*context*/)
       { return nullptr; }
   };
   template <class BaseClass>
-  class WithRawCallbackMethod_StopRecognize : public BaseClass {
+  class WithRawCallbackMethod_StopRecognizeAudio : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    WithRawCallbackMethod_StopRecognize() {
+    WithRawCallbackMethod_StopRecognizeAudio() {
       ::grpc::Service::MarkMethodRawCallback(7,
           new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
             [this](
-                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->StopRecognize(context, request, response); }));
+                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->StopRecognizeAudio(context, request, response); }));
     }
-    ~WithRawCallbackMethod_StopRecognize() override {
+    ~WithRawCallbackMethod_StopRecognizeAudio() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status StopRecognize(::grpc::ServerContext* /*context*/, const ::GrpcLibraryV1::StopRecognizeReq* /*request*/, ::GrpcLibraryV1::StopRecognizeResp* /*response*/) override {
+    ::grpc::Status StopRecognizeAudio(::grpc::ServerContext* /*context*/, const ::GrpcLibraryV1::StopRecognizeAudioReq* /*request*/, ::GrpcLibraryV1::StopRecognizeAudioResp* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    virtual ::grpc::ServerUnaryReactor* StopRecognize(
+    virtual ::grpc::ServerUnaryReactor* StopRecognizeAudio(
       ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
@@ -2939,31 +2939,31 @@ class GrpcService final {
     virtual ::grpc::Status StreamedStopAnswer(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::GrpcLibraryV1::StopAnswerReq,::GrpcLibraryV1::StopAnswerResp>* server_unary_streamer) = 0;
   };
   template <class BaseClass>
-  class WithStreamedUnaryMethod_StopRecognize : public BaseClass {
+  class WithStreamedUnaryMethod_StopRecognizeAudio : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    WithStreamedUnaryMethod_StopRecognize() {
+    WithStreamedUnaryMethod_StopRecognizeAudio() {
       ::grpc::Service::MarkMethodStreamed(7,
         new ::grpc::internal::StreamedUnaryHandler<
-          ::GrpcLibraryV1::StopRecognizeReq, ::GrpcLibraryV1::StopRecognizeResp>(
+          ::GrpcLibraryV1::StopRecognizeAudioReq, ::GrpcLibraryV1::StopRecognizeAudioResp>(
             [this](::grpc::ServerContext* context,
                    ::grpc::ServerUnaryStreamer<
-                     ::GrpcLibraryV1::StopRecognizeReq, ::GrpcLibraryV1::StopRecognizeResp>* streamer) {
-                       return this->StreamedStopRecognize(context,
+                     ::GrpcLibraryV1::StopRecognizeAudioReq, ::GrpcLibraryV1::StopRecognizeAudioResp>* streamer) {
+                       return this->StreamedStopRecognizeAudio(context,
                          streamer);
                   }));
     }
-    ~WithStreamedUnaryMethod_StopRecognize() override {
+    ~WithStreamedUnaryMethod_StopRecognizeAudio() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable regular version of this method
-    ::grpc::Status StopRecognize(::grpc::ServerContext* /*context*/, const ::GrpcLibraryV1::StopRecognizeReq* /*request*/, ::GrpcLibraryV1::StopRecognizeResp* /*response*/) override {
+    ::grpc::Status StopRecognizeAudio(::grpc::ServerContext* /*context*/, const ::GrpcLibraryV1::StopRecognizeAudioReq* /*request*/, ::GrpcLibraryV1::StopRecognizeAudioResp* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     // replace default version of method with streamed unary
-    virtual ::grpc::Status StreamedStopRecognize(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::GrpcLibraryV1::StopRecognizeReq,::GrpcLibraryV1::StopRecognizeResp>* server_unary_streamer) = 0;
+    virtual ::grpc::Status StreamedStopRecognizeAudio(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::GrpcLibraryV1::StopRecognizeAudioReq,::GrpcLibraryV1::StopRecognizeAudioResp>* server_unary_streamer) = 0;
   };
   template <class BaseClass>
   class WithStreamedUnaryMethod_GetChatMessage : public BaseClass {
@@ -3262,7 +3262,7 @@ class GrpcService final {
     // replace default version of method with streamed unary
     virtual ::grpc::Status StreamedUnSubscribe(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::GrpcLibraryV1::UnSubscribeReq,::GrpcLibraryV1::UnSubscribeResp>* server_unary_streamer) = 0;
   };
-  typedef WithStreamedUnaryMethod_Heartbeat<WithStreamedUnaryMethod_Login<WithStreamedUnaryMethod_Logout<WithStreamedUnaryMethod_RegAccount<WithStreamedUnaryMethod_StopAnswer<WithStreamedUnaryMethod_StopRecognize<WithStreamedUnaryMethod_GetChatMessage<WithStreamedUnaryMethod_GetSession<WithStreamedUnaryMethod_NewSession<WithStreamedUnaryMethod_ModifySessionTitle<WithStreamedUnaryMethod_DelSession<WithStreamedUnaryMethod_GetPluginInfo<WithStreamedUnaryMethod_Download<WithStreamedUnaryMethod_Upload<WithStreamedUnaryMethod_StopEmbedding<WithStreamedUnaryMethod_Publish<WithStreamedUnaryMethod_UnSubscribe<Service > > > > > > > > > > > > > > > > > StreamedUnaryService;
+  typedef WithStreamedUnaryMethod_Heartbeat<WithStreamedUnaryMethod_Login<WithStreamedUnaryMethod_Logout<WithStreamedUnaryMethod_RegAccount<WithStreamedUnaryMethod_StopAnswer<WithStreamedUnaryMethod_StopRecognizeAudio<WithStreamedUnaryMethod_GetChatMessage<WithStreamedUnaryMethod_GetSession<WithStreamedUnaryMethod_NewSession<WithStreamedUnaryMethod_ModifySessionTitle<WithStreamedUnaryMethod_DelSession<WithStreamedUnaryMethod_GetPluginInfo<WithStreamedUnaryMethod_Download<WithStreamedUnaryMethod_Upload<WithStreamedUnaryMethod_StopEmbedding<WithStreamedUnaryMethod_Publish<WithStreamedUnaryMethod_UnSubscribe<Service > > > > > > > > > > > > > > > > > StreamedUnaryService;
   template <class BaseClass>
   class WithSplitStreamingMethod_Query : public BaseClass {
    private:
@@ -3318,7 +3318,7 @@ class GrpcService final {
     virtual ::grpc::Status StreamedSubscribe(::grpc::ServerContext* context, ::grpc::ServerSplitStreamer< ::GrpcLibraryV1::SubscribeReq,::GrpcLibraryV1::PubMessage>* server_split_streamer) = 0;
   };
   typedef WithSplitStreamingMethod_Query<WithSplitStreamingMethod_Subscribe<Service > > SplitStreamedService;
-  typedef WithStreamedUnaryMethod_Heartbeat<WithStreamedUnaryMethod_Login<WithStreamedUnaryMethod_Logout<WithStreamedUnaryMethod_RegAccount<WithSplitStreamingMethod_Query<WithStreamedUnaryMethod_StopAnswer<WithStreamedUnaryMethod_StopRecognize<WithStreamedUnaryMethod_GetChatMessage<WithStreamedUnaryMethod_GetSession<WithStreamedUnaryMethod_NewSession<WithStreamedUnaryMethod_ModifySessionTitle<WithStreamedUnaryMethod_DelSession<WithStreamedUnaryMethod_GetPluginInfo<WithStreamedUnaryMethod_Download<WithStreamedUnaryMethod_Upload<WithStreamedUnaryMethod_StopEmbedding<WithStreamedUnaryMethod_Publish<WithSplitStreamingMethod_Subscribe<WithStreamedUnaryMethod_UnSubscribe<Service > > > > > > > > > > > > > > > > > > > StreamedService;
+  typedef WithStreamedUnaryMethod_Heartbeat<WithStreamedUnaryMethod_Login<WithStreamedUnaryMethod_Logout<WithStreamedUnaryMethod_RegAccount<WithSplitStreamingMethod_Query<WithStreamedUnaryMethod_StopAnswer<WithStreamedUnaryMethod_StopRecognizeAudio<WithStreamedUnaryMethod_GetChatMessage<WithStreamedUnaryMethod_GetSession<WithStreamedUnaryMethod_NewSession<WithStreamedUnaryMethod_ModifySessionTitle<WithStreamedUnaryMethod_DelSession<WithStreamedUnaryMethod_GetPluginInfo<WithStreamedUnaryMethod_Download<WithStreamedUnaryMethod_Upload<WithStreamedUnaryMethod_StopEmbedding<WithStreamedUnaryMethod_Publish<WithSplitStreamingMethod_Subscribe<WithStreamedUnaryMethod_UnSubscribe<Service > > > > > > > > > > > > > > > > > > > StreamedService;
 };
 
 }  // namespace GrpcLibraryV1
