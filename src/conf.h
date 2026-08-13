@@ -63,6 +63,7 @@ class conf
         std::string path;
         std::size_t capa;
         std::size_t min_sz;
+        std::string sql_path;
     };
 
   public:

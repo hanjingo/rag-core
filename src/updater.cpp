@@ -2,9 +2,11 @@
 
 #include <hj/log/logger.hpp>
 #include <hj/util/string_util.hpp>
+#include <hj/db/sqlite.hpp>
 
 #include "global.h"
 #include "conf.h"
+#include "db_mgr.h"
 
 bool updater::check(const std::string &platform,
                     const std::string &arch,
@@ -117,5 +119,107 @@ void updater::init(bool force)
                   item.second.version_major,
                   item.second.version_minor,
                   item.second.version_patch);
+    }
+
+    // migrate database schema if needed
+    migrate();
+}
+
+void updater::migrate()
+{
+    // init sqlite database schema if not exists
+    auto sqlite_confs = conf::instance().sqlites();
+    for(auto conf : sqlite_confs)
+    {
+        LOG_INFO("SQLite config - id: {}, path: {}, capa: {}, min_sz: {}, "
+                 "sql_path: {}",
+                 conf.id,
+                 conf.path,
+                 conf.capa,
+                 conf.min_sz,
+                 conf.sql_path);
+
+        // Check if the schema_version table exists
+        hj::sqlite sqlite;
+        if(!sqlite.open(conf.path))
+        {
+            LOG_ERROR("Failed to open SQLite database at path: {}. Error: {}",
+                      conf.path,
+                      sqlite.get_last_error());
+            continue;
+        }
+        int               current_version = 0;
+        db_mgr::query_ret rows;
+        if(sqlite.query(rows, SQL_SELECT_SCHEMA_VERSION).value() == OK)
+        {
+            if(!rows.empty())
+                current_version = rows.get_or<int64_t>(0, 0, 0);
+        }
+
+        if(current_version < SCHEMA_VERSION)
+        {
+            // schema_version table does not exist, create it and set version to 1
+            std::ifstream sql_file(conf.sql_path);
+            if(!sql_file.is_open())
+            {
+                LOG_ERROR("Failed to open SQL file at path: {}", conf.sql_path);
+                continue;
+            }
+
+            std::stringstream buf;
+            buf << sql_file.rdbuf();
+
+            bool success    = true;
+            auto statements = hj::string_util::split(buf.str(), ";");
+            sqlite.begin();
+            for(const auto &stmt : statements)
+            {
+                if(stmt.find_first_not_of(" \t\n\r") == std::string::npos)
+                    continue;
+
+                auto res = sqlite.exec(stmt + ";");
+                if(res.ec.value() == OK)
+                    continue;
+
+                LOG_ERROR("Failed to execute SQL statement: {}. Error: {}",
+                          stmt,
+                          sqlite.get_last_error());
+                success = false;
+                break;
+            }
+
+            if(!success)
+            {
+                sqlite.rollback();
+                LOG_ERROR(
+                    "Database migration failed for path: {}. Rolled back.",
+                    conf.path);
+                continue;
+            }
+
+            // check if the schema_version table exists and update the version
+            db_mgr::query_ret tmp_rows;
+            if(sqlite.query(tmp_rows, SQL_SELECT_SCHEMA_VERSION).value() != OK
+               || tmp_rows.empty()
+               || tmp_rows.get_or<int64_t>(0, 0, 0) < SCHEMA_VERSION)
+            {
+                sqlite.rollback();
+                LOG_ERROR("Failed to query schema_version after migration. "
+                          "Rows count: {}, Database path: {}",
+                          tmp_rows.rows(),
+                          conf.path);
+                continue;
+            }
+
+            // ok, commit the transaction
+            current_version = tmp_rows.get_or<int64_t>(0, 0, 0);
+            sqlite.commit();
+            LOG_INFO("Database migrated to version {} by sql:{}",
+                     current_version,
+                     conf.sql_path);
+        }
+        LOG_INFO("Current database: {} schema version: {}",
+                 conf.path,
+                 current_version);
     }
 }

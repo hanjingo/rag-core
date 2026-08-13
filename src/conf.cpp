@@ -103,9 +103,17 @@ std::vector<conf::sqlite_config> conf::sqlites()
 #if defined(__APPLE__) // standard macOS bundle structure
         conf.path = hj::filepath::join(
             hj::filepath::pwd() + "/../Resources",
-            _cfg.get<std::string>(item + "/path", "default.db"));
+            _cfg.get<std::string>(item + "/path", "configs/core.db"));
+        conf.sql_path = hj::filepath::join(
+            hj::filepath::pwd() + "/../Resources",
+            _cfg.get<std::string>(item + "/sql_path", "scripts/core.sql"));
 #else
-        conf.path = _cfg.get<std::string>(item + "/path", "default.db");
+        conf.path = hj::filepath::join(
+            hj::filepath::pwd(),
+            _cfg.get<std::string>(item + "/path", "configs/core.db"));
+        conf.sql_path = hj::filepath::join(
+            hj::filepath::pwd(),
+            _cfg.get<std::string>(item + "/sql_path", "scripts/core.sql"));
 #endif
         conf.capa   = _cfg.get<int>(item + "/capa", 1);
         conf.min_sz = _cfg.get<int>(item + "/min_sz", 1);

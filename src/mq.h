@@ -51,22 +51,32 @@ class mq
             return;
         }
 
-        thread_pool::instance()->enqueue([this]() {
+        std::promise<void> ready;
+        auto               future = ready.get_future();
+        thread_pool::instance()->enqueue([this,
+                                          ready = std::move(ready)]() mutable {
+            LOG_DEBUG("poll thread started");
+            ready.set_value();
             while(!_is_stop.load())
             {
+                bool empty;
                 {
                     std::lock_guard<std::mutex> lock(_mu);
-                    if(_poller.size() == 0)
-                    {
-                        std::this_thread::sleep_for(
-                            std::chrono::milliseconds(100));
-                        continue;
-                    }
+                    empty = (_poller.size() == 0);
+                }
+
+                if(empty)
+                {
+                    std::this_thread::sleep_for(std::chrono::milliseconds(100));
+                    continue;
                 }
 
                 poll(100);
             }
         });
+
+        future.wait();
+        LOG_DEBUG("poll thread ready");
     }
 
     int bind(const std::string &addr) { return _puber.bind(addr); }

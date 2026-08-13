@@ -110,6 +110,7 @@ add_definitions(-DLIC_FPATH="${LIC_FPATH}")
 add_definitions(-DCRASH_HANDLER_ENABLE=${CRASH_HANDLER_ENABLE})
 add_definitions(-DTELEMETRY_ENABLE=${TELEMETRY_ENABLE})
 add_definitions(-DPROPERTY_ENABLE=${PROPERTY_ENABLE})
+add_definitions(-DSCHEMA_VERSION=${SCHEMA_VERSION})
 
 # windows specific settings
 if (WIN32)
@@ -168,11 +169,10 @@ else()
 endif()
 target_link_libraries(${PROJECT_NAME} ${LINK_LIBS})
 
+# res file
 file(GLOB RESOURCE_FILES CONFIGURE_DEPENDS
     "${CONFIG_FILES_PATH}/*.ini"
     "${CONFIG_FILES_PATH}/*.txt"
-    "${CONFIG_FILES_PATH}/*.db"
-    "${CONFIG_FILES_PATH}/*.sql"
 )
 if (PROPERTY_ENABLE)
     # copy properties files
@@ -204,6 +204,31 @@ if (RESOURCE_FILES)
     )
 else()
     message(STATUS "No resource files to copy for ${PROJECT_NAME}")
+endif()
+
+# script file
+if (NOT SCRIPT_FILES_PATH)
+    set(SCRIPT_FILES_PATH ${CMAKE_CURRENT_SOURCE_DIR}/script)
+endif()
+file(GLOB SCRIPT_FILES CONFIGURE_DEPENDS
+    "${SCRIPT_FILES_PATH}/*.sql"
+)
+
+if (SCRIPT_FILES)
+    if (NOT RAG_CORE_SCRIPT_OUTPUT_DIRECTORY)
+        set(RAG_CORE_SCRIPT_OUTPUT_DIRECTORY "${EXECUTABLE_OUTPUT_PATH}/scripts")
+    endif()
+
+    add_custom_target(${PACKAGE_NAME}_copy_scripts ALL
+        COMMAND ${CMAKE_COMMAND} -E make_directory "${RAG_CORE_SCRIPT_OUTPUT_DIRECTORY}"
+        COMMAND ${CMAKE_COMMAND} -E copy_if_different
+            ${SCRIPT_FILES}
+            "${RAG_CORE_SCRIPT_OUTPUT_DIRECTORY}"
+        DEPENDS ${SCRIPT_FILES}
+        COMMENT "Copying script files to output dir"
+    )
+else()
+    message(STATUS "No script files to copy for ${PROJECT_NAME}")
 endif()
 
 # Deploy dependencies
