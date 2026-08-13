@@ -30,6 +30,7 @@ class updater
     bool check(const std::string &platform,
                const std::string &arch,
                const std::string &version);
+    void migrate();
 
   private:
     std::atomic<bool> _inited{false};

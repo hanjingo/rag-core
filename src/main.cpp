@@ -137,6 +137,10 @@ int main(int argc, char *argv[])
         // init thread pool
         thread_pool::instance();
 
+        // init updater
+        updater::instance()->init();
+        LOG_INFO("init updater finish");
+
         // init dbs
         db_mgr::instance().init();
 
@@ -212,13 +216,7 @@ int main(int argc, char *argv[])
         }
         LOG_INFO("init asr ctx finish");
 
-        // init updater
-        LOG_DEBUG("init updater clients size:{}",
-                  conf::instance().clients().size());
-        updater::instance()->init();
-        LOG_INFO("init updater finish");
-
-        // init mq
+        // init mq (must init before watch dog subscribe)
         mq::instance().init();
         LOG_INFO("init mq with publish_addr:{}",
                  conf::instance().publish_addr());
@@ -233,6 +231,9 @@ int main(int argc, char *argv[])
                       hj::format("{}", watch_dog_topics));
             return -1;
         }
+        LOG_INFO("init watch dog with publish_addr:{}, topics: {}",
+                 watch_dog_addr,
+                 hj::format("{}", watch_dog_topics));
 
         // run server
         auto   addr = conf::instance().server_addr();

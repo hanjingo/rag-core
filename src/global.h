@@ -21,6 +21,9 @@ static constexpr const char *ROLE_SYSTEM    = "system";
 static constexpr int64_t NONE_MSG_ID = 0;
 
 // SQL TEMPLATE
+static constexpr const char *SQL_SELECT_SCHEMA_VERSION =
+    R"(SELECT version, applied_at FROM schema_version ORDER BY version DESC LIMIT 1)";
+
 static constexpr const char *SQL_SELECT_USER_BY_USERNAME_PASSWD =
     R"(SELECT id, username, encrypted_passwd FROM user WHERE username = ? AND encrypted_passwd = ? LIMIT 1)";
 

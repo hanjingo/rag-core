@@ -1,5 +1,10 @@
 -- sqlite3 core.db < core.sql
 -- sqlite3.exe core.db < core.sql
+CREATE TABLE IF NOT EXISTS schema_version (
+    version INTEGER PRIMARY KEY,
+    applied_at DATETIME DEFAULT CURRENT_TIMESTAMP
+);
+
 CREATE TABLE IF NOT EXISTS session (
     id BIGINT PRIMARY KEY,
     user_id BIGINT NOT NULL,
@@ -49,3 +54,5 @@ CREATE TABLE IF NOT EXISTS file (
     size_kb INTEGER DEFAULT 0,
     FOREIGN KEY (owner) REFERENCES user(id)
 );
+
+INSERT INTO schema_version (version) VALUES (1) ON CONFLICT(version) DO NOTHING;
