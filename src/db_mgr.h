@@ -10,6 +10,7 @@
 #include <hj/db/db_conn_pool.hpp>
 
 #include "err.h"
+#include "global.h"
 
 class db_mgr
 {
