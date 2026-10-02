@@ -10,6 +10,7 @@
 #include <hj/db/db_conn_pool.hpp>
 
 #include "err.h"
+#include "global.h"
 
 class db_mgr
 {
@@ -41,11 +42,11 @@ class db_mgr
     {
         const uint32_t db_id = DB_SQLITE1;
         if(_pools.size() <= db_id)
-            return ERR_DB_NOT_EXIST;
+            return static_cast<int>(err::DB_NOT_EXIST);
 
         auto conn = _pools[db_id]->acquire();
         if(!conn)
-            return ERR_DB_CONN_POOL_EMPTY;
+            return static_cast<int>(err::DB_CONN_POOL_EMPTY);
 
         auto ret = conn->exec(sql, std::forward<Args>(args)...);
         return ret.ec.value();
@@ -56,11 +57,11 @@ class db_mgr
     {
         const uint32_t db_id = DB_SQLITE1;
         if(_pools.size() <= db_id)
-            return ERR_DB_NOT_EXIST;
+            return static_cast<int>(err::DB_NOT_EXIST);
 
         auto conn = _pools[db_id]->acquire();
         if(!conn)
-            return ERR_DB_CONN_POOL_EMPTY;
+            return static_cast<int>(err::DB_CONN_POOL_EMPTY);
 
         auto ret = conn->query(outs, sql, std::forward<Args>(args)...);
         return ret.value();

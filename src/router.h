@@ -5,7 +5,7 @@
 #include <regex>
 
 #include <hj/log/logger.hpp>
-#include <hj/encoding/unicode.hpp>
+#include <hj/encoding/utf8.hpp>
 
 #include "conf.h"
 
@@ -18,10 +18,8 @@ class router
         //           conf::instance().regex_norm_prompt(),
         //           conf::instance().regex_hard_prompt());
 
-        auto wnorm =
-            hj::unicode::from_utf8(conf::instance().regex_norm_prompt());
-        auto whard =
-            hj::unicode::from_utf8(conf::instance().regex_hard_prompt());
+        auto wnorm = hj::utf8::encode(conf::instance().regex_norm_prompt());
+        auto whard = hj::utf8::encode(conf::instance().regex_hard_prompt());
 
         _norm_pattern =
             std::wregex(wnorm, std::regex::icase | std::regex::optimize);

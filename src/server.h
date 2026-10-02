@@ -118,7 +118,7 @@ class server
         , _address(address) {};
     virtual ~server() { _srv.stop(); };
 
-    inline bool start()
+    inline std::error_code start()
     {
         return _srv.start(_address, &api_handler::instance());
     };

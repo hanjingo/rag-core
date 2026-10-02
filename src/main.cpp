@@ -17,7 +17,7 @@
 #include <hj/os/options.hpp>
 #include <hj/os/signal.hpp>
 #include <hj/io/file.hpp>
-#include <hj/encoding/fmt.hpp>
+#include <hj/str/fmt.hpp>
 
 #include "err.h"
 #include "global.h"
@@ -38,8 +38,8 @@ int main(int argc, char *argv[])
 #if CRASH_HANDLER_ENABLE == 1
 // add crash handle support
 #pragma message("crash handler enabled, initializing crash handler...")
-    hj::crash_handler::instance()->prevent_set_unhandled_exception_filter();
-    hj::crash_handler::instance()->set_local_path("./");
+    hj::crash_handler::instance().prevent_set_unhandled_exception_filter();
+    hj::crash_handler::instance().init("./");
 #endif
 
 #if TELEMETRY_ENABLE == 1
@@ -68,13 +68,14 @@ int main(int argc, char *argv[])
     hj::sighandler::instance().sigcatch({SIGABRT, SIGTERM}, [](int sig) {});
 
     // add options parse support
-    hj::options              opts;
-    hj::error_handler<err_t> h{[](const char *src, const char *dst) {
-        LOG_DEBUG("error handler state transition: {} -> {}", src, dst);
-    }};
+    hj::options opts;
+    hj::error_handler<std::error_code,
+                      std::function<bool(const std::error_code &)>,
+                      16>
+        h;
     if(argc < 2)
     {
-        h.match(error(ERR_ARGC_TOO_LESS), [&](const err_t &e) {
+        h.match(error(err::ARGC_TOO_LESS), [&](const err_t &e) {
             LOG_ERROR("Error: too few arguments", argc);
         });
         return 1;
@@ -125,9 +126,9 @@ int main(int argc, char *argv[])
         LOG_INFO("Environment - version: {}, arch: {}, platform: {}, "
                  "compiletime: {}",
                  VERSION,
-                 ENV_ARCH,
-                 ENV_OS,
-                 COMPILE_TIME);
+                 HJ_ARCH,
+                 HJ_OS,
+                 HJ_COMPILE_TIME);
         LOG_DEBUG("Init config:{}", conf::instance().data().str());
         LOG_DEBUG("Init regex norm prompt: {}",
                   conf::instance().regex_norm_prompt());
@@ -252,7 +253,7 @@ int main(int argc, char *argv[])
         LOG_DEBUG("prompt content:{}", content);
     } else
     {
-        h.match(error(ERR_INVALID_SUBCMD), [&](const err_t &e) {
+        h.match(error(err::INVALID_SUBCMD), [&](const err_t &e) {
             LOG_ERROR("Error: unknown subcommand: {}, we expected one of these "
                       "subcommands: [{}]",
                       subcmd,

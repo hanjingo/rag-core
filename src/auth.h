@@ -4,7 +4,7 @@
 #include <vector>
 #include <memory>
 
-#include <hj/util/license.hpp>
+#include <hj/crypto/license.hpp>
 #include <hj/crypto/rsa.hpp>
 
 #include "conf.h"

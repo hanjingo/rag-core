@@ -51,19 +51,19 @@ class llm_mgr
     int loop_query(const std::string                              &model_id,
                    std::vector<hj::llama::token_t>                &tokens,
                    const hj::llama::context_params_t              &ctx_params,
-                   const hj::llama::sampler::params               &smpl_params,
+                   const hj::llama::sampler_options               &smpl_params,
                    const std::function<bool(std::string &output)> &callback);
 
-    int get_embedding(std::vector<float>               &embedding,
-                      const std::string                &model_id,
-                      const std::string                &text,
+    int get_embedding(std::vector<float>         &embedding,
+                      const std::string          &model_id,
+                      const std::string          &text,
                       hj::llama::context_params_t ctx_params,
-                      int                               dimension,
-                      bool                              add_special   = true,
-                      bool                              parse_special = false);
+                      int                         dimension,
+                      bool                        add_special   = true,
+                      bool                        parse_special = false);
 
   private:
-    std::unordered_map<std::string, std::unique_ptr<hj::llama::model>> _llms;
+    std::unordered_map<std::string, std::shared_ptr<hj::llama::model>> _llms;
 };
 
 #endif

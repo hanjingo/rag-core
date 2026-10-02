@@ -3,8 +3,8 @@
 
 #define OPENSSL_ENABLE 1
 #include <hj/net/http/http_client.hpp>
-#include <hj/net/http/http_request.hpp>
-#include <hj/net/http/http_response.hpp>
+// #include <hj/net/http/http_request.hpp>
+// #include <hj/net/http/http_response.hpp>
 #include <hj/encoding/json.hpp>
 
 #include "err.h"
@@ -22,11 +22,11 @@ class deepseek_caller : public caller
 {
   public:
     explicit deepseek_caller(int timeout_sec, const std::string &api_key = "")
-        : _cli{hj::http_ssl_client("api.deepseek.com")}
+        : _cli{"api.deepseek.com",
+               hj::http::timeout(std::chrono::seconds(timeout_sec))}
         , _model{"deepseek-chat"}
         , _api_key{api_key}
     {
-        _cli.set_read_timeout(timeout_sec);
     }
     ~deepseek_caller() {}
 
@@ -36,9 +36,9 @@ class deepseek_caller : public caller
         const std::function<bool(std::string &output)> &callback) override;
 
   private:
-    hj::http_ssl_client _cli;
-    std::string         _model;
-    std::string         _api_key; // optional, can be empty
+    hj::http::client _cli;
+    std::string      _model;
+    std::string      _api_key; // optional, can be empty
 };
 
 // ------------------------------ CALLER MGR ------------------------------

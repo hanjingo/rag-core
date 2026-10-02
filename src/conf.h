@@ -8,7 +8,7 @@
 #include <unordered_map>
 
 #include <hj/encoding/ini.hpp>
-#include <hj/util/license.hpp>
+#include <hj/crypto/license.hpp>
 #include <hj/ai/llama.hpp>
 
 class conf

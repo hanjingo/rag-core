@@ -4,7 +4,7 @@
 #include <hj/time/date_time.hpp>
 #include <hj/algo/uuid.hpp>
 #include <hj/db/sqlite.hpp>
-#include <hj/encoding/fmt.hpp>
+#include <hj/str/fmt.hpp>
 
 #include "conf.h"
 #include "db_mgr.h"
@@ -46,7 +46,7 @@ reactor_t *api_handler::Login(ctx_t                           *ctx,
     auto ok = updater::instance()->check(platform, arch, version);
     info.set_force_update(!ok);
 
-    resp->set_error_code(ERR_FAIL);
+    resp->set_error_code(static_cast<int>(err::FAIL));
     resp->mutable_update_info()->CopyFrom(info);
     LOG_DEBUG("Received Login request. account: {}, platform: {}, "
               "arch: {}, version: {}",
@@ -64,7 +64,7 @@ reactor_t *api_handler::Login(ctx_t                           *ctx,
        || ret.empty())
     {
         LOG_ERROR("Failed to authenticate account: {}", account);
-        resp->set_error_code(ACCOUNT_INVALID);
+        resp->set_error_code(static_cast<int>(err::ACCOUNT_INVALID));
 
         reactor->Finish(status_t::OK);
         return reactor;
@@ -85,7 +85,7 @@ reactor_t *api_handler::Login(ctx_t                           *ctx,
                                    {}))
     {
         LOG_ERROR("Failed to issue license for account: {}", account);
-        resp->set_error_code(AUTH_ERR_ISSUE_FAIL);
+        resp->set_error_code(static_cast<int>(err::AUTH_ISSUE_FAIL));
 
         reactor->Finish(status_t::OK);
         return reactor;
@@ -113,13 +113,13 @@ reactor_t *api_handler::Logout(ctx_t                            *ctx,
     int64_t     user_id = req->user_id();
     std::string auth    = req->auth();
     auto       *reactor = ctx->DefaultReactor();
-    resp->set_error_code(ERR_FAIL);
+    resp->set_error_code(static_cast<int>(err::FAIL));
     LOG_DEBUG("Received Logout request. user_id: {}", user_id);
 
     if(verifier::instance().verify(auth, std::to_string(user_id), {}) != OK)
     {
         LOG_ERROR("Failed to verify auth for user_id: {}", user_id);
-        resp->set_error_code(ACCOUNT_INVALID);
+        resp->set_error_code(static_cast<int>(err::ACCOUNT_INVALID));
 
         reactor->Finish(status_t::OK);
         return reactor;
@@ -138,7 +138,7 @@ reactor_t *api_handler::RegAccount(ctx_t                                *ctx,
     std::string account          = req->account();
     std::string encrypted_passwd = req->passwd();
     auto       *reactor          = ctx->DefaultReactor();
-    resp->set_error_code(ERR_FAIL);
+    resp->set_error_code(static_cast<int>(err::FAIL));
     LOG_DEBUG("Received RegAccount request. account: {}", account);
 
     const int64_t id  = static_cast<int64_t>(hj::uuid::gen_u64());
@@ -150,7 +150,7 @@ reactor_t *api_handler::RegAccount(ctx_t                                *ctx,
     if(db_mgr::instance().exec(SQL_INSERT_USER, id, account, encrypted_passwd)
        != OK)
     {
-        resp->set_error_code(ERR_SQLITE_EXEC_FAIL);
+        resp->set_error_code(static_cast<int>(err::SQLITE_EXEC_FAIL));
         LOG_ERROR("Failed to insert user with id: {}, account: {}, "
                   "encrypted_passwd: {}",
                   id,
@@ -186,7 +186,7 @@ reactor_t *api_handler::StopAnswer(ctx_t                                *ctx,
     if(!stopped)
     {
         LOG_WARN("No active query found for session_id: {}", session_id);
-        resp->set_error_code(ERR_STOP_FAIL);
+        resp->set_error_code(static_cast<int>(err::STOP_FAIL));
     } else
     {
         LOG_DEBUG("Successfully stopped query for session_id: {}", session_id);
@@ -264,7 +264,7 @@ api_handler::GetChatMessage(ctx_t                                    *ctx,
 
     if(limit < 0 || limit > conf::instance().param_query_limit())
         limit = conf::instance().param_query_limit();
-    resp->set_error_code(ERR_FAIL);
+    resp->set_error_code(static_cast<int>(err::FAIL));
     LOG_DEBUG(
         "Received GetChatMessage request. id: {}, session_id: {}, user_id: "
         "{}, limit: {}",
@@ -281,7 +281,7 @@ api_handler::GetChatMessage(ctx_t                                    *ctx,
             LOG_ERROR("Failed to query message for id: {}, limit: {}",
                       id,
                       limit);
-            resp->set_error_code(ERR_SQLITE_EXEC_FAIL);
+            resp->set_error_code(static_cast<int>(err::SQLITE_EXEC_FAIL));
 
             reactor->Finish(status_t::OK);
             return reactor;
@@ -297,7 +297,7 @@ api_handler::GetChatMessage(ctx_t                                    *ctx,
             LOG_ERROR("Failed to query message for session_id: {}, limit: {}",
                       session_id,
                       limit);
-            resp->set_error_code(ERR_SQLITE_EXEC_FAIL);
+            resp->set_error_code(static_cast<int>(err::SQLITE_EXEC_FAIL));
 
             reactor->Finish(status_t::OK);
             return reactor;
@@ -347,7 +347,7 @@ reactor_t *api_handler::GetSession(ctx_t                                *ctx,
     int         limit   = req->limit();
     limit               = (limit < 0 || limit > 100) ? 100 : limit;
     auto *reactor       = ctx->DefaultReactor();
-    resp->set_error_code(ERR_FAIL);
+    resp->set_error_code(static_cast<int>(err::FAIL));
     LOG_DEBUG("Received GetSession request. id: {}, user_id: {}, limit: {}",
               id,
               user_id,
@@ -367,7 +367,7 @@ reactor_t *api_handler::GetSession(ctx_t                                *ctx,
            != OK)
         {
             LOG_ERROR("Failed to query history for id: {}", id);
-            resp->set_error_code(ERR_SQLITE_EXEC_FAIL);
+            resp->set_error_code(static_cast<int>(err::SQLITE_EXEC_FAIL));
 
             // return status_t::OK;
             reactor->Finish(status_t::OK);
@@ -382,7 +382,7 @@ reactor_t *api_handler::GetSession(ctx_t                                *ctx,
            != OK)
         {
             LOG_ERROR("Failed to query history for user_id: {}", user_id);
-            resp->set_error_code(ERR_SQLITE_EXEC_FAIL);
+            resp->set_error_code(static_cast<int>(err::SQLITE_EXEC_FAIL));
 
             // return status_t::OK;
             reactor->Finish(status_t::OK);
@@ -422,7 +422,7 @@ reactor_t *api_handler::NewSession(ctx_t                                *ctx,
                                    const ::GrpcLibraryV1::NewSessionReq *req,
                                    ::GrpcLibraryV1::NewSessionResp      *resp)
 {
-    resp->set_error_code(ERR_FAIL);
+    resp->set_error_code(static_cast<int>(err::FAIL));
     int64_t     user_id = req->user_id();
     std::string auth    = req->auth();
     std::string title   = req->title();
@@ -442,7 +442,7 @@ reactor_t *api_handler::NewSession(ctx_t                                *ctx,
     if(db_mgr::instance().exec(SQL_INSERT_SESSION, id, user_id, title, ms)
        != OK)
     {
-        resp->set_error_code(ERR_SQLITE_EXEC_FAIL);
+        resp->set_error_code(static_cast<int>(err::SQLITE_EXEC_FAIL));
         LOG_ERROR("Failed to insert session with id: {}, user_id: {}, "
                   "title: {}, ms: {}",
                   id,
@@ -480,7 +480,7 @@ reactor_t *api_handler::ModifySessionTitle(
     std::string title   = req->title();
     auto       *reactor = ctx->DefaultReactor();
 
-    resp->set_error_code(ERR_FAIL);
+    resp->set_error_code(static_cast<int>(err::FAIL));
     resp->set_id(id);
     resp->set_title(title);
     LOG_DEBUG(
@@ -494,7 +494,7 @@ reactor_t *api_handler::ModifySessionTitle(
                                id)
        != OK)
     {
-        resp->set_error_code(ERR_SQLITE_EXEC_FAIL);
+        resp->set_error_code(static_cast<int>(err::SQLITE_EXEC_FAIL));
         LOG_ERROR("Failed to update session for id: {}, title: {}", id, title);
 
         reactor->Finish(status_t::OK);
@@ -515,7 +515,7 @@ reactor_t *api_handler::DelSession(ctx_t                                *ctx,
     int64_t     user_id = req->user_id();
     std::string auth    = req->auth();
     auto       *reactor = ctx->DefaultReactor();
-    resp->set_error_code(ERR_FAIL);
+    resp->set_error_code(static_cast<int>(err::FAIL));
     LOG_DEBUG("Received DelSession request. ids.size(): {}, user_id: {}",
               ids.size(),
               user_id);
@@ -524,7 +524,7 @@ reactor_t *api_handler::DelSession(ctx_t                                *ctx,
     {
         if(db_mgr::instance().exec(SQL_DELETE_SESSION_BY_ID, id) != OK)
         {
-            resp->set_error_code(ERR_SQLITE_EXEC_FAIL);
+            resp->set_error_code(static_cast<int>(err::SQLITE_EXEC_FAIL));
             LOG_ERROR("Failed to delete session for id: {}", id);
 
             reactor->Finish(status_t::OK);
@@ -534,7 +534,7 @@ reactor_t *api_handler::DelSession(ctx_t                                *ctx,
         // delete all relative message
         if(db_mgr::instance().exec(SQL_DELETE_MESSAGE_BY_SESSION_ID, id) != OK)
         {
-            resp->set_error_code(ERR_SQLITE_EXEC_FAIL);
+            resp->set_error_code(static_cast<int>(err::SQLITE_EXEC_FAIL));
             LOG_ERROR("Failed to delete messages for session id: {}", id);
 
             reactor->Finish(status_t::OK);
@@ -562,7 +562,7 @@ api_handler::GetPluginInfo(ctx_t                                   *ctx,
     int         limit     = req->limit();
     limit                 = (limit < 0 || limit > 50) ? 50 : limit;
     auto *reactor         = ctx->DefaultReactor();
-    resp->set_error_code(ERR_FAIL);
+    resp->set_error_code(static_cast<int>(err::FAIL));
     LOG_DEBUG(
         "Received GetPluginInfo request. hash: {}, publisher: {}, limit: {}",
         hash,
@@ -572,7 +572,7 @@ api_handler::GetPluginInfo(ctx_t                                   *ctx,
     db_mgr::query_ret rows;
     if(db_mgr::instance().query(rows, SQL_SELECT_PLUGIN_INFO, limit) != OK)
     {
-        resp->set_error_code(ERR_SQLITE_EXEC_FAIL);
+        resp->set_error_code(static_cast<int>(err::SQLITE_EXEC_FAIL));
         LOG_ERROR("Failed to query plugin info");
 
         reactor->Finish(status_t::OK);
@@ -617,7 +617,7 @@ reactor_t *api_handler::Download(ctx_t                              *ctx,
     int64_t     user_id = req->user_id();
     std::string auth    = req->auth();
     auto       *reactor = ctx->DefaultReactor();
-    resp->set_error_code(ERR_FAIL);
+    resp->set_error_code(static_cast<int>(err::FAIL));
     resp->set_hash(hash);
     LOG_DEBUG("Received Download request. hash: {}, user_id: {}",
               hash,
@@ -654,7 +654,7 @@ reactor_t *api_handler::Upload(ctx_t                            *ctx,
     std::string addr    = req->addr();
     int64_t     size_kb = req->size_kb();
     auto       *reactor = ctx->DefaultReactor();
-    resp->set_error_code(ERR_FAIL);
+    resp->set_error_code(static_cast<int>(err::FAIL));
     resp->set_hash(hash);
     LOG_DEBUG("Received Upload request. hash: {}, user_id: {}", hash, user_id);
 
@@ -662,7 +662,7 @@ reactor_t *api_handler::Upload(ctx_t                            *ctx,
     if(db_mgr::instance().exec(SQL_INSERT_FILE, hash, addr, user_id, size_kb)
        != OK)
     {
-        resp->set_error_code(ERR_SQLITE_EXEC_FAIL);
+        resp->set_error_code(static_cast<int>(err::SQLITE_EXEC_FAIL));
         LOG_ERROR("Failed to insert file for hash: {}, addr: {}, user_id: {}, "
                   "size_kb: {}",
                   hash,
@@ -713,7 +713,7 @@ api_handler::StopEmbedding(ctx_t                                   *ctx,
     if(!stopped)
     {
         LOG_WARN("No active EmbeddingReactor found for task_id: {}", task_id);
-        resp->set_error_code(ERR_STOP_FAIL);
+        resp->set_error_code(static_cast<int>(err::STOP_FAIL));
     } else
     {
         LOG_DEBUG("Successfully stopped EmbeddingReactor for task_id: {}",
@@ -742,7 +742,7 @@ reactor_t *api_handler::Publish(ctx_t                             *ctx,
         msgs.push_back(msg);
 
     auto *reactor = ctx->DefaultReactor();
-    resp->set_error_code(ERR_FAIL);
+    resp->set_error_code(static_cast<int>(err::FAIL));
     LOG_DEBUG("Received Publish request. msgs.size(): {}, user_id: {}",
               msgs.size(),
               user_id);
@@ -795,14 +795,14 @@ reactor_t *api_handler::UnSubscribe(ctx_t                                 *ctx,
     auto    auth    = req->auth();
 
     auto *reactor = ctx->DefaultReactor();
-    resp->set_error_code(ERR_FAIL);
+    resp->set_error_code(static_cast<int>(err::FAIL));
     LOG_DEBUG("Received UnSubscribe request. user_id: {}", user_id);
 
     auto suber = subscribe_reactor_mgr::instance().get_active_suber(user_id);
     if(!suber)
     {
         LOG_ERROR("No active suber found for user_id: {}", user_id);
-        resp->set_error_code(SUB_ERR_NO_ACTIVE_SUBER);
+        resp->set_error_code(static_cast<int>(err::SUB_NO_ACTIVE_SUBER));
 
         reactor->Finish(status_t::OK);
         return reactor;
@@ -818,7 +818,7 @@ reactor_t *api_handler::UnSubscribe(ctx_t                                 *ctx,
         LOG_ERROR("Failed to unsubscribe topics for user_id: {}, topics: {}",
                   user_id,
                   hj::format("{}", topics));
-        resp->set_error_code(SUB_ERR_UNSUB_FAIL);
+        resp->set_error_code(static_cast<int>(err::SUB_UNSUB_FAIL));
 
         reactor->Finish(status_t::OK);
         return reactor;

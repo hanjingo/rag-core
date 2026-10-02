@@ -13,7 +13,7 @@ class thread_pool
         : _pool{conf::instance().sync_thread_pool_size()}
     {
     }
-    ~thread_pool() { _pool.clear(); }
+    ~thread_pool() {}
 
     static std::shared_ptr<thread_pool> instance()
     {

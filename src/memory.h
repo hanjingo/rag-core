@@ -84,14 +84,14 @@ class memory_mgr
             for(int i = 0; i < std::min(10, (int) embedding.size()); ++i)
                 LOG_DEBUG("embedding[{}] = {}", i, embedding[i]);
 
-            return LLM_ERR_EMBEDDING_INVALID;
+            return static_cast<int>(err::LLM_EMBEDDING_INVALID);
         }
 
         LOG_DEBUG("Embedding validation passed, non-zero count: {}/{}",
                   non_zero_count,
                   embedding.size());
 
-        index.add(1, embedding.data());
+        index.add(1, embedding.data(), embedding.size());
         LOG_DEBUG("Successfully added embedding to index, dimension: {}",
                   dimension);
         return OK;

@@ -1,6 +1,6 @@
 #include "watch_dog.h"
 
-#include <hj/util/string_util.hpp>
+#include <hj/str/str.hpp>
 #include <hj/log/logger.hpp>
 #include <hj/encoding/json.hpp>
 

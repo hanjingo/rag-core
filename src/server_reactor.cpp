@@ -4,7 +4,7 @@
 #include <hj/time/date_time.hpp>
 #include <hj/algo/uuid.hpp>
 #include <hj/db/sqlite.hpp>
-#include <hj/util/string_util.hpp>
+#include <hj/str/str.hpp>
 #include <hj/io/filepath.hpp>
 
 #include "conf.h"
@@ -52,8 +52,7 @@ QueryReactor::QueryReactor(grpc::CallbackServerContext     *ctx,
     _smpl_params.penalty_frequency = req->sampling().penalty_freq();
     _smpl_params.penalty_present   = req->sampling().penalty_present();
 
-    _smpl_params.temperature     = req->sampling().temperature();
-    _smpl_params.temperature_ext = req->sampling().temperature_ext();
+    _smpl_params.temperature = req->sampling().temperature();
     _smpl_params.temperature_ext_delta =
         req->sampling().temperature_ext_delta();
     _smpl_params.temperature_ext_exponent =
@@ -147,7 +146,7 @@ QueryReactor::QueryReactor(grpc::CallbackServerContext     *ctx,
         } else
         {
             LOG_ERROR("Unknown pipeline: {}", _pipeline);
-            _send("", true, ERR_UNKNOWN_PIPELINE);
+            _send("", true, static_cast<int>(err::UNKNOWN_PIPELINE));
         }
     });
 }
@@ -188,7 +187,7 @@ void QueryReactor::OnDone()
     {
         LOG_ERROR("Failed to insert assistant message for session_id: {}",
                   _session_id);
-        _send("", true, ERR_SQLITE_EXEC_FAIL);
+        _send("", true, static_cast<int>(err::SQLITE_EXEC_FAIL));
         return;
     }
 
@@ -220,7 +219,7 @@ void QueryReactor::_process()
                                now)
        != OK)
     {
-        _send("", true, ERR_SQLITE_EXEC_FAIL);
+        _send("", true, static_cast<int>(err::SQLITE_EXEC_FAIL));
         return;
     }
 
@@ -289,7 +288,7 @@ void QueryReactor::_processRemote()
                                now)
        != OK)
     {
-        _send("", true, ERR_SQLITE_EXEC_FAIL);
+        _send("", true, static_cast<int>(err::SQLITE_EXEC_FAIL));
         return;
     }
 
@@ -532,7 +531,7 @@ void RecognizeAudioReactor::_process(
         req.has_audio_chunk(),
         req.has_param(),
         req.session_id());
-    int         err         = ERR_FAIL;
+    int         err         = static_cast<int>(err::FAIL);
     std::string text        = "";
     int64_t     session_id  = req.session_id();
     bool        is_finished = true;
@@ -653,7 +652,7 @@ void RecognizeAudioReactor::_process(
         // fcm
         auto               chunk = req.audio_chunk();
         std::vector<float> data;
-        hj::asr::context::convert(data, chunk);
+        hj::asr::context::convert_pcm16le(data, chunk);
         // append to audio buffer
         _audio_buffer.push(data.data(), data.size());
         LOG_DEBUG("RecognizeAudioReactor::_process audio chunk: ctx_id: {}, "
@@ -963,14 +962,20 @@ void EmbeddingReactor::_process(const ::GrpcLibraryV1::EmbeddingReq &req)
         if(!index.serialize(data))
         {
             LOG_ERROR("Fail to serialize index for task_id: {}", _task_id);
-            _send(LLM_ERR_EMBEDDING_SERIALIZE_FAIL, _task_id, chunk_id, {});
+            _send(static_cast<int>(err::LLM_EMBEDDING_SERIALIZE_FAIL),
+                  _task_id,
+                  chunk_id,
+                  {});
             return;
         }
         if(data.empty())
         {
             LOG_ERROR("Failed to serialize empty data for task_id: {}",
                       _task_id);
-            _send(LLM_ERR_EMBEDDING_SERIALIZE_FAIL, _task_id, chunk_id, {});
+            _send(static_cast<int>(err::LLM_EMBEDDING_SERIALIZE_FAIL),
+                  _task_id,
+                  chunk_id,
+                  {});
             return;
         }
 

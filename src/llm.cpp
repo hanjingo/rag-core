@@ -6,12 +6,12 @@
 
 llm_mgr::llm_mgr()
 {
-    hj::llama::backend_init();
+    // hj::llama::backend_init();
 }
 
 llm_mgr::~llm_mgr()
 {
-    hj::llama::backend_free();
+    // hj::llama::backend_free();
 }
 
 int llm_mgr::load(const std::string               &model_id,
@@ -21,7 +21,7 @@ int llm_mgr::load(const std::string               &model_id,
     if(_llms.find(model_id) != _llms.end())
     {
         LOG_ERROR("Model {} already loaded, skip", model_id);
-        return LLM_ERR_MODEL_ALREADY_LOADED;
+        return static_cast<int>(err::LLM_MODEL_ALREADY_LOADED);
     }
 
     auto model =
@@ -29,7 +29,7 @@ int llm_mgr::load(const std::string               &model_id,
     if(model->data() == nullptr)
     {
         LOG_ERROR("Failed to load model {} from file {}", model_id, model_path);
-        return LLM_ERR_MODEL_LOAD_FAIL;
+        return static_cast<int>(err::LLM_MODEL_LOAD_FAIL);
     }
 
     _llms[model_id] = std::move(model);
@@ -49,7 +49,8 @@ std::vector<hj::llama::token_t> llm_mgr::tokenize(const std::string &model,
     if(it == _llms.end())
         return {};
 
-    return it->second->tokenize(text, add_special, parse_special);
+    std::error_code ec;
+    return it->second->tokenize(text, add_special, parse_special, ec);
 }
 
 hj::llama::context_params_t llm_mgr::create_ctx_params()
@@ -68,7 +69,7 @@ int llm_mgr::loop_query(
     const std::string                              &model_id,
     std::vector<hj::llama::token_t>                &tokens,
     const hj::llama::context_params_t              &ctx_params,
-    const hj::llama::sampler::params               &smpl_params,
+    const hj::llama::sampler_options               &smpl_params,
     const std::function<bool(std::string &output)> &callback)
 {
     if(tokens.size() <= 0)
@@ -81,14 +82,14 @@ int llm_mgr::loop_query(
     if(_llms.find(model_id) == _llms.end())
     {
         LOG_ERROR("Model {} not found", model_id);
-        return LLM_ERR_MODEL_NOT_EXIST;
+        return static_cast<int>(err::LLM_MODEL_NOT_EXIST);
     }
 
-    hj::llama::model *model = _llms.find(model_id)->second.get();
+    auto model = _llms.find(model_id)->second;
     if(model->data() == nullptr)
     {
         LOG_ERROR("Model {} data is null", model_id);
-        return LLM_ERR_MODEL_NOT_EXIST;
+        return static_cast<int>(err::LLM_MODEL_NOT_EXIST);
     }
 
     // Create context
@@ -96,12 +97,11 @@ int llm_mgr::loop_query(
     if(ctx.data() == nullptr)
     {
         LOG_ERROR("Failed to create context for model {}", model_id);
-        return LLM_ERR_MODEL_CREATE_CTX_FAIL;
+        return static_cast<int>(err::LLM_MODEL_CREATE_CTX_FAIL);
     }
 
     // Create sampler
-    hj::llama::sampler sampler{hj::llama::sampler::default_chain_params(),
-                               smpl_params};
+    hj::llama::sampler sampler{smpl_params};
 
     // Prefill
     hj::llama::batch pre_batch{tokens};
@@ -109,10 +109,10 @@ int llm_mgr::loop_query(
 
     // Clear KV cache and evaluate prompt
     // auto batch = hj::llama::batch_get_one(tokens);
-    if(ctx.decode(pre_batch) != 0)
+    if(ctx.decode(pre_batch))
     {
         LOG_ERROR("Decode failed! tokens.size: {}", tokens.size());
-        return LLM_ERR_MODEL_CTX_DECODE_FAIL;
+        return static_cast<int>(err::LLM_MODEL_CTX_DECODE_FAIL);
     }
 
     // llama_batch loop_batch = llama_batch_init(1, 0, 1);
@@ -130,7 +130,13 @@ int llm_mgr::loop_query(
         // Sample the next token
         int32_t sample_idx =
             (pos == static_cast<int32_t>(tokens.size())) ? (pos - 1) : 0;
-        auto next_token = sampler.sample(ctx, sample_idx);
+        std::error_code ec;
+        auto            next_token = sampler.sample(ctx, sample_idx, ec);
+        if(ec)
+        {
+            LOG_ERROR("Sampling failed, error: {}", ec.message());
+            break;
+        }
         if(model->token_is_eog(next_token))
         {
             LOG_DEBUG("End of Generation token encountered, stopping query");
@@ -149,7 +155,7 @@ int llm_mgr::loop_query(
         // Prepare the next token for the next iteration
         loop_batch.set_tokens(&next_token, 1, pos);
         loop_batch.set_logits(0, true);
-        if(ctx.decode(loop_batch) != 0)
+        if(ctx.decode(loop_batch))
         {
             LOG_ERROR("Decode batch fail");
             break;
@@ -177,21 +183,24 @@ int llm_mgr::get_embedding(std::vector<float>         &embedding,
     if(it == _llms.end())
     {
         LOG_ERROR("Model {} not found", model_id);
-        return LLM_ERR_MODEL_NOT_EXIST;
+        return static_cast<int>(err::LLM_MODEL_NOT_EXIST);
     }
-    hj::llama::model *model = it->second.get();
+    auto model = it->second;
     if(model->data() == nullptr)
     {
         LOG_ERROR("Model {} data is null", model_id);
-        return LLM_ERR_MODEL_LOAD_FAIL;
+        return static_cast<int>(err::LLM_MODEL_LOAD_FAIL);
     }
 
     // tokenize text
-    auto tokens = model->tokenize(text, add_special, parse_special);
-    if(tokens.empty())
+    std::error_code ec;
+    auto tokens = model->tokenize(text, add_special, parse_special, ec);
+    if(tokens.empty() || ec)
     {
-        LOG_ERROR("Tokenization failed for text: {}", text.substr(0, 50));
-        return LLM_ERR_MODEL_TOKENIZE_FAIL;
+        LOG_ERROR("Tokenization failed for text: {}, error: {}",
+                  text.substr(0, 50),
+                  ec.message());
+        return static_cast<int>(err::LLM_MODEL_TOKENIZE_FAIL);
     }
 
     // create context with embedding enabled
@@ -200,17 +209,17 @@ int llm_mgr::get_embedding(std::vector<float>         &embedding,
     if(ctx.data() == nullptr)
     {
         LOG_ERROR("Failed to create context for embedding");
-        return LLM_ERR_MODEL_CREATE_CTX_FAIL;
+        return static_cast<int>(err::LLM_MODEL_CREATE_CTX_FAIL);
     }
 
     // decode tokens
     hj::llama::batch batch(tokens);
     batch.set_logits(0, true);
     // batch.set_logits(static_cast<int32_t>(tokens.size()) - 1, true);
-    if(ctx.decode(batch) != 0)
+    if(ctx.decode(batch))
     {
         LOG_ERROR("Failed to decode tokens for embedding");
-        return LLM_ERR_MODEL_CTX_DECODE_FAIL;
+        return static_cast<int>(err::LLM_MODEL_CTX_DECODE_FAIL);
     }
 
     // extract embedding
@@ -218,7 +227,7 @@ int llm_mgr::get_embedding(std::vector<float>         &embedding,
     if(!emb_data)
     {
         LOG_ERROR("Failed to get embeddings from context");
-        return LLM_ERR_EMBEDDING_EXTRACT_FAIL;
+        return static_cast<int>(err::LLM_EMBEDDING_EXTRACT_FAIL);
     }
 
     // cp embedding data to output vector

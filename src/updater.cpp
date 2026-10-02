@@ -1,7 +1,7 @@
 #include "updater.h"
 
 #include <hj/log/logger.hpp>
-#include <hj/util/string_util.hpp>
+#include <hj/str/str.hpp>
 #include <hj/db/sqlite.hpp>
 
 #include "global.h"
@@ -28,7 +28,7 @@ bool updater::check(const std::string &platform,
         return false;
     }
 
-    auto arr = hj::string_util::split(version, ".");
+    auto arr = hj::str::split(version, ".");
     if(arr.empty())
     {
         LOG_ERROR("Parse version:{} failed", version);
@@ -81,25 +81,25 @@ void updater::init(bool force)
     _inited.store(true);
     _version = VERSION;
 
-    if(ENV_OS == "windows")
+    if(HJ_OS == "windows")
         _platform = 1;
-    else if(ENV_OS == "linux")
+    else if(HJ_OS == "linux")
         _platform = 2;
-    else if(ENV_OS == "macos")
+    else if(HJ_OS == "macos")
         _platform = 3;
     else
         _platform = 0;
 
-    if(ENV_ARCH == "x86")
+    if(HJ_ARCH == "x86")
         _arch = 1;
-    else if(ENV_ARCH == "x64")
+    else if(HJ_ARCH == "x64")
         _arch = 2;
-    else if(ENV_ARCH == "arm64")
+    else if(HJ_ARCH == "arm64")
         _arch = 3;
     else
         _arch = 0;
 
-    _release_time = COMPILE_TIME;
+    _release_time = HJ_COMPILE_TIME;
     LOG_DEBUG(
         "Version info loaded. rag-core.version: {}, rag-core.platform: {}, "
         "rag-core.arch: {}, rag-core.release_time: {}",
@@ -170,7 +170,7 @@ void updater::migrate()
             buf << sql_file.rdbuf();
 
             bool success    = true;
-            auto statements = hj::string_util::split(buf.str(), ";");
+            auto statements = hj::str::split(buf.str(), ";");
             sqlite.begin();
             for(const auto &stmt : statements)
             {

@@ -30,14 +30,14 @@ int asr_mgr::load(const std::string           &ctx_id,
     if(_ctxs.find(ctx_id) != _ctxs.end())
     {
         LOG_ERROR("Asr Ctx {} already loaded, skip", ctx_id);
-        return ASR_ERR_CTX_ALREADY_LOADED;
+        return static_cast<int>(err::ASR_CTX_ALREADY_LOADED);
     }
 
     auto ctx = std::make_unique<hj::asr::context>(path.c_str(), config);
-    if(ctx->data() == nullptr)
+    if(ctx->raw_context() == nullptr)
     {
         LOG_ERROR("Failed to load ctx {} from file {}", ctx_id, path);
-        return ASR_ERR_CTX_LOAD_FAIL;
+        return static_cast<int>(err::ASR_CTX_LOAD_FAIL);
     }
 
     _ctxs[ctx_id] = std::move(ctx);
@@ -57,15 +57,15 @@ int asr_mgr::translate(std::string                  &segment,
     if(_ctxs.find(ctx_id) == _ctxs.end())
     {
         LOG_ERROR("Ctx '{}' not found", ctx_id);
-        return ASR_ERR_CTX_NOT_EXIST;
+        return static_cast<int>(err::ASR_CTX_NOT_EXIST);
     }
 
     // create state
     auto ctx = _ctxs.find(ctx_id)->second.get();
-    if(ctx->data() == nullptr)
+    if(ctx->raw_context() == nullptr)
     {
         LOG_ERROR("Ctx '{}' data is null", ctx_id);
-        return ASR_ERR_CTX_NOT_EXIST;
+        return static_cast<int>(err::ASR_CTX_NOT_EXIST);
     }
 
     // translate
@@ -121,10 +121,10 @@ int asr_mgr::translate(std::string                  &segment,
               params.vad_params.speech_pad_ms,
               params.vad_params.samples_overlap);
     auto err = ctx->full(params, data);
-    if(err != 0)
+    if(err)
     {
-        LOG_ERROR("ASR full() failed with error:{}", err);
-        return err;
+        LOG_ERROR("ASR full() failed with error:{}", err.value());
+        return err.value();
     }
 
     // parse segments
@@ -132,9 +132,11 @@ int asr_mgr::translate(std::string                  &segment,
     auto n_segments = ctx->n_segments();
     for(auto i = 0; i < n_segments; ++i)
     {
-        std::string tmp;
-        ctx->get_segment_text(tmp, i);
-        segment += tmp;
+        auto tmp = ctx->get_segment_text(i);
+        if(tmp->empty())
+            continue;
+
+        segment += *tmp;
         LOG_DEBUG("Parse segment:{}", segment);
     }
 

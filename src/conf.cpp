@@ -1,7 +1,8 @@
 #include "conf.h"
 
+#include <iostream>
 #include <exception>
-#include <hj/util/string_util.hpp>
+#include <hj/str/str.hpp>
 
 #include <hj/log/logger.hpp>
 #include <hj/io/filepath.hpp>
@@ -95,7 +96,7 @@ std::vector<conf::sqlite_config> conf::sqlites()
 {
     std::vector<sqlite_config> ret;
     auto                       str = _cfg.get<std::string>("db/sqlite", "");
-    auto                       arr = hj::string_util::split(str, ",");
+    auto                       arr = hj::str::split(str, ",");
     for(auto item : arr)
     {
         sqlite_config conf;
@@ -470,7 +471,7 @@ void conf::_init(const std::string &config_file_path)
 
     // init watch dog
     auto topics           = _cfg.get<std::string>("watch_dog/topics", "");
-    _watch_dog_pub_topics = hj::string_util::split(topics, ",");
+    _watch_dog_pub_topics = hj::str::split(topics, ",");
     _watch_dog_pub_addr   = _cfg.get<std::string>("watch_dog/addr", "");
 }
 

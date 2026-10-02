@@ -71,7 +71,7 @@ void router::route(std::string       &pipeline,
 std::string router::classify(const std::string &prompt)
 {
     // TODO:May be we should use a llm to classify the prompt.
-    auto wprompt = hj::unicode::from_utf8(prompt);
+    auto wprompt = hj::utf8::encode(prompt);
     if(prompt.empty() || wprompt.empty())
         return PROMPT_TYPE_UNKNOWN;
 

@@ -9,7 +9,7 @@
 #include <hj/net/grpc.hpp>
 #include <hj/ai/asr.hpp>
 #include <hj/encoding/json.hpp>
-#include <hj/net/http/http_request.hpp>
+#include <hj/net/http/http_header.hpp>
 
 #include "sync.h"
 #include "audio_buffer.h"
@@ -57,7 +57,7 @@ class QueryReactor : public grpc::ServerWriteReactor<::GrpcLibraryV1::QueryResp>
     std::string _pipeline;
 
     // sampling params
-    hj::llama::sampler::params _smpl_params;
+    hj::llama::sampler_options _smpl_params;
 
     // context params
     std::string                 _prompt;
@@ -66,8 +66,8 @@ class QueryReactor : public grpc::ServerWriteReactor<::GrpcLibraryV1::QueryResp>
     hj::llama::context_params_t _ctx_params;
 
     // remote api params
-    std::string      _api_key;
-    hj::http_request _api_req;
+    std::string       _api_key;
+    hj::http::request _api_req;
 
     // resp
     std::string _answer;
