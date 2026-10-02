@@ -634,7 +634,7 @@ reactor_t *api_handler::Download(ctx_t                              *ctx,
     for(int n_row = 0; n_row < rows.rows(); ++n_row)
     {
         resp->set_addr(rows.get_or<std::string>(n_row, 0, ""));
-        resp->set_size_kb(rows.get_or<long long>(n_row, 2, 0));
+        resp->set_size_kb(rows.get_or<int64_t>(n_row, 2, 0));
         break;
     }
 
